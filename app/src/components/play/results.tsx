@@ -37,7 +37,7 @@ export function History({ rows, labels, lower = [], score = false }: { rows: Pas
   const showScore = score && rows.some((r) => typeof r.score === "number");
   const best = bestOf(rows, lower);
   const bests = [
-    ...(showScore && "score" in best ? [`${t.score} ${best.score}`] : []),
+    ...(showScore && "score" in best ? [`${labels.score?.label ?? t.score} ${best.score}`] : []),
     ...keys.filter((k) => labels[k] && k in best).map((k) => `${labels[k].label} ${withUnit(best[k], labels[k].unit)}`),
   ];
   return (
@@ -45,7 +45,7 @@ export function History({ rows, labels, lower = [], score = false }: { rows: Pas
       {bests.length > 0 && <p><b>{t.best}.</b> {bests.join(" · ")}</p>}
       <div className="tbwrap">
         <table className="tb">
-          <thead><tr><th>{t.when}</th><th className="n">{t.time}</th>{showScore && <th className="n">{t.score}</th>}{keys.map((k) => <th key={k} className="n">{labels[k].label}</th>)}</tr></thead>
+          <thead><tr><th>{t.when}</th><th className="n">{t.time}</th>{showScore && <th className="n">{labels.score?.label ?? t.score}</th>}{keys.map((k) => <th key={k} className="n">{labels[k].label}</th>)}</tr></thead>
           <tbody>
             {rows.map((r) => (
               <tr key={r.id}>

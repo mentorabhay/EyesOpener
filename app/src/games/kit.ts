@@ -31,6 +31,13 @@ export interface GameProps {
   cyanEye: "L" | "R";
   onScore: (score: number) => void;
   /**
+   * The practice view for someone with no glasses at hand: the two eyes' pictures are drawn in one place, the way
+   * joined eyes see them. Nothing is trained in this view; it only shows what "one picture" looks like.
+   * `joined` is the page's switch; `view` is the same switch as an object the running game can read each frame.
+   */
+  joined?: boolean;
+  view?: { joined: boolean };
+  /**
    * Called once when a running game starts, with the live record of what the session measures (see `Kit.stats`).
    * The Stage keeps it and saves a copy when the session ends.
    */
@@ -151,7 +158,11 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
   const lvl = (n: number) => { k.level = n; stats.level = n; stats.top = Math.max(stats.top, n); };
   const num = (v: number) => (Number.isFinite(v) ? Math.round(v * 100) / 100 : 0);
   /* Crossed images make the eyes turn in: the left eye's picture sits to the right, the right eye's to the left. */
-  const split = (sep: number, draw: (ink: Ink, shift: number) => void) => { draw(left, sep / 2); draw(right, -sep / 2); };
+  const split = (sep: number, draw: (ink: Ink, shift: number) => void) => {
+    const gap = (p.view?.joined ?? p.joined) ? 0 : sep;
+    draw(left, gap / 2);
+    draw(right, -gap / 2);
+  };
   const k: Kit = {
     t: 0, dt: 0, slow, k: 1, perCm: 37.8, distCm: p.distCm || 50, letter: 22, level: 1, score: 0, input,
     convMax: 20, divMax: 8, pxArcsec: 100, stats,

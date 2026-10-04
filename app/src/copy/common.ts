@@ -12,7 +12,15 @@ export const common = {
   notMedical: "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
   tester: "Staff test household. Every game, exercise and film opens here whatever its status, and the daily limits are off. Nothing here is counted with families.",
   testerLink: "Set the status of each item",
-  lens: { label: "View scenes as", none: "No glasses", weak: "Weaker eye", strong: "Stronger eye" },
+  lens: {
+    label: "Check the scene without glasses",
+    none: "As on screen", weak: "Weaker eye sees", strong: "Stronger eye sees", joined: "Eyes joined",
+    note: {
+      weak: "This is what the eye behind the cyan lens gets. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+      strong: "This is what the eye behind the red lens gets, at your setting. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+      joined: "Practice view for when you have no glasses: the two pictures are drawn as one, the way joined eyes see them. Nothing is trained in this view.",
+    },
+  },
   gameScene: "Game scene. Tap or click in it, or use the arrow keys and Space. The words under the scene say how to play.",
   demo: "Demo family",
 };

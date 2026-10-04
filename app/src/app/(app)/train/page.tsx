@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Chip, EvidenceChip, PageHead, Pills, SceneThumb } from "@/components/ui";
-import { isBuilt } from "@/games/built";
+import { isBuilt, kindOf } from "@/games/built";
 import { DoseLine } from "@/components/play/session-ui";
 import { train as t } from "@/copy/train";
 import { catalogue, games, isStrong, mechanismOf } from "@/data";
@@ -20,7 +20,10 @@ export default async function TrainPage({ searchParams }: { searchParams: Promis
   const m = await requireMember();
   const [dose, statuses] = await Promise.all([doseFor(m, "game"), readStatuses()]);
   const status = (slug: string) => statusOf(statuses, "game", slug);
-  const shown = games.filter((g) => isListed(status(g.slug), m.tester) && (evidence === "all" || isStrong(g.mechanism)) && (tag === "any" || g.tags.includes(tag)));
+  /* A film with a task on top is cinema, not a game: those six are listed on the cinema page. */
+  const listed = games.filter((g) => isListed(status(g.slug), m.tester));
+  const films = listed.filter((g) => kindOf(g.slug) === "cinema").length;
+  const shown = listed.filter((g) => kindOf(g.slug) !== "cinema" && (evidence === "all" || isStrong(g.mechanism)) && (tag === "any" || g.tags.includes(tag)));
 
   return (
     <>
@@ -34,6 +37,7 @@ export default async function TrainPage({ searchParams }: { searchParams: Promis
         <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train?tag=${tag}`} />
         <Pills items={catalogue.gameTags} current={tag} param="tag" base={`/train?evidence=${evidence}`} />
       </div>
+      {films > 0 && <p className="notice">{t.games.films(films)} <Link href="/train/cinema">{t.games.toCinema}</Link></p>}
       {shown.length ? (
         <div className="grid-cards">
           {shown.map((g) => (

@@ -12,9 +12,11 @@ import { GridTool } from "@/drills/tools/grid";
 import { ReadingTool } from "@/drills/tools/reading";
 import { kindOf } from "@/games/built";
 import { requireMember } from "@/lib/session";
+import { SupervisionNote } from "@/components/play/supervision";
+import { supervisionFor } from "@/data/supervision";
 import { doseFor, isCareRoutine, pastSessions, statusFor } from "@/lib/sessions";
-import { forWhom, isListed } from "@/lib/status";
-import css from "./guide.module.css";
+import { exerciseLevel, forWhom, isListed } from "@/lib/status";
+import css from "@/components/play/guide.module.css";
 import { Routine, type Hand } from "./routine";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -36,6 +38,7 @@ export default async function ExercisePage({ params }: Props) {
   const [dose, past] = await Promise.all([doseFor(m, "exercise", slug), pastSessions(m, "exercise", slug)]);
   const g = guideFor(slug);
   const mech = mechanismOf(e.mechanism);
+  const sup = supervisionFor(e.mechanism, exerciseLevel(e));
   const k = x.kv;
   const labels = labelsOf(g);
   const lower = (g?.measures ?? []).filter((q) => q.better === "lower").map((q) => q.key);
@@ -125,6 +128,8 @@ export default async function ExercisePage({ params }: Props) {
             <History rows={past} labels={labels} lower={lower} />
           </Card>
         )}
+
+        {sup && <Card title={t.supervision.title}><SupervisionNote s={sup} /></Card>}
 
         <Card title={x.evidence} right={<EvidenceChip level={mech.evidence} />}>
           <p><b>{mech.label}.</b> {mech.basis}</p>

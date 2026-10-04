@@ -2,15 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/ui";
+import { GlassesNote, HowToPlay, labelsFor } from "@/components/play/how-to";
 import { Stage } from "@/components/play/stage";
 import { train as t } from "@/copy/train";
 import { gameBySlug } from "@/data";
+import { gameGuideFor } from "@/data/game-guides";
 import { helpFor, kindOf } from "@/games/built";
 import { CarePanel } from "@/games/care/panel";
 import { CinemaStage } from "@/games/extra-ui";
 import { results } from "@/copy/results";
 import { requireMember } from "@/lib/session";
-import { doseFor, statusFor } from "@/lib/sessions";
+import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -25,10 +27,15 @@ export default async function PlayPage({ params }: Props) {
   if (!g || !kind) notFound();
   const m = await requireMember();
   if (!isListed(await statusFor("game", slug), m.tester)) notFound();
-  const head = <PageHead title={g.name} sub={g.play} crumb={[{ href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
+  const head = <PageHead title={g.name} sub={g.play} crumb={[kind === "cinema" ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
+
+  const guide = gameGuideFor(slug);
+  /* The guide is open for a first visit and folded away once the member has finished a session of this game. */
+  const known = guide ? (await pastSessions(m, "game", slug, 1)).length > 0 : false;
+  const how = guide && <HowToPlay g={guide} open={!known} />;
 
   /* A care companion is a log the family keeps. It is not a screen session, so it has no dose and no glasses. */
-  if (kind === "care") return <>{head}<CarePanel slug={slug} m={m} /></>;
+  if (kind === "care") return <>{head}{how}<CarePanel slug={slug} m={m} /></>;
 
   const dose = await doseFor(m, "game", slug);
   const ppc = m.device?.pxPerCm ?? 0;
@@ -44,10 +51,13 @@ export default async function PlayPage({ params }: Props) {
   return (
     <>
       {head}
+      <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} />
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
+      {how}
       {kind === "cinema"
-        ? <CinemaStage slug={slug} dose={dose} {...eye} />
-        : <Stage slug={slug} dose={dose} help={helpFor(slug)} labels={results.game} {...eye} />}
+        ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} {...eye} />
+        : <Stage slug={slug} dose={dose} help={helpFor(slug)} labels={labelsFor(guide, results.game)} joinable={!!guide?.joined} lens={/red-cyan/i.test(g.gear)} {...eye} />}
+      {guide && <p className="small"><Link href={`/train/games/${slug}/manual`}>{t.game.guide.fullGuide}</Link></p>}
     </>
   );
 }

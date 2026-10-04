@@ -175,3 +175,22 @@ A drill is a `GameDef` on the game kit, registered under the exercise's slug. Ev
 
 - Staff set each game, exercise and the cinema to `open`, `counsellor`, `staff` or `off` in the Catalogue room (`src/lib/status.ts`, `src/lib/catalogue.ts`). Everything is `open` until staff change it.
 - `doseFor(m, kind, slug)` checks the status. Lists hide `staff` and `off` from members. A staff member with no household of their own gets a test household (`m.tester`): every status opens for them and the daily limits are off.
+
+---
+
+# Addendum: game guides
+
+A member who opens a game must not have to guess. The game's page says what the game is for, what they should see, how to play, when to press, what counts as success, what is measured, and when to stop. A person who tried Tunnel Glide wrote: "ask was: you see one ring with both dots. This never happens, or I am not understanding." He had no glasses on, and nothing told him that the screen always shows two rings and that they become one only through red-cyan glasses. Every guide must close that kind of gap.
+
+Read `src/data/game-guides/types.ts`, `src/data/game-guides/cue.ts`, the reference guide in `src/data/game-guides/verg.ts` (Tunnel Glide), `src/components/play/cue.tsx` and `src/data/game-guides/game-guides.test.ts`.
+
+- **One `GameGuide` for every built game**, written from the game's own code and copy: read the game's file, its words and its catalogue entry before writing. The guide describes what the game really does: what scores a point, what the top line shows, which key does what.
+- **Words.** Plain words a school student can follow. Say "weaker eye" and "stronger eye". No jargon without its meaning beside it. No emoji. No cure claims, no promise of a result.
+- **`see`** says what is on the screen and what the member sees through the glasses, and what each eye gets. For a red-cyan game it says that the screen itself always shows both pictures.
+- **`cues`** are two to four small pictures of "when you see this, do this", each a list of simple shapes in a 160 by 90 box (see `cue.ts` for builders). Draw the real moments of this game, simplified: the moment to act (`go`), the moment to wait (`wait`), and what to do when the eyes let go or one eye switches off (`stop`). Mark where to tap with `tap(x, y)` and the key to press with `key(x, y, "Space")`. Words inside a picture are short (30 characters at most) and at least size 6. Keep shapes inside the box.
+- **`success`** says what one point is, what a good session looks like, and what the level means. Where the game relies on what the member reports (every fusion game), say that pressing without seeing it raises the numbers and trains nothing.
+- **`measures`** name the numbers the session keeps, with the keys the kit records: `score`, `hits`, `misses`, `top` (highest level), and for games built on `vergence.ts` also `conv`, `div` and `splits`. List only what this game really records (a game that never calls `k.hit` has no `hits`). No published norm exists for a game score: never give one.
+- **`joined: true`** only for a game whose target is drawn with `k.fuse`, `target` or `fuseAt` and must be joined into one picture. The page then offers the "Eyes joined" practice view.
+- **`helps` and `evidence`** are honest: what the method is, what trials found for the method, and that no trial tested this game. Sources are real papers or guidelines with a working URL. The exercise guides (`src/data/guides/*.ts`) and the evidence page (`src/copy/site.ts`) already carry sources that were opened and read: reuse those by copying the label and the URL. A new source must be opened and checked first.
+- **`stop`** always includes: double vision that stays, a headache, eye pain, feeling dizzy or sick. A care companion (a family log with no scene) needs only what fits it.
+- `npx vitest run src/data/game-guides` checks every guide.

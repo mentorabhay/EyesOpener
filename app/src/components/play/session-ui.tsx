@@ -41,7 +41,7 @@ function EndNote({ e, labels }: { e: Ended; labels?: Labels }) {
   return (
     <div className="notice stack" data-b={stopped ? "warn" : "ok"}>
       <b>{t.ended[e.endReason]}</b>
-      {typeof e.saved?.score === "number" && e.saved.score > 0 && <span>{t.score}: <b className="tnum">{e.saved.score}</b></span>}
+      {typeof e.saved?.score === "number" && e.saved.score > 0 && <span>{labels?.score?.label ?? t.score}: <b className="tnum">{e.saved.score}</b></span>}
       {labels && <Measured detail={e.saved?.detail} labels={labels} />}
       <span>{e.saved ? (e.saved.counted ? t.saved(e.saved.seconds) : t.kept) : t.notSaved}</span>
       {stopped && (symptom

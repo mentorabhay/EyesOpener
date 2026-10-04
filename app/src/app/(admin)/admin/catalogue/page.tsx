@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Card, Chip, PageHead, Pills } from "@/components/ui";
 import { admin as t } from "@/copy/admin";
 import { exerciseBySlug, gameBySlug } from "@/data";
+import { kindOf } from "@/games/built";
 import { requireStaff } from "@/lib/auth";
 import { libraryItems, readStatuses } from "@/lib/catalogue";
 import { forWhom, ITEM_KINDS, recommendedStatus, statusOf, STATUSES, type ItemKind, type Status } from "@/lib/status";
@@ -53,8 +54,8 @@ export default async function CataloguePage({ searchParams }: { searchParams: Pr
             <tbody>
               {shown.map((i) => (
                 <tr key={`${i.kind}:${i.slug}`}>
-                  <td><b>{i.name}</b><div><Link className="small" href={hrefOf(i.kind, i.slug)}>{c.tryIt}</Link></div></td>
-                  <td>{c.kind[i.kind]}</td>
+                  <td><b>{i.name}</b><div className="row" style={{ gap: 10 }}><Link className="small" href={hrefOf(i.kind, i.slug)}>{c.tryIt}</Link>{i.kind !== "film" && <Link className="small" href={`/admin/manual/${i.kind}/${i.slug}`}>{c.manual}</Link>}</div></td>
+                  <td>{i.kind === "game" && kindOf(i.slug) === "cinema" ? c.kind.activity : c.kind[i.kind]}</td>
                   <td className="small">{whoFor(i.kind, i.slug)}</td>
                   <td><Chip tone={tone(i.recommended)}>{c.status[i.recommended]}</Chip></td>
                   <td>
