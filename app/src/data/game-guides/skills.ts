@@ -231,9 +231,9 @@ export const guides: GameGuide[] = [
       "Look at the track and point the way its three toes face: tap the right, left, top or bottom part of the scene, or press that arrow.",
       "Two right in a row make the next track smaller. One wrong makes it bigger again.",
       "Carry on for about 3 minutes, until the step on the top line stops changing or the scene says \"That is as small as this screen goes\".",
-      "Write the step down, with which eye it was. The game does not keep it. Then press Finish now.",
-      "Move the patch to the right eye, start again and write that step down too.",
-      "Compare the two eyes. For a result that is kept, use Letter size in Check-ups.",
+      "Press Finish now. The step is kept with the session, but the game does not know which eye was covered: note which eye it was.",
+      "Move the patch to the right eye, start again and note that step too.",
+      "Compare the two eyes. For a letter-chart result, use Letter size in Check-ups.",
     ],
     controls: {
       touch: "Tap the part of the scene the toes point to: left, right, top or bottom. The four parts meet along the diagonals. A tap on the very middle says nothing.",
@@ -275,6 +275,7 @@ export const guides: GameGuide[] = [
       "There is no pass mark. What matters is one eye clearly behind the other on more than one day, or a step that gets worse over the weeks. Either is a reason to book an eye test.",
     ],
     measures: [
+      { key: "step", label: "Smallest tracks read (size step)", unit: "", how: "The smallest size step read right twice in a row. Step 1 is the largest; each step is four fifths of the one before. Compare only on the same screen at the same distance: a step is not a line on a letter chart.", better: "higher" },
       { key: "score", label: "Tracks read right", unit: "", how: "Each right answer adds one, at any size. It shows how long you played, not how small you could read.", better: "none" },
       { key: "misses", label: "Wrong answers", unit: "", how: "Each wrong answer. Close to the limit some answers are always wrong: that is the check working, not a poor result.", better: "none" },
     ],

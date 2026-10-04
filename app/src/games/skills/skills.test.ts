@@ -84,10 +84,13 @@ describe("e safari", () => {
     answer(g, true); answer(g, true);
     expect(sizeAt(g.k, g.s.step)).toBeCloseTo(first * 0.64);
     expect(g.s.best).toBe(1);
+    expect(g.k.stats.step).toBe(2);
     answer(g, false);
     expect(sizeAt(g.k, g.s.step)).toBeCloseTo(first * 0.8);
     answer(g, false); answer(g, false);
     expect(g.s.step).toBe(0);
+    /* The saved figure is the smallest step read, not where the staircase stands now. */
+    expect(g.k.stats.step).toBe(2);
   });
   it("never draws the track under 10 units tall, however long the child keeps answering right", () => {
     const g = rig(eSafari);

@@ -25,7 +25,7 @@ export const staffNotes: Readonly<Record<string, readonly string[]>> = {
   "comet-trail": ["No trial shows that eye-movement play helps healthy eyes. It is offered as play, and its label says \"unproven\".", "Space and OK do nothing in this game."],
   "spot-jump": ["No trial shows that eye-movement play helps healthy eyes. It is offered as play, and its label says \"unproven\".", "The pace shown as \"a minute\" is not saved. Up, Down, Space and OK do nothing."],
   "e-safari": [
-    "The result (\"Smallest tracks read: step N\") is drawn on the top line and is not saved with the session.",
+    "The saved figure (\"Smallest tracks read\", a size step) is kept with the session. It is a figure for comparing one day with another, not an acuity result: the kept acuity result comes from Letter size in Check-ups.",
     "The game does not know which eye is covered, and the level changes nothing.",
     "Track size ignores screen size and viewing distance, so a step is not a line on a letter chart. Compare only with the same screen at the same distance.",
   ],

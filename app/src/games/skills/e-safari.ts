@@ -1,7 +1,8 @@
 /**
  * E Safari. A practice check of how small a shape a young child can read, one eye at a time (the other eye is
  * under a patch). The animal track is a tumbling E: three toes that point right, down, left or up. The child
- * points the way the toes face. Nothing is stored: a result that is kept comes from Letter size in Check-ups.
+ * points the way the toes face. The session keeps the smallest size step read (`step`), as a figure to compare on the
+ * same screen at the same distance. It is not a letter-chart result: that comes from Letter size in Check-ups.
  *
  * Ink: no glasses are worn. The track, the words and the marks after an answer are both-eyes ink. Weaker-eye ink
  * is only a second colour for the four small arrows at the edges that show where to tap. Stronger-eye ink is
@@ -71,6 +72,7 @@ export const eSafari: GameDef<State> = {
       if (++s.streak >= 2) {
         s.streak = 0;
         s.best = Math.max(s.best, s.step);
+        k.report("step", s.best + 1);
         if (!atFloor(k, s.step)) s.step++;
       }
     } else {
