@@ -20,7 +20,7 @@ describe("site lock", () => {
     expect(gateMark("open sesame 42")).not.toBe(gateMark("open sesame 43"));
   });
   it("keeps the gate, the health check and the robots file open", () => {
-    for (const p of ["/gate", "/healthz", "/robots.txt"]) expect(isOpenPath(p)).toBe(true);
+    for (const p of ["/gate", "/health", "/robots.txt"]) expect(isOpenPath(p)).toBe(true);
     for (const p of ["/", "/today", "/gate/x", "/admin"]) expect(isOpenPath(p)).toBe(false);
   });
   it("sends people only to a path on this site after the gate", () => {
