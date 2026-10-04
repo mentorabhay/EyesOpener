@@ -1,0 +1,27 @@
+/* Test drawings shared by onboarding and the check-ups. */
+.pad { display: grid; grid-template-columns: repeat(3, 64px); grid-template-rows: repeat(3, 46px); gap: 6px; align-self: center; }
+.pad button, .pick button { background: var(--sunken); border: 1px solid var(--line-2); border-radius: var(--r-sm); font-size: 19px; font-weight: 700; cursor: pointer; }
+.pad button:hover, .pick button:hover { border-color: var(--ink); }
+.pad .mid { font-size: 12px; font-weight: 500; line-height: 1.15; color: var(--ink-2); }
+.pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; max-width: 360px; width: 100%; align-self: center; }
+.pick button { padding: 10px 6px; }
+.pick .mid { font-size: 14px; font-weight: 400; }
+.cover { display: flex; gap: 14px; align-items: center; }
+.cover svg { flex: 0 0 78px; width: 78px; }
+.cover p { min-width: 0; }
+.bar { width: 26px; background: var(--ink); border-radius: 2px; }
+/* the later check-ups */
+.rings { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.rings button { background: var(--sunken); border: 1px solid var(--line-2); border-radius: var(--r-sm); font-size: 19px; font-weight: 700; cursor: pointer; padding: 9px 0; }
+.rings button:hover { border-color: var(--ink); }
+.rings button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.act { align-self: center; min-width: min(100%, 300px); padding: 14px 22px; font-size: 16px; white-space: normal; text-align: center; }
+/* a long label may wrap, so it never pushes a narrow, enlarged page sideways */
+.wrap { white-space: normal; text-align: center; max-width: 100%; }
+.near { width: 100%; max-width: 420px; height: auto; align-self: center; color: var(--ink-2); }
+.steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+.tries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.tries input[aria-invalid="true"] { border-color: var(--danger); }
+.questions { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+.questions li { display: flex; flex-direction: column; gap: 7px; }
+.questions p span { display: block; }

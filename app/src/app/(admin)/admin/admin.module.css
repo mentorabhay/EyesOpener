@@ -1,0 +1,12 @@
+/* Admin console: the few styles the shared sheet does not have. */
+.confirm summary { list-style: none; }
+.confirm summary::-webkit-details-marker { display: none; }
+.confirm[open] summary { margin-bottom: 10px; }
+.confirm > div { max-width: 44ch; }
+.code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12.5px; background: var(--sunken); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; overflow-wrap: anywhere; }
+.quote { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--sunken); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px 12px; }
+.big { font-size: 26px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+.inline { display: flex; flex-direction: row; gap: 8px; align-items: center; flex-wrap: wrap; }
+.inline select { width: auto; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+.pattern { min-width: 24ch; }

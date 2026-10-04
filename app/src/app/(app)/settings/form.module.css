@@ -1,0 +1,8 @@
+.set { border: 0; padding: 0; margin: 0; min-width: 0; }
+.set legend { padding: 0; margin-bottom: 4px; font-weight: 500; }
+.check { display: flex; gap: 9px; align-items: flex-start; padding: 5px 0; cursor: pointer; }
+.check input { width: 18px; height: 18px; margin: 2px 0 0; flex: none; accent-color: var(--g1); }
+.confirm summary { list-style: none; }
+.confirm summary::-webkit-details-marker { display: none; }
+.confirm[open] summary { margin-bottom: 10px; }
+.code { font-size: 18px; letter-spacing: 0.12em; }

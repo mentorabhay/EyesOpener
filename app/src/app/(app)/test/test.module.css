@@ -1,0 +1,17 @@
+/* Two-line chart: left eye and right eye. Both pairs pass the colour-blind checks on the card surface. */
+.plot { --s1: #8b31f0; --s2: #c98708; color: var(--ink-3); display: block; width: 100%; height: auto; max-width: 560px; font-size: 13px; font-variant-numeric: tabular-nums; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .plot, :root:not([data-theme="light"]) .legend { --s1: #a970f5; --s2: #c08000; }
+}
+:root[data-theme="dark"] .plot, :root[data-theme="dark"] .legend { --s1: #a970f5; --s2: #c08000; }
+.legend { --s1: #8b31f0; --s2: #c98708; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 12.5px; color: var(--ink-2); }
+.legend li { display: flex; align-items: center; gap: 7px; }
+.legend i { width: 18px; height: 0; border-top: 2px solid; flex: none; }
+.legend i.ring { width: 12px; height: 12px; border: 1.5px solid var(--ink-3); border-radius: 50%; }
+.run { max-width: 760px; }
+.run > button, .run > a, .run form > button { align-self: flex-start; }
+.run > button[class*="act"] { align-self: center; }
+.run h2 { font-size: 18px; }
+/* the hub: a card never asks for more width than an enlarged page on a phone has */
+.cards { grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
+.changed { color: var(--warn); font-weight: 600; font-size: 12.5px; min-width: 0; }

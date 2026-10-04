@@ -1,0 +1,1838 @@
+{
+ "evidence": [
+  {
+   "key": "strong",
+   "label": "Strong",
+   "meaning": "Randomised trials support the mechanism."
+  },
+  {
+   "key": "sup",
+   "label": "Strong with supervision",
+   "meaning": "Trials support it as part of supervised therapy. Home practice alone is not proven."
+  },
+  {
+   "key": "moderate",
+   "label": "Moderate",
+   "meaning": "Small or mixed trials point to a real effect."
+  },
+  {
+   "key": "limited",
+   "label": "Limited",
+   "meaning": "Early studies only, or tested only as part of a wider programme."
+  },
+  {
+   "key": "unproven",
+   "label": "Unproven",
+   "meaning": "No trial shows a benefit. Included for variety, warm-up or tracking."
+  },
+  {
+   "key": "measures",
+   "label": "Measures only",
+   "meaning": "A test or check. It measures; it does not treat."
+  }
+ ],
+ "mechanisms": [
+  {
+   "key": "dvid",
+   "label": "Two-eye video",
+   "evidence": "strong",
+   "basis": "In trials, children gained about 1.8 lines in 12 weeks and matched patching."
+  },
+  {
+   "key": "dgame",
+   "label": "Two-eye balanced play",
+   "evidence": "moderate",
+   "basis": "Same mechanism as the video trials. Game trials were mixed and tracked how much children played."
+  },
+  {
+   "key": "verg",
+   "label": "Vergence training",
+   "evidence": "sup",
+   "basis": "With weekly supervised sessions, 73% of children succeeded or improved. Adults gained 17 prism dioptres of reserve."
+  },
+  {
+   "key": "stereo",
+   "label": "Depth training",
+   "evidence": "limited",
+   "basis": "In pooled adult studies, about a third of those with some depth vision improved it markedly."
+  },
+  {
+   "key": "anti",
+   "label": "Anti-suppression",
+   "evidence": "moderate",
+   "basis": "Supervised therapy improved squint control by 0.9 points on a 5-point scale."
+  },
+  {
+   "key": "pl",
+   "label": "Perceptual learning",
+   "evidence": "moderate",
+   "basis": "Adults gained about 1.5 lines in pooled trials."
+  },
+  {
+   "key": "habit",
+   "label": "Habit coaching",
+   "evidence": "moderate",
+   "basis": "Enforced breaks eased strain scores in two weeks. Blink training improved dry-eye scores at 30 days."
+  },
+  {
+   "key": "scan",
+   "label": "Scanning training",
+   "evidence": "moderate",
+   "basis": "Search into the blind side sped up by 24% after 800 trials of web training."
+  },
+  {
+   "key": "track",
+   "label": "Eye-movement play",
+   "evidence": "unproven",
+   "basis": "No trial shows a benefit in healthy eyes."
+  },
+  {
+   "key": "measure",
+   "label": "Check in game form",
+   "evidence": "measures",
+   "basis": "Home acuity tests agree with clinic charts to within one line."
+  },
+  {
+   "key": "light",
+   "label": "Outdoor light",
+   "evidence": "strong",
+   "basis": "An extra 40 minutes outdoors a day cut myopia onset from 39.5% to 30.4% over three years."
+  },
+  {
+   "key": "patch",
+   "label": "Patching support",
+   "evidence": "strong",
+   "basis": "Patching is standard care, and two hours a day worked as well as six."
+  },
+  {
+   "key": "glasses",
+   "label": "Glasses first",
+   "evidence": "strong",
+   "basis": "Glasses alone gained 2.9 lines on average and resolved lazy eye in 27% of children."
+  },
+  {
+   "key": "focus",
+   "label": "Focus flexibility",
+   "evidence": "limited",
+   "basis": "Part of supervised therapy protocols. Not tested alone."
+  },
+  {
+   "key": "near",
+   "label": "Reading distance",
+   "evidence": "limited",
+   "basis": "Supports the outdoor habit. Not tested alone as a treatment."
+  },
+  {
+   "key": "read",
+   "label": "Reading practice",
+   "evidence": "limited",
+   "basis": "Related to search training. Smaller evidence base."
+  },
+  {
+   "key": "monitor",
+   "label": "Home monitoring",
+   "evidence": "measures",
+   "basis": "Cleared home tests of this kind exist. Results are compared with the user's own baseline."
+  },
+  {
+   "key": "drops",
+   "label": "Reminders",
+   "evidence": "moderate",
+   "basis": "Reminders raised the share of patients taking drops on time by almost 20%."
+  },
+  {
+   "key": "recov",
+   "label": "Supervised recovery",
+   "evidence": "sup",
+   "basis": "After concussion, 79% improved with six weeks of supervised therapy, against 13% of those waiting."
+  },
+  {
+   "key": "atropine",
+   "label": "Atropine support",
+   "evidence": "strong",
+   "basis": "In trials, atropine drops worked as well as daily patching for moderate lazy eye."
+  }
+ ],
+ "thumbs": {
+  "run": "<line x1=\"0\" y1=\"70\" x2=\"160\" y2=\"70\" stroke=\"#ffffff\" stroke-width=\"2\"/><circle cx=\"38\" cy=\"50\" r=\"7\" fill=\"#00ffff\"/><rect x=\"34\" y=\"57\" width=\"8\" height=\"13\" fill=\"#00ffff\"/><rect x=\"88\" y=\"54\" width=\"10\" height=\"16\" fill=\"var(--strong)\"/><rect x=\"126\" y=\"44\" width=\"10\" height=\"26\" fill=\"var(--strong)\"/><circle cx=\"66\" cy=\"38\" r=\"4\" fill=\"#00ffff\"/><circle cx=\"110\" cy=\"28\" r=\"4\" fill=\"#00ffff\"/>",
+  "catch": "<circle cx=\"36\" cy=\"30\" r=\"6\" fill=\"#00ffff\"/><circle cx=\"92\" cy=\"22\" r=\"6\" fill=\"#00ffff\"/><circle cx=\"124\" cy=\"58\" r=\"6\" fill=\"#00ffff\"/><circle cx=\"60\" cy=\"66\" r=\"6\" fill=\"#00ffff\"/><path d=\"M70 40l8 -5l8 5l-8 5z\" fill=\"var(--strong)\"/><path d=\"M110 34l8 -5l8 5l-8 5z\" fill=\"var(--strong)\"/><path d=\"M24 60l8 -5l8 5l-8 5z\" fill=\"var(--strong)\"/><circle cx=\"80\" cy=\"45\" r=\"38\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"1.5\"/>",
+  "maze": "<g stroke=\"var(--strong)\" stroke-width=\"4\" fill=\"none\"><path d=\"M20 15h120v60h-120z\"/><path d=\"M50 15v36M80 75v-36M110 15v36\"/></g><circle cx=\"35\" cy=\"60\" r=\"6\" fill=\"#00ffff\"/><rect x=\"122\" y=\"22\" width=\"10\" height=\"10\" fill=\"#ffffff\"/>",
+  "tunnel": "<g fill=\"none\" stroke-width=\"2.5\"><circle cx=\"74\" cy=\"45\" r=\"34\" stroke=\"var(--strong)\"/><circle cx=\"86\" cy=\"45\" r=\"34\" stroke=\"#00ffff\"/><circle cx=\"77\" cy=\"45\" r=\"20\" stroke=\"var(--strong)\"/><circle cx=\"83\" cy=\"45\" r=\"20\" stroke=\"#00ffff\"/></g><circle cx=\"80\" cy=\"45\" r=\"4\" fill=\"#ffffff\"/>",
+  "depth": "<g fill=\"none\" stroke-width=\"2.5\"><circle cx=\"40\" cy=\"45\" r=\"14\" stroke=\"var(--strong)\"/><circle cx=\"43\" cy=\"45\" r=\"14\" stroke=\"#00ffff\"/><circle cx=\"80\" cy=\"45\" r=\"14\" stroke=\"var(--strong)\"/><circle cx=\"88\" cy=\"45\" r=\"14\" stroke=\"#00ffff\"/><circle cx=\"124\" cy=\"45\" r=\"14\" stroke=\"#ffffff\"/></g>",
+  "pursuit": "<path d=\"M14 66q40 -70 70 -20t62 -16\" stroke=\"#ffffff\" stroke-opacity=\".4\" stroke-width=\"1.5\" fill=\"none\" stroke-dasharray=\"3 4\"/><circle cx=\"110\" cy=\"44\" r=\"6\" fill=\"#ffffff\"/><circle cx=\"110\" cy=\"44\" r=\"13\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\"/>",
+  "saccade": "<circle cx=\"30\" cy=\"45\" r=\"8\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\"/><circle cx=\"130\" cy=\"30\" r=\"8\" fill=\"#ffffff\"/><circle cx=\"96\" cy=\"68\" r=\"8\" fill=\"none\" stroke=\"#ffffff\" stroke-opacity=\".4\" stroke-width=\"2\"/><path d=\"M42 42l72 -10\" stroke=\"#ffffff\" stroke-opacity=\".4\" stroke-width=\"1.5\" stroke-dasharray=\"3 4\"/>",
+  "blink": "<path d=\"M30 78v-22M30 62q-10 -4 -10 -14q10 2 10 14q0 -12 10 -16q0 12 -10 16\" stroke=\"#ffffff\" stroke-width=\"2\" fill=\"none\"/><path d=\"M70 78v-34M70 52q-12 -4 -12 -18q12 4 12 18q0 -14 12 -20q0 14 -12 20\" stroke=\"#ffffff\" stroke-width=\"2\" fill=\"none\"/><path d=\"M104 30q18 -16 36 0q-18 16 -36 0z\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"2\"/><circle cx=\"122\" cy=\"30\" r=\"5\" fill=\"#ffffff\"/><line x1=\"0\" y1=\"80\" x2=\"160\" y2=\"80\" stroke=\"#ffffff\" stroke-width=\"2\"/>",
+  "far": "<rect x=\"30\" y=\"12\" width=\"100\" height=\"66\" fill=\"none\" stroke=\"#ffffff\" stroke-width=\"3\"/><path d=\"M80 12v66M30 45h100\" stroke=\"#ffffff\" stroke-width=\"2\"/><path d=\"M40 72l16 -22l12 14l10 -10l14 18z\" fill=\"#ffffff\" fill-opacity=\".5\"/><circle cx=\"112\" cy=\"26\" r=\"6\" fill=\"#ffffff\"/>",
+  "acuity": "<g fill=\"#ffffff\"><path d=\"M30 26h30v8h-22v6h18v8h-18v6h22v8h-30z\"/><path d=\"M84 36h18v5h-13v4h11v5h-11v4h13v5h-18z\"/><path d=\"M122 42h11v3h-8v2.5h7v3h-7v2.5h8v3h-11z\"/></g>",
+  "sky": "<circle cx=\"124\" cy=\"24\" r=\"12\" fill=\"#ffffff\"/><path d=\"M0 74l30 -28l22 18l28 -30l32 34l20 -14l28 20v16h-160z\" fill=\"#ffffff\" fill-opacity=\".5\"/><path d=\"M36 22q6 -6 12 0q6 -6 12 0\" stroke=\"#ffffff\" stroke-width=\"2\" fill=\"none\"/>"
+ },
+ "gameTags": [
+  {
+   "key": "any",
+   "label": "All"
+  },
+  {
+   "key": "lazy",
+   "label": "Lazy eye"
+  },
+  {
+   "key": "conv",
+   "label": "Convergence"
+  },
+  {
+   "key": "conc",
+   "label": "After concussion"
+  },
+  {
+   "key": "myopia",
+   "label": "Child myopia"
+  },
+  {
+   "key": "depth",
+   "label": "Depth"
+  },
+  {
+   "key": "squint",
+   "label": "Squint"
+  },
+  {
+   "key": "strain",
+   "label": "Screen strain"
+  },
+  {
+   "key": "stroke",
+   "label": "After stroke"
+  },
+  {
+   "key": "coop",
+   "label": "Co-op"
+  },
+  {
+   "key": "all",
+   "label": "Everyone"
+  }
+ ],
+ "games": [
+  {
+   "slug": "lantern-run",
+   "name": "Lantern Run",
+   "thumb": "run",
+   "mechanism": "dgame",
+   "play": "Run and jump through a night market. The runner and coins show to the weaker eye, the obstacles to the stronger eye.",
+   "purpose": "Makes the weaker eye lead while both eyes work together",
+   "for": "Lazy eye · ages 6+ · level 1",
+   "playsOn": "TV, tablet",
+   "gear": "Red-cyan glasses",
+   "session": "10 min chapters",
+   "tags": [
+    "lazy"
+   ],
+   "n": 0
+  },
+  {
+   "slug": "firefly-catch",
+   "name": "Firefly Catch",
+   "thumb": "catch",
+   "mechanism": "dgame",
+   "play": "Tap the fireflies and leave the moths. Fireflies show only to the weaker eye.",
+   "purpose": "Picking out weak-eye targets in clutter",
+   "for": "Lazy eye · ages 4+ · level 1",
+   "playsOn": "TV, tablet, phone",
+   "gear": "Red-cyan glasses",
+   "session": "5 min chapters",
+   "tags": [
+    "lazy"
+   ],
+   "n": 2
+  },
+  {
+   "slug": "maze-of-two-lights",
+   "name": "Maze of Two Lights",
+   "thumb": "maze",
+   "mechanism": "dgame",
+   "play": "Roll a ball through a maze. The ball belongs to the weaker eye, the walls to the stronger eye.",
+   "purpose": "Fusion and steady aim",
+   "for": "Lazy eye · ages 6+ · level 1",
+   "playsOn": "Tablet, TV",
+   "gear": "Red-cyan glasses",
+   "session": "10 min chapters",
+   "tags": [
+    "lazy"
+   ],
+   "n": 3
+  },
+  {
+   "slug": "tunnel-glide",
+   "name": "Tunnel Glide",
+   "thumb": "tunnel",
+   "mechanism": "verg",
+   "play": "Fly through rings that drift apart. Keep each ring single to pass.",
+   "purpose": "Smooth convergence and divergence range",
+   "for": "Convergence insufficiency · ages 9+ · level 1",
+   "playsOn": "Tablet at 40 cm, TV",
+   "gear": "Red-cyan glasses",
+   "session": "5 min sets",
+   "tags": [
+    "conv"
+   ],
+   "n": 12
+  },
+  {
+   "slug": "depth-darts",
+   "name": "Depth Darts",
+   "thumb": "depth",
+   "mechanism": "stereo",
+   "play": "Throw at the target that floats nearest.",
+   "purpose": "Depth judgement",
+   "for": "Reduced depth vision · ages 7+ · level 1",
+   "playsOn": "TV, tablet",
+   "gear": "Red-cyan glasses",
+   "session": "5 min sets",
+   "tags": [
+    "depth"
+   ],
+   "n": 16
+  },
+  {
+   "slug": "comet-trail",
+   "name": "Comet Trail",
+   "thumb": "pursuit",
+   "mechanism": "track",
+   "play": "Keep a ring on a drifting comet with a finger or the remote.",
+   "purpose": "Smooth tracking",
+   "for": "Anyone · ages 5+ · level 0",
+   "playsOn": "TV, tablet, phone",
+   "gear": "None",
+   "session": "2 min warm-up",
+   "tags": [
+    "all"
+   ],
+   "n": 22
+  },
+  {
+   "slug": "spot-jump",
+   "name": "Spot Jump",
+   "thumb": "saccade",
+   "mechanism": "track",
+   "play": "Hit targets that appear left and right in sequence.",
+   "purpose": "Quick, accurate eye jumps",
+   "for": "Anyone · ages 6+ · level 0",
+   "playsOn": "TV, tablet, phone",
+   "gear": "None",
+   "session": "2 min warm-up",
+   "tags": [
+    "all"
+   ],
+   "n": 23
+  },
+  {
+   "slug": "blink-garden",
+   "name": "Blink Garden",
+   "thumb": "blink",
+   "mechanism": "habit",
+   "play": "Plants grow with every full blink the camera sees.",
+   "purpose": "Full, regular blinking",
+   "for": "Screen strain and dry eye · ages 8+ · level 0",
+   "playsOn": "Laptop or phone camera",
+   "gear": "None",
+   "session": "1 min, several times a day",
+   "tags": [
+    "strain"
+   ],
+   "n": 24
+  },
+  {
+   "slug": "far-window",
+   "name": "Far Window",
+   "thumb": "far",
+   "mechanism": "habit",
+   "play": "A 20-second break. Find three far-off things; the camera confirms the eyes left the screen.",
+   "purpose": "Real look-away breaks",
+   "for": "Screen strain · anyone · level 0",
+   "playsOn": "Laptop camera",
+   "gear": "None",
+   "session": "20 seconds, every 20 min",
+   "tags": [
+    "strain"
+   ],
+   "n": 25
+  },
+  {
+   "slug": "e-safari",
+   "name": "E Safari",
+   "thumb": "acuity",
+   "mechanism": "measure",
+   "play": "Point the way the animal tracks face. The tracks shrink until the child can no longer tell.",
+   "purpose": "Acuity check for young children",
+   "for": "Ages 3+ · level 0",
+   "playsOn": "TV at 3 m, tablet",
+   "gear": "Patch for one eye at a time",
+   "session": "3 min per eye",
+   "tags": [
+    "all"
+   ],
+   "n": 26
+  },
+  {
+   "slug": "sky-spotter",
+   "name": "Sky Spotter",
+   "thumb": "sky",
+   "mechanism": "light",
+   "play": "An outdoor scavenger hunt. Find far-off things in daylight and log them on the phone.",
+   "purpose": "Daylight time outdoors",
+   "for": "Children 5 to 15 · level 0",
+   "playsOn": "Phone, outdoors",
+   "gear": "None",
+   "session": "20 to 40 min outside",
+   "tags": [
+    "myopia"
+   ],
+   "n": 48
+  }
+ ],
+ "exercises": [
+  {
+   "slug": "brock-string",
+   "name": "Brock String",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Hold a string with three beads to the nose. Look from bead to bead and see the strings cross at each one.",
+   "purpose": "Feeling and controlling where the eyes aim",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "String with beads",
+   "dose": "5 min"
+  },
+  {
+   "slug": "target-push-ups",
+   "name": "Target Push-ups",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Bring a small letter slowly toward the nose and keep it single. Stop when it doubles, then back off.",
+   "purpose": "Near point of convergence",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "Pen or printed target",
+   "dose": "3 sets of 20"
+  },
+  {
+   "slug": "barrel-card",
+   "name": "Barrel Card",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Hold the card on the nose and converge on each of three barrels in turn.",
+   "purpose": "Stepped near convergence",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "Printed card",
+   "dose": "3 min"
+  },
+  {
+   "slug": "dot-card",
+   "name": "Dot Card",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Hold a line of dots at the nose and walk the eyes from the far dot to the near one.",
+   "purpose": "Close-range convergence",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "Printed card",
+   "dose": "3 min"
+  },
+  {
+   "slug": "lifesaver-card",
+   "name": "Lifesaver Card",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Cross the eyes until two rings merge into a third ring that looks clear and raised.",
+   "purpose": "Fusion in free space",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Printed card",
+   "dose": "3 min"
+  },
+  {
+   "slug": "near-far-jumps",
+   "name": "Near-Far Jumps",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Switch gaze between a thumb at arm's length and a letter across the room.",
+   "purpose": "Jump convergence",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "None",
+   "dose": "20 jumps, 3 sets"
+  },
+  {
+   "slug": "screen-vergence-ramp",
+   "name": "Screen Vergence Ramp",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "A target on screen slowly drifts apart. Hold it single as long as possible.",
+   "purpose": "Smooth fusion range",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "5 min"
+  },
+  {
+   "slug": "screen-vergence-steps",
+   "name": "Screen Vergence Steps",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "The demand changes in sudden steps. Regain a single image after each one.",
+   "purpose": "Step response",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "5 min"
+  },
+  {
+   "slug": "flip-switch",
+   "name": "Flip Switch",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Alternate converge and diverge demand and count the flips per minute.",
+   "purpose": "Vergence flexibility",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "3 min"
+  },
+  {
+   "slug": "long-hold",
+   "name": "Long Hold",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Hold a high demand for two minutes without doubling.",
+   "purpose": "Slow adaptation of the vergence system",
+   "for": "Convergence insufficiency · ages 12+ and adults",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "2 min, 3 sets"
+  },
+  {
+   "slug": "near-far-focus-rock",
+   "name": "Near-Far Focus Rock",
+   "group": "Focus",
+   "mechanism": "focus",
+   "how": "Read a letter chart at 3 m, then a card at 40 cm, back and forth.",
+   "purpose": "Focusing flexibility",
+   "for": "Focusing problems with convergence insufficiency · ages 8+",
+   "gear": "Printed chart and card",
+   "dose": "3 min"
+  },
+  {
+   "slug": "one-eye-focus-rock",
+   "name": "One-Eye Focus Rock",
+   "group": "Focus",
+   "mechanism": "focus",
+   "how": "The same near-far reading with one eye covered, then the other.",
+   "purpose": "Equal focusing in each eye",
+   "for": "Focusing problems · ages 8+",
+   "gear": "Patch, chart and card",
+   "dose": "2 min per eye"
+  },
+  {
+   "slug": "cinema-session",
+   "name": "Cinema Session",
+   "group": "Lazy eye",
+   "mechanism": "dvid",
+   "how": "Watch a show in the two-eye player. The weaker eye gets full contrast, the stronger eye reduced contrast.",
+   "purpose": "The core lazy-eye practice",
+   "for": "Lazy eye · ages 4+ · level 1",
+   "gear": "Red-cyan glasses, TV",
+   "dose": "60 min a day in chapters, 6 days a week"
+  },
+  {
+   "slug": "patch-time-detail-tasks",
+   "name": "Patch-Time Detail Tasks",
+   "group": "Lazy eye",
+   "mechanism": "patch",
+   "how": "Tracing, dot-to-dot and bead threading on the tablet while the patch is on.",
+   "purpose": "Keeps the patch on and the weaker eye working",
+   "for": "Children prescribed a patch · ages 3+",
+   "gear": "Patch, tablet",
+   "dose": "As prescribed, often 2 h a day"
+  },
+  {
+   "slug": "glasses-first-log",
+   "name": "Glasses-First Log",
+   "group": "Lazy eye",
+   "mechanism": "glasses",
+   "how": "Wear the new glasses all day, log it, and check acuity every five weeks.",
+   "purpose": "Lets glasses do their part before any training",
+   "for": "Newly prescribed glasses · any age",
+   "gear": "Glasses",
+   "dose": "18 to 30 weeks"
+  },
+  {
+   "slug": "contrast-ladder",
+   "name": "Contrast Ladder",
+   "group": "Lazy eye",
+   "mechanism": "pl",
+   "how": "Find faint stripes with the weaker eye as the contrast steps down.",
+   "purpose": "Contrast sensitivity",
+   "for": "Lazy eye · teens and adults",
+   "gear": "Patch",
+   "dose": "10 min"
+  },
+  {
+   "slug": "crowding-drill",
+   "name": "Crowding Drill",
+   "group": "Lazy eye",
+   "mechanism": "pl",
+   "how": "Read the middle letter as its neighbours close in.",
+   "purpose": "Crowded acuity",
+   "for": "Lazy eye · ages 10+ and adults",
+   "gear": "Patch",
+   "dose": "10 min"
+  },
+  {
+   "slug": "line-up-drill",
+   "name": "Line-Up Drill",
+   "group": "Lazy eye",
+   "mechanism": "pl",
+   "how": "Nudge one line until it sits exactly under another.",
+   "purpose": "Fine position sense",
+   "for": "Lazy eye · teens and adults",
+   "gear": "Patch",
+   "dose": "10 min"
+  },
+  {
+   "slug": "see-both-lights",
+   "name": "See Both Lights",
+   "group": "Squint",
+   "mechanism": "anti",
+   "how": "Look at a small light through the glasses and keep both the red and the cyan image visible.",
+   "purpose": "Awareness of both eyes at once",
+   "for": "Intermittent squint · level 2, counsellor plan",
+   "gear": "Red-cyan glasses",
+   "dose": "3 min"
+  },
+  {
+   "slug": "distance-fusion-hold",
+   "name": "Distance Fusion Hold",
+   "group": "Squint",
+   "mechanism": "anti",
+   "how": "Hold a fused target on the TV at 3 m as the demand rises.",
+   "purpose": "Control at distance",
+   "for": "Intermittent squint · level 2, counsellor plan",
+   "gear": "Red-cyan glasses, TV",
+   "dose": "5 min"
+  },
+  {
+   "slug": "look-away-break",
+   "name": "Look-Away Break",
+   "group": "Screen strain",
+   "mechanism": "habit",
+   "how": "Every 20 minutes look at something 6 m away for 20 seconds.",
+   "purpose": "Rest for focus and convergence",
+   "for": "Anyone at a screen",
+   "gear": "Laptop camera for timing",
+   "dose": "20 s, every 20 min"
+  },
+  {
+   "slug": "full-blink-drill",
+   "name": "Full-Blink Drill",
+   "group": "Screen strain",
+   "mechanism": "habit",
+   "how": "Close gently, pause, squeeze lightly, open. Ten times.",
+   "purpose": "Complete blinks that spread the tear film",
+   "for": "Dry or tired eyes",
+   "gear": "None",
+   "dose": "10 blinks, hourly"
+  },
+  {
+   "slug": "distance-reset",
+   "name": "Distance Reset",
+   "group": "Screen strain",
+   "mechanism": "habit",
+   "how": "The camera measures working distance and coaches it back to arm's length.",
+   "purpose": "A comfortable viewing distance",
+   "for": "Anyone at a screen",
+   "gear": "Laptop or phone camera",
+   "dose": "30 s"
+  },
+  {
+   "slug": "desk-set-up-check",
+   "name": "Desk Set-up Check",
+   "group": "Screen strain",
+   "mechanism": "habit",
+   "how": "Guided check of screen height, glare and brightness against the room.",
+   "purpose": "A screen that is easy on the eyes",
+   "for": "Anyone at a desk",
+   "gear": "Laptop camera",
+   "dose": "3 min, once"
+  },
+  {
+   "slug": "outdoor-light-time",
+   "name": "Outdoor Light Time",
+   "group": "Child myopia",
+   "mechanism": "light",
+   "how": "Reach the daily daylight goal, logged by phone or watch.",
+   "purpose": "Slows the onset of short sight",
+   "for": "Children 5 to 15",
+   "gear": "Phone or watch",
+   "dose": "40+ min a day outdoors"
+  },
+  {
+   "slug": "arm-s-length-reading",
+   "name": "Arm's-Length Reading",
+   "group": "Child myopia",
+   "mechanism": "near",
+   "how": "The tablet camera nudges a child who leans in too close.",
+   "purpose": "A healthy reading distance",
+   "for": "Children 5 to 15",
+   "gear": "Tablet or phone camera",
+   "dose": "Runs during reading"
+  },
+  {
+   "slug": "blind-side-sweeps",
+   "name": "Blind-Side Sweeps",
+   "group": "After stroke",
+   "mechanism": "scan",
+   "how": "Make large, deliberate eye sweeps into the blind side to find each target.",
+   "purpose": "Finding things on the missing side",
+   "for": "Half-field loss · adults · level 2",
+   "gear": "Laptop or tablet",
+   "dose": "20 min a day"
+  },
+  {
+   "slug": "guided-line-reading",
+   "name": "Guided Line Reading",
+   "group": "After stroke",
+   "mechanism": "read",
+   "how": "Read scrolling text with a guide that marks the start and end of each line.",
+   "purpose": "Reading speed with half-field loss",
+   "for": "Half-field loss · adults · level 2",
+   "gear": "Laptop or tablet",
+   "dose": "20 min a day"
+  },
+  {
+   "slug": "weekly-grid-check",
+   "name": "Weekly Grid Check",
+   "group": "Monitoring",
+   "mechanism": "monitor",
+   "how": "Cover one eye and look at a grid. Mark any bent or missing lines.",
+   "purpose": "Catching change at the centre of vision",
+   "for": "Macular disease, or anyone 55+",
+   "gear": "Phone or tablet",
+   "dose": "2 min a week"
+  },
+  {
+   "slug": "drop-reminder-routine",
+   "name": "Drop Reminder Routine",
+   "group": "Monitoring",
+   "mechanism": "drops",
+   "how": "A reminder at drop time, a one-tap log, and a weekly tally.",
+   "purpose": "Taking eye drops on schedule",
+   "for": "People prescribed daily eye drops",
+   "gear": "Phone",
+   "dose": "10 s per dose"
+  },
+  {
+   "slug": "bead-slide",
+   "name": "Bead Slide",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Slide one bead along the string toward the nose and keep the strings crossing at the bead.",
+   "purpose": "Smooth convergence with built-in feedback",
+   "for": "Convergence insufficiency · ages 7+",
+   "gear": "String with beads",
+   "dose": "3 min"
+  },
+  {
+   "slug": "stereogram-pairs",
+   "name": "Stereogram Pairs",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Fuse two side-by-side pictures into a third that appears in depth, first by crossing the eyes, then by relaxing them.",
+   "purpose": "Fusion without glasses, in both directions",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Printed or on-screen pairs",
+   "dose": "3 min"
+  },
+  {
+   "slug": "screen-diverge-ramp",
+   "name": "Screen Diverge Ramp",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "A target drifts the other way, so the eyes must relax outward to keep it single.",
+   "purpose": "Divergence range",
+   "for": "Convergence insufficiency · ages 9+",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "5 min"
+  },
+  {
+   "slug": "reading-under-demand",
+   "name": "Reading Under Demand",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "Read a short passage while the screen holds a set convergence demand.",
+   "purpose": "Carrying the skill into real reading",
+   "for": "Convergence insufficiency · ages 10+ and adults",
+   "gear": "Red-cyan glasses, tablet",
+   "dose": "5 min"
+  },
+  {
+   "slug": "therapy-homework-plan",
+   "name": "Therapy Homework Plan",
+   "group": "Convergence",
+   "mechanism": "verg",
+   "how": "The home half of supervised therapy: the drills the therapist set that week, timed and logged.",
+   "purpose": "Doing the home practice the trials required",
+   "for": "People in supervised vergence therapy",
+   "gear": "Phone",
+   "dose": "15 min a day, 5 days a week, 12 weeks"
+  },
+  {
+   "slug": "three-chapter-cinema-plan",
+   "name": "Three-Chapter Cinema Plan",
+   "group": "Lazy eye",
+   "mechanism": "dvid",
+   "how": "Split the daily hour into three 20-minute sittings: after school, before dinner, before bed.",
+   "purpose": "Fitting the full dose into a school day",
+   "for": "Lazy eye · ages 4+ · level 1",
+   "gear": "Red-cyan glasses, TV",
+   "dose": "3 × 20 min, 6 days a week"
+  },
+  {
+   "slug": "patch-wear-timer",
+   "name": "Patch Wear Timer",
+   "group": "Lazy eye",
+   "mechanism": "patch",
+   "how": "Start the timer when the patch goes on. A sticker chart fills as the hours add up.",
+   "purpose": "Hours of patch actually worn",
+   "for": "Children prescribed a patch · ages 3+",
+   "gear": "Patch, phone",
+   "dose": "As prescribed"
+  },
+  {
+   "slug": "bead-threading",
+   "name": "Bead Threading",
+   "group": "Lazy eye",
+   "mechanism": "patch",
+   "how": "Thread beads onto a string while the patch is on.",
+   "purpose": "Close, fine work for the weaker eye",
+   "for": "Children prescribed a patch · ages 3 to 8",
+   "gear": "Patch, beads",
+   "dose": "15 to 20 min"
+  },
+  {
+   "slug": "patch-on-ball-play",
+   "name": "Patch-On Ball Play",
+   "group": "Lazy eye",
+   "mechanism": "patch",
+   "how": "Roll, bounce and catch a ball with the patch on.",
+   "purpose": "Keeps patch time active",
+   "for": "Children prescribed a patch · ages 3+",
+   "gear": "Patch, soft ball",
+   "dose": "10 min"
+  },
+  {
+   "slug": "atropine-day-companion",
+   "name": "Atropine-Day Companion",
+   "group": "Lazy eye",
+   "mechanism": "atropine",
+   "how": "A reminder on drop days, a one-tap log, and near-work games suited to drop days.",
+   "purpose": "Keeping to the drop schedule",
+   "for": "Children prescribed atropine drops",
+   "gear": "Phone",
+   "dose": "As prescribed"
+  },
+  {
+   "slug": "glasses-check-in",
+   "name": "Glasses Check-in",
+   "group": "Lazy eye",
+   "mechanism": "glasses",
+   "how": "A daily camera check that glasses are on, with a weekly wear score for the caregiver.",
+   "purpose": "Full-time glasses wear",
+   "for": "Children with prescribed glasses",
+   "gear": "Phone camera",
+   "dose": "10 s a day"
+  },
+  {
+   "slug": "class-outdoor-period",
+   "name": "Class Outdoor Period",
+   "group": "Child myopia",
+   "mechanism": "light",
+   "how": "A school class adds one outdoor period a day and logs it as a squad.",
+   "purpose": "Daylight time, delivered the way the trial did",
+   "for": "School classes, ages 6 to 12",
+   "gear": "None",
+   "dose": "40 min each school day"
+  },
+  {
+   "slug": "walk-to-school-log",
+   "name": "Walk-to-School Log",
+   "group": "Child myopia",
+   "mechanism": "light",
+   "how": "Walk or cycle part of the school run and log the daylight minutes.",
+   "purpose": "Daylight built into the school day",
+   "for": "Children 5 to 15",
+   "gear": "Phone or watch",
+   "dose": "10 to 20 min each way"
+  },
+  {
+   "slug": "weekend-outdoor-block",
+   "name": "Weekend Outdoor Block",
+   "group": "Child myopia",
+   "mechanism": "light",
+   "how": "A planned outdoor block on each weekend day, logged as a family.",
+   "purpose": "Topping up daylight at weekends",
+   "for": "Children 5 to 15 with family",
+   "gear": "Phone",
+   "dose": "1 h or more each weekend day"
+  },
+  {
+   "slug": "walk-in-target",
+   "name": "Walk-In Target",
+   "group": "After concussion",
+   "mechanism": "recov",
+   "how": "Walk slowly toward a letter on the wall and keep it single and clear.",
+   "purpose": "Convergence during movement",
+   "for": "Vision problems after concussion · level 2, counsellor plan",
+   "gear": "Printed letter",
+   "dose": "5 walks"
+  },
+  {
+   "slug": "head-turn-letter-hold",
+   "name": "Head-Turn Letter Hold",
+   "group": "After concussion",
+   "mechanism": "recov",
+   "how": "Keep a letter clear while turning the head slowly side to side.",
+   "purpose": "Steady gaze during head movement",
+   "for": "Vision problems after concussion · level 2, counsellor plan",
+   "gear": "Printed letter",
+   "dose": "1 min, 3 sets"
+  },
+  {
+   "slug": "near-far-with-movement",
+   "name": "Near-Far with Movement",
+   "group": "After concussion",
+   "mechanism": "recov",
+   "how": "Switch focus between a near card and a far chart while stepping side to side.",
+   "purpose": "Refocusing during movement",
+   "for": "Vision problems after concussion · level 2, counsellor plan",
+   "gear": "Card and chart",
+   "dose": "2 min"
+  }
+ ],
+ "clips": [
+  {
+   "code": "C01",
+   "title": "Card match",
+   "measures": "Screen size on a phone or tablet, by matching a bank-card outline",
+   "seconds": 20,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C02",
+   "title": "TV ruler",
+   "measures": "Screen width on a TV, from its diagonal and an on-screen ruler",
+   "seconds": 20,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C03",
+   "title": "Seat set-up",
+   "measures": "Viewing distance for the TV seat",
+   "seconds": 30,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C04",
+   "title": "Arm's-length guide",
+   "measures": "Viewing distance for a handheld, with the camera",
+   "seconds": 20,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C05",
+   "title": "Camera distance check",
+   "measures": "Camera distance reading against a tape measure",
+   "seconds": 30,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C06",
+   "title": "Edge check",
+   "measures": "Whether the TV crops the picture edges",
+   "seconds": 15,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C07",
+   "title": "Pixel grid",
+   "measures": "Whether the picture is scaled or soft",
+   "seconds": 15,
+   "group": "Screen and seat"
+  },
+  {
+   "code": "C08",
+   "title": "Red purity sweep",
+   "measures": "How much red leaks to the cyan lens",
+   "seconds": 30,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C09",
+   "title": "Cyan purity sweep",
+   "measures": "How much cyan leaks to the red lens",
+   "seconds": 30,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C10",
+   "title": "Ghost check, red lens",
+   "measures": "Faint double images seen through red",
+   "seconds": 20,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C11",
+   "title": "Ghost check, cyan lens",
+   "measures": "Faint double images seen through cyan",
+   "seconds": 20,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C12",
+   "title": "Which lens, which eye",
+   "measures": "Glasses orientation for this user",
+   "seconds": 15,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C13",
+   "title": "Glasses-on catch loop",
+   "measures": "That glasses are on, checked during sessions",
+   "seconds": 10,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C14",
+   "title": "Lens quality compare",
+   "measures": "Whether a new pair of glasses separates as well as the last",
+   "seconds": 30,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C15",
+   "title": "White merge",
+   "measures": "That red and cyan overlap to a neutral white",
+   "seconds": 15,
+   "group": "Channel separation"
+  },
+  {
+   "code": "C16",
+   "title": "Eye brightness balance",
+   "measures": "Equal brightness through both lenses",
+   "seconds": 40,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C17",
+   "title": "Black level and room light",
+   "measures": "Whether the room is dim enough for the dark field",
+   "seconds": 20,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C18",
+   "title": "Grey step wedge",
+   "measures": "Screen tone curve",
+   "seconds": 20,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C19",
+   "title": "Contrast ladder",
+   "measures": "Contrast steps, including the 15% reference level",
+   "seconds": 30,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C20",
+   "title": "Corner evenness",
+   "measures": "Brightness at the corners against the centre",
+   "seconds": 15,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C21",
+   "title": "Night-mode detector",
+   "measures": "Whether a warm colour filter is switched on",
+   "seconds": 10,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C22",
+   "title": "Auto-brightness detector",
+   "measures": "Whether the screen changes brightness by itself",
+   "seconds": 20,
+   "group": "Brightness and contrast"
+  },
+  {
+   "code": "C23",
+   "title": "Picture-mode check",
+   "measures": "Vivid or dynamic picture modes",
+   "seconds": 20,
+   "group": "Motion and timing"
+  },
+  {
+   "code": "C24",
+   "title": "Motion-smoothing detector",
+   "measures": "Frame interpolation on the TV",
+   "seconds": 20,
+   "group": "Motion and timing"
+  },
+  {
+   "code": "C25",
+   "title": "Frame pacing",
+   "measures": "Dropped or uneven frames",
+   "seconds": 20,
+   "group": "Motion and timing"
+  },
+  {
+   "code": "C26",
+   "title": "Tap lag",
+   "measures": "Delay between a button press and the screen",
+   "seconds": 20,
+   "group": "Motion and timing"
+  },
+  {
+   "code": "C27",
+   "title": "Sound cue sync",
+   "measures": "Audio delay and cue volume",
+   "seconds": 15,
+   "group": "Motion and timing"
+  },
+  {
+   "code": "C28",
+   "title": "Sub-pixel shift",
+   "measures": "Smallest depth step the screen can show",
+   "seconds": 20,
+   "group": "Fine geometry"
+  },
+  {
+   "code": "C29",
+   "title": "Zero-offset alignment",
+   "measures": "That both channels coincide at zero depth",
+   "seconds": 15,
+   "group": "Fine geometry"
+  },
+  {
+   "code": "C30",
+   "title": "Fine stripe check",
+   "measures": "Colour smearing of fine red and cyan detail",
+   "seconds": 15,
+   "group": "Fine geometry"
+  },
+  {
+   "code": "M01",
+   "title": "Distance acuity, right eye",
+   "measures": "Smallest readable E at 3 m, right eye",
+   "seconds": 75,
+   "group": "Acuity"
+  },
+  {
+   "code": "M02",
+   "title": "Distance acuity, left eye",
+   "measures": "Smallest readable E at 3 m, left eye",
+   "seconds": 75,
+   "group": "Acuity"
+  },
+  {
+   "code": "M03",
+   "title": "Distance acuity, both eyes",
+   "measures": "Smallest readable E at 3 m, both eyes",
+   "seconds": 60,
+   "group": "Acuity"
+  },
+  {
+   "code": "M04",
+   "title": "Near acuity, right eye",
+   "measures": "Smallest readable E at 40 cm, right eye",
+   "seconds": 60,
+   "group": "Acuity"
+  },
+  {
+   "code": "M05",
+   "title": "Near acuity, left eye",
+   "measures": "Smallest readable E at 40 cm, left eye",
+   "seconds": 60,
+   "group": "Acuity"
+  },
+  {
+   "code": "M06",
+   "title": "Shape acuity, right eye",
+   "measures": "Acuity with picture shapes for ages 3 to 5, right eye",
+   "seconds": 90,
+   "group": "Acuity"
+  },
+  {
+   "code": "M07",
+   "title": "Shape acuity, left eye",
+   "measures": "Acuity with picture shapes for ages 3 to 5, left eye",
+   "seconds": 90,
+   "group": "Acuity"
+  },
+  {
+   "code": "M08",
+   "title": "Crowded letters, right eye",
+   "measures": "Acuity with close neighbours, right eye",
+   "seconds": 75,
+   "group": "Acuity"
+  },
+  {
+   "code": "M09",
+   "title": "Crowded letters, left eye",
+   "measures": "Acuity with close neighbours, left eye",
+   "seconds": 75,
+   "group": "Acuity"
+  },
+  {
+   "code": "M10",
+   "title": "Low-contrast acuity",
+   "measures": "Acuity with faint grey letters, both eyes",
+   "seconds": 60,
+   "group": "Acuity"
+  },
+  {
+   "code": "M11",
+   "title": "Coarse stripes, right eye",
+   "measures": "Contrast threshold for wide stripes, right eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M12",
+   "title": "Coarse stripes, left eye",
+   "measures": "Contrast threshold for wide stripes, left eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M13",
+   "title": "Medium stripes, right eye",
+   "measures": "Contrast threshold for medium stripes, right eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M14",
+   "title": "Medium stripes, left eye",
+   "measures": "Contrast threshold for medium stripes, left eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M15",
+   "title": "Fine stripes, right eye",
+   "measures": "Contrast threshold for fine stripes, right eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M16",
+   "title": "Fine stripes, left eye",
+   "measures": "Contrast threshold for fine stripes, left eye",
+   "seconds": 60,
+   "group": "Contrast"
+  },
+  {
+   "code": "M17",
+   "title": "Balance point, moving dots",
+   "measures": "Strong-eye contrast at which both eyes contribute equally",
+   "seconds": 120,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M18",
+   "title": "Balance point, letter pairs",
+   "measures": "The same balance, measured with letters",
+   "seconds": 90,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M19",
+   "title": "Balance point, animals",
+   "measures": "The same balance, for young children",
+   "seconds": 90,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M20",
+   "title": "Four lights, near",
+   "measures": "Whether both eyes are in use at 40 cm",
+   "seconds": 30,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M21",
+   "title": "Four lights, distance",
+   "measures": "Whether both eyes are in use at 3 m",
+   "seconds": 30,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M22",
+   "title": "Suppression map",
+   "measures": "Where in the view the weaker eye switches off",
+   "seconds": 120,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M23",
+   "title": "Two-eye gain",
+   "measures": "Whether two eyes see faint stripes better than one",
+   "seconds": 90,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M24",
+   "title": "Sighting eye",
+   "measures": "Which eye the user aims with",
+   "seconds": 30,
+   "group": "Eye balance"
+  },
+  {
+   "code": "M25",
+   "title": "Depth shapes, coarse",
+   "measures": "Depth threshold, large steps",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M26",
+   "title": "Depth shapes, medium",
+   "measures": "Depth threshold, medium steps",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M27",
+   "title": "Depth shapes, fine",
+   "measures": "Depth threshold, finest steps",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M28",
+   "title": "Depth in front",
+   "measures": "Depth seen in front of the screen",
+   "seconds": 45,
+   "group": "Depth"
+  },
+  {
+   "code": "M29",
+   "title": "Depth behind",
+   "measures": "Depth seen behind the screen",
+   "seconds": 45,
+   "group": "Depth"
+  },
+  {
+   "code": "M30",
+   "title": "Hidden picture",
+   "measures": "Depth vision check for young children",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M31",
+   "title": "Depth at distance",
+   "measures": "Depth threshold on the TV at 3 m",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M32",
+   "title": "Depth in motion",
+   "measures": "Depth of a moving shape",
+   "seconds": 60,
+   "group": "Depth"
+  },
+  {
+   "code": "M33",
+   "title": "Near diverge ramp, slow",
+   "measures": "Break and recovery, eyes turning out, 0.5 units a second at 40 cm",
+   "seconds": 120,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M34",
+   "title": "Near diverge ramp, medium",
+   "measures": "Break and recovery, eyes turning out, 1 unit a second",
+   "seconds": 90,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M35",
+   "title": "Near diverge ramp, fast",
+   "measures": "Break and recovery, eyes turning out, 2 units a second",
+   "seconds": 70,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M36",
+   "title": "Near converge ramp, slow",
+   "measures": "Break and recovery, eyes turning in, 0.5 units a second",
+   "seconds": 300,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M37",
+   "title": "Near converge ramp, medium",
+   "measures": "Break and recovery, eyes turning in, 1 unit a second",
+   "seconds": 180,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M38",
+   "title": "Near converge ramp, fast",
+   "measures": "Break and recovery, eyes turning in, 2 units a second",
+   "seconds": 120,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M39",
+   "title": "Distance diverge ramp, slow",
+   "measures": "The diverge ramp on the TV, 0.5 units a second",
+   "seconds": 120,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M40",
+   "title": "Distance diverge ramp, medium",
+   "measures": "The diverge ramp on the TV, 1 unit a second",
+   "seconds": 90,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M41",
+   "title": "Distance diverge ramp, fast",
+   "measures": "The diverge ramp on the TV, 2 units a second",
+   "seconds": 70,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M42",
+   "title": "Distance converge ramp, slow",
+   "measures": "The converge ramp on the TV, 0.5 units a second",
+   "seconds": 300,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M43",
+   "title": "Distance converge ramp, medium",
+   "measures": "The converge ramp on the TV, 1 unit a second",
+   "seconds": 180,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M44",
+   "title": "Distance converge ramp, fast",
+   "measures": "The converge ramp on the TV, 2 units a second",
+   "seconds": 120,
+   "group": "Fusion range"
+  },
+  {
+   "code": "M45",
+   "title": "Flips per minute, near",
+   "measures": "Vergence flexibility at 40 cm",
+   "seconds": 60,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M46",
+   "title": "Flips per minute, distance",
+   "measures": "Vergence flexibility at 3 m",
+   "seconds": 60,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M47",
+   "title": "Near point",
+   "measures": "How close a target stays single, measured by the phone camera",
+   "seconds": 45,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M48",
+   "title": "Recovery time",
+   "measures": "Seconds to regain a single image after a break",
+   "seconds": 60,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M49",
+   "title": "One-minute hold",
+   "measures": "Whether a set demand can be held for 60 seconds",
+   "seconds": 60,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M50",
+   "title": "Two-minute adaptation hold",
+   "measures": "How the resting eye position shifts after a long hold",
+   "seconds": 120,
+   "group": "Vergence dynamics"
+  },
+  {
+   "code": "M51",
+   "title": "Resting alignment, near",
+   "measures": "Sideways drift of the eyes at 40 cm",
+   "seconds": 45,
+   "group": "Alignment"
+  },
+  {
+   "code": "M52",
+   "title": "Resting alignment, distance",
+   "measures": "Sideways drift of the eyes at 3 m",
+   "seconds": 45,
+   "group": "Alignment"
+  },
+  {
+   "code": "M53",
+   "title": "Vertical alignment",
+   "measures": "Up-down drift of the eyes",
+   "seconds": 45,
+   "group": "Alignment"
+  },
+  {
+   "code": "M54",
+   "title": "Fixation offset",
+   "measures": "Small misaim while both eyes are fused",
+   "seconds": 60,
+   "group": "Alignment"
+  },
+  {
+   "code": "M55",
+   "title": "Photo alignment check",
+   "measures": "Eye position from a flash photo",
+   "seconds": 20,
+   "group": "Alignment"
+  },
+  {
+   "code": "M56",
+   "title": "Grid, right eye",
+   "measures": "Bent or missing lines at the centre of vision, right eye",
+   "seconds": 45,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M57",
+   "title": "Grid, left eye",
+   "measures": "Bent or missing lines at the centre of vision, left eye",
+   "seconds": 45,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M58",
+   "title": "Wobbly circle, right eye",
+   "measures": "Smallest ripple the right eye can tell from a true circle",
+   "seconds": 60,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M59",
+   "title": "Wobbly circle, left eye",
+   "measures": "Smallest ripple the left eye can tell from a true circle",
+   "seconds": 60,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M60",
+   "title": "Central field dots, right eye",
+   "measures": "Spots missed within the central field, right eye",
+   "seconds": 180,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M61",
+   "title": "Central field dots, left eye",
+   "measures": "Spots missed within the central field, left eye",
+   "seconds": 180,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M62",
+   "title": "Blind-side search baseline",
+   "measures": "Search time on each side",
+   "seconds": 120,
+   "group": "Macula and field"
+  },
+  {
+   "code": "M63",
+   "title": "Reading speed",
+   "measures": "Words a minute on a standard passage",
+   "seconds": 60,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M64",
+   "title": "Convergence symptom survey",
+   "measures": "The 15-question near-work symptom score",
+   "seconds": 120,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M65",
+   "title": "Screen strain survey",
+   "measures": "Eye-strain symptom score for screen users",
+   "seconds": 90,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M66",
+   "title": "Dry-eye survey",
+   "measures": "Dry-eye symptom score",
+   "seconds": 90,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M67",
+   "title": "Blink baseline",
+   "measures": "Blinks a minute and share of full blinks, by camera",
+   "seconds": 60,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M68",
+   "title": "Working distance baseline",
+   "measures": "Usual screen distance over a minute, by camera",
+   "seconds": 60,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M69",
+   "title": "Colour screening",
+   "measures": "Common red-green colour differences",
+   "seconds": 90,
+   "group": "Function and comfort"
+  },
+  {
+   "code": "M70",
+   "title": "Tracking baseline",
+   "measures": "Accuracy following a moving target",
+   "seconds": 60,
+   "group": "Function and comfort"
+  }
+ ],
+ "films": [
+  "Big Buck Bunny · all ages",
+  "Caminandes: Llama Drama · all ages",
+  "Caminandes: Gran Dillama · all ages",
+  "Caminandes: Llamigos · all ages",
+  "Glass Half · all ages",
+  "The Daily Dweebs · all ages",
+  "Coffee Run · all ages",
+  "Spring · ages 7+",
+  "Wing It! · ages 7+",
+  "Hero · ages 10+",
+  "Agent 327: Operation Barbershop · ages 10+",
+  "Sprite Fright · ages 13+",
+  "Cosmos Laundromat · ages 13+"
+ ],
+ "themes": [
+  {
+   "key": "A",
+   "name": "Rewards only eyes can open",
+   "what": "Prizes that are tied to the skill being trained, so earning them and practising are the same act."
+  },
+  {
+   "key": "B",
+   "name": "Community without a feed",
+   "what": "Ways to belong that need no timeline, no followers and no scrolling."
+  },
+  {
+   "key": "C",
+   "name": "One shared purpose",
+   "what": "Things the whole community builds together, one session at a time."
+  },
+  {
+   "key": "D",
+   "name": "Rituals in the real world",
+   "what": "Fixed times and places that turn home practice into something people do together."
+  },
+  {
+   "key": "E",
+   "name": "Finishing well",
+   "what": "How a day ends and how a programme ends."
+  }
+ ],
+ "ideas": [
+  {
+   "slug": "fusion-mail",
+   "name": "Fusion Mail",
+   "theme": "A",
+   "what": "Notes from family and buddies are split between the eyes, half the letters to each. They can be read only when both eyes work together through the glasses.",
+   "why": "A message from a grandparent pulls harder than points, and reading it is itself the practice.",
+   "isNew": "The reward is physically locked to the skill being trained.",
+   "build": "Medium",
+   "first": true
+  },
+  {
+   "slug": "locked-gallery",
+   "name": "Locked Gallery",
+   "theme": "A",
+   "what": "Trophy pictures drawn in finer depth steps and fainter contrast than the member can see today. Each becomes visible when their own test results reach it.",
+   "why": "Progress turns into something seen. Effort trophies sit beside them for members who improve slowly.",
+   "isNew": "Trophies that cannot be seen until vision improves.",
+   "build": "Medium",
+   "first": false
+  },
+  {
+   "slug": "first-depth-day",
+   "name": "First Depth Day",
+   "theme": "A",
+   "what": "When the depth test first passes, the TV plays a short scene in real depth built from the member's own hero. The date is kept like a birthday.",
+   "why": "Gaining depth is unforgettable. Neuroscientist Susan Barry gained it at 48 and described her steering wheel floating in front of the dashboard.",
+   "isNew": "A celebration that could not have been seen the day before.",
+   "build": "Small",
+   "first": false
+  },
+  {
+   "slug": "draw-your-hero",
+   "name": "Draw Your Hero",
+   "theme": "A",
+   "what": "A child's own drawing, photographed, becomes the weak-eye character in every game.",
+   "why": "Children stay longer with something they made, and the hero travels with them from game to game.",
+   "isNew": "The therapy image is authored by the child being treated.",
+   "build": "Medium",
+   "first": true
+  },
+  {
+   "slug": "notes-from-four-weeks-ahead",
+   "name": "Notes From Four Weeks Ahead",
+   "theme": "B",
+   "what": "At each milestone a member leaves one tip for whoever reaches that week next, and receives the notes left by people who already passed it.",
+   "why": "Advice from someone just ahead is easier to believe than advice from an expert, and nobody is compared with anybody.",
+   "isNew": "A community with no feed, no followers and no scrolling.",
+   "build": "Small",
+   "first": true
+  },
+  {
+   "slug": "lend-a-light",
+   "name": "Lend a Light",
+   "theme": "B",
+   "what": "Streak savers exist only as gifts. Showing up earns lights that cannot be spent on oneself, only given to someone about to lose a streak.",
+   "why": "Being rescued by a stranger, and rescuing one, binds people more than a badge does.",
+   "isNew": "The only currency is generosity. It cannot be hoarded or bought.",
+   "build": "Small",
+   "first": true
+  },
+  {
+   "slug": "proof-of-help",
+   "name": "Proof of Help",
+   "theme": "B",
+   "what": "Standing comes from measured benefit: \"42 people's results moved after trying your routine.\" There are no likes and no follower counts.",
+   "why": "Status goes to the people who help, not the loudest.",
+   "isNew": "Reputation computed from other people's test results.",
+   "build": "Medium, needs the evidence engine",
+   "first": false
+  },
+  {
+   "slug": "duet-streak",
+   "name": "Duet Streak",
+   "theme": "B",
+   "what": "Two people in different generations keep one streak, such as a child's cinema hour and a grandparent's eye drops. It grows only when both do their part.",
+   "why": "Each becomes the other's reason to show up, and eye care becomes a family matter.",
+   "isNew": "One streak across two conditions and two generations.",
+   "build": "Small",
+   "first": false
+  },
+  {
+   "slug": "focus-wall",
+   "name": "Focus Wall",
+   "theme": "C",
+   "what": "Each month a picture drawn by a child member starts out blurred. Every finished session anywhere sharpens one tile until the whole picture is in focus.",
+   "why": "Each member's effort visibly counts toward something shared.",
+   "isNew": "A collective goal that looks like the thing being treated.",
+   "build": "Medium",
+   "first": true
+  },
+  {
+   "slug": "discovery-board",
+   "name": "Discovery Board",
+   "theme": "C",
+   "what": "Members vote on the next question the pooled data should answer. When it is answered, everyone who took part is credited: \"You helped find this.\"",
+   "why": "Play becomes contribution. Sea Hero Quest reached 4.3 million players this way and fed dementia research.",
+   "isNew": "Members choose the research questions and share the credit.",
+   "build": "Medium",
+   "first": false
+  },
+  {
+   "slug": "travelling-glasses",
+   "name": "Travelling Glasses",
+   "theme": "C",
+   "what": "Each pair of glasses carries a code and a logbook. A child who finishes passes the pair on, and the next child sees who wore it before them.",
+   "why": "A new family starts with proof that others finished, and a graduate's last act is a gift.",
+   "isNew": "The equipment carries the community's history.",
+   "build": "Small",
+   "first": true
+  },
+  {
+   "slug": "light-the-map",
+   "name": "Light the Map",
+   "theme": "C",
+   "what": "A map lights up by pin code as families join. The first family in each pin code becomes its lamp-lighter and welcomes the next.",
+   "why": "Growth becomes a local game, and a newcomer meets a neighbour first.",
+   "isNew": "Founding status that can only be used to welcome someone.",
+   "build": "Small",
+   "first": false
+  },
+  {
+   "slug": "lights-on-hour",
+   "name": "Lights On Hour",
+   "theme": "D",
+   "what": "One fixed hour a week when everyone practises at once, and the TV shows a lantern rising for every household online. A yearly festival falls on World Sight Day.",
+   "why": "A shared appointment is easier to keep than a private one. parkrun runs free, volunteer-led weekly events at over 2,000 locations on the same idea.",
+   "isNew": "Solitary home therapy becomes a weekly gathering.",
+   "build": "Medium",
+   "first": false
+  },
+  {
+   "slug": "cinema-club",
+   "name": "Cinema Club",
+   "theme": "D",
+   "what": "Volunteers host a weekly two-eye film hour at a school or library with one TV and a box of glasses.",
+   "why": "Children without a TV at home can take part, and families meet in person.",
+   "isNew": "The therapy room is a neighbourhood club night.",
+   "build": "Small, a host kit and guide",
+   "first": false
+  },
+  {
+   "slug": "class-mission",
+   "name": "Class Mission",
+   "theme": "D",
+   "what": "The child with the patch receives a kit to run a five-minute glasses game for the whole class.",
+   "why": "The patch stops being the odd thing out. In a small follow-up study, adults treated before school age recalled more victimisation by peers.",
+   "isNew": "The child being treated holds the key to a game everyone wants to play.",
+   "build": "Small",
+   "first": false
+  },
+  {
+   "slug": "wish-jam",
+   "name": "Wish Jam",
+   "theme": "D",
+   "what": "Developers and students build a game for one named child's wish, such as trains instead of blocks. The child tests it and names it.",
+   "why": "Builders work harder for a real child than for a brief, and the library fills with games children asked for.",
+   "isNew": "A game jam where every entry has a first player waiting.",
+   "build": "Small, a matching process",
+   "first": false
+  },
+  {
+   "slug": "sunset-rule",
+   "name": "Sunset Rule",
+   "theme": "E",
+   "what": "The day's play closes when the dose is done. The screen shows a sunset and the Light ring invites the child outside.",
+   "why": "Parents trust an app that ends itself. The league rewards finishing, never lingering.",
+   "isNew": "A game designed to be put down.",
+   "build": "Small",
+   "first": false
+  },
+  {
+   "slug": "keeper-graduation",
+   "name": "Keeper Graduation",
+   "theme": "E",
+   "what": "Finishing a programme ends with a ceremony on the TV, a printable journey book, and an invitation to become a keeper who welcomes one new family.",
+   "why": "The end of treatment becomes the start of belonging.",
+   "isNew": "Every graduate leaves one welcome behind.",
+   "build": "Small",
+   "first": false
+  }
+ ]
+}

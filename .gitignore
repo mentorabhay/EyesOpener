@@ -1,0 +1,59 @@
+# IOpener public repository: an allowlist.
+# Everything is ignored unless a line below lets it in. A new top-level file or folder never
+# reaches GitHub by accident: it has to be added here on purpose.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/app/
+!/.github/
+!/.githooks/
+!/tools/
+/tools/*
+!/tools/check-public.mjs
+
+# ── Never, anywhere in the tree ──────────────────────────────────────────────
+
+# Plans, records and anything marked private. These live in the private repository only.
+[Pp]lan/
+[Pp]lans/
+Deliverables/
+refs/
+private/
+_private/
+*.private.*
+OWNER-MANUAL-ACTIONS*
+status-tracking*
+*.zip
+
+# Secrets and keys
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+key.properties
+*service-account*.json
+*credentials*.json
+google-services.json
+GoogleService-Info.plist
+.gcloud/
+
+# Build output and local files
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.work/
+*.tsbuildinfo
+next-env.d.ts
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

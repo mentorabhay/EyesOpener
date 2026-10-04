@@ -1,0 +1,29 @@
+/* Trust ladder: Story sits at the bottom and each step is set further right as it climbs. */
+.ladder { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column-reverse; gap: 6px; }
+.ladder li { margin-left: calc(var(--i) * 4%); padding: 8px 12px; border: 1px solid var(--line-2); border-radius: var(--r-sm); background: var(--sunken); }
+.ladder li[data-tested="false"] { border-style: dashed; background: transparent; }
+.ladder b { display: block; font-weight: 600; }
+
+/* League: the family's own team. */
+.mine td { font-weight: 600; }
+.mine td:first-child { box-shadow: inset 3px 0 0 var(--g1); padding-left: 10px; }
+.days { display: grid; gap: 5px; min-width: 112px; }
+
+/* Signal chart. Text wears ink, never the mark colour. The purple clears 3:1 on both the light and the dark card. */
+.signal { display: block; width: 100%; max-width: 400px; height: auto; }
+.signal text { font-size: 11px; fill: var(--ink-2); }
+.signal .val { fill: var(--ink); font-weight: 600; }
+.axis { stroke: var(--line-2); }
+.tried { fill: #9b55f5; }
+.control { fill: var(--ink-4); }
+.whisker { stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.dot { fill: var(--ink); stroke: var(--card); stroke-width: 2; }
+
+/* Fusion Mail: a note inside a .scene. The font size comes from the reader's eye profile. */
+.note { padding: 18px 14px; text-align: center; font-weight: 700; line-height: 1.3; letter-spacing: 0.06em; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Focus Wall: eight tiles across. Tiles in focus each show their own part of one gradient. */
+.wall { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; max-width: 560px; }
+.wall i { aspect-ratio: 1; border-radius: 6px; border: 1px dashed var(--line-2); background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 8px); }
+.wall i[data-sharp] { border: 0; background: var(--grad); }
+.wall i[data-ours] { outline: 2px solid #fff; outline-offset: -7px; }

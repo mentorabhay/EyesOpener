@@ -1,0 +1,88 @@
+import type { Metadata } from "next";
+import { and, desc, eq, gte } from "drizzle-orm";
+import { Btn, Card, Chip, Empty, PageHead, Rings } from "@/components/ui";
+import { today as t } from "@/copy/today";
+import { programmeBySlug } from "@/data";
+import { db, schema } from "@/db";
+import { canStart, percent, ringShare } from "@/engine";
+import { lastDays, requireMember } from "@/lib/session";
+
+export const metadata: Metadata = { title: t.title };
+
+export default async function TodayPage() {
+  const m = await requireMember();
+  const span = lastDays(7);
+  const dayKey = span[6].key;
+  const since = span[0].key;
+  const days = await db.select().from(schema.daySummary)
+    .where(and(eq(schema.daySummary.profileId, m.profile.id), gte(schema.daySummary.day, since)))
+    .orderBy(desc(schema.daySummary.day));
+  const d = days.find((x) => x.day === dayKey) ?? { restBreaks: 0, restGoal: 6, trainMinutes: 0, trainGoal: m.enrolment?.dailyMinutes ?? 0, lightMinutes: 0, lightGoal: 90, screenMinutes: 0 };
+  const [streak] = await db.select().from(schema.streak).where(eq(schema.streak.profileId, m.profile.id));
+  const programme = m.enrolment ? programmeBySlug(m.enrolment.programme) : null;
+  const dose = canStart({ kind: "game", minutesToday: d.trainMinutes, ...m.dose });
+
+  const week = span.map(({ key, label }) => {
+    const row = days.find((x) => x.day === key);
+    return { label, minutes: row?.trainMinutes ?? 0, goal: row?.trainGoal ?? d.trainGoal };
+  });
+  const top = Math.max(60, ...week.map((w) => w.minutes));
+
+  return (
+    <>
+      <PageHead
+        title={t.title}
+        sub={programme ? `${programme.name} programme, week ${m.enrolment!.week}. ${programme.doseBasis}` : t.notEnrolled}
+        stats={[{ value: streak?.current ?? 0, label: `${t.streak}, days` }, { value: `${Math.round(d.screenMinutes / 6) / 10} h`, label: t.screen }]}
+      />
+      <div className="bento">
+        <Card title={t.ringsTitle} span={7}>
+          <div className="rings">
+            <Rings rest={ringShare(d.restBreaks, d.restGoal)} train={ringShare(d.trainMinutes, d.trainGoal)} light={ringShare(d.lightMinutes, d.lightGoal)} />
+            <div className="ringkey">
+              <div className="k"><i className="dot" style={{ background: "var(--ring-rest)" }} /><span>{t.rings.rest}</span><b className="tnum">{d.restBreaks} of {d.restGoal}</b><span className="muted">{t.rings.restUnit}</span></div>
+              <div className="k"><i className="dot" style={{ background: "var(--ring-train)" }} /><span>{t.rings.train}</span><b className="tnum">{Math.round(d.trainMinutes)} of {d.trainGoal}</b><span className="muted">{t.rings.minUnit}</span></div>
+              <div className="k"><i className="dot" style={{ background: "var(--ring-light)" }} /><span>{t.rings.light}</span><b className="tnum">{Math.round(d.lightMinutes)} of {d.lightGoal}</b><span className="muted">{t.rings.minUnit}</span></div>
+            </div>
+          </div>
+          {dose.ok
+            ? <div className="row"><Btn href="/train" kind="g">{t.start}</Btn><span className="muted small">{Math.round(dose.minutes)} minutes left today</span></div>
+            : <p className="notice" data-b={dose.reason === "doctor_first" ? "danger" : "ok"}>{t.blocked[dose.reason!]}</p>}
+          {/* The Rest and Light rings fill from the care companions: breaks taken and time outside. */}
+          <div className="row">
+            <Btn href="/train/games/far-window/play" small>{t.fill.rest}</Btn>
+            <Btn href="/train/games/sky-spotter/play" small>{t.fill.light}</Btn>
+          </div>
+        </Card>
+
+        <Card title={t.week} span={5}>
+          <div style={{ display: "flex", alignItems: "flex-end", gap: 10, height: 132 }} role="img" aria-label={week.map((w) => `${w.label} ${Math.round(w.minutes)} minutes`).join(", ")}>
+            {week.map((w) => (
+              <div key={w.label} style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "flex-end", alignItems: "center", gap: 6, height: "100%" }}>
+                <span className="small tnum muted">{Math.round(w.minutes) || ""}</span>
+                <div className={w.minutes ? "" : "prog hatched"} style={{ width: "100%", borderRadius: 9, height: w.minutes ? `${Math.max(8, (w.minutes / top) * 84)}px` : 84, background: w.minutes ? "var(--grad)" : undefined }} />
+                <span className="small muted">{w.label}</span>
+              </div>
+            ))}
+          </div>
+          <p className="muted small">{t.weekNote}</p>
+        </Card>
+
+        <Card title={t.settings} span={7} right={<Btn href="/onboarding" small>{m.eye ? "Run onboarding again" : t.noProfile.cta}</Btn>}>
+          {m.eye ? (
+            <dl className="kv">
+              <div><dt>Weaker eye</dt><dd>{m.eye.weakEye ? m.eye.weakEye[0].toUpperCase() + m.eye.weakEye.slice(1) : "None found"}</dd></div>
+              <div><dt>Stronger-eye contrast</dt><dd>{percent(m.eye.strongContrast)}<small>{m.eye.balanceLogRatio === null ? "Starting level until the balance test is done" : "From the balance test"}</small></dd></div>
+              <div><dt>Two-eye letter size</dt><dd>{(m.eye.letterCm * 10).toFixed(1)} mm</dd></div>
+            </dl>
+          ) : <Empty title={t.noProfile.title}><span>{t.noProfile.body}</span></Empty>}
+        </Card>
+
+        <Card title={t.streak} span={5} tone="grad">
+          <div className="row"><span className="hstat"><span className="v tnum">{streak?.current ?? 0}</span></span><span className="muted">days in a row</span><span className="sp" /><Chip tone="plain">{streak?.lights ?? 0} {t.lights.toLowerCase()}</Chip></div>
+          <div className="row"><Btn href="/together" small>Give a light</Btn><Btn href="/together/league" small kind="gh">See the league</Btn></div>
+        </Card>
+      </div>
+    </>
+  );
+}

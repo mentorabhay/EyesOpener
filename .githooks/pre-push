@@ -1,0 +1,3 @@
+#!/bin/sh
+# Runs the same gate once more before anything leaves this machine.
+exec node tools/check-public.mjs

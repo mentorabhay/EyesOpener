@@ -1,0 +1,9 @@
+.bars { display: flex; align-items: flex-end; gap: 4px; height: 140px; }
+.bar { flex: 1; min-width: 0; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 5px; }
+.bar span { font-size: 11px; line-height: 1; color: var(--ink-3); white-space: nowrap; }
+.fill { width: 100%; border-radius: 6px; background: var(--grad); }
+.none { width: 100%; height: 88px; border-radius: 6px; }
+.confirm summary { list-style: none; }
+.confirm summary::-webkit-details-marker { display: none; }
+.confirm[open] summary { margin-bottom: 10px; }
+.note { white-space: pre-wrap; overflow-wrap: anywhere; }
