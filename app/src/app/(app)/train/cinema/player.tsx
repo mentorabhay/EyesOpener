@@ -7,6 +7,7 @@ import { train as t } from "@/copy/train";
 import { videoMatrix } from "@/engine";
 import type { TrainDose } from "@/lib/sessions";
 import css from "./cinema.module.css";
+import { reelSrc } from "./reel";
 
 const c = t.cinema;
 
@@ -17,7 +18,7 @@ export function Player({ itemSlug, contrast, dose }: { itemSlug: string; contras
   const video = useRef<HTMLVideoElement>(null);
   const [src, setSrc] = useState<string | null>(null);
 
-  useEffect(() => () => { if (src) URL.revokeObjectURL(src); }, [src]);
+  useEffect(() => () => { if (src?.startsWith("blob:")) URL.revokeObjectURL(src); }, [src]);
   /* The film runs only inside a session: it stops when the server refuses one or the allowed minutes are used. */
   useEffect(() => { if (phase !== "starting" && phase !== "active") video.current?.pause(); }, [phase]);
 
@@ -26,6 +27,11 @@ export function Player({ itemSlug, contrast, dose }: { itemSlug: string; contras
     if (!file) return;
     void end("left");
     setSrc(URL.createObjectURL(file));
+  };
+  /* IOpener's own drawn film, for trying the cinema with no video at hand. */
+  const reel = () => {
+    void end("left");
+    setSrc(reelSrc());
   };
   const onPlay = () => {
     if (phase === "active") setTicking(true);
@@ -39,6 +45,7 @@ export function Player({ itemSlug, contrast, dose }: { itemSlug: string; contras
         <div className="field">
           <label htmlFor="film">{c.choose}</label>
           <input id="film" type="file" accept="video/*" onChange={pick} />
+          <div className="row"><span className="muted small">{c.noFilm}</span><button type="button" className="btn btn-sm" onClick={reel}>{c.reel}</button></div>
         </div>
       )}
       <div className="scene ratio">

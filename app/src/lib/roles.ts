@@ -50,12 +50,12 @@ export const isSealedPath = (pathname: string) => SEALED_IN_CHILD_MODE.some((p) 
 
 /* ───────────── staff rooms ───────────── */
 
-export const ADMIN_AREAS = ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "stories", "staff", "switchboard"] as const;
+export const ADMIN_AREAS = ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue", "stories", "staff", "switchboard"] as const;
 export type AdminArea = (typeof ADMIN_AREAS)[number];
 
 const ROOMS: Record<Exclude<StaffRole, "super_admin">, readonly AdminArea[]> = {
-  ops: ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries"],
-  content: ["overview", "stories"],
+  ops: ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue"],
+  content: ["overview", "catalogue", "stories"],
 };
 
 export const staffCan = (role: StaffRole | null, area: AdminArea): boolean =>

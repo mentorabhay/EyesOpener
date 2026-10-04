@@ -4,6 +4,7 @@ import { reportStopSymptom } from "@/app/(app)/train/actions";
 import { train as t } from "@/copy/train";
 import { needsDoctor, STOP_SYMPTOMS, type StopSymptom } from "@/engine";
 import type { TrainDose } from "@/lib/sessions";
+import { Measured, type Labels } from "./results";
 import type { Ended, Refusal, TrainSession } from "./use-session";
 
 export const mmss = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
@@ -13,9 +14,10 @@ export const canBegin = (s: TrainSession, dose: TrainDose) =>
   dose.ok && (s.phase === "idle" || (s.phase === "ended" && s.ended?.endReason !== "stop_rule"));
 
 /** Minutes left today, or the plain reason training is closed. */
-export function DoseLine({ dose, refused = null, enrolled = true }: { dose: TrainDose; refused?: Refusal | null; enrolled?: boolean }) {
+export function DoseLine({ dose, refused = null, enrolled = true, tester = false }: { dose: TrainDose; refused?: Refusal | null; enrolled?: boolean; tester?: boolean }) {
   const closed = refused ?? dose.reason;
-  if (closed) return <p className="notice" data-b={closed === "doctor_first" || closed === "failed" ? "danger" : closed === "guardian_only" ? undefined : "ok"}>{t.blocked[closed]}</p>;
+  if (tester && !closed) return <p className="muted small">{t.testerOpen}</p>;
+  if (closed) return <p className="notice" data-b={closed === "doctor_first" || closed === "failed" ? "danger" : closed === "guardian_only" || closed === "not_offered" ? undefined : "ok"}>{t.blocked[closed]}</p>;
   return <p className="muted small">{t.minutesLeft(dose.minutes)}{!enrolled && ` ${t.noProgramme}`}</p>;
 }
 
@@ -29,7 +31,7 @@ export const StopButton = ({ s }: { s: TrainSession }) => (
   <button type="button" className="btn btn-d" data-stop onClick={() => void s.end("stop_rule")}>{t.stop.button}</button>
 );
 
-function EndNote({ e }: { e: Ended }) {
+function EndNote({ e, labels }: { e: Ended; labels?: Labels }) {
   const [symptom, setSymptom] = useState<StopSymptom | null>(null);
   const stopped = e.endReason === "stop_rule";
   const pick = (k: StopSymptom) => {
@@ -39,8 +41,9 @@ function EndNote({ e }: { e: Ended }) {
   return (
     <div className="notice stack" data-b={stopped ? "warn" : "ok"}>
       <b>{t.ended[e.endReason]}</b>
-      {typeof e.saved?.score === "number" && <span>{t.score}: {e.saved.score}</span>}
-      <span>{e.saved ? t.saved(e.saved.seconds) : t.notSaved}</span>
+      {typeof e.saved?.score === "number" && e.saved.score > 0 && <span>{t.score}: <b className="tnum">{e.saved.score}</b></span>}
+      {labels && <Measured detail={e.saved?.detail} labels={labels} />}
+      <span>{e.saved ? (e.saved.counted ? t.saved(e.saved.seconds) : t.kept) : t.notSaved}</span>
       {stopped && (symptom
         ? <span><b>{t.stop.symptoms[symptom]}.</b> {needsDoctor(symptom) ? t.stop.doctor : t.stop.rest}</span>
         : (
@@ -53,15 +56,19 @@ function EndNote({ e }: { e: Ended }) {
   );
 }
 
-/** What the member reads around a session: how the last one ended, minutes left, or why training is closed. */
-export function SessionNote({ s, dose }: { s: TrainSession; dose: TrainDose }) {
+/**
+ * What the member reads around a session: how the last one ended and what it measured, minutes left,
+ * or why training is closed. `labels` names the measured numbers to show.
+ */
+export function SessionNote({ s, dose, labels, quiet = false }: { s: TrainSession; dose: TrainDose; labels?: Labels; quiet?: boolean }) {
   if (s.phase === "starting" || s.phase === "saving") return <p className="muted small" role="status">{t[s.phase]}</p>;
   if (s.phase === "active") return null;
   const ended = s.phase === "ended" ? s.ended : null;
   return (
     <div className="stack" role="status">
-      {ended && <EndNote e={ended} />}
-      {ended?.endReason !== "stop_rule" && <DoseLine dose={dose} refused={s.refused} />}
+      {ended && <EndNote e={ended} labels={labels} />}
+      {/* A care routine uses no training minutes, so `quiet` leaves the minutes line out and keeps only a reason it is closed. */}
+      {ended?.endReason !== "stop_rule" && (!quiet || s.refused || dose.reason) && <DoseLine dose={dose} refused={s.refused} />}
     </div>
   );
 }

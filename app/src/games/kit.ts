@@ -30,7 +30,18 @@ export interface GameProps {
   /** The eye behind the cyan lens. It sees the weaker-eye ink. */
   cyanEye: "L" | "R";
   onScore: (score: number) => void;
+  /**
+   * Called once when a running game starts, with the live record of what the session measures (see `Kit.stats`).
+   * The Stage keeps it and saves a copy when the session ends.
+   */
+  onStats?: (stats: Stats) => void;
 }
+
+/**
+ * What a session measured, as plain numbers by key. The kit fills `hits`, `misses`, `level` (where the member
+ * ended) and `top` (the highest level reached). A game or drill adds its own with `k.report` and `k.peak`.
+ */
+export type Stats = Record<string, number>;
 
 export interface Input {
   /** Pointer position in scene units. */
@@ -67,6 +78,12 @@ export interface Kit {
   miss(): void;
   score: number;
   add(n?: number): void;
+  /** What this session has measured so far. Read it for the score line; write it with `report` and `peak`. */
+  stats: Stats;
+  /** Records a number under a key, replacing the one before: "flips a minute", "seconds held". */
+  report(key: string, value: number): void;
+  /** Records a number under a key only when it beats the one already there: "the furthest demand held". */
+  peak(key: string, value: number): void;
   input: Input;
   /** The drawing context for an ink, with fill and stroke already set to that ink. */
   ctx(ink: Ink): CanvasRenderingContext2D;
@@ -130,14 +147,19 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
   const input: Input = { x: W / 2, y: H / 2, down: false, tapped: false, dx: 0, dy: 0, action: false, held: false, taps: [], pressed: new Set() };
   const left: Ink = p.cyanEye === "L" ? "weak" : "strong", right: Ink = p.cyanEye === "L" ? "strong" : "weak";
   let streak = 0, misses = 0;
+  const stats: Stats = { hits: 0, misses: 0, level: 1, top: 1 };
+  const lvl = (n: number) => { k.level = n; stats.level = n; stats.top = Math.max(stats.top, n); };
+  const num = (v: number) => (Number.isFinite(v) ? Math.round(v * 100) / 100 : 0);
   /* Crossed images make the eyes turn in: the left eye's picture sits to the right, the right eye's to the left. */
   const split = (sep: number, draw: (ink: Ink, shift: number) => void) => { draw(left, sep / 2); draw(right, -sep / 2); };
   const k: Kit = {
     t: 0, dt: 0, slow, k: 1, perCm: 37.8, distCm: p.distCm || 50, letter: 22, level: 1, score: 0, input,
-    convMax: 20, divMax: 8, pxArcsec: 100,
-    hit() { misses = 0; if (++streak >= 3) { streak = 0; k.level = Math.min(10, k.level + 1); } },
-    miss() { streak = 0; if (++misses >= 2) { misses = 0; k.level = Math.max(1, k.level - 1); } },
+    convMax: 20, divMax: 8, pxArcsec: 100, stats,
+    hit() { stats.hits++; misses = 0; if (++streak >= 3) { streak = 0; lvl(Math.min(10, k.level + 1)); } },
+    miss() { stats.misses++; streak = 0; if (++misses >= 2) { misses = 0; lvl(Math.max(1, k.level - 1)); } },
     add(n = 1) { k.score += n; p.onScore(k.score); },
+    report(key, value) { stats[key] = num(value); },
+    peak(key, value) { const v = num(value); if (!(key in stats) || v > stats[key]) stats[key] = v; },
     ctx(ink) { const g = ctxOf(ink); g.fillStyle = g.strokeStyle = colour[ink]; return g; },
     disc(x, y, r, ink) { const g = k.ctx(ink); g.beginPath(); g.arc(x, y, Math.max(0, r), 0, 6.2832); g.fill(); },
     ring(x, y, r, ink, width = 3) { const g = k.ctx(ink); g.lineWidth = width; g.beginPath(); g.arc(x, y, Math.max(0, r), 0, 6.2832); g.stroke(); },
@@ -215,6 +237,7 @@ export function mount<S>(cv: HTMLCanvasElement, def: GameDef<S>, p: GameProps): 
   fit();
   const state = def.init(k);
   paint(state);
+  if (p.running) p.onStats?.(k.stats);
 
   const fingers = new Set<number>();
   const at = (e: PointerEvent) => { const r = cv.getBoundingClientRect(); input.x = ((e.clientX - r.left) * W) / r.width; input.y = ((e.clientY - r.top) * H) / r.height; };

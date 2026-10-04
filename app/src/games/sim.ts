@@ -2,7 +2,7 @@
  * Plays a game with no screen, for tests: scripted random taps and key presses, a drawing surface that
  * swallows every call. It finds crashes, runaway numbers and games that cannot be scored.
  */
-import { H, W, makeKit, sizeKit, type GameDef, type GameProps, type Ink } from "./kit";
+import { H, W, makeKit, sizeKit, type GameDef, type GameProps, type Ink, type Stats } from "./kit";
 
 /** A small repeatable random number generator, so a failing run can be played again. */
 export function seeded(seed: number) {
@@ -23,7 +23,7 @@ const blank = () => new Proxy({} as Record<string | symbol, unknown>, {
 
 export const SIM_PROPS: GameProps = { running: true, contrast: 0.15, gamma: 2.2, targetPx: 18, letterPx: 24, ppc: 40, distCm: 50, cyanEye: "L", onScore: () => {} };
 
-export interface SimResult { frames: number; score: number; level: number; maxLevel: number; inks: Record<Ink, number> }
+export interface SimResult { frames: number; score: number; level: number; maxLevel: number; inks: Record<Ink, number>; stats: Stats }
 
 /** Runs `seconds` of play at 60 frames a second. `skill` is the share of frames with an input (0 to 1). */
 export function simulate<S>(def: GameDef<S>, { seconds = 60, seed = 1, skill = 0.2, props = {} as Partial<GameProps>, width = 640 } = {}): SimResult {
@@ -54,5 +54,5 @@ export function simulate<S>(def: GameDef<S>, { seconds = 60, seed = 1, skill = 0
     def.draw(k, state);
     maxLevel = Math.max(maxLevel, k.level);
   }
-  return { frames, score, level: k.level, maxLevel, inks };
+  return { frames, score, level: k.level, maxLevel, inks, stats: { ...k.stats } };
 }

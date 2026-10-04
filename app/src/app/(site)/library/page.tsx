@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Empty } from "@/components/ui";
 import { site as t } from "@/copy/site";
 import { catalogue, evidenceOf, exercises, games } from "@/data";
+import { readStatuses } from "@/lib/catalogue";
+import { isListed, statusOf } from "@/lib/status";
 import { EVIDENCE_KEYS, filterLibrary, groupForTag, libraryHref, LIBRARY_KINDS, pageMeta, readLibraryFilter, type LibraryFilter } from "@/lib/site";
 import { ExerciseCard, GameCard } from "../_components/catalogue";
 import { Cta, Hero } from "../_components/parts";
@@ -24,7 +26,12 @@ function FilterRow({ label, items }: { label: string; items: { key: string; labe
 
 export default async function LibraryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const f = readLibraryFilter(await searchParams);
-  const found = filterLibrary(f);
+  /* Items staff have switched off or kept for staff are not shown to the public. */
+  const [all, statuses] = [filterLibrary(f), await readStatuses()];
+  const found = {
+    games: all.games.filter((g) => isListed(statusOf(statuses, "game", g.slug), false)),
+    exercises: all.exercises.filter((e) => isListed(statusOf(statuses, "exercise", e.slug), false)),
+  };
   const to = (patch: Partial<LibraryFilter>) => libraryHref({ ...f, ...patch });
   const filtered = f.tag !== "any" || f.evidence !== "all" || f.kind !== "all";
   /* Exercises sit in groups, and only some tags have a group. */

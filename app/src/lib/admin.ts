@@ -100,8 +100,10 @@ export async function aiSpendThisMonth() {
 export async function overviewCounts() {
   const now = new Date();
   const [households, kinds, sessionsToday, minutes, moderation, requests, counsellors, sponsors] = await Promise.all([
-    one(db.select({ n: count() }).from(s.account)),
-    db.select({ key: s.profile.kind, n: count() }).from(s.profile).where(isNull(s.profile.archivedAt)).groupBy(s.profile.kind),
+    /* A staff member's test household is not a family: it is left out of every count here. */
+    one(db.select({ n: count() }).from(s.account).where(isNull(s.account.previewFor))),
+    db.select({ key: s.profile.kind, n: count() }).from(s.profile).innerJoin(s.account, eq(s.account.id, s.profile.accountId))
+      .where(and(isNull(s.profile.archivedAt), isNull(s.account.previewFor))).groupBy(s.profile.kind),
     one(db.select({ n: count() }).from(s.session).where(gte(s.session.startedAt, startOfToday(now)))),
     one(db.select({ n: sum(s.session.minutes).mapWith(Number) }).from(s.session)
       .where(and(eq(s.session.ring, "train"), gte(s.session.startedAt, new Date(now.getTime() - 7 * DAY))))),
@@ -299,7 +301,7 @@ export async function moveSponsor(id: string, move: SponsorMove, staffId: string
 /** Every household with counts only. No test result, eye profile or session detail is read. */
 export async function households() {
   const [homes, kinds, seats, last, requests, groups] = await Promise.all([
-    db.select({ id: s.account.id, name: s.account.displayName, isDemo: s.account.isDemo }).from(s.account).orderBy(asc(s.account.displayName)),
+    db.select({ id: s.account.id, name: s.account.displayName, isDemo: s.account.isDemo }).from(s.account).where(isNull(s.account.previewFor)).orderBy(asc(s.account.displayName)),
     db.select({ accountId: s.profile.accountId, kind: s.profile.kind, n: count() }).from(s.profile).where(isNull(s.profile.archivedAt)).groupBy(s.profile.accountId, s.profile.kind),
     db.select({ key: s.appUser.accountId, n: count() }).from(s.appUser).where(and(isNotNull(s.appUser.accountId), isNotNull(s.appUser.seat))).groupBy(s.appUser.accountId),
     db.select({ accountId: s.profile.accountId, at: max(s.session.startedAt) }).from(s.session).innerJoin(s.profile, eq(s.profile.id, s.session.profileId)).groupBy(s.profile.accountId),

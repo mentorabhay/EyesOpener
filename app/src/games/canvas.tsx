@@ -7,10 +7,10 @@ import { mount, type GameDef, type GameProps } from "./kit";
 export function kitGame<S>(def: GameDef<S>): ComponentType<GameProps> {
   return function KitGame(p: GameProps) {
     const canvas = useRef<HTMLCanvasElement>(null);
-    const { running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore } = p;
+    const { running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore, onStats } = p;
     useEffect(
-      () => mount(canvas.current!, def, { running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore }),
-      [running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore],
+      () => mount(canvas.current!, def, { running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore, onStats }),
+      [running, contrast, gamma, targetPx, letterPx, ppc, distCm, cyanEye, onScore, onStats],
     );
     return <canvas ref={canvas} className="game-canvas" tabIndex={0} role="application" aria-label={common.gameScene} />;
   };

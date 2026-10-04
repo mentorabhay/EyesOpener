@@ -5,18 +5,22 @@ import { isBuilt } from "@/games/built";
 import { DoseLine } from "@/components/play/session-ui";
 import { train as t } from "@/copy/train";
 import { catalogue, games, isStrong, mechanismOf } from "@/data";
+import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { doseFor } from "@/lib/sessions";
+import { forWhom, isListed, statusOf } from "@/lib/status";
 
 export const metadata: Metadata = { title: t.games.title };
 
 export default async function TrainPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
-  const evidence = sp.evidence === "all" ? "all" : "strong";
+  /* Everything is shown, strongest evidence first. "Strong evidence" narrows the list. */
+  const evidence = sp.evidence === "strong" ? "strong" : "all";
   const tag = catalogue.gameTags.find((g) => g.key === sp.tag)?.key ?? "any";
   const m = await requireMember();
-  const dose = await doseFor(m, "game");
-  const shown = games.filter((g) => (evidence === "all" || isStrong(g.mechanism)) && (tag === "any" || g.tags.includes(tag)));
+  const [dose, statuses] = await Promise.all([doseFor(m, "game"), readStatuses()]);
+  const status = (slug: string) => statusOf(statuses, "game", slug);
+  const shown = games.filter((g) => isListed(status(g.slug), m.tester) && (evidence === "all" || isStrong(g.mechanism)) && (tag === "any" || g.tags.includes(tag)));
 
   return (
     <>
@@ -25,7 +29,7 @@ export default async function TrainPage({ searchParams }: { searchParams: Promis
         sub={t.games.sub}
         stats={[{ value: shown.length, label: t.games.shown }, { value: shown.filter((g) => isStrong(g.mechanism)).length, label: t.games.strong }]}
       />
-      <DoseLine dose={dose} enrolled={!!m.enrolment} />
+      <DoseLine dose={dose} enrolled={!!m.enrolment} tester={m.tester} />
       <div className="row">
         <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train?tag=${tag}`} />
         <Pills items={catalogue.gameTags} current={tag} param="tag" base={`/train?evidence=${evidence}`} />
@@ -40,8 +44,9 @@ export default async function TrainPage({ searchParams }: { searchParams: Promis
                 <div className="row">
                   <EvidenceChip level={mechanismOf(g.mechanism).evidence} />
                   {isBuilt(g.slug) && <Chip tone="grad">{t.games.playable}</Chip>}
+                  {status(g.slug) !== "open" && <Chip tone={status(g.slug) === "counsellor" ? "plain" : "warn"}>{t.game.statusFor[status(g.slug)]}</Chip>}
                 </div>
-                <p>{g.for}</p>
+                <p>{forWhom(g.for)}</p>
                 <p className="small">{g.session}</p>
               </div>
             </Link>

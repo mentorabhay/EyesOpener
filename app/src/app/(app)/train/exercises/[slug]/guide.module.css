@@ -1,0 +1,7 @@
+/* The exercise guide: numbered steps and short lists that stay easy to read at any width. */
+.steps, .list { margin: 0; padding-left: 1.4em; display: grid; gap: 8px; }
+.steps li::marker { font-weight: 700; }
+.measure { display: grid; gap: 4px; padding: 12px 0; border-top: 1px solid var(--line, rgb(0 0 0 / 0.08)); }
+.measure:first-child { border-top: 0; padding-top: 0; }
+.sources { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: 0.9em; }
+.sources a { overflow-wrap: anywhere; }

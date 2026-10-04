@@ -10,6 +10,8 @@ const Finish = z.object({
   sessionId: z.uuid(),
   minutes: z.number().min(0).max(MAX_DAILY_MINUTES),
   score: z.number().int().min(0).max(1_000_000).optional(),
+  /* Plain numbers by key. `cleanDetail` on the server keeps only what is well formed. */
+  detail: z.record(z.string().max(24), z.number()).optional(),
   endReason: z.enum(END_REASONS),
 });
 const Symptom = z.object({ sessionId: z.uuid(), symptom: z.string() });

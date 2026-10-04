@@ -17,11 +17,29 @@ export const PROFILE_COOKIE = "io_profile";
 
 export type Member = NonNullable<Awaited<ReturnType<typeof getMember>>>;
 
+/**
+ * A staff member with no household of their own gets a test household the first time they open the member app:
+ * one adult profile, no family data. Everything in the library opens in it and the daily limits do not apply.
+ */
+async function testHousehold(user: { id: string; displayName: string }) {
+  const found = await db.select().from(schema.account).where(eq(schema.account.previewFor, user.id)).limit(1);
+  if (found[0]) return found[0];
+  const [made] = await db.insert(schema.account).values({ displayName: "Staff test household", previewFor: user.id })
+    .onConflictDoNothing({ target: schema.account.previewFor }).returning();
+  const account = made ?? (await db.select().from(schema.account).where(eq(schema.account.previewFor, user.id)).limit(1))[0];
+  if (made) await db.insert(schema.profile).values({ accountId: account.id, displayName: user.displayName.replace(/\s*\(.*\)\s*$/, "") || "Tester", kind: "adult" });
+  return account;
+}
+
 /** The household, its profiles, the active profile and that profile's current eye settings. Null without a seat. */
 export const getMember = cache(async () => {
   const viewer = await getViewer();
-  if (!viewer?.seat || !viewer.user.accountId) return null;
-  const [account] = await db.select().from(schema.account).where(eq(schema.account.id, viewer.user.accountId)).limit(1);
+  if (!viewer) return null;
+  const own = viewer.seat && viewer.user.accountId ? viewer.user.accountId : null;
+  /* Staff with no household of their own try the app in a test household. */
+  const tester = !own && !!viewer.staff;
+  if (!own && !tester) return null;
+  const [account] = own ? await db.select().from(schema.account).where(eq(schema.account.id, own)).limit(1) : [await testHousehold(viewer.user)];
   if (!account) return null;
   const profiles = await db.select().from(schema.profile)
     .where(and(eq(schema.profile.accountId, account.id), isNull(schema.profile.archivedAt)))
@@ -57,10 +75,15 @@ export const getMember = cache(async () => {
     age: ageFrom(profile.birthYear), dailyMinutes: enrolment?.dailyMinutes ?? 0, stopFlag,
     consentMissing: profile.kind === "child" && !consent,
     awaitingCounsellor: level2 && (!link || enrolment.dailyMinutes <= 0),
+    tester,
   };
-  const seat = viewer.seat;
+  const seat = viewer.seat ?? ("guardian" as const);
   return {
     viewer, user: viewer.user, seat, childMode,
+    /** True in a staff member's own test household: every library item opens and the daily limits are off. */
+    tester,
+    /** True when a counsellor is linked to the active profile. */
+    linked: !!link,
     account, profiles, profile, age: ageFrom(profile.birthYear),
     eye: eye ?? null, device: device ?? null, enrolment: enrolment ?? null, stopFlag, dose,
     /** May this person do this, here and now? Cheer seats only look and encourage; child mode only trains and tests. */

@@ -134,3 +134,44 @@ Read `src/games/kit.ts` (the whole file) and the reference game `src/games/dgame
 - `npx vitest run src/games 2>&1 | tail -30 | cut -c1-200` plays every game for two minutes with random input on three screen sizes. It must pass.
 - Look at it: open `/train/games/<slug>/play` as the demo guardian with Aarav's profile, press Start, and play with touch and with the arrow keys and Space. Check a 400 px phone width too. Aarav is 6, on the lazy-eye programme, stronger-eye contrast 15%. Level 2 games do not open for him (that is the rule working); test those in the simulator and by reading your drawing code.
 - `npx tsc --noEmit 2>&1 | grep "games/<package>\|games-<package>" | cut -c1-240` and `npx eslint src/games/<package> src/copy/games-<package>.ts 2>&1 | tail -20 | cut -c1-220`.
+
+---
+
+# Addendum: exercise guides, drills and results
+
+An exercise page must leave nobody guessing. It says what the routine is, how to set up, what to do step by step, what to measure and exactly how, what is usual, and when to stop. It then gives the member the tool to do it and keeps the result.
+
+Read `src/data/guides/types.ts` (the whole file), `src/data/guides/index.ts`, `src/games/kit.ts` and `src/games/vergence.ts`.
+
+## Guides (`src/data/guides/<group>.ts`)
+
+- One `Guide` for every exercise of the group in `src/data/catalogue.json` (`exercises`). The catalogue line (`how`, `purpose`, `for`, `gear`, `dose`) is the spec: the guide expands it and never contradicts it.
+- **Words.** Plain words a school student can follow. One action per step. Say "weaker eye" and "stronger eye". Say what the member will see ("the two strings look like an X that crosses at the bead"). No jargon without its meaning beside it. No emoji. No cure claims, no promise of a result, no diagnosis.
+- **Steps** say distances in centimetres or metres, counts and times. A member must be able to do the routine from the page alone.
+- **Measures.** One to three per guide. Each says exactly how to get the number. `from: "auto"` is for what the tool itself fills in: the keys in `AUTO_KEYS[slug]` for a drill, the reading tool or the grid (list them, with a label, unit and `how` that says what the screen does), and the `measure` a `count` or `checklist` tool names. Everything else is `from: "typed"`. `npx vitest run src/data/guides` checks the shape of every guide. Keys: lower case, digits and underscores, at most 24 characters.
+- **What is usual.** Give a figure only when a published source gives it, and point `usual.source` at that source. When none exists, leave `usual` out: the page then says to compare with one's own earlier results. Never invent a norm.
+- **Sources.** Each source is a real paper or a guideline from a professional body, with a working URL (prefer PubMed, PMC or the publisher's page). Check each one by opening it. At least one source per guide. `evidence` is one honest line about the routine itself ("No trial tested this drill on its own; it is part of the supervised therapy the trials used.").
+- **Stop.** Always include: double vision that stays, a headache, eye pain, feeling dizzy or sick. Add what is particular to the routine.
+- **Tool.** `drill`, `reading` and `grid` only for the slugs in `TOOL_KIND`. `cinema` for routines done in the two-eye cinema. `companion` names a care-companion game that logs the same thing. `count` suits anything counted against the clock (cycles in a minute). `checklist` suits a set-up check. `log` suits a routine that runs through the day, where a stopwatch makes no sense (hours of glasses wear): the member types the numbers and saves. Otherwise `timer`. With `cinema` or `companion` the time is the record and `measures` may be empty.
+- A camera feature that the catalogue mentions is not built. Write the routine so it is done by hand (a ruler, an arm's length, a timer), and say so in one plain line.
+
+## Drills (`src/drills/**`)
+
+A drill is a `GameDef` on the game kit, registered under the exercise's slug. Everything in "Addendum: games (the kit)" applies, with these differences:
+
+- A drill is practice with a measurement, not a game: calm, uncluttered, no time pressure unless the measure is a rate.
+- It reports its measures with `k.report(key, value)` (replace) and `k.peak(key, value)` (keep the largest). It reports exactly the keys in `AUTO_KEYS[slug]`, in the units the guide states. Numbers a member would call wrong (negative seconds, more than the screen can show) are never reported.
+- The words drawn in the scene and the one-line help live in `src/copy/drills-<package>.ts` (`words`, `help[slug]`).
+- Vergence drills use `src/games/vergence.ts` and keep every rule there: start at zero, at most 2 prism dioptres a second, jumps inside `maxJump`, the "it split in two" control, per-eye marks.
+- A drill done with a patch or with no glasses draws in `both` ink. For a grey that is not white (a faint stripe, a grey field) it may set `fillStyle`/`strokeStyle` itself on the `both` layer after `k.ctx("both")`; nothing else may set a colour.
+- `src/drills/drills.test.ts` plays every drill in the simulator at three sizes and checks the reported keys.
+
+## Results
+
+- The kit keeps `k.stats` for every session: `hits`, `misses`, `level`, `top`, and whatever a game or drill reports. The Stage saves it in `session.detail` when the session ends (plain numbers by key; `cleanDetail` in `src/lib/sessions.ts` drops anything else).
+- A page shows a member's own record with `pastSessions(m, kind, slug)` and the `History` component (`src/components/play/results.tsx`). Labels for the numbers come from the guide's measures (exercises) or `src/copy/results.ts` (games).
+
+## Status of library items
+
+- Staff set each game, exercise and the cinema to `open`, `counsellor`, `staff` or `off` in the Catalogue room (`src/lib/status.ts`, `src/lib/catalogue.ts`). Everything is `open` until staff change it.
+- `doseFor(m, kind, slug)` checks the status. Lists hide `staff` and `off` from members. A staff member with no household of their own gets a test household (`m.tester`): every status opens for them and the daily limits are off.

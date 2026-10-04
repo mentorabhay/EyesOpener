@@ -1,46 +1,141 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Card, EvidenceChip, PageHead } from "@/components/ui";
+import { History, type Labels } from "@/components/play/results";
+import { DoseLine } from "@/components/play/session-ui";
+import { Stage } from "@/components/play/stage";
+import { Btn, Card, Chip, Empty, EvidenceChip, PageHead } from "@/components/ui";
 import { train as t } from "@/copy/train";
 import { evidenceOf, exerciseBySlug, mechanismOf } from "@/data";
+import { guideFor, type Guide } from "@/data/guides";
+import { drillHelp, hasDrill } from "@/drills";
+import { GridTool } from "@/drills/tools/grid";
+import { ReadingTool } from "@/drills/tools/reading";
+import { kindOf } from "@/games/built";
 import { requireMember } from "@/lib/session";
-import { doseFor } from "@/lib/sessions";
-import { Routine } from "./routine";
+import { doseFor, isCareRoutine, pastSessions, statusFor } from "@/lib/sessions";
+import { forWhom, isListed } from "@/lib/status";
+import css from "./guide.module.css";
+import { Routine, type Hand } from "./routine";
 
 type Props = { params: Promise<{ slug: string }> };
+const x = t.exercise;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: exerciseBySlug((await params).slug)?.name };
 }
 
+const labelsOf = (g: Guide | undefined): Labels => Object.fromEntries((g?.measures ?? []).map((m) => [m.key, { label: m.label, unit: m.unit }]));
+
 export default async function ExercisePage({ params }: Props) {
   const { slug } = await params;
   const e = exerciseBySlug(slug);
   if (!e) notFound();
-  const dose = await doseFor(await requireMember(), "exercise");
+  const m = await requireMember();
+  const status = await statusFor("exercise", slug);
+  if (!isListed(status, m.tester)) notFound();
+  const [dose, past] = await Promise.all([doseFor(m, "exercise", slug), pastSessions(m, "exercise", slug)]);
+  const g = guideFor(slug);
   const mech = mechanismOf(e.mechanism);
-  const k = t.exercise.kv;
+  const k = x.kv;
+  const labels = labelsOf(g);
+  const lower = (g?.measures ?? []).filter((q) => q.better === "lower").map((q) => q.key);
+  /* A companion that is not in this edition falls back to the stopwatch. */
+  const tool = g?.tool.kind === "companion" && !kindOf(g.tool.game) ? ({ kind: "timer" } as const) : (g?.tool ?? ({ kind: "timer" } as const));
+  const ppc = m.device?.pxPerCm ?? 0;
+  const eye = {
+    contrast: m.eye?.strongContrast ?? 1, gamma: m.device?.gamma ?? 2.2,
+    targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc,
+    distCm: m.device?.distanceCm ?? 0, cyanEye: m.eye?.cyanEye === "right" ? ("R" as const) : ("L" as const),
+  };
 
   return (
     <>
-      <PageHead title={e.name} sub={e.group} crumb={[{ href: "/train/exercises", label: t.exercise.crumb }]} />
+      <PageHead title={e.name} sub={e.purpose} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
+      {(status !== "open" || m.tester) && <div className="row"><Chip tone={status === "open" ? "ok" : status === "counsellor" ? "plain" : "warn"}>{x.statusFor[status]}</Chip></div>}
       <div className="bento">
-        <Card title={t.exercise.steps} span={7}>
-          <p>{e.how}</p>
+        <Card title={x.what} span={7}>
+          <p>{g?.what ?? e.how}</p>
           <dl className="kv">
-            <div><dt>{k.purpose}</dt><dd>{e.purpose}</dd></div>
-            <div><dt>{k.for}</dt><dd>{e.for}</dd></div>
+            <div><dt>{k.for}</dt><dd>{forWhom(e.for)}</dd></div>
             <div><dt>{k.gear}</dt><dd>{e.gear}</dd></div>
             <div><dt>{k.dose}</dt><dd>{e.dose}</dd></div>
           </dl>
         </Card>
-        <Card title={t.exercise.timer} span={5}>
-          <p className="muted small">{t.exercise.timerNote}</p>
-          <Routine slug={slug} dose={dose} />
+        <Card title={x.ready} span={5}>
+          {g ? (
+            <>
+              <p className="small muted">{x.need}</p>
+              <ul className={css.list}>{g.need.map((line) => <li key={line}>{line}</li>)}</ul>
+              <p className="small muted">{x.setup}</p>
+              <ol className={css.steps}>{g.setup.map((line) => <li key={line}>{line}</li>)}</ol>
+              {g.print && <div className="row"><Btn href={`/train/exercises/${slug}/print`} small>{x.print}</Btn></div>}
+            </>
+          ) : <Empty title={x.notWritten} />}
         </Card>
-        <Card title={t.exercise.evidence} right={<EvidenceChip level={mech.evidence} />}>
+
+        {g && (
+          <Card title={x.steps} span={7}>
+            <ol className={css.steps}>{g.steps.map((line) => <li key={line}>{line}</li>)}</ol>
+          </Card>
+        )}
+        {g && (
+          <Card title={x.right} span={5}>
+            <ul className={css.list}>{g.right.map((line) => <li key={line}>{line}</li>)}</ul>
+            <p className="small muted">{x.mistakes}</p>
+            <ul className={css.list}>{g.mistakes.map((line) => <li key={line}>{line}</li>)}</ul>
+          </Card>
+        )}
+
+        <Card title={x.doNow} span={tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 12 : 7}>
+          <p className="muted small">{x.toolNote[tool.kind]}{isCareRoutine("exercise", slug) && tool.kind !== "companion" ? ` ${x.careNote}` : ""}</p>
+          {tool.kind === "drill" ? (
+            hasDrill(slug)
+              ? <Stage kind="exercise" slug={slug} dose={dose} help={drillHelp[slug]} labels={labels} lens={/red-cyan/i.test(e.gear)} {...eye} />
+              : <Empty title={t.game.notBuilt.title} />
+          ) : tool.kind === "reading" ? <ReadingTool slug={slug} dose={dose} labels={labels} ppc={ppc} />
+            : tool.kind === "grid" ? <GridTool slug={slug} dose={dose} labels={labels} ppc={ppc} />
+              : tool.kind === "cinema" ? <div className="row"><Btn href="/train/cinema" kind="g">{x.openCinema}</Btn><DoseLine dose={dose} enrolled={!!m.enrolment} /></div>
+                : tool.kind === "companion" ? <div className="row"><Btn href={`/train/games/${tool.game}/play`} kind="g">{x.openCompanion}</Btn></div>
+                  : <Routine slug={slug} dose={dose} tool={tool as Hand} measures={g?.measures ?? []} labels={labels} care={isCareRoutine("exercise", slug)} />}
+        </Card>
+
+        {g && g.measures.length > 0 && (
+          <Card title={x.measure} span={tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 7 : 5}>
+            <div>
+              {g.measures.map((q) => (
+                <div key={q.key} className={css.measure}>
+                  <b>{q.label}{q.unit ? `, ${q.unit}` : ""}</b>
+                  <span>{q.how}</span>
+                  <span className="muted small">{x.measuredBy[q.from]}</span>
+                  <span className="small"><b>{x.usual}.</b> {q.usual ? q.usual.text : x.noUsual}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
+        {g && (
+          <Card title={x.stop} span={g.measures.length > 0 ? (tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 5 : 12) : 5}>
+            <ul className={css.list}>{g.stop.map((line) => <li key={line}>{line}</li>)}</ul>
+            <p className="small muted">{x.stopNote}</p>
+          </Card>
+        )}
+
+        {tool.kind !== "cinema" && tool.kind !== "companion" && (
+          <Card title={x.results}>
+            <History rows={past} labels={labels} lower={lower} />
+          </Card>
+        )}
+
+        <Card title={x.evidence} right={<EvidenceChip level={mech.evidence} />}>
           <p><b>{mech.label}.</b> {mech.basis}</p>
+          {g && <p>{g.evidence}</p>}
           <p className="muted small">{evidenceOf(mech.evidence).meaning}</p>
+          {g && g.sources.length > 0 && (
+            <>
+              <p className="small muted">{x.sources}</p>
+              <ol className={css.sources}>{g.sources.map((src) => <li key={src.url}><a href={src.url} target="_blank" rel="noreferrer noopener">{src.label}</a></li>)}</ol>
+            </>
+          )}
         </Card>
       </div>
     </>

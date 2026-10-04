@@ -1,18 +1,18 @@
 "use client";
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { finishTrainSession, startTrainSession } from "@/app/(app)/train/actions";
-import type { EndReason, StartResult, TrainKind } from "@/lib/sessions";
+import type { Detail, EndReason, StartResult, TrainKind } from "@/lib/sessions";
 
 export type Refusal = Extract<StartResult, { ok: false }>["reason"] | "failed";
-export interface Ended { sessionId: string; endReason: EndReason; saved: { seconds: number; score: number | null } | null }
+export interface Ended { sessionId: string; endReason: EndReason; saved: { seconds: number; score: number | null; detail: Detail | null; counted: boolean } | null }
 export type TrainSession = ReturnType<typeof useTrainSession>;
 
 /**
  * One training session in the browser. The server decides whether it may start and for how long;
  * this counts the seconds actually spent, ends the session when the allowed time is used, and saves it.
- * `scoreRef` is read when the session ends.
+ * `scoreRef` and `detailRef` (what the session measured) are read when the session ends.
  */
-export function useTrainSession(kind: TrainKind, itemSlug: string, scoreRef?: RefObject<number>) {
+export function useTrainSession(kind: TrainKind, itemSlug: string, scoreRef?: RefObject<number>, detailRef?: RefObject<Detail | null>) {
   const [phase, setPhase] = useState<"idle" | "starting" | "active" | "saving" | "ended">("idle");
   const [ticking, setTicking] = useState(false);
   const [seconds, setSeconds] = useState(0);
@@ -46,10 +46,12 @@ export function useTrainSession(kind: TrainKind, itemSlug: string, scoreRef?: Re
     s.id = "";
     setTicking(false);
     setPhase("saving");
-    const r = await finishTrainSession({ sessionId, minutes: Math.min(s.ms, s.allowedMs) / 60_000, score: scoreRef?.current, endReason }).catch(() => ({ ok: false as const }));
-    setEnded(r.ok ? { sessionId, endReason: r.endReason, saved: { seconds: r.minutes * 60, score: r.score } } : { sessionId, endReason, saved: null });
+    /* A copy: the game's own record is cleared when it draws its resting picture again. */
+    const detail = detailRef?.current ? { ...detailRef.current } : undefined;
+    const r = await finishTrainSession({ sessionId, minutes: Math.min(s.ms, s.allowedMs) / 60_000, score: scoreRef?.current, detail, endReason }).catch(() => ({ ok: false as const }));
+    setEnded(r.ok ? { sessionId, endReason: r.endReason, saved: { seconds: r.minutes * 60, score: r.score, detail: r.detail, counted: r.counted } } : { sessionId, endReason, saved: null });
     setPhase("ended");
-  }, [scoreRef]);
+  }, [scoreRef, detailRef]);
 
   /* The clock counts only while the page is in view. A slow or sleeping tab adds at most one second per tick. */
   useEffect(() => {

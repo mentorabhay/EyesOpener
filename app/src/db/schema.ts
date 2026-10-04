@@ -47,6 +47,11 @@ export const account = pgTable("account", {
   isDemo: boolean().notNull().default(false),
   /** Hash of the PIN a grown-up types to leave child mode. */
   exitPinHash: text(),
+  /**
+   * Set on a staff member's own test household: the id of that `appUser`. Such a household belongs to no family.
+   * It lets staff open and try every game, exercise and film; it is left out of every household count.
+   */
+  previewFor: uuid().unique(),
   createdAt: now(),
 });
 
@@ -215,6 +220,11 @@ export const session = pgTable("session", {
   minutes: real().notNull().default(0),
   strongContrast: real(),
   score: integer(),
+  /**
+   * What the session measured, as plain numbers by key: a game's hits, misses and level, the furthest demand held,
+   * or what an exercise asked the member to count or measure. Never a name, a picture or free text.
+   */
+  detail: jsonb().$type<Record<string, number>>(),
   /** done, daily_cap, stop_rule, left */
   endReason: text(),
   /** The symptom the member reported when the stop rule ended the session. */

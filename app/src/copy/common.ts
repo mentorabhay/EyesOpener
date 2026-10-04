@@ -10,6 +10,8 @@ export const common = {
     switchPerson: "Sign in as someone else", childMode: "Child mode", leaveChildMode: "Child mode · grown-up? Tap to leave", grownUp: "Grown-up",
   },
   notMedical: "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
+  tester: "Staff test household. Every game, exercise and film opens here whatever its status, and the daily limits are off. Nothing here is counted with families.",
+  testerLink: "Set the status of each item",
   lens: { label: "View scenes as", none: "No glasses", weak: "Weaker eye", strong: "Stronger eye" },
   gameScene: "Game scene. Tap or click in it, or use the arrow keys and Space. The words under the scene say how to play.",
   demo: "Demo family",

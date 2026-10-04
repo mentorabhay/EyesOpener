@@ -33,7 +33,8 @@ describe("staff rooms", () => {
     expect(staffCan("ops", "moderation")).toBe(true);
     for (const a of ["staff", "switchboard", "stories"] as const) expect(staffCan("ops", a)).toBe(false);
   });
-  it("gives content only the overview and stories", () => { expect(staffAreas("content")).toEqual(["overview", "stories"]); });
+  it("gives content the overview, the catalogue and stories", () => { expect(staffAreas("content")).toEqual(["overview", "catalogue", "stories"]); });
+  it("lets ops and content set the status of library items", () => { expect(staffCan("ops", "catalogue")).toBe(true); expect(staffCan("content", "catalogue")).toBe(true); });
   it("gives nothing without a role", () => { expect(staffAreas(null)).toEqual([]); });
   it("lets the database column win, and falls back to ADMIN_EMAILS", () => {
     expect(resolveStaffRole("ops", "owner@example.com", "owner@example.com")).toBe("ops");

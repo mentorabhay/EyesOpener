@@ -44,7 +44,10 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         <p className="foot">{common.notMedical}</p>
       </aside>
       <div className="main">
-        <main className="page" style={{ zoom }}>{children}</main>
+        <main className="page" style={{ zoom }}>
+          {m.tester && <p className="notice" role="note">{common.tester} <Link href="/admin/catalogue">{common.testerLink}</Link></p>}
+          {children}
+        </main>
       </div>
       <TabBar items={m.childMode ? [...TABS.slice(0, 4), { href: "/leave-child-mode", label: n.grownUp }] : TABS} />
     </div>

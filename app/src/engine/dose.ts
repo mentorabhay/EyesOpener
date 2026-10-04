@@ -1,6 +1,7 @@
 /**
  * Dose clock, daily caps and the stop rule.
- * These limits are product rules. No screen, setting or AI call can raise them.
+ * These limits are product rules. No screen, setting or AI call can raise them for a family.
+ * The one exception is a staff member's own test household (`tester`), which no family member can use.
  */
 
 /** No profile trains for more than this in one day, whatever the programme says. */
@@ -29,6 +30,11 @@ export interface DoseInput {
   consentMissing?: boolean;
   /** True on a counsellor-led programme until a linked counsellor has set the dose. */
   awaitingCounsellor?: boolean;
+  /**
+   * True only for a staff member's own test household. Staff are trying the product, not being treated,
+   * so the daily limits do not close a session on them. No family profile can ever carry this.
+   */
+  tester?: boolean;
 }
 
 export type DoseBlock = "under_age" | "doctor_first" | "needs_consent" | "awaiting_counsellor" | "daily_cap" | "programme_done";
@@ -43,7 +49,7 @@ export interface DoseDecision {
 export function canStart(d: DoseInput): DoseDecision {
   const block = (reason: DoseBlock): DoseDecision => ({ ok: false, minutes: 0, reason });
   if (d.age !== null && d.age < MIN_SCREEN_AGE && ON_SCREEN.includes(d.kind)) return block("under_age");
-  if (!TRAINING.includes(d.kind)) return { ok: true, minutes: MAX_DAILY_MINUTES, reason: null };
+  if (!TRAINING.includes(d.kind) || d.tester) return { ok: true, minutes: MAX_DAILY_MINUTES, reason: null };
   if (d.stopFlag) return block("doctor_first");
   if (d.consentMissing) return block("needs_consent");
   if (d.awaitingCounsellor) return block("awaiting_counsellor");

@@ -19,6 +19,12 @@ export function aim(k: Kit, d: Demand, prism: number) { d.goal = inside(k, prism
 export function ramp(k: Kit, d: Demand, rate = 1) {
   const step = Math.min(2, Math.max(0, rate)) * k.slow * k.dt;
   d.now += Math.max(-step, Math.min(step, d.goal - d.now));
+  note(k, d);
+}
+
+/** Keeps the furthest demand this session drew, each way, in prism dioptres: `conv` turning in, `div` turning out. */
+function note(k: Kit, d: Demand) {
+  if (d.now > 0) k.peak("conv", d.now); else if (d.now < 0) k.peak("div", -d.now);
 }
 
 /** The largest jump a game may make at this level: 2 prism dioptres at level 1, up to 12 at level 10. */
@@ -28,12 +34,14 @@ export const maxJump = (k: Kit) => Math.min(12, 1 + k.level * 1.1);
 export function jumpTo(k: Kit, d: Demand, prism: number) {
   const reach = maxJump(k);
   d.goal = d.now = inside(k, d.now + Math.max(-reach, Math.min(reach, prism - d.now)));
+  note(k, d);
 }
 
 /** The member said the picture split. The demand eases 2 prism dioptres toward rest and the level eases too. */
 export function ease(k: Kit, d: Demand) {
   d.goal -= Math.sign(d.goal) * Math.min(2, Math.abs(d.goal));
   d.now -= Math.sign(d.now) * Math.min(2, Math.abs(d.now));
+  k.report("splits", (k.stats.splits ?? 0) + 1);
   k.miss();
 }
 

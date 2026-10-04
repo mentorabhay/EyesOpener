@@ -88,6 +88,11 @@ export default async function AdminOverviewPage() {
           ) : <Empty title={o.activity.empty.title}><span>{o.activity.empty.body}</span></Empty>}
         </Card>
 
+        <Card title={t.catalogue.tester.title} span={12}>
+          <p>{t.catalogue.tester.body}</p>
+          <div className="row"><Link className="btn btn-g" href="/train">{t.catalogue.tester.go}</Link></div>
+        </Card>
+
         <Card title={o.rooms.title} span={12}>
           <div className="grid-cards">
             {roomsFor(viewer.staff).filter((area) => area !== "overview").map((area) => (

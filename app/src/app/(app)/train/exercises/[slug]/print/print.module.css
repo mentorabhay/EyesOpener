@@ -1,0 +1,24 @@
+/* A printable card. On screen: the notes, then the sheets shown small enough to fit. On paper: only the sheets, at their real size. */
+.sheet { display: flex; flex-direction: column; gap: 18px; }
+.list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.pages { display: flex; flex-direction: column; gap: 16px; }
+.paper { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+/* the cards are drawn in black, red and green on white, so the sheet stays white in the dark theme too */
+.card { background: #fff; color: #000; border: 1px solid var(--line-2); border-radius: var(--r-md); padding: 12px; overflow: hidden; }
+.card svg { display: block; max-width: 100%; height: auto; }
+
+@page { size: A4; margin: 12mm; }
+
+@media print {
+  :global(.shell):has(.sheet) { display: block; min-height: 0; }
+  :global(.shell):has(.sheet) :global(.side), :global(.shell):has(.sheet) :global(.tabs), .hide { display: none !important; }
+  :global(.main):has(.sheet) { display: block; }
+  /* the app's own text zoom must not reach the cards: a millimetre on paper is a millimetre */
+  :global(.page):has(.sheet) { display: block; padding: 0; max-width: none; zoom: 1 !important; }
+  :global(body):has(.sheet) { background: #fff; }
+  .sheet, .pages, .paper { display: block; }
+  .paper { break-after: page; break-inside: avoid; }
+  .paper:last-child { break-after: auto; }
+  .card { border: 0; border-radius: 0; padding: 0; overflow: visible; }
+  .card svg { max-width: none; }
+}

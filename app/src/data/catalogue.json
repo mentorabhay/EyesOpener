@@ -36,7 +36,7 @@
    "key": "dvid",
    "label": "Two-eye video",
    "evidence": "strong",
-   "basis": "In trials, children gained about 1.8 lines in 12 weeks and matched patching."
+   "basis": "In one trial children gained 1.8 lines in 12 weeks, against 0.8 with glasses alone. In other trials two-eye video did about as well as patching."
   },
   {
    "key": "dgame",
@@ -66,7 +66,7 @@
    "key": "pl",
    "label": "Perceptual learning",
    "evidence": "moderate",
-   "basis": "Adults gained about 1.5 lines in pooled trials."
+   "basis": "In pooled studies adults gained about 1.7 lines on the letter chart."
   },
   {
    "key": "habit",
@@ -138,7 +138,7 @@
    "key": "drops",
    "label": "Reminders",
    "evidence": "moderate",
-   "basis": "Reminders raised the share of patients taking drops on time by almost 20%."
+   "basis": "In one trial, reminders raised the share of doses taken from 53% to 64%."
   },
   {
    "key": "recov",

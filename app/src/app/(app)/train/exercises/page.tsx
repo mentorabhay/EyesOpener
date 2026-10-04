@@ -1,21 +1,26 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Card, EvidenceChip, PageHead, Pills } from "@/components/ui";
+import { Card, Chip, EvidenceChip, PageHead, Pills } from "@/components/ui";
 import { DoseLine } from "@/components/play/session-ui";
 import { train as t } from "@/copy/train";
 import { exerciseGroups, exercises, isStrong, mechanismOf } from "@/data";
+import { guideFor } from "@/data/guides";
+import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { doseFor } from "@/lib/sessions";
+import { forWhom, isListed, statusOf } from "@/lib/status";
 
 export const metadata: Metadata = { title: t.exercises.title };
 
 export default async function ExercisesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
-  const evidence = sp.evidence === "all" ? "all" : "strong";
+  /* Everything is shown, strongest evidence first. "Strong evidence" narrows the list. */
+  const evidence = sp.evidence === "strong" ? "strong" : "all";
   const group = exerciseGroups.find((g) => g === sp.group) ?? "any";
   const m = await requireMember();
-  const dose = await doseFor(m, "exercise");
-  const shown = exercises.filter((e) => (evidence === "all" || isStrong(e.mechanism)) && (group === "any" || e.group === group));
+  const [dose, statuses] = await Promise.all([doseFor(m, "exercise"), readStatuses()]);
+  const status = (slug: string) => statusOf(statuses, "exercise", slug);
+  const shown = exercises.filter((e) => isListed(status(e.slug), m.tester) && (evidence === "all" || isStrong(e.mechanism)) && (group === "any" || e.group === group));
   const l = t.exercises.labels;
 
   return (
@@ -25,7 +30,7 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
         sub={t.exercises.sub}
         stats={[{ value: shown.length, label: t.exercises.shown }, { value: shown.filter((e) => isStrong(e.mechanism)).length, label: t.exercises.strong }]}
       />
-      <DoseLine dose={dose} enrolled={!!m.enrolment} />
+      <DoseLine dose={dose} enrolled={!!m.enrolment} tester={m.tester} />
       <div className="row">
         <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train/exercises?group=${encodeURIComponent(group)}`} />
         <Pills items={[{ key: "any", label: t.exercises.allGroups }, ...exerciseGroups.map((g) => ({ key: g, label: g }))]} current={group} param="group" base={`/train/exercises?evidence=${evidence}`} />
@@ -36,9 +41,14 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
             {shown.map((e) => (
               <div className="ins" key={e.slug}>
                 <div className="tx">
-                  <div className="row"><Link href={`/train/exercises/${e.slug}`}><b>{e.name}</b></Link><EvidenceChip level={mechanismOf(e.mechanism).evidence} /></div>
+                  <div className="row">
+                    <Link href={`/train/exercises/${e.slug}`}><b>{e.name}</b></Link>
+                    <EvidenceChip level={mechanismOf(e.mechanism).evidence} />
+                    {guideFor(e.slug) && <Chip>{t.exercise.tool[guideFor(e.slug)!.tool.kind]}</Chip>}
+                    {status(e.slug) !== "open" && <Chip tone={status(e.slug) === "counsellor" ? "plain" : "warn"}>{t.exercise.statusFor[status(e.slug)]}</Chip>}
+                  </div>
                   <div>{e.how}</div>
-                  <div className="sub">{l.for}: {e.for} · {l.gear}: {e.gear} · {l.dose}: {e.dose}</div>
+                  <div className="sub">{l.for}: {forWhom(e.for)} · {l.gear}: {e.gear} · {l.dose}: {e.dose}</div>
                 </div>
               </div>
             ))}
