@@ -31,6 +31,9 @@ export function verifyToken<T extends object>(token: string | undefined | null, 
   } catch { return null; }
 }
 
+/** Cookies are marked "secure" when the site's own address is https. On a local http address they are not, or the browser would drop them. */
+export const secureCookies = (siteUrl: string | undefined = process.env.SITE_URL): boolean => (siteUrl ?? "").trim().startsWith("https://");
+
 /** PIN hashing for the child-mode exit PIN. */
 export function hashPin(pin: string): string {
   const salt = crypto.randomBytes(16);

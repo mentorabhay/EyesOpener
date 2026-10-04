@@ -8,7 +8,7 @@ import { family as t } from "@/copy/family";
 import { CHILD_COOKIE } from "@/lib/auth";
 import { childToHandTo, createInvite, giveConsent, INVITE_SEATS, joinGroup, leaveGroup, revokeInvite, setExitPin, withdrawConsent } from "@/lib/family";
 import { requireMember } from "@/lib/session";
-import { signToken } from "@/lib/token";
+import { secureCookies, signToken } from "@/lib/token";
 
 const CHILD_MODE_MS = 12 * 60 * 60_000;
 const id = (formData: FormData, name: string) => z.uuid().safeParse(formData.get(name));
@@ -63,7 +63,7 @@ export async function handOver(formData: FormData) {
   const child = await childToHandTo(m, profileId.data);
   if (!child) return;
   (await cookies()).set(CHILD_COOKIE, signToken({ profileId: child.id, accountId: m.account.id, exp: Date.now() + CHILD_MODE_MS }),
-    { path: "/", httpOnly: true, sameSite: "lax", maxAge: CHILD_MODE_MS / 1000 });
+    { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: CHILD_MODE_MS / 1000 });
   revalidatePath("/", "layout");
   redirect("/today");
 }

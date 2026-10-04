@@ -7,7 +7,7 @@ import type { FormState } from "@/components/together/StateForm";
 import { leave as t } from "@/copy/family";
 import { CHILD_COOKIE } from "@/lib/auth";
 import { requireMember } from "@/lib/session";
-import { checkPin, signToken, verifyToken } from "@/lib/token";
+import { checkPin, secureCookies, signToken, verifyToken } from "@/lib/token";
 
 const TRIES_COOKIE = "io_exit_tries";
 const MAX_WRONG = 5;
@@ -32,6 +32,6 @@ export async function leaveChildMode(_: FormState, formData: FormData): Promise<
   }
   const wrong = tries.wrong + 1;
   const locked = wrong >= MAX_WRONG;
-  jar.set(TRIES_COOKIE, signToken({ wrong: locked ? 0 : wrong, lockedUntil: locked ? now + LOCK_MS : 0, exp: now + TRIES_KEPT_MS }), { path: "/", httpOnly: true, sameSite: "lax" });
+  jar.set(TRIES_COOKIE, signToken({ wrong: locked ? 0 : wrong, lockedUntil: locked ? now + LOCK_MS : 0, exp: now + TRIES_KEPT_MS }), { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies() });
   return { ok: false, message: locked ? t.locked(LOCK_MS / 60_000) : t.wrong };
 }

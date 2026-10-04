@@ -12,7 +12,7 @@ import { notFound, redirect } from "next/navigation";
 import { and, asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { homeFor, resolveStaffRole, sponsorCan, staffCan, type AdminArea, type Seat, type SponsorAction, type SponsorRole, type StaffRole } from "./roles";
-import { signToken, verifyToken } from "./token";
+import { secureCookies, signToken, verifyToken } from "./token";
 
 export const USER_COOKIE = "io_user";
 export const CHILD_COOKIE = "io_child";
@@ -99,7 +99,7 @@ export async function signInAs(userId: string): Promise<string | null> {
   const [user] = await db.select().from(schema.appUser).where(eq(schema.appUser.id, userId)).limit(1);
   if (!user) return null;
   const jar = await cookies();
-  jar.set(USER_COOKIE, signToken({ userId: user.id, exp: Date.now() + USER_TTL_MS }), { path: "/", httpOnly: true, sameSite: "lax", maxAge: USER_TTL_MS / 1000 });
+  jar.set(USER_COOKIE, signToken({ userId: user.id, exp: Date.now() + USER_TTL_MS }), { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: USER_TTL_MS / 1000 });
   jar.delete(CHILD_COOKIE);
   jar.delete("io_profile");
   return user.id;
