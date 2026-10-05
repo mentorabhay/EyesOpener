@@ -1,0 +1,1611 @@
+{
+ "lang": "hi",
+ "file": "copy/train",
+ "entries": {
+  "train.blocked.awaiting_counsellor": {
+   "source": "57a3070a46751a",
+   "english": "Training opens when your linked counsellor sets the dose.",
+   "text": "जब आपके जुड़े काउंसलर डोज़ तय करेंगे, तब अभ्यास खुलेगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.awaiting_counsellor"
+  },
+  "train.blocked.counsellor_plan": {
+   "source": "cf70b204c9a316",
+   "english": "This is part of a counsellor's plan. It opens when a linked counsellor puts you on it.",
+   "text": "यह काउंसलर की योजना का हिस्सा है। यह तब खुलता है जब जुड़े हुए काउंसलर आपको इस पर जोड़ते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.blocked.daily_cap": {
+   "source": "eb23fc0ff52a87",
+   "english": "The daily limit of 90 minutes is reached. Come back tomorrow.",
+   "text": "हर दिन की 90 मिनट की सीमा पूरी हो गई है। कल वापस आएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.blocked.doctor_first": {
+   "source": "9922cfafb1abc4",
+   "english": "See an eye doctor before training. Check-ups still work.",
+   "text": "अभ्यास से पहले आँखों के डॉक्टर को दिखाएँ। जाँच अब भी काम करती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.doctor_first"
+  },
+  "train.blocked.failed": {
+   "source": "019cfcb5ebaa7b",
+   "english": "IOpener could not be reached. Check the connection and try again.",
+   "text": "IOpener से संपर्क नहीं हो सका। कनेक्शन जाँचें और फिर कोशिश करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.blocked.guardian_only": {
+   "source": "a86b22e5e7c165",
+   "english": "Only a guardian or the member can start practice.",
+   "text": "केवल अभिभावक या सदस्य ही अभ्यास शुरू कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.blocked.needs_consent": {
+   "source": "eb9edde05362ff",
+   "english": "A guardian needs to give consent before this child can train.",
+   "text": "इस बच्चे के अभ्यास करने से पहले अभिभावक की सहमति ज़रूरी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.needs_consent"
+  },
+  "train.blocked.not_offered": {
+   "source": "7e778f55055331",
+   "english": "This is not offered at the moment.",
+   "text": "यह इस समय उपलब्ध नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.blocked.programme_done": {
+   "source": "c0a03b9e45d193",
+   "english": "Today's practice is done. Come back tomorrow.",
+   "text": "आज का अभ्यास पूरा हो गया है। कल वापस आएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.programme_done"
+  },
+  "train.blocked.under_age": {
+   "source": "1947f1fe9ca2b5",
+   "english": "No screen sessions under age 4. Off-screen exercises are open.",
+   "text": "4 साल से कम उम्र के लिए स्क्रीन सेशन नहीं हैं। बिना स्क्रीन वाले व्यायाम खुले हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.under_age"
+  },
+  "train.blocked.unknown_item": {
+   "source": "fd24b20638bdca",
+   "english": "This activity is not in the library.",
+   "text": "यह गतिविधि लाइब्रेरी में नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.cinema.activities.body": {
+   "source": "4703a179821078",
+   "english": "The same two-eye film, with a small task drawn on top to keep the weaker eye busy and a child watching. The film is the practice; the task is there to hold attention.",
+   "text": "वही दो-आँख वाली फ़िल्म, जिस पर ऊपर एक छोटा टास्क बना होता है ताकि कमज़ोर आँख व्यस्त रहे और बच्चा देखता रहे। फ़िल्म अभ्यास है; टास्क ध्यान बनाए रखने के लिए है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.activities.open": {
+   "source": "707ab58c3c38bc",
+   "english": "Open",
+   "text": "खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.open"
+  },
+  "train.cinema.activities.title": {
+   "source": "28121a5d7b1563",
+   "english": "Watch with a task",
+   "text": "एक टास्क के साथ देखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.activity": {
+   "source": "480fce56ed1754",
+   "english": "Film activity",
+   "text": "फ़िल्म गतिविधि",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.choose": {
+   "source": "286ed202a57d48",
+   "english": "Choose a film from this device",
+   "text": "इस डिवाइस से कोई फ़िल्म चुनें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.clockNote": {
+   "source": "f00caec6926c91",
+   "english": "The clock runs while the film plays. The film stops when today's minutes are used.",
+   "text": "फ़िल्म चलने पर घड़ी चलती है। आज के मिनट पूरे होने पर फ़िल्म रुक जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.contrast": {
+   "source": "4a1d87f613e0d8",
+   "english": "Stronger-eye contrast",
+   "text": "मज़बूत आँख का कंट्रास्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.contrast"
+  },
+  "train.cinema.film": {
+   "source": "77859e97393072",
+   "english": "Your film, shown as a two-eye picture",
+   "text": "आपकी फ़िल्म, दो-आँख वाली तस्वीर के रूप में दिखाई गई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.fromProfile": {
+   "source": "1971b24d861faa",
+   "english": "Set from your eye settings",
+   "text": "आपकी आँख की सेटिंग से सेट किया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.noFilm": {
+   "source": "fd7d041b40b99f",
+   "english": "No film at hand?",
+   "text": "पास में कोई फ़िल्म नहीं है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.none": {
+   "source": "70614a860089b8",
+   "english": "No film chosen yet.",
+   "text": "अभी तक कोई फ़िल्म नहीं चुनी गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.onDevice": {
+   "source": "2b5ab30a3f6e72",
+   "english": "The film plays from this device and is never uploaded.",
+   "text": "फ़िल्म इसी डिवाइस से चलती है और कभी अपलोड नहीं की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.reel": {
+   "source": "ec2caa447a8ead",
+   "english": "Play IOpener's test reel (90 seconds)",
+   "text": "IOpener की टेस्ट रील चलाएँ (90 सेकंड)",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.results": {
+   "source": "9a76194a2ad405",
+   "english": "Your cinema time",
+   "text": "आपका सिनेमा का समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.film.title"
+  },
+  "train.cinema.standard": {
+   "source": "e74c846d9913a3",
+   "english": "Standard level until onboarding is done",
+   "text": "जब तक ऑनबोर्डिंग पूरी नहीं होती, तब तक स्टैंडर्ड लेवल रहेगा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.sub": {
+   "source": "2ddd5386402156",
+   "english": "Watch your own film through the red-cyan glasses. Both eyes see the picture; the stronger eye sees it fainter.",
+   "text": "लाल-सियान चश्मा पहनकर अपनी खुद की फ़िल्म देखें। दोनों आँखें तस्वीर देखती हैं; मज़बूत आँख इसे धुंधला देखती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.cinema.title": {
+   "source": "bf9bb344e7c027",
+   "english": "Two-eye cinema",
+   "text": "दोनों आँखों का सिनेमा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.cinema"
+  },
+  "train.cinema.watched": {
+   "source": "ca381635f540c8",
+   "english": "Watched this session",
+   "text": "इस सत्र में देखा गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.clock.label": {
+   "source": "0adb1f8fb13667",
+   "english": "Time left in this session",
+   "text": "इस सत्र में बाकी समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.clock.left": {
+   "source": "f052f0c788d111",
+   "english": "left",
+   "text": "बाकी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.ended.daily_cap": {
+   "source": "16f5f96329b8c1",
+   "english": "The daily limit of 90 minutes is reached.",
+   "text": "90 मिनट की रोज़ की सीमा पूरी हो गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/today:today.blocked.daily_cap"
+  },
+  "train.ended.done": {
+   "source": "0e3fdc36ac20f2",
+   "english": "Session finished. Well done.",
+   "text": "सत्र समाप्त हुआ। बहुत बढ़िया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.ended.left": {
+   "source": "7bdf2dc8c8ec47",
+   "english": "Session finished.",
+   "text": "सत्र समाप्त हुआ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.ended.stop_rule": {
+   "source": "da7c4f9a8c00d8",
+   "english": "Stopped. Rest your eyes now.",
+   "text": "रुक गया। अब अपनी आँखों को आराम दें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.exercise.again": {
+   "source": "346d65f06467ef",
+   "english": "Do it again",
+   "text": "फिर से करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.againLog": {
+   "source": "62e18093484571",
+   "english": "Change today's log",
+   "text": "आज का लॉग बदलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.careNote": {
+   "source": "4b6588de923061",
+   "english": "This routine does not use up today's training minutes.",
+   "text": "इस देखभाल में आज के अभ्यास के मिनट खर्च नहीं होते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.checklist": {
+   "source": "1b1979b455c3d7",
+   "english": "Things to check",
+   "text": "जाँच करने के लिए चीजें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.counsellorLed": {
+   "source": "4ab5fd32cc794e",
+   "english": "Counsellor-led",
+   "text": "काउंसलर की देखरेख में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.statusFor.counsellor"
+  },
+  "train.exercise.countLeft": {
+   "source": "e6a3816d0563ed",
+   "english": "Time left to count",
+   "text": "गिनने के लिए बचा समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.counted": {
+   "source": "42f099ad4ba386",
+   "english": "Counted",
+   "text": "गिन लिया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.crumb": {
+   "source": "581c366e882765",
+   "english": "Exercises",
+   "text": "कसरत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.exercises"
+  },
+  "train.exercise.doNow": {
+   "source": "82a719c995aae2",
+   "english": "Do it now",
+   "text": "इसे अभी करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.elapsed": {
+   "source": "de3f5b13bf809d",
+   "english": "Time on this routine",
+   "text": "इस रूटीन पर बिताया गया समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.evidence": {
+   "source": "b98becd4befa82",
+   "english": "Evidence estimate",
+   "text": "साक्ष्य का अनुमान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.evidence"
+  },
+  "train.exercise.kv.dose": {
+   "source": "c5a5bd08dd9350",
+   "english": "Dose",
+   "text": "डोज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.exercises.labels.dose"
+  },
+  "train.exercise.kv.for": {
+   "source": "ae379b8b675a83",
+   "english": "Who it is for",
+   "text": "यह किसके लिए है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.kv.for"
+  },
+  "train.exercise.kv.gear": {
+   "source": "31e266618cf931",
+   "english": "Gear",
+   "text": "सामान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.kv.gear"
+  },
+  "train.exercise.kv.purpose": {
+   "source": "9950b405697941",
+   "english": "Purpose",
+   "text": "उद्देश्य",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.kv.purpose"
+  },
+  "train.exercise.log": {
+   "source": "a7b5d21e7e0860",
+   "english": "Save this routine",
+   "text": "यह रूटीन सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.measure": {
+   "source": "4251010f7e048b",
+   "english": "What to measure",
+   "text": "क्या मापना है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.measuredBy.auto": {
+   "source": "dafdc508fddc29",
+   "english": "The screen measures this.",
+   "text": "स्क्रीन इसे मापती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.measuredBy.typed": {
+   "source": "dad2a8b8450489",
+   "english": "You type this in.",
+   "text": "आप इसे टाइप करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.mistakes": {
+   "source": "0aa2e8d39c1f3b",
+   "english": "Common mistakes",
+   "text": "आम गलतियाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.guide.mistakes"
+  },
+  "train.exercise.need": {
+   "source": "2066744824f68a",
+   "english": "You need",
+   "text": "आपको चाहिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.need"
+  },
+  "train.exercise.noUsual": {
+   "source": "30764254c7a7aa",
+   "english": "No published figure exists for this. Compare with your own earlier results.",
+   "text": "इसके लिए कोई प्रकाशित आँकड़ा मौजूद नहीं है। अपने पिछले परिणामों से तुलना करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.notWritten": {
+   "source": "f61ac86fbf1f6b",
+   "english": "The step-by-step guide for this routine is not written yet.",
+   "text": "इस देखभाल के लिए चरण-दर-चरण गाइड अभी नहीं लिखी गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.openCinema": {
+   "source": "78d747577177c8",
+   "english": "Open the two-eye cinema",
+   "text": "दोनों आँखों का सिनेमा खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.openCompanion": {
+   "source": "31e153c202f967",
+   "english": "Open the log",
+   "text": "लॉग खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.today.openLog"
+  },
+  "train.exercise.pause": {
+   "source": "c8837ac7cb9f97",
+   "english": "Stop timer",
+   "text": "टाइमर रोकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.print": {
+   "source": "a51eb1fe279e37",
+   "english": "Print the card",
+   "text": "कार्ड प्रिंट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.printNote": {
+   "source": "5e54a2dadcab26",
+   "english": "Print at 100% size (\"actual size\"), not \"fit to page\".",
+   "text": "100% साइज़ (\"वास्तविक साइज़\") पर प्रिंट करें, \"फ़िट टू पेज\" पर नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.ready": {
+   "source": "7f3928a7d76875",
+   "english": "Get ready",
+   "text": "तैयार हो जाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.ready"
+  },
+  "train.exercise.results": {
+   "source": "57b8bf59094761",
+   "english": "Your results",
+   "text": "आपके परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.title"
+  },
+  "train.exercise.resume": {
+   "source": "d1cfcedf05c663",
+   "english": "Start timer again",
+   "text": "टाइमर फिर से शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.right": {
+   "source": "faf0a5040b557a",
+   "english": "You are doing it right when",
+   "text": "आप इसे सही कर रहे हैं जब",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.saveLog": {
+   "source": "27c7ed668c75ea",
+   "english": "Save today's log",
+   "text": "आज का लॉग सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.setup": {
+   "source": "a1c7ab1372ea6b",
+   "english": "Set up",
+   "text": "सेटअप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.sources": {
+   "source": "2f2942e7492c76",
+   "english": "Where this comes from",
+   "text": "यह कहाँ से आता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.guide.sources"
+  },
+  "train.exercise.start": {
+   "source": "a053b00f51736f",
+   "english": "Start timer",
+   "text": "टाइमर शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.startCheck": {
+   "source": "9f4605fff3dde3",
+   "english": "Start the check",
+   "text": "जाँच शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.startCount": {
+   "source": "98b33acb29adf6",
+   "english": "Start the count",
+   "text": "गिनती शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.startLog": {
+   "source": "d3f8c96b04a3d7",
+   "english": "Fill in today's log",
+   "text": "आज का लॉग भरें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.statusFor.counsellor": {
+   "source": "4ab5fd32cc794e",
+   "english": "Counsellor-led",
+   "text": "काउंसलर की देखरेख में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.statusFor.counsellor"
+  },
+  "train.exercise.statusFor.off": {
+   "source": "a28ff731647020",
+   "english": "Switched off",
+   "text": "बंद है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.statusFor.off"
+  },
+  "train.exercise.statusFor.open": {
+   "source": "a39e73c73d4d0d",
+   "english": "Open to everyone",
+   "text": "सभी के लिए खुला",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.programme.levels.0.name"
+  },
+  "train.exercise.statusFor.staff": {
+   "source": "bc50cbf0645b5c",
+   "english": "Staff only",
+   "text": "केवल स्टाफ़ के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.statusFor.staff"
+  },
+  "train.exercise.steps": {
+   "source": "3059a5aee72961",
+   "english": "Steps",
+   "text": "कदम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.play"
+  },
+  "train.exercise.stop": {
+   "source": "f252d4071c9fed",
+   "english": "Stop and rest if",
+   "text": "रुकें और आराम करें अगर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.guide.stop"
+  },
+  "train.exercise.stopNote": {
+   "source": "4dead324b78965",
+   "english": "If any of these happens, press \"Stop, I feel unwell\". Do not push through it.",
+   "text": "इनमें से कुछ भी हो, तो \"Stop, I feel unwell\" दबाएँ। ज़बरदस्ती न करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.game.guide.stopNote"
+  },
+  "train.exercise.timeUp": {
+   "source": "c438675eb4b817",
+   "english": "Time is up",
+   "text": "समय पूरा हो गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.timer": {
+   "source": "2f1ca46c48ee5b",
+   "english": "Routine timer",
+   "text": "रूटीन टाइमर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.timerNote": {
+   "source": "c215635e80a533",
+   "english": "Start when you begin. Saving adds the time to today's practice and keeps your numbers.",
+   "text": "शुरू होने पर चालू करें। सेव करने से समय आज के अभ्यास में जुड़ जाता है और आपके नंबर सुरक्षित रहते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.checklist": {
+   "source": "e8e83f80918eaf",
+   "english": "Checklist",
+   "text": "चेकलिस्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.cinema": {
+   "source": "bf9bb344e7c027",
+   "english": "Two-eye cinema",
+   "text": "दोनों आँखों का सिनेमा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.cinema"
+  },
+  "train.exercise.tool.companion": {
+   "source": "97f5f6abae4c31",
+   "english": "Has its own log",
+   "text": "इसका अपना लॉग है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.count": {
+   "source": "72adf1b2fc9a62",
+   "english": "Counter",
+   "text": "काउंटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.drill": {
+   "source": "6f08bad2dcaa97",
+   "english": "On-screen drill",
+   "text": "स्क्रीन पर ड्रिल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.grid": {
+   "source": "5c2e4b316ce042",
+   "english": "Grid check",
+   "text": "ग्रिड जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.log": {
+   "source": "21a0ffc692a4b3",
+   "english": "Day log",
+   "text": "दिन का लॉग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.reading": {
+   "source": "8d3735e941138a",
+   "english": "Reading tool",
+   "text": "पढ़ने का टूल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.tool.timer": {
+   "source": "80623e36afb0ef",
+   "english": "Timer",
+   "text": "टाइमर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.checklist": {
+   "source": "07150cbea44b06",
+   "english": "Start the check and tick each thing that is right. The screen counts them.",
+   "text": "जाँच शुरू करें और सही होने वाली हर चीज़ पर टिक लगाएँ। स्क्रीन उन्हें गिन लेती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.cinema": {
+   "source": "3dce3576a49264",
+   "english": "This routine is done in the two-eye cinema. The time you watch is the record.",
+   "text": "यह देखभाल दो-आँख वाले सिनेमा में की जाती है। जितने समय आप देखते हैं, वही रिकॉर्ड है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.companion": {
+   "source": "dec7de9120dd0b",
+   "english": "This routine has its own log in the app. The log keeps the record.",
+   "text": "इस देखभाल का ऐप में अपना लॉग होता है। लॉग रिकॉर्ड रखता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.count": {
+   "source": "3f2518556659ee",
+   "english": "Start the count, then tap the big button each time. The screen works out the number for you.",
+   "text": "गिनती शुरू करें, फिर हर बार बड़े बटन को टैप करें। स्क्रीन आपके लिए नंबर निकाल देती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.drill": {
+   "source": "321008772a89f6",
+   "english": "Press Start. The screen runs the drill and measures it. Press Finish now when you are done.",
+   "text": "Start दबाएँ। स्क्रीन ड्रिल चलाती है और इसे मापती है। जब आपका काम हो जाए तो अभी Finish दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.grid": {
+   "source": "db5671909e570a",
+   "english": "Press Start and follow the steps for each eye. The screen keeps what you marked.",
+   "text": "Start दबाएँ और हर आँख के लिए चरणों का पालन करें। स्क्रीन वह याद रखती है जो आपने चिह्नित किया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.log": {
+   "source": "6db5038fdb6a78",
+   "english": "This routine runs through the day, so there is no clock. Type today's numbers and save.",
+   "text": "यह देखभाल दिन भर चलती है, इसलिए इसमें कोई घड़ी नहीं है। आज के नंबर टाइप करें और सेव करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.reading": {
+   "source": "fe475f56ee5c56",
+   "english": "Press Start and read one line at a time. The screen counts your lines and your speed.",
+   "text": "Start दबाएँ और एक समय में एक लाइन पढ़ें। स्क्रीन आपकी लाइनों और आपकी गति को गिनती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.toolNote.timer": {
+   "source": "b3f4ad08cf7c2e",
+   "english": "Start the timer when you begin. Saving adds the time to today's practice and keeps your numbers.",
+   "text": "शुरू करने पर timer चालू करें। सेव करने से आज के अभ्यास में समय जुड़ जाता है और आपके नंबर सुरक्षित रहते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.usual": {
+   "source": "30c8c064730beb",
+   "english": "For comparison",
+   "text": "तुलना के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercise.what": {
+   "source": "f0f55d762f3a9a",
+   "english": "What it is",
+   "text": "यह क्या है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.what"
+  },
+  "train.exercises.allGroups": {
+   "source": "17201516610431",
+   "english": "All",
+   "text": "सभी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.labels.dose": {
+   "source": "c5a5bd08dd9350",
+   "english": "Dose",
+   "text": "डोज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.labels.for": {
+   "source": "00c328b142201f",
+   "english": "For",
+   "text": "के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.labels.gear": {
+   "source": "31e266618cf931",
+   "english": "Gear",
+   "text": "सामान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.kv.gear"
+  },
+  "train.exercises.none": {
+   "source": "e1724de58cdde2",
+   "english": "No exercises match these filters.",
+   "text": "इन फ़िल्टर से कोई अभ्यास मेल नहीं खाता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.shown": {
+   "source": "c63dbafbe63a8f",
+   "english": "exercises shown",
+   "text": "दिखाए गए अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.strong": {
+   "source": "df5c6505a338f8",
+   "english": "rest on strong evidence",
+   "text": "पक्के प्रमाण पर आधारित हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.games.strong"
+  },
+  "train.exercises.sub": {
+   "source": "c8f6d0b2863453",
+   "english": "Each routine says what to do step by step, what to measure and how, and keeps your results.",
+   "text": "हर रूटीन स्टेप बाय स्टेप बताता है कि क्या करना है, क्या और कैसे मापना है, और आपके परिणाम सुरक्षित रखता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.exercises.title": {
+   "source": "581c366e882765",
+   "english": "Exercises",
+   "text": "कसरत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.exercises"
+  },
+  "train.finish": {
+   "source": "c0214f713aecdb",
+   "english": "Finish now",
+   "text": "अभी समाप्त करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.again": {
+   "source": "f2065dbf2ac17e",
+   "english": "Play again",
+   "text": "फिर से खेलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.crumb": {
+   "source": "cc5e37371adb1b",
+   "english": "Games",
+   "text": "गेम्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.games"
+  },
+  "train.game.evidence": {
+   "source": "b98becd4befa82",
+   "english": "Evidence estimate",
+   "text": "साक्ष्य का अनुमान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.better.higher": {
+   "source": "28c50854de96a8",
+   "english": "Higher is better.",
+   "text": "ज़्यादा बेहतर है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.better.lower": {
+   "source": "b9a2a2a1f43b6d",
+   "english": "Lower is better.",
+   "text": "कम होना बेहतर है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.better.none": {
+   "source": "ca771d2e82d91f",
+   "english": "A record only.",
+   "text": "सिर्फ एक रिकॉर्ड।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.controls": {
+   "source": "d5a609d266fae7",
+   "english": "How to answer",
+   "text": "जवाब कैसे दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.cues": {
+   "source": "4eb07dcce232f1",
+   "english": "When you see this, do this",
+   "text": "जब यह दिखे, तब यह करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.fullGuide": {
+   "source": "87d23952909ea9",
+   "english": "Read the manual: what it is for, what is measured, when to stop, where it comes from",
+   "text": "मैनुअल पढ़ें: यह किस लिए है, क्या मापा जाता है, कब रुकना है, यह कहाँ से आता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.bothSeeAll": {
+   "source": "82d1fb79369c95",
+   "english": "Without them both eyes see everything on the screen, so it can be played but nothing is practised.",
+   "text": "इसके बिना दोनों आँखें स्क्रीन पर सब कुछ देखती हैं, इसलिए इसे खेला तो जा सकता है लेकिन किसी चीज़ का अभ्यास नहीं होता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.check": {
+   "source": "8355d1f0ee8505",
+   "english": "The buttons above the scene show what each eye gets through its lens.",
+   "text": "सीन के ऊपर दिए गए बटन दिखाते हैं कि हर आँख को अपने लेंस से क्या मिलता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.patch": {
+   "source": "31ef330d8fc3fa",
+   "english": "With a patch, only the weaker eye works. With the glasses, the cyan lens goes over the weaker eye.",
+   "text": "पैच के साथ, केवल कमज़ोर आँख काम करती है। चश्मे के साथ, सियान लेंस कमज़ोर आँख पर जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.patchTitle": {
+   "source": "20bc46ff636060",
+   "english": "This needs a patch over the stronger eye, or red-cyan glasses.",
+   "text": "इसके लिए मज़बूत आँख पर पैच, या लाल-सियान चश्मा चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.practice": {
+   "source": "293f13b93211d6",
+   "english": "No glasses at hand? Choose \"Eyes joined\" above the scene to see what joined eyes see and to try how the game goes. Nothing is trained in that view.",
+   "text": "चश्मा पास नहीं है? यह देखने के लिए कि जुड़ी हुई आँखें क्या देखती हैं और गेम कैसे चलता है, सीन के ऊपर \"Eyes joined\" चुनें। उस दृश्य में किसी चीज़ का अभ्यास नहीं किया जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.title": {
+   "source": "b8386073596aa9",
+   "english": "This needs red-cyan glasses.",
+   "text": "इसके लिए लाल-सियान चश्मा चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.twoPictures": {
+   "source": "a8c798cea191a6",
+   "english": "Without them the screen always shows two pictures, one red and one cyan, and they can never become one.",
+   "text": "इसके बिना स्क्रीन हमेशा दो तस्वीरें दिखाती है, एक लाल और एक सियान, और वे कभी एक नहीं हो सकतीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.way(L)": {
+   "source": "0a6812c76ffc09",
+   "english": "Wear them with the cyan lens over your left eye and the red lens over your right eye.",
+   "text": "इसे ऐसे पहनें कि सियान लेंस आपकी बाईं आँख पर और लाल लेंस आपकी दाईं आँख पर हो।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.glasses.way(R)": {
+   "source": "ec33af60a52bd4",
+   "english": "Wear them with the cyan lens over your right eye and the red lens over your left eye.",
+   "text": "इसे ऐसे पहनें कि सियान लेंस आपकी दाईं आँख पर और लाल लेंस आपकी बाईं आँख पर हो।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.helps": {
+   "source": "0cf08a6f72b0d7",
+   "english": "What it is for",
+   "text": "यह किसलिए है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.howTitle": {
+   "source": "2f23ad0ee6a998",
+   "english": "How to play, and when to press",
+   "text": "कैसे खेलें, और कब दबाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.howToggle": {
+   "source": "a6c0d812e188b8",
+   "english": "(tap to hide or show)",
+   "text": "(छिपाने या दिखाने के लिए टैप करें)",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.keys": {
+   "source": "a008768f794c62",
+   "english": "Keys or TV remote",
+   "text": "कीज़ या टीवी रिमोट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.measure": {
+   "source": "90e3b3cc5a72a4",
+   "english": "What the game measures",
+   "text": "गेम क्या मापता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.mistakes": {
+   "source": "0aa2e8d39c1f3b",
+   "english": "Common mistakes",
+   "text": "आम गलतियाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.need": {
+   "source": "2066744824f68a",
+   "english": "You need",
+   "text": "आपको चाहिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.noNorm": {
+   "source": "e0d24c804231a0",
+   "english": "No published figure exists for a game score. Compare with your own earlier sessions.",
+   "text": "गेम स्कोर के लिए कोई प्रकाशित संख्या नहीं है। अपने पहले के सत्रों से तुलना करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.notWritten": {
+   "source": "de3d145ec2b5c3",
+   "english": "The guide for this game is not written yet.",
+   "text": "इस गेम के लिए गाइड अभी नहीं लिखी गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.play": {
+   "source": "3059a5aee72961",
+   "english": "Steps",
+   "text": "कदम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.ready": {
+   "source": "7f3928a7d76875",
+   "english": "Get ready",
+   "text": "तैयार हो जाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.see": {
+   "source": "7eb6c18742bb63",
+   "english": "What you should see",
+   "text": "आपको क्या दिखना चाहिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.sources": {
+   "source": "2f2942e7492c76",
+   "english": "Where this comes from",
+   "text": "यह कहाँ से आता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.stop": {
+   "source": "f252d4071c9fed",
+   "english": "Stop and rest if",
+   "text": "रुकें और आराम करें अगर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.stopNote": {
+   "source": "4dead324b78965",
+   "english": "If any of these happens, press \"Stop, I feel unwell\". Do not push through it.",
+   "text": "इनमें से कुछ भी हो, तो \"Stop, I feel unwell\" दबाएँ। ज़बरदस्ती न करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.guide.success": {
+   "source": "04103b9fddf4ce",
+   "english": "What counts as success",
+   "text": "सफलता क्या मानी जाएगी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.tone.go": {
+   "source": "7c4384a5cba2e9",
+   "english": "Act now",
+   "text": "अभी करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.tone.stop": {
+   "source": "e637b8edaaef25",
+   "english": "If this happens",
+   "text": "अगर ऐसा हो",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.tone.wait": {
+   "source": "b1d951989951e9",
+   "english": "Wait",
+   "text": "रुकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.touch": {
+   "source": "89d36ddd206051",
+   "english": "Touch or mouse",
+   "text": "टच या माउस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.guide.what": {
+   "source": "f0f55d762f3a9a",
+   "english": "What it is",
+   "text": "यह क्या है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.for": {
+   "source": "ae379b8b675a83",
+   "english": "Who it is for",
+   "text": "यह किसके लिए है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.gear": {
+   "source": "31e266618cf931",
+   "english": "Gear",
+   "text": "सामान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.play": {
+   "source": "16cb43e0ff1474",
+   "english": "What you do",
+   "text": "आपको क्या करना है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.playsOn": {
+   "source": "c663ffc110a9d4",
+   "english": "Plays on",
+   "text": "किस पर चलता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.purpose": {
+   "source": "9950b405697941",
+   "english": "Purpose",
+   "text": "उद्देश्य",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.kv.session": {
+   "source": "838b42e83ddc12",
+   "english": "Session",
+   "text": "सत्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.notBuilt.body": {
+   "source": "dba1e0ccfd42f2",
+   "english": "This game is in the plan. It cannot be played yet.",
+   "text": "यह गेम प्लान में है। इसे अभी नहीं खेला जा सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.notBuilt.title": {
+   "source": "e5ea87fc0d10d9",
+   "english": "Not built yet",
+   "text": "अभी नहीं बनाया गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.open": {
+   "source": "707ab58c3c38bc",
+   "english": "Open",
+   "text": "खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.play": {
+   "source": "0db390678866e5",
+   "english": "Play",
+   "text": "खेलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "train.game.results": {
+   "source": "57b8bf59094761",
+   "english": "Your results",
+   "text": "आपके परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.title"
+  },
+  "train.game.start": {
+   "source": "344de7fabb13dc",
+   "english": "Start",
+   "text": "शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.today.start"
+  },
+  "train.game.statusFor.counsellor": {
+   "source": "4ab5fd32cc794e",
+   "english": "Counsellor-led",
+   "text": "काउंसलर की देखरेख में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.statusFor.off": {
+   "source": "a28ff731647020",
+   "english": "Switched off",
+   "text": "बंद है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.game.statusFor.open": {
+   "source": "a39e73c73d4d0d",
+   "english": "Open to everyone",
+   "text": "सभी के लिए खुला",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.programme.levels.0.name"
+  },
+  "train.game.statusFor.staff": {
+   "source": "bc50cbf0645b5c",
+   "english": "Staff only",
+   "text": "केवल स्टाफ़ के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.evidence.0.label": {
+   "source": "3c1a5b96408b5b",
+   "english": "All evidence levels",
+   "text": "प्रमाण के सभी स्तर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.evidence.1.label": {
+   "source": "6bfb989c36b802",
+   "english": "Strong evidence only",
+   "text": "सिर्फ़ पक्के प्रमाण",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.films(*)": {
+   "source": "afff4a994f87f2",
+   "english": "{n} film activities are in the Two-eye cinema.",
+   "text": "Two-eye सिनेमा में {n} फ़िल्म गतिविधियाँ हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "n"
+   ]
+  },
+  "train.games.films(1)": {
+   "source": "df037639176f60",
+   "english": "1 film activity is in the Two-eye cinema.",
+   "text": "Two-eye सिनेमा में 1 फ़िल्म गतिविधि है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.none": {
+   "source": "055336f7bc3763",
+   "english": "No games match these filters.",
+   "text": "इन फ़िल्टर से कोई गेम मेल नहीं खाता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.playable": {
+   "source": "31f64a97d0e3fb",
+   "english": "Playable",
+   "text": "खेला जा सकता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.showAll": {
+   "source": "19380a3022048f",
+   "english": "Show all evidence levels",
+   "text": "प्रमाण के सभी स्तर दिखाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.shown": {
+   "source": "fe9df94bd38dd9",
+   "english": "games shown",
+   "text": "दिखाए गए गेम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.strong": {
+   "source": "df5c6505a338f8",
+   "english": "rest on strong evidence",
+   "text": "पक्के प्रमाण पर आधारित हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.sub": {
+   "source": "f56e0473ac1d4b",
+   "english": "Every game carries the evidence level of the method it uses. The strongest evidence comes first. After a game you see what it measured.",
+   "text": "हर गेम में उसके तरीके के प्रमाण का स्तर होता है। सबसे पक्के प्रमाण सबसे पहले आते हैं। गेम के बाद आपको दिखता है कि इसने क्या नापा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.games.title": {
+   "source": "cc5e37371adb1b",
+   "english": "Games",
+   "text": "गेम्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.games"
+  },
+  "train.games.toCinema": {
+   "source": "bc97f1f07a3af3",
+   "english": "Open the cinema",
+   "text": "सिनेमा खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.kept": {
+   "source": "074b60a53240e8",
+   "english": "Saved to your record.",
+   "text": "आपके रिकॉर्ड में सेव हो गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.back": {
+   "source": "63c67a9e8edf38",
+   "english": "Back to the game",
+   "text": "गेम पर वापस जाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.crumb": {
+   "source": "332166f2d04b7c",
+   "english": "Manual",
+   "text": "मैनुअल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.link": {
+   "source": "606104d4215214",
+   "english": "Read the manual",
+   "text": "मैनुअल पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.print": {
+   "source": "f44063c162eb71",
+   "english": "Print this manual",
+   "text": "यह मैनुअल प्रिंट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.catFor": {
+   "source": "16dd0dd60d0b08",
+   "english": "Who it is for, in the catalogue",
+   "text": "कैटलॉग में: यह किसके लिए है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.catPlay": {
+   "source": "bab275dee17431",
+   "english": "Catalogue line",
+   "text": "कैटलॉग लाइन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.catPurpose": {
+   "source": "b949285535c1e5",
+   "english": "Purpose in the catalogue",
+   "text": "कैटलॉग में उद्देश्य",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.group": {
+   "source": "2d06af9d4c7f60",
+   "english": "Group",
+   "text": "ग्रुप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.label": {
+   "source": "24dae0f9887d5a",
+   "english": "Evidence label",
+   "text": "प्रमाण लेबल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.level": {
+   "source": "7416f6b692c0d0",
+   "english": "Access level",
+   "text": "एक्सेस लेवल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.levels.0": {
+   "source": "77caa22c097b0c",
+   "english": "Level 0: for everyone.",
+   "text": "लेवल 0: सभी के लिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.levels.1": {
+   "source": "5d00851dccc03b",
+   "english": "Level 1: for a named condition, at the dose the trials used. A caregiver for a child.",
+   "text": "लेवल 1: किसी बताई गई स्थिति के लिए, ट्रायल में इस्तेमाल की गई मात्रा के अनुसार। बच्चे की देखभाल करने वाले के लिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.levels.2": {
+   "source": "f18017e099977b",
+   "english": "Level 2: recommended as counsellor-led (squint, after concussion, after stroke).",
+   "text": "लेवल 2: काउंसलर की देखरेख में करने की सलाह (भेंगापन, सिर पर चोट के बाद, स्ट्रोक के बाद)।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.limits": {
+   "source": "b6e55fa6360434",
+   "english": "What it cannot tell, and open points",
+   "text": "यह क्या नहीं बता सकता, और बाकी बातें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.method": {
+   "source": "4984e05d5d435f",
+   "english": "Method",
+   "text": "तरीका",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.noLimits": {
+   "source": "834c3c19178e2e",
+   "english": "No notes yet.",
+   "text": "अभी कोई नोट नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.now(*)": {
+   "source": "f3e7e1e11d8e28",
+   "english": "set to \"{status}\" now",
+   "text": "अब \"{status}\" पर सेट है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "status"
+   ]
+  },
+  "train.manual.staff.recommended": {
+   "source": "a49746ad998196",
+   "english": "Recommended status",
+   "text": "सुझाई गई स्थिति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.tags": {
+   "source": "a13754988ac5de",
+   "english": "Programme tags",
+   "text": "प्रोग्राम टैग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.staff.title": {
+   "source": "329ae0a647f9e1",
+   "english": "For staff: why this is in the library, and what it cannot tell",
+   "text": "स्टाफ़ के लिए: यह लाइब्रेरी में क्यों है, और यह क्या नहीं बता सकता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.sub": {
+   "source": "1c134ffa5abdb7",
+   "english": "Everything about this one: what it is for, what you should see, how to play, what is measured and where it comes from.",
+   "text": "इसके बारे में सब कुछ: यह किसलिए है, आपको क्या दिखना चाहिए, कैसे खेलना है, क्या नापा जाता है और यह कहाँ से आया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.manual.title(*)": {
+   "source": "c980cd63af1f55",
+   "english": "Manual: {name}",
+   "text": "मैनुअल: {name}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "train.manual.tool": {
+   "source": "a1a4a42cfc1d6c",
+   "english": "Tool",
+   "text": "टूल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.minutesLeft(0)": {
+   "source": "8d974981c27a07",
+   "english": "0 minutes left today.",
+   "text": "आज 0 मिनट बचे हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.minutesLeft(1)": {
+   "source": "a1078b6f7efe83",
+   "english": "1 minute left today.",
+   "text": "आज 1 मिनट बचा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.noEye.body": {
+   "source": "e27fbc0769e5ac",
+   "english": "No eye settings yet, so this uses standard sizes and full contrast for both eyes.",
+   "text": "अभी आँखों की कोई सेटिंग नहीं है, इसलिए दोनों आँखों के लिए सामान्य आकार और पूरा कंट्रास्ट इस्तेमाल किया जा रहा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.noEye.cta": {
+   "source": "d80d162964691c",
+   "english": "Start onboarding",
+   "text": "ऑनबोर्डिंग शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.intro.start"
+  },
+  "train.noProgramme": {
+   "source": "47a0388ad346e1",
+   "english": "No programme sets your minutes, so the daily limit of 90 applies.",
+   "text": "कोई प्रोग्राम आपके मिनट तय नहीं करता, इसलिए हर दिन की 90 की सीमा लागू होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.notSaved": {
+   "source": "96237678db795b",
+   "english": "This session could not be saved, so it does not count toward today.",
+   "text": "यह सत्र सेव नहीं हो सका, इसलिए यह आज में नहीं गिना जाएगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.saved(0)": {
+   "source": "45434437772280",
+   "english": "0 min 0 s added to today's practice.",
+   "text": "आज के अभ्यास में 0 min 0 s जोड़े गए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.saved(1)": {
+   "source": "ba90b4e74a43d6",
+   "english": "0 min 1 s added to today's practice.",
+   "text": "आज के अभ्यास में 0 min 1 s जोड़े गए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.saving": {
+   "source": "c49969c97f8439",
+   "english": "Saving",
+   "text": "सेव हो रहा है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.score": {
+   "source": "f469688270fa41",
+   "english": "Score",
+   "text": "स्कोर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.score"
+  },
+  "train.starting": {
+   "source": "d243956068b7dd",
+   "english": "Starting",
+   "text": "शुरू हो रहा है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.ask": {
+   "source": "90eb400837356a",
+   "english": "What did you feel?",
+   "text": "आपको क्या महसूस हुआ?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.button": {
+   "source": "85ed3aaa408101",
+   "english": "Stop, I feel unwell",
+   "text": "रोकें, मुझे ठीक नहीं लग रहा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.doctor": {
+   "source": "19aaaf5392ae89",
+   "english": "Do not practise again today. See an eye doctor before the next session.",
+   "text": "आज दोबारा अभ्यास न करें। अगले सेशन से पहले आँखों के डॉक्टर को दिखाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.rest": {
+   "source": "15a2c327e12217",
+   "english": "Do not practise again today. If it comes back in another session, tell an eye doctor.",
+   "text": "आज दोबारा अभ्यास न करें। अगर किसी और सेशन में ऐसा फिर हो, तो आँखों के डॉक्टर को बताएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.symptoms.dizzy": {
+   "source": "14803b95cfa1c7",
+   "english": "Dizzy",
+   "text": "चक्कर आना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.symptoms.double_vision": {
+   "source": "dc8ace4fcfc3f6",
+   "english": "Seeing double",
+   "text": "दोहरा दिखना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.symptoms.eye_pain": {
+   "source": "901cad27d1fbd6",
+   "english": "Eye pain",
+   "text": "आँखों में दर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.symptoms.headache": {
+   "source": "d4f353f3833b89",
+   "english": "Headache",
+   "text": "सिरदर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.stop.symptoms.sick": {
+   "source": "032117acacd602",
+   "english": "Feeling sick",
+   "text": "जी मिचलाना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.supervision.does": {
+   "source": "e9584471fe1b62",
+   "english": "What a therapist or counsellor does that the app cannot",
+   "text": "थेरेपिस्ट या काउंसलर ऐसा क्या करते हैं जो ऐप नहीं कर सकता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.supervision.title": {
+   "source": "f4d212511b92ff",
+   "english": "What supervision adds",
+   "text": "देखरेख से क्या मदद मिलती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "train.testerOpen": {
+   "source": "f79fa7ad01659b",
+   "english": "Staff test household: the daily limits are off.",
+   "text": "स्टाफ़ टेस्ट परिवार: हर दिन की सीमाएँ बंद हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

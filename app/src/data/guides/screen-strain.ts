@@ -4,6 +4,8 @@
  * so every routine here is done by hand: a timer, a tape measure, a list to tick.
  */
 import type { Guide, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -53,10 +55,10 @@ const DESK_CHECKS = [
   "The screen is clean: no dust and no fingerprints.",
 ];
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/screen-strain", () => [
   {
     slug: "look-away-break",
-    what: "A short rest for the eyes during screen work. Every 20 minutes you look at something 6 metres away or more for 20 seconds, so the muscles that focus and aim your eyes up close can let go.",
+    what: "A short rest for the eyes during screen work. Every 20 minutes you look at something 6 metres away or more for 20 seconds. The muscles that focus and aim your eyes up close can then let go.",
     need: [
       "A timer that can ring every 20 minutes: a phone alarm, a kitchen timer or a clock you can see.",
       "Something to look at 6 metres away or more: out of a window, down a corridor, across a large room.",
@@ -144,7 +146,7 @@ export const guides: Guide[] = [
     need: [
       "The laptop or desk screen you work at. The figures here are for a screen on a desk, not a phone held in the hand.",
       "A tape measure or ruler. With neither, a sheet of A4 paper: its long side is almost exactly 30 cm.",
-      "A grown-up at a computer can let the workday monitor read this distance with the camera, once it has been set with a tape: open Today, then Workday monitor. This routine is the check by hand.",
+      "A grown-up at a computer can let the workday monitor read this distance with the camera, once it has been set with a tape. Open Today, then Workday monitor. This routine is the check by hand.",
     ],
     setup: [
       "Sit the way you really sit when you work. Do not sit up straight just for the check.",
@@ -235,4 +237,4 @@ export const guides: Guide[] = [
     evidence: "No trial tested this list as a treatment for eye strain. Each check is taken from the display screen guidance of two workplace safety bodies.",
     sources: [HSE_CHECKLIST, OSHA_MONITORS, OSHA_ROOM],
   },
-];
+], GUIDE_WORDS);

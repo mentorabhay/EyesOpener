@@ -1,0 +1,942 @@
+{
+ "lang": "hi",
+ "file": "copy/onboarding",
+ "entries": {
+  "onboarding.answer(*)": {
+   "source": "102119d2cae2cf",
+   "english": "Answer {n}",
+   "text": "जवाब {n}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "n"
+   ]
+  },
+  "onboarding.blocked.seat": {
+   "source": "cff4345c3a0a89",
+   "english": "Your seat can look and cheer. A guardian runs onboarding.",
+   "text": "आपकी सीट देख सकती है और हौसला बढ़ा सकती है। ऑनबोर्डिंग अभिभावक करवाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.blocked.under_age": {
+   "source": "7a96388d27fed8",
+   "english": "No screen sessions under age 4, and onboarding is a screen session. Off-screen exercises are open.",
+   "text": "4 साल से कम उम्र में कोई स्क्रीन सेशन नहीं होता, और ऑनबोर्डिंग एक स्क्रीन सेशन है। बिना स्क्रीन वाले अभ्यास खुले हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.both.skip": {
+   "source": "6da847ee350a0c",
+   "english": "No glasses here: use the starting level",
+   "text": "यहाँ चश्मा नहीं है: शुरुआती लेवल का इस्तेमाल करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.both.time": {
+   "source": "8a91f56b8986d9",
+   "english": "about 1:00",
+   "text": "लगभग 1:00",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.both.title": {
+   "source": "caf2e30c3e6822",
+   "english": "Both eyes together",
+   "text": "दोनों आँखें एक साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.deviceLabel": {
+   "source": "0beaeaf3f84df0",
+   "english": "This screen",
+   "text": "यह स्क्रीन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.equal": {
+   "source": "8653c76619f73f",
+   "english": "The two eyes pull equally, so both get full contrast.",
+   "text": "दोनों आँखें बराबर काम करती हैं, इसलिए दोनों को पूरा कंट्रास्ट मिलता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.everywhere": {
+   "source": "1ca872416e8c57",
+   "english": " Every two-eye scene now draws from these settings.",
+   "text": " अब दोनों आँखों वाला हर सीन इन्हीं सेटिंग्स का इस्तेमाल करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.links.0.1": {
+   "source": "7fca2ff1421477",
+   "english": "Today",
+   "text": "आज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.today"
+  },
+  "onboarding.done.links.0.2": {
+   "source": "5c827ab7158d9d",
+   "english": "the day's practice uses these settings.",
+   "text": "दिन का अभ्यास इन्हीं सेटिंग्स का इस्तेमाल करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.links.1.1": {
+   "source": "cc5e37371adb1b",
+   "english": "Games",
+   "text": "गेम्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.games"
+  },
+  "onboarding.done.links.1.2": {
+   "source": "1c271ad5813655",
+   "english": "the red ink and the target sizes follow them.",
+   "text": "लाल स्याही और टारगेट के साइज़ इन्हीं के अनुसार होते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.links.2.1": {
+   "source": "116ed75ac74649",
+   "english": "Check-ups",
+   "text": "जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.checkups"
+  },
+  "onboarding.done.links.2.2": {
+   "source": "e83afe4e83abfa",
+   "english": "repeat the tests each week and the settings move as the eyes change.",
+   "text": "हर सप्ताह टेस्ट दोहराएं और आँखों में बदलाव के साथ सेटिंग्स बदलती रहेंगी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.links.3.1": {
+   "source": "1d7069ef0e690b",
+   "english": "This screen's colours",
+   "text": "इस स्क्रीन के रंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.links.3.2": {
+   "source": "4b2b81ada0b77f",
+   "english": "an optional five minutes for a grown-up with the red-cyan glasses. It makes contrast truer on this screen and shows how well the glasses keep the two pictures apart.",
+   "text": "किसी बड़े के लिए लाल-सियान चश्मा के साथ वैकल्पिक पाँच मिनट। यह इस स्क्रीन पर कंट्रास्ट को और सही बनाता है और दिखाता है कि चश्मा दोनों तस्वीरों को कितनी अच्छी तरह अलग रखता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.retry": {
+   "source": "42941fb09831c6",
+   "english": "Try again",
+   "text": "फिर से कोशिश करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.saveError": {
+   "source": "82dee468f682bd",
+   "english": "The settings could not be saved. Nothing was changed.",
+   "text": "सेटिंग्स सेव नहीं की जा सकीं। कुछ भी नहीं बदला गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.saving": {
+   "source": "92cacdaf2538b1",
+   "english": "Saving your settings.",
+   "text": "आपकी सेटिंग्स सेव की जा रही हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.skipped(*)": {
+   "source": "3236fde81a3bce",
+   "english": "The balance test was skipped, so the stronger eye starts at {level}, the starting level used in the Luminopia trial. ",
+   "text": "बैलेंस टेस्ट छोड़ दिया गया था, इसलिए मज़बूत आँख {level} से शुरू होती है, जो कि Luminopia ट्रायल में इस्तेमाल किया गया शुरुआती लेवल है। ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "level"
+   ]
+  },
+  "onboarding.done.skippedCta": {
+   "source": "62d042a9dce3c3",
+   "english": "Take the balance test with glasses to replace it.",
+   "text": "इसे बदलने के लिए चश्मा पहनकर बैलेंस टेस्ट करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.swap(L)": {
+   "source": "cd0c39d093c22f",
+   "english": "The balance test found the left eye weaker than the letter test suggested. Turn the glasses round: cyan lens over the left eye.",
+   "text": "बैलेंस टेस्ट में बाईं आँख अक्षरों के टेस्ट से ज़्यादा कमज़ोर पाई गई। चश्मा पलट लें: सियान लेंस बाईं आँख पर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.swap(R)": {
+   "source": "2d43c7708ed398",
+   "english": "The balance test found the right eye weaker than the letter test suggested. Turn the glasses round: cyan lens over the right eye.",
+   "text": "बैलेंस टेस्ट में दाईं आँख अक्षरों के टेस्ट से ज़्यादा कमज़ोर पाई गई। चश्मा पलट लें: सियान लेंस दाईं आँख पर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.title": {
+   "source": "090dc59b89ec06",
+   "english": "Settings saved for this screen",
+   "text": "इस स्क्रीन के लिए सेटिंग्स सेव हो गईं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.done.weak(L,*)": {
+   "source": "e47c43285a5299",
+   "english": "The left eye is the weaker one. The stronger eye is shown at {contrast} contrast.",
+   "text": "बाईं आँख कमज़ोर आँख है। मज़बूत आँख को {contrast} कंट्रास्ट पर दिखाया जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "e",
+    "contrast"
+   ]
+  },
+  "onboarding.done.weak(R,*)": {
+   "source": "dd40183bc2a02e",
+   "english": "The right eye is the weaker one. The stronger eye is shown at {contrast} contrast.",
+   "text": "दायीं आँख कमज़ोर आँख है। मज़बूत आँख को {contrast} कंट्रास्ट पर दिखाया जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "e",
+    "contrast"
+   ]
+  },
+  "onboarding.eyeDone.faintest": {
+   "source": "64302ba5922050",
+   "english": "Faintest letter read",
+   "text": "पढ़ा गया सबसे हल्का अक्षर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.faintestFloor": {
+   "source": "b369cd939d1eeb",
+   "english": "That is the faintest step an ordinary screen can show",
+   "text": "यह सबसे हल्का स्तर है जो एक साधारण स्क्रीन दिखा सकती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.faintestHow": {
+   "source": "58de928944d0c8",
+   "english": "Large letter, dark on grey",
+   "text": "बड़ा अक्षर, स्लेटी पर गहरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.next(L)": {
+   "source": "215203f1218dbb",
+   "english": "Next: Onboarding right eye",
+   "text": "आगे: दायीं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.next(R)": {
+   "source": "1088f9e3da7b14",
+   "english": "Next: both eyes together",
+   "text": "आगे: दोनों आँखें एक साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.smallest": {
+   "source": "3e14dabeda0ca5",
+   "english": "Smallest letter read",
+   "text": "पढ़ा गया सबसे छोटा अक्षर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.smallestAt(*)": {
+   "source": "f6eb267bc74787",
+   "english": "Read at {dist} cm",
+   "text": "{dist} cm पर पढ़ा गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "dist"
+   ]
+  },
+  "onboarding.eyeDone.smallestFloor": {
+   "source": "b1bcd067b6223a",
+   "english": "That is the smallest letter this screen can show at this distance",
+   "text": "यह सबसे छोटा अक्षर है जो यह स्क्रीन इस दूरी पर दिखा सकती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.sudden": {
+   "source": "45944b2f4e090f",
+   "english": "You reported a recent sudden change in this eye. See an eye doctor before training.",
+   "text": "आपने इस आँख में हाल ही में अचानक बदलाव की जानकारी दी है। अभ्यास से पहले आँखों के डॉक्टर को दिखाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.title(L,0)": {
+   "source": "4e761f1fada7a3",
+   "english": "Left eye done in 0:00",
+   "text": "बाईं आँख 0:00 में पूरी हुई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.title(L,1)": {
+   "source": "ce40ecb8e418d8",
+   "english": "Left eye done in 0:01",
+   "text": "बाईं आँख 0:01 में पूरी हुई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.title(R,0)": {
+   "source": "272d9c06ea6680",
+   "english": "Right eye done in 0:00",
+   "text": "दायीं आँख 0:00 में पूरी हुई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeDone.title(R,1)": {
+   "source": "6239af543a2b1f",
+   "english": "Right eye done in 0:01",
+   "text": "दायीं आँख 0:01 में पूरी हुई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.eyeTitle(L)": {
+   "source": "8079d625d6c5e7",
+   "english": "Onboarding left eye",
+   "text": "बाईं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.steps.L.0"
+  },
+  "onboarding.eyeTitle(R)": {
+   "source": "4e119b4321a4fd",
+   "english": "Onboarding right eye",
+   "text": "दायीं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.steps.R.0"
+  },
+  "onboarding.intro.again": {
+   "source": "abc04f3caa890a",
+   "english": "Run onboarding again",
+   "text": "ऑनबोर्डिंग फिर से करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.body": {
+   "source": "7bb0687eab9c9e",
+   "english": "Onboarding measures each eye on its own, then both together. Nothing is typed in. You answer by pointing the way a letter faces.",
+   "text": "ऑनबोर्डिंग पहले हर आँख को अलग-अलग, फिर दोनों को एक साथ नापती है। कुछ भी टाइप नहीं करना है। अक्षर जिस तरफ़ मुड़ा है, उस तरफ़ इशारा करके जवाब दें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.0.0": {
+   "source": "86939c4cd199ed",
+   "english": "Screen, 30 seconds.",
+   "text": "स्क्रीन, 30 सेकंड।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.0.1": {
+   "source": "d8065a0977828d",
+   "english": "A bank card sets the true size of this screen. The seat distance sets how big a letter looks.",
+   "text": "बैंक कार्ड से इस स्क्रीन का सही साइज़ तय होता है। बैठने की दूरी से तय होता है कि अक्षर कितना बड़ा दिखेगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.1.0": {
+   "source": "3267ee3dd9b6eb",
+   "english": "Onboarding left eye, 2 minutes.",
+   "text": "बाईं आँख की ऑनबोर्डिंग, 2 मिनट।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.1.1": {
+   "source": "4989f635d2b382",
+   "english": "Right eye covered. Four questions, then the smallest letter and the faintest letter this eye can read.",
+   "text": "दाहिने आँख ढकी हुई है। चार सवाल, फिर सबसे छोटा अक्षर और सबसे हल्का अक्षर जिसे यह आँख पढ़ सकती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "onboarding.intro.list.2.0": {
+   "source": "bac854843ca9aa",
+   "english": "Onboarding right eye, 2 minutes.",
+   "text": "दायीं आँख की ऑनबोर्डिंग, 2 मिनट।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.2.1": {
+   "source": "75c1c21ab915de",
+   "english": "The same, with the left eye covered.",
+   "text": "यही सब, बाईं आँख ढककर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.3.0": {
+   "source": "fa55db233528eb",
+   "english": "Both eyes, 1 minute.",
+   "text": "दोनों आँखें, 1 मिनट।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.list.3.1": {
+   "source": "a0bca0ce984eae",
+   "english": "Red-cyan glasses on. The balance test finds how far the stronger eye must be dimmed for the two eyes to pull equally.",
+   "text": "लाल-सियान चश्मा पहनें। बैलेंस टेस्ट यह पता लगाता है कि दोनों आँखों के बराबर ज़ोर लगाने के लिए मज़बूत आँख को कितना धीमा करना होगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.ready": {
+   "source": "4171dd14d5ea63",
+   "english": "Have ready: a bank card, your own glasses if you wear them, and red-cyan glasses for the last step.",
+   "text": "तैयार रखें: एक बैंक कार्ड, अगर आप पहनते हैं तो अपना चश्मा, और आखिरी चरण के लिए लाल-सियान चश्मा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.start": {
+   "source": "d80d162964691c",
+   "english": "Start onboarding",
+   "text": "ऑनबोर्डिंग शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.intro.title": {
+   "source": "c7aae87e8044dd",
+   "english": "Five minutes, once on each screen",
+   "text": "पाँच मिनट, हर स्क्रीन पर एक बार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "onboarding.no": {
+   "source": "f17d1a5e1ef440",
+   "english": "No",
+   "text": "नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.questions.0": {
+   "source": "386998fe5899f8",
+   "english": "Do you wear glasses or contact lenses for this eye?",
+   "text": "क्या आप इस आँख के लिए चश्मा या कॉन्टैक्ट लेंस पहनते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.questions.1": {
+   "source": "ececabee44b2c7",
+   "english": "Has this eye ever been called lazy, or been patched?",
+   "text": "क्या इस आँख को कभी लेज़ी कहा गया है, या इस पर पैच लगाया गया है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.questions.2": {
+   "source": "9b6167da379e4a",
+   "english": "Does this eye turn in or out, even sometimes?",
+   "text": "क्या यह आँख, कभी-कभी भी, अंदर या बाहर की तरफ घूमती है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.questions.3": {
+   "source": "5df792aca4b535",
+   "english": "In the last month: pain, flashes, a sudden change or new double vision in this eye?",
+   "text": "पिछले एक महीने में: इस आँख में दर्द, चमक, अचानक कोई बदलाव या नया दोहरा दिखना?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.bar": {
+   "source": "fd61476bcdc3ff",
+   "english": "Bar height",
+   "text": "बार की ऊँचाई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.card.0": {
+   "source": "eb3d5c9099cd53",
+   "english": "Hold the ",
+   "text": "किसी बैंक कार्ड का ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.card.1": {
+   "source": "83897f7cd0d06b",
+   "english": "short edge",
+   "text": "छोटा किनारा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.card.2": {
+   "source": "280c6bb9e50ec5",
+   "english": " of a bank card upright against the bar. Drag until the bar is exactly as tall as the card.",
+   "text": " बार से सटाकर सीधा रखें। बार को तब तक खींचें जब तक यह ठीक कार्ड जितना ऊँचा न हो जाए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distance": {
+   "source": "0ccf04cc7add7f",
+   "english": "How far are your eyes from this screen?",
+   "text": "आपकी आँखें इस स्क्रीन से कितनी दूर हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distanceGroup": {
+   "source": "fdd34c73bf60b2",
+   "english": "Viewing distance",
+   "text": "देखने की दूरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distances.0.1": {
+   "source": "e44bcc3b314cf7",
+   "english": "Phone, 40 cm",
+   "text": "फ़ोन, 40 cm",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distances.1.1": {
+   "source": "a0fc0ad9ced037",
+   "english": "Laptop, 60 cm",
+   "text": "लैपटॉप, 60 cm",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distances.2.1": {
+   "source": "9d9e7cd8b9ed35",
+   "english": "1 m",
+   "text": "1 m",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.distances.3.1": {
+   "source": "35a51653389e17",
+   "english": "TV, 2 m",
+   "text": "टीवी, 2 m",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.further": {
+   "source": "c36e512a358660",
+   "english": " Sit further back for a finer result.",
+   "text": " बेहतर नतीजे के लिए थोड़ा और पीछे बैठें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.measures(0,*,*)": {
+   "source": "f2c0c42fc77773",
+   "english": "This screen measures 0.0 px per cm. Smallest letter it can show at {dist} cm: {smallest}.",
+   "text": "यह स्क्रीन 0.0 px प्रति cm मापती है। {dist} cm पर यह सबसे छोटा अक्षर दिखा सकती है: {smallest}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "ppc",
+    "dist",
+    "smallest"
+   ]
+  },
+  "onboarding.screen.measures(1,*,*)": {
+   "source": "dd9cae0819e616",
+   "english": "This screen measures 1.0 px per cm. Smallest letter it can show at {dist} cm: {smallest}.",
+   "text": "यह स्क्रीन 1.0 px प्रति cm मापती है। {dist} cm पर यह सबसे छोटा अक्षर दिखा सकती है: {smallest}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "ppc",
+    "dist",
+    "smallest"
+   ]
+  },
+  "onboarding.screen.next": {
+   "source": "7c15c95eb05056",
+   "english": "Next: Onboarding left eye",
+   "text": "आगे: बाईं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.screen.title": {
+   "source": "6b52137756496d",
+   "english": "Set up this screen",
+   "text": "इस स्क्रीन को सेट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrast": {
+   "source": "4a1d87f613e0d8",
+   "english": "Stronger-eye contrast",
+   "text": "मज़बूत आँख का कंट्रास्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrastFrom.balance": {
+   "source": "3d5eda29c9c5c3",
+   "english": "From the balance test",
+   "text": "बैलेंस टेस्ट से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrastFrom.balance_equal": {
+   "source": "96b12c7291514d",
+   "english": "Balance test: both eyes pull equally",
+   "text": "बैलेंस टेस्ट: दोनों आँखें बराबर काम करती हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrastFrom.default": {
+   "source": "517d9f22a5619a",
+   "english": "Default until onboarding is done",
+   "text": "ऑनबोर्डिंग पूरी होने तक डिफ़ॉल्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrastFrom.equal": {
+   "source": "d1209bb566016f",
+   "english": "The two eyes read the same",
+   "text": "दोनों आँखें एक जैसा पढ़ती हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.contrastFrom.starting_level": {
+   "source": "0ce28d67490c5d",
+   "english": "Starting level until the balance test is done",
+   "text": "बैलेंस टेस्ट पूरा होने तक शुरुआती लेवल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.doctorFirst": {
+   "source": "c4ee579235c716",
+   "english": "Pain, flashes, a sudden change or new double vision in the last month needs an eye doctor before any training.",
+   "text": "पिछले महीने दर्द, चमक, अचानक बदलाव या नया दोहरा दिखना होने पर किसी भी ट्रेनिंग से पहले आँखों के डॉक्टर को दिखाना ज़रूरी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.faint": {
+   "source": "1ac7bd23f938eb",
+   "english": "Faint text",
+   "text": "हल्का टेक्स्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.faintFrom": {
+   "source": "27fb01e2e83b39",
+   "english": "From the better eye's faint-letter test",
+   "text": "बेहतर आँख के हल्के-अक्षर टेस्ट से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.faintOff": {
+   "source": "207de27d66ad10",
+   "english": "Standard",
+   "text": "स्टैंडर्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.faintOn": {
+   "source": "592d52552734f1",
+   "english": "Raised contrast",
+   "text": "बढ़ा हुआ कंट्रास्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lens": {
+   "source": "1c3ca23c544da7",
+   "english": "Lenses",
+   "text": "लेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lensFrom": {
+   "source": "c1c643d9c227c6",
+   "english": "The weaker eye always gets the cyan lens",
+   "text": "कमज़ोर आँख पर हमेशा सियान लेंस रहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lensOwn": {
+   "source": "8db077a5e19a22",
+   "english": "Worn over your own glasses. The weaker eye always gets the cyan lens",
+   "text": "अपने चश्मे के ऊपर पहनें। कमज़ोर आँख पर हमेशा सियान लेंस रहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lensWhere(L)": {
+   "source": "ee1b547f709db6",
+   "english": "Cyan over the left eye, red over the right eye",
+   "text": "बाईं आँख पर सियान, दाईं आँख पर लाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lensWhere(R)": {
+   "source": "261c63df713da4",
+   "english": "Cyan over the right eye, red over the left eye",
+   "text": "दाईं आँख पर सियान, बाईं आँख पर लाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.lensWhere(null)": {
+   "source": "ef39fe3f788162",
+   "english": "Either way round",
+   "text": "किसी भी तरफ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.letter": {
+   "source": "82c6e6cd1307c8",
+   "english": "Two-eye letter size",
+   "text": "दोनों आँखों के लिए अक्षर का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.letterFrom(*)": {
+   "source": "0ac82948b79208",
+   "english": "{times} times the smallest letter read by the eye that read less well",
+   "text": "कम पढ़ने वाली आँख द्वारा पढ़े गए सबसे छोटे अक्षर का {times} गुना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "times"
+   ]
+  },
+  "onboarding.settings.noWeak": {
+   "source": "b90fb671f6e801",
+   "english": "None found",
+   "text": "कोई नहीं मिली",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.none.body": {
+   "source": "ea299d063c8955",
+   "english": "Every scene uses the default: equal contrast for both eyes and standard sizes.",
+   "text": "हर सीन डिफ़ॉल्ट का इस्तेमाल करता है: दोनों आँखों के लिए बराबर कंट्रास्ट और मानक साइज़।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.none.title": {
+   "source": "c8ef66f4921567",
+   "english": "Nothing measured yet",
+   "text": "अभी तक कोई माप नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.opens": {
+   "source": "9249d782e4311a",
+   "english": "Opens with",
+   "text": "इसके साथ खुलता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.counsellor.0": {
+   "source": "a532d2d64afe36",
+   "english": "Level 2, with a counsellor",
+   "text": "लेवल 2, काउंसलर के साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.counsellor.1": {
+   "source": "cdc216dbb832a2",
+   "english": "An eye turn was reported. Squint games open once a counsellor is linked.",
+   "text": "आँख तिरछी होने की जानकारी दी गई थी। काउंसलर के जुड़ने पर स्क्विंट गेम खुलेंगे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.doctor_first.0": {
+   "source": "1427ccb117e85f",
+   "english": "Eye doctor first",
+   "text": "पहले आँखों के डॉक्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.doctor_first.1": {
+   "source": "3c9b4aa8b1145d",
+   "english": "A recent sudden change was reported. Training stays locked; check-ups still run.",
+   "text": "हाल ही में अचानक बदलाव की जानकारी दी गई थी। ट्रेनिंग लॉक रहेगी; जाँच चलती रहेगी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.eye_fitness.0": {
+   "source": "662d6551bd8bca",
+   "english": "Eye fitness, level 0",
+   "text": "आई फिटनेस, लेवल 0",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.eye_fitness.1": {
+   "source": "655a9e502d7365",
+   "english": "Tracker, breaks, outdoor time and check-ups.",
+   "text": "ट्रैकर, ब्रेक, बाहर का समय और जाँच।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.lazy_eye.0": {
+   "source": "0377af5e1b1c91",
+   "english": "Lazy-eye programme, level 1",
+   "text": "लेज़ी-आई प्रोग्राम, लेवल 1",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.programme.lazy_eye.1": {
+   "source": "a184a854c5a5ac",
+   "english": "Two-eye films and games at the trial dose. Children need a caregiver.",
+   "text": "ट्रायल डोज़ पर दोनों आँखों की फ़िल्में और गेम। बच्चों को देखभाल करने वाले की ज़रूरत है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.target": {
+   "source": "e1054b117d2f83",
+   "english": "Game target size",
+   "text": "गेम टारगेट का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.targetFrom(*)": {
+   "source": "adf43f6913c38e",
+   "english": "{times} times that letter, the smallest a target may be",
+   "text": "उस अक्षर का {times} गुना, जो टारगेट का सबसे छोटा साइज़ हो सकता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "times"
+   ]
+  },
+  "onboarding.settings.text": {
+   "source": "11f60763c4fbd2",
+   "english": "App text size",
+   "text": "ऐप टेक्स्ट का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.textFrom": {
+   "source": "f1953754d158c7",
+   "english": "From the better eye's letter test and the viewing distance",
+   "text": "बेहतर आँख के अक्षर टेस्ट और देखने की दूरी से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.title": {
+   "source": "8c2b9d5d7e5155",
+   "english": "What the engine sets",
+   "text": "इंजन क्या सेट करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.weak": {
+   "source": "cb406704dee0af",
+   "english": "Weaker eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.settings.weakFrom": {
+   "source": "954ccad782db70",
+   "english": "Letter test on each eye, then the balance test",
+   "text": "हर आँख पर अक्षरों का टेस्ट, फिर बैलेंस टेस्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.startLetters": {
+   "source": "98a2925cf19821",
+   "english": "Start the letter test",
+   "text": "अक्षर टेस्ट शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.L.0": {
+   "source": "8079d625d6c5e7",
+   "english": "Onboarding left eye",
+   "text": "बाईं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.L.1": {
+   "source": "9cc244de733ecc",
+   "english": "2 min",
+   "text": "2 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.R.0": {
+   "source": "4e119b4321a4fd",
+   "english": "Onboarding right eye",
+   "text": "दायीं आँख की ऑनबोर्डिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.R.1": {
+   "source": "9cc244de733ecc",
+   "english": "2 min",
+   "text": "2 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.steps.L.1"
+  },
+  "onboarding.steps.both.0": {
+   "source": "a39163106854d9",
+   "english": "Both eyes",
+   "text": "दोनों आँखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.both.1": {
+   "source": "ea54d9e6317135",
+   "english": "1 min",
+   "text": "1 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.done.0": {
+   "source": "b51769a9fde954",
+   "english": "Settings",
+   "text": "सेटिंग्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.settings"
+  },
+  "onboarding.steps.screen.0": {
+   "source": "44c9586a67758c",
+   "english": "Screen",
+   "text": "स्क्रीन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.steps.screen.1": {
+   "source": "4b8dd0c2050f67",
+   "english": "30 s",
+   "text": "30 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.stepsLabel": {
+   "source": "fb565fb7ec8dbd",
+   "english": "Onboarding steps",
+   "text": "ऑनबोर्डिंग के चरण",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.sub": {
+   "source": "ca79b6a8272352",
+   "english": "Do this once on each screen. Each eye gets two minutes on its own, then both eyes take the balance test through the glasses. The results set the contrast and sizes for every game.",
+   "text": "इसे हर स्क्रीन पर एक बार करें। प्रत्येक आँख को अपने दम पर दो मिनट मिलते हैं, फिर दोनों आँखें चश्मे के माध्यम से बैलेंस टेस्ट करती हैं। परिणाम हर गेम के लिए कंट्रास्ट और साइज़ सेट करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "onboarding.timer(0)": {
+   "source": "f9d1d8459bf462",
+   "english": "0:00 of about 2:00",
+   "text": "लगभग 2:00 में से 0:00",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.timer(1)": {
+   "source": "44f4fad6eb46a1",
+   "english": "0:01 of about 2:00",
+   "text": "लगभग 2:00 में से 0:01",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "onboarding.title": {
+   "source": "4e250c9e110206",
+   "english": "Onboarding",
+   "text": "शुरुआत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.onboarding"
+  },
+  "onboarding.yes": {
+   "source": "9b34c7d70d09bd",
+   "english": "Yes",
+   "text": "हाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

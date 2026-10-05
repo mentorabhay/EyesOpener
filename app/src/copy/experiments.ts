@@ -3,11 +3,13 @@
  * A result from members is a signal, never proof, and nothing here may promise that an idea helps.
  * "Comparison group" is the group that carries on as usual. The words "control", "arm" and "baseline" stay in the code.
  */
+import { texts } from "@/i18n/texts";
+
 const weeksText = (n: number) => (n === 1 ? "1 week" : `${n} weeks`);
 const daysText = (n: number) => (n === 1 ? "1 day" : `${n} days`);
 const people = (n: number) => (n === 1 ? "1 member" : `${n} members`);
 
-export const experiments = {
+export const experiments = texts("copy/experiments", "experiments", () => ({
   title: "My experiments",
   sub: (name: string) => `The experiments ${name} has joined. Each one tests a member's idea with a check-up before and a check-up after.`,
   crumb: { href: "/together/experiments", label: "My experiments" },
@@ -179,7 +181,7 @@ export const experiments = {
     ],
     unit: (unit: string) => `The numbers are in ${unit}.`,
     units: {
-      logMAR: "logMAR, the unit of the letter chart: 0.1 is one line of the chart",
+      logMAR: "the letter chart's unit: 0.1 is one line of the chart",
       logCS: "log units of contrast",
       log_ratio: "points of stronger-eye contrast, out of 100",
       arcsec: "arc seconds",
@@ -196,4 +198,4 @@ export const experiments = {
     note: "Pooled results worked out.",
     review: "The pooled result leans the wrong way: members who tried this idea did worse than the comparison group. Please look at the idea again.",
   },
-};
+}));

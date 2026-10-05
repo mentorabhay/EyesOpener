@@ -1,0 +1,104 @@
+{
+ "lang": "hi",
+ "file": "data/supervision",
+ "entries": {
+  "supervision.does.0": {
+   "source": "8d52c1d017a73f",
+   "english": "Checks what the app cannot see. The app only knows what you tell it; a therapist watches the eyes and measures them.",
+   "text": "उन बातों की जाँच करता है जो ऐप नहीं देख सकता। ऐप सिर्फ वही जानता है जो आप उसे बताते हैं; एक काउंसलर आँखों को देखता है और उनकी माप लेता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.does.1": {
+   "source": "7801558ccbbafc",
+   "english": "Decides whether this practice suits this person at all, and where to start.",
+   "text": "तय करता है कि क्या यह अभ्यास इस व्यक्ति के लिए बिल्कुल सही है, और कहाँ से शुरू करना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.does.2": {
+   "source": "379166edef9d93",
+   "english": "Sets how much to do, and steps it up or down as the weeks go by.",
+   "text": "तय करता है कि कितना करना है, और हफ़्तों बीतने के साथ इसे बढ़ाता या घटाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.does.3": {
+   "source": "fb8a5733f10bb5",
+   "english": "Shows how each drill is done and corrects it when it goes wrong.",
+   "text": "दिखाता है कि हर ड्रिल कैसे की जाती है और गलती होने पर उसे सुधारता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.does.4": {
+   "source": "7ddd2da52c014e",
+   "english": "Watches for symptoms, and stops or changes the plan when they come.",
+   "text": "लक्षणों पर नज़र रखता है, और उनके आने पर प्लान को रोकता है या बदलता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.does.5": {
+   "source": "7d8d1fad54a4f8",
+   "english": "Keeps the practice going. A visit every week is a reason to do the home part.",
+   "text": "अभ्यास को जारी रखता है। हर हफ्ते मिलना घर वाला हिस्सा करने की एक वजह है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.inApp": {
+   "source": "150b760d93ef99",
+   "english": "In IOpener a verified counsellor links to the member, sets the daily minutes of a counsellor-led programme, reads the member's results and leaves notes. IOpener itself never sets a dose.",
+   "text": "IOpener में एक सत्यापित काउंसलर सदस्य से जुड़ता है, काउंसलर के नेतृत्व वाले प्रोग्राम के रोज़ के मिनट सेट करता है, सदस्य के परिणाम पढ़ता है और नोट छोड़ता है। IOpener खुद कभी डोज़ सेट नहीं करता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.noTrial": {
+   "source": "9e21534df00977",
+   "english": "The evidence framework recommends this with a counsellor, because it was tested with a therapist present or not tested at home at all.",
+   "text": "एविडेंस फ्रेमवर्क काउंसलर के साथ इसकी सलाह देता है, क्योंकि इसका परीक्षण काउंसलर की मौजूदगी में किया गया था या घर पर बिल्कुल परीक्षण नहीं किया गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.trial.anti": {
+   "source": "77876313a4e2f3",
+   "english": "The trial behind this method was done in a clinic, with a therapist present at each session. Nobody has tested this practice done alone at home.",
+   "text": "इस तरीके के पीछे का ट्रायल क्लिनिक में किया गया था, जिसमें हर सेशन में काउंसलर मौजूद था। घर पर अकेले किए जाने वाले इस अभ्यास का किसी ने परीक्षण नहीं किया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.trial.focus": {
+   "source": "86e8a5d550654f",
+   "english": "Focus drills were part of the same therapy: a therapist every week for 12 weeks, with home practice in between. They were not tested alone.",
+   "text": "फोकस ड्रिल इसी थेरेपी का हिस्सा थीं: 12 हफ्ते तक हर हफ्ते एक काउंसलर, और बीच-बीच में घर पर अभ्यास। इनका अकेले परीक्षण नहीं किया गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.trial.read": {
+   "source": "367b1630d3e91f",
+   "english": "After a stroke, a hospital team or eye clinic first measures which part of the side vision is lost. Practice like this is built on that measurement.",
+   "text": "स्ट्रोक के बाद, अस्पताल की टीम या आई क्लिनिक पहले यह नापता है कि साइड विज़न का कौन सा हिस्सा खो गया है। इस तरह का अभ्यास उस माप पर आधारित होता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/supervision:supervision.trial.scan"
+  },
+  "supervision.trial.recov": {
+   "source": "1c9d61036809ea",
+   "english": "In the trial behind this method, people aged 11 to 25 had six weeks of sessions with a therapist: symptoms improved in 79 in 100, against 13 in 100 of those still waiting.",
+   "text": "इस तरीके के पीछे के ट्रायल में, 11 से 25 साल की उम्र के लोगों ने काउंसलर के साथ छह हफ्ते तक सेशन किए: इंतज़ार कर रहे 100 में से 13 लोगों के मुकाबले 100 में से 79 लोगों के लक्षणों में सुधार हुआ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.trial.scan": {
+   "source": "367b1630d3e91f",
+   "english": "After a stroke, a hospital team or eye clinic first measures which part of the side vision is lost. Practice like this is built on that measurement.",
+   "text": "स्ट्रोक के बाद, अस्पताल की टीम या आई क्लिनिक पहले यह नापता है कि साइड विज़न का कौन सा हिस्सा खो गया है। इस तरह का अभ्यास उस माप पर आधारित होता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "supervision.trial.verg": {
+   "source": "17a0b579b22dc7",
+   "english": "In the trial behind this method, children saw a therapist every week for 12 weeks and practised at home for 15 minutes a day on 5 days a week: 73 in 100 succeeded or improved. Computer practice at home with no therapist helped 33 in 100, about the same as pretend therapy.",
+   "text": "इस तरीके के पीछे के ट्रायल में, बच्चों ने 12 हफ्ते तक हर हफ्ते एक काउंसलर से मुलाकात की और हफ्ते में 5 दिन रोज़ 15 मिनट घर पर अभ्यास किया: 100 में से 73 सफल हुए या उनमें सुधार हुआ। बिना काउंसलर के घर पर कंप्यूटर अभ्यास से 100 में से 33 को मदद मिली, जो कि दिखावटी थेरेपी जितना ही है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

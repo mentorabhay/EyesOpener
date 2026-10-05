@@ -9,10 +9,10 @@ import { SiteFooter } from "./_components/site-footer";
 import { SiteNav } from "./_components/site-nav";
 import "./site.css";
 
-export const metadata: Metadata = {
+export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteUrl()),
   openGraph: { siteName: t.name, type: "website", locale: "en_IN", title: t.name, description: common.tagline },
-};
+});
 
 /**
  * The public site: the landing page, the stories and the pages about IOpener, inside one navigation and footer.

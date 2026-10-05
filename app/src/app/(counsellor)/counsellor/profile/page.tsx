@@ -3,7 +3,7 @@ import { Card, PageHead, Void } from "@/components/ui";
 import { counsellor as t, day } from "@/copy/counsellor";
 import { requireCounsellor } from "@/lib/auth";
 
-export const metadata: Metadata = { title: t.profile.title };
+export const generateMetadata = (): Metadata => ({ title: t.profile.title });
 
 export default async function CounsellorProfile() {
   const { user } = await requireCounsellor();

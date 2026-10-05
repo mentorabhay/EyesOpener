@@ -13,7 +13,7 @@ import { Confirm } from "../settings/confirm";
 import css from "../settings/form.module.css";
 import { consentGive, consentWithdraw, groupJoin, groupLeave, handOver, inviteCreate, inviteRevoke, pinSet } from "./actions";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function FamilyPage() {
   const m = await requireMember();

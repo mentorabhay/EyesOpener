@@ -4,17 +4,19 @@
  */
 
 /** One line per companion that says how to use it. */
-export const help: Record<string, string> = {
+import { texts } from "@/i18n/texts";
+
+export const help: Record<string, string> = texts("copy/games-care", "help", () => ({
   "sky-spotter": "Go outside in daylight. Tick the far-off things you found, type the minutes outside and press Save the hunt.",
   "blink-garden": "Press Begin and follow the words: close, keep closed, squeeze, open. Ten blinks grow one leaf.",
   "far-window": "Press Begin, look at something far away and count slowly to twenty. Then tick three things you found.",
-};
+}));
 
 export const minutesText = (n: number) => `${Math.round(n)} ${Math.round(n) === 1 ? "minute" : "minutes"}`;
 /** "1 break", "3 breaks". */
 export const times = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-export const care = {
+export const care = texts("copy/games-care", "care", () => ({
   lookOnly: "You can look here. Logging is for the child and the guardians.",
   camera: {
     title: "Camera check: not built yet",
@@ -133,4 +135,4 @@ export const care = {
       { id: "other", label: "Something else far away" },
     ],
   },
-};
+}));

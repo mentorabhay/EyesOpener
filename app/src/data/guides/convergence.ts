@@ -6,6 +6,8 @@
  * therapy worked towards, and not what most people score, the words say "goal".
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 const pubmed = (id: number) => `https://pubmed.ncbi.nlm.nih.gov/${id}/`;
 
@@ -95,7 +97,7 @@ const HOME_DRILLS = "In the main trial, computer drills done at home (with push-
 const prism = (key: string, label: string, how: string, max = 30): Measure =>
   ({ key, label, unit: "prism dioptres", how, from: "auto", min: 0, max, step: 0.1, better: "higher" });
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/convergence", () => [
   {
     slug: "brock-string",
     what: "A string with three beads runs from your nose to a door handle. You look from bead to bead, and the string itself shows where your two eyes are aiming, so you can feel it and steer it.",
@@ -117,7 +119,7 @@ export const guides: Guide[] = [
       "Look at the near bead. The X now crosses at the near bead.",
       "Hold each bead for a slow count of 5, then move on: far, middle, near, middle, far. That is one round. Do 3 rounds.",
       "Slide the near bead 5 cm closer to your nose and do one more round.",
-      "Keep bringing the near bead closer, 5 cm at a time and then 2 cm at a time, while it still becomes one bead with the X on it.",
+      "Keep bringing the near bead closer, 5 cm at a time and then 2 cm at a time. Go on while it still becomes one bead with the X on it.",
       "When the near bead will not become one, slide it back to the last place where it did.",
       "Measure from that bead to the bridge of your nose. Type the number on this page and press Save this routine.",
     ],
@@ -610,7 +612,7 @@ export const guides: Guide[] = [
 
   {
     slug: "stereogram-pairs",
-    what: "Two rings sit side by side on screen, with no glasses. You join them into a third ring in the middle, first by crossing your eyes and then by relaxing them, and say whether the dot inside floats nearer or farther.",
+    what: "Two rings sit side by side on screen, with no glasses. You join them into a third ring in the middle, first by crossing your eyes and then by relaxing them. Then you say whether the dot inside floats nearer or farther.",
     need: [
       "A tablet, computer or TV that has been measured in this app",
       "No red-cyan glasses. Keep your own glasses on if you wear them",
@@ -792,4 +794,4 @@ export const guides: Guide[] = [
     evidence: "This is the home part of the treatment the trial tested. Weekly therapy in the office plus this practice worked for 73 in 100 children; home practice without the office visits did no better than placebo (pretend) therapy.",
     sources: [CITT, KINETICS, MANUAL, REVIEW],
   },
-];
+], GUIDE_WORDS);

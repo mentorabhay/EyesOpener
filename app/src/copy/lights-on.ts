@@ -3,6 +3,8 @@
  * The hour is company, not a reward: no line here offers points, extra minutes or a place in a list.
  * Nobody is named, and a small number of households is never shown.
  */
+import { texts } from "@/i18n/texts";
+
 const zone = "Asia/Kolkata";
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 const households = (n: number) => many(n, "household", "households");
@@ -15,7 +17,7 @@ export const clockHour = (hour: number) => `${hour % 12 === 0 ? 12 : hour % 12}:
 export const longDay = (d: Date | string) =>
   new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: zone }).format(typeof d === "string" ? new Date(`${d}T12:00:00+05:30`) : d).replace(",", "");
 
-export const lightsOn = {
+export const lightsOn = texts("copy/lights-on", "lightsOn", () => ({
   stats: {
     weekly: "Every week, India time",
     now: "Households practising now",
@@ -123,4 +125,4 @@ export const lightsOn = {
     previewFestival: "Look at the festival scene",
     previewNote: "The two looks open in your staff test household, with sample lanterns.",
   },
-};
+}));

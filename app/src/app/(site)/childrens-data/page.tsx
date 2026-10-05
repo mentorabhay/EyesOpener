@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/site";
 import { LegalPage, type LegalSection } from "../_components/legal";
 
 const c = t.legal.children;
-export const metadata: Metadata = pageMeta("/childrens-data", c.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/childrens-data", c.meta));
 
 export default function ChildrensDataPage() {
   /* The limits are read from the engine, so this page cannot drift from what the app enforces. */

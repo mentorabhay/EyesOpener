@@ -1,4 +1,6 @@
 /** Words for the Locked Gallery. Plain words; no promise that anything will change. */
+import { texts } from "@/i18n/texts";
+
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 const side = (eye: "left" | "right") => eye;
 const otherSide = (eye: "left" | "right") => (eye === "left" ? "right" : "left");
@@ -7,7 +9,7 @@ const step = (arcsec: number) => String(Math.round(arcsec * 10) / 10);
 /** The contrast a faint step stands for, as a percentage. */
 export const faintPercent = (logCs: number) => `${(100 * Math.pow(10, -logCs)).toFixed(1)}%`;
 
-export const gallery = {
+export const gallery = texts("copy/gallery", "gallery", () => ({
   stats: { pictures: "Pictures reached", days: "Practice days", of: (n: number, all: number) => `${n} of ${all}` },
 
   how: {
@@ -83,4 +85,4 @@ export const gallery = {
     kite: "The kite", fish: "The fish", boat: "The boat", bird: "The bird", star: "The star",
     balloon: "The balloon", tree: "The tree", house: "The house", moon: "The moon",
   },
-};
+}));

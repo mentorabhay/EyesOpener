@@ -14,7 +14,7 @@ import { readStatuses } from "@/lib/catalogue";
 import { exerciseLevel, statusOf, type Status } from "@/lib/status";
 
 const c = t.manual;
-export const metadata: Metadata = { title: t.rooms.manual.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.manual.name });
 const tone = (s: Status) => (s === "open" ? "ok" : s === "counsellor" ? "plain" : "warn");
 
 /** The staff manual: every game and exercise, with why it is in the library. Each row opens the item's full page. */

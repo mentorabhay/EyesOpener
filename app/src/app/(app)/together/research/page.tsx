@@ -10,7 +10,7 @@ import { requireMember } from "@/lib/session";
 import { isListed, statusOf } from "@/lib/status";
 
 const t = assistCopy.research;
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 /** How many passages a search by meaning shows, and how many more a search by words may add under them. */
 const BY_MEANING = 8, MORE_BY_WORDS = 4;

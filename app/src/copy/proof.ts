@@ -3,12 +3,14 @@
  * A pooled result from members is a signal, never proof. Nothing here may say more than the numbers do,
  * promise that an idea helps, or name a member to another family.
  */
+import { texts } from "@/i18n/texts";
+
 const people = (n: number) => (n === 1 ? "1 member" : `${n} members`);
 
 /** "your idea" on a family's own list, "this idea" on the list everyone sees. */
 type Whose = "your" | "this";
 
-export const proof = {
+export const proof = texts("copy/proof", "proof", () => ({
   rule: "There are no likes, no followers and no list of people here. An idea earns its place by what was measured when members tried it.",
 
   stats: { ideas: "Ideas your family shared", joined: "Members who joined them", tried: "Members who tried them, in a result" },
@@ -61,4 +63,4 @@ export const proof = {
     none: "No idea has a result yet. A result needs enough members to finish in both groups.",
     yours: "From your family",
   },
-};
+}));

@@ -3,6 +3,8 @@
  * Both are counsellor-led: the member does them as the counsellor showed, with no time pressure.
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -28,7 +30,7 @@ const EVIDENCE_TAIL = "A 2021 Cochrane review found no usable trial of eye exerc
 const auto = (key: string, label: string, unit: string, how: string, max: number, step: number, better: Measure["better"]): Measure =>
   ({ key, label, unit, how, from: "auto", min: 0, max, step, better });
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/squint", () => [
   {
     slug: "see-both-lights",
     what: "A slow drill for noticing both eyes at once. Through red-cyan glasses each eye sees one of two lights, and now and then the screen asks how many you see. It is for intermittent squint (an eye that drifts some of the time), on a counsellor's plan.",
@@ -133,4 +135,4 @@ export const guides: Guide[] = [
     evidence: "One small trial of supervised clinic therapy that included fusion drills found better distance control of intermittent squint than watching and waiting. " + EVIDENCE_TAIL,
     sources: [CLINIC_TRIAL, COCHRANE],
   },
-];
+], GUIDE_WORDS);

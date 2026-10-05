@@ -4,6 +4,7 @@
  * The method notes and the reasons a clip is not offered are in src/data/clips, beside the clip they belong to.
  */
 import { EYE_NAME, acuityText, blankEye, percent, type Eye } from "@/engine";
+import { texts } from "@/i18n/texts";
 
 const eye = (e: Eye) => EYE_NAME[e].toLowerCase();
 const n1 = (v: number) => String(Math.round(v * 10) / 10);
@@ -11,7 +12,7 @@ const plural = (n: number, one: string, many: string) => (n === 1 ? one : many);
 
 /* ───────────── words drawn inside the scenes on the game kit ───────────── */
 
-export const scenes = {
+export const scenes = texts("copy/clips", "scenes", () => ({
   repeat: (n: number, of: number) => `Repeat ${n} of ${of}`,
   ready: "One ring, both dots? Tap or press OK",
   keep: "Keep one ring with both dots",
@@ -29,14 +30,14 @@ export const scenes = {
   holdIt: "Hold it as one ring",
   trackStart: "Put the pointer on the ring",
   onRing: (pct: number) => `On the ring ${pct}%`,
-};
+}));
 
 /** One line under a scene: how to answer by touch and by keys or a remote. */
-export const sceneHelp = {
+export const sceneHelp = texts("copy/clips", "sceneHelp", () => ({
   split: "Tap the scene or press OK (Space or Enter) for \"one ring\". Tap \"It split\" in the corner, or press Down, the moment you see two.",
   hold: "Tap the scene or press OK when you see one ring with both dots. Tap \"It split\" in the corner, or press Down, the moment you see two.",
   track: "Move a finger or the mouse over the scene, or use the four arrow keys, to keep the small cross on the ring.",
-};
+}));
 
 /* ───────────── what each clip is, in one plain line ───────────── */
 
@@ -242,7 +243,7 @@ export const meaningOf = (key: string, unit: string) =>
 
 /* ───────────── the surveys that are IOpener's own ───────────── */
 
-export const surveys = {
+export const surveys = texts("copy/clips", "surveys", () => ({
   answers: ["Never", "Not very often", "Sometimes", "Fairly often", "Always"],
   intro: "Think about the last two weeks or so and pick the answer that fits best. There are no right or wrong answers.",
   child: "For a child, a grown-up reads each question aloud and presses the child's answer. Do not suggest an answer.",
@@ -270,11 +271,11 @@ export const surveys = {
     "How often does your sight go blurry and then clear when you blink?",
     "How often do wind, fans or air conditioning bother your eyes?",
   ],
-};
+}));
 
 /* ───────────── the pages ───────────── */
 
-export const clips = {
+export const clips = texts("copy/clips", "clips", () => ({
   title: "Clips",
   sub: "Short guided steps. Each one checks one thing about this screen, the glasses or the eyes.",
   crumb: "Clips",
@@ -655,7 +656,7 @@ export const clips = {
     sub: "A set plays several clips one after another. Stop at any point: what you finished is saved.",
     name: { screen: "Set up this screen", weekly: "Weekly check", visit: "Before an eye-test visit" },
     what: {
-      screen: "Every screen and glasses clip that applies to this screen, in the order that makes sense: size and seat first, then the room and the picture, then the glasses.",
+      screen: "Every screen and glasses clip that applies to this screen. They come in order: size and seat first, then the room and the picture, then the glasses.",
       weekly: "The measurements that are due this week, one after another.",
       visit: "One of each main measurement, so the summary you print or show is fresh.",
     },
@@ -684,6 +685,6 @@ export const clips = {
     backToClips: "Back to the clips",
     crumb: "Sets",
   },
-};
+}));
 
 export { eye as eyeWord };

@@ -1,0 +1,72 @@
+/*
+ * Languages: the typeface of each script, and the shared layout from right to left.
+ *
+ * This sheet is loaded by the root layout through src/i18n/html.tsx. It changes nothing for English.
+ * It exists because src/app/globals.css may not be edited by this package; the rules below that undo a rule of
+ * globals.css say which one. docs/LANGUAGES.md lists what should move into globals.css itself.
+ */
+
+/* ── typefaces ──
+   Outfit stays first, so Latin letters and digits look as they do in English. Outfit has no Indian script in it:
+   those letters fall through to a face the device already has. Each list names the faces that desktop Linux
+   (Noto), Windows and Apple devices carry for the script, and ends by letting the device choose, which is how an
+   Android phone reaches its own Noto face for the page's language. No face is downloaded for these scripts
+   (src/i18n/languages.ts says why, and how to switch that on). */
+html[data-script="devanagari"] { --font: "Outfit", "Noto Sans Devanagari", "Nirmala UI", "Kohinoor Devanagari", "Mangal", system-ui, sans-serif; }
+html[data-script="bengali"] { --font: "Outfit", "Noto Sans Bengali", "Nirmala UI", "Kohinoor Bangla", "Vrinda", system-ui, sans-serif; }
+html[data-script="tamil"] { --font: "Outfit", "Noto Sans Tamil", "Nirmala UI", "Tamil Sangam MN", "Latha", system-ui, sans-serif; }
+html[data-script="telugu"] { --font: "Outfit", "Noto Sans Telugu", "Nirmala UI", "Kohinoor Telugu", "Gautami", system-ui, sans-serif; }
+html[data-script="gujarati"] { --font: "Outfit", "Noto Sans Gujarati", "Nirmala UI", "Kohinoor Gujarati", "Shruti", system-ui, sans-serif; }
+html[data-script="kannada"] { --font: "Outfit", "Noto Sans Kannada", "Nirmala UI", "Kannada Sangam MN", "Tunga", system-ui, sans-serif; }
+html[data-script="malayalam"] { --font: "Outfit", "Noto Sans Malayalam", "Nirmala UI", "Malayalam Sangam MN", "Kartika", system-ui, sans-serif; }
+html[data-script="gurmukhi"] { --font: "Outfit", "Noto Sans Gurmukhi", "Nirmala UI", "Gurmukhi MN", "Raavi", system-ui, sans-serif; }
+/* Urdu is read in the nastaliq hand. It is tall and slanted, so small labels and controls use the plainer naskh face. */
+html[data-script="arabic"] { --font: "Outfit", "Noto Nastaliq Urdu", "Noto Sans Arabic", "Jameel Noori Nastaleeq", "Urdu Typesetting", "Segoe UI", system-ui, sans-serif; --font-small: "Outfit", "Noto Sans Arabic", "Segoe UI", system-ui, sans-serif; }
+
+/* ── room for the letters ──
+   Indian scripts carry marks above and below the line, and nastaliq steps down as it runs. The line heights of
+   globals.css (body 1.5, h1 1.1, big figures 1) are set for Latin capitals and would cut those marks off. */
+html[data-script]:not([data-script="latin"]) body { line-height: 1.65; }
+html[data-script]:not([data-script="latin"]) :is(h1, h2, h3, h4, .phead h1, .hstat .v, .ringkey b, .btn, .chip, .pill) { line-height: 1.4; }
+html[data-script="arabic"] body { line-height: 2.1; }
+html[data-script="arabic"] :is(h1, h2, h3, h4, .phead h1) { line-height: 1.9; }
+html[data-script="arabic"] :is(.btn, .chip, .pill, .small, .navl a, .tabs a, table.tb, .kv dt, input, select, textarea, label) { font-family: var(--font-small); line-height: 1.7; }
+/* Spacing between letters is a Latin habit (globals.css: headings -0.02em, the logo -0.03em, figures -0.035em).
+   It pulls joined letters apart in Arabic script and unsettles conjuncts in Indian scripts. */
+html[data-script]:not([data-script="latin"]) :is(h1, h2, h3, h4, .hstat .v, .ringkey b, .s-kicker, body *) { letter-spacing: normal; }
+html[data-script]:not([data-script="latin"]) .logo { letter-spacing: -0.03em; }
+/* Capitals do not exist outside Latin; a label set in capitals keeps its size but must not be transformed. */
+html[data-script]:not([data-script="latin"]) * { text-transform: none; }
+
+/* ── never translated, never mirrored ──
+   A therapy scene, a check-up chart and a cue picture are drawings with a left and a right that mean something:
+   the weaker eye's picture, the gap of a tumbling E, the side a target comes from. They keep their own direction
+   whatever the page's, and their letters keep the face the engine draws them in. */
+.scene, .chart, .cue svg, canvas, svg[data-keep-direction], .logo .mark { direction: ltr; unicode-bidi: isolate; }
+.scene, .chart { font-family: Verdana, "Outfit", sans-serif; letter-spacing: normal; }
+
+/* ── right to left: the shared classes of globals.css ──
+   Grids and rows turn round by themselves once <html dir="rtl"> is set. What does not turn is anything written
+   with "left" or "right". Each rule here undoes one such rule of globals.css. */
+[dir="rtl"] .side { border-right: 0; border-left: 1px solid var(--line); }                           /* .side border-right */
+[dir="rtl"] .phead .stats { margin-left: 0; margin-right: auto; }                                    /* .phead .stats margin-left */
+[dir="rtl"] .c-head .r { margin-left: 0; margin-right: auto; }                                       /* .c-head .r margin-left */
+[dir="rtl"] .kv dt { padding: 9px 0 9px 12px; }                                                      /* .kv dt padding */
+[dir="rtl"] table.tb th { text-align: right; padding: 0 0 9px 14px; }                                /* table.tb th */
+[dir="rtl"] table.tb td { padding: 12px 0 12px 14px; }                                               /* table.tb td */
+[dir="rtl"] table.tb .n { text-align: left; padding-left: 0; padding-right: 14px; }                  /* table.tb .n */
+/* A page in a right-to-left language still holds left-to-right text: a sentence shown in English because no
+   checked translation exists yet, a date, a figure with its unit. Each piece of text finds its own direction from
+   its first letter, so an English sentence reads as English with its full stop at its end, and an Urdu sentence
+   as Urdu. Everything stays lined up on the right, where the eye of a right-to-left reader starts. */
+[dir="rtl"] body :is(p, h1, h2, h3, h4, li, dt, dd, td, th, label, summary, legend, figcaption, option, span, b, a, small, button, div.sub, div.tx) { unicode-bidi: plaintext; }
+[dir="rtl"] body :is(p, h1, h2, h3, h4, li, dt, dd, label, summary, legend, figcaption, .sub, .tx):not(.tabs *, .scene *, .chart *) { text-align: right; }
+/* Numbers, clock readings and measures read left to right inside right-to-left text. */
+[dir="rtl"] .tnum, [dir="rtl"] .hstat .v, [dir="rtl"] input[type="number"] { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .hstat { text-align: right; }
+
+/* ── the language menu ── */
+.lang-form { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lang-form select { min-width: 150px; max-width: 100%; }
+.lang-note { font-size: 12.5px; color: var(--ink-3); }
+.lang-drafts { position: fixed; inset-inline-start: 8px; bottom: 76px; z-index: 40; max-width: min(92vw, 420px); padding: 6px 10px; border-radius: 10px; background: #111418; color: #fff; font-size: 12px; opacity: .92; pointer-events: none; }

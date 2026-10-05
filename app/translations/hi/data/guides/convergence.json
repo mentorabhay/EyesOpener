@@ -1,0 +1,251 @@
+{
+ "lang": "hi",
+ "file": "data/guides/convergence",
+ "entries": {
+  "brock-string.evidence": {
+   "source": "cca2c5b563f709",
+   "english": "No trial tested the string on its own. It is one of the home drills in the supervised therapy the trials used, where a therapist also saw the child every week.",
+   "text": "किसी भी परीक्षण ने अकेले डोरी का परीक्षण नहीं किया। यह उस देखरेख वाली थेरेपी के घरेलू अभ्यासों में से एक है जिसका उपयोग परीक्षणों में किया गया था, जहाँ एक थेरेपिस्ट बच्चे से हर सप्ताह भी मिलता था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.measures.0.how": {
+   "source": "377872ae2e0f25",
+   "english": "Bring the near bead toward your nose until it will not become one bead. Slide it back to the last place it was one, with the strings crossing at it. Measure from the bead to the bridge of your nose.",
+   "text": "पास वाले मोती को अपनी नाक की तरफ लाएँ जब तक कि वह एक मोती न बने। इसे वापस उस आखिरी जगह पर खिसकाएँ जहाँ यह एक था, डोरी इस पर पार कर रही थी। मोती से अपनी नाक की हड्डी तक मापें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.measures.0.label": {
+   "source": "ad2441c7eaffd5",
+   "english": "Nearest distance the bead stays single",
+   "text": "कम से कम दूरी जिस पर मोती अकेला रहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.measures.0.unit": {
+   "source": "ccce56058b0e4c",
+   "english": "cm",
+   "text": "cm",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.measures.0.usual.text": {
+   "source": "46b5c79bc006e5",
+   "english": "On the clinic test with a small letter, at least 85 in 100 schoolchildren stay single to 6 cm or closer. With the string, the trial's therapy worked towards 2.5 cm: a goal, not an average.",
+   "text": "छोटे अक्षर के साथ क्लिनिक टेस्ट पर, 100 में से कम से कम 85 स्कूली बच्चे 6 cm या उसके करीब अकेले रहते हैं। डोरी के साथ, ट्रायल की थेरेपी 2.5 cm की ओर काम करती है: एक लक्ष्य, औसत नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.mistakes.0": {
+   "source": "8cce617d249846",
+   "english": "Carrying on with only one string in view. One eye has switched off: blink, or jiggle the string, until both strings are back.",
+   "text": "दृष्टि में केवल एक डोरी के साथ आगे बढ़ना। एक आँख बंद हो गई है: झपकाएँ, या डोरी को हिलाएँ, जब तक कि दोनों डोरियाँ वापस न आ जाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.mistakes.1": {
+   "source": "0694d397e96500",
+   "english": "Letting the strings cross in front of the bead or behind it. Your eyes are aiming too near or too far: look again until the X sits on the bead.",
+   "text": "डोरियों को मोती के सामने या उसके पीछे पार होने देना। आपकी आँखें बहुत पास या बहुत दूर निशाना साध रही हैं: दोबारा देखें जब तक कि X मोती पर न बैठ जाए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.mistakes.2": {
+   "source": "bedf6a7f34e7e6",
+   "english": "Turning or tilting your head. The string must run straight out from the middle of your face.",
+   "text": "अपना सिर मोड़ना या झुकाना। डोरी आपके चेहरे के बीच से सीधी बाहर जानी चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.mistakes.3": {
+   "source": "36208324f8c2a7",
+   "english": "Hurrying on before the bead has become one.",
+   "text": "मोती के एक होने से पहले जल्दी करना।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.need.0": {
+   "source": "c290aa1baeb7e3",
+   "english": "About 3 metres of string and three beads of different colours. Bright buttons or big knots will do",
+   "text": "लगभग 3 मीटर डोरी और अलग-अलग रंगों के तीन मोती। चमकीले बटन या बड़ी गाँठें भी चलेंगी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.need.1": {
+   "source": "2137117fee6be8",
+   "english": "A door handle or chair back to tie the far end to",
+   "text": "दूर वाले सिरे को बाँधने के लिए दरवाज़े का हत्था या कुर्सी की पीठ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.need.2": {
+   "source": "56676ac6b7d49e",
+   "english": "A ruler",
+   "text": "एक रूलर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.need.3": {
+   "source": "ee5d32e1ef5d46",
+   "english": "Good light, and your usual glasses if you wear them",
+   "text": "अच्छी रोशनी, और यदि आप पहनते हैं तो आपका सामान्य चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.right.0": {
+   "source": "b9804807d201a8",
+   "english": "The bead you look at is one bead and every other bead is double.",
+   "text": "जिस मोती को आप देखते हैं वह एक मोती है और बाकी हर मोती दोहरा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.right.1": {
+   "source": "6a07fa7f421b85",
+   "english": "You always see two strings, and they cross exactly at the bead you are looking at.",
+   "text": "आपको हमेशा दो डोरियाँ दिखती हैं, और वे ठीक उस मोती पर पार करती हैं जिसे आप देख रहे हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.right.2": {
+   "source": "6436a9bebb138c",
+   "english": "You can feel your eyes pull in for the near bead and let go for the far one.",
+   "text": "आप महसूस कर सकते हैं कि पास वाले मोती के लिए आपकी आँखें अंदर खिंचती हैं और दूर वाले के लिए छोड़ देती हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.setup.0": {
+   "source": "3a847b73414b4c",
+   "english": "Thread the three beads on the string. Tie one end to a door handle at about the height of your nose.",
+   "text": "डोरी में तीन मोती पिरोएँ। एक सिरे को दरवाज़े के हत्थे पर अपनी नाक की ऊँचाई के बराबर बाँध दें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.setup.1": {
+   "source": "40d066bdda4c7a",
+   "english": "Stand back until the string is tight. Hold the free end against the bridge of your nose, between your eyes.",
+   "text": "पीछे हटें जब तक डोरी कस न जाए। खुले सिरे को अपनी नाक की हड्डी के खिलाफ, अपनी आँखों के बीच में पकड़ें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.setup.2": {
+   "source": "f7f15a91ff8e7b",
+   "english": "Slide one bead to 30 cm from your nose, one to 60 cm, and the third near the far end.",
+   "text": "एक मोती को अपनी नाक से 30 cm पर, एक को 60 cm पर, और तीसरे को दूर वाले सिरे के पास खिसकाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.setup.3": {
+   "source": "aef2ea2db75b1a",
+   "english": "Press Start timer on this page. Keep your head still and both eyes open.",
+   "text": "इस पेज पर Start timer दबाएँ। अपना सिर स्थिर रखें और दोनों आँखें खुली रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.0": {
+   "source": "bdad8cd197e74f",
+   "english": "Look at the far bead. You should see one bead, with two strings that run away from you and meet at it. The two nearer beads look double: that is right.",
+   "text": "दूर वाले मोती को देखें। आपको एक मोती दिखना चाहिए, साथ में दो डोरियाँ जो आपसे दूर जाती हैं और उस पर मिलती हैं। पास के दो मोती दोहरे दिखते हैं: यह सही है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.1": {
+   "source": "17f750f2cd07cb",
+   "english": "Look at the middle bead. Now the two strings cross at it like an X, and the other two beads look double.",
+   "text": "बीच वाले मोती को देखें। अब दोनों डोरियाँ इस पर X की तरह पार करती हैं, और बाकी दो मोती दोहरे दिखते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.2": {
+   "source": "c466e821ddaccc",
+   "english": "Look at the near bead. The X now crosses at the near bead.",
+   "text": "पास वाले मोती को देखें। X अब पास वाले मोती पर पार करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.3": {
+   "source": "29b1d1fc5dadd4",
+   "english": "Hold each bead for a slow count of 5, then move on: far, middle, near, middle, far. That is one round. Do 3 rounds.",
+   "text": "धीमी गिनती के 5 तक प्रत्येक मोती को पकड़ें, फिर आगे बढ़ें: दूर, बीच, पास, बीच, दूर। यह एक राउंड है। 3 राउंड करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.4": {
+   "source": "0b01163cdad9e3",
+   "english": "Slide the near bead 5 cm closer to your nose and do one more round.",
+   "text": "पास वाले मोती को अपनी नाक के 5 cm और करीब खिसकाएँ और एक और राउंड करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.5": {
+   "source": "98c3a1f92c8af8",
+   "english": "Keep bringing the near bead closer, 5 cm at a time and then 2 cm at a time, while it still becomes one bead with the X on it.",
+   "text": "पास वाले मोती को और करीब लाते रहें, एक बार में 5 cm और फिर एक बार में 2 cm, जब तक यह X के साथ एक मोती बना रहता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.6": {
+   "source": "3f301909e48c81",
+   "english": "When the near bead will not become one, slide it back to the last place where it did.",
+   "text": "जब पास वाला मोती एक नहीं बनेगा, तो इसे वापस उस आखिरी जगह पर खिसकाएँ जहाँ यह बना था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.steps.7": {
+   "source": "ef6fad68c9f7b5",
+   "english": "Measure from that bead to the bridge of your nose. Type the number on this page and press Save this routine.",
+   "text": "उस मोती से अपनी नाक की हड्डी तक मापें। इस पेज पर नंबर टाइप करें और Save this routine दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.stop.0": {
+   "source": "356ad427c1b11d",
+   "english": "Double vision that stays after you look far away and blink",
+   "text": "दोहरा दिखना जो दूर देखने और पलक झपकाने के बाद भी बना रहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.stop.0"
+  },
+  "brock-string.stop.1": {
+   "source": "29247be057940a",
+   "english": "A headache",
+   "text": "सिरदर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.stop.1"
+  },
+  "brock-string.stop.2": {
+   "source": "901cad27d1fbd6",
+   "english": "Eye pain",
+   "text": "आँखों में दर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.stop.symptoms.eye_pain"
+  },
+  "brock-string.stop.3": {
+   "source": "5a84db7493d48a",
+   "english": "Feeling dizzy or sick",
+   "text": "चक्कर आना या तबीयत खराब लगना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.stop.3"
+  },
+  "brock-string.stop.4": {
+   "source": "da38978e571831",
+   "english": "A pulling or aching feeling round the eyes that is still there after a minute of looking far away",
+   "text": "आँखों के आस-पास खिंचाव या दर्द की भावना जो दूर देखने के एक मिनट बाद भी बनी रहती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.stop.4"
+  },
+  "brock-string.stop.5": {
+   "source": "323520d2ad55b2",
+   "english": "The near bead is double even at 30 cm, however long you look",
+   "text": "पास वाला मोती 30 cm पर भी दोहरा है, चाहे आप कितनी भी देर देखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "brock-string.what": {
+   "source": "c2ae12d1bd476b",
+   "english": "A string with three beads runs from your nose to a door handle. You look from bead to bead, and the string itself shows where your two eyes are aiming, so you can feel it and steer it.",
+   "text": "तीन मोतियों वाली एक डोरी आपकी नाक से दरवाज़े के हत्थे तक जाती है। आप एक-एक करके मोती को देखते हैं, और डोरी खुद दिखाती है कि आपकी दोनों आँखें कहाँ निशाना साध रही हैं, ताकि आप इसे महसूस कर सकें और इसे संभाल सकें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

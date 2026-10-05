@@ -12,6 +12,6 @@ import type { Job } from "./index";
 export const experimentSignals: Job = {
   name: "experiment-signals",
   cadence: "daily",
-  what: words.job.what,
+  get what() { return words.job.what; },
   run: async (now) => ({ ok: true, note: words.job.note, counts: await recomputeOpenSignals(now) }),
 };

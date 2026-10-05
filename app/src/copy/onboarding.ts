@@ -1,9 +1,10 @@
 import { EYE_NAME, other, type Derived, type Eye } from "@/engine";
+import { texts } from "@/i18n/texts";
 
 const eye = (e: Eye) => EYE_NAME[e].toLowerCase();
 export const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 
-export const onboarding = {
+export const onboarding = texts("copy/onboarding", "onboarding", () => ({
   title: "Onboarding",
   sub: "Do this once on each screen. Each eye gets two minutes on its own, then both eyes take the balance test through the glasses. The results set the contrast and sizes for every game.",
   blocked: {
@@ -109,11 +110,11 @@ export const onboarding = {
     target: "Game target size",
     targetFrom: (times: number) => `${times} times that letter, the smallest a target may be`,
     text: "App text size",
-    textFrom: "From the better eye's letter test and the viewing distance",
+    textFrom: "From the stronger eye's letter test and the viewing distance",
     faint: "Faint text",
     faintOn: "Raised contrast",
     faintOff: "Standard",
-    faintFrom: "From the better eye's faint-letter test",
+    faintFrom: "From the stronger eye's faint-letter test",
     opens: "Opens with",
     programme: {
       doctor_first: ["Eye doctor first", "A recent sudden change was reported. Training stays locked; check-ups still run."],
@@ -122,4 +123,4 @@ export const onboarding = {
       eye_fitness: ["Eye fitness, level 0", "Tracker, breaks, outdoor time and check-ups."],
     } satisfies Record<Derived["opens"], [string, string]>,
   },
-};
+}));

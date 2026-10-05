@@ -14,9 +14,9 @@ import { requireMember, type Member } from "@/lib/session";
 import { doseFor, type TrainDose } from "@/lib/sessions";
 import { runPath } from "../../test/results";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
-const HEAD = { title: t.title, crumb: [{ href: "/today", label: t.crumb }] };
+const HEAD = () => ({ title: t.title, crumb: [{ href: "/today", label: t.crumb }] });
 const itemName = (it: PlanItem) => (it.kind === "film" ? t.cinema : it.name);
 /** A check-up's own name, in lower case inside a sentence. */
 const testName = (key: string) => (tests.find((x) => x.key === key)?.name ?? key).toLowerCase();
@@ -36,7 +36,7 @@ export default async function WeekPage() {
     const guardian = m.can("manage_family");
     return (
       <>
-        <PageHead {...HEAD} />
+        <PageHead {...HEAD()} />
         <Empty title={t.none.title}>
           <span>{t.none.body}</span>
           {/* wrapped, because the hatched box paints its direct children the card colour */}
@@ -62,7 +62,7 @@ function Week({ w, m, dose }: { w: ActiveWeek; m: Member; dose: TrainDose }) {
   return (
     <>
       <PageHead
-        {...HEAD}
+        {...HEAD()}
         sub={`${t.sub(w.programme.name)} ${w.programme.doseBasis}`}
         stats={[
           { value: t.stats.weekOf(w.week, w.weeks), label: t.stats.week },
@@ -233,7 +233,7 @@ function Ended({ e, m }: { e: EndedCourse; m: Member }) {
   const x = t.end;
   return (
     <>
-      <PageHead {...HEAD} title={e.end === "eye_test" ? x.title.eye_test(e.weeks) : x.title.counsellor} sub={x.ended(e.programme.name, dateLabel(e.endedAt))} />
+      <PageHead {...HEAD()} title={e.end === "eye_test" ? x.title.eye_test(e.weeks) : x.title.counsellor} sub={x.ended(e.programme.name, dateLabel(e.endedAt))} />
       <div className="bento">
         <Card span={7} tone="grad">
           <p>{x.body[e.end](e.weeks)}</p>

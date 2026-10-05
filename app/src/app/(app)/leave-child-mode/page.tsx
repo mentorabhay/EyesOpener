@@ -6,7 +6,7 @@ import { leave as t } from "@/copy/family";
 import { requireMember } from "@/lib/session";
 import { leaveChildMode } from "./actions";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function LeaveChildModePage() {
   const m = await requireMember();

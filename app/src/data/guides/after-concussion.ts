@@ -5,6 +5,8 @@
  * feeling sick and a foggy head, each from 0 (none) to 10.
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -51,7 +53,7 @@ const after: Measure = {
   from: "typed", min: 0, max: 10, step: 1, better: "lower",
 };
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/after-concussion", () => [
   {
     slug: "walk-in-target",
     what: "Walking slowly towards a letter on the wall while keeping it single and clear. The nearer you come, the more your two eyes must turn in together, and here they do it while you move.",
@@ -211,4 +213,4 @@ export const guides: Guide[] = [
     evidence: `No trial tested this routine by itself. It mixes focusing with movement, as the clinic therapy in one trial did. In that trial, of people aged 11 to 25, ${CONCUSS_RESULT}.`,
     sources: [CONCUSS, VOMS],
   },
-];
+], GUIDE_WORDS);

@@ -16,9 +16,9 @@ import { Monitor } from "./monitor";
 import css from "./monitor.module.css";
 import { Week } from "./week";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
-const crumb = [{ href: "/today", label: t.crumb }];
+const crumb = () => [{ href: "/today", label: t.crumb }];
 /** "Friday 2 October" from a day key. */
 const dayName = (key: string) => new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${key}T00:00:00Z`));
 const List = ({ items }: { items: readonly string[] }) => <ul className={css.plain}>{items.map((x) => <li key={x}>{x}</li>)}</ul>;
@@ -38,7 +38,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
     const adults = m.profiles.filter((p) => isAdultProfile(p, ageFrom(p.birthYear)));
     return (
       <>
-        <PageHead title={t.title} sub={t.sub} crumb={crumb} />
+        <PageHead title={t.title} sub={t.sub} crumb={crumb()} />
         <div className="bento">
           <Card title={t.child.title} span={7}>
             <p>{t.child.body(name)}</p>
@@ -69,7 +69,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub} crumb={crumb}
+        title={t.title} sub={t.sub} crumb={crumb()}
         stats={[
           { value: now.measured ? a.measured(now.measured) : none, label: a.stat.measured },
           { value: now.measured ? a.ofDue(now.taken, now.due) : none, label: a.stat.breaks },

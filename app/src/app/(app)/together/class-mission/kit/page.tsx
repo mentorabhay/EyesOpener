@@ -8,7 +8,7 @@ import { COVER_SECONDS, MISSION_SECONDS, stepTimes } from "@/lib/class-mission";
 import { requireMember } from "@/lib/session";
 
 const t = classMission.kit, steps = classMission.what.steps;
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 /**
  * The Class Mission kit, to print: a note for the teacher, the plan, the leader's cards, a paper comet and a

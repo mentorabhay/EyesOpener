@@ -16,6 +16,7 @@ import {
   startOfDay, teamDays, weekOf, weeksToClose, type Entry, type LeagueBlock, type MemberWeek,
 } from "@/lib/league";
 import type { Member } from "@/lib/session";
+import { inEnglish } from "@/i18n/runtime";
 
 /** Today in India. This file names the day itself, so that it also runs outside a request (a job, the seed). */
 const todayKey = (at = new Date()) => dayOf(at);
@@ -253,7 +254,7 @@ async function seat(tx: Q, m: Member, entry: Extract<Entry, { ok: true }>, today
   if (pick.kind === "team") team = teams.find((t) => t.id === pick.teamId)!;
   else {
     const leagueId = pick.kind === "new_team" ? pick.leagueId
-      : (await tx.insert(s.league).values({ name: words.storedName, programme: entry.programme, ageBand: entry.band }).returning({ id: s.league.id }))[0].id;
+      : (await tx.insert(s.league).values({ name: inEnglish(() => words.storedName), programme: entry.programme, ageBand: entry.band }).returning({ id: s.league.id }))[0].id;
     [team] = await tx.insert(s.team).values({ leagueId, name: pick.name }).returning({ id: s.team.id, name: s.team.name });
   }
   await tx.insert(s.teamMember).values({ teamId: team.id, profileId: m.profile.id, countsFrom: countsFromFor(today) });

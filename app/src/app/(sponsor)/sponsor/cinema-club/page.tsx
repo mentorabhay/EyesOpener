@@ -12,7 +12,7 @@ import { approvedOnly } from "@/lib/sponsor";
 import { closeClubAction, listClubAction } from "./actions";
 
 const t = c.sponsor;
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 const tone: Record<ClubStatus, Tone> = { in_review: "warn", listed: "ok", closed: "plain", removed: "none" };
 

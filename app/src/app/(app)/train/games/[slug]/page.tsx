@@ -12,7 +12,8 @@ import { gameGuideFor } from "@/data/game-guides";
 import { kindOf } from "@/games/built";
 import { requireMember } from "@/lib/session";
 import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
-import { forWhom, isListed } from "@/lib/status";
+import { isListed } from "@/lib/status";
+import { gameWords } from "@/data/words";
 
 type Props = { params: Promise<{ slug: string }> };
 const x = t.game.guide;
@@ -32,6 +33,8 @@ export default async function GamePage({ params }: Props) {
   if (!isListed(status, m.tester)) notFound();
   const [dose, past] = await Promise.all([doseFor(m, "game", slug), pastSessions(m, "game", slug)]);
   const mech = mechanismOf(g.mechanism);
+  /* the catalogue's lines in the reader's language (src/data/words.ts) */
+  const w = gameWords(g);
   const guide = gameGuideFor(slug);
   const k = t.game.kv;
   const film = kind === "cinema";
@@ -39,7 +42,7 @@ export default async function GamePage({ params }: Props) {
 
   return (
     <>
-      <PageHead title={g.name} sub={g.purpose} crumb={film ? [{ href: "/train/cinema", label: t.cinema.title }] : [{ href: "/train", label: t.game.crumb }]} />
+      <PageHead title={g.name} sub={w.purpose} crumb={film ? [{ href: "/train/cinema", label: t.cinema.title }] : [{ href: "/train", label: t.game.crumb }]} />
       <div className="row">
         {film && <Chip>{t.cinema.activity}</Chip>}
         <EvidenceChip level={mech.evidence} />
@@ -60,11 +63,11 @@ export default async function GamePage({ params }: Props) {
           ) : <Empty title={t.game.notBuilt.title}><span>{t.game.notBuilt.body}</span></Empty>}
         </Card>
         <Card title={x.what} span={5}>
-          <p>{guide?.what ?? g.play}</p>
+          <p>{guide?.what ?? w.play}</p>
           <dl className="kv">
-            <div><dt>{k.for}</dt><dd>{forWhom(g.for)}</dd></div>
-            <div><dt>{k.gear}</dt><dd>{g.gear}</dd></div>
-            <div><dt>{k.session}</dt><dd>{g.session}</dd></div>
+            <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
+            <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
+            <div><dt>{k.session}</dt><dd>{w.session}</dd></div>
           </dl>
         </Card>
         {guide && guide.cues.length > 0 && <Card title={x.cues}><Cues cues={guide.cues} tones={x.tone} /></Card>}

@@ -11,6 +11,7 @@ import { readHour, writeHour } from "@/lib/lights-on-data";
 import { isStaffStep } from "@/lib/wish-jam";
 import { takeStaffStep, tieGame } from "@/lib/wish-jam-data";
 import type { Answer } from "../../answer-form";
+import { inEnglish } from "@/i18n/runtime";
 
 /**
  * Staff changes for the four gatherings. The page is kept in the moderation room: that room's gate runs in every
@@ -28,7 +29,7 @@ export async function setHourAction(_: Answer, form: FormData): Promise<Answer> 
   const before = await readHour();
   if (before.weekday === input.data.weekday && before.hour === input.data.hour) return { ok: false, message: t.same };
   const saved = await writeHour(input.data);
-  await audit(viewer, "admin.gatherings.hour.set", "lights_on_hour", { name: lightsOn.weekly(saved.weekday, saved.hour), from: before, to: saved });
+  await audit(viewer, "admin.gatherings.hour.set", "lights_on_hour", { name: inEnglish(() => lightsOn.weekly(saved.weekday, saved.hour)), from: before, to: saved });
   refresh();
   return { ok: true, message: t.saved };
 }

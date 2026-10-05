@@ -2,10 +2,12 @@
  * Words for the Listen button: the spoken version of the instructions on a page.
  * Plain words a school student can follow. The button is offered only where audio exists.
  */
+import { texts } from "@/i18n/texts";
+
 const two = (n: number) => String(n).padStart(2, "0");
 const whole = (seconds: number) => Math.max(0, Math.round(seconds));
 
-export const voice = {
+export const voice = texts("copy/voice", "voice", () => ({
   listen: "Listen",
   pause: "Pause",
   goOn: "Go on",
@@ -33,4 +35,4 @@ export const voice = {
     cues: "When you see this, do this",
     clip: "How this clip goes",
   },
-};
+}));

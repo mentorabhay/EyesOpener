@@ -4,7 +4,9 @@
  * Plain words, short enough to fit a phone. Numbers for how far the eyes turn are in prism dioptres; the page says so.
  */
 
-export const words = {
+import { texts } from "@/i18n/texts";
+
+export const words = texts("copy/drills-verg", "words", () => ({
   /** The label of the spot the member taps when one picture turns into two, and the question beside it. */
   split: "It split",
   ask: "Seeing two?",
@@ -91,12 +93,12 @@ export const words = {
     "Hang the wet towel in the sun.",
     "The tailor mends coats and shirts.",
   ],
-};
+}));
 
 const one = "one ring with both dots";
 const split = "If you see two, tap It split or press Down.";
 
-export const help: Record<string, string> = {
+export const help: Record<string, string> = texts("copy/drills-verg", "help", () => ({
   "screen-vergence-ramp": `Watch the ring and keep it as ${one} while it slowly gets harder. The moment it turns into two rings, tap It split or press Down. When the two join again, tap the scene or press Space or OK.`,
   "screen-diverge-ramp": `The ring drifts the other way, so let your eyes relax to keep ${one}. The moment it turns into two rings, tap It split or press Down. When the two join again, tap the scene or press Space or OK.`,
   "screen-vergence-steps": `The ring jumps. Bring it back to ${one}, then tap the scene or press Space or OK for the next jump. ${split}`,
@@ -104,4 +106,4 @@ export const help: Record<string, string> = {
   "long-hold": `Tap the top half of the scene or press Up to make it harder, one step at a time. Tap the bottom left or press Left to make it easier. Then hold ${one} while the bar fills for two minutes. ${split}`,
   "reading-under-demand": `Read the sentence, then tap the scene or press Space or OK for the next one. Each eye's words have a dot: you should see one sentence with a dot above and a dot below. If the words double, tap It split or press Down.`,
   "distance-fusion-hold": `Sit about 3 metres from the TV and keep ${one}. It gets a little harder after every 20 seconds you hold it. If you see two rings, tap It split or press Down.`,
-};
+}));

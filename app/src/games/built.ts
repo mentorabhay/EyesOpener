@@ -9,6 +9,7 @@ import { help as hDepth } from "@/copy/games-depth";
 import { help as hDgame } from "@/copy/games-dgame";
 import { help as hSkills } from "@/copy/games-skills";
 import { help as hVerg } from "@/copy/games-verg";
+import { joined } from "@/i18n/texts";
 import { slugs as care } from "./care/slugs";
 import { defs } from "./defs";
 import { cinema, help as hExtra } from "./extra";
@@ -20,7 +21,8 @@ const kinds = new Map<string, GameKind>([
   ...cinema.map((s) => [s, "cinema"] as const),
   ...care.map((s) => [s, "care"] as const),
 ]);
-const help: Record<string, string> = { ...hDgame, ...hVerg, ...hDepth, ...hSkills, ...hCare, ...hExtra };
+/* joined, not spread: a spread would read every line while this file loads, in one reader's language */
+const help: Record<string, string> = joined(hDgame, hVerg, hDepth, hSkills, hCare, hExtra);
 
 export const kindOf = (slug: string): GameKind | undefined => kinds.get(slug);
 export const isBuilt = (slug: string) => kinds.has(slug);

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { print } from "@/copy/drills-tools";
 import type { PrintKey } from "@/data/guides/types";
-import { cardFor, cards, CHART_ROWS } from "./cards";
+import { allCards, cardFor, CHART_ROWS } from "./cards";
 
 /** Every key of `PrintKey`: the record makes the compiler say so when a key is added. */
 const KEYS = Object.keys({ barrel: 0, dots: 0, lifesaver: 0, letters: 0, letter: 0, grid: 0, pairs: 0 } satisfies Record<PrintKey, 0>) as PrintKey[];
@@ -15,7 +15,7 @@ const mm = (svg: string, side: "width" | "height") => Number(new RegExp(`^<svg[^
 
 describe("printable cards", () => {
   it("has a card for every key", () => {
-    expect(Object.keys(cards).sort()).toEqual([...KEYS].sort());
+    expect(Object.keys(allCards()).sort()).toEqual([...KEYS].sort());
   });
 
   for (const key of KEYS) {

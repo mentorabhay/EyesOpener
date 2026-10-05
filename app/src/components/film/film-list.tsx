@@ -15,7 +15,7 @@ function watchedText(f: Film) {
   return f.duration > 0 ? l.watched(clock(f.position), clock(f.duration)) : l.watchedSoFar(clock(f.position));
 }
 
-const STATUS_WORDS: Partial<Record<FilmStatus, string>> = { ask: l.needsOk, gone: l.gone, file: l.needsFile, cannot: c.cannot.inList };
+const STATUS_WORDS = (): Partial<Record<FilmStatus, string>> => ({ ask: l.needsOk, gone: l.gone, file: l.needsFile, cannot: c.cannot.inList });
 
 /**
  * The member's own films, lined up: length, how much of each is watched, which is on screen, and buttons to play,
@@ -79,7 +79,7 @@ export function FilmList({ list, input, playingKey, locked, onPlay, reelLabel, r
                     <span className="tnum">{f.duration > 0 ? clock(f.duration) : l.lengthUnknown}</span>
                     {f.size > 0 && <span className="tnum">{sizeText(f.size)}</span>}
                     <span className="tnum">{watchedText(f)}</span>
-                    {status !== "ready" && <span className="chip" data-b={status === "cannot" || status === "gone" ? "warn" : "none"}>{STATUS_WORDS[status]}</span>}
+                    {status !== "ready" && <span className="chip" data-b={status === "cannot" || status === "gone" ? "warn" : "none"}>{STATUS_WORDS()[status]}</span>}
                   </div>
                   {/* Hatched when the film's length has not been read, so nothing is drawn that is not known. */}
                   {p === null

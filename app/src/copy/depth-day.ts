@@ -1,8 +1,10 @@
 /** Words for First Depth Day. They say what a check-up found, never why, and never that it will stay. */
+import { texts } from "@/i18n/texts";
+
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 const step = (arcsec: number) => String(Math.round(arcsec * 10) / 10);
 
-export const depthDay = {
+export const depthDay = texts("copy/depth-day", "depthDay", () => ({
   untested: {
     title: "No Depth check-up yet",
     body: "The Depth check-up shows four rings and asks which one floats nearer. It needs the red-cyan glasses and takes a few minutes.",
@@ -63,4 +65,4 @@ export const depthDay = {
     years: (name: string, n: number) => `${many(n, "year", "years")} ago today, a Depth check-up first found depth for ${name}.`,
     yearsLink: "Open the day",
   },
-};
+}));

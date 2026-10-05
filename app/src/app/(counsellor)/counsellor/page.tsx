@@ -6,7 +6,7 @@ import { requireCounsellor } from "@/lib/auth";
 import { linkedMembers, linkRequests } from "@/lib/counsellor";
 import { answer } from "./actions";
 
-export const metadata: Metadata = { title: t.home.title };
+export const generateMetadata = (): Metadata => ({ title: t.home.title });
 
 export default async function CounsellorHome() {
   const viewer = await requireCounsellor();

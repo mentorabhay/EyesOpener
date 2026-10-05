@@ -1,7 +1,8 @@
 /** Words for results: what a session measured, and the member's own record of past sessions. */
 import type { Labels } from "@/components/play/results";
+import { texts } from "@/i18n/texts";
 
-export const results = {
+export const results = texts("copy/results", "results", () => ({
   title: "Your results",
   none: "No finished session yet. Your results appear here after the first one.",
   thisTime: "This session",
@@ -25,4 +26,4 @@ export const results = {
   /** Keys where a smaller number is the better one. */
   lowerIsBetter: ["misses", "splits"],
   film: { title: "Your cinema time", week: "Watched in the last 7 days", sessions: "Sittings" },
-};
+}));

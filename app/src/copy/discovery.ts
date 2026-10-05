@@ -3,11 +3,13 @@
  * An answer says what the records showed and no more. It is a signal from members, never proof, and nothing here
  * may promise a result. Nobody is named to another family, and people are never ranked.
  */
+import { texts } from "@/i18n/texts";
+
 const votes = (n: number) => (n === 1 ? "1 vote" : `${n} votes`);
 const members = (n: number) => (n === 1 ? "1 member" : `${n} members`);
 const list = (names: string[]) => (names.length < 2 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`);
 
-export const discovery = {
+export const discovery = texts("copy/discovery", "discovery", () => ({
   stats: { rounds: "Rounds held", answered: "Questions answered" },
   votes,
 
@@ -162,4 +164,4 @@ export const discovery = {
     what: "Closes every Discovery Board round whose last day to vote has passed.",
     note: "Rounds checked.",
   },
-};
+}));

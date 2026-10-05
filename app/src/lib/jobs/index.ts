@@ -9,6 +9,7 @@
  * - Every run is written to the audit log with counts only, never a name or a result.
  */
 import crypto from "node:crypto";
+import { withLang } from "@/i18n/runtime";
 import { db, schema } from "@/db";
 import { dataRequests } from "./data-requests";
 import { discoveryRounds } from "./discovery-rounds";
@@ -60,7 +61,8 @@ export const isCadence = (v: string): v is Cadence => v === "daily" || v === "we
 
 async function runOne(job: Job, now: Date, by: string | null): Promise<JobResult & { name: string }> {
   let result: JobResult;
-  try { result = await job.run(now); } catch (e) { result = { ok: false, note: e instanceof Error ? e.message.slice(0, 200) : "failed" }; }
+  /* A job's note is kept in the audit log for everyone on the staff, so it is always written in English. */
+  try { result = await withLang({ lang: "en", drafts: false }, () => job.run(now)); } catch (e) { result = { ok: false, note: e instanceof Error ? e.message.slice(0, 200) : "failed" }; }
   await db.insert(schema.auditLog).values({ userId: by, action: `job.${job.name}`, target: null, meta: { ok: result.ok, note: result.note, counts: result.counts ?? {} } });
   return { name: job.name, ...result };
 }

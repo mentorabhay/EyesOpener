@@ -1,0 +1,340 @@
+{
+ "lang": "hi",
+ "file": "copy/languages",
+ "entries": {
+  "languages.choose.childFollows": {
+   "source": "4a4fd2521ddc78",
+   "english": "Child mode uses the same language.",
+   "text": "चाइल्ड मोड में भी यही भाषा रहेगी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.drafts": {
+   "source": "8ae5ee971343bc",
+   "english": "Development view: machine drafts are shown. Nobody has checked them.",
+   "text": "डेवलपमेंट व्यू: मशीन से किए गए अनुवाद दिखाए जा रहे हैं। किसी ने इनकी जाँच नहीं की है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.go": {
+   "source": "0eceb54d387ce2",
+   "english": "Change language",
+   "text": "भाषा बदलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.guardianOnly": {
+   "source": "d0806d2da6fb87",
+   "english": "A guardian chooses the language for the household.",
+   "text": "परिवार के लिए भाषा अभिभावक चुनते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.inReview": {
+   "source": "78ad8e64f3191c",
+   "english": "being checked",
+   "text": "जाँच चल रही है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.label": {
+   "source": "56ec1cceff3806",
+   "english": "Read IOpener in",
+   "text": "IOpener को इस भाषा में पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.mixed": {
+   "source": "d7c53d419ca917",
+   "english": "Where a sentence has not been checked in your language yet, it is shown in English.",
+   "text": "आपकी भाषा में जिस वाक्य की जाँच अभी नहीं हुई है, वह अंग्रेज़ी में दिखेगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.notAllowed": {
+   "source": "c522e40c535da8",
+   "english": "Only a guardian can change the language.",
+   "text": "भाषा केवल अभिभावक ही बदल सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.notOffered": {
+   "source": "79632532719d4a",
+   "english": "That language is not switched on yet.",
+   "text": "वह भाषा अभी चालू नहीं की गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.notTranslated": {
+   "source": "e94533ea4c9383",
+   "english": "Game scenes, check-up letters and the names of games and exercises stay as they are in every language.",
+   "text": "गेम के दृश्य, जाँच के अक्षर, और गेम व कसरतों के नाम हर भाषा में वैसे ही रहेंगे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.onlyEnglish": {
+   "source": "e3cc9504f4c2b3",
+   "english": "IOpener is in English for now. More languages are being checked by people who speak them.",
+   "text": "IOpener अभी अंग्रेज़ी में है। बाकी भाषाओं की जाँच उन भाषाओं को बोलने वाले लोग कर रहे हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.saved(*)": {
+   "source": "43a6f584603a78",
+   "english": "Saved. IOpener is now in {name}.",
+   "text": "सहेज लिया गया। IOpener अब {name} में है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "languages.choose.sub": {
+   "source": "fb2199e2e5d66c",
+   "english": "This sets the language for everyone in your household, on every device.",
+   "text": "इससे आपके परिवार के हर सदस्य के लिए, हर डिवाइस पर भाषा सेट हो जाएगी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.choose.title": {
+   "source": "69eecf68ce70d8",
+   "english": "Language",
+   "text": "भाषा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "languages.staff.always": {
+   "source": "ffe3fd544608b7",
+   "english": "Always on",
+   "text": "हमेशा चालू",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.cols.language": {
+   "source": "69eecf68ce70d8",
+   "english": "Language",
+   "text": "भाषा",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/languages:languages.choose.title"
+  },
+  "languages.staff.cols.reviewed": {
+   "source": "5c8d77ed161ef1",
+   "english": "Checked by a person",
+   "text": "किसी व्यक्ति द्वारा जाँच की गई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.cols.status": {
+   "source": "2b9da892d6faf0",
+   "english": "Status",
+   "text": "स्थिति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.cols.translated": {
+   "source": "ec91388ce20db1",
+   "english": "Translated",
+   "text": "अनुवादित",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.counted(*)": {
+   "source": "28e5f68e0d4709",
+   "english": "Counted against the list of English sentences made on {date}.",
+   "text": "{date} को बनाई गई अंग्रेज़ी वाक्यों की सूची के अनुसार गिना गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "date"
+   ]
+  },
+  "languages.staff.done(*,*)": {
+   "source": "de112770321a81",
+   "english": "{name} is now: {status}.",
+   "text": "{name} अब है: {status}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name",
+    "status"
+   ]
+  },
+  "languages.staff.drafts(*)": {
+   "source": "4922798590bc0a",
+   "english": "{n} machine drafts wait for a person to check them.",
+   "text": "{n} मशीन ड्राफ़्ट किसी व्यक्ति द्वारा उनकी जाँच करने का इंतज़ार कर रहे हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "languages.staff.held": {
+   "source": "dd7869f7f7ef1e",
+   "english": "Held at \"In review\": the right-to-left layout has not been checked screen by screen yet.",
+   "text": "\"In review\" पर रोका गया: दाएँ से बाएँ लेआउट की अभी स्क्रीन-दर-स्क्रीन जाँच नहीं की गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.means.off": {
+   "source": "2a557083de8ecb",
+   "english": "Nobody is offered this language.",
+   "text": "यह भाषा किसी को नहीं दी जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.means.on": {
+   "source": "3aa789d549704e",
+   "english": "Every family is offered it. Sentences that no person has checked yet are shown in English.",
+   "text": "यह हर परिवार को दी जाती है। जिन वाक्यों की अभी किसी व्यक्ति ने जाँच नहीं की है वे अंग्रेज़ी में दिखाए जाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.means.review": {
+   "source": "1e36dd737645c5",
+   "english": "Only staff are offered it, so the people checking it can read the app in it.",
+   "text": "यह केवल स्टाफ़ को दी जाती है, ताकि इसकी जाँच करने वाले लोग ऐप को इसमें पढ़ सकें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.meansTitle": {
+   "source": "d5f1811ec72e89",
+   "english": "What each status means",
+   "text": "प्रत्येक स्थिति का क्या अर्थ है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.noFiles": {
+   "source": "18dbc17711980a",
+   "english": "No translation files are in this build. A language cannot be switched on without them.",
+   "text": "इस बिल्ड में कोई अनुवाद फ़ाइल नहीं है। इसके बिना किसी भाषा को चालू नहीं किया जा सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.noList": {
+   "source": "eeb3f64df8d242",
+   "english": "The list of English sentences is missing from this build, so nothing can be counted.",
+   "text": "इस बिल्ड में अंग्रेज़ी वाक्यों की सूची गायब है, इसलिए कुछ भी गिना नहीं जा सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.none": {
+   "source": "667e99c7e44895",
+   "english": "Nothing yet",
+   "text": "अभी कुछ नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.of(*,*)": {
+   "source": "561fe2a6908bf5",
+   "english": "{done} of {all}",
+   "text": "{all} में से {done}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "done",
+    "all"
+   ]
+  },
+  "languages.staff.refused.held": {
+   "source": "8de672abc0317a",
+   "english": "This language cannot be switched on for families yet. It can be put in review, so that staff can read the app in it.",
+   "text": "यह भाषा अभी परिवारों के लिए चालू नहीं की जा सकती है। इसे समीक्षा में रखा जा सकता है, ताकि स्टाफ़ ऐप को इसमें पढ़ सके।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.refused.nothing": {
+   "source": "901e45b534db46",
+   "english": "No sentence of this language has been checked by a person yet. Switch it to \"In review\" first.",
+   "text": "इस भाषा के किसी भी वाक्य की अभी किसी व्यक्ति द्वारा जाँच नहीं की गई है। पहले इसे \"In review\" पर करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.refused.unknown": {
+   "source": "c2214826571121",
+   "english": "That is not one of the languages.",
+   "text": "यह भाषाओं में से एक नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.rule": {
+   "source": "745d2e0fd492b7",
+   "english": "A machine translation is never shown to a family. A person who reads the language checks each sentence first.",
+   "text": "मशीन अनुवाद कभी भी किसी परिवार को नहीं दिखाया जाता है। भाषा पढ़ने वाला कोई व्यक्ति पहले प्रत्येक वाक्य की जाँच करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.save": {
+   "source": "19e6bff894c3c7",
+   "english": "Save",
+   "text": "सहेजें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.saveLabel(*)": {
+   "source": "134bb0b52585d0",
+   "english": "Save the status of {name}",
+   "text": "{name} की स्थिति सहेजें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "languages.staff.stale(*)": {
+   "source": "6e63ebd5397c0b",
+   "english": "{n} translations are of an older English wording and are not shown.",
+   "text": "{n} अनुवाद पुराने अंग्रेज़ी शब्दों के हैं और नहीं दिखाए जाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "languages.staff.status.off": {
+   "source": "6580723cde1d9a",
+   "english": "Off",
+   "text": "बंद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.status.on": {
+   "source": "4738c9c7544385",
+   "english": "On",
+   "text": "चालू",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.status.review": {
+   "source": "dfd32ef95a39a0",
+   "english": "In review",
+   "text": "समीक्षा में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.statusLabel(*)": {
+   "source": "309d96761bfe3b",
+   "english": "Status of {name}",
+   "text": "{name} की स्थिति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "languages.staff.sub": {
+   "source": "a3cad30d45f061",
+   "english": "A language is offered to families only when it is switched on here. English is always on.",
+   "text": "परिवारों को कोई भाषा तभी दी जाती है जब उसे यहाँ चालू किया जाता है। अंग्रेज़ी हमेशा चालू रहती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "languages.staff.title": {
+   "source": "5798257d73583a",
+   "english": "Languages",
+   "text": "भाषाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

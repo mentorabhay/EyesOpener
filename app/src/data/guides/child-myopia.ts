@@ -4,6 +4,8 @@
  * The fifth is a reading-distance check done by hand. Nothing here is measured by a camera, a watch or a light sensor.
  */
 import type { Guide, Source, Tool } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -43,7 +45,7 @@ const NOT_INDOORS = "Counting time in a car, a bus or a room with big windows. O
 const GUESSED = "Guessing the minutes at the end of the week. Time them and log them on the day.";
 const GUANGZHOU_RESULT = "one added 40-minute outdoor class a day lowered new short sight over three years from 39.5% of children to 30.4%";
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/child-myopia", () => [
   {
     slug: "outdoor-light-time",
     what: "Time outdoors in daylight every day: 40 minutes or more. In school trials, children who were given more time outdoors became short-sighted (far things look blurred) less often.",
@@ -114,7 +116,7 @@ export const guides: Guide[] = [
     measures: [
       {
         key: "distance_cm", label: "Distance from eye to page", unit: "cm",
-        how: "While the child is reading, and before you remind them, measure with a ruler or tape from the outer corner of one eye straight to the middle of the page. Type the centimetres.",
+        how: "Do this while the child is reading, before you remind them. Measure with a ruler or tape from the outer corner of one eye straight to the middle of the page. Type the centimetres.",
         from: "typed", min: 5, max: 80, step: 1, better: "higher",
         usual: { text: "Aim for 30 cm or more. In a study of 2,339 twelve-year-olds in Sydney, those who read closer than 30 cm were more often short-sighted. That is a link, not proof of a cause.", source: 0 },
       },
@@ -256,4 +258,4 @@ export const guides: Guide[] = [
     evidence: "No trial tested a weekend block by itself. In the Guangzhou school trial, parents were also asked to take their children outdoors at weekends and in holidays, and the benefit was measured for the whole plan.",
     sources: [GUANGZHOU, TAIWAN_TRIAL],
   },
-];
+], GUIDE_WORDS);

@@ -1,10 +1,11 @@
 /** Words for signing in, the email link, the welcome step and signing out. */
 import type { Refusal } from "@/lib/signin/flow";
 import { SESSION_DAYS, TRUSTED_HOURS } from "@/lib/signin/lengths";
+import { texts } from "@/i18n/texts";
 
 const askUs = "This email address is already tied to a different sign-in at IOpener, so we did not sign you in. IOpener staff have to check and free it first.";
 
-export const signin = {
+export const signin = texts("copy/signin", "signin", () => ({
   title: "Sign in",
   sub: "Grown-ups sign in here. There is no password to remember.",
   notSetUp: "Sign-in is not set up yet.",
@@ -102,4 +103,4 @@ export const signin = {
   slowDown: (minutes: number) => `Too many tries from this network. Wait about ${minutes} ${minutes === 1 ? "minute" : "minutes"} and try again.`,
   badAddress: "That does not look like an email address.",
   notSent: "We could not send the email just now. Try again in a minute.",
-};
+}));

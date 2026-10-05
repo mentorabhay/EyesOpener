@@ -17,7 +17,7 @@ import { NotesForm } from "./notes-form";
 
 const m = t.moderation;
 const a = assistCopy.review;
-export const metadata: Metadata = { title: t.rooms.moderation.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.moderation.name });
 
 /**
  * The note an assistant left for the reviewer: what the item is, what the second opinion on hazards flagged, and

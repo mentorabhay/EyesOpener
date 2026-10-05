@@ -7,7 +7,7 @@ import { LevelChip, ProgrammeCard } from "../_components/catalogue";
 import { Cta, Head, Hero, Section } from "../_components/parts";
 
 const p = t.programmes;
-export const metadata: Metadata = pageMeta("/programmes", p.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/programmes", p.meta));
 
 const LEVELS = [0, 1, 2] as const;
 

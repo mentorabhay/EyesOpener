@@ -6,9 +6,11 @@
  * Nothing here may promise to treat or cure.
  */
 
+import { texts } from "@/i18n/texts";
+
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
-export const landing = {
+export const landing = texts("copy/landing", "landing", () => ({
   meta: {
     title: "Two eyes. One picture.",
     description:
@@ -200,4 +202,4 @@ export const landing = {
       { href: "/for-sponsors", label: "For sponsors and schools" },
     ],
   },
-};
+}));

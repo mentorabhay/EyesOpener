@@ -2,17 +2,18 @@ import { Card, Chip, Empty, EvidenceChip } from "@/components/ui";
 import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
 import { voice } from "@/copy/voice";
-import { evidenceOf, exerciseBySlug, gameBySlug, gameLevel, mechanismOf } from "@/data";
+import { exerciseBySlug, gameBySlug, gameLevel, mechanismOf } from "@/data";
 import { gameGuideFor } from "@/data/game-guides";
 import { staffNotesFor } from "@/data/game-guides/staff-notes";
 import { guideFor } from "@/data/guides";
 import { exerciseStaffNotesFor } from "@/data/guides/staff-notes";
 import { supervisionFor } from "@/data/supervision";
-import { exerciseLevel, forWhom, recommendedStatus, type Status } from "@/lib/status";
+import { exerciseLevel, recommendedStatus, type Status } from "@/lib/status";
 import { gameScriptId, type GamePart } from "@/voice/scripts";
 import { Cues } from "./cue";
 import css from "./guide.module.css";
 import { SupervisionNote } from "./supervision";
+import { evidenceWords, exerciseWords, gameWords } from "@/data/words";
 
 const x = t.game.guide, e = t.exercise, m = t.manual;
 
@@ -33,7 +34,7 @@ function ForStaff({ mechanism, level, recommended, status, notes, catalogue }: {
     <Card title={m.staff.title} tone="dark">
       <dl className="kv">
         <div><dt>{m.staff.method}</dt><dd>{mech.label}. {mech.basis}</dd></div>
-        <div><dt>{m.staff.label}</dt><dd>{evidenceOf(mech.evidence).label}: {evidenceOf(mech.evidence).meaning}</dd></div>
+        <div><dt>{m.staff.label}</dt><dd>{evidenceWords(mech.evidence).label}: {evidenceWords(mech.evidence).meaning}</dd></div>
         <div><dt>{m.staff.level}</dt><dd>{m.staff.levels[level as 0 | 1 | 2]}</dd></div>
         <div><dt>{m.staff.recommended}</dt><dd>{e.statusFor[recommended]}{status && status !== recommended ? ` · ${m.staff.now(e.statusFor[status])}` : ""}</dd></div>
         {catalogue.map((c) => <div key={c.label}><dt>{c.label}</dt><dd>{c.value}</dd></div>)}
@@ -51,7 +52,7 @@ function ForStaff({ mechanism, level, recommended, status, notes, catalogue }: {
  */
 export function GameManual({ slug, staff = false, status, locale }: { slug: string; staff?: boolean; status?: Status; /** The household's language, for the Listen buttons. */ locale?: string | null }) {
   const g = gameBySlug(slug)!, guide = gameGuideFor(slug);
-  const mech = mechanismOf(g.mechanism), level = gameLevel(g);
+  const mech = mechanismOf(g.mechanism), level = gameLevel(g), w = gameWords(g);
   const sup = supervisionFor(g.mechanism, level);
   const k = t.game.kv;
   /* The spoken version of a card. It draws nothing where no audio exists. */
@@ -59,16 +60,16 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
   return (
     <div className="bento">
       <Card title={x.what} span={7} right={say("what")}>
-        <p>{guide?.what ?? g.play}</p>
+        <p>{guide?.what ?? w.play}</p>
         <dl className="kv">
-          <div><dt>{k.for}</dt><dd>{forWhom(g.for)}</dd></div>
-          <div><dt>{k.playsOn}</dt><dd>{g.playsOn}</dd></div>
-          <div><dt>{k.gear}</dt><dd>{g.gear}</dd></div>
-          <div><dt>{k.session}</dt><dd>{g.session}</dd></div>
+          <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
+          <div><dt>{k.playsOn}</dt><dd>{w.playsOn}</dd></div>
+          <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
+          <div><dt>{k.session}</dt><dd>{w.session}</dd></div>
         </dl>
       </Card>
       <Card title={x.helps} span={5} right={<EvidenceChip level={mech.evidence} />}>
-        <p>{guide?.helps ?? g.purpose}</p>
+        <p>{guide?.helps ?? w.purpose}</p>
       </Card>
       {!guide && <Card><Empty title={x.notWritten} /></Card>}
       {guide && (
@@ -109,7 +110,7 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
       <Card title={t.game.evidence} right={<EvidenceChip level={mech.evidence} />}>
         <p><b>{mech.label}.</b> {mech.basis}</p>
         {guide && <p>{guide.evidence}</p>}
-        <p className="muted small">{evidenceOf(mech.evidence).meaning}</p>
+        <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
         {guide && <Sources sources={guide.sources} />}
       </Card>
       {staff && (
@@ -125,18 +126,18 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
 /** The manual of one exercise, without its tool. With `staff`, it adds the method, its evidence and what the routine's tool cannot tell. */
 export function ExerciseManual({ slug, staff = false, status }: { slug: string; staff?: boolean; status?: Status }) {
   const ex = exerciseBySlug(slug)!, g = guideFor(slug);
-  const mech = mechanismOf(ex.mechanism), level = exerciseLevel(ex);
+  const mech = mechanismOf(ex.mechanism), level = exerciseLevel(ex), w = exerciseWords(ex);
   const sup = supervisionFor(ex.mechanism, level);
   const k = e.kv;
   return (
     <div className="bento">
       <Card title={e.what} span={7}>
-        <p>{g?.what ?? ex.how}</p>
+        <p>{g?.what ?? w.how}</p>
         <dl className="kv">
-          <div><dt>{k.purpose}</dt><dd>{ex.purpose}</dd></div>
-          <div><dt>{k.for}</dt><dd>{forWhom(ex.for)}</dd></div>
-          <div><dt>{k.gear}</dt><dd>{ex.gear}</dd></div>
-          <div><dt>{k.dose}</dt><dd>{ex.dose}</dd></div>
+          <div><dt>{k.purpose}</dt><dd>{w.purpose}</dd></div>
+          <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
+          <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
+          <div><dt>{k.dose}</dt><dd>{w.dose}</dd></div>
           {g && <div><dt>{m.tool}</dt><dd>{e.tool[g.tool.kind]}</dd></div>}
         </dl>
       </Card>
@@ -174,7 +175,7 @@ export function ExerciseManual({ slug, staff = false, status }: { slug: string; 
       <Card title={e.evidence} right={<EvidenceChip level={mech.evidence} />}>
         <p><b>{mech.label}.</b> {mech.basis}</p>
         {g && <p>{g.evidence}</p>}
-        <p className="muted small">{evidenceOf(mech.evidence).meaning}</p>
+        <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
         {g && <Sources sources={g.sources} />}
       </Card>
       {staff && (

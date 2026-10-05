@@ -4,6 +4,8 @@
  * of drops an eye doctor prescribed, and never sets or changes them.
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -46,7 +48,7 @@ const marks = (eye: "right" | "left"): Measure => ({
 const typed = (key: string, label: string, how: string, better: Measure["better"]): Measure =>
   ({ key, label, unit: "", how, from: "typed", min: 0, max: 12, step: 1, better });
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/monitoring", () => [
   {
     slug: "weekly-grid-check",
     what: "A two-minute check of the centre of your sight, one eye at a time, with a square grid (called an Amsler grid). You mark any place where the lines look bent, blurred or missing. It can show a change between eye examinations.",
@@ -80,7 +82,7 @@ export const guides: Guide[] = [
       "A sudden change in sight: a new dark patch, a shadow or curtain, flashes of light or many new floating specks. Get urgent eye care the same day.",
     ],
     mistakes: [
-      "Checking with both eyes open. The better eye hides what the other one misses.",
+      "Checking with both eyes open. The stronger eye hides what the other one misses.",
       "Letting the eye wander over the grid. Keep it on the dot.",
       "Leaving off the reading glasses, or holding the grid at a different distance each week.",
       "Treating a clear grid as an all-clear. The grid misses some changes, so keep your eye examinations.",
@@ -92,7 +94,7 @@ export const guides: Guide[] = [
   },
   {
     slug: "drop-reminder-routine",
-    what: "A fixed routine for eye drops an eye doctor prescribed for every day: an alarm at drop time, the drop, and a quick record, with a weekly tally of doses taken against doses planned. IOpener never sets or changes the drops.",
+    what: "A fixed routine for eye drops an eye doctor prescribed for every day: an alarm at drop time, the drop, and a quick record. Each week it adds up the doses taken against the doses planned. IOpener never sets or changes the drops.",
     need: [
       "The drops, and the eye doctor's written plan: which eye, how many times a day, what time.",
       "A phone alarm for each drop time. IOpener does not send reminders yet.",
@@ -144,4 +146,4 @@ export const guides: Guide[] = [
     evidence: "In a trial of 70 people with glaucoma who often missed their drops, daily phone or text reminders raised the typical share of doses taken from 53% to 64%. A group with no reminders did not change. No trial tested this routine itself.",
     sources: [REMINDERS, HOW_TO_DROPS],
   },
-];
+], GUIDE_WORDS);

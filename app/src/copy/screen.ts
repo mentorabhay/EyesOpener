@@ -4,13 +4,14 @@
  * Figures quoted as "for comparison" come from the sources named beside them; the maths is in src/engine/calibrate.ts.
  */
 import type { LeakLevel } from "@/engine";
+import { texts } from "@/i18n/texts";
 
 const pct = (share: number) => (share > 0 && share < 0.005 ? "under 1%" : `${Math.round(share * 100)}%`);
 const times = (n: number) => (n >= 9.5 ? String(Math.round(n)) : n.toFixed(1));
 /** "Aarav", "Aarav and Dadi", "Aarav, Dadi and Priya". */
 const names = (list: string[]) => (list.length < 2 ? list.join("") : `${list.slice(0, -1).join(", ")} and ${list[list.length - 1]}`);
 
-export const screen = {
+export const screen = texts("copy/screen", "screen", () => ({
   title: "This screen's colours",
   crumb: "Settings",
   sub: "Three short checks for a grown-up. They make contrast on this screen match the eye settings, and show how well your red-cyan glasses keep the two eyes' pictures apart.",
@@ -230,4 +231,4 @@ export const screen = {
       "It is not a test of anyone's eyes, and it does not replace an eye examination.",
     ],
   },
-};
+}));

@@ -3,10 +3,12 @@
  * and for the printable cards. Plain words a school student can follow.
  */
 
+import { texts } from "@/i18n/texts";
+
 const squares = (n: number) => (n === 0 ? "No squares marked" : n === 1 ? "1 square marked" : `${n} squares marked`);
 
 /** Short passages for the reading tool. Written for IOpener; everyday subjects, no real people, 90 to 130 words each. */
-export const passages: string[] = [
+export const passages: string[] = texts("copy/drills-tools", "passages", () => ([
   "The market opens early. I take a cloth bag and walk down the lane while the air is still cool. The first stall sells tomatoes, onions and green chillies in neat piles. The woman there knows what I like and picks the firm ones for me. Next I stop for a bunch of fresh coriander and two lemons. A boy pushes a cart of bananas past us and calls out the price. I count my coins, pay, and put the change in my pocket. On the way home the bag is heavy, so I swap hands at each corner. By the time I reach the door the sun is warm on my back.",
   "First I fill the small pan with one cup of water and set it on the stove. While it heats, I crush a piece of ginger and two pods of cardamom. When the water starts to bubble I add the ginger, the cardamom and a spoon of tea leaves. The smell fills the kitchen at once. I let it boil for a minute, then pour in half a cup of milk and stir in the sugar. The tea rises to the edge of the pan, so I lower the flame and wait. When the colour turns a deep brown I strain it into two cups. One is for me. The other is for whoever comes to the door first.",
   "It has rained since morning. The drops run down the window and gather on the sill. Out in the street the children have folded paper boats and set them in the stream beside the kerb. A man walks past under a wide black umbrella, and his shoes splash in every puddle. The crows have gone quiet and sit close together on the wire. Inside, the room is dim, so we switch on the lamp and bring out a board game. Someone fries a plate of hot snacks in the kitchen. The rain drums on the tin roof next door. Nobody minds. On a day like this there is nowhere else we need to be.",
@@ -15,9 +17,9 @@ export const passages: string[] = [
   "On windy afternoons we take the kite up to the roof. It is made of thin red paper and two sticks of bamboo, with a long tail of ribbon. My cousin holds it high above his head while I walk back with the string. When the wind pulls, he lets go. The kite dips, turns and then climbs fast. I let the string run through my fingers, a little at a time. Soon it is only a small red spot above the trees. Other kites are up as well, green and yellow and white. We stay until the light turns gold. Then I wind the string in, turn by turn, and we carry the kite down the stairs.",
   "The library is a quiet room at the end of the school corridor. Tall shelves stand along three walls, and a long table fills the middle. I like to go there after lunch. The books about animals are on the lowest shelf, so I sit on the floor to choose one. Today I pick a book about birds that fly across the sea each winter. The pages are thick and the pictures are bright. I write the title on a card and hand it to the teacher at the desk. She stamps the date inside the cover. I have two weeks to read it. I carry it home under my arm so the corners do not bend.",
   "When the light begins to fade, we start the evening meal. One of us washes the rice three times and leaves it to soak. Another chops the onions as finely as she can. The lentils go into the big pot with water, salt and a pinch of yellow spice. Soon the lid starts to rattle. Oil heats in a small pan, and the seeds we drop into it pop and jump. We pour them over the lentils and the kitchen fills with a warm smell. The plates are set out on the mat. Everyone sits down together, the youngest nearest the door. For a while nobody talks, because the food is hot and good.",
-];
+]));
 
-export const tools = {
+export const tools = texts("copy/drills-tools", "tools", () => ({
   reading: {
     how: [
       "Find the thick bar on the left first. The line starts just after it.",
@@ -76,9 +78,9 @@ export const tools = {
     again: "Check again",
     save: "Save this check",
   },
-};
+}));
 
-export const print = {
+export const print = texts("copy/drills-tools", "print", () => ({
   crumb: "Exercises",
   sub: "A card to print for this routine, drawn to its real size.",
   button: "Print",
@@ -132,7 +134,7 @@ export const print = {
         "Cut along the solid outer line. Hold the card about 40 cm from your eyes.",
         "Start with row 1. Hold a pen tip half way between your eyes and the card, in front of the two rings, and look at the pen tip.",
         "Move the pen slowly toward you until a third ring appears between the two rings. Look at that middle ring.",
-        "It is right when you can read CLEAR on the middle ring, you see two small dots in its hole, one above the other, and the hole seems to float toward you.",
+        "It is right when you can read CLEAR on the middle ring. You also see two small dots in its hole, one above the other, and the hole seems to float toward you.",
         "If one of the two dots is missing, one eye has switched off. Blink, look away and try again.",
         "Hold it for a count of 5. Rows 2, 3 and 4 are each harder: move on only when the row before is easy.",
       ],
@@ -200,7 +202,7 @@ export const print = {
         "Hold the page about 40 cm from your eyes. Start with pair 1.",
         "Hold a pen tip half way between your eyes and the page, in front of the pair, and look at the pen tip.",
         "Move the pen slowly toward you until a third ring appears in the middle. Look at that middle ring.",
-        "It is right when the middle ring is clear and the small shape inside sits at a different depth from the ring: in front of it in pairs 1 and 3, behind it in pair 2.",
+        "It is right when the middle ring is clear and the small shape inside sits at a different depth from the ring. It is in front of the ring in pairs 1 and 3, and behind it in pair 2.",
         "Hold it for a count of 5. Then try it without the pen.",
         "This printed card is for crossing the eyes. To practise relaxing them, use the pairs on screen.",
       ],
@@ -210,4 +212,4 @@ export const print = {
       },
     },
   },
-};
+}));

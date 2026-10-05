@@ -2,7 +2,9 @@
  * Words for the one staff page the four gatherings share (Lights On Hour, Cinema Club, Class Mission, Wish Jam).
  * It is kept in the moderation room. Each idea's own words are in its own file.
  */
-export const gatherings = {
+import { texts } from "@/i18n/texts";
+
+export const gatherings = texts("copy/gatherings", "gatherings", () => ({
   staff: {
     link: "Gatherings: the hour, clubs and wishes",
     title: "Gatherings",
@@ -14,4 +16,4 @@ export const gatherings = {
       body: "There is nothing for staff to do here. A guardian gives a child the mission, and the app keeps only that and the day it was run. No staff page shows who has one.",
     },
   },
-};
+}));

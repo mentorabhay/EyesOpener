@@ -1,0 +1,1919 @@
+{
+ "lang": "hi",
+ "file": "copy/test",
+ "entries": {
+  "measure.balanceAsk": {
+   "source": "6a0e8ed069cd92",
+   "english": "Two letters sit on top of each other. Which one looks stronger?",
+   "text": "दो लेटर एक दूसरे के ऊपर बैठे हैं। कौन सा ज़्यादा मज़बूत दिखता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.balanceGroup": {
+   "source": "27813b992a1258",
+   "english": "The stronger letter",
+   "text": "मज़बूत लेटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.balanceLabel": {
+   "source": "7e7fcbcdeec8a0",
+   "english": "Two overlapping letters",
+   "text": "दो ओवरलैपिंग लेटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.cardBar": {
+   "source": "079dec8c57689b",
+   "english": "Bar to match against a bank card",
+   "text": "बैंक कार्ड से मिलाने के लिए बार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.cover(L).lead": {
+   "source": "c077d7100a8512",
+   "english": "Cover your right eye",
+   "text": "अपनी दाईं आँख को ढकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.cover(L).rest": {
+   "source": "916c5db8804bbc",
+   "english": " with your palm. Do not press on it. Keep your own glasses on if you wear them. Keep it covered until this eye is finished.",
+   "text": " अपनी हथेली से। उस पर ज़ोर न डालें। यदि आप चश्मा पहनते हैं तो उसे पहने रहें। इसे तब तक ढके रखें जब तक कि यह आँख पूरी न हो जाए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.cover(R).lead": {
+   "source": "519feeca36ece3",
+   "english": "Cover your left eye",
+   "text": "अपनी बाईं आँख को ढकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.cover(R).rest": {
+   "source": "916c5db8804bbc",
+   "english": " with your palm. Do not press on it. Keep your own glasses on if you wear them. Keep it covered until this eye is finished.",
+   "text": " अपनी हथेली से। उस पर ज़ोर न डालें। यदि आप चश्मा पहनते हैं तो उसे पहने रहें। इसे तब तक ढके रखें जब तक कि यह आँख पूरी न हो जाए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:measure.cover(L).rest"
+  },
+  "measure.depth.ask": {
+   "source": "9964f094a5f10e",
+   "english": "One ring floats nearer to you than the other three. Which one?",
+   "text": "अन्य तीन की तुलना में एक रिंग आपके अधिक पास तैरती है। कौन सी?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.depth.cannot": {
+   "source": "162da291589e93",
+   "english": "Cannot tell",
+   "text": "बता नहीं सकते",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:measure.pad.cannot"
+  },
+  "measure.depth.count(*)": {
+   "source": "5361cf9d2e0bcc",
+   "english": "Set {n}",
+   "text": "सेट {n}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "measure.depth.finest(*)": {
+   "source": "eb2e1d1f003952",
+   "english": "The finest step this screen can show from here is {arcsec} arc seconds.",
+   "text": "यह स्क्रीन यहाँ से जो सबसे बारीक कदम दिखा सकती है वह {arcsec} आर्क सेकंड है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "arcsec"
+   ]
+  },
+  "measure.depth.group": {
+   "source": "90389022409ca9",
+   "english": "The ring that floats nearer",
+   "text": "जो रिंग पास में तैरती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.depth.how": {
+   "source": "82ec26355c91d8",
+   "english": "Tap the ring or its number. With keys, use the left and right arrows and then OK or Enter, or press 1 to 4. Press Cannot tell if no ring stands out.",
+   "text": "रिंग या उसके नंबर पर टैप करें। कुंजियों के साथ, बाएं और दाएं तीर का उपयोग करें और फिर OK या Enter दबाएं, या 1 से 4 दबाएं। यदि कोई रिंग अलग नहीं दिखती है तो 'बता नहीं सकते' दबाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.depth.label": {
+   "source": "a1cd566cb6742f",
+   "english": "Four rings in a row. One of them floats nearer when seen through the glasses.",
+   "text": "एक पंक्ति में चार रिंग। चश्मे से देखने पर उनमें से एक पास में तैरती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.depth.ring(*)": {
+   "source": "dcda342d2fdf42",
+   "english": "Ring {n}",
+   "text": "रिंग {n}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "measure.dots.askBottom": {
+   "source": "b38fb3a64bb780",
+   "english": "What colour is the bottom dot?",
+   "text": "नीचे वाला बिन्दु किस रंग का है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.askCount": {
+   "source": "f4d431b9519e36",
+   "english": "How many dots do you see?",
+   "text": "आपको कितने बिन्दु दिखाई देते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.bottom.cyan": {
+   "source": "9e1a17bb7d9d89",
+   "english": "Cyan (blue-green)",
+   "text": "सियान (नीला-हरा)",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.bottom.mix": {
+   "source": "0b6d3f067592f4",
+   "english": "A mix, or flickering between the two",
+   "text": "एक मिश्रण, या दोनों के बीच झिलमिलाहट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.bottom.red": {
+   "source": "4410f9fd918fec",
+   "english": "Red",
+   "text": "लाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.bottomGroup": {
+   "source": "bf34e802800b3a",
+   "english": "Colour of the bottom dot",
+   "text": "नीचे वाले बिन्दु का रंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.change": {
+   "source": "819e1b12fbf4b5",
+   "english": "Change the number",
+   "text": "संख्या बदलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.countGroup": {
+   "source": "d9a36ed3dc5ffa",
+   "english": "Number of dots",
+   "text": "बिन्दुओं की संख्या",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.label": {
+   "source": "537542e06e7e0f",
+   "english": "Four dots on a black panel: one at the top, one on each side and one at the bottom.",
+   "text": "एक काले पैनल पर चार बिन्दु: एक ऊपर, एक दोनों तरफ और एक नीचे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.look": {
+   "source": "e41b8dbf3307c9",
+   "english": "Look at the middle of the panel with both eyes open. Do not close an eye and do not tilt your head.",
+   "text": "दोनों आँखें खुली रखकर पैनल के बीच में देखें। एक आँख बंद न करें और अपना सिर न झुकाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.dots.save": {
+   "source": "af12e3c5d5d5a9",
+   "english": "Save this check",
+   "text": "इस जाँच को सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.equal": {
+   "source": "99aea96ac33209",
+   "english": "Equal",
+   "text": "बराबर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.back": {
+   "source": "16c26ec2766dba",
+   "english": "Coming back. Press when the two rings are one again.",
+   "text": "वापस आ रहे हैं। जब दोनों रिंग फिर से एक हो जाएँ, तब दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.checkAsk": {
+   "source": "78835c75534bf6",
+   "english": "Look at the ring. Do you see one ring with a dot at the top and a dot at the bottom?",
+   "text": "रिंग को देखें। क्या आपको ऊपर एक बिंदु और नीचे एक बिंदु वाली एक रिंग दिखाई देती है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.checkNo": {
+   "source": "40a4b8e89c875d",
+   "english": "A dot is missing",
+   "text": "एक बिंदु गायब है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.checkYes": {
+   "source": "574368a0f52e2c",
+   "english": "Yes, one ring with both dots",
+   "text": "हाँ, दोनों बिंदुओं वाली एक रिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.how": {
+   "source": "fa4283126a53c9",
+   "english": "The ring will slowly pull apart, so your eyes have to turn in to keep it as one. Keep it one for as long as you can. Press the button the moment you see two rings. Then it comes back: press again the moment the two rings join into one.",
+   "text": "रिंग धीरे-धीरे अलग होगी, इसलिए आपकी आँखों को इसे एक बनाए रखने के लिए अंदर की ओर घूमना होगा। जब तक हो सके इसे एक बनाए रखें। जैसे ही आपको दो रिंग दिखाई दें, बटन दबाएं। फिर यह वापस आती है: जैसे ही दो रिंग एक में मिल जाएँ, फिर से दबाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.joined": {
+   "source": "7d1541e20d0c14",
+   "english": "One again",
+   "text": "फिर से एक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.keys": {
+   "source": "a6f473289c60c1",
+   "english": "The Down arrow and the space bar press the button too.",
+   "text": "नीचे वाला तीर और स्पेस बार भी बटन दबाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.label": {
+   "source": "3c5f6777dd62ae",
+   "english": "A ring for each eye. The left eye's ring has a dot at the top, the right eye's ring has a dot at the bottom.",
+   "text": "प्रत्येक आँख के लिए एक रिंग। बाईं आँख की रिंग के ऊपर एक बिंदु है, दाईं आँख की रिंग के नीचे एक बिंदु है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.limit(*)": {
+   "source": "5582e4374960e8",
+   "english": "This screen can test up to {prism} prism dioptres from this distance.",
+   "text": "यह स्क्रीन इस दूरी से अधिकतम {prism} डायोप्टर तक की जाँच कर सकती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "prism"
+   ]
+  },
+  "measure.fusion.missing": {
+   "source": "5f7ee3c4c67895",
+   "english": "One eye's picture is not being seen right now, so this check cannot be measured today. Check that the glasses are the right way round and try again, or take the suppression check. Nothing was saved.",
+   "text": "एक आँख की तस्वीर अभी नहीं दिख रही है, इसलिए आज यह जाँच नहीं की जा सकती है। जाँच लें कि चश्मा सही दिशा में है या नहीं और फिर से कोशिश करें, या सप्रेशन जाँच लें। कुछ भी सहेजा नहीं गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.noJoin": {
+   "source": "30d4095c80a15e",
+   "english": "The rings came all the way back before you pressed. That repeat is recorded as zero.",
+   "text": "आपके दबाने से पहले रिंग्स पूरी तरह वापस आ गईं। वह रिपीट शून्य के रूप में दर्ज की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.out": {
+   "source": "a1205bdff46425",
+   "english": "Keep it as one ring. Press when it splits in two.",
+   "text": "इसे एक रिंग बनाए रखें। जब यह दो में बँट जाए, तब दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.ranOut": {
+   "source": "246304655b75bf",
+   "english": "The screen ran out of room before the picture split. That repeat is recorded at this screen's limit.",
+   "text": "तस्वीर बँटने से पहले स्क्रीन पर जगह खत्म हो गई। वह रिपीट इस स्क्रीन की सीमा पर दर्ज है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.repeat(*,*)": {
+   "source": "6fdd25326fe07a",
+   "english": "Repeat {n} of {of}",
+   "text": "रीपीट {n} ({of} में से)",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n",
+    "of"
+   ]
+  },
+  "measure.fusion.rest": {
+   "source": "c5fae14d0174a8",
+   "english": "Look at something far away for a few seconds, then go on.",
+   "text": "कुछ सेकंड के लिए किसी दूर की चीज़ को देखें, फिर आगे बढ़ें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.split": {
+   "source": "cf4944329df0da",
+   "english": "It split in two",
+   "text": "यह दो में बँट गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.fusion.start(*,*)": {
+   "source": "8cf38f5efcb13d",
+   "english": "Start repeat {n} of {of}",
+   "text": "रीपीट {n} शुरू, कुल {of} में से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n",
+    "of"
+   ]
+  },
+  "measure.fusion.start(1,*)": {
+   "source": "344de7fabb13dc",
+   "english": "Start",
+   "text": "शुरू",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n",
+    "of"
+   ]
+  },
+  "measure.fusion.turningOut": {
+   "source": "fbd3da0240b09e",
+   "english": "This check measures turning in only. Turning out is not tested here.",
+   "text": "यह जाँच केवल अंदर की तरफ मुड़ने के लिए है। बाहर की तरफ मुड़ने की जाँच यहाँ नहीं होती।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.glasses(L).after": {
+   "source": "eff87ae9d95965",
+   "english": ". Keep both eyes open.",
+   "text": ". दोनों आँखें खुली रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.glasses(L).before": {
+   "source": "6e512843590fba",
+   "english": "Put the red-cyan glasses on, ",
+   "text": "लाल-सियान चश्मा पहनें, ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.glasses(L).lead": {
+   "source": "ed3f873ac0a860",
+   "english": "cyan lens over your left eye",
+   "text": "सियान लेंस आपकी बाईं आँख के ऊपर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.glasses(R).after": {
+   "source": "eff87ae9d95965",
+   "english": ". Keep both eyes open.",
+   "text": ". दोनों आँखें खुली रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:measure.glasses(L).after"
+  },
+  "measure.glasses(R).before": {
+   "source": "6e512843590fba",
+   "english": "Put the red-cyan glasses on, ",
+   "text": "लाल-सियान चश्मा पहनें, ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:measure.glasses(L).before"
+  },
+  "measure.glasses(R).lead": {
+   "source": "12fe287d22884a",
+   "english": "cyan lens over your right eye",
+   "text": "सियान लेंस आपकी दाईं आँख के ऊपर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.letterAsk": {
+   "source": "3f8afacb0207c8",
+   "english": "Which way do the legs of the E point?",
+   "text": "E के पैर किस दिशा में इशारा करते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.letterCount(*)": {
+   "source": "7613fe81916d4c",
+   "english": "Letter {n}",
+   "text": "लेटर {n}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "measure.letterHow.acuity": {
+   "source": "88523d50f4cc0d",
+   "english": "The letter gets smaller after each correct answer.",
+   "text": "हर सही उत्तर के बाद लेटर छोटा हो जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.letterHow.contrast": {
+   "source": "813bad8f5cb36e",
+   "english": "The letter gets fainter after each correct answer.",
+   "text": "हर सही उत्तर के बाद लेटर धुंधला हो जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.letterKeys": {
+   "source": "9975e21ff1fdb5",
+   "english": "Use the buttons or the arrow keys. Press the middle button if you cannot tell.",
+   "text": "बटन या तीर कुंजियों का उपयोग करें। यदि आप बता नहीं सकते तो बीच का बटन दबाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.letterLabel": {
+   "source": "fa5bd115dc9188",
+   "english": "Test letter",
+   "text": "टेस्ट लेटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.grownUp": {
+   "source": "f80d8f4e7334ca",
+   "english": "Under 12, a grown-up holds the pen, watches the eyes and measures.",
+   "text": "12 साल से कम उम्र में, कोई बड़ा व्यक्ति पेन पकड़ता है, आँखों को देखता है और नापता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.helper": {
+   "source": "3bcbbf523aebe4",
+   "english": "This check is done away from the screen, with a helper.",
+   "text": "यह जाँच स्क्रीन से दूर, किसी मददगार के साथ की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.picture": {
+   "source": "8c41cc136472e7",
+   "english": "A pen held at eye level, moving toward the bridge of the nose, with a ruler from the nose to the pen.",
+   "text": "आँख के स्तर पर एक पेन पकड़ा हुआ, नाक की जड़ की तरफ बढ़ते हुए, नाक से पेन तक एक रूलर के साथ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.range(*,*)": {
+   "source": "65a6466ca5625a",
+   "english": "Each try is a number from {lo} to {hi} centimetres.",
+   "text": "हर कोशिश {lo} से {hi} सेंटीमीटर के बीच की एक संख्या है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "lo",
+    "hi"
+   ]
+  },
+  "measure.near.save": {
+   "source": "78cba0fcbd5e9f",
+   "english": "Save the three tries",
+   "text": "तीनों कोशिशें सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.0": {
+   "source": "3324cb4725e141",
+   "english": "Put a small sticker or a small letter on the end of a pen.",
+   "text": "पेन के सिरे पर एक छोटा सा स्टिकर या एक छोटा अक्षर लगाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.1": {
+   "source": "339392faef201d",
+   "english": "Hold the pen at arm's length, at eye level, in front of the nose.",
+   "text": "पेन को बांह की लंबाई पर, आँख के स्तर पर, नाक के सामने पकड़ें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.2": {
+   "source": "21ccff683cb36c",
+   "english": "Bring it slowly toward the bridge of the nose. Keep looking at the sticker.",
+   "text": "इसे धीरे-धीरे नाक की जड़ की तरफ लाएँ। स्टिकर को देखते रहें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.3": {
+   "source": "d5c095c06fd5fa",
+   "english": "Stop when the sticker turns into two, or when the helper sees one eye drift out.",
+   "text": "जब स्टिकर दो दिखने लगें, या जब मददगार देखे कि एक आँख बाहर की तरफ भटक रही है, तब रुक जाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.4": {
+   "source": "948a29b33ccb55",
+   "english": "The helper measures from the bridge of the nose to the pen with a ruler.",
+   "text": "मददगार रूलर से नाक की जड़ से पेन तक की दूरी नापता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.steps.5": {
+   "source": "200ef8c914b31c",
+   "english": "Type the centimetres below. Rest for a moment, then do it twice more.",
+   "text": "नीचे सेंटीमीटर टाइप करें। थोड़ी देर आराम करें, फिर इसे दो बार और करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.toNose": {
+   "source": "98c8e533fe42b6",
+   "english": "If it stays one all the way to the nose, type 1.",
+   "text": "अगर यह नाक तक पूरा एक ही रहता है, तो 1 टाइप करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.near.tryLabel(*)": {
+   "source": "4f762b1bbb9a39",
+   "english": "Try {n}, in centimetres",
+   "text": "कोशिश {n}, सेंटीमीटर में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "measure.pad.cannot": {
+   "source": "162da291589e93",
+   "english": "Cannot tell",
+   "text": "बता नहीं सकते",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.pad.down": {
+   "source": "e388bfe16bb0de",
+   "english": "Down",
+   "text": "नीचे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.pad.group": {
+   "source": "c61496a62a3d65",
+   "english": "Which way the legs point",
+   "text": "पैरों की दिशा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.pad.left": {
+   "source": "346f7d831bfd96",
+   "english": "Left",
+   "text": "बायाँ",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.eye.name.left"
+  },
+  "measure.pad.right": {
+   "source": "4d4127eb7af91b",
+   "english": "Right",
+   "text": "सही",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/results:results.game.hits.label"
+  },
+  "measure.pad.up": {
+   "source": "06c5353762d854",
+   "english": "Up",
+   "text": "ऊपर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.pairCount(*)": {
+   "source": "f5885765be07d4",
+   "english": "Pair {n}",
+   "text": "जोड़ी {n}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "measure.survey.answered(*,*)": {
+   "source": "76c18f5579265c",
+   "english": "{n} of {of} answered",
+   "text": "{n} / {of} के जवाब दिए गए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n",
+    "of"
+   ]
+  },
+  "measure.survey.answers.0": {
+   "source": "1ab6ba88ce908e",
+   "english": "Never",
+   "text": "कभी नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.answers.1": {
+   "source": "4095875d20cd79",
+   "english": "Not very often",
+   "text": "बहुत बार नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.answers.2": {
+   "source": "d831b409fe3bdc",
+   "english": "Sometimes",
+   "text": "कभी-कभी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.answers.3": {
+   "source": "213f1b2538b4f5",
+   "english": "Fairly often",
+   "text": "काफी बार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.answers.4": {
+   "source": "cc2e93257540d4",
+   "english": "Always",
+   "text": "हमेशा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.child": {
+   "source": "2962cb5339099c",
+   "english": "For a child, a grown-up reads each question aloud and presses the child's answer. Do not suggest an answer.",
+   "text": "बच्चे के लिए, एक बड़ा व्यक्ति हर सवाल को ज़ोर से पढ़ता है और बच्चे का जवाब दबाता है। कोई जवाब न सुझाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.intro": {
+   "source": "bd4a5bf41c9354",
+   "english": "Think about the last two weeks or so and pick the answer that fits best. There are no right or wrong answers.",
+   "text": "पिछले दो हफ़्तों या उसके आस-पास के समय के बारे में सोचें और वह जवाब चुनें जो सबसे सही बैठे। इसमें कोई सही या गलत जवाब नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.number(*,*)": {
+   "source": "6f9c9eebed39b6",
+   "english": "Question {n} of {of}",
+   "text": "सवाल {n} / {of}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n",
+    "of"
+   ]
+  },
+  "measure.survey.questions.0": {
+   "source": "1f88672c8927e4",
+   "english": "When you read or work up close, how often do your eyes get tired?",
+   "text": "जब आप पास से पढ़ते या काम करते हैं, तो आपकी आँखें कितनी बार थक जाती हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.1": {
+   "source": "bcd6d6a9a7c8a4",
+   "english": "How often do your eyes feel achy or sore while you read?",
+   "text": "पढ़ते समय आपकी आँखों में दर्द या पीड़ा कितनी बार महसूस होती है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.10": {
+   "source": "6739f0b9f2429c",
+   "english": "After close work, how often are your eyes still sore?",
+   "text": "पास के काम के बाद, आपकी आँखें कितनी बार तक दर्द करती रहती हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.11": {
+   "source": "fd902c2ccb25fd",
+   "english": "How often does it feel as if something is tugging at your eyes during close work?",
+   "text": "पास के काम के दौरान क्या ऐसा महसूस होता है जैसे कोई चीज़ आपकी आँखों को खींच रही हो, और ऐसा कितनी बार होता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.12": {
+   "source": "92ea51a3076b51",
+   "english": "How often do the words go blurry and then clear again?",
+   "text": "शब्द कितनी बार धुंधले हो जाते हैं और फिर से साफ़ हो जाते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.13": {
+   "source": "cd09019b682f7c",
+   "english": "How often do you lose your place on the page?",
+   "text": "पेज पर आप अपनी जगह कितनी बार भूल जाते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.14": {
+   "source": "405610b6bf92fc",
+   "english": "How often do you find yourself going back over a line you have already read?",
+   "text": "आप कितनी बार पाते हैं कि आप उस लाइन को दोबारा पढ़ रहे हैं जिसे आप पहले ही पढ़ चुके हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.2": {
+   "source": "0cab79ab2d379b",
+   "english": "How often does reading or close work give you a headache?",
+   "text": "पढ़ने या पास के काम से आपको कितनी बार सिरदर्द होता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.3": {
+   "source": "319cc6f4e604db",
+   "english": "How often does reading make you feel sleepy?",
+   "text": "पढ़ने से आपको कितनी बार नींद आने लगती है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.4": {
+   "source": "2844fb9e1c4375",
+   "english": "How often does your mind wander off while you are reading?",
+   "text": "पढ़ते समय आपका ध्यान कितनी बार भटक जाता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.5": {
+   "source": "ea1c2b6637da8f",
+   "english": "How often do you forget what you have just read?",
+   "text": "आप जो अभी-अभी पढ़ चुके हैं, उसे कितनी बार भूल जाते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.6": {
+   "source": "b2ea849c689f89",
+   "english": "How often do you see two of something while reading or working up close?",
+   "text": "पास से पढ़ते या काम करते समय आपको कोई चीज़ दो बार कितनी बार दिखती है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.7": {
+   "source": "a18dc778afd883",
+   "english": "How often do the words seem to shift about or swim on the page?",
+   "text": "पेज पर शब्द कितनी बार हिलते-डुलते या तैरते हुए लगते हैं?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.8": {
+   "source": "7a085312bc3ad8",
+   "english": "How often does reading feel slow for you?",
+   "text": "आपको पढ़ना कितनी बार धीमा लगता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.questions.9": {
+   "source": "11cf1b69e2d579",
+   "english": "How often do you get pain in your eyes during close work?",
+   "text": "पास के काम के दौरान आपकी आँखों में कितनी बार दर्द होता है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "measure.survey.save": {
+   "source": "75cf2ab8928f44",
+   "english": "Save the survey",
+   "text": "सर्वे को सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.against.baseline": {
+   "source": "363b4579bb6e83",
+   "english": "Compared with your first result.",
+   "text": "आपके पहले परिणाम की तुलना में।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.against.both": {
+   "source": "16902c2815758e",
+   "english": "Compared with the result before it and with your first result.",
+   "text": "इससे पहले के परिणाम और आपके पहले परिणाम की तुलना में।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.against.previous": {
+   "source": "b72bb8a8dc82a2",
+   "english": "Compared with the result before it.",
+   "text": "इससे पहले के परिणाम की तुलना में।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.changed": {
+   "source": "f19ddcd0d18f8a",
+   "english": "This changed more than usual. Take it again on another day. If it stays, show the summary to an eye doctor.",
+   "text": "यह सामान्य से अधिक बदला है। इसे किसी दूसरे दिन फिर से करें। अगर यह बना रहता है, तो आँखों के डॉक्टर को सारांश दिखाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.hub(*)": {
+   "source": "adc01e3da66b88",
+   "english": "{n} check-ups changed more than usual.",
+   "text": "{n} जाँचें सामान्य से अधिक बदलीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "test.alert.hub(1)": {
+   "source": "e06d9cab7f8358",
+   "english": "One check-up changed more than usual.",
+   "text": "एक जाँच सामान्य से अधिक बदली।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.openSummary": {
+   "source": "1585b43e5aa7a8",
+   "english": "Open the summary",
+   "text": "सारांश खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.alert.urgent": {
+   "source": "873f46a51fc45f",
+   "english": "A drop this size needs an eye doctor soon.",
+   "text": "इतनी बड़ी गिरावट के लिए जल्द ही आँखों के डॉक्टर की ज़रूरत है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.atEnd.coarser(*)": {
+   "source": "97c220ef4d1d7b",
+   "english": "coarser than {v}",
+   "text": "{v} से ज़्यादा मोटा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.atEnd.finer(*)": {
+   "source": "7f451dd84e4486",
+   "english": "{v} or finer",
+   "text": "{v} या बेहतर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.atEnd.more(*)": {
+   "source": "c2aa00e0d458c0",
+   "english": "{v} or more",
+   "text": "{v} या अधिक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.blocked.seat": {
+   "source": "53819ae7389ae4",
+   "english": "Your seat can look at results and cheer. A guardian runs the check-ups.",
+   "text": "आपकी सीट नतीजों को देख सकती है और हौसला बढ़ा सकती है। एक अभिभावक जाँच करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.blocked.under_age": {
+   "source": "4cbf11451ee902",
+   "english": "No screen check-ups under age 4.",
+   "text": "4 साल से कम उम्र के बच्चों के लिए स्क्रीन पर कोई जाँच नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.change.better": {
+   "source": "0e84c9d462255e",
+   "english": "Better",
+   "text": "बेहतर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.change.same": {
+   "source": "2085480ad566d2",
+   "english": "Same",
+   "text": "वही",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.change.worse": {
+   "source": "39006a150d732e",
+   "english": "Worse",
+   "text": "बदतर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dotsExact.2": {
+   "source": "ed81fca33cac1a",
+   "english": "Two dots seen",
+   "text": "दो बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dotsExact.3": {
+   "source": "3269cd3b2492c9",
+   "english": "Three dots seen",
+   "text": "तीन बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dotsExact.4": {
+   "source": "7985c11d554059",
+   "english": "Four dots seen",
+   "text": "चार बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:test.dotsSeen.0"
+  },
+  "test.dotsExact.5": {
+   "source": "a182d14531cf34",
+   "english": "Five dots seen",
+   "text": "पाँच बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:test.dotsSeen.1"
+  },
+  "test.dotsSeen.0": {
+   "source": "7985c11d554059",
+   "english": "Four dots seen",
+   "text": "चार बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dotsSeen.1": {
+   "source": "a182d14531cf34",
+   "english": "Five dots seen",
+   "text": "पाँच बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dotsSeen.2": {
+   "source": "e81a1e381ffada",
+   "english": "Two or three dots seen",
+   "text": "दो या तीन बिंदु दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dueCount": {
+   "source": "719874223a3edf",
+   "english": "due now",
+   "text": "अभी करनी है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dueIn(*)": {
+   "source": "59033d64bb6ee7",
+   "english": "Due in {days} days",
+   "text": "{days} दिन में करनी है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "days"
+   ]
+  },
+  "test.dueIn(1)": {
+   "source": "df136be7d11735",
+   "english": "Due tomorrow",
+   "text": "कल करनी है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.dueNow": {
+   "source": "872a1fa8d5a808",
+   "english": "Due now",
+   "text": "अब करनी है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.every(*)": {
+   "source": "da2451743b8c17",
+   "english": "Repeat every {days} days",
+   "text": "हर {days} दिन बाद दोहराएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "days"
+   ]
+  },
+  "test.eye.left": {
+   "source": "bdaacc57d7b062",
+   "english": "Left eye",
+   "text": "बाईं आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.test.left"
+  },
+  "test.eye.right": {
+   "source": "186ba579361e43",
+   "english": "Right eye",
+   "text": "दाहिनी आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.test.right"
+  },
+  "test.eyeShort.left": {
+   "source": "346f7d831bfd96",
+   "english": "Left",
+   "text": "बायाँ",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.eye.name.left"
+  },
+  "test.eyeShort.right": {
+   "source": "4d4127eb7af91b",
+   "english": "Right",
+   "text": "सही",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/results:results.game.hits.label"
+  },
+  "test.first": {
+   "source": "6bea3bd871a1dc",
+   "english": "First result",
+   "text": "पहला नतीजा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.glasses": {
+   "source": "e72962768cc3c9",
+   "english": "Needs red-cyan glasses",
+   "text": "लाल-सियान चश्मा चाहिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.history": {
+   "source": "3b06a57c87cc35",
+   "english": "History",
+   "text": "इतिहास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.against": {
+   "source": "2ce03630d41492",
+   "english": "Against the first result",
+   "text": "पहले परिणाम के मुकाबले",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.all": {
+   "source": "f3bdf33adb7925",
+   "english": "This check-up",
+   "text": "यह जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.chart": {
+   "source": "3ededa4f800137",
+   "english": "Over time",
+   "text": "समय के साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.date": {
+   "source": "4285c38761c540",
+   "english": "Date",
+   "text": "दिनांक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.eye": {
+   "source": "100c7f6477ce16",
+   "english": "Eye",
+   "text": "आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.firstKey": {
+   "source": "1459c127fdc3cc",
+   "english": "Ring and thin line: first result",
+   "text": "रिंग और पतली लाइन: पहला परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.line(*,*,*,*)": {
+   "source": "00a7d4c51bf5e3",
+   "english": "{who}: from {from} to {to} over {n} results.",
+   "text": "{who}: {n} परिणामों पर {from} से {to} तक।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "who",
+    "from",
+    "to",
+    "n"
+   ]
+  },
+  "test.historyOf.line(*,*,*,1)": {
+   "source": "31a37e09b8c547",
+   "english": "{who}: {to}, one result.",
+   "text": "{who}: {to}, एक परिणाम।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "who",
+    "from",
+    "to",
+    "n"
+   ]
+  },
+  "test.historyOf.none.body": {
+   "source": "a9a9ab1f0c5643",
+   "english": "Take this check-up once and the first result becomes the one every later result is compared with.",
+   "text": "इस जाँच को एक बार करें और पहला परिणाम वह बन जाता है जिससे बाद के हर परिणाम की तुलना की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.none.title": {
+   "source": "b378dfcd7c6784",
+   "english": "No results yet",
+   "text": "अभी तक कोई परिणाम नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.result": {
+   "source": "700e41041dbe51",
+   "english": "Result",
+   "text": "परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.table": {
+   "source": "d9746cb2936549",
+   "english": "Every result",
+   "text": "हर परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.upIsBetter": {
+   "source": "7d86121a1c24cb",
+   "english": "Higher on the chart is better.",
+   "text": "चार्ट में ऊपर होना बेहतर है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.historyOf.valuesIn(*)": {
+   "source": "f6c87f49180667",
+   "english": "Values are in {unit}.",
+   "text": "मान {unit} में हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "unit"
+   ]
+  },
+  "test.latest": {
+   "source": "9205b008debbda",
+   "english": "Latest result",
+   "text": "नया नतीजा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.bottom.cyan": {
+   "source": "0df372afaffd2d",
+   "english": "The bottom dot looked cyan, the colour that reaches the eye behind the cyan lens.",
+   "text": "नीचे का बिंदु सियान रंग का दिखा, वह रंग जो सियान लेंस के पीछे की आँख तक पहुँचता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.bottom.mix": {
+   "source": "ff6774655f95a3",
+   "english": "The bottom dot looked like a mix of the two colours.",
+   "text": "नीचे का बिंदु दोनों रंगों के मिश्रण जैसा दिखा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.bottom.red": {
+   "source": "0d34a6f700ce06",
+   "english": "The bottom dot looked red, the colour that reaches the eye behind the red lens.",
+   "text": "नीचे का बिंदु लाल रंग का दिखा, वह रंग जो लाल लेंस के पीछे की आँख तक पहुँचता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.fusionPair.break": {
+   "source": "e2070042682acb",
+   "english": "See where it joined again",
+   "text": "देखें कि यह फिर से कहाँ जुड़ी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.fusionPair.recovery": {
+   "source": "c7fe2963c04d52",
+   "english": "See where it split",
+   "text": "देखें कि यह कहाँ अलग हुई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.fusion_break.floor(*)": {
+   "source": "f8bc5834f09e9d",
+   "english": "The picture stayed one all the way to {v} prism dioptres. The screen ran out of room, so the true number may be larger.",
+   "text": "तस्वीर {v} डायोप्टर तक पूरी तरह एक ही रही। स्क्रीन की जगह खत्म हो गई, इसलिए सही नंबर बड़ा हो सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.fusion_break.plain(*)": {
+   "source": "c4705160a9b005",
+   "english": "The picture split in two when the eyes had turned in by {v} prism dioptres. A larger number means one picture was held for longer.",
+   "text": "जब आँखें {v} डायोप्टर अंदर मुड़ीं, तो तस्वीर दो भागों में बँट गई। बड़े नंबर का मतलब है कि एक तस्वीर ज़्यादा समय तक टिक पाई।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.fusion_recovery.floor()": {
+   "source": "42964ba23aaa24",
+   "english": "The picture did not split before the screen ran out of room, so there was nothing to join again.",
+   "text": "स्क्रीन की जगह खत्म होने से पहले तस्वीर अलग नहीं हुई, इसलिए फिर से एक करने के लिए कुछ नहीं था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.fusion_recovery.plain(*)": {
+   "source": "50c42b39d6c570",
+   "english": "The doubled picture joined into one again at {v} prism dioptres. A larger number means it joined sooner.",
+   "text": "दोहरी हुई तस्वीर {v} डायोप्टर पर फिर से एक हो गई। एक बड़ी संख्या का मतलब है कि यह जल्दी एक हो गई।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.fusion_recovery.zero": {
+   "source": "2f3cfe58257fc7",
+   "english": "The picture stayed doubled until the two rings were back together.",
+   "text": "तस्वीर तब तक दोहरी रही जब तक कि दोनों रिंग वापस एक साथ नहीं आ गए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.near_point(*)": {
+   "source": "2d0f5afbf6af12",
+   "english": "The target turned into two {v} cm from the nose. A smaller number means one picture was held closer in.",
+   "text": "नाक से {v} cm की दूरी पर लक्ष्य दो भागों में बंट गया। एक छोटी संख्या का मतलब है कि तस्वीर को पास में रखा गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.own": {
+   "source": "d8a1d5e12141b3",
+   "english": "Each result is compared with your own earlier results, not with other people.",
+   "text": "प्रत्येक परिणाम की तुलना आपके अपने पहले के परिणामों से की जाती है, न कि दूसरे लोगों से।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.reported": {
+   "source": "8664072280581b",
+   "english": "This is what you reported in this check. It is not a diagnosis.",
+   "text": "यह वह है जो आपने इस जाँच में बताया। यह कोई निदान नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.stereo.floor(*)": {
+   "source": "c7818f53edb129",
+   "english": "You picked out a depth step of {v} arc seconds, one dot of this screen. This screen cannot show a finer step.",
+   "text": "आपने {v} आर्क सेकंड का गहराई कदम चुना, जो इस स्क्रीन का एक बिंदु है। यह स्क्रीन इससे बारीक कदम नहीं दिखा सकती।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.stereo.plain(*)": {
+   "source": "3c970e78331ba8",
+   "english": "The finest depth step you picked out was {v} arc seconds. A smaller number is a finer step.",
+   "text": "आपने जो सबसे बारीक गहराई का कदम चुना, वह {v} आर्क सेकंड था। एक छोटा नंबर एक बारीक कदम होता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.stereo.worse(*)": {
+   "source": "5aa179c9239895",
+   "english": "The largest depth step this test shows, {v} arc seconds, was not picked out this time.",
+   "text": "इस जाँच में दिखने वाला सबसे बड़ा गहराई कदम, {v} आर्क सेकंड, इस बार नहीं चुना गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.meaning.suppression(*)": {
+   "source": "8ee29f8e6d503c",
+   "english": "You saw two or three dots: one eye's picture was not seen.",
+   "text": "आपने दो या तीन बिंदु देखे: एक आँख की तस्वीर नहीं दिखी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "score"
+   ]
+  },
+  "test.meaning.suppression(*,*)": {
+   "source": "8ee29f8e6d503c",
+   "english": "You saw two or three dots: one eye's picture was not seen.",
+   "text": "आपने दो या तीन बिंदु देखे: एक आँख की तस्वीर नहीं दिखी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "score",
+    "dots"
+   ]
+  },
+  "test.meaning.suppression(0)": {
+   "source": "fe29a605c81b99",
+   "english": "You saw four dots: both eyes' pictures were seen together.",
+   "text": "आपने चार बिंदु देखे: दोनों आँखों की तस्वीरें एक साथ दिखीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.suppression(0,*)": {
+   "source": "fe29a605c81b99",
+   "english": "You saw four dots: both eyes' pictures were seen together.",
+   "text": "आपने चार बिंदु देखे: दोनों आँखों की तस्वीरें एक साथ दिखीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "score",
+    "dots"
+   ]
+  },
+  "test.meaning.suppression(1)": {
+   "source": "7492c133d24ea3",
+   "english": "You saw five dots: both eyes' pictures were seen, but they were not joined into one.",
+   "text": "आपने पाँच बिंदु देखे: दोनों आँखों की तस्वीरें दिखीं, लेकिन वे एक में नहीं जुड़ीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.suppression(1,*)": {
+   "source": "7492c133d24ea3",
+   "english": "You saw five dots: both eyes' pictures were seen, but they were not joined into one.",
+   "text": "आपने पाँच बिंदु देखे: दोनों आँखों की तस्वीरें दिखीं, लेकिन वे एक में नहीं जुड़ीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "score",
+    "dots"
+   ]
+  },
+  "test.meaning.symptoms(*,*)": {
+   "source": "a4c44a3078b8cb",
+   "english": "Your answers add up to {v} of {top}. A lower number means these troubles come less often. It is compared only with your own first result.",
+   "text": "आपके उत्तर {top} में से {v} जोड़ते हैं। कम संख्या का मतलब है कि ये परेशानियाँ कम बार आती हैं। इसकी तुलना केवल आपके अपने पहले परिणाम से की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v",
+    "top"
+   ]
+  },
+  "test.meaning.title": {
+   "source": "35d5d0e1a9223a",
+   "english": "What the latest result says",
+   "text": "नवीनतम परिणाम क्या कहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.unseen(cyan,L)": {
+   "source": "8ab3a1f6ff0672",
+   "english": "That eye was behind the cyan lens: the left eye.",
+   "text": "वह आँख सियान लेंस के पीछे थी: बाईं आँख।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.unseen(cyan,R)": {
+   "source": "639c0ba1d2233c",
+   "english": "That eye was behind the cyan lens: the right eye.",
+   "text": "वह आँख सियान लेंस के पीछे थी: दाईं आँख।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.unseen(red,L)": {
+   "source": "e86387db6a6ee0",
+   "english": "That eye was behind the red lens: the left eye.",
+   "text": "वह आँख लाल लेंस के पीछे थी: बाईं आँख।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.meaning.unseen(red,R)": {
+   "source": "0eaac54b391cf9",
+   "english": "That eye was behind the red lens: the right eye.",
+   "text": "वह आँख लाल लेंस के पीछे थी: दाईं आँख।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.never": {
+   "source": "3d2629a83f95ab",
+   "english": "Not measured yet",
+   "text": "अभी मापा नहीं गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.test.none"
+  },
+  "test.noScreen.body": {
+   "source": "9f6331ce756f28",
+   "english": "Check-ups need the true size of this screen and how far you sit from it. Onboarding measures both.",
+   "text": "जाँच के लिए इस स्क्रीन का सही साइज़ और यह ज़रूरी है कि आप इससे कितनी दूर बैठते हैं। ऑनबोर्डिंग दोनों को मापता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.noScreen.cta": {
+   "source": "d80d162964691c",
+   "english": "Start onboarding",
+   "text": "ऑनबोर्डिंग शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.intro.start"
+  },
+  "test.noScreen.title": {
+   "source": "03d03ed69d323a",
+   "english": "Set up this screen first",
+   "text": "पहले इस स्क्रीन को सेट अप करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.notBuilt.body": {
+   "source": "be19639ee0632f",
+   "english": "This check-up is not in the app yet.",
+   "text": "यह जाँच अभी ऐप में नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.notBuilt.title": {
+   "source": "e5ea87fc0d10d9",
+   "english": "Not built yet",
+   "text": "अभी नहीं बनाया गया है",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.game.notBuilt.title"
+  },
+  "test.outOf(*,*)": {
+   "source": "36188658b381d7",
+   "english": "{v} of {top}",
+   "text": "{top} में से {v}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v",
+    "top"
+   ]
+  },
+  "test.run.back": {
+   "source": "befdaa3bdd3dd7",
+   "english": "Back without saving",
+   "text": "बिना सहेजे वापस जाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.run.both": {
+   "source": "caf2e30c3e6822",
+   "english": "Both eyes together",
+   "text": "दोनों आँखें एक साथ",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.both.title"
+  },
+  "test.run.eyeHead(L)": {
+   "source": "bdaacc57d7b062",
+   "english": "Left eye",
+   "text": "बाईं आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.test.left"
+  },
+  "test.run.eyeHead(R)": {
+   "source": "186ba579361e43",
+   "english": "Right eye",
+   "text": "दाहिनी आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.test.right"
+  },
+  "test.run.helper": {
+   "source": "326d5f320f2e84",
+   "english": "With a helper",
+   "text": "एक मददगार के साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.run.retry": {
+   "source": "42941fb09831c6",
+   "english": "Try again",
+   "text": "फिर से कोशिश करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.done.retry"
+  },
+  "test.run.saveError": {
+   "source": "dc4ebee65b11e6",
+   "english": "The result could not be saved. Nothing was changed.",
+   "text": "परिणाम सहेजा नहीं जा सका। कुछ भी बदला नहीं गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.run.saving": {
+   "source": "1e5f88cd1fb88a",
+   "english": "Saving your result.",
+   "text": "आपका परिणाम सहेजा जा रहा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.run.start": {
+   "source": "344de7fabb13dc",
+   "english": "Start",
+   "text": "शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/programme:programme.today.start"
+  },
+  "test.run.survey": {
+   "source": "31d168cddf8870",
+   "english": "Fifteen questions",
+   "text": "पंद्रह सवाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.run.title(*)": {
+   "source": "7f9a7e87a309f8",
+   "english": "{name} check-up",
+   "text": "{name} जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "test.startedAt(*)": {
+   "source": "c56e9d7320dca0",
+   "english": "Started at {v}",
+   "text": "{v} पर शुरू हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "v"
+   ]
+  },
+  "test.sub": {
+   "source": "9e9d976e48ccc1",
+   "english": "Short tests you repeat at home. Each result is compared with your first one.",
+   "text": "छोटी जाँचें जिन्हें आप घर पर दोहराते हैं। हर नतीजे की तुलना आपके पहले नतीजे से की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.back": {
+   "source": "8a896d6b859844",
+   "english": "Back to check-ups",
+   "text": "जाँच पर वापस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.both": {
+   "source": "61d8c11681b373",
+   "english": "Both",
+   "text": "दोनों",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.changedMark": {
+   "source": "21ea22c9ccb97d",
+   "english": "Changed more than usual",
+   "text": "सामान्य से अधिक बदला",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.count": {
+   "source": "6908ad3d079784",
+   "english": "Results",
+   "text": "परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.dates": {
+   "source": "37abf43d43e48e",
+   "english": "Dates",
+   "text": "तारीखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.eye": {
+   "source": "100c7f6477ce16",
+   "english": "Eye",
+   "text": "आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:test.historyOf.eye"
+  },
+  "test.summary.first": {
+   "source": "6bea3bd871a1dc",
+   "english": "First result",
+   "text": "पहला नतीजा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:test.first"
+  },
+  "test.summary.howMeasured": {
+   "source": "a01b275877b4ec",
+   "english": "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is IOpener's own fifteen questions, scored 0 to 60, with no cut-off.",
+   "text": "अक्षर का आकार 6/x के रूप में लिखा जाता है। धुंधले अक्षर सबसे कम कंट्रास्ट वाले पढ़े गए अक्षर हैं। आँख का संतुलन वह कंट्रास्ट है जिस तक कमज़ोर आँख की गई थी। गहराई आर्क सेकंड में है। फ्यूज़न रेंज प्रिस्म डायोप्टर में है, जो केवल अंदर की ओर मुड़ती है। निकट बिंदु नाक की पुल से सेंटीमीटर में है। सप्रेशन जाँच लाल-सियान चश्मे के ज़रिए चार-डॉट जाँच है। लक्षण सर्वेक्षण IOpener के अपने पंद्रह सवाल हैं, जिन्हें 0 से 60 तक अंक दिए जाते हैं, और कोई कट-ऑफ़ नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.latest": {
+   "source": "20b43d2dd24c9e",
+   "english": "Latest",
+   "text": "नवीनतम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.lenses(*)": {
+   "source": "30144e19846c42",
+   "english": "Red-cyan glasses are worn with the cyan lens over the {cyan} eye.",
+   "text": "लाल-सियान चश्मा {cyan} आँख के ऊपर सियान लेंस लगाकर पहना जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "cyan"
+   ]
+  },
+  "test.summary.made(*)": {
+   "source": "ef075a1a381249",
+   "english": "Made on {day}",
+   "text": "{day} को बनाया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "day"
+   ]
+  },
+  "test.summary.minutes": {
+   "source": "3d72817189de54",
+   "english": "Minutes practised",
+   "text": "अभ्यास के मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.minutesLine(*,*)": {
+   "source": "afeed551dedd40",
+   "english": "{minutes} minutes on {days} days",
+   "text": "{days} दिनों में {minutes} मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "minutes",
+    "days"
+   ]
+  },
+  "test.summary.minutesLine(*,1)": {
+   "source": "05c5fddcbee7be",
+   "english": "{minutes} minutes on 1 day",
+   "text": "1 दिन में {minutes} मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "minutes",
+    "days"
+   ]
+  },
+  "test.summary.noProgramme": {
+   "source": "941105141744c7",
+   "english": "Not on a programme",
+   "text": "किसी प्रोग्राम पर नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.noScreen": {
+   "source": "fa126ca55b09c7",
+   "english": "No screen has been measured for this household.",
+   "text": "इस घर के लिए किसी स्क्रीन की माप नहीं ली गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.noStops": {
+   "source": "8a5164cffc2cb9",
+   "english": "None reported",
+   "text": "कोई रिपोर्ट नहीं मिली",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.none": {
+   "source": "df8f4c2e0201c2",
+   "english": "Not taken yet",
+   "text": "अभी तक नहीं लिया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.notMedical": {
+   "source": "5322d4622c9b26",
+   "english": "IOpener is not a medical device. These are home measurements, taken on a home screen without supervision. They do not diagnose anything.",
+   "text": "IOpener कोई चिकित्सीय उपकरण नहीं है। ये घर की माप हैं, जो बिना देखरेख के घर की स्क्रीन पर ली जाती हैं। इनसे किसी चीज़ का निदान नहीं होता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.notes": {
+   "source": "8c6db7714b8326",
+   "english": "How to read this page",
+   "text": "इस पेज को कैसे पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.practice": {
+   "source": "c571f77802eb3f",
+   "english": "Practice in the last 28 days",
+   "text": "पिछले 28 दिनों में अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.print": {
+   "source": "d09fc495ea1c5c",
+   "english": "Print this page",
+   "text": "इस पेज को प्रिंट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.programme": {
+   "source": "43a67ea49a76e6",
+   "english": "Programme",
+   "text": "प्रोग्राम",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.programme.rows.name"
+  },
+  "test.summary.programmeLine(*,*,0,*)": {
+   "source": "e0afc5382207f9",
+   "english": "{name}, week {week}",
+   "text": "{name}, सप्ताह {week}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name",
+    "week",
+    "minutes",
+    "days"
+   ]
+  },
+  "test.summary.programmeLine(*,*,1,*)": {
+   "source": "417febb63824b0",
+   "english": "{name}, week {week}: 1 minutes a day, {days} days a week",
+   "text": "{name}, सप्ताह {week}: दिन में 1 मिनट, सप्ताह में {days} दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name",
+    "week",
+    "minutes",
+    "days"
+   ]
+  },
+  "test.summary.results": {
+   "source": "911f7f5143ec0a",
+   "english": "Check-up results",
+   "text": "जाँच के परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.screen": {
+   "source": "35157cd8a157d9",
+   "english": "Screen and viewing distance",
+   "text": "स्क्रीन और देखने की दूरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.screenLine(*,*,*)": {
+   "source": "9d72794dd3cbaf",
+   "english": "{label}: {ppc} pixels to a centimetre, viewed from {cm} cm.",
+   "text": "{label}: एक सेंटीमीटर में {ppc} पिक्सेल, {cm} cm की दूरी से देखा गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "label",
+    "ppc",
+    "cm"
+   ]
+  },
+  "test.summary.screenSet(*)": {
+   "source": "6bedb93b727a50",
+   "english": "Screen measured on {day}.",
+   "text": "{day} को मापी गई स्क्रीन।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "day"
+   ]
+  },
+  "test.summary.span(*,*)": {
+   "source": "600f7c7ba584b9",
+   "english": "{from} to {to}",
+   "text": "{from} से {to}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "from",
+    "to"
+   ]
+  },
+  "test.summary.stops": {
+   "source": "162e8be2f3c6ea",
+   "english": "Sessions stopped because of a symptom",
+   "text": "किसी लक्षण की वजह से रोके गए सत्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.sub": {
+   "source": "74e448acb9fa13",
+   "english": "One page of home measurements to print or show to an eye doctor.",
+   "text": "घर की माप का एक पेज जिसे प्रिंट किया जा सकता है या आँखों के डॉक्टर को दिखाया जा सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.symptom.dizzy": {
+   "source": "14803b95cfa1c7",
+   "english": "Dizzy",
+   "text": "चक्कर आना",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.stop.symptoms.dizzy"
+  },
+  "test.summary.symptom.double_vision": {
+   "source": "dc8ace4fcfc3f6",
+   "english": "Seeing double",
+   "text": "दोहरा दिखना",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.stop.symptoms.double_vision"
+  },
+  "test.summary.symptom.eye_pain": {
+   "source": "901cad27d1fbd6",
+   "english": "Eye pain",
+   "text": "आँखों में दर्द",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.stop.symptoms.eye_pain"
+  },
+  "test.summary.symptom.headache": {
+   "source": "d4f353f3833b89",
+   "english": "Headache",
+   "text": "सिरदर्द",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.stop.symptoms.headache"
+  },
+  "test.summary.symptom.sick": {
+   "source": "032117acacd602",
+   "english": "Feeling sick",
+   "text": "जी मिचलाना",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.stop.symptoms.sick"
+  },
+  "test.summary.test": {
+   "source": "69cd1a7fd7d95c",
+   "english": "Check-up",
+   "text": "जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.summary.title": {
+   "source": "263327c68744d9",
+   "english": "Summary for an eye exam",
+   "text": "आँख की परीक्षा का सारांश",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/test:test.summaryLink"
+  },
+  "test.summary.who(*,*)": {
+   "source": "487b0201cdaf41",
+   "english": "{name}, about {age} years old",
+   "text": "{name}, उम्र लगभग {age} साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name",
+    "age"
+   ]
+  },
+  "test.summaryLink": {
+   "source": "263327c68744d9",
+   "english": "Summary for an eye exam",
+   "text": "आँख की परीक्षा का सारांश",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.take": {
+   "source": "cc93f9ebe36507",
+   "english": "Take this check-up",
+   "text": "यह जाँच करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.title": {
+   "source": "116ed75ac74649",
+   "english": "Check-ups",
+   "text": "जाँच",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.nav.checkups"
+  },
+  "test.units.arcsec": {
+   "source": "c023f458d3d9b2",
+   "english": "arc seconds",
+   "text": "आर्क सेकंड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.units.cm": {
+   "source": "ccce56058b0e4c",
+   "english": "cm",
+   "text": "cm",
+   "status": "machine",
+   "made": "2026-10-05 copied from data/guides/convergence:brock-string.measures.0.unit"
+  },
+  "test.units.prism_dioptre": {
+   "source": "9e2d9b71b1c692",
+   "english": "prism dioptres",
+   "text": "डायोप्टर",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/results:results.game.conv.unit"
+  },
+  "test.units.score": {
+   "source": "b57ded1999a421",
+   "english": "points",
+   "text": "पॉइंट्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

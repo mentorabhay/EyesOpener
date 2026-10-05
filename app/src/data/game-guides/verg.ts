@@ -7,6 +7,8 @@
 import type { Source } from "@/data/guides/types";
 import { frame, fusion, hud, key, splitBox, tap, words } from "./cue";
 import type { GameGuide } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GAME_GUIDE_WORDS } from "./words";
 
 /** 221 children; weekly therapy with home practice 73% succeeded or improved, home push-ups 43%, home computer drills 33%, placebo therapy 35%. */
 const CITT: Source = {
@@ -38,11 +40,11 @@ const tunnel = () => [
   { t: "line" as const, x1: 138, y1: 68, x2: 108, y2: 56, ink: "dim" as const, w: 0.8 },
 ];
 
-export const guides: GameGuide[] = [
+export const guides: GameGuide[] = textsEach("data/game-guides/verg", () => [
   {
     slug: "tunnel-glide",
     what: "A ring flies toward you down a tunnel. The screen draws it twice, once for each eye, a little apart. Your job is to pull the two into one ring with your eyes, and say so when the ring reaches the tunnel mouth.",
-    helps: "Each ring is drawn a little further apart than the last, so your eyes must turn in a little more to join it. That is the turning-in practice used in therapy for convergence insufficiency, where the eyes tire or drift when working up close. Therapy with a therapist every week helped most children in trials; computer practice at home alone did no better than pretend therapy, so treat this as practice, not as treatment.",
+    helps: "Each ring is drawn a little further apart than the last, so your eyes must turn in a little more to join it. That is the turning-in practice used in therapy for convergence insufficiency, where the eyes tire or drift when working up close. Therapy with a therapist every week helped most children in trials. Computer practice at home alone did no better than pretend therapy, so treat this as practice, not as treatment.",
     need: [
       "Red-cyan glasses. Without them the game cannot work: you will always see two rings, one red and one cyan.",
       "A tablet, computer or TV. A wider screen lets the rings go further apart.",
@@ -50,7 +52,7 @@ export const guides: GameGuide[] = [
     ],
     see: [
       "On the screen there are always two rings: a cyan one and a red one. That is how it is meant to be.",
-      "Through the glasses each eye gets one ring. When your eyes turn in by the right amount, your brain joins them: you see ONE ring, with a dot at the top and a dot at the bottom.",
+      "Through the glasses each eye gets one ring. When your eyes turn in by the right amount, your brain joins them. You see ONE ring, with a dot at the top and a dot at the bottom.",
       "Two rings through the glasses means your eyes have not joined them yet, or have let go.",
       "One ring with only one dot means one eye has switched off. Blink and look again.",
     ],
@@ -119,4 +121,4 @@ export const guides: GameGuide[] = [
     evidence: "No trial tested this game. In the trial behind it, weekly therapy with a therapist plus home practice helped 73 in 100 children, while computer practice at home alone helped 33 in 100, about the same as pretend therapy.",
     sources: [CITT, REVIEW],
   },
-];
+], GAME_GUIDE_WORDS);

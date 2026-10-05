@@ -1,0 +1,34 @@
+{
+ "lang": "hi",
+ "file": "copy/games-verg",
+ "entries": {
+  "games.split": {
+   "source": "0d0ef7ac8a1c65",
+   "english": "It split",
+   "text": "अलग हो गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "games.tunnelGlide.reach": {
+   "source": "e7980ced15a15e",
+   "english": "Reach",
+   "text": "पहुँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "games.tunnelGlide.rings": {
+   "source": "72dde3c8605e6d",
+   "english": "Rings",
+   "text": "रिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "help.tunnel-glide": {
+   "source": "6efea153795295",
+   "english": "Watch the ring come toward you. When the tunnel mouth lights up and you see one ring with both dots, tap the scene or press Space or OK. If you see two, tap It split or press Down.",
+   "text": "रिंग को अपनी ओर आते हुए देखें। जब टनल का मुँह चमकने लगे और आपको दोनों बिंदुओं के साथ एक रिंग दिखे, तो सीन पर टैप करें या Space या OK दबाएँ। अगर आपको दो दिखें, तो 'अलग हो गया' पर टैप करें या Down दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

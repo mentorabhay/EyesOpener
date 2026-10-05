@@ -1,4 +1,6 @@
-export const auth = {
+import { texts } from "@/i18n/texts";
+
+export const auth = texts("copy/auth", "auth", () => ({
   title: "Sign in",
   demoTitle: "Demo sign-in",
   demoSub: "Pick a person to see their side of IOpener. Each has their own pages and their own limits.",
@@ -14,4 +16,4 @@ export const auth = {
   sponsor: { approved: "Sponsor, approved", pending: "Sponsor, waiting for approval", suspended: "Sponsor, suspended" },
   current: "Signed in",
   signIn: "Sign in",
-};
+}));

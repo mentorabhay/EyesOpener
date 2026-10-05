@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { test as c } from "@/copy/test";
 import { testByKey } from "@/data";
+import { testWords } from "@/data/words";
 import { testBlock } from "@/lib/eye-profile";
 import { requireMember } from "@/lib/session";
 import { ChangeAlert } from "../alert";
@@ -14,7 +15,8 @@ const h = c.historyOf;
 const TONE = { better: "ok", worse: "warn", same: "plain" } as const;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  return { title: testByKey((await params).key)?.name };
+  const t = testByKey((await params).key);
+  return { title: t ? testWords(t).name : undefined };
 }
 
 export default async function HistoryPage({ params }: Props) {
@@ -32,7 +34,7 @@ export default async function HistoryPage({ params }: Props) {
   return (
     <>
       <PageHead
-        title={t.name} sub={`${t.what} ${c.every(t.everyDays)}.`} crumb={[{ href: "/test", label: c.title }]}
+        title={testWords(t).name} sub={`${testWords(t).what} ${c.every(t.everyDays)}.`} crumb={[{ href: "/test", label: c.title }]}
         stats={series.filter((s) => s.last).map((s) => ({ value: reading(t, s.last!), label: s.eye ? c.eye[s.eye] : c.latest }))}
       />
       {t.built ? (

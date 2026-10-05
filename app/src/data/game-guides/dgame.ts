@@ -9,6 +9,8 @@
 import type { Source } from "@/data/guides/types";
 import { frame, hud, key, tap, words } from "./cue";
 import type { GameGuide, Shape } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GAME_GUIDE_WORDS } from "./words";
 
 /** 385 children aged 5 to 12, 16 weeks: the game gained 1.05 lines, patching 1.35; 22% did more than three-quarters of the play set. */
 const GAME_OR_PATCH: Source = {
@@ -33,7 +35,7 @@ const SOURCES = [GAME_OR_PATCH, GAME_OR_PLACEBO, XIAO, WYGNANSKI];
 /* ── lines the three games share ── */
 
 const HELPS =
-  "A lazy eye is partly the brain turning the weaker eye down while both eyes are open. Here each eye gets its own part of the picture and the stronger eye's part is dimmed, so the weaker eye has to work while the stronger eye stays open. " +
+  "A lazy eye is partly the brain turning the weaker eye down while both eyes are open. Here each eye gets its own part of the picture and the stronger eye's part is dimmed. So the weaker eye has to work while the stronger eye stays open. " +
   "Two-eye video built on this idea did about as well as patching in trials. Two-eye games did less well, and many children did not keep up the play. It is practice beside the glasses, patch or drops an eye doctor prescribed, never instead of them.";
 const EVIDENCE =
   "No trial tested this game. In a trial of 385 children, a two-eye tablet game gained 1.05 lines on the letter chart in 16 weeks and patching 1.35; only 22 in 100 played over three-quarters of the time set. In a second trial a two-eye game did no better than a pretend one.";
@@ -111,7 +113,7 @@ const exit = (open = false): Shape[] => { const [x, y] = cell(5, 0); return [{ t
 const ball = (x: number, y: number): Shape => ({ t: "disc", x, y, r: 5, ink: "weak" });
 const maze = (mazes: number): Shape[] => [frame(), hud(`Mazes ${mazes}`), ...walls()];
 
-export const guides: GameGuide[] = [
+export const guides: GameGuide[] = textsEach("data/game-guides/dgame", () => [
   {
     slug: "firefly-catch",
     what: "Cyan fireflies and red moths drift about inside a white frame. You catch the fireflies and leave the moths alone. Only your weaker eye can see the fireflies, so that eye has to do the finding.",
@@ -189,7 +191,7 @@ export const guides: GameGuide[] = [
     helps: HELPS,
     need: NEED,
     see: [
-      "On the screen itself there are always both colours: a cyan runner and cyan coins, red crates, stalls and hanging signs, and a white street with a string of lanterns overhead.",
+      "On the screen itself there are always both colours. The runner and the coins are cyan. The crates, stalls and hanging signs are red. The street is white, with a string of lanterns overhead.",
       "Through the glasses the eye behind the cyan lens gets the runner and the coins, and no red things. The eye behind the red lens gets the crates, stalls and signs, and no runner. The white street reaches both eyes, so with both eyes working you see it all on one street.",
       DIMMED,
       "When the runner turns faint, the lantern is out after a stumble. That is the game, not your eyes. A hero made in Draw Your Hero takes the runner's place.",
@@ -326,4 +328,4 @@ export const guides: GameGuide[] = [
     evidence: EVIDENCE,
     sources: SOURCES,
   },
-];
+], GAME_GUIDE_WORDS);

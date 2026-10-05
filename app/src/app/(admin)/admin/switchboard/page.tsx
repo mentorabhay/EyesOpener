@@ -9,7 +9,7 @@ import { SwitchboardExtra } from "./extra";
 import { CapForm } from "./forms";
 
 const sw = t.switchboard;
-export const metadata: Metadata = { title: t.rooms.switchboard.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.switchboard.name });
 
 export default async function SwitchboardPage() {
   await requireStaff("switchboard");

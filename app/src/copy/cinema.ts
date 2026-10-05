@@ -3,6 +3,7 @@
  * The page title and the words older screens already use stay in `train.ts` (`train.cinema`).
  */
 import type { Labels } from "@/components/play/results";
+import { texts } from "@/i18n/texts";
 
 type Side = "L" | "R";
 const side = (e: Side) => (e === "L" ? "left" : "right");
@@ -11,7 +12,7 @@ const count = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 /** 600 seconds reads "10 minutes"; 20 seconds reads "20 seconds". */
 const span = (seconds: number) => (seconds >= 60 && seconds % 60 === 0 ? count(seconds / 60, "minute") : count(seconds, "second"));
 
-export const cinema = {
+export const cinema = texts("copy/cinema", "cinema", () => ({
   glasses: {
     title: "Put the red-cyan glasses on.",
     way: (cyan: Side) => `Cyan (blue-green) lens over your ${side(cyan)} eye, red lens over your ${other(cyan)} eye.`,
@@ -150,4 +151,4 @@ export const cinema = {
     chapters: { label: "Chapters finished", unit: "" },
     films: { label: "Films finished", unit: "" },
   } satisfies Labels,
-};
+}));

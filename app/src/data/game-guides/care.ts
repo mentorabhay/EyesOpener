@@ -10,6 +10,8 @@
 import type { Source } from "@/data/guides/types";
 import { tap, words } from "./cue";
 import type { GameGuide, Shape } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GAME_GUIDE_WORDS } from "./words";
 
 const GUANGZHOU: Source = {
   label: "He and others, 2015, JAMA: cluster randomised trial of one added 40-minute outdoor class a day in 12 primary schools in Guangzhou",
@@ -58,13 +60,13 @@ const tickBox = (x: number, y: number, s: string, ticked: boolean): Shape[] => [
 ];
 const note = (s: string, y = 82): Shape => words(s, y, 6.5, "dim");
 
-export const guides: GameGuide[] = [
+export const guides: GameGuide[] = textsEach("data/game-guides/care", () => [
   {
     slug: "sky-spotter",
     what: "An outdoor scavenger hunt and a log. Every day brings a list of ten far-off things to find outside in daylight. Afterwards you tick what you found and type how many minutes you were outside.",
     helps:
-      "It is a reason to go outside and look far. More time outdoors in daylight lowered the chance of a child becoming short-sighted (far things look blurred) in school trials: " +
-      "in one, an added 40 minutes outdoors a day lowered new short sight over three years from 39.5% of children to 30.4%. The trials counted the time outdoors, whatever the children did there. The hunt itself is untested, and the evidence is about short sight starting, not about glasses a child already wears.",
+      "It is a reason to go outside and look far. More time outdoors in daylight lowered the chance of a child becoming short-sighted (far things look blurred) in school trials. " +
+      "In one, an added 40 minutes outdoors a day lowered new short sight over three years from 39.5% of children to 30.4%. The trials counted the time outdoors, whatever the children did there. The hunt itself is untested, and the evidence is about short sight starting, not about glasses a child already wears.",
     need: [
       "Daylight and somewhere outdoors: a yard, a street, a park or an open roof terrace.",
       "A phone or a watch to time the visit. Nothing is measured for you: you type the minutes yourself.",
@@ -131,15 +133,15 @@ export const guides: GameGuide[] = [
     slug: "blink-garden",
     what: "A one-minute routine of ten slow, full blinks, led by words and a bar on the page. Every finished set grows one leaf on the plant in the garden.",
     helps:
-      "At a screen many blinks are half blinks, where the lids do not meet. A full blink spreads the tears over the eye again. In one study, 41 people with dry eye who did a short blink routine every 20 minutes for four weeks had lower symptom scores and fewer half blinks than at their own start. " +
-      "In a trial of 40 students, an app that prompted blinks for hours a day eased symptoms in 30 days; part of the gain was lost a month later. The camera that would count blinks is not built: the page leads and you do the blinking.",
+      "At a screen many blinks are half blinks, where the lids do not meet. A full blink spreads the tears over the eye again. In one study, 41 people with dry eye did a short blink routine every 20 minutes for four weeks. They had lower symptom scores and fewer half blinks than at their own start. " +
+      "In a trial of 40 students, an app that prompted blinks for hours a day eased symptoms in 30 days. Part of the gain was lost a month later. The camera that would count blinks is not built: the page leads and you do the blinking.",
     need: [
       "No gear. A chair and one minute.",
       "A phone that can buzz helps: it gives a short buzz when it is time to open your eyes. On a computer you count instead.",
     ],
     see: [
       "Before you start: the button \"Begin\".",
-      "While it runs: \"Blink 1 of 10\" up to ten, one instruction in large words (\"Close your eyes gently\", \"Keep them closed\", \"Squeeze softly\", \"Open and relax\") and a bar that fills once for each blink.",
+      "While it runs you see \"Blink 1 of 10\" up to ten, and a bar that fills once for each blink. One instruction shows in large words: \"Close your eyes gently\", \"Keep them closed\", \"Squeeze softly\", \"Open and relax\".",
       "Your eyes are closed for most of every blink, so you cannot read along. Learn the four parts first, then count.",
       "At the end: \"Done. One break added to your Rest ring.\" and one more leaf on the plant. The plant shows this week's leaves.",
     ],
@@ -211,8 +213,8 @@ export const guides: GameGuide[] = [
     slug: "far-window",
     what: "A timed 20-second look at something far away, to rest the eyes during screen work. Afterwards you tick three far-off things you found, and the break is logged.",
     helps:
-      "Up close, the muscles that focus and aim the eyes work without pause; looking 6 metres away or more lets them let go. In one study, 29 people with screen strain who got break reminders for two weeks had fewer symptoms than at their own start, and the gain had gone a week after the reminders stopped. " +
-      "In a laboratory study of 30 adults, 20-second breaks made no difference over a 40-minute task. So the benefit is modest and lasts only while the habit does. The camera check is not built: you report the break yourself.",
+      "Up close, the muscles that focus and aim the eyes work without pause; looking 6 metres away or more lets them let go. In one study, 29 people with screen strain got break reminders for two weeks. They had fewer symptoms than at their own start, and the gain had gone a week after the reminders stopped. " +
+      "In a lab study of 30 adults, 20-second breaks made no difference over a 40-minute task. So the benefit is modest and lasts only while the habit does. The camera check is not built: you report the break yourself.",
     need: [
       "Something to look at 6 metres away or more: out of a window, down a corridor, across the road. Six metres is about eight normal steps.",
       "A timer of your own that rings every 20 minutes of screen work. The page does not remind you.",
@@ -221,7 +223,7 @@ export const guides: GameGuide[] = [
     see: [
       "Before you start: the button \"Begin\".",
       "While it runs: the words \"Keep looking far away. Count slowly to twenty.\", a large number counting down from 20, and a row of twenty small bars filling up. You are not meant to watch them.",
-      "Then a list of nine far-off things with boxes to tick, the count \"0 of 3 ticked\", and the button \"Finish the break\", which can be pressed once exactly three are ticked.",
+      "Then a list of nine far-off things with boxes to tick, and the count \"0 of 3 ticked\". The button \"Finish the break\" can be pressed once exactly three are ticked.",
       "At the end: \"Done. One break added to your Rest ring.\"",
     ],
     play: [
@@ -285,4 +287,4 @@ export const guides: GameGuide[] = [
     evidence: "No trial tested this page. In one study, 29 people with screen strain got break reminders for two weeks: strain and dry-eye symptoms eased against their own start, and the gain had gone a week after the reminders stopped. A laboratory study found no effect of 20-second breaks.",
     sources: [BREAKS_STUDY, BREAKS_LAB, AOA_SCREENS],
   },
-];
+], GAME_GUIDE_WORDS);

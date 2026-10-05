@@ -8,7 +8,7 @@ import { answerTriage } from "./actions";
 
 const t = settings.triage;
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function TriagePage() {
   const m = await requireMember();

@@ -16,7 +16,7 @@ import { startOfDay } from "@/lib/league";
 import { requireMember } from "@/lib/session";
 import css from "./book.module.css";
 
-export const metadata: Metadata = { title: t.book.title };
+export const generateMetadata = (): Metadata => ({ title: t.book.title });
 
 const DAY_MS = 86_400_000;
 /** Check-ups from two weeks before the course to two weeks after it: the first ones are often taken before the start, the last ones just after the end. */

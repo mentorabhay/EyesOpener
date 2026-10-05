@@ -5,7 +5,7 @@ import { requireSponsor } from "@/lib/auth";
 import { listTeam } from "@/lib/sponsor";
 import { AddForm, MemberActions } from "./team-forms";
 
-export const metadata: Metadata = { title: t.team.title };
+export const generateMetadata = (): Metadata => ({ title: t.team.title });
 
 export default async function SponsorTeam() {
   /* Owners only. An editor, and a sponsor that is still waiting, get "not found". */

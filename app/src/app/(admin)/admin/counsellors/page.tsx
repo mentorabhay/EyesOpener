@@ -7,7 +7,7 @@ import { Confirm } from "../parts";
 import { verify, withdraw } from "./actions";
 
 const c = t.counsellors;
-export const metadata: Metadata = { title: t.rooms.counsellors.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.counsellors.name });
 
 export default async function CounsellorsPage() {
   await requireStaff("counsellors");

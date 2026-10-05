@@ -6,6 +6,8 @@
  * lenses, not from a far chart and a near card, so there is nothing true to compare these counts with.
  */
 import type { Guide, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 const pubmed = (id: number) => `https://pubmed.ncbi.nlm.nih.gov/${id}/`;
 
@@ -48,7 +50,7 @@ const PAIR = "One pair is one letter read sharp on the far chart and then one le
 const BLURRED = "Saying a letter from memory, or from its blurred shape. Wait until it is sharp.";
 const DRIFT = "Letting the near card drift further away than 40 cm, which makes it easier. Check with the ruler now and then.";
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/focus", () => [
   {
     slug: "near-far-focus-rock",
     what: "You read letters in turn from a chart 3 metres away and a small card at 40 cm, waiting each time until the letter is sharp. It works on how quickly your eyes change focus between far and near.",
@@ -142,4 +144,4 @@ export const guides: Guide[] = [
     evidence: "No trial tested this routine on its own, and no published figure says what count is usual at 40 cm. The trials' supervised therapy used the same chart drill one eye at a time, and that therapy improved focusing more than placebo (pretend) therapy did.",
     sources: [MANUAL, FOCUS_TRIAL, CITT],
   },
-];
+], GUIDE_WORDS);

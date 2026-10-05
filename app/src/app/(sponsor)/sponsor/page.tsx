@@ -5,7 +5,7 @@ import { percent } from "@/engine";
 import { requireSponsor } from "@/lib/auth";
 import { familyNumbers, glassesNumbers } from "@/lib/sponsor";
 
-export const metadata: Metadata = { title: t.nav.overview };
+export const generateMetadata = (): Metadata => ({ title: t.nav.overview });
 
 export default async function SponsorHome() {
   const { sponsor } = await requireSponsor("view");

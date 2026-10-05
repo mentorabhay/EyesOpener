@@ -10,7 +10,7 @@ import { Confirm } from "../parts";
 import { runNow } from "./actions";
 import css from "./requests.module.css";
 
-export const metadata: Metadata = { title: t.rooms.requests.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.requests.name });
 
 type Counts = Record<string, number | boolean | undefined>;
 const numbers = (meta: unknown): Counts => (meta && typeof meta === "object" ? (meta as Counts) : {});

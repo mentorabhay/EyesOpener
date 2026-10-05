@@ -4,7 +4,7 @@ import { signin as t } from "@/copy/signin";
 import { getViewer } from "@/lib/auth";
 import { WelcomeView } from "../view";
 
-export const metadata: Metadata = { title: t.title, robots: { index: false, follow: false } };
+export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
 
 /**
  * Where a person lands when they have signed in and belong nowhere yet: no household, no staff, counsellor or

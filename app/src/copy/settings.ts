@@ -1,9 +1,10 @@
 import type { Blocked, LinkResult, TriageKey } from "@/lib/family";
+import { texts } from "@/i18n/texts";
 
 /** A date as the member reads it, for example 4 Oct 2026. */
 export const day = (d: Date) => new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeZone: "Asia/Kolkata" }).format(d);
 
-export const settings = {
+export const settings = texts("copy/settings", "settings", () => ({
   title: "Settings",
   sub: (name: string) => `These are ${name}'s settings. Switch profile to see another family member.`,
   guardianOnly: "You can look at these settings. A guardian makes the changes.",
@@ -135,4 +136,4 @@ export const settings = {
       cta: "Choose a programme",
     },
   },
-};
+}));

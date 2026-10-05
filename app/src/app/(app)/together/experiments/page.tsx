@@ -17,7 +17,7 @@ import { requireMember } from "@/lib/session";
 import { addAfter, addBefore, leave } from "./actions";
 import css from "./experiments.module.css";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 const TONE: Record<Stage, Tone> = { needs_before: "warn", practising: "plain", after_due: "warn", missed: "none", finished: "ok", left: "none" };
 const CHANGE_TONE = { better: "ok", worse: "warn", same: "plain" } as const;

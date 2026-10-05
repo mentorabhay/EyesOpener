@@ -1,0 +1,914 @@
+{
+ "lang": "hi",
+ "file": "copy/settings",
+ "entries": {
+  "settings.counsellor.about": {
+   "source": "5a47275067bd1f",
+   "english": "A counsellor sets the dose for the squint, after-concussion and after-stroke programmes.",
+   "text": "काउंसलर भेंगापन, सिर की चोट के बाद और स्ट्रोक के बाद के प्रोग्राम के लिए डोज़ तय करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.ask": {
+   "source": "7cc50dad99da7f",
+   "english": "Ask to link",
+   "text": "लिंक करने का अनुरोध करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.email": {
+   "source": "c978c9a8285155",
+   "english": "Your counsellor's email",
+   "text": "आपके काउंसलर का ईमेल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.invalid": {
+   "source": "ac115b88ccb923",
+   "english": "Type a full email address.",
+   "text": "पूरा ईमेल पता लिखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.none": {
+   "source": "3d70cfac6536e7",
+   "english": "No counsellor linked yet.",
+   "text": "अभी कोई काउंसलर लिंक नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.result.already_linked": {
+   "source": "fb648d1cae7f8f",
+   "english": "There is already a link or a request with this counsellor.",
+   "text": "इस काउंसलर के साथ पहले से ही एक लिंक या अनुरोध मौजूद है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.result.counsellor_not_found": {
+   "source": "56c1315fefcb02",
+   "english": "No counsellor uses that email. Check the spelling with your counsellor.",
+   "text": "कोई भी काउंसलर इस ईमेल का इस्तेमाल नहीं करता है। अपने काउंसलर से स्पेलिंग की जाँच करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.result.done": {
+   "source": "3af9969c8506b1",
+   "english": "Request sent. The link opens when the counsellor accepts.",
+   "text": "अनुरोध भेज दिया गया। काउंसलर के स्वीकार करने पर लिंक खुल जाएगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.result.not_yours": {
+   "source": "37edb100ee4903",
+   "english": "That profile is not in this family.",
+   "text": "वह प्रोफ़ाइल इस परिवार में नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.status.active": {
+   "source": "80bcbeaf2d63d1",
+   "english": "Linked",
+   "text": "लिंक हो गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.status.ended": {
+   "source": "0b7f82e6f2b184",
+   "english": "Ended",
+   "text": "समाप्त",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.status.pending": {
+   "source": "c2e0339bb43674",
+   "english": "Waiting for the counsellor",
+   "text": "काउंसलर का इंतज़ार है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.counsellor.title": {
+   "source": "d582f98744a4ce",
+   "english": "Counsellor",
+   "text": "काउंसलर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.colours": {
+   "source": "1d7069ef0e690b",
+   "english": "This screen's colours",
+   "text": "इस स्क्रीन के रंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.done.links.3.1"
+  },
+  "settings.devices.empty.body": {
+   "source": "6cfc1886ff1680",
+   "english": "Onboarding measures your screen and how far you sit from it.",
+   "text": "ऑनबोर्डिंग में आपकी स्क्रीन और आप उससे कितनी दूर बैठते हैं, यह नापा जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.empty.title": {
+   "source": "9a75d2a6ed19cc",
+   "english": "No screen measured yet",
+   "text": "अभी कोई स्क्रीन नहीं नापी गई है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.kind.phone": {
+   "source": "b29b102b56bf3a",
+   "english": "Phone",
+   "text": "फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.kind.tv": {
+   "source": "3feb91f603617e",
+   "english": "TV",
+   "text": "टीवी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.kind.web": {
+   "source": "d3c6a3db6c96e1",
+   "english": "Computer",
+   "text": "कंप्यूटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.devices.line(*,*,*,*)": {
+   "source": "e5ceece397f846",
+   "english": "{kind}. {pxPerCm} dots per cm, viewed from {cm} cm. Measured on {date}.",
+   "text": "{kind}। {pxPerCm} डॉट्स प्रति cm, {cm} cm की दूरी से देखा गया। {date} को मापा गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "kind",
+    "pxPerCm",
+    "cm",
+    "date"
+   ]
+  },
+  "settings.devices.title": {
+   "source": "5060698097c1c0",
+   "english": "Devices",
+   "text": "डिवाइस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.again": {
+   "source": "abc04f3caa890a",
+   "english": "Run onboarding again",
+   "text": "ऑनबोर्डिंग फिर से करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.intro.again"
+  },
+  "settings.eye.empty.cta": {
+   "source": "d80d162964691c",
+   "english": "Start onboarding",
+   "text": "ऑनबोर्डिंग शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.intro.start"
+  },
+  "settings.eye.empty.title": {
+   "source": "a5ddad939bb14a",
+   "english": "No eye settings yet",
+   "text": "अभी आँखों की कोई सेटिंग्स नहीं हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.faint.off": {
+   "source": "3cd370314b9c89",
+   "english": "Shown as usual",
+   "text": "हमेशा की तरह दिखाया गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.faint.on": {
+   "source": "53e72d70bdf8b9",
+   "english": "Shown darker, so it is easier to read",
+   "text": "गहरे रंग में दिखाया गया है, ताकि पढ़ना आसान हो",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.lens(left)": {
+   "source": "bcc1fd36b4d68f",
+   "english": "Blue-green lens over the left eye, red lens over the right eye",
+   "text": "बाईं आँख पर नीला-हरा लेंस, दाईं आँख पर लाल लेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.lens(right)": {
+   "source": "308dd3bda142b4",
+   "english": "Blue-green lens over the right eye, red lens over the left eye",
+   "text": "दाईं आँख पर नीला-हरा लेंस, बाईं आँख पर लाल लेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.mm(0)": {
+   "source": "7199ae3c456506",
+   "english": "0.0 mm",
+   "text": "0.0 mm",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.mm(1)": {
+   "source": "189e902767af84",
+   "english": "10.0 mm",
+   "text": "10.0 mm",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.name.left": {
+   "source": "346f7d831bfd96",
+   "english": "Left",
+   "text": "बायाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.name.right": {
+   "source": "4d4127eb7af91b",
+   "english": "Right",
+   "text": "सही",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.hits.label"
+  },
+  "settings.eye.noWeak": {
+   "source": "b90fb671f6e801",
+   "english": "None found",
+   "text": "कोई नहीं मिली",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.noWeak"
+  },
+  "settings.eye.px(*)": {
+   "source": "b94d81f9854d10",
+   "english": "{n} pixels",
+   "text": "{n} पिक्सल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "n"
+   ]
+  },
+  "settings.eye.rows.contrast": {
+   "source": "4a1d87f613e0d8",
+   "english": "Stronger-eye contrast",
+   "text": "मज़बूत आँख का कंट्रास्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.contrast"
+  },
+  "settings.eye.rows.faint": {
+   "source": "1ac7bd23f938eb",
+   "english": "Faint text",
+   "text": "हल्का टेक्स्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.faint"
+  },
+  "settings.eye.rows.lens": {
+   "source": "b148dd89f250e2",
+   "english": "Glasses",
+   "text": "चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.rows.letter": {
+   "source": "82c6e6cd1307c8",
+   "english": "Two-eye letter size",
+   "text": "दोनों आँखों के लिए अक्षर का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.letter"
+  },
+  "settings.eye.rows.measured": {
+   "source": "52b28cc77d30c0",
+   "english": "Measured on",
+   "text": "मापने की तारीख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.rows.target": {
+   "source": "b0ea62b9f00f8f",
+   "english": "Smallest game target",
+   "text": "गेम का सबसे छोटा टारगेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.eye.rows.text": {
+   "source": "11f60763c4fbd2",
+   "english": "App text size",
+   "text": "ऐप टेक्स्ट का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.text"
+  },
+  "settings.eye.rows.weak": {
+   "source": "cb406704dee0af",
+   "english": "Weaker eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.settings.weak"
+  },
+  "settings.eye.title": {
+   "source": "9cf0dd11ed50f5",
+   "english": "Eye settings",
+   "text": "आँखों की सेटिंग्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.active": {
+   "source": "de1b1fdb7dd78e",
+   "english": "Active",
+   "text": "सक्रिय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.add": {
+   "source": "aa6ae30b885199",
+   "english": "Add a profile",
+   "text": "प्रोफाइल जोड़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.kind.adult": {
+   "source": "0fc0d3d2cfd46b",
+   "english": "Adult",
+   "text": "वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.kind.child": {
+   "source": "83899e759c512d",
+   "english": "Child",
+   "text": "बच्चा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.line(*,*,*)": {
+   "source": "6d31663ff5db0a",
+   "english": "{kind}, age {age}, level {level}",
+   "text": "{kind}, उम्र {age}, लेवल {level}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "kind",
+    "age",
+    "level"
+   ]
+  },
+  "settings.family.line(*,null,*)": {
+   "source": "a41899fa3907b4",
+   "english": "{kind}, age not given, level {level}",
+   "text": "{kind}, उम्र नहीं दी गई, लेवल {level}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "kind",
+    "age",
+    "level"
+   ]
+  },
+  "settings.family.line(*,null,0)": {
+   "source": "4cc04ab7a984cd",
+   "english": "{kind}, age not given, level 0",
+   "text": "{kind}, उम्र नहीं दी गई, लेवल 0",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "kind",
+    "age",
+    "level"
+   ]
+  },
+  "settings.family.line(*,null,1)": {
+   "source": "bfbb76c0645322",
+   "english": "{kind}, age not given, level 1",
+   "text": "{kind}, उम्र नहीं दी गई, लेवल 1",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "kind",
+    "age",
+    "level"
+   ]
+  },
+  "settings.family.switch": {
+   "source": "fab39ed02bd313",
+   "english": "Switch",
+   "text": "बदलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.switchTo(*)": {
+   "source": "b89caa4265535a",
+   "english": "Switch to {name}",
+   "text": "{name} पर बदलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "settings.family.title": {
+   "source": "40ad0a51beba48",
+   "english": "Family profiles",
+   "text": "परिवार के प्रोफाइल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.family.under4": {
+   "source": "d49b7c822e4744",
+   "english": "Screen sessions stay closed until age 4.",
+   "text": "4 साल की उम्र तक स्क्रीन सत्र बंद रहते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.guardianOnly": {
+   "source": "aec53957c9af98",
+   "english": "You can look at these settings. A guardian makes the changes.",
+   "text": "आप ये सेटिंग्स देख सकते हैं। बदलाव अभिभावक करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.birthYear": {
+   "source": "99c794b5facf71",
+   "english": "Year of birth",
+   "text": "जन्म का साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.birthYearNote": {
+   "source": "86aaa6ed4e3125",
+   "english": "Only the year is stored.",
+   "text": "केवल साल सहेजा जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.cancel": {
+   "source": "f12e2e8ecda428",
+   "english": "Cancel",
+   "text": "रद्द करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.consent": {
+   "source": "7821fd481d32cf",
+   "english": "I am this child's parent or guardian, and I agree to this child using IOpener.",
+   "text": "मैं इस बच्चे का माता-पिता या अभिभावक हूँ, और मैं इस बच्चे द्वारा IOpener के उपयोग से सहमत हूँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.errors.birthYear": {
+   "source": "410634a1bf96a9",
+   "english": "Type the child's year of birth. A child profile is for someone under 18.",
+   "text": "बच्चे के जन्म का साल लिखें। बच्चे का प्रोफ़ाइल 18 साल से कम उम्र के लिए है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.errors.consent": {
+   "source": "35aa23260b0a1b",
+   "english": "A parent or guardian must tick the box before a child's profile is added.",
+   "text": "बच्चे का प्रोफ़ाइल जोड़ने से पहले माता-पिता या अभिभावक को बॉक्स पर सही का निशान लगाना होगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.errors.kind": {
+   "source": "503c90cf263c1e",
+   "english": "Choose adult or child.",
+   "text": "वयस्क या बच्चा चुनें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.errors.name": {
+   "source": "17352d3640203a",
+   "english": "Type a name of up to 40 letters.",
+   "text": "अधिकतम 40 अक्षरों का नाम लिखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.kind": {
+   "source": "819c652e8f5202",
+   "english": "Who is this profile for?",
+   "text": "यह प्रोफ़ाइल किसके लिए है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.name": {
+   "source": "a2b18d5c7f6f2d",
+   "english": "Name",
+   "text": "नाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.save": {
+   "source": "5951365804f22a",
+   "english": "Add profile",
+   "text": "प्रोफ़ाइल जोड़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.sub": {
+   "source": "2539906f59ebdf",
+   "english": "Each family member gets their own eye settings, programme and history. A child's profile lives inside your account, with no email of its own.",
+   "text": "परिवार के हर सदस्य को आँखों की अपनी सेटिंग, कार्यक्रम और इतिहास मिलता है। बच्चे का प्रोफ़ाइल आपके खाते में रहता है, उसका अपना कोई ईमेल नहीं होता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.title": {
+   "source": "be3b4917cf9ab5",
+   "english": "Add a family profile",
+   "text": "परिवार का प्रोफ़ाइल जोड़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.newProfile.under4": {
+   "source": "454b584c12b10d",
+   "english": "Screen sessions stay closed until age 4. You can still add the profile now.",
+   "text": "4 साल की उम्र तक स्क्रीन सत्र बंद रहते हैं। आप अभी भी प्रोफ़ाइल जोड़ सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.blocked.doctor_first": {
+   "source": "8ea00b43f9366c",
+   "english": "See an eye doctor before training. Check-ups, breaks and outdoor time still work.",
+   "text": "अभ्यास से पहले आँखों के डॉक्टर को दिखाएँ। जाँच, ब्रेक और बाहर का समय अब भी काम करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.blocked.needs_consent": {
+   "source": "b634accb03660c",
+   "english": "A parent or guardian has not agreed to this profile yet.",
+   "text": "माता-पिता या अभिभावक ने अभी तक इस प्रोफ़ाइल के लिए सहमति नहीं दी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.blocked.needs_counsellor": {
+   "source": "6df1ea78539e6a",
+   "english": "Ask a counsellor to link first. These open when the counsellor accepts.",
+   "text": "पहले किसी काउंसलर को लिंक करने के लिए कहें। काउंसलर के स्वीकार करने पर ये खुल जाएँगे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.leave.ask": {
+   "source": "9f266da768971b",
+   "english": "Leave this programme",
+   "text": "यह प्रोग्राम छोड़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.leave.warn": {
+   "source": "712f00d8bd7db8",
+   "english": "Your sessions and check-up results are kept. The week count starts again at week 1 if you come back.",
+   "text": "आपके सत्र और जाँच के नतीजे सुरक्षित रहते हैं। अगर आप वापस आते हैं, तो सप्ताह की गिनती फिर से सप्ताह 1 से शुरू होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.leave.yes": {
+   "source": "67bedbdc787269",
+   "english": "Yes, leave",
+   "text": "हाँ, छोड़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.0.name": {
+   "source": "a39e73c73d4d0d",
+   "english": "Open to everyone",
+   "text": "सभी के लिए खुला",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.0.what": {
+   "source": "0e650ce4046fbc",
+   "english": "Tracking, breaks, outdoor time and check-ups.",
+   "text": "ट्रैकिंग, ब्रेक, बाहर का समय और जाँच।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.1.name": {
+   "source": "c6d35689d050da",
+   "english": "For a named condition",
+   "text": "किसी खास समस्या के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.1.what": {
+   "source": "078451d8397724",
+   "english": "Uses the dose from a published trial. A child needs a parent or guardian.",
+   "text": "इसमें प्रकाशित ट्रायल की डोज़ का इस्तेमाल होता है। बच्चे के लिए माता-पिता या अभिभावक का होना ज़रूरी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.2.name": {
+   "source": "5df57af10ac66d",
+   "english": "With a counsellor",
+   "text": "काउंसलर के साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.levels.2.what": {
+   "source": "57f4d61892b2f9",
+   "english": "Your counsellor sets the dose. The app never sets it.",
+   "text": "आपके काउंसलर डोज़ तय करते हैं। ऐप इसे कभी तय नहीं करता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.minutes(*)": {
+   "source": "86031ec73757ff",
+   "english": "{n} minutes",
+   "text": "{n} मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "n"
+   ]
+  },
+  "settings.programme.minutes(0)": {
+   "source": "02a8a0a60d812a",
+   "english": "No training minutes",
+   "text": "ट्रेनिंग के कोई मिनट नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.none": {
+   "source": "5220328c2a5154",
+   "english": "Not on a programme yet.",
+   "text": "अभी किसी प्रोग्राम में नहीं हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.notSet": {
+   "source": "81972e8a8947fe",
+   "english": "Not set yet",
+   "text": "अभी तय नहीं हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.pick": {
+   "source": "69ec5088cc79ff",
+   "english": "Not on a programme yet. Pick one to start.",
+   "text": "अभी किसी प्रोग्राम में नहीं हैं। शुरू करने के लिए कोई एक चुनें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.rows.basis": {
+   "source": "46a7b6337e3e3a",
+   "english": "Where the dose comes from",
+   "text": "डोज़ कहाँ से आती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.rows.days": {
+   "source": "3c02a207c830f5",
+   "english": "Days a week",
+   "text": "सप्ताह के दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.rows.minutes": {
+   "source": "759247813d41f1",
+   "english": "Minutes a day",
+   "text": "हर दिन के मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.rows.name": {
+   "source": "43a67ea49a76e6",
+   "english": "Programme",
+   "text": "प्रोग्राम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.programme.title"
+  },
+  "settings.programme.rows.week": {
+   "source": "0c348e7e37b197",
+   "english": "Week",
+   "text": "सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.start": {
+   "source": "344de7fabb13dc",
+   "english": "Start",
+   "text": "शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.today.start"
+  },
+  "settings.programme.startOf(*)": {
+   "source": "8013013828c2be",
+   "english": "Start {name}",
+   "text": "{name} शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "settings.programme.title": {
+   "source": "43a67ea49a76e6",
+   "english": "Programme",
+   "text": "प्रोग्राम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.triageLink": {
+   "source": "c0493fe07e3a56",
+   "english": "Safety questions",
+   "text": "सुरक्षा सवाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.programme.waiting": {
+   "source": "17a35fb5e5d17b",
+   "english": "Waiting for your counsellor to set the dose",
+   "text": "आपके काउंसलर के डोज़ तय करने का इंतज़ार है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.sub(*)": {
+   "source": "bf63e156205bcf",
+   "english": "These are {name}'s settings. Switch profile to see another family member.",
+   "text": "ये {name} की सेटिंग्स हैं। परिवार के किसी दूसरे सदस्य को देखने के लिए प्रोफाइल बदलें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "settings.title": {
+   "source": "b51769a9fde954",
+   "english": "Settings",
+   "text": "सेटिंग्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.settings"
+  },
+  "settings.triage.again": {
+   "source": "3d70e4a83f0258",
+   "english": "Answer again",
+   "text": "फिर से जवाब दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.againNote": {
+   "source": "31004dc9d8739f",
+   "english": "Answer again when something changes, or after an eye doctor has seen you.",
+   "text": "कुछ बदलने पर, या आँखों के डॉक्टर को दिखाने के बाद फिर से जवाब दें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.answered(*)": {
+   "source": "330f5badf138b8",
+   "english": "Answered on {date}",
+   "text": "{date} को जवाब दिया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "date"
+   ]
+  },
+  "settings.triage.doctor.body": {
+   "source": "a12b493eb6e0b8",
+   "english": "At least one answer was yes. That needs an eye doctor to look at it before any training. This is not a diagnosis: only a doctor can say what it means.",
+   "text": "कम से कम एक जवाब 'हाँ' था। किसी भी ट्रेनिंग से पहले आँखों के डॉक्टर को दिखाना ज़रूरी है। यह कोई निदान नहीं है: इसका क्या मतलब है, यह सिर्फ़ डॉक्टर ही बता सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.doctor.checkups": {
+   "source": "4742c3a208e79d",
+   "english": "Go to check-ups",
+   "text": "जाँच पर जाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.doctor.still": {
+   "source": "bdcd6c6f1e567c",
+   "english": "Training programmes stay closed for now. Check-ups, breaks and outdoor time still work.",
+   "text": "ट्रेनिंग प्रोग्राम अभी के लिए बंद रहेंगे। जाँच, ब्रेक और बाहर का समय अभी भी काम करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.doctor.title": {
+   "source": "b086c49626d22f",
+   "english": "See an eye doctor first",
+   "text": "पहले आँखों के डॉक्टर को दिखाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.doctor.urgent": {
+   "source": "a3124f4d5384af",
+   "english": "If the change was sudden, or the pain is strong, get medical help today.",
+   "text": "अगर बदलाव अचानक हुआ था, या दर्द तेज़ है, तो आज ही डॉक्टरी मदद लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.guardianOnly": {
+   "source": "a22dd9d744aac6",
+   "english": "A guardian answers the safety questions.",
+   "text": "सुरक्षा से जुड़े सवालों के जवाब अभिभावक देते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.lead": {
+   "source": "40cc7baeac76c2",
+   "english": "Is any of these true right now?",
+   "text": "क्या इनमें से कोई भी बात अभी सच है?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.no": {
+   "source": "f17d1a5e1ef440",
+   "english": "No",
+   "text": "नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.no"
+  },
+  "settings.triage.proceed.body": {
+   "source": "770c77c0a046cd",
+   "english": "Every answer was no, so a programme can start. These questions are not an eye test: regular visits to an eye doctor still matter.",
+   "text": "हर जवाब 'ना' था, इसलिए प्रोग्राम शुरू हो सकता है। ये सवाल आँखों की कोई जाँच नहीं हैं: आँखों के डॉक्टर के पास नियमित रूप से जाना अभी भी ज़रूरी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.proceed.cta": {
+   "source": "b063ab672f1049",
+   "english": "Choose a programme",
+   "text": "प्रोग्राम चुनें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.proceed.title": {
+   "source": "225770e12def64",
+   "english": "You can choose a programme",
+   "text": "आप प्रोग्राम चुन सकते हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.double_vision": {
+   "source": "b79274098edf3b",
+   "english": "Double vision that is new",
+   "text": "दोहरा दिखना, जो नया हो",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.eye_pain": {
+   "source": "55d2fe5e047209",
+   "english": "Pain in an eye",
+   "text": "आँख में दर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.flashes_curtain": {
+   "source": "77542f10bca88a",
+   "english": "Flashes of light, or a shadow like a curtain over part of the vision",
+   "text": "रोशनी की चमक, या नज़र के किसी हिस्से पर पर्दे जैसी परछाई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.head_injury": {
+   "source": "4106a29e64fcbf",
+   "english": "A recent head injury, with changes in vision since",
+   "text": "हाल ही में सिर पर लगी चोट, और उसके बाद से नज़र में बदलाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.sudden_change": {
+   "source": "0595f9411eb8b4",
+   "english": "A sudden loss of vision, or a sudden change in vision",
+   "text": "अचानक नज़र जाना, या नज़र में अचानक बदलाव आना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.questions.white_pupil": {
+   "source": "56ec245e7597bb",
+   "english": "A pupil that looks white in photos",
+   "text": "तस्वीरों में पुतली का सफ़ेद दिखना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.save": {
+   "source": "2b07288c86814a",
+   "english": "Save answers",
+   "text": "जवाब सेव करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "settings.triage.sub(*)": {
+   "source": "62a3304404b5a0",
+   "english": "Answer for {name}. A yes to any question means an eye doctor comes before training.",
+   "text": "{name} के लिए जवाब दें। किसी भी सवाल का जवाब 'हाँ' होने का मतलब है कि अभ्यास से पहले आँखों के डॉक्टर को दिखाना होगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name"
+   ]
+  },
+  "settings.triage.title": {
+   "source": "c0493fe07e3a56",
+   "english": "Safety questions",
+   "text": "सुरक्षा सवाल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.programme.triageLink"
+  },
+  "settings.triage.yes": {
+   "source": "9b34c7d70d09bd",
+   "english": "Yes",
+   "text": "हाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.yes"
+  }
+ }
+}

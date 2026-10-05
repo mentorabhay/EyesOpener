@@ -1,4 +1,5 @@
 import type { AdminArea, StaffRole } from "@/lib/roles";
+import { texts } from "@/i18n/texts";
 
 /** Words for the admin console. Staff read these; they stay as plain as the member screens. */
 
@@ -52,6 +53,7 @@ const did: Record<string, (name?: string) => string> = {
   "admin.staff.remove": (n) => `removed the staff role of ${n ?? "a person"}`,
   "admin.catalogue.status": (n) => `set the status of ${n ?? "an item"}`,
   "admin.catalogue.all_open": () => "opened every item in the catalogue",
+  "admin.languages.status": (n) => `changed the status of the language ${n ?? ""}`.trim(),
   "admin.catalogue.all_recommended": () => "set every catalogue item to its recommended status",
   "admin.switchboard.saver_on": () => "turned saver mode on",
   "admin.switchboard.saver_off": () => "turned saver mode off",
@@ -81,7 +83,7 @@ const did: Record<string, (name?: string) => string> = {
   "admin.gatherings.wish.tie": (n) => `tied ${n ?? "a wish"} to a library game`,
 };
 
-export const admin = {
+export const admin = texts("copy/admin", "admin", () => ({
   area: "Admin console",
   roles,
   rooms,
@@ -377,4 +379,4 @@ export const admin = {
     editor: { title: "The story editor is not built yet", body: "It arrives with a later task. For now you can publish and unpublish the stories that exist." },
     empty: { title: "No stories yet", body: "Stories show up here once the editor is built." },
   },
-};
+}));

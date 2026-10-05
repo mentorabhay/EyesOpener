@@ -13,7 +13,7 @@ import { closeRoundAction, retractAnswerAction, withdrawQuestionAction } from ".
 import { AddQuestionForm, AnswerQuestionForm, NewRoundForm } from "./forms";
 
 const t = discovery.staff;
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 function Round({ r }: { r: StaffRound }) {
   const open = r.state === "open", listed = r.questions.filter((q) => !q.withdrawnAt);

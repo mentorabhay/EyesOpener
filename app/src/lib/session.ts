@@ -9,6 +9,7 @@ import { and, asc, desc, eq, isNull } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { programmeBySlug } from "@/data";
 import { ageFrom } from "@/engine";
+import { keepHouseholdLanguage } from "@/i18n/household";
 import { CHILD_COOKIE, getViewer } from "./auth";
 import { memberCan, type MemberAction } from "./roles";
 import { verifyToken } from "./token";
@@ -98,6 +99,8 @@ export const getMember = cache(async () => {
 /** Use in household pages. People without a seat are sent to their own area; nobody signed in goes to sign-in. */
 export async function requireMember(): Promise<Member> {
   const m = await getMember();
+  /* A page is never drawn in a language other than the household's: the browser is sent to pick it up first. */
+  if (m) await keepHouseholdLanguage(m.account.locale, !!m.viewer.staff);
   if (m) return m;
   const viewer = await getViewer();
   redirect(viewer ? (viewer.home === "/today" || viewer.home === "/circle" ? "/login" : viewer.home) : "/login");

@@ -1,0 +1,279 @@
+{
+ "lang": "hi",
+ "file": "copy/common",
+ "entries": {
+  "common.demo": {
+   "source": "f34275be4b44af",
+   "english": "Demo family",
+   "text": "डेमो परिवार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.gameScene": {
+   "source": "12183c2d8caf2d",
+   "english": "Game scene. Tap or click in it, or use the arrow keys and Space. The words under the scene say how to play.",
+   "text": "गेम का सीन। इसमें टैप या क्लिक करें, या एरो कीज़ और स्पेस का इस्तेमाल करें। सीन के नीचे लिखा है कि कैसे खेलना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.joined": {
+   "source": "5115d9532b32ea",
+   "english": "Eyes joined",
+   "text": "दोनों आँखें मिलकर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.label": {
+   "source": "ecb572aa6ee58f",
+   "english": "Check the scene without glasses",
+   "text": "बिना चश्मे के सीन देखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.none": {
+   "source": "9ca88f25b954b6",
+   "english": "As on screen",
+   "text": "जैसा स्क्रीन पर है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.note.joined": {
+   "source": "cb7f98440e8d40",
+   "english": "Practice view for when you have no glasses: the two pictures are drawn as one, the way joined eyes see them. Nothing is trained in this view.",
+   "text": "जब आपके पास चश्मा न हो, तब के लिए अभ्यास व्यू: दोनों चित्र एक बनाकर दिखाए गए हैं, जिस तरह दोनों आँखें मिलकर उन्हें देखती हैं। इस व्यू में कोई ट्रेनिंग नहीं होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.note.strong": {
+   "source": "9775a4092cf165",
+   "english": "This is what the eye behind the red lens gets, at your setting. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+   "text": "आपकी सेटिंग पर, लाल लेंस के पीछे वाली आँख को यह दिखता है। यह जाँच के लिए है। खेलने के लिए, \"जैसा स्क्रीन पर है\" चुनें और चश्मा पहन लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.note.weak": {
+   "source": "2d56bcb518c8bc",
+   "english": "This is what the eye behind the cyan lens gets. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+   "text": "सियान लेंस के पीछे वाली आँख को यह दिखता है। यह जाँच के लिए है। खेलने के लिए, \"जैसा स्क्रीन पर है\" चुनें और चश्मा पहन लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.strong": {
+   "source": "ed003ad6c3495a",
+   "english": "Stronger eye sees",
+   "text": "मज़बूत आँख देखती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.lens.weak": {
+   "source": "a13ed3f42f30ed",
+   "english": "Weaker eye sees",
+   "text": "कमज़ोर आँख देखती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.admin": {
+   "source": "39eba09bda82d9",
+   "english": "Admin console",
+   "text": "एडमिन कंसोल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.checkups": {
+   "source": "116ed75ac74649",
+   "english": "Check-ups",
+   "text": "जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.childMode": {
+   "source": "b6aa438999eefc",
+   "english": "Child mode",
+   "text": "चाइल्ड मोड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.cinema": {
+   "source": "bf9bb344e7c027",
+   "english": "Two-eye cinema",
+   "text": "दोनों आँखों का सिनेमा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.circle": {
+   "source": "e8cdf6b9e248e3",
+   "english": "Cheer seat",
+   "text": "चीयर सीट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.community": {
+   "source": "ad02034c37f1d7",
+   "english": "Community",
+   "text": "कम्युनिटी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.counsellor": {
+   "source": "20094e6b350851",
+   "english": "Counsellor portal",
+   "text": "काउंसलर पोर्टल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.exercises": {
+   "source": "581c366e882765",
+   "english": "Exercises",
+   "text": "कसरत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.family": {
+   "source": "d1b44867bbb3da",
+   "english": "Family",
+   "text": "परिवार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.games": {
+   "source": "cc5e37371adb1b",
+   "english": "Games",
+   "text": "गेम्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.grownUp": {
+   "source": "18e981debc5f6a",
+   "english": "Grown-up",
+   "text": "बड़े",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.league": {
+   "source": "c2f1616b366536",
+   "english": "League",
+   "text": "लीग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.leaveChildMode": {
+   "source": "60d9cf80959b01",
+   "english": "Child mode · grown-up? Tap to leave",
+   "text": "चाइल्ड मोड · बड़े हैं? बाहर जाने के लिए टैप करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.onboarding": {
+   "source": "4e250c9e110206",
+   "english": "Onboarding",
+   "text": "शुरुआत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.otherAreas": {
+   "source": "68ea9cc7e3aad9",
+   "english": "Your other areas",
+   "text": "आपके अन्य क्षेत्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.settings": {
+   "source": "b51769a9fde954",
+   "english": "Settings",
+   "text": "सेटिंग्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.sponsor": {
+   "source": "30f96840212ca2",
+   "english": "Sponsor portal",
+   "text": "स्पॉन्सर पोर्टल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.switchPerson": {
+   "source": "1ec6da3b4f13bd",
+   "english": "Sign in as someone else",
+   "text": "किसी और के रूप में साइन इन करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.test": {
+   "source": "12b6e101ca2a00",
+   "english": "Test",
+   "text": "टेस्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.today": {
+   "source": "7fca2ff1421477",
+   "english": "Today",
+   "text": "आज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.together": {
+   "source": "98e326929e01e2",
+   "english": "Together",
+   "text": "साथ मिलकर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.track": {
+   "source": "cba3662fbbcb10",
+   "english": "Track",
+   "text": "ट्रैक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.train": {
+   "source": "dd097011bdcc8d",
+   "english": "Train",
+   "text": "ट्रेनिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.nav.you": {
+   "source": "bf107a64fd97ca",
+   "english": "You",
+   "text": "आप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.notMedical": {
+   "source": "4f87d6d8e33778",
+   "english": "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
+   "text": "IOpener कोई मेडिकल डिवाइस नहीं है। यह किसी भी स्थिति की पहचान, इलाज या उसे ठीक नहीं करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.product": {
+   "source": "15828515bcee6b",
+   "english": "IOpener",
+   "text": "IOpener",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.tagline": {
+   "source": "816f0b2b18471b",
+   "english": "Eye care you can do at home, built on published research.",
+   "text": "घर पर आँखों की देखभाल, प्रकाशित शोध पर आधारित।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.tester": {
+   "source": "79db6863258185",
+   "english": "Staff test household. Every game, exercise and film opens here whatever its status, and the daily limits are off. Nothing here is counted with families.",
+   "text": "स्टाफ टेस्ट परिवार। यहाँ हर गेम, कसरत और फिल्म खुलती है, चाहे उसका स्टेटस कुछ भी हो, और रोज़ की सीमाएँ बंद हैं। यहाँ कुछ भी परिवारों के साथ नहीं गिना जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "common.testerLink": {
+   "source": "6b621a07725ed8",
+   "english": "Set the status of each item",
+   "text": "हर आइटम का स्टेटस सेट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

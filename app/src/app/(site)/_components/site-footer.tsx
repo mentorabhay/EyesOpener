@@ -2,6 +2,7 @@ import Link from "next/link";
 import { common } from "@/copy/common";
 import { site as t } from "@/copy/site";
 import { inEdition } from "@/edition";
+import { SiteLanguage } from "@/i18n/menu";
 import { Mark } from "./site-nav";
 
 /** The footer: the page groups, and the lines that IOpener is not a medical device, has an open-source core and has no ads. */
@@ -23,6 +24,8 @@ export function SiteFooter() {
         </div>
         <div className="s-foot-bar">
           <p>{common.notMedical}</p>
+          {/* the language menu: only languages that are switched on (src/i18n/menu.tsx) */}
+          <SiteLanguage />
           <p className="s-chips">
             {t.footer.promises.map((p) => <span key={p} className="chip" data-b="plain">{p}</span>)}
           </p>

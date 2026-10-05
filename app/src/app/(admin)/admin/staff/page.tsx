@@ -7,7 +7,7 @@ import type { StaffRole } from "@/lib/roles";
 import { GiveRoleForm, RoleControls } from "./forms";
 
 const st = t.staff;
-export const metadata: Metadata = { title: t.rooms.staff.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.staff.name });
 const ORDER: StaffRole[] = ["super_admin", "ops", "content"];
 
 export default async function StaffPage() {

@@ -9,7 +9,7 @@ import { Icon, TwoLights } from "../_components/art";
 import { Cta, Head, Hero, NotBuilt, Section } from "../_components/parts";
 
 const a = t.about;
-export const metadata: Metadata = pageMeta("/about", a.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/about", a.meta));
 
 const PILLAR_ICONS = ["free", "open", "research", "privacy"];
 

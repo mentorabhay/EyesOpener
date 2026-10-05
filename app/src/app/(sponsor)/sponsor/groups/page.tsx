@@ -6,7 +6,7 @@ import { listGroups } from "@/lib/sponsor";
 import { setOpen } from "./actions";
 import { GroupForm } from "./group-form";
 
-export const metadata: Metadata = { title: t.groups.title };
+export const generateMetadata = (): Metadata => ({ title: t.groups.title });
 
 export default async function SponsorGroups() {
   const { sponsor } = await requireSponsor("view");

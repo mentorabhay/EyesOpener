@@ -5,7 +5,7 @@ import { requireSponsor } from "@/lib/auth";
 import { listPairs } from "@/lib/sponsor";
 import { PairForm } from "./pair-form";
 
-export const metadata: Metadata = { title: t.glasses.title };
+export const generateMetadata = (): Metadata => ({ title: t.glasses.title });
 
 export default async function SponsorGlasses() {
   const { sponsor } = await requireSponsor("view");

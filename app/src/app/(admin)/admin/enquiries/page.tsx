@@ -8,7 +8,7 @@ import css from "../admin.module.css";
 import { markEnquiry } from "./actions";
 
 const t = site.admin.enquiries;
-export const metadata: Metadata = { title: a.rooms.enquiries.name };
+export const generateMetadata = (): Metadata => ({ title: a.rooms.enquiries.name });
 
 type Row = Awaited<ReturnType<typeof enquiries>>["open"][number];
 

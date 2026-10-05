@@ -12,7 +12,7 @@ import { leagueView } from "@/lib/teams";
 import { changeLeagueTeam, joinLeague, leaveLeague } from "./actions";
 import css from "./league.module.css";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 const bandText = (band: string) => t.bands[band] ?? band;
 const programmeName = (slug: string) => programmeBySlug(slug)?.name ?? slug;

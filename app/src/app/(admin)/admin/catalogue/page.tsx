@@ -9,16 +9,17 @@ import { libraryItems, readStatuses } from "@/lib/catalogue";
 import { forWhom, ITEM_KINDS, recommendedStatus, statusOf, STATUSES, type ItemKind, type Status } from "@/lib/status";
 import { Confirm } from "../parts";
 import { setAll, setStatus } from "./actions";
+import { LanguagesSection } from "./languages";
 
 const c = t.catalogue;
-export const metadata: Metadata = { title: t.rooms.catalogue.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.catalogue.name });
 
 const hrefOf = (kind: ItemKind, slug: string) => (kind === "game" ? `/train/games/${slug}` : kind === "exercise" ? `/train/exercises/${slug}` : "/train/cinema");
 const whoFor = (kind: ItemKind, slug: string) => forWhom((kind === "game" ? gameBySlug(slug)?.for : kind === "exercise" ? exerciseBySlug(slug)?.for : "") ?? "");
 const tone = (s: Status) => (s === "open" ? "ok" : s === "counsellor" ? "plain" : "warn");
 
 export default async function CataloguePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  await requireStaff("catalogue");
+  const viewer = await requireStaff("catalogue");
   const sp = await searchParams;
   const kind = ITEM_KINDS.find((k) => k === sp.kind) ?? "all";
   const statuses = await readStatuses();
@@ -76,6 +77,8 @@ export default async function CataloguePage({ searchParams }: { searchParams: Pr
           </table>
         </div>
       </Card>
+      {/* Which languages families are offered: ./languages.tsx. A super admin and content staff only. */}
+      <div id="languages"><LanguagesSection role={viewer.staff} said={typeof sp.languages === "string" ? sp.languages : undefined} /></div>
     </>
   );
 }

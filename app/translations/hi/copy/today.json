@@ -1,0 +1,311 @@
+{
+ "lang": "hi",
+ "file": "copy/today",
+ "entries": {
+  "today.again": {
+   "source": "abc04f3caa890a",
+   "english": "Run onboarding again",
+   "text": "ऑनबोर्डिंग फिर से करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.intro.again"
+  },
+  "today.blocked.awaiting_counsellor": {
+   "source": "57a3070a46751a",
+   "english": "Training opens when your linked counsellor sets the dose.",
+   "text": "जब आपके जुड़े काउंसलर डोज़ तय करेंगे, तब अभ्यास खुलेगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.blocked.daily_cap": {
+   "source": "16f5f96329b8c1",
+   "english": "The daily limit of 90 minutes is reached.",
+   "text": "90 मिनट की रोज़ की सीमा पूरी हो गई है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.blocked.doctor_first": {
+   "source": "9922cfafb1abc4",
+   "english": "See an eye doctor before training. Check-ups still work.",
+   "text": "अभ्यास से पहले आँखों के डॉक्टर को दिखाएँ। जाँच अब भी काम करती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.blocked.needs_consent": {
+   "source": "eb9edde05362ff",
+   "english": "A guardian needs to give consent before this child can train.",
+   "text": "इस बच्चे के अभ्यास करने से पहले अभिभावक की सहमति ज़रूरी है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.blocked.programme_done": {
+   "source": "c0a03b9e45d193",
+   "english": "Today's practice is done. Come back tomorrow.",
+   "text": "आज का अभ्यास पूरा हो गया है। कल वापस आएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.blocked.under_age": {
+   "source": "1947f1fe9ca2b5",
+   "english": "No screen sessions under age 4. Off-screen exercises are open.",
+   "text": "4 साल से कम उम्र के लिए स्क्रीन सेशन नहीं हैं। बिना स्क्रीन वाले व्यायाम खुले हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.contrastFrom.balance": {
+   "source": "3d5eda29c9c5c3",
+   "english": "From the balance test",
+   "text": "बैलेंस टेस्ट से",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.contrastFrom.balance"
+  },
+  "today.contrastFrom.start": {
+   "source": "0ce28d67490c5d",
+   "english": "Starting level until the balance test is done",
+   "text": "बैलेंस टेस्ट पूरा होने तक शुरुआती लेवल",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.contrastFrom.starting_level"
+  },
+  "today.doneForToday": {
+   "source": "a586dc5a3f7704",
+   "english": "Today's practice is done",
+   "text": "आज का अभ्यास पूरा हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.today.finished.title"
+  },
+  "today.eye.left": {
+   "source": "346f7d831bfd96",
+   "english": "Left",
+   "text": "बायाँ",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.eye.name.left"
+  },
+  "today.eye.none": {
+   "source": "b90fb671f6e801",
+   "english": "None found",
+   "text": "कोई नहीं मिली",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.noWeak"
+  },
+  "today.eye.right": {
+   "source": "4d4127eb7af91b",
+   "english": "Right",
+   "text": "सही",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/results:results.game.hits.label"
+  },
+  "today.fill.light": {
+   "source": "ddf4c726d244d3",
+   "english": "Log time outside",
+   "text": "बाहर बिताया समय दर्ज करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.fill.monitor": {
+   "source": "57e004644fd933",
+   "english": "Workday monitor",
+   "text": "काम के दिन का मॉनिटर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.fill.rest": {
+   "source": "b845e28ad44067",
+   "english": "Take a 20-second break",
+   "text": "20 सेकंड का ब्रेक लें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.give": {
+   "source": "82371518640525",
+   "english": "Give a light",
+   "text": "एक लाइट दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "today.inARow": {
+   "source": "43da62322139e2",
+   "english": "days in a row",
+   "text": "लगातार दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "today.league": {
+   "source": "160f7b7a79b161",
+   "english": "See the league",
+   "text": "लीग देखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "today.lightsToGive(*)": {
+   "source": "94c65236d891d5",
+   "english": "{n} lights you can give",
+   "text": "{n} लाइटें जो आप दे सकते हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "n"
+   ]
+  },
+  "today.noProfile.cta": {
+   "source": "d80d162964691c",
+   "english": "Start onboarding",
+   "text": "ऑनबोर्डिंग शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.intro.start"
+  },
+  "today.noProfile.title": {
+   "source": "a5ddad939bb14a",
+   "english": "No eye settings yet",
+   "text": "अभी आँखों की कोई सेटिंग्स नहीं हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.eye.empty.title"
+  },
+  "today.notEnrolled": {
+   "source": "e090d170d4aa1c",
+   "english": "Not on a programme. Rings track breaks and outdoor time.",
+   "text": "किसी प्रोग्राम में नहीं हैं। रिंग्स ब्रेक और बाहर बिताए समय को ट्रैक करती हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rings.light": {
+   "source": "5bd79ce045f09a",
+   "english": "Light",
+   "text": "रोशनी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rings.minUnit": {
+   "source": "083d1dd2c7e5fd",
+   "english": "min",
+   "text": "min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rings.of(*,*)": {
+   "source": "2b8eefc5aaacb7",
+   "english": "{done} of {goal}",
+   "text": "{done}, {goal} में से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "today.rings.rest": {
+   "source": "6e5d144f9a070c",
+   "english": "Rest",
+   "text": "आराम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rings.restUnit": {
+   "source": "4d3cd488afd248",
+   "english": "breaks",
+   "text": "ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rings.train": {
+   "source": "dd097011bdcc8d",
+   "english": "Train",
+   "text": "ट्रेनिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.train"
+  },
+  "today.ringsTitle": {
+   "source": "2333ef7915db37",
+   "english": "The eye day",
+   "text": "आँखों का दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.rows.contrast": {
+   "source": "4a1d87f613e0d8",
+   "english": "Stronger-eye contrast",
+   "text": "मज़बूत आँख का कंट्रास्ट",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.contrast"
+  },
+  "today.rows.letter": {
+   "source": "82c6e6cd1307c8",
+   "english": "Two-eye letter size",
+   "text": "दोनों आँखों के लिए अक्षर का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.letter"
+  },
+  "today.rows.weak": {
+   "source": "cb406704dee0af",
+   "english": "Weaker eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.weak"
+  },
+  "today.screen": {
+   "source": "2a9e1bdb8e4fb4",
+   "english": "Screen time today",
+   "text": "आज का स्क्रीन टाइम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.settings": {
+   "source": "1a56c4319aeb91",
+   "english": "Your settings",
+   "text": "आपकी सेटिंग्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.start": {
+   "source": "76914265fdb5ff",
+   "english": "Start today's practice",
+   "text": "आज का अभ्यास शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.card.start"
+  },
+  "today.streak": {
+   "source": "1fb1acf4373167",
+   "english": "Streak",
+   "text": "लगातार दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.streakDays": {
+   "source": "9eaa4aa512c009",
+   "english": "Streak, days",
+   "text": "स्ट्रीक, दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "today.title": {
+   "source": "7fca2ff1421477",
+   "english": "Today",
+   "text": "आज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.today"
+  },
+  "today.week": {
+   "source": "12b36cfb448aa7",
+   "english": "This week",
+   "text": "इस सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "today.weekDay(*,*)": {
+   "source": "13d8e4d468b38b",
+   "english": "{day} {minutes} minutes",
+   "text": "{day} {minutes} मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "day",
+    "minutes"
+   ]
+  },
+  "today.weekNote": {
+   "source": "54dadc983cbf61",
+   "english": "Minutes of practice each day. Hatching is a day with none.",
+   "text": "हर दिन अभ्यास के मिनट। हैचिंग वाले दिन कोई अभ्यास नहीं हुआ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

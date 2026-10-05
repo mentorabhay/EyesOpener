@@ -9,7 +9,7 @@ import { shareIdea } from "./actions";
 import { ShareHelper } from "./helper";
 
 const t = together.shareForm;
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function SharePage() {
   const m = await requireMember();

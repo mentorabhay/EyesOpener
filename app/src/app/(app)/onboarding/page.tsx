@@ -5,7 +5,7 @@ import { settingsOf, testBlock } from "@/lib/eye-profile";
 import { requireMember } from "@/lib/session";
 import { Flow } from "./flow";
 
-export const metadata: Metadata = { title: o.title };
+export const generateMetadata = (): Metadata => ({ title: o.title });
 
 export default async function OnboardingPage() {
   const m = await requireMember();

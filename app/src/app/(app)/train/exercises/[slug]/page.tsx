@@ -7,7 +7,7 @@ import { Btn, Card, Chip, Empty, EvidenceChip, PageHead } from "@/components/ui"
 import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
 import { voice } from "@/copy/voice";
-import { evidenceOf, exerciseBySlug, mechanismOf } from "@/data";
+import { exerciseBySlug, mechanismOf } from "@/data";
 import { guideFor, type Guide } from "@/data/guides";
 import { drillHelp, hasDrill } from "@/drills";
 import { GridTool } from "@/drills/tools/grid";
@@ -17,10 +17,11 @@ import { requireMember } from "@/lib/session";
 import { SupervisionNote } from "@/components/play/supervision";
 import { supervisionFor } from "@/data/supervision";
 import { doseFor, isCareRoutine, pastSessions, statusFor } from "@/lib/sessions";
-import { exerciseLevel, forWhom, isListed } from "@/lib/status";
+import { exerciseLevel, isListed } from "@/lib/status";
 import { exerciseScriptId, type ExercisePart } from "@/voice/scripts";
 import css from "@/components/play/guide.module.css";
 import { Routine, type Hand } from "./routine";
+import { evidenceWords, exerciseWords } from "@/data/words";
 
 type Props = { params: Promise<{ slug: string }> };
 const x = t.exercise;
@@ -41,6 +42,8 @@ export default async function ExercisePage({ params }: Props) {
   const [dose, past] = await Promise.all([doseFor(m, "exercise", slug), pastSessions(m, "exercise", slug)]);
   const g = guideFor(slug);
   const mech = mechanismOf(e.mechanism);
+  /* the catalogue's lines in the reader's language (src/data/words.ts) */
+  const w = exerciseWords(e);
   const sup = supervisionFor(e.mechanism, exerciseLevel(e));
   const k = x.kv;
   const labels = labelsOf(g);
@@ -58,15 +61,15 @@ export default async function ExercisePage({ params }: Props) {
 
   return (
     <>
-      <PageHead title={e.name} sub={e.purpose} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
+      <PageHead title={e.name} sub={w.purpose} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
       {(status !== "open" || m.tester) && <div className="row"><Chip tone={status === "open" ? "ok" : status === "counsellor" ? "plain" : "warn"}>{x.statusFor[status]}</Chip></div>}
       <div className="bento">
         <Card title={x.what} span={7} right={say("what")}>
-          <p>{g?.what ?? e.how}</p>
+          <p>{g?.what ?? w.how}</p>
           <dl className="kv">
-            <div><dt>{k.for}</dt><dd>{forWhom(e.for)}</dd></div>
-            <div><dt>{k.gear}</dt><dd>{e.gear}</dd></div>
-            <div><dt>{k.dose}</dt><dd>{e.dose}</dd></div>
+            <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
+            <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
+            <div><dt>{k.dose}</dt><dd>{w.dose}</dd></div>
           </dl>
         </Card>
         <Card title={x.ready} span={5} right={say("setup")}>
@@ -139,7 +142,7 @@ export default async function ExercisePage({ params }: Props) {
         <Card title={x.evidence} right={<EvidenceChip level={mech.evidence} />}>
           <p><b>{mech.label}.</b> {mech.basis}</p>
           {g && <p>{g.evidence}</p>}
-          <p className="muted small">{evidenceOf(mech.evidence).meaning}</p>
+          <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
           {g && g.sources.length > 0 && (
             <>
               <p className="small muted">{x.sources}</p>

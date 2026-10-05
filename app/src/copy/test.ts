@@ -1,9 +1,10 @@
 import { EYE_NAME, other, type Eye } from "@/engine";
+import { texts } from "@/i18n/texts";
 
 const eye = (e: Eye) => EYE_NAME[e].toLowerCase();
 
 /** Words for the shared test drawings in src/components/measure. */
-export const measure = {
+export const measure = texts("copy/test", "measure", () => ({
   cover: (e: Eye) => ({
     lead: `Cover your ${eye(other(e))} eye`,
     rest: " with your palm. Do not press on it. Keep your own glasses on if you wear them. Keep it covered until this eye is finished.",
@@ -107,9 +108,9 @@ export const measure = {
     answered: (n: number, of: number) => `${n} of ${of} answered`,
     save: "Save the survey",
   },
-};
+}));
 
-export const test = {
+export const test = texts("copy/test", "test", () => ({
   title: "Check-ups",
   sub: "Short tests you repeat at home. Each result is compared with your first one.",
   dueCount: "due now",
@@ -250,4 +251,4 @@ export const test = {
     howMeasured: "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is IOpener's own fifteen questions, scored 0 to 60, with no cut-off.",
     back: "Back to check-ups",
   },
-};
+}));

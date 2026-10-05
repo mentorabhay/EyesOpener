@@ -4,6 +4,8 @@
  * The on-screen tools fill in the numbers; the member types nothing.
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources ── */
 
@@ -39,7 +41,7 @@ const MORE = "Doing more minutes than your counsellor's plan says.";
 const auto = (key: string, label: string, unit: string, how: string, max: number, step: number, better: Measure["better"]): Measure =>
   ({ key, label, unit, how, from: "auto", min: 0, max, step, better });
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/after-stroke", () => [
   {
     slug: "blind-side-sweeps",
     what: "Practice at finding things on the side you can no longer see after a stroke. A white dot appears on the screen, more often on your hard side, and you sweep your eyes across to find it.",
@@ -105,7 +107,7 @@ export const guides: Guide[] = [
     ],
     steps: [
       "Find the thick coloured bar on the left first. The line starts just after it.",
-      "If your hard side is the left, move your eyes left until you see the thick bar before every line, so that you do not miss the first words.",
+      "If your hard side is the left, move your eyes left until you see the thick bar before every line. Then you do not miss the first words.",
       "If your hard side is the right, glance across to the thin bar on the right first, so that you know where the line ends.",
       "Read the line word by word, across to the thin bar. The line ends just before it.",
       "When you have read the whole line, press \"Next line\". On a keyboard, Space, Enter or the right arrow do the same.",
@@ -142,4 +144,4 @@ export const guides: Guide[] = [
     evidence: "The study behind this used text that scrolls sideways: 33 people with right-side loss read still text 46% faster after 20 hours of practice than at their own start. This tool marks the ends of still lines instead, and is untested itself.",
     sources: [READ_RIGHT, COCHRANE],
   },
-];
+], GUIDE_WORDS);

@@ -166,7 +166,7 @@ describe("the proxy, child mode and the site lock", () => {
     new NextRequest(`http://localhost:3000${path}`, { headers: { cookie: Object.entries(cookies).map(([k, v]) => `${k}=${v}`).join("; ") } });
   const run = async (path: string, cookies?: Record<string, string>) => {
     const { proxy } = await import("../../proxy");
-    const res = proxy(request(path, cookies));
+    const res = await proxy(request(path, cookies));
     return res.headers.get("location") ? new URL(res.headers.get("location")!).pathname + new URL(res.headers.get("location")!).search : "through";
   };
 

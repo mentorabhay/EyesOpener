@@ -4,13 +4,14 @@ import { Btn, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { clips } from "@/copy/clips";
 import { test as c } from "@/copy/test";
 import { tests } from "@/data";
+import { testWords } from "@/data/words";
 import { testBlock } from "@/lib/eye-profile";
 import { requireMember } from "@/lib/session";
 import { ChangeAlert } from "./alert";
 import { change, changesOf, dueIn, reading, resultsOf, runPath, seriesOf } from "./results";
 import css from "./test.module.css";
 
-export const metadata: Metadata = { title: c.title };
+export const generateMetadata = (): Metadata => ({ title: c.title });
 
 const TONE = { better: "ok", worse: "warn", same: "plain" } as const;
 
@@ -41,10 +42,10 @@ export default async function CheckupsPage() {
         {cards.map(({ t, series, days }) => (
           <article className="c" key={t.key}>
             <div className="c-head">
-              <h2><Link href={`/test/${t.key}`}>{t.name}</Link></h2>
+              <h2><Link href={`/test/${t.key}`}>{testWords(t).name}</Link></h2>
               {t.built && <div className="r"><Chip tone={days <= 0 ? "warn" : "plain"}>{days <= 0 ? c.dueNow : c.dueIn(days)}</Chip></div>}
             </div>
-            <p className="muted small">{t.what} {c.every(t.everyDays)}.</p>
+            <p className="muted small">{testWords(t).what} {c.every(t.everyDays)}.</p>
             {(t.built || series.some((s) => s.last)) && (
               <dl className="kv">
                 {series.map(({ eye, first, last }) => (

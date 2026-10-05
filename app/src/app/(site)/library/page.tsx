@@ -10,7 +10,7 @@ import { ExerciseCard, GameCard } from "../_components/catalogue";
 import { Cta, Hero } from "../_components/parts";
 
 const l = t.library;
-export const metadata: Metadata = pageMeta("/library", l.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/library", l.meta));
 
 /** A row of filter links. The choice lives in the address, so the page needs no script and can be shared. */
 function FilterRow({ label, items }: { label: string; items: { key: string; label: string; href: string; on: boolean }[] }) {

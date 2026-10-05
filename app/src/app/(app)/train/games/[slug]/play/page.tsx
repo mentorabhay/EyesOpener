@@ -17,6 +17,7 @@ import { currentHero } from "@/lib/hero";
 import { requireMember } from "@/lib/session";
 import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
+import { gameWords } from "@/data/words";
 
 type Props = { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
@@ -30,7 +31,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
   if (!g || !kind) notFound();
   const m = await requireMember();
   if (!isListed(await statusFor("game", slug), m.tester)) notFound();
-  const head = <PageHead title={g.name} sub={g.play} crumb={[kind === "cinema" ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
+  const head = <PageHead title={g.name} sub={gameWords(g).play} crumb={[kind === "cinema" ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
 
   const guide = gameGuideFor(slug);
   /* The guide is open for a first visit and folded away once the member has finished a session of this game. */

@@ -4,11 +4,12 @@
  * and nobody is named. The welcome lines are a fixed list: nobody types a welcome.
  */
 import type { MapRefusal, WelcomeKey } from "@/lib/map";
+import { texts } from "@/i18n/texts";
 
 const families = (n: number) => (n === 1 ? "1 family" : `${n} families`);
 const areas = (n: number) => (n === 1 ? "1 area" : `${n} areas`);
 
-export const map = {
+export const map = texts("copy/map", "map", () => ({
   stats: { lit: "Areas lit", families: "Families in lit areas" },
   tooFew: "No area is lit yet, so there is no number",
   families,
@@ -97,4 +98,4 @@ export const map = {
     not_first: "Only the lamp-lighter of an area can choose its welcome.",
     bad_line: "Choose a welcome from the list.",
   } satisfies Record<MapRefusal, string>,
-};
+}));

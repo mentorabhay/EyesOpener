@@ -11,7 +11,7 @@ import type { Job } from "./index";
 export const programmeWeeks: Job = {
   name: "programme-weeks",
   cadence: "daily",
-  what: words.job.what,
+  get what() { return words.job.what; },
   run: async (now) => {
     /* loaded when the job runs, so the list of jobs stays light to import */
     const { syncAllEnrolments } = await import("@/lib/programme");

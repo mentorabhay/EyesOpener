@@ -1,7 +1,9 @@
-export const today = {
+import { texts } from "@/i18n/texts";
+
+export const today = texts("copy/today", "today", () => ({
   title: "Today",
   fill: { rest: "Take a 20-second break", light: "Log time outside", monitor: "Workday monitor" },
-  rings: { rest: "Rest", train: "Train", light: "Light", restUnit: "breaks", minUnit: "min" },
+  rings: { rest: "Rest", train: "Train", light: "Light", restUnit: "breaks", minUnit: "min", of: (done: number, goal: number) => `${done} of ${goal}` },
   ringsTitle: "The eye day",
   start: "Start today's practice",
   doneForToday: "Today's practice is done",
@@ -15,10 +17,20 @@ export const today = {
   },
   week: "This week",
   weekNote: "Minutes of practice each day. Hatching is a day with none.",
+  /** Read out for the week's bars: "Tue 60 minutes". */
+  weekDay: (day: string, minutes: number) => `${day} ${minutes} minutes`,
   settings: "Your settings",
+  again: "Run onboarding again",
+  rows: { weak: "Weaker eye", contrast: "Stronger-eye contrast", letter: "Two-eye letter size" },
+  eye: { left: "Left", right: "Right", none: "None found" },
+  contrastFrom: { start: "Starting level until the balance test is done", balance: "From the balance test" },
   noProfile: { title: "No eye settings yet", body: "Onboarding takes about five minutes and sets the contrast and sizes for every game.", cta: "Start onboarding" },
   streak: "Streak",
-  lights: "Lights you can give",
+  streakDays: "Streak, days",
+  inARow: "days in a row",
+  lightsToGive: (n: number) => `${n} lights you can give`,
+  give: "Give a light",
+  league: "See the league",
   screen: "Screen time today",
   notEnrolled: "Not on a programme. Rings track breaks and outdoor time.",
-};
+}));

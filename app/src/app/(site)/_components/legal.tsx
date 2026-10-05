@@ -4,7 +4,7 @@ import { site as t } from "@/copy/site";
 
 export interface LegalSection { id: string; title: string; body?: string[]; list?: string[] }
 
-const PAGES = [
+const PAGES = () => [
   { href: "/privacy", label: t.legal.privacy.title },
   { href: "/childrens-data", label: t.legal.children.title },
   { href: "/terms", label: t.legal.terms.title },
@@ -39,7 +39,7 @@ export function LegalPage({ path, title, lead, sections }: { path: string; title
             ))}
             <section aria-labelledby="related-h">
               <h2 id="related-h">{t.legal.related}</h2>
-              <p className="s-chips">{PAGES.filter((p) => p.href !== path).map((p) => <Link key={p.href} className="btn" href={p.href}>{p.label}</Link>)}</p>
+              <p className="s-chips">{PAGES().filter((p) => p.href !== path).map((p) => <Link key={p.href} className="btn" href={p.href}>{p.label}</Link>)}</p>
               <p className="s-draft" role="note" style={{ marginTop: 26, marginBottom: 0 }}>{t.legal.draft}</p>
             </section>
           </div>

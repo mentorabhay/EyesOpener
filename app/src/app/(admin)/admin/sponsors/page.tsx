@@ -7,7 +7,7 @@ import { Confirm } from "../parts";
 import { approve, restore, suspend } from "./actions";
 
 const sp = t.sponsors;
-export const metadata: Metadata = { title: t.rooms.sponsors.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.sponsors.name });
 const TONE: Record<"pending" | "approved" | "suspended", Tone> = { pending: "warn", approved: "ok", suspended: "danger" };
 
 export default async function SponsorsPage() {

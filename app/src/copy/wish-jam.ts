@@ -5,10 +5,11 @@
  * Nothing here promises that a wish will be built, or that a game will help anyone's eyes.
  */
 import type { AgeBand, GameKind, Love, NameStatus, Play, PublicState, StaffStep, TextProblem, WishRefusal, WishStatus } from "@/lib/wish-jam";
+import { texts } from "@/i18n/texts";
 
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 
-export const wishJam = {
+export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
   stats: { listed: "Wishes on the list", built: "Wishes built so far" },
 
   /** What the child loves. Keys: LOVES in src/lib/wish-jam.ts. */
@@ -201,7 +202,7 @@ export const wishJam = {
     rules: {
       kicker: "The game kit",
       title: "The kit's rules, in short",
-      lead: "A game that breaks one of these is not added. They are there because the players are children and patients.",
+      lead: "A game that breaks one of these is not added. They are there because the players are children and people in treatment.",
       items: [
         { b: "Three inks only.", t: "One ink reaches the weaker eye, one the stronger eye, and one both. A game never sets a colour or a contrast itself." },
         { b: "The ink carries the task.", t: "In a two-eye game the thing to find or steer is in the weaker eye's ink, so the game cannot be scored with one eye alone." },
@@ -265,4 +266,4 @@ export const wishJam = {
       note: "Approving puts it where people outside the household can read it. Removing keeps it inside the household.",
     },
   },
-};
+}));

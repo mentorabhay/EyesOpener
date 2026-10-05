@@ -5,6 +5,7 @@
  */
 import { mechanismOf } from "@/data";
 import type { Source } from "@/data/guides/types";
+import { texts } from "@/i18n/texts";
 
 export interface Supervision {
   /** One or two sentences: what the trial behind this method had, and what happened without it. */
@@ -74,6 +75,14 @@ const BY_MECHANISM: Record<string, Pick<Supervision, "trial" | "sources">> = {
   },
 };
 
+/** The words of the brief, read in the reader's language at the moment a page draws them (src/i18n/texts.ts). */
+const words = texts("data/supervision", "supervision", () => ({
+  does: DOES,
+  inApp: IN_APP,
+  noTrial: "The evidence framework recommends this with a counsellor, because it was tested with a therapist present or not tested at home at all.",
+  trial: Object.fromEntries(Object.entries(BY_MECHANISM).map(([mechanism, own]) => [mechanism, own.trial])) as Record<string, string>,
+}));
+
 /**
  * The supervision brief for an item, or null when none applies. It applies when the method's evidence label is
  * "strong with supervision", or when the item is level 2 (recommended as counsellor-led).
@@ -83,9 +92,9 @@ export function supervisionFor(mechanism: string, level: number): Supervision | 
   if (!withSupervision && level < 2) return null;
   const own = BY_MECHANISM[mechanism];
   return {
-    trial: own?.trial ?? "The evidence framework recommends this with a counsellor, because it was tested with a therapist present or not tested at home at all.",
-    does: DOES,
-    inApp: IN_APP,
+    trial: own ? words.trial[mechanism] : words.noTrial,
+    does: words.does,
+    inApp: words.inApp,
     sources: own?.sources ?? [],
   };
 }

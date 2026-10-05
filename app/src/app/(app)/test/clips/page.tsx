@@ -10,7 +10,7 @@ import { clipPerson, lastRuns, setView } from "@/lib/clips";
 import { requireMember } from "@/lib/session";
 import { dayText } from "../results";
 
-export const metadata: Metadata = { title: c.title };
+export const generateMetadata = (): Metadata => ({ title: c.title });
 
 const TONE = { saved: "ok", pass: "ok", note: "plain", fail: "warn", na: "plain" } as const;
 

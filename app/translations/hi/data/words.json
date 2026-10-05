@@ -1,0 +1,3184 @@
+{
+ "lang": "hi",
+ "file": "data/words",
+ "entries": {
+  "evidence.limited.label": {
+   "source": "7929717fbc4237",
+   "english": "Limited",
+   "text": "सीमित",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.limited.meaning": {
+   "source": "ee43cdb812fe90",
+   "english": "Early studies only, or tested only as part of a wider programme.",
+   "text": "केवल शुरुआती अध्ययन, या व्यापक कार्यक्रम के हिस्से के रूप में परीक्षण किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.measures.label": {
+   "source": "95bfd5127b5ede",
+   "english": "Measures only",
+   "text": "केवल माप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.measures.meaning": {
+   "source": "84aa00a2e7f050",
+   "english": "A test or check. It measures; it does not treat.",
+   "text": "एक टेस्ट या जाँच। यह मापता है; यह इलाज नहीं करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.moderate.label": {
+   "source": "2f01ee31cea266",
+   "english": "Moderate",
+   "text": "मध्यम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.moderate.meaning": {
+   "source": "5c39cc1e5cfc9c",
+   "english": "Small or mixed trials point to a real effect.",
+   "text": "छोटे या मिले-जुले परीक्षण वास्तविक प्रभाव की ओर इशारा करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.strong.label": {
+   "source": "3662b69ea1eee6",
+   "english": "Strong",
+   "text": "मजबूत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.strong.meaning": {
+   "source": "e7330e99254fe4",
+   "english": "Randomised trials support the mechanism.",
+   "text": "रैंडमयुक्त परीक्षण इस तंत्र का समर्थन करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.sup.label": {
+   "source": "8d9a0b2050d53e",
+   "english": "Strong with supervision",
+   "text": "निगरानी के साथ मजबूत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.sup.meaning": {
+   "source": "2fb2810e6132a8",
+   "english": "Trials support it as part of supervised therapy. Home practice alone is not proven.",
+   "text": "परीक्षण इसे पर्यवेक्षित थेरेपी के हिस्से के रूप में समर्थन देते हैं। अकेले घर पर अभ्यास सिद्ध नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.unproven.label": {
+   "source": "aea9a67252eac8",
+   "english": "Unproven",
+   "text": "अप्रमाणित",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "evidence.unproven.meaning": {
+   "source": "d7af6e3622b9d5",
+   "english": "No trial shows a benefit. Included for variety, warm-up or tracking.",
+   "text": "कोई भी परीक्षण लाभ नहीं दिखाता है। विविधता, वार्म-अप या ट्रैकिंग के लिए शामिल है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.dose": {
+   "source": "7ca691cfcf9bc4",
+   "english": "Runs during reading",
+   "text": "पढ़ते समय चलता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.gear": {
+   "source": "b8f7c2e8c70b4e",
+   "english": "Tablet or phone camera",
+   "text": "टैबलेट या फोन का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.group": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.how": {
+   "source": "1b0ddefb111146",
+   "english": "The tablet camera nudges a child who leans in too close.",
+   "text": "टैबलेट का कैमरा उस बच्चे को टोकता है जो बहुत पास झुक जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.purpose": {
+   "source": "ec2e905828395d",
+   "english": "A healthy reading distance",
+   "text": "पढ़ने की एक सही दूरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.arm-s-length-reading.who": {
+   "source": "0ff3b97a6c2503",
+   "english": "Children 5 to 15",
+   "text": "बच्चे 5 से 15 साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.atropine-day-companion.dose": {
+   "source": "9d1a551818f227",
+   "english": "As prescribed",
+   "text": "प्रिस्क्रिप्शन के अनुसार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.atropine-day-companion.gear": {
+   "source": "b29b102b56bf3a",
+   "english": "Phone",
+   "text": "फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.devices.kind.phone"
+  },
+  "exercise.atropine-day-companion.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.atropine-day-companion.how": {
+   "source": "bb00a1f0c64657",
+   "english": "A reminder on drop days, a one-tap log, and near-work games suited to drop days.",
+   "text": "ड्रॉप के दिनों में एक याद, एक-टैप लॉग, और ड्रॉप के दिनों के अनुकूल नज़दीकी काम के खेल।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.atropine-day-companion.purpose": {
+   "source": "0c971fe216ea38",
+   "english": "Keeping to the drop schedule",
+   "text": "ड्रॉप के शेड्यूल पर टिके रहना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.atropine-day-companion.who": {
+   "source": "f8dd6e072382eb",
+   "english": "Children prescribed atropine drops",
+   "text": "जिन बच्चों को एट्रोपिन ड्रॉप्स लिखे गए हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.gear": {
+   "source": "d610d39e37766d",
+   "english": "Printed card",
+   "text": "छपा हुआ कार्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.how": {
+   "source": "667a1c0ad01a93",
+   "english": "Hold the card on the nose and converge on each of three barrels in turn.",
+   "text": "कार्ड को नाक पर रखें और बारी-बारी से तीनों बैरल में से प्रत्येक पर ध्यान केंद्रित करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.purpose": {
+   "source": "f446c546635619",
+   "english": "Stepped near convergence",
+   "text": "चरणबद्ध नज़दीकी कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.barrel-card.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-slide.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.bead-slide.gear": {
+   "source": "cf719cb3fa2e6d",
+   "english": "String with beads",
+   "text": "मनकों वाली डोरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-slide.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.bead-slide.how": {
+   "source": "90c8c642592606",
+   "english": "Slide one bead along the string toward the nose and keep the strings crossing at the bead.",
+   "text": "डोरी पर एक मनके को नाक की तरफ सरकाएं और डोरी को मनके पर आपस में मिलते हुए रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-slide.purpose": {
+   "source": "19131dc5a2ce4a",
+   "english": "Smooth convergence with built-in feedback",
+   "text": "बिल्ट-इन फीडबैक के साथ सहज कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-slide.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.who"
+  },
+  "exercise.bead-threading.dose": {
+   "source": "285f6965ad8654",
+   "english": "15 to 20 min",
+   "text": "15 से 20 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-threading.gear": {
+   "source": "81ede0102f54fd",
+   "english": "Patch, beads",
+   "text": "पैच, मनके",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-threading.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.bead-threading.how": {
+   "source": "bfc514a2d78686",
+   "english": "Thread beads onto a string while the patch is on.",
+   "text": "पैच पहने हुए डोरी में मनके पिरोएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-threading.purpose": {
+   "source": "2867fff3d17bcc",
+   "english": "Close, fine work for the weaker eye",
+   "text": "कमज़ोर आँख के लिए पास का, बारीकी का काम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.bead-threading.who": {
+   "source": "9aa23ffcff2297",
+   "english": "Children prescribed a patch · ages 3 to 8",
+   "text": "जिन बच्चों को पैच लगाया गया है · उम्र 3 से 8 साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.dose": {
+   "source": "7cfc0d8efdf194",
+   "english": "20 min a day",
+   "text": "20 min एक दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.gear": {
+   "source": "840e1b67ae7800",
+   "english": "Laptop or tablet",
+   "text": "लैपटॉप या टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.group": {
+   "source": "cd44f194c7c79d",
+   "english": "After stroke",
+   "text": "स्ट्रोक के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.how": {
+   "source": "4a24c7e49aa149",
+   "english": "Make large, deliberate eye sweeps into the blind side to find each target.",
+   "text": "हर लक्ष्य को खोजने के लिए अंधी तरफ बड़े और सचेत आँखों के फेरे लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.purpose": {
+   "source": "75525bab7a28f1",
+   "english": "Finding things on the missing side",
+   "text": "खोई हुई तरफ चीज़ें ढूँढना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.blind-side-sweeps.who": {
+   "source": "770f1689a18ad5",
+   "english": "Half-field loss · adults",
+   "text": "हाफ़-फ़ील्ड लॉस · वयस्कों",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.brock-string.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.brock-string.gear": {
+   "source": "cf719cb3fa2e6d",
+   "english": "String with beads",
+   "text": "मनकों वाली डोरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.bead-slide.gear"
+  },
+  "exercise.brock-string.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.brock-string.how": {
+   "source": "ca39217e7c4c92",
+   "english": "Hold a string with three beads to the nose. Look from bead to bead and see the strings cross at each one.",
+   "text": "नाक के पास तीन मोतियों वाली डोरी पकड़ें। एक से दूसरे मोती को देखें और देखें कि हर एक पर डोरियाँ एक-दूसरे को काटती हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.brock-string.purpose": {
+   "source": "c806a0f0b7cc18",
+   "english": "Feeling and controlling where the eyes aim",
+   "text": "आँखें कहाँ निशाना लगा रही हैं यह महसूस करना और नियंत्रित करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.brock-string.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.who"
+  },
+  "exercise.cinema-session.dose": {
+   "source": "e03a813566f803",
+   "english": "60 min a day in chapters, 6 days a week",
+   "text": "60 min एक दिन अध्यायों में, 6 दिन एक सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.cinema-session.gear": {
+   "source": "a23b43ffeb22fe",
+   "english": "Red-cyan glasses, TV",
+   "text": "लाल-सियान चश्मा, टीवी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.cinema-session.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.cinema-session.how": {
+   "source": "2054d90daf20dc",
+   "english": "Watch a show in the two-eye player. The weaker eye gets full contrast, the stronger eye reduced contrast.",
+   "text": "टू-आई प्लेयर में एक शो देखें। कमज़ोर आँख को पूरा कॉन्ट्रास्ट मिलता है, मज़बूत आँख को कम किया हुआ कॉन्ट्रास्ट मिलता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.cinema-session.purpose": {
+   "source": "aa9248f3427bc4",
+   "english": "The core lazy-eye practice",
+   "text": "मुख्य कमज़ोर आँख का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.cinema-session.who": {
+   "source": "62305e42696d51",
+   "english": "Lazy eye · ages 4+",
+   "text": "कमज़ोर आँख · उम्र 4+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.class-outdoor-period.dose": {
+   "source": "937ef04d9bcc55",
+   "english": "40 min each school day",
+   "text": "40 min हर स्कूल का दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.class-outdoor-period.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.class-outdoor-period.group": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "exercise.class-outdoor-period.how": {
+   "source": "56507615a247f5",
+   "english": "A school class adds one outdoor period a day and logs it as a squad.",
+   "text": "एक स्कूल की क्लास दिन में एक आउटडोर अवधि जोड़ती है और इसे एक दस्ते के रूप में दर्ज करती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.class-outdoor-period.purpose": {
+   "source": "52e17b1d4d2d58",
+   "english": "Daylight time, delivered the way the trial did",
+   "text": "डेलाइट का समय, वैसे ही दिया गया जैसे ट्रायल में किया गया था",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.class-outdoor-period.who": {
+   "source": "a65a68beb470f9",
+   "english": "School classes, ages 6 to 12",
+   "text": "स्कूल की कक्षाएँ, उम्र 6 से 12",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.contrast-ladder.dose": {
+   "source": "0ec0a33f3b7aee",
+   "english": "10 min",
+   "text": "10 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.contrast-ladder.gear": {
+   "source": "9a23f4ef551867",
+   "english": "Patch",
+   "text": "पैच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.contrast-ladder.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.contrast-ladder.how": {
+   "source": "019bcc92f8fd82",
+   "english": "Find faint stripes with the weaker eye as the contrast steps down.",
+   "text": "कमज़ोर आँख से धुँधली धारियों को ढूँढें क्योंकि कॉन्ट्रास्ट नीचे उतरता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.contrast-ladder.purpose": {
+   "source": "988fa7fac0e6af",
+   "english": "Contrast sensitivity",
+   "text": "कॉन्ट्रास्ट संवेदनशीलता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.contrast-ladder.who": {
+   "source": "723cab235ed38a",
+   "english": "Lazy eye · teens and adults",
+   "text": "कमज़ोर आँख · किशोर और वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.crowding-drill.dose": {
+   "source": "0ec0a33f3b7aee",
+   "english": "10 min",
+   "text": "10 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.dose"
+  },
+  "exercise.crowding-drill.gear": {
+   "source": "9a23f4ef551867",
+   "english": "Patch",
+   "text": "पैच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.gear"
+  },
+  "exercise.crowding-drill.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.crowding-drill.how": {
+   "source": "4781a12ef7d835",
+   "english": "Read the middle letter as its neighbours close in.",
+   "text": "बीच के अक्षर को उसके पड़ोसियों के पास आते ही पढ़ें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.crowding-drill.purpose": {
+   "source": "e1359b07be7f90",
+   "english": "Crowded acuity",
+   "text": "क्राउडेड एक्यूटी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.crowding-drill.who": {
+   "source": "7a78831ba06bae",
+   "english": "Lazy eye · ages 10+ and adults",
+   "text": "कमज़ोर आँख · उम्र 10+ और वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.dose": {
+   "source": "27e0a7876d8536",
+   "english": "3 min, once",
+   "text": "3 min, एक बार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.gear": {
+   "source": "f36641ad77559d",
+   "english": "Laptop camera",
+   "text": "लैपटॉप का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.group": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.how": {
+   "source": "561743cc34a1d2",
+   "english": "Guided check of screen height, glare and brightness against the room.",
+   "text": "कमरे के मुकाबले स्क्रीन की ऊँचाई, चमक और ब्राइटनेस की निर्देशित जाँच।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.purpose": {
+   "source": "eb0b357fab7532",
+   "english": "A screen that is easy on the eyes",
+   "text": "एक स्क्रीन जो आँखों पर आसान हो",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.desk-set-up-check.who": {
+   "source": "ac34d1189c2455",
+   "english": "Anyone at a desk",
+   "text": "डेस्क पर कोई भी व्यक्ति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-fusion-hold.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.brock-string.dose"
+  },
+  "exercise.distance-fusion-hold.gear": {
+   "source": "a23b43ffeb22fe",
+   "english": "Red-cyan glasses, TV",
+   "text": "लाल-सियान चश्मा, टीवी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.cinema-session.gear"
+  },
+  "exercise.distance-fusion-hold.group": {
+   "source": "83862e010a9382",
+   "english": "Squint",
+   "text": "स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-fusion-hold.how": {
+   "source": "4da2f92d44bccf",
+   "english": "Hold a fused target on the TV at 3 m as the demand rises.",
+   "text": "3 m पर टीवी पर एक फ्यूज़्ड टारगेट पकड़ें क्योंकि मांग बढ़ती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-fusion-hold.purpose": {
+   "source": "1168bb603245ce",
+   "english": "Control at distance",
+   "text": "दूरी पर नियंत्रण",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-fusion-hold.who": {
+   "source": "89601c78604265",
+   "english": "Intermittent squint",
+   "text": "बीच-बीच में आने वाला स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-reset.dose": {
+   "source": "4b8dd0c2050f67",
+   "english": "30 s",
+   "text": "30 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.steps.screen.1"
+  },
+  "exercise.distance-reset.gear": {
+   "source": "15d135dee7d478",
+   "english": "Laptop or phone camera",
+   "text": "लैपटॉप या फोन का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-reset.group": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "exercise.distance-reset.how": {
+   "source": "ce207d76677c31",
+   "english": "The camera measures working distance and coaches it back to arm's length.",
+   "text": "कैमरा काम करने की दूरी नापता है और उसे वापस हाथ की दूरी पर लाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-reset.purpose": {
+   "source": "3892f79d3ba917",
+   "english": "A comfortable viewing distance",
+   "text": "देखने की आरामदायक दूरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.distance-reset.who": {
+   "source": "cf8992ef28f896",
+   "english": "Anyone at a screen",
+   "text": "स्क्रीन के सामने कोई भी व्यक्ति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.dot-card.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.dot-card.gear": {
+   "source": "d610d39e37766d",
+   "english": "Printed card",
+   "text": "छपा हुआ कार्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.gear"
+  },
+  "exercise.dot-card.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.dot-card.how": {
+   "source": "a64871030a2218",
+   "english": "Hold a line of dots at the nose and walk the eyes from the far dot to the near one.",
+   "text": "बिंदुओं की एक लाइन को नाक के पास रखें और आँखों को दूर वाले बिंदु से पास वाले बिंदु तक ले जाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.dot-card.purpose": {
+   "source": "c351f9128680af",
+   "english": "Close-range convergence",
+   "text": "नज़दीक का कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.dot-card.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.who"
+  },
+  "exercise.drop-reminder-routine.dose": {
+   "source": "9ff17bacc5aca8",
+   "english": "10 s per dose",
+   "text": "10 s प्रति डोज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.drop-reminder-routine.gear": {
+   "source": "b29b102b56bf3a",
+   "english": "Phone",
+   "text": "फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.devices.kind.phone"
+  },
+  "exercise.drop-reminder-routine.group": {
+   "source": "39520269d9379b",
+   "english": "Monitoring",
+   "text": "निगरानी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.drop-reminder-routine.how": {
+   "source": "41ec402499b356",
+   "english": "A reminder at drop time, a one-tap log, and a weekly tally.",
+   "text": "डॉप डालने के समय याद दिलाना, एक टैप में लॉग करना, और साप्ताहिक गिनती।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.drop-reminder-routine.purpose": {
+   "source": "5f8d9a204e7196",
+   "english": "Taking eye drops on schedule",
+   "text": "समय पर आँखों में ड्रॉप डालना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.drop-reminder-routine.who": {
+   "source": "c85ee847b0b312",
+   "english": "People prescribed daily eye drops",
+   "text": "वे लोग जिन्हें रोज़ आँखों में ड्रॉप डालने को कहा गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.flip-switch.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.flip-switch.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.flip-switch.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.flip-switch.how": {
+   "source": "98d6fd7e3e291a",
+   "english": "Alternate converge and diverge demand and count the flips per minute.",
+   "text": "कन्वर्ज और डायवर्ज की माँग को बारी-बारी से करें और प्रति मिनट फ्लिप की गिनती करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.flip-switch.purpose": {
+   "source": "636ec3c733b4e5",
+   "english": "Vergence flexibility",
+   "text": "वर्जेंस की लचीलापन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.flip-switch.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.full-blink-drill.dose": {
+   "source": "66d1c099ba386c",
+   "english": "10 blinks, hourly",
+   "text": "10 पलक झपकना, हर घंटे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.full-blink-drill.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "exercise.full-blink-drill.group": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "exercise.full-blink-drill.how": {
+   "source": "5e0908a48e29ca",
+   "english": "Close gently, pause, squeeze lightly, open. Ten times.",
+   "text": "आँखें धीरे से बंद करें, रुकें, हल्का सा दबाएँ, खोलें। दस बार।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.full-blink-drill.purpose": {
+   "source": "63358ac45b349a",
+   "english": "Complete blinks that spread the tear film",
+   "text": "पूरे पलक झपकाना जो टियर फिल्म को फैलाते हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.full-blink-drill.who": {
+   "source": "2be12ca16afb71",
+   "english": "Dry or tired eyes",
+   "text": "सूखी या थकी हुई आँखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-check-in.dose": {
+   "source": "720e67a53235af",
+   "english": "10 s a day",
+   "text": "10 s एक दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-check-in.gear": {
+   "source": "591da25f52429e",
+   "english": "Phone camera",
+   "text": "फोन का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-check-in.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.glasses-check-in.how": {
+   "source": "ea0f6043a91def",
+   "english": "A daily camera check that glasses are on, with a weekly wear score for the caregiver.",
+   "text": "रोज़ाना कैमरे से जाँच कि चश्मा पहना है या नहीं, देखभाल करने वाले के लिए साप्ताहिक पहनने के स्कोर के साथ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-check-in.purpose": {
+   "source": "d3f5124f6b2e6d",
+   "english": "Full-time glasses wear",
+   "text": "पूरा समय चश्मा पहनना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-check-in.who": {
+   "source": "d39729a6ea3443",
+   "english": "Children with prescribed glasses",
+   "text": "चश्मे के प्रिस्क्रिप्शन वाले बच्चे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-first-log.dose": {
+   "source": "6cfb81d8577b2b",
+   "english": "18 to 30 weeks",
+   "text": "18 से 30 सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-first-log.gear": {
+   "source": "b148dd89f250e2",
+   "english": "Glasses",
+   "text": "चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.eye.rows.lens"
+  },
+  "exercise.glasses-first-log.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.glasses-first-log.how": {
+   "source": "a7ae8a907a2287",
+   "english": "Wear the new glasses all day, log it, and check acuity every five weeks.",
+   "text": "नया चश्मा पूरा दिन पहनें, इसे लॉग करें, और हर पाँच सप्ताह में नज़र की जाँच करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-first-log.purpose": {
+   "source": "6632b3791ca4f6",
+   "english": "Lets glasses do their part before any training",
+   "text": "किसी भी ट्रेनिंग से पहले चश्मे को अपना काम करने दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.glasses-first-log.who": {
+   "source": "7caa8005563c90",
+   "english": "Newly prescribed glasses · any age",
+   "text": "नया प्रिस्क्राइब किया हुआ चश्मा · कोई भी उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.guided-line-reading.dose": {
+   "source": "7cfc0d8efdf194",
+   "english": "20 min a day",
+   "text": "20 min एक दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.dose"
+  },
+  "exercise.guided-line-reading.gear": {
+   "source": "840e1b67ae7800",
+   "english": "Laptop or tablet",
+   "text": "लैपटॉप या टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.gear"
+  },
+  "exercise.guided-line-reading.group": {
+   "source": "cd44f194c7c79d",
+   "english": "After stroke",
+   "text": "स्ट्रोक के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.group"
+  },
+  "exercise.guided-line-reading.how": {
+   "source": "ad9c25f629f4eb",
+   "english": "Read scrolling text with a guide that marks the start and end of each line.",
+   "text": "एक गाइड के साथ स्क्रॉल होता हुआ टेक्स्ट पढ़ें जो हर लाइन की शुरुआत और अंत को चिन्हित करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.guided-line-reading.purpose": {
+   "source": "c6e13166c8971d",
+   "english": "Reading speed with half-field loss",
+   "text": "हाफ-फील्ड लॉस के साथ पढ़ने की गति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.guided-line-reading.who": {
+   "source": "770f1689a18ad5",
+   "english": "Half-field loss · adults",
+   "text": "हाफ़-फ़ील्ड लॉस · वयस्कों",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.who"
+  },
+  "exercise.head-turn-letter-hold.dose": {
+   "source": "6611f8c5b67144",
+   "english": "1 min, 3 sets",
+   "text": "1 min, 3 सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.head-turn-letter-hold.gear": {
+   "source": "48d4d5d0459b68",
+   "english": "Printed letter",
+   "text": "प्रिंट किया हुआ अक्षर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.head-turn-letter-hold.group": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.head-turn-letter-hold.how": {
+   "source": "7ea4dff3b44592",
+   "english": "Keep a letter clear while turning the head slowly side to side.",
+   "text": "सिर को धीरे-धीरे अगल-बगल घुमाते हुए एक अक्षर को साफ रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.head-turn-letter-hold.purpose": {
+   "source": "08f04534d975bc",
+   "english": "Steady gaze during head movement",
+   "text": "सिर हिलने के दौरान स्थिर नज़र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.head-turn-letter-hold.who": {
+   "source": "c267d04fb86388",
+   "english": "Vision problems after concussion",
+   "text": "चोट लगने के बाद दृष्टि की समस्याएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.lifesaver-card.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.lifesaver-card.gear": {
+   "source": "d610d39e37766d",
+   "english": "Printed card",
+   "text": "छपा हुआ कार्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.gear"
+  },
+  "exercise.lifesaver-card.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.lifesaver-card.how": {
+   "source": "28d2881c0ec09b",
+   "english": "Cross the eyes until two rings merge into a third ring that looks clear and raised.",
+   "text": "आँखों को तब तक तिरछा करें जब तक दो रिंग मिलकर एक तीसरा रिंग न बन जाएँ जो साफ़ और उठा हुआ दिखाई दे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.lifesaver-card.purpose": {
+   "source": "71ae001a459530",
+   "english": "Fusion in free space",
+   "text": "फ़्री स्पेस में फ़्यूज़न",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.lifesaver-card.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "exercise.line-up-drill.dose": {
+   "source": "0ec0a33f3b7aee",
+   "english": "10 min",
+   "text": "10 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.dose"
+  },
+  "exercise.line-up-drill.gear": {
+   "source": "9a23f4ef551867",
+   "english": "Patch",
+   "text": "पैच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.gear"
+  },
+  "exercise.line-up-drill.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.line-up-drill.how": {
+   "source": "ddfa62442b3284",
+   "english": "Nudge one line until it sits exactly under another.",
+   "text": "एक लाइन को तब तक थोड़ा खिसकाएँ जब तक वह दूसरी के ठीक नीचे न आ जाए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.line-up-drill.purpose": {
+   "source": "e37f4f5d51db44",
+   "english": "Fine position sense",
+   "text": "बारीक स्थिति की समझ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.line-up-drill.who": {
+   "source": "723cab235ed38a",
+   "english": "Lazy eye · teens and adults",
+   "text": "कमज़ोर आँख · किशोर और वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.who"
+  },
+  "exercise.long-hold.dose": {
+   "source": "e3f81fc3ade4b8",
+   "english": "2 min, 3 sets",
+   "text": "2 min, 3 सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.long-hold.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.gear"
+  },
+  "exercise.long-hold.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.long-hold.how": {
+   "source": "5126469dfb448f",
+   "english": "Hold a high demand for two minutes without doubling.",
+   "text": "बिना दोहरे दिखे दो मिनट तक उच्च माँग बनाए रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.long-hold.purpose": {
+   "source": "8bd0605f76edff",
+   "english": "Slow adaptation of the vergence system",
+   "text": "वर्जेंस सिस्टम का धीमा अनुकूलन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.long-hold.who": {
+   "source": "e68dd347df48eb",
+   "english": "Convergence insufficiency · ages 12+ and adults",
+   "text": "कन्वर्जेंस इन्सफ़िशिएंसी · उम्र 12+ और वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.look-away-break.dose": {
+   "source": "8e17b6a899e35a",
+   "english": "20 s, every 20 min",
+   "text": "20 s, हर 20 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.look-away-break.gear": {
+   "source": "85ce756f3da696",
+   "english": "Laptop camera for timing",
+   "text": "समय मापने के लिए लैपटॉप का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.look-away-break.group": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "exercise.look-away-break.how": {
+   "source": "181f1fb01c208b",
+   "english": "Every 20 minutes look at something 6 m away for 20 seconds.",
+   "text": "हर 20 मिनट में 6 m दूर किसी चीज़ को 20 सेकंड के लिए देखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.look-away-break.purpose": {
+   "source": "e692bcbc7d8c41",
+   "english": "Rest for focus and convergence",
+   "text": "फ़ोकस और कन्वर्जेंस के लिए आराम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.look-away-break.who": {
+   "source": "cf8992ef28f896",
+   "english": "Anyone at a screen",
+   "text": "स्क्रीन के सामने कोई भी व्यक्ति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-reset.who"
+  },
+  "exercise.near-far-focus-rock.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.near-far-focus-rock.gear": {
+   "source": "ebebf7c7df21cd",
+   "english": "Printed chart and card",
+   "text": "प्रिंट किया हुआ चार्ट और कार्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-focus-rock.group": {
+   "source": "e0c4a6a789919d",
+   "english": "Focus",
+   "text": "फ़ोकस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-focus-rock.how": {
+   "source": "2cda398fef4cb7",
+   "english": "Read a letter chart at 3 m, then a card at 40 cm, back and forth.",
+   "text": "3 m की दूरी पर एक लेटर चार्ट पढ़ें, फिर 40 cm पर एक कार्ड, आगे और पीछे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-focus-rock.purpose": {
+   "source": "ecf848797f08ea",
+   "english": "Focusing flexibility",
+   "text": "फ़ोकस करने की लचीलापन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-focus-rock.who": {
+   "source": "944c4fdbebc391",
+   "english": "Focusing problems with convergence insufficiency · ages 8+",
+   "text": "कन्वर्जेंस इन्सफ़िशिएंसी के साथ फ़ोकस करने की समस्याएँ · उम्र 8+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-jumps.dose": {
+   "source": "dce4b2d1be517f",
+   "english": "20 jumps, 3 sets",
+   "text": "20 जंप, 3 सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-jumps.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "exercise.near-far-jumps.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.near-far-jumps.how": {
+   "source": "6493f48e38784e",
+   "english": "Switch gaze between a thumb at arm's length and a letter across the room.",
+   "text": "बाँह की दूरी पर अंगूठे और कमरे के पार एक अक्षर के बीच नज़र बदलें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-jumps.purpose": {
+   "source": "00cbb676905e14",
+   "english": "Jump convergence",
+   "text": "जंप कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-jumps.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.who"
+  },
+  "exercise.near-far-with-movement.dose": {
+   "source": "9cc244de733ecc",
+   "english": "2 min",
+   "text": "2 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/onboarding:onboarding.steps.L.1"
+  },
+  "exercise.near-far-with-movement.gear": {
+   "source": "8286fff41673ff",
+   "english": "Card and chart",
+   "text": "कार्ड और चार्ट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-with-movement.group": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.group"
+  },
+  "exercise.near-far-with-movement.how": {
+   "source": "280ace2760f384",
+   "english": "Switch focus between a near card and a far chart while stepping side to side.",
+   "text": "इधर-उधर कदम रखते हुए पास के कार्ड और दूर के चार्ट के बीच फ़ोकस बदलें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-with-movement.purpose": {
+   "source": "14aba81a61020e",
+   "english": "Refocusing during movement",
+   "text": "चलने के दौरान दोबारा फ़ोकस करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.near-far-with-movement.who": {
+   "source": "c267d04fb86388",
+   "english": "Vision problems after concussion",
+   "text": "चोट लगने के बाद दृष्टि की समस्याएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.who"
+  },
+  "exercise.one-eye-focus-rock.dose": {
+   "source": "08d0f873962c42",
+   "english": "2 min per eye",
+   "text": "2 min प्रति आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.one-eye-focus-rock.gear": {
+   "source": "aebefafe29f8be",
+   "english": "Patch, chart and card",
+   "text": "पैच, चार्ट और कार्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.one-eye-focus-rock.group": {
+   "source": "e0c4a6a789919d",
+   "english": "Focus",
+   "text": "फ़ोकस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.near-far-focus-rock.group"
+  },
+  "exercise.one-eye-focus-rock.how": {
+   "source": "6117c5c9dba772",
+   "english": "The same near-far reading with one eye covered, then the other.",
+   "text": "एक आँख को ढककर वही पास-दूर की रीडिंग करें, फिर दूसरी आँख से।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.one-eye-focus-rock.purpose": {
+   "source": "6c5a61894f3328",
+   "english": "Equal focusing in each eye",
+   "text": "प्रत्येक आँख में एक समान फ़ोकस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.one-eye-focus-rock.who": {
+   "source": "d8672e371a7429",
+   "english": "Focusing problems · ages 8+",
+   "text": "फ़ोकस करने की समस्याएँ · उम्र 8+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.outdoor-light-time.dose": {
+   "source": "04e3f97ded6529",
+   "english": "40+ min a day outdoors",
+   "text": "बाहर 40+ मिनट प्रतिदिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.outdoor-light-time.gear": {
+   "source": "61a8c1bf1c47e9",
+   "english": "Phone or watch",
+   "text": "फ़ोन या घड़ी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.outdoor-light-time.group": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "exercise.outdoor-light-time.how": {
+   "source": "d14d57553668d7",
+   "english": "Reach the daily daylight goal, logged by phone or watch.",
+   "text": "फ़ोन या घड़ी द्वारा दर्ज, दिन के उजाले के दैनिक लक्ष्य तक पहुँचें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.outdoor-light-time.purpose": {
+   "source": "fd6d780d46ab3f",
+   "english": "Slows the onset of short sight",
+   "text": "दूरदर्शिता की शुरुआत को धीमा करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.outdoor-light-time.who": {
+   "source": "0ff3b97a6c2503",
+   "english": "Children 5 to 15",
+   "text": "बच्चे 5 से 15 साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.who"
+  },
+  "exercise.patch-on-ball-play.dose": {
+   "source": "0ec0a33f3b7aee",
+   "english": "10 min",
+   "text": "10 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.contrast-ladder.dose"
+  },
+  "exercise.patch-on-ball-play.gear": {
+   "source": "4e72b7a2e67b36",
+   "english": "Patch, soft ball",
+   "text": "पैच, नरम बॉल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-on-ball-play.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.patch-on-ball-play.how": {
+   "source": "4119757899884b",
+   "english": "Roll, bounce and catch a ball with the patch on.",
+   "text": "पैच पहनकर गेंद को घुमाएँ, टप्पे खिलाएँ और पकड़ें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-on-ball-play.purpose": {
+   "source": "f340a6dfd03d6b",
+   "english": "Keeps patch time active",
+   "text": "पैच का समय सक्रिय रखता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-on-ball-play.who": {
+   "source": "f0ce591699ec8f",
+   "english": "Children prescribed a patch · ages 3+",
+   "text": "जिन बच्चों को पैच लगाने को कहा गया है · उम्र 3+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-time-detail-tasks.dose": {
+   "source": "efb8db333b4e8d",
+   "english": "As prescribed, often 2 h a day",
+   "text": "जैसा बताया गया है, अक्सर दिन में 2 घंटे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-time-detail-tasks.gear": {
+   "source": "c695c16aa8d68d",
+   "english": "Patch, tablet",
+   "text": "पैच, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-time-detail-tasks.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.patch-time-detail-tasks.how": {
+   "source": "a8ff854f7d06ad",
+   "english": "Tracing, dot-to-dot and bead threading on the tablet while the patch is on.",
+   "text": "पैच पहने हुए टैबलेट पर ट्रेसिंग, डॉट-टू-डॉट और मनके पिरोना।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-time-detail-tasks.purpose": {
+   "source": "3d25426434bd53",
+   "english": "Keeps the patch on and the weaker eye working",
+   "text": "पैच को लगाए रखता है और कमज़ोर आँख को काम पर रखता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-time-detail-tasks.who": {
+   "source": "f0ce591699ec8f",
+   "english": "Children prescribed a patch · ages 3+",
+   "text": "जिन बच्चों को पैच लगाने को कहा गया है · उम्र 3+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.patch-on-ball-play.who"
+  },
+  "exercise.patch-wear-timer.dose": {
+   "source": "9d1a551818f227",
+   "english": "As prescribed",
+   "text": "प्रिस्क्रिप्शन के अनुसार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.dose"
+  },
+  "exercise.patch-wear-timer.gear": {
+   "source": "c58a11ec1e9065",
+   "english": "Patch, phone",
+   "text": "पैच, फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-wear-timer.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.patch-wear-timer.how": {
+   "source": "7fbe77bff27c20",
+   "english": "Start the timer when the patch goes on. A sticker chart fills as the hours add up.",
+   "text": "पैच लगते ही टाइमर शुरू करें। जैसे-जैसे घंटे जुड़ते हैं, एक स्टिकर चार्ट भर जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-wear-timer.purpose": {
+   "source": "d5e83832c1258e",
+   "english": "Hours of patch actually worn",
+   "text": "पैच वास्तव में जितने घंटे पहना गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.patch-wear-timer.who": {
+   "source": "f0ce591699ec8f",
+   "english": "Children prescribed a patch · ages 3+",
+   "text": "जिन बच्चों को पैच लगाने को कहा गया है · उम्र 3+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.patch-on-ball-play.who"
+  },
+  "exercise.reading-under-demand.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.brock-string.dose"
+  },
+  "exercise.reading-under-demand.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.gear"
+  },
+  "exercise.reading-under-demand.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.reading-under-demand.how": {
+   "source": "2fda48e1c8a83f",
+   "english": "Read a short passage while the screen holds a set convergence demand.",
+   "text": "एक छोटा गद्यांश पढ़ें जबकि स्क्रीन एक निश्चित अभिसरण मांग बनाए रखती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.reading-under-demand.purpose": {
+   "source": "8c1a974b61561b",
+   "english": "Carrying the skill into real reading",
+   "text": "कौशल को वास्तविक पढ़ने में ले जाना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.reading-under-demand.who": {
+   "source": "1d39f3bf805f35",
+   "english": "Convergence insufficiency · ages 10+ and adults",
+   "text": "कन्वर्जेंस इन्सफिशिएंसी · उम्र 10+ और वयस्क",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-diverge-ramp.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.brock-string.dose"
+  },
+  "exercise.screen-diverge-ramp.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.gear"
+  },
+  "exercise.screen-diverge-ramp.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.screen-diverge-ramp.how": {
+   "source": "3e1da5a90ef9df",
+   "english": "A target drifts the other way, so the eyes must relax outward to keep it single.",
+   "text": "एक लक्ष्य दूसरी तरफ खिसकता है, इसलिए इसे एक ही रखने के लिए आँखों को बाहर की ओर आराम करना चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-diverge-ramp.purpose": {
+   "source": "9a2c68096f1b64",
+   "english": "Divergence range",
+   "text": "डिवर्जेंस रेंज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-diverge-ramp.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "exercise.screen-vergence-ramp.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.brock-string.dose"
+  },
+  "exercise.screen-vergence-ramp.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.gear"
+  },
+  "exercise.screen-vergence-ramp.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.screen-vergence-ramp.how": {
+   "source": "526558c411e01d",
+   "english": "A target on screen slowly drifts apart. Hold it single as long as possible.",
+   "text": "स्क्रीन पर एक लक्ष्य धीरे-धीरे अलग होता है। इसे जब तक संभव हो एक ही रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-vergence-ramp.purpose": {
+   "source": "6a199ec8fdd62f",
+   "english": "Smooth fusion range",
+   "text": "स्मूद फ्यूज़न रेंज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-vergence-ramp.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "exercise.screen-vergence-steps.dose": {
+   "source": "0e9fcb61a555bc",
+   "english": "5 min",
+   "text": "5 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.brock-string.dose"
+  },
+  "exercise.screen-vergence-steps.gear": {
+   "source": "824560f68156a5",
+   "english": "Red-cyan glasses, tablet",
+   "text": "लाल-सियान चश्मा, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.gear"
+  },
+  "exercise.screen-vergence-steps.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.screen-vergence-steps.how": {
+   "source": "cd14c282473dc8",
+   "english": "The demand changes in sudden steps. Regain a single image after each one.",
+   "text": "माँग अचानक चरणों में बदल जाती है। प्रत्येक के बाद एक ही छवि पुनः प्राप्त करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-vergence-steps.purpose": {
+   "source": "008d1e2cf45b1b",
+   "english": "Step response",
+   "text": "स्टेप रिस्पॉन्स",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.screen-vergence-steps.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "exercise.see-both-lights.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.see-both-lights.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.see-both-lights.group": {
+   "source": "83862e010a9382",
+   "english": "Squint",
+   "text": "स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-fusion-hold.group"
+  },
+  "exercise.see-both-lights.how": {
+   "source": "4b0dc7578ab138",
+   "english": "Look at a small light through the glasses and keep both the red and the cyan image visible.",
+   "text": "चश्मे के माध्यम से एक छोटे प्रकाश को देखें और लाल और सियान दोनों छवियों को दृश्यमान रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.see-both-lights.purpose": {
+   "source": "b8ac65242c648b",
+   "english": "Awareness of both eyes at once",
+   "text": "एक ही समय में दोनों आँखों की जागरूकता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.see-both-lights.who": {
+   "source": "89601c78604265",
+   "english": "Intermittent squint",
+   "text": "बीच-बीच में आने वाला स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-fusion-hold.who"
+  },
+  "exercise.stereogram-pairs.dose": {
+   "source": "cf804dd1ddd8c6",
+   "english": "3 min",
+   "text": "3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.dose"
+  },
+  "exercise.stereogram-pairs.gear": {
+   "source": "68e3e8a85d85c7",
+   "english": "Printed or on-screen pairs",
+   "text": "मुद्रित या स्क्रीन पर जोड़े",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.stereogram-pairs.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.stereogram-pairs.how": {
+   "source": "880c4af47695c4",
+   "english": "Fuse two side-by-side pictures into a third that appears in depth, first by crossing the eyes, then by relaxing them.",
+   "text": "दो अगल-बगल की तस्वीरों को एक तीसरी तस्वीर में मिलाएं जो गहराई में दिखाई देती है, पहले आँखों को पार करके, फिर उन्हें आराम देकर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.stereogram-pairs.purpose": {
+   "source": "f3bacb5f48f851",
+   "english": "Fusion without glasses, in both directions",
+   "text": "चश्मे के बिना, दोनों दिशाओं में फ्यूज़न",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.stereogram-pairs.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "exercise.target-push-ups.dose": {
+   "source": "36615891337fa3",
+   "english": "3 sets of 20",
+   "text": "20 के 3 सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.target-push-ups.gear": {
+   "source": "5909c391a51424",
+   "english": "Pen or printed target",
+   "text": "पेन या मुद्रित लक्ष्य",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.target-push-ups.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.target-push-ups.how": {
+   "source": "68c0a4890a5710",
+   "english": "Bring a small letter slowly toward the nose and keep it single. Stop when it doubles, then back off.",
+   "text": "एक छोटे अक्षर को धीरे-धीरे नाक की ओर लाएं और उसे एक ही रखें। जब यह दोगुना हो जाए तो रुक जाएं, फिर पीछे हट जाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.target-push-ups.purpose": {
+   "source": "ee7de93fd3b2b4",
+   "english": "Near point of convergence",
+   "text": "नियर पॉइंट ऑफ़ कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.target-push-ups.who": {
+   "source": "a9180a737cc363",
+   "english": "Convergence insufficiency · ages 7+",
+   "text": "कन्वर्जेंस की कमी · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.who"
+  },
+  "exercise.therapy-homework-plan.dose": {
+   "source": "72e26eefa896f1",
+   "english": "15 min a day, 5 days a week, 12 weeks",
+   "text": "दिन में 15 min, सप्ताह में 5 दिन, 12 सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.therapy-homework-plan.gear": {
+   "source": "b29b102b56bf3a",
+   "english": "Phone",
+   "text": "फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.devices.kind.phone"
+  },
+  "exercise.therapy-homework-plan.group": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "exercise.therapy-homework-plan.how": {
+   "source": "420ef7ffbe1b88",
+   "english": "The home half of supervised therapy: the drills the therapist set that week, timed and logged.",
+   "text": "पर्यवेक्षित थेरेपी का घरेलू आधा हिस्सा: इस सप्ताह थेरेपिस्ट द्वारा निर्धारित अभ्यास, समयबद्ध और लॉग किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.therapy-homework-plan.purpose": {
+   "source": "e9b0007690d3bb",
+   "english": "Doing the home practice the trials required",
+   "text": "परीक्षणों के लिए आवश्यक घरेलू अभ्यास करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.therapy-homework-plan.who": {
+   "source": "84abe0ba0d2a23",
+   "english": "People in supervised vergence therapy",
+   "text": "पर्यवेक्षित वर्जेंस थेरेपी में लोग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.three-chapter-cinema-plan.dose": {
+   "source": "35925b95475913",
+   "english": "3 × 20 min, 6 days a week",
+   "text": "3 × 20 min, सप्ताह में 6 दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.three-chapter-cinema-plan.gear": {
+   "source": "a23b43ffeb22fe",
+   "english": "Red-cyan glasses, TV",
+   "text": "लाल-सियान चश्मा, टीवी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.cinema-session.gear"
+  },
+  "exercise.three-chapter-cinema-plan.group": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "exercise.three-chapter-cinema-plan.how": {
+   "source": "e77631fc8384ca",
+   "english": "Split the daily hour into three 20-minute sittings: after school, before dinner, before bed.",
+   "text": "दैनिक घंटे को तीन 20-मिनट की बैठकों में विभाजित करें: स्कूल के बाद, रात के खाने से पहले, सोने से पहले।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.three-chapter-cinema-plan.purpose": {
+   "source": "5808c1cd6ba4dc",
+   "english": "Fitting the full dose into a school day",
+   "text": "स्कूल के दिन में पूरी खुराक फिट करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.three-chapter-cinema-plan.who": {
+   "source": "62305e42696d51",
+   "english": "Lazy eye · ages 4+",
+   "text": "कमज़ोर आँख · उम्र 4+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.cinema-session.who"
+  },
+  "exercise.walk-in-target.dose": {
+   "source": "b949024af0c1ed",
+   "english": "5 walks",
+   "text": "5 वॉक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-in-target.gear": {
+   "source": "48d4d5d0459b68",
+   "english": "Printed letter",
+   "text": "प्रिंट किया हुआ अक्षर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.gear"
+  },
+  "exercise.walk-in-target.group": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.group"
+  },
+  "exercise.walk-in-target.how": {
+   "source": "e356cc82d95e33",
+   "english": "Walk slowly toward a letter on the wall and keep it single and clear.",
+   "text": "दीवार पर एक अक्षर की तरफ धीरे-धीरे चलें और उसे एक और स्पष्ट रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-in-target.purpose": {
+   "source": "8cf593a7e4ab55",
+   "english": "Convergence during movement",
+   "text": "चलते समय आँखों का अंदर की ओर आना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-in-target.who": {
+   "source": "c267d04fb86388",
+   "english": "Vision problems after concussion",
+   "text": "चोट लगने के बाद दृष्टि की समस्याएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.who"
+  },
+  "exercise.walk-to-school-log.dose": {
+   "source": "51789d1970d505",
+   "english": "10 to 20 min each way",
+   "text": "हर तरफ़ 10 से 20 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-to-school-log.gear": {
+   "source": "61a8c1bf1c47e9",
+   "english": "Phone or watch",
+   "text": "फ़ोन या घड़ी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.outdoor-light-time.gear"
+  },
+  "exercise.walk-to-school-log.group": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "exercise.walk-to-school-log.how": {
+   "source": "4e93af08735509",
+   "english": "Walk or cycle part of the school run and log the daylight minutes.",
+   "text": "स्कूल आने-जाने के रास्ते का कुछ हिस्सा पैदल चलें या साइकिल चलाएं और दिन की रोशनी के मिनट दर्ज करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-to-school-log.purpose": {
+   "source": "0315c505189d30",
+   "english": "Daylight built into the school day",
+   "text": "स्कूल के दिन में दिन की रोशनी शामिल करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.walk-to-school-log.who": {
+   "source": "0ff3b97a6c2503",
+   "english": "Children 5 to 15",
+   "text": "बच्चे 5 से 15 साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.who"
+  },
+  "exercise.weekend-outdoor-block.dose": {
+   "source": "0f8dea2f92b431",
+   "english": "1 h or more each weekend day",
+   "text": "सप्ताहांत के हर दिन 1 घंटे या उससे अधिक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekend-outdoor-block.gear": {
+   "source": "b29b102b56bf3a",
+   "english": "Phone",
+   "text": "फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/settings:settings.devices.kind.phone"
+  },
+  "exercise.weekend-outdoor-block.group": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "exercise.weekend-outdoor-block.how": {
+   "source": "95e8d7c9e3d16d",
+   "english": "A planned outdoor block on each weekend day, logged as a family.",
+   "text": "सप्ताहांत के हर दिन बाहर रहने का एक तय समय, परिवार के साथ दर्ज किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekend-outdoor-block.purpose": {
+   "source": "6418e8a88d1433",
+   "english": "Topping up daylight at weekends",
+   "text": "सप्ताहांत पर दिन की रोशनी पूरी करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekend-outdoor-block.who": {
+   "source": "62e9dd7cd3fba6",
+   "english": "Children 5 to 15 with family",
+   "text": "5 से 15 साल के बच्चे परिवार के साथ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekly-grid-check.dose": {
+   "source": "14f23ba28e1c6d",
+   "english": "2 min a week",
+   "text": "हफ़्ते में 2 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekly-grid-check.gear": {
+   "source": "3a361f49e13082",
+   "english": "Phone or tablet",
+   "text": "फ़ोन या टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekly-grid-check.group": {
+   "source": "39520269d9379b",
+   "english": "Monitoring",
+   "text": "निगरानी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.drop-reminder-routine.group"
+  },
+  "exercise.weekly-grid-check.how": {
+   "source": "4a3cbf64936be0",
+   "english": "Cover one eye and look at a grid. Mark any bent or missing lines.",
+   "text": "एक आँख को ढकें और एक ग्रिड को देखें। किसी भी मुड़ी हुई या गायब लाइन को चिह्नित करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekly-grid-check.purpose": {
+   "source": "063bf0f8dbfb1b",
+   "english": "Catching change at the centre of vision",
+   "text": "दृष्टि के केंद्र में बदलाव का पता लगाना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "exercise.weekly-grid-check.who": {
+   "source": "56c38bc432853b",
+   "english": "Macular disease, or anyone 55+",
+   "text": "मैक्यूलर बीमारी, या 55+ उम्र का कोई भी व्यक्ति",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.blink-garden.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "game.blink-garden.play": {
+   "source": "55d3d9da5bb4c4",
+   "english": "Plants grow with every full blink the camera sees.",
+   "text": "कैमरे को जितनी बार पूरी पलक झपकते दिखती है, पौधे उतने ही बढ़ते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.blink-garden.playsOn": {
+   "source": "15d135dee7d478",
+   "english": "Laptop or phone camera",
+   "text": "लैपटॉप या फोन का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-reset.gear"
+  },
+  "game.blink-garden.purpose": {
+   "source": "b40f4846c0e60e",
+   "english": "Full, regular blinking",
+   "text": "पूरी, नियमित पलक झपकना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.blink-garden.session": {
+   "source": "7c7ef8fd8e12fe",
+   "english": "1 min, several times a day",
+   "text": "1 min, दिन में कई बार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.blink-garden.who": {
+   "source": "eb9a7f7ea126b5",
+   "english": "Screen strain and dry eye · ages 8+",
+   "text": "स्क्रीन का तनाव और सूखी आँख · उम्र 8+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.comet-trail.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "game.comet-trail.play": {
+   "source": "3ef9dedc6c7cf3",
+   "english": "Keep a ring on a drifting comet with a finger or the remote.",
+   "text": "उंगली या रिमोट से एक घूमते हुए धूमकेतु पर घेरा बनाए रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.comet-trail.playsOn": {
+   "source": "a1d20ad475287b",
+   "english": "TV, tablet, phone",
+   "text": "टीवी, टैबलेट, फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.comet-trail.purpose": {
+   "source": "76a57b7ea073db",
+   "english": "Smooth tracking",
+   "text": "आसानी से पीछा करना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.comet-trail.session": {
+   "source": "0b4f5b9413476b",
+   "english": "2 min warm-up",
+   "text": "2 min वॉर्म-अप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.comet-trail.who": {
+   "source": "ce15217738a3ad",
+   "english": "Anyone · ages 5+",
+   "text": "कोई भी व्यक्ति · उम्र 5+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.depth-darts.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.see-both-lights.gear"
+  },
+  "game.depth-darts.play": {
+   "source": "d06a7235f250ea",
+   "english": "Throw at the target that floats nearest.",
+   "text": "सबसे पास तैरने वाले टारगेट पर निशाना लगाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.depth-darts.playsOn": {
+   "source": "943b564ff894f4",
+   "english": "TV, tablet",
+   "text": "टीवी, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.depth-darts.purpose": {
+   "source": "a14ce57db0c210",
+   "english": "Depth judgement",
+   "text": "गहराई का अंदाज़ा लगाना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.depth-darts.session": {
+   "source": "37cb6f11d1e020",
+   "english": "5 min sets",
+   "text": "5 min सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.depth-darts.who": {
+   "source": "7e59226cfca416",
+   "english": "Reduced depth vision · ages 7+",
+   "text": "कम गहराई वाली दृष्टि · उम्र 7+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.gear": {
+   "source": "dea91a6e9f2a6a",
+   "english": "Patch for one eye at a time",
+   "text": "एक बार में एक आँख पर पैच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.play": {
+   "source": "cd190ead82e5ae",
+   "english": "Point the way the animal tracks face. The tracks shrink until the child can no longer tell.",
+   "text": "उस दिशा में इशारा करें जिस ओर जानवर के पैरों के निशान हैं। निशान तब तक छोटे होते जाते हैं जब तक बच्चा पहचान नहीं पाता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.playsOn": {
+   "source": "b05fe077231544",
+   "english": "TV at 3 m, tablet",
+   "text": "3 m पर टीवी, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.purpose": {
+   "source": "8f2df4e071ef23",
+   "english": "Acuity check for young children",
+   "text": "छोटे बच्चों के लिए नज़र की जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.session": {
+   "source": "ade6121fe3e9f4",
+   "english": "3 min per eye",
+   "text": "हर आँख के लिए 3 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.e-safari.who": {
+   "source": "23e83c5bd934af",
+   "english": "Ages 3+",
+   "text": "उम्र 3+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.far-window.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "game.far-window.play": {
+   "source": "90d067080eb17f",
+   "english": "A 20-second break. Find three far-off things; the camera confirms the eyes left the screen.",
+   "text": "20 सेकंड का ब्रेक। दूर की तीन चीज़ें खोजें; कैमरा पुष्टि करता है कि आँखें स्क्रीन से हट गई थीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.far-window.playsOn": {
+   "source": "f36641ad77559d",
+   "english": "Laptop camera",
+   "text": "लैपटॉप का कैमरा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.gear"
+  },
+  "game.far-window.purpose": {
+   "source": "f0d091b863480b",
+   "english": "Real look-away breaks",
+   "text": "असल में दूर देखने के ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.far-window.session": {
+   "source": "84bb0b8c90b85c",
+   "english": "20 seconds, every 20 min",
+   "text": "20 सेकंड, हर 20 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.far-window.who": {
+   "source": "85cbbbaa731460",
+   "english": "Screen strain · anyone",
+   "text": "Screen strain · anyone",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.firefly-catch.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.see-both-lights.gear"
+  },
+  "game.firefly-catch.play": {
+   "source": "e74f7ee4a4e5cb",
+   "english": "Tap the fireflies and leave the moths. Fireflies show only to the weaker eye.",
+   "text": "जुगनू पर टैप करें और पतंगों को छोड़ दें। जुगनू केवल कमज़ोर आँख को दिखते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.firefly-catch.playsOn": {
+   "source": "a1d20ad475287b",
+   "english": "TV, tablet, phone",
+   "text": "टीवी, टैबलेट, फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.comet-trail.playsOn"
+  },
+  "game.firefly-catch.purpose": {
+   "source": "3dd6afdfc46f01",
+   "english": "Picking out weak-eye targets in clutter",
+   "text": "अराजकता में कमज़ोर आँख के लक्ष्यों को चुनना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.firefly-catch.session": {
+   "source": "8aa069558f8ed5",
+   "english": "5 min chapters",
+   "text": "5 min चैप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.firefly-catch.who": {
+   "source": "62305e42696d51",
+   "english": "Lazy eye · ages 4+",
+   "text": "कमज़ोर आँख · उम्र 4+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.cinema-session.who"
+  },
+  "game.lantern-run.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.see-both-lights.gear"
+  },
+  "game.lantern-run.play": {
+   "source": "dfb8c28c1adf04",
+   "english": "Run and jump through a night market. The runner and coins show to the weaker eye, the obstacles to the stronger eye.",
+   "text": "रात के बाज़ार में दौड़ें और कूदें। धावक और सिक्के कमज़ोर आँख को दिखते हैं, बाधाएँ मज़बूत आँख को।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.lantern-run.playsOn": {
+   "source": "943b564ff894f4",
+   "english": "TV, tablet",
+   "text": "टीवी, टैबलेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.depth-darts.playsOn"
+  },
+  "game.lantern-run.purpose": {
+   "source": "1159c45f7024c0",
+   "english": "Makes the weaker eye lead while both eyes work together",
+   "text": "जब दोनों आँखें साथ काम करती हैं तो कमज़ोर आँख को आगे रखता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.lantern-run.session": {
+   "source": "f98ad763fbf96f",
+   "english": "10 min chapters",
+   "text": "10 min चैप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.lantern-run.who": {
+   "source": "1cac9461dba602",
+   "english": "Lazy eye · ages 6+",
+   "text": "Lazy eye · ages 6+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.maze-of-two-lights.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.see-both-lights.gear"
+  },
+  "game.maze-of-two-lights.play": {
+   "source": "c49d4e8270824e",
+   "english": "Roll a ball through a maze. The ball belongs to the weaker eye, the walls to the stronger eye.",
+   "text": "भूलभुलैया में गेंद को लुढ़काएँ। गेंद कमज़ोर आँख की है, दीवारें मज़बूत आँख की।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.maze-of-two-lights.playsOn": {
+   "source": "fc5a3fa2f23727",
+   "english": "Tablet, TV",
+   "text": "Tablet, TV",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.maze-of-two-lights.purpose": {
+   "source": "9d9751800d6dcf",
+   "english": "Fusion and steady aim",
+   "text": "Fusion और स्थिर निशाना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.maze-of-two-lights.session": {
+   "source": "f98ad763fbf96f",
+   "english": "10 min chapters",
+   "text": "10 min चैप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.lantern-run.session"
+  },
+  "game.maze-of-two-lights.who": {
+   "source": "1cac9461dba602",
+   "english": "Lazy eye · ages 6+",
+   "text": "Lazy eye · ages 6+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.lantern-run.who"
+  },
+  "game.sky-spotter.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "game.sky-spotter.play": {
+   "source": "1c1b96017bf121",
+   "english": "An outdoor scavenger hunt. Find far-off things in daylight and log them on the phone.",
+   "text": "बाहर की चीज़ों की खोज। दिन की रोशनी में दूर की चीज़ें ढूँढें और उन्हें फ़ोन में दर्ज करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.sky-spotter.playsOn": {
+   "source": "ccec8457def3c6",
+   "english": "Phone, outdoors",
+   "text": "Phone, outdoors",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.sky-spotter.purpose": {
+   "source": "1559e981f96df5",
+   "english": "Daylight time outdoors",
+   "text": "दिन की रोशनी का समय बाहर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.sky-spotter.session": {
+   "source": "f8aeb5c3058f0f",
+   "english": "20 to 40 min outside",
+   "text": "20 से 40 min बाहर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.sky-spotter.who": {
+   "source": "0ff3b97a6c2503",
+   "english": "Children 5 to 15",
+   "text": "बच्चे 5 से 15 साल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.who"
+  },
+  "game.spot-jump.gear": {
+   "source": "04be42f1f72c23",
+   "english": "None",
+   "text": "कोई नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.class-outdoor-period.gear"
+  },
+  "game.spot-jump.play": {
+   "source": "2cd02c51dcacd3",
+   "english": "Hit targets that appear left and right in sequence.",
+   "text": "क्रम से बाएँ और दाएँ दिखने वाले लक्ष्यों पर निशाना लगाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.spot-jump.playsOn": {
+   "source": "a1d20ad475287b",
+   "english": "TV, tablet, phone",
+   "text": "टीवी, टैबलेट, फ़ोन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.comet-trail.playsOn"
+  },
+  "game.spot-jump.purpose": {
+   "source": "7b7ce7b81f3277",
+   "english": "Quick, accurate eye jumps",
+   "text": "तेज़, सटीक आँख की छलांग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.spot-jump.session": {
+   "source": "0b4f5b9413476b",
+   "english": "2 min warm-up",
+   "text": "2 min वॉर्म-अप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.comet-trail.session"
+  },
+  "game.spot-jump.who": {
+   "source": "b7b02367e1c29f",
+   "english": "Anyone · ages 6+",
+   "text": "Anyone · ages 6+",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.tunnel-glide.gear": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.see-both-lights.gear"
+  },
+  "game.tunnel-glide.play": {
+   "source": "2a46334f9626e2",
+   "english": "Fly through rings that drift apart. Keep each ring single to pass.",
+   "text": "एक-दूसरे से दूर जाने वाले छल्लों के बीच से उड़ें। आगे बढ़ने के लिए प्रत्येक छल्ले को एक रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.tunnel-glide.playsOn": {
+   "source": "77a9a74962b52f",
+   "english": "Tablet at 40 cm, TV",
+   "text": "Tablet at 40 cm, TV",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.tunnel-glide.purpose": {
+   "source": "8568d23fbcdbf6",
+   "english": "Smooth convergence and divergence range",
+   "text": "सुचारू convergence और divergence सीमा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "game.tunnel-glide.session": {
+   "source": "37cb6f11d1e020",
+   "english": "5 min sets",
+   "text": "5 min सेट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:game.depth-darts.session"
+  },
+  "game.tunnel-glide.who": {
+   "source": "e3f1b8c20568c4",
+   "english": "Convergence insufficiency · ages 9+",
+   "text": "कन्वर्जेंस इनसफिशिएंसी · 9+ साल की उम्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.flip-switch.who"
+  },
+  "group.after-concussion": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.group"
+  },
+  "group.after-stroke": {
+   "source": "cd44f194c7c79d",
+   "english": "After stroke",
+   "text": "स्ट्रोक के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.group"
+  },
+  "group.child-myopia": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "group.convergence": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "group.focus": {
+   "source": "e0c4a6a789919d",
+   "english": "Focus",
+   "text": "फ़ोकस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.near-far-focus-rock.group"
+  },
+  "group.lazy-eye": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "group.monitoring": {
+   "source": "39520269d9379b",
+   "english": "Monitoring",
+   "text": "निगरानी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.drop-reminder-routine.group"
+  },
+  "group.screen-strain": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "group.squint": {
+   "source": "83862e010a9382",
+   "english": "Squint",
+   "text": "स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-fusion-hold.group"
+  },
+  "mechanism.anti.basis": {
+   "source": "23bf1127b99abc",
+   "english": "Supervised therapy improved squint control by 0.9 points on a 5-point scale.",
+   "text": "देखरेख में थेरेपी ने 5-पॉइंट स्केल पर स्क्विंट नियंत्रण में 0.9 पॉइंट सुधार किया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.anti.label": {
+   "source": "8c4ca2a63d866c",
+   "english": "Anti-suppression",
+   "text": "Anti-suppression",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.atropine.basis": {
+   "source": "ebe2af3f13d863",
+   "english": "In trials, atropine drops worked as well as daily patching for moderate lazy eye.",
+   "text": "परीक्षणों में, एट्रोपिन ड्रॉप्स मध्यम lazy eye के लिए रोज़ाना पैचिंग जितना ही प्रभावी थीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.atropine.label": {
+   "source": "efe68bd385358a",
+   "english": "Atropine support",
+   "text": "Atropine support",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.dgame.basis": {
+   "source": "0b267491100c7f",
+   "english": "Same mechanism as the video trials. Game trials were mixed and tracked how much children played.",
+   "text": "वीडियो परीक्षणों जैसी ही प्रणाली। गेम परीक्षण मिले-जुले रहे और उन्होंने ट्रैक किया कि बच्चों ने कितना खेला।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.dgame.label": {
+   "source": "0a9abf31436aaf",
+   "english": "Two-eye balanced play",
+   "text": "दो-आँख संतुलित खेल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.drops.basis": {
+   "source": "bbcf25e66f79be",
+   "english": "In one trial, reminders raised the share of doses taken from 53% to 64%.",
+   "text": "एक परीक्षण में, रिमाइंडर ने ली जाने वाली खुराक का हिस्सा 53% से बढ़ाकर 64% कर दिया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.drops.label": {
+   "source": "0f4d6e51f2f0a9",
+   "english": "Reminders",
+   "text": "Reminders",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.dvid.basis": {
+   "source": "4e47fc52448eea",
+   "english": "In one trial children gained 1.8 lines in 12 weeks, against 0.8 with glasses alone. In other trials two-eye video did about as well as patching.",
+   "text": "एक परीक्षण में बच्चों ने 12 सप्ताह में 1.8 लाइनें प्राप्त कीं, जबकि केवल चश्मे के साथ 0.8 थीं। अन्य परीक्षणों में दो-आँख वीडियो ने पैचिंग जितना ही अच्छा प्रदर्शन किया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.dvid.label": {
+   "source": "98d57b8a5b1735",
+   "english": "Two-eye video",
+   "text": "दो-आँख वीडियो",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.focus.basis": {
+   "source": "d59d3dc1b926b8",
+   "english": "Part of supervised therapy protocols. Not tested alone.",
+   "text": "देखरेख वाले थेरेपी प्रोटोकॉल का हिस्सा। अकेले परीक्षण नहीं किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.focus.label": {
+   "source": "def7765d3c4d17",
+   "english": "Focus flexibility",
+   "text": "Focus flexibility",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.glasses.basis": {
+   "source": "6f4ebfdc59260b",
+   "english": "Glasses alone gained 2.9 lines on average and resolved lazy eye in 27% of children.",
+   "text": "अकेले चश्मे से औसतन 2.9 लाइनें प्राप्त हुईं और 27% बच्चों में lazy eye ठीक हुआ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.glasses.label": {
+   "source": "c9f4b3b7fa51f8",
+   "english": "Glasses first",
+   "text": "चश्मे पहले",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.habit.label": {
+   "source": "f4513137c1506a",
+   "english": "Habit coaching",
+   "text": "आदत की कोचिंग",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.light.label": {
+   "source": "7ae45bcb482ce9",
+   "english": "Outdoor light",
+   "text": "बाहर की रोशनी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.measure.basis": {
+   "source": "ede7908288436d",
+   "english": "Home acuity tests agree with clinic charts to within one line.",
+   "text": "घर पर नज़र की जाँच के नतीजे क्लिनिक के चार्ट से एक लाइन के भीतर मेल खाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.measure.label": {
+   "source": "57461fc00eabe4",
+   "english": "Check in game form",
+   "text": "गेम के रूप में जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.monitor.basis": {
+   "source": "fedb3d1545c8fc",
+   "english": "Cleared home tests of this kind exist. Results are compared with the user's own baseline.",
+   "text": "इस तरह की घरेलू जाँचें उपलब्ध हैं। नतीजों की तुलना यूज़र के अपने पिछले आधार से की जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.monitor.label": {
+   "source": "da8ebf810f3e4c",
+   "english": "Home monitoring",
+   "text": "घर पर निगरानी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.near.basis": {
+   "source": "b0469517a2042c",
+   "english": "Supports the outdoor habit. Not tested alone as a treatment.",
+   "text": "बाहरी आदत का समर्थन करती है। इलाज के रूप में अकेले इसका परीक्षण नहीं किया गया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.near.label": {
+   "source": "507b97521e8efe",
+   "english": "Reading distance",
+   "text": "पढ़ने की दूरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.patch.basis": {
+   "source": "93c55950278449",
+   "english": "Patching is standard care, and two hours a day worked as well as six.",
+   "text": "पैच लगाना सामान्य देखभाल है, और दिन में दो घंटे ने छह घंटे जितना ही अच्छा काम किया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.patch.label": {
+   "source": "cfb0fe2d2e6726",
+   "english": "Patching support",
+   "text": "पैच लगाने में मदद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.pl.basis": {
+   "source": "2b15073e19b876",
+   "english": "In pooled studies adults gained about 1.7 lines on the letter chart.",
+   "text": "कई अध्ययनों को मिलाकर देखने पर वयस्कों ने अक्षर चार्ट पर लगभग 1.7 लाइनें हासिल कीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.pl.label": {
+   "source": "328f841666a4e8",
+   "english": "Perceptual learning",
+   "text": "बोध संबंधी सीखना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.read.basis": {
+   "source": "25641a1a2bee09",
+   "english": "Related to search training. Smaller evidence base.",
+   "text": "खोज के अभ्यास से संबंधित। सबूतों का दायरा छोटा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.read.label": {
+   "source": "69678b32d1b1dd",
+   "english": "Reading practice",
+   "text": "पढ़ने का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.recov.basis": {
+   "source": "4f6b0c2ea3f488",
+   "english": "After concussion, 79% improved with six weeks of supervised therapy, against 13% of those waiting.",
+   "text": "मस्तिष्क पर चोट के बाद, छह सप्ताह के देखरेख वाले थेरेपी से 79% में सुधार हुआ, जबकि इंतज़ार करने वालों में से 13% में हुआ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.recov.label": {
+   "source": "860f02d6f7015b",
+   "english": "Supervised recovery",
+   "text": "देखरेख में रिकवरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.scan.basis": {
+   "source": "1a151cc9a367a1",
+   "english": "Search into the blind side sped up by 24% after 800 trials of web training.",
+   "text": "वेब ट्रेनिंग के 800 प्रयासों के बाद अंधे हिस्से की तरफ़ खोज 24% तेज़ हो गई।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.scan.label": {
+   "source": "f2bb7fefa45a42",
+   "english": "Scanning training",
+   "text": "स्कैनिंग का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.stereo.basis": {
+   "source": "9d106ef59acb80",
+   "english": "In pooled adult studies, about a third of those with some depth vision improved it markedly.",
+   "text": "वयस्कों के मिले-जुले अध्ययनों में, कुछ गहराई की नज़र वाले लगभग एक तिहाई लोगों ने इसमें काफ़ी सुधार किया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.stereo.label": {
+   "source": "0edc2f6feca5f1",
+   "english": "Depth training",
+   "text": "गहराई का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.track.basis": {
+   "source": "222cf464d5c6dc",
+   "english": "No trial shows a benefit in healthy eyes.",
+   "text": "किसी भी परीक्षण से स्वस्थ आँखों में फ़ायदा नहीं दिखता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.track.label": {
+   "source": "76b6acec17d47a",
+   "english": "Eye-movement play",
+   "text": "आँख की गति का खेल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.verg.basis": {
+   "source": "d45c3e3a096575",
+   "english": "With weekly supervised sessions, 73% of children succeeded or improved. Adults gained 17 prism dioptres of reserve.",
+   "text": "साप्ताहिक देखरेख वाले सत्रों के साथ, 73% बच्चे सफल हुए या उनमें सुधार हुआ। वयस्कों ने 17 डायोप्टर रिज़र्व हासिल किया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "mechanism.verg.label": {
+   "source": "54be2f3b2f48f2",
+   "english": "Vergence training",
+   "text": "वर्जेंस का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.after-concussion.doseBasis": {
+   "source": "c4a520996b968f",
+   "english": "Set by the linked counsellor.",
+   "text": "जुड़े हुए काउंसलर द्वारा तय किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.after-concussion.name": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.group"
+  },
+  "programme.after-stroke.doseBasis": {
+   "source": "c4a520996b968f",
+   "english": "Set by the linked counsellor.",
+   "text": "जुड़े हुए काउंसलर द्वारा तय किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:programme.after-concussion.doseBasis"
+  },
+  "programme.after-stroke.name": {
+   "source": "cd44f194c7c79d",
+   "english": "After stroke",
+   "text": "स्ट्रोक के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.group"
+  },
+  "programme.child-myopia.doseBasis": {
+   "source": "8b36ae02c6dead",
+   "english": "Outdoor time counts on the Light ring.",
+   "text": "बाहर बिताया गया समय Light रिंग में गिना जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.child-myopia.name": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "programme.convergence.doseBasis": {
+   "source": "b3f24909b23a07",
+   "english": "Fifteen minutes a day, five days a week: the home part of the CITT trial.",
+   "text": "दिन में पंद्रह मिनट, सप्ताह में पाँच दिन: CITT ट्रायल का घर वाला हिस्सा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.convergence.name": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "programme.depth.doseBasis": {
+   "source": "7b8aafb6b47ae9",
+   "english": "Short daily sessions. Evidence for depth training is limited.",
+   "text": "छोटे दैनिक सत्र। गहराई के अभ्यास के लिए सबूत सीमित हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.depth.name": {
+   "source": "0ff1c67056bb1b",
+   "english": "Depth",
+   "text": "गहराई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.eye-fitness.doseBasis": {
+   "source": "61277afa313875",
+   "english": "No training dose. Breaks, outdoor time and check-ups.",
+   "text": "कोई अभ्यास की डोज़ नहीं। ब्रेक, बाहर का समय और जाँच।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.eye-fitness.name": {
+   "source": "674d98cdbf0c3f",
+   "english": "Eye fitness",
+   "text": "आँख की फ़िटनेस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.lazy-eye.doseBasis": {
+   "source": "021e2853ec3687",
+   "english": "One hour a day, six days a week: the Luminopia trial dose.",
+   "text": "दिन में एक घंटा, सप्ताह में छह दिन: Luminopia ट्रायल की खुराक।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.lazy-eye.name": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "programme.screen-strain.doseBasis": {
+   "source": "3109c58e71758d",
+   "english": "Break and blink habits through the working day.",
+   "text": "काम के दिन के दौरान ब्रेक और पलकें झपकाने की आदतें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "programme.screen-strain.name": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "programme.squint.doseBasis": {
+   "source": "c4a520996b968f",
+   "english": "Set by the linked counsellor.",
+   "text": "जुड़े हुए काउंसलर द्वारा तय किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:programme.after-concussion.doseBasis"
+  },
+  "programme.squint.name": {
+   "source": "83862e010a9382",
+   "english": "Squint",
+   "text": "स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-fusion-hold.group"
+  },
+  "tag.all.label": {
+   "source": "f9acda3eee5ecf",
+   "english": "Everyone",
+   "text": "हर कोई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tag.any.label": {
+   "source": "17201516610431",
+   "english": "All",
+   "text": "सभी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.exercises.allGroups"
+  },
+  "tag.conc.label": {
+   "source": "d5acfdf23b1437",
+   "english": "After concussion",
+   "text": "कंकशन के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.head-turn-letter-hold.group"
+  },
+  "tag.conv.label": {
+   "source": "b4adcbc20b917c",
+   "english": "Convergence",
+   "text": "कन्वर्जेंस",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.barrel-card.group"
+  },
+  "tag.coop.label": {
+   "source": "ea8fd597cf57c5",
+   "english": "Co-op",
+   "text": "सह-ऑप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tag.depth.label": {
+   "source": "0ff1c67056bb1b",
+   "english": "Depth",
+   "text": "गहराई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:programme.depth.name"
+  },
+  "tag.lazy.label": {
+   "source": "263184b48566e7",
+   "english": "Lazy eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.atropine-day-companion.group"
+  },
+  "tag.myopia.label": {
+   "source": "214fd773cc9306",
+   "english": "Child myopia",
+   "text": "बच्चों की मायोपिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.arm-s-length-reading.group"
+  },
+  "tag.squint.label": {
+   "source": "83862e010a9382",
+   "english": "Squint",
+   "text": "स्क्विंट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.distance-fusion-hold.group"
+  },
+  "tag.strain.label": {
+   "source": "abf4d13136ab38",
+   "english": "Screen strain",
+   "text": "स्क्रीन तनाव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.desk-set-up-check.group"
+  },
+  "tag.stroke.label": {
+   "source": "cd44f194c7c79d",
+   "english": "After stroke",
+   "text": "स्ट्रोक के बाद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:exercise.blind-side-sweeps.group"
+  },
+  "test.acuity.name": {
+   "source": "0ab52de0a30330",
+   "english": "Letter size",
+   "text": "अक्षर का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.acuity.what": {
+   "source": "8ba23530611fe5",
+   "english": "The smallest letter each eye can read.",
+   "text": "सबसे छोटा अक्षर जिसे हर आँख पढ़ सकती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.balance.name": {
+   "source": "f99ecd09585e9d",
+   "english": "Eye balance",
+   "text": "आँख का संतुलन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.balance.what": {
+   "source": "af96e4d5088039",
+   "english": "How far the stronger eye must be dimmed for both eyes to pull equally.",
+   "text": "मज़बूत आँख को कितना कम करना होगा ताकि दोनों आँखें बराबर खींचें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.contrast.name": {
+   "source": "533a4b6dced059",
+   "english": "Faint letters",
+   "text": "धुंधले अक्षर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.contrast.what": {
+   "source": "a9cf6394be5d5b",
+   "english": "The faintest letter each eye can read.",
+   "text": "सबसे धुंधला अक्षर जिसे हर आँख पढ़ सकती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.fusion_break.name": {
+   "source": "9e2ad78937c294",
+   "english": "Fusion range, break",
+   "text": "फ्यूजन रेंज, ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.fusion_break.what": {
+   "source": "c3a5ef045d0224",
+   "english": "How far the eyes can turn in before the picture doubles.",
+   "text": "तस्वीर दोहरा दिखने से पहले आँखें कितनी अंदर घूम सकती हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.fusion_recovery.name": {
+   "source": "fa8e27b018e506",
+   "english": "Fusion range, recovery",
+   "text": "फ्यूजन रेंज, रिकवरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.fusion_recovery.what": {
+   "source": "0c7e5a5934919e",
+   "english": "Where the doubled picture joins again.",
+   "text": "जहाँ दोहराई गई तस्वीर फिर से जुड़ जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.near_point.name": {
+   "source": "069f426d863635",
+   "english": "Near point",
+   "text": "निकट बिंदु",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.near_point.what": {
+   "source": "aede8184156ef4",
+   "english": "How close a target comes before it doubles.",
+   "text": "दोगुना होने से पहले कोई लक्ष्य कितना पास आता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.stereo.name": {
+   "source": "0ff1c67056bb1b",
+   "english": "Depth",
+   "text": "गहराई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/words:programme.depth.name"
+  },
+  "test.stereo.what": {
+   "source": "79fda09abb00b3",
+   "english": "The smallest depth step both eyes can see together.",
+   "text": "सबसे छोटा गहराई का कदम जिसे दोनों आँखें एक साथ देख सकती हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.suppression.name": {
+   "source": "2150bb376e13fa",
+   "english": "Suppression check",
+   "text": "सप्रेशन जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.suppression.what": {
+   "source": "fc0bd275df0e96",
+   "english": "Whether the brain is ignoring one eye's picture.",
+   "text": "क्या दिमाग एक आँख की तस्वीर को अनदेखा कर रहा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.symptoms.name": {
+   "source": "d38d970f4ec8de",
+   "english": "Symptom survey",
+   "text": "लक्षण सर्वेक्षण",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "test.symptoms.what": {
+   "source": "f70240c5a55751",
+   "english": "Fifteen questions about reading and close work.",
+   "text": "पढ़ने और पास के काम के बारे में पंद्रह सवाल।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

@@ -21,10 +21,13 @@ export function phraseMatches(given: string, phrase: string): boolean {
 }
 
 /**
- * Paths that stay open while the site is locked: the gate itself, the health check, the robots file, and the
- * address a scheduler calls (it has its own secret and answers "not found" without it).
+ * Paths that stay open while the site is locked: the gate itself, the health check, the robots file, the
+ * address a scheduler calls (it has its own secret and answers "not found" without it), and the script that gives
+ * a browser the words of its language.
  */
-export const isOpenPath = (path: string) => path === "/gate" || path === "/health" || path === "/robots.txt" || path === "/api/jobs/daily" || path === "/api/jobs/weekly";
+export const isOpenPath = (path: string) => path === "/gate" || path === "/health" || path === "/robots.txt" || path === "/api/jobs/daily" || path === "/api/jobs/weekly"
+  /* the words of a language for the browser: the gate page itself is drawn with them, and they hold nothing private */
+  || path.startsWith("/lang/words/");
 
 /**
  * Where to go after the gate. Only a path on this site is accepted; anything else becomes the home page.

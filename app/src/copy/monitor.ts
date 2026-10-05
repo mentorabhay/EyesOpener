@@ -4,11 +4,12 @@
  * Numbers in these words come from src/lib/monitor-rules.ts, where each one names its source.
  */
 import { RULE } from "@/lib/monitor-rules";
+import { texts } from "@/i18n/texts";
 
 const mins = (n: number) => (n === 1 ? "1 minute" : `${n} minutes`);
 const clock = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`;
 
-export const monitor = {
+export const monitor = texts("copy/monitor", "monitor", () => ({
   title: "Workday monitor",
   sub: "Your computer's camera times your screen work and reminds you to look away. Everything it sees stays on this computer.",
   crumb: "Today",
@@ -249,7 +250,7 @@ export const monitor = {
     closeOf: (close: number, all: number) => `${close} of ${all}`,
     share: (v: number) => `${Math.round(v * 100)}%`,
     ring: (rest: number, goal: number) => `${rest} of ${goal} breaks`,
-    ringNote: `The monitor adds one break to the Rest ring for every ${RULE.breakEveryMin} minutes of screen work that end in a look-away, and never more than one in ${RULE.ringEveryMin} minutes. A break you also logged in a care companion is counted once.`,
+    ringNote: `The monitor adds one break to the Rest ring for every ${RULE.breakEveryMin} minutes of screen work that end in a look-away. It never adds more than one in ${RULE.ringEveryMin} minutes. A break you also logged in a care companion is counted once.`,
     charts: {
       title: "Today, in ten-minute steps",
       titleFor: (day: string) => `${day}, in ten-minute steps`,
@@ -292,4 +293,4 @@ export const monitor = {
     forgotten: (n: number) => (n === 1 ? "1 one-minute number was deleted." : `${n} one-minute numbers were deleted.`),
     failed: "The numbers could not be deleted.",
   },
-};
+}));

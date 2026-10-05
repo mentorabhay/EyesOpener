@@ -4,10 +4,11 @@
  * minutes, and nothing may name the family or the person behind a tile that is not the reader's own.
  */
 import type { ArtKey } from "@/lib/wall-rules";
+import { texts } from "@/i18n/texts";
 
 const tiles = (n: number) => (n === 1 ? "1 tile" : `${n} tiles`);
 
-export const wall = {
+export const wall = texts("copy/wall", "wall", () => ({
   sub: "Each month one picture starts out blurred. Every finished practice day, in any family, brings one tile into focus.",
   stats: { focus: "In focus", ours: "Tiles from your family" },
   /** The card's heading while the picture is not whole: its name is kept for the end. */
@@ -68,4 +69,4 @@ export const wall = {
     what: "Gives each finished practice day its tile on the month's picture, and opens a new month's picture.",
     done: "Tiles counted.",
   },
-};
+}));

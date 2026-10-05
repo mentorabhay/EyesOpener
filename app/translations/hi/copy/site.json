@@ -1,0 +1,272 @@
+{
+ "lang": "hi",
+ "file": "copy/site",
+ "entries": {
+  "site.footer.about": {
+   "source": "816f0b2b18471b",
+   "english": "Eye care you can do at home, built on published research.",
+   "text": "घर पर आँखों की देखभाल, प्रकाशित शोध पर आधारित।",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.tagline"
+  },
+  "site.footer.free": {
+   "source": "de75795defee83",
+   "english": "Free, with an open-source core. No ads, and nothing to buy.",
+   "text": "फ़्री, ओपन-सोर्स कोर के साथ। कोई विज्ञापन नहीं, और खरीदने के लिए कुछ नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.0.links.0.label": {
+   "source": "8e6369fca51e15",
+   "english": "How it works",
+   "text": "यह कैसे काम करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.2.label"
+  },
+  "site.footer.groups.0.links.1.label": {
+   "source": "195308ead0c5e5",
+   "english": "Programmes",
+   "text": "प्रोग्राम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/site:site.nav.links.1.label"
+  },
+  "site.footer.groups.0.links.2.label": {
+   "source": "802a2afc4c73f9",
+   "english": "Library",
+   "text": "लाइब्रेरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/site:site.nav.links.3.label"
+  },
+  "site.footer.groups.0.links.3.label": {
+   "source": "d1af60a3ff8b68",
+   "english": "Stories",
+   "text": "कहानियाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.0.label"
+  },
+  "site.footer.groups.0.title": {
+   "source": "10902aa625571c",
+   "english": "The app",
+   "text": "ऐप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.1.links.0.label": {
+   "source": "caa6e3e28058c9",
+   "english": "Evidence",
+   "text": "सबूत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.1.label"
+  },
+  "site.footer.groups.1.links.1.label": {
+   "source": "5018e0e973b4fa",
+   "english": "Safety",
+   "text": "सुरक्षा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.1.links.2.label": {
+   "source": "83aa47fa8a0429",
+   "english": "About",
+   "text": "हमारे बारे में",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.1.title": {
+   "source": "f55d9004e977e7",
+   "english": "Trust",
+   "text": "भरोसा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.2.links.0.label": {
+   "source": "b3ccd499d6a12b",
+   "english": "For counsellors",
+   "text": "काउंसलर के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.3.label"
+  },
+  "site.footer.groups.2.links.1.label": {
+   "source": "beb2dbb1854a57",
+   "english": "For sponsors and schools",
+   "text": "प्रायोजकों और स्कूलों के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.4.label"
+  },
+  "site.footer.groups.2.links.2.label": {
+   "source": "866f87eadd3197",
+   "english": "Wish Jam for developers",
+   "text": "डेवलपर्स के लिए Wish Jam",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.2.title": {
+   "source": "e556dacef87279",
+   "english": "Take part",
+   "text": "हिस्सा लें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.3.links.0.label": {
+   "source": "e70172e1754ead",
+   "english": "Privacy",
+   "text": "गोपनीयता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.3.links.1.label": {
+   "source": "3669220c8ed548",
+   "english": "Children's data",
+   "text": "बच्चों का डेटा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.3.links.2.label": {
+   "source": "e84363f1d02d95",
+   "english": "Terms",
+   "text": "नियम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.groups.3.title": {
+   "source": "2c6e9267c2ed2f",
+   "english": "The small print",
+   "text": "ज़रूरी बातें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.label": {
+   "source": "be53b6b4c1baad",
+   "english": "Site map",
+   "text": "साइट मैप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.promises.0": {
+   "source": "7abd22ca987d0f",
+   "english": "Free",
+   "text": "फ़्री",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.promises.1": {
+   "source": "34a5bb34bbc627",
+   "english": "Open-source core",
+   "text": "ओपन-सोर्स कोर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.footer.promises.2": {
+   "source": "30ce86344b260e",
+   "english": "No ads",
+   "text": "कोई विज्ञापन नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.logoLabel": {
+   "source": "859f5145f8653e",
+   "english": "IOpener, home",
+   "text": "IOpener, होम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.name": {
+   "source": "15828515bcee6b",
+   "english": "IOpener",
+   "text": "IOpener",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.product"
+  },
+  "site.nav.closeMenu": {
+   "source": "1ccf2b168ad530",
+   "english": "Close the menu",
+   "text": "मेनू बंद करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.label": {
+   "source": "c20146dd3d3d5a",
+   "english": "Site",
+   "text": "साइट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.links.0.label": {
+   "source": "8e6369fca51e15",
+   "english": "How it works",
+   "text": "यह कैसे काम करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.2.label"
+  },
+  "site.nav.links.1.label": {
+   "source": "195308ead0c5e5",
+   "english": "Programmes",
+   "text": "प्रोग्राम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.links.2.label": {
+   "source": "caa6e3e28058c9",
+   "english": "Evidence",
+   "text": "सबूत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.1.label"
+  },
+  "site.nav.links.3.label": {
+   "source": "802a2afc4c73f9",
+   "english": "Library",
+   "text": "लाइब्रेरी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.links.4.label": {
+   "source": "d1af60a3ff8b68",
+   "english": "Stories",
+   "text": "कहानियाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.closing.links.0.label"
+  },
+  "site.nav.menu": {
+   "source": "69b82a2ed2963b",
+   "english": "Menu",
+   "text": "मेनू",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.openApp": {
+   "source": "1464d1c9a6e874",
+   "english": "Open the app",
+   "text": "ऐप खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.openMenu": {
+   "source": "6b6e3e566594ea",
+   "english": "Open the menu",
+   "text": "मेनू खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.signIn": {
+   "source": "bd1210bb1b1dca",
+   "english": "Sign in",
+   "text": "साइन इन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "site.nav.start": {
+   "source": "9f4605fff3dde3",
+   "english": "Start the check",
+   "text": "जाँच शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/train:train.exercise.startCheck"
+  },
+  "site.skip": {
+   "source": "51ba9ba3350bbd",
+   "english": "Skip to the page",
+   "text": "पेज पर जाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

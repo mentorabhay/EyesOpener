@@ -10,7 +10,7 @@ import { signInSettings } from "@/lib/signin/settings";
 import { FinishView } from "../view";
 
 /* The address of this page carries a one-time code: it is kept out of search engines, and other sites are never told the address. */
-export const metadata: Metadata = { title: t.finish.title, robots: { index: false, follow: false }, referrer: "no-referrer" };
+export const generateMetadata = (): Metadata => ({ title: t.finish.title, robots: { index: false, follow: false }, referrer: "no-referrer" });
 
 /**
  * The page a sign-in link in an email returns to. Firebase adds `mode=signIn` and the one-time `oobCode`.

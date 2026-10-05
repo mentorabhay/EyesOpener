@@ -5,7 +5,7 @@ import { households } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
 
 const h = t.households;
-export const metadata: Metadata = { title: t.rooms.households.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.households.name });
 
 /** Counts only: the query behind this page never reads a test result, an eye profile or what happened in a session. */
 export default async function HouseholdsPage() {

@@ -12,7 +12,7 @@ import { PrintButton } from "./print-button";
 import css from "./summary.module.css";
 
 const s = c.summary;
-export const metadata: Metadata = { title: s.title };
+export const generateMetadata = (): Metadata => ({ title: s.title });
 
 /** Everything an eye doctor may want from the home measurements, on one printable page. Read-only: anyone who may look may open it. */
 export default async function SummaryPage() {

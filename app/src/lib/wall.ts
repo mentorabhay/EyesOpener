@@ -12,6 +12,7 @@ import { MAX_DAILY_MINUTES } from "@/engine";
 import { DAY_SLACK_MINUTES } from "@/lib/league";
 import { todayKey, type Member } from "@/lib/session";
 import { artworkFor, earnsTile, focusOf, freeTile, isMonth, monthOf, shiftMonth, tilesDue, tilesFor, wallGrid } from "./wall-rules";
+import { inEnglish } from "@/i18n/runtime";
 
 type Wall = typeof s.focusWall.$inferSelect;
 const D = s.daySummary, T = s.focusTile;
@@ -43,7 +44,7 @@ export async function ensureWall(month: string): Promise<Wall> {
   const have = await wallOf(month);
   if (have) return have;
   await db.insert(s.focusWall)
-    .values({ month, title: words.art[artworkFor(month)].title, artist: words.artist, tiles: tilesFor(await finishedIn(shiftMonth(month, -1))) })
+    .values({ month, title: inEnglish(() => words.art[artworkFor(month)].title), artist: inEnglish(() => words.artist), tiles: tilesFor(await finishedIn(shiftMonth(month, -1))) })
     .onConflictDoNothing({ target: s.focusWall.month });
   return (await wallOf(month))!;
 }

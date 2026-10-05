@@ -11,7 +11,7 @@ import { LADDER, isTested, listProtocols, type LadderStep } from "@/lib/communit
 import { IDEA_PAGES } from "@/lib/idea-pages";
 import { requireMember } from "@/lib/session";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 /** Hatched until a pooled result exists; green only once someone outside the community has checked it. */
 const stepTone = (step: LadderStep): Tone => (!isTested(step) ? "none" : step === "signal" ? "plain" : "ok");

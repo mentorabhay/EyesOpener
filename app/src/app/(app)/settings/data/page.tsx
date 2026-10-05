@@ -11,7 +11,7 @@ import { PrintButton } from "./print-button";
 import css from "./summary.module.css";
 
 const s = t.summary;
-export const metadata: Metadata = { title: s.title, robots: { index: false, follow: false } };
+export const generateMetadata = (): Metadata => ({ title: s.title, robots: { index: false, follow: false } });
 export const dynamic = "force-dynamic";
 
 /**

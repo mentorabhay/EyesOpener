@@ -11,6 +11,7 @@
 import type { EvidenceKey } from "@/data";
 import { WAIT_DAYS } from "@/lib/data/state";
 import type { EnquiryField, EnquiryKind, EnquiryStatus } from "@/lib/site";
+import { texts } from "@/i18n/texts";
 
 const WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
 /** A small count as a word: 3 reads "three". Larger counts stay as digits. */
@@ -26,7 +27,7 @@ export const dayTime = (d: Date) => new Intl.DateTimeFormat("en-IN", { dateStyle
 
 export interface Trial { name: string; who: string; found: string; limit?: string; href: string; source: string; more?: { label: string; href: string } }
 
-export const site = {
+export const site = texts("copy/site", "site", () => ({
   name: "IOpener",
   logoLabel: "IOpener, home",
   skip: "Skip to the page",
@@ -278,7 +279,7 @@ export const site = {
         forWho: "People with vision problems after a concussion, once a doctor has seen them, working with a verified eye counsellor.",
         what: "Slow tracking and focusing games with no time pressure. The counsellor sets how much.",
         not: [
-          "It does not start before a doctor has seen the injury. New symptoms after a head injury need a diagnosis first.",
+          "It does not start before a doctor has seen the injury. New symptoms after a head injury need a doctor to look at them first.",
           "The trial evidence is for therapy with a supervisor. Home practice alone was not tested.",
           "It never says you are well again. Only a doctor can.",
         ],
@@ -347,7 +348,7 @@ export const site = {
             { name: "Pooled analysis of 14 trials", who: "Two-eye video against patching in 1,100 children.", found: "No significant difference between the two. Children who kept to the plan did better on two-eye video.", limit: "This shows the two are about equal. It does not show that video is better.", href: "https://www.sciencedirect.com/science/article/abs/pii/S0161642025006803", source: "Ophthalmology, 2025" },
             { name: "PEDIG falling-blocks game trial", who: "Children aged 5 to 12 played one two-eye game for 1 hour a day, against patching for 2 hours a day.", found: "At 16 weeks patching had done better: 1.35 lines against 1.05. Only 22% of children finished more than three-quarters of the play they were set.", limit: "This is why two-eye games carry a lower label than two-eye video. The method was the same; the children stopped playing.", href: "https://www.aao.org/eyenet/article/binocular-ipad-game-vs-part-time-patching-amblyopi", source: "PEDIG ATS18, summary" },
             { name: "BRAVO trial", who: "115 people aged 7 to 55 played the falling-blocks game or a placebo game for 6 weeks.", found: "No significant difference between the two games.", href: "https://jamanetwork.com/journals/jamaophthalmology/fullarticle/2666808", source: "JAMA Ophthalmology, 2018" },
-            { name: "Glasses alone", who: "84 children aged 3 to 6 with a lazy eye wore their new glasses and did nothing else.", found: "They gained 2.9 lines on average, and in 27% of them the lazy eye resolved.", limit: "This is why glasses come first, before any training.", href: "https://www.sciencedirect.com/science/article/abs/pii/S016164200600385X", source: "PEDIG, Ophthalmology" },
+            { name: "Glasses alone", who: "84 children aged 3 to 6 with a lazy eye wore their new glasses and did nothing else.", found: "They gained 2.9 lines on average, and 27% of them no longer had a lazy eye.", limit: "This is why glasses come first, before any training.", href: "https://www.sciencedirect.com/science/article/abs/pii/S016164200600385X", source: "PEDIG, Ophthalmology" },
             { name: "MOTAS patching study", who: "Children whose patching hours were measured by a sensor in the patch.", found: "They did about 48% of the hours they were set. Most of the gain came in the first 6 weeks, and more than 2 hours a day did no better.", href: "https://pubmed.ncbi.nlm.nih.gov/15326120/", source: "MOTAS dose-response study" },
             { name: "Training in adults, pooled trials", who: "Trials of perceptual learning and video-game training covering 422 adults with a lazy eye.", found: "Vision improved with training. Two-eye and one-eye training gained about the same.", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12006629/", source: "Meta-analysis, 2025" },
           ],
@@ -364,8 +365,8 @@ export const site = {
           title: "Squint, and recovery after injury",
           items: [
             { name: "Therapy for a squint that comes and goes", who: "36 children aged 6 to under 18 had therapy with a therapist, or were watched.", found: "Control of the squint at distance was better by 0.9 points on a scale of 0 to 5.", limit: "One small trial, with a therapist.", href: "https://pubmed.ncbi.nlm.nih.gov/38146812/", source: "Randomised trial, 2024" },
-            { name: "CONCUSS", who: "106 patients aged 11 to 25 with a vision problem after concussion.", found: "79% improved with six weeks of therapy with a therapist, against 13% of those waiting.", limit: "Supervised therapy. Home practice alone was not tested.", href: "https://www.aoa.org/news/clinical-eye-care/diseases-and-conditions/vision-therapy-yields-faster-recovery-from-concussion-related-eye-condition", source: "Trial summary, American Optometric Association", more: { label: "Full paper", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12591301/" } },
-            { name: "Eye-Search", who: "78 patients with half-field loss after stroke used a free web therapy.", found: "Search into the blind side sped up by 24% after 800 trials over 11 days.", limit: "It trains searching. It does not bring back the lost field.", href: "https://discovery.ucl.ac.uk/1462660/", source: "University College London" },
+            { name: "CONCUSS", who: "106 people aged 11 to 25 with a vision problem after concussion.", found: "79% improved with six weeks of therapy with a therapist, against 13% of those waiting.", limit: "Supervised therapy. Home practice alone was not tested.", href: "https://www.aoa.org/news/clinical-eye-care/diseases-and-conditions/vision-therapy-yields-faster-recovery-from-concussion-related-eye-condition", source: "Trial summary, American Optometric Association", more: { label: "Full paper", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12591301/" } },
+            { name: "Eye-Search", who: "78 people with half-field loss after stroke used a free web therapy.", found: "Search into the blind side sped up by 24% after 800 trials over 11 days.", limit: "It trains searching. It does not bring back the lost field.", href: "https://discovery.ucl.ac.uk/1462660/", source: "University College London" },
           ],
         },
         {
@@ -385,7 +386,7 @@ export const site = {
       lead: "Each of these is said somewhere about eye training. The trials do not back them.",
       items: [
         { claim: "Home software alone treats convergence insufficiency in children.", why: "In the CITT trial it did no better than placebo therapy. What worked was weekly sessions with a therapist plus home practice.", href: "https://pubmed.ncbi.nlm.nih.gov/18852411/" },
-        { claim: "Vergence therapy improves reading.", why: "A trial found no advantage over placebo therapy for reading comprehension.", href: "https://eyewiki.org/Convergence_Insufficiency" },
+        { claim: "Eye-teaming therapy improves reading.", why: "A trial found no advantage over placebo therapy for reading comprehension.", href: "https://eyewiki.org/Convergence_Insufficiency" },
         { claim: "Two-eye therapy beats patching.", why: "The Cochrane review found one trial that qualified, and no difference.", href: "https://discovery.ucl.ac.uk/id/eprint/10144211/" },
         { claim: "Eye exercises remove the need for glasses.", why: "None of the trials on this page tested or supports this.", href: null },
         { claim: "Exercises straighten a squint that is always there.", why: "We found no trial showing that any exercise does this.", href: null },
@@ -420,7 +421,7 @@ export const site = {
 
   /* ───────────── /safety ───────────── */
   safety: {
-    meta: { title: "Safety", description: "The rules IOpener enforces: questions before training, an eye doctor first for warning signs, a daily limit, no screen sessions for the very young, a stop button, and no dose set by AI." },
+    meta: { title: "Safety", description: "The rules IOpener enforces. Questions before training, an eye doctor first for warning signs, a daily limit, no screen sessions for the very young, a stop button, and no dose set by AI." },
     hero: {
       kicker: "Safety",
       title: "The rules the app will not bend.",
@@ -473,7 +474,7 @@ export const site = {
     counsellor: {
       title: "Counsellor-only programmes",
       body: (names: string) => `The ${names} programmes open only when a verified eye counsellor is linked to the member and has set the dose.`,
-      why: "These can do harm without supervision. Training a squint alone can cause lasting double vision, and new symptoms after a head injury or a stroke need a diagnosis first.",
+      why: "These can do harm without supervision. Training a squint alone can cause lasting double vision, and new symptoms after a head injury or a stroke need a doctor to look at them first.",
     },
     ai: {
       title: "AI never sets a dose",
@@ -810,7 +811,7 @@ export const site = {
         {
           id: "consent", title: "A guardian agrees first",
           body: [
-            "When a child's profile is added, a parent or guardian ticks a box to say they are the child's parent or guardian and agree to the child using IOpener. The app records who agreed and when.",
+            "When a child's profile is added, a parent or guardian ticks a box. It says they are the child's parent or guardian and agree to the child using IOpener. The app records who agreed and when.",
             "A child cannot train until that is done, and the guardian can take the agreement back.",
             "India's Digital Personal Data Protection Act, 2023, asks for verifiable consent from a parent before a child's data is handled. A stronger, verifiable consent step is being built toward that standard. We do not claim to meet it yet.",
           ],
@@ -944,7 +945,7 @@ export const site = {
       cols: { from: "From", kind: "Kind", message: "Message", status: "Status" },
     },
   },
-};
+}));
 
 /** Words for one evidence label where a page needs a short tone, not the full meaning. */
 export const evidenceTone = (key: EvidenceKey): "ok" | "plain" | "warn" | "none" =>

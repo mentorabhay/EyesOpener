@@ -11,14 +11,14 @@ import { ENQUIRY_DAILY_LIMIT, ENQUIRY_MAX, ENQUIRY_MIN_AGE, readEnquiry, saveEnq
 export type EnquiryAnswer = { ok: boolean; message: string; problems?: string[]; fields?: EnquiryField[] } | null;
 
 const e = t.enquiry;
-const problemText: Record<EnquiryField, string> = {
+const problemText = (): Record<EnquiryField, string> => ({
   name: e.problems.name(ENQUIRY_MAX.name),
   organisation: e.problems.organisation(ENQUIRY_MAX.organisation),
   email: e.problems.email,
   kind: e.problems.kind,
   message: e.problems.message(ENQUIRY_MAX.message),
   adult: e.problems.adult(ENQUIRY_MIN_AGE),
-};
+});
 /** The order the fields appear in the form, so the problems are listed top to bottom. */
 const FIELD_ORDER: EnquiryField[] = ["name", "organisation", "email", "kind", "message", "adult"];
 
@@ -28,7 +28,7 @@ export async function sendEnquiry(_prev: EnquiryAnswer, form: FormData): Promise
   const read = readEnquiry(fields);
   if (!read.ok) {
     const bad = FIELD_ORDER.filter((f) => read.fields.includes(f));
-    return { ok: false, message: e.result.invalid, problems: bad.map((f) => problemText[f]), fields: bad };
+    return { ok: false, message: e.result.invalid, problems: bad.map((f) => problemText()[f]), fields: bad };
   }
   /* A robot filled the hidden field. It is told all went well, and nothing is stored. */
   if (read.robot) return { ok: true, message: e.result.sent };

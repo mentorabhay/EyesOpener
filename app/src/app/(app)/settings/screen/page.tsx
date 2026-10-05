@@ -11,10 +11,10 @@ import { requireMember } from "@/lib/session";
 import { Flow } from "./flow";
 import css from "./screen.module.css";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 const TONE: Record<LeakLevel, Tone> = { clean: "ok", ghost: "warn", high: "danger" };
-const crumb = [{ href: "/settings", label: t.crumb }];
+const crumb = () => [{ href: "/settings", label: t.crumb }];
 /** The hatched motif: the usual value is in use, nothing was measured. */
 const Usual = ({ children }: { children: ReactNode }) => <span className={css.hatch}><span>{children}</span></span>;
 
@@ -28,7 +28,7 @@ export default async function ScreenPage() {
   if (!m.device) {
     return (
       <>
-        <PageHead title={t.title} sub={t.sub} crumb={crumb} />
+        <PageHead title={t.title} sub={t.sub} crumb={crumb()} />
         <Empty title={t.noScreen.title}><span>{t.noScreen.body}</span></Empty>
         {m.can("test") && <div className="row"><Btn href="/onboarding" kind="g">{t.noScreen.cta}</Btn></div>}
       </>
@@ -48,7 +48,7 @@ export default async function ScreenPage() {
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub} crumb={crumb}
+        title={t.title} sub={t.sub} crumb={crumb()}
         stats={[
           { value: gamma.value.toFixed(2), label: gamma.at ? r.stat.gamma : `${r.stat.gamma} · ${r.usual.toLowerCase()}` },
           { value: leak ? (Math.max(leak.red, leak.cyan) > 0 ? t.pct(Math.max(leak.red, leak.cyan)) : r.statNone) : <Void label={r.notMeasured} />, label: r.stat.leak },

@@ -7,14 +7,16 @@ import { day, settings as t } from "@/copy/settings";
 import { programmeBySlug, programmes } from "@/data";
 import { db, schema } from "@/db";
 import { ageFrom, MIN_SCREEN_AGE, percent } from "@/engine";
+import { LanguageCard } from "@/i18n/menu";
 import { switchProfile } from "@/lib/actions";
 import { blockedBy, gates } from "@/lib/family";
 import { requireMember } from "@/lib/session";
 import { askCounsellor, leave, start } from "./actions";
 import { Confirm } from "./confirm";
 import { DataCard } from "./data/card";
+import { programmeWords } from "@/data/words";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function SettingsPage() {
   const m = await requireMember();
@@ -79,11 +81,11 @@ export default async function SettingsPage() {
             <>
               {g.triage?.redFlag && (programme?.level ?? 0) > 0 && <p className="notice" data-b="danger">{p.blocked.doctor_first}</p>}
               <dl className="kv">
-                <div><dt>{p.rows.name}</dt><dd>{programme?.name ?? enrolment.programme}</dd></div>
+                <div><dt>{p.rows.name}</dt><dd>{programme ? programmeWords(programme).name : enrolment.programme}</dd></div>
                 <div><dt>{p.rows.minutes}</dt><dd>{waiting ? p.waiting : p.minutes(enrolment.dailyMinutes)}</dd></div>
                 <div><dt>{p.rows.days}</dt><dd className="tnum">{waiting ? <Void label={p.notSet} /> : enrolment.daysPerWeek}</dd></div>
                 <div><dt>{p.rows.week}</dt><dd className="tnum">{enrolment.week}</dd></div>
-                <div><dt>{p.rows.basis}</dt><dd>{programme?.doseBasis ?? <Void label={p.notSet} />}</dd></div>
+                <div><dt>{p.rows.basis}</dt><dd>{programme ? programmeWords(programme).doseBasis : <Void label={p.notSet} />}</dd></div>
               </dl>
               {canManage && (
                 <Confirm ask={p.leave.ask} warn={p.leave.warn}>
@@ -111,12 +113,12 @@ export default async function SettingsPage() {
                     <div>
                       {programmes.filter((pg) => pg.level === n).map((pg) => (
                         <div className="ins" key={pg.slug}>
-                          <div className="tx">{pg.name}<div className="sub">{pg.doseBasis}</div></div>
+                          <div className="tx">{programmeWords(pg).name}<div className="sub">{programmeWords(pg).doseBasis}</div></div>
                           {canManage && !why && (
                             <form action={start}>
                               <input type="hidden" name="profileId" value={m.profile.id} />
                               <input type="hidden" name="slug" value={pg.slug} />
-                              <button className="btn btn-sm" aria-label={p.startOf(pg.name)}>{p.start}</button>
+                              <button className="btn btn-sm" aria-label={p.startOf(programmeWords(pg).name)}>{p.start}</button>
                             </form>
                           )}
                         </div>
@@ -163,6 +165,9 @@ export default async function SettingsPage() {
             </div>
           ) : <Empty title={t.devices.empty.title}><span>{t.devices.empty.body}</span></Empty>}
         </Card>
+
+        {/* The household's language: src/i18n/menu.tsx */}
+        <LanguageCard canChange={canManage} staff={!!m.viewer.staff} />
 
         {/* The family's copy of its data, and deletion: src/app/(app)/settings/data/card.tsx */}
         <DataCard m={m} />

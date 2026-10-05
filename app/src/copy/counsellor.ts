@@ -1,11 +1,12 @@
 /** Words for the counsellor portal. */
 import { MAX_DAILY_MINUTES } from "@/engine";
+import { texts } from "@/i18n/texts";
 
 export const day = (d: Date) => new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeZone: "Asia/Kolkata" }).format(d);
 /** "4 Oct" from a stored day key (YYYY-MM-DD). */
 export const shortDay = (key: string) => new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", timeZone: "UTC" }).format(new Date(key + "T00:00:00Z"));
 
-export const counsellor = {
+export const counsellor = texts("copy/counsellor", "counsellor", () => ({
   area: "Counsellor portal",
   role: "Counsellor",
   nav: { title: "Your work", members: "Members", profile: "Your details", other: "Your other areas", family: "Family app", admin: "Admin console", sponsor: "Sponsor portal" },
@@ -130,4 +131,4 @@ export const counsellor = {
     about: "Families find you by this email when they ask to link a member.",
     change: "To change your name or email, write to the IOpener team.",
   },
-};
+}));

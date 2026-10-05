@@ -8,9 +8,10 @@ import { guideFor } from "@/data/guides";
 import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { doseFor } from "@/lib/sessions";
-import { forWhom, isListed, statusOf } from "@/lib/status";
+import { isListed, statusOf } from "@/lib/status";
+import { exerciseWords } from "@/data/words";
 
-export const metadata: Metadata = { title: t.exercises.title };
+export const generateMetadata = (): Metadata => ({ title: t.exercises.title });
 
 export default async function ExercisesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
@@ -47,8 +48,8 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
                     {guideFor(e.slug) && <Chip>{t.exercise.tool[guideFor(e.slug)!.tool.kind]}</Chip>}
                     {status(e.slug) !== "open" && <Chip tone={status(e.slug) === "counsellor" ? "plain" : "warn"}>{t.exercise.statusFor[status(e.slug)]}</Chip>}
                   </div>
-                  <div>{e.how}</div>
-                  <div className="sub">{l.for}: {forWhom(e.for)} · {l.gear}: {e.gear} · {l.dose}: {e.dose}</div>
+                  <div>{exerciseWords(e).how}</div>
+                  <div className="sub">{l.for}: {exerciseWords(e).who} · {l.gear}: {exerciseWords(e).gear} · {l.dose}: {exerciseWords(e).dose}</div>
                 </div>
               </div>
             ))}

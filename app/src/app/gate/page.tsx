@@ -5,7 +5,7 @@ import { gate as t } from "@/copy/gate";
 import { safeNext, siteLock } from "@/lib/gate";
 import { GateForm } from "./form";
 
-export const metadata: Metadata = { title: t.title, robots: { index: false, follow: false } };
+export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
 
 /** The one page a locked site shows. With no lock set it does not exist: it sends people to the home page. */
 export default async function GatePage({ searchParams }: { searchParams: Promise<{ next?: string }> }) {

@@ -9,7 +9,7 @@ import { db, schema } from "@/db";
 import { getViewer } from "@/lib/auth";
 import { joinHousehold } from "./actions";
 
-export const metadata: Metadata = { title: t.title, robots: { index: false, follow: false } };
+export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
 
 /** An invite code as it may arrive in a link: letters and digits only, so nothing else rides along into the sign-in page's address. */
 const tidy = (code: string | undefined) => (code ?? "").replace(/[^A-Za-z0-9]/g, "").toUpperCase().slice(0, 20);

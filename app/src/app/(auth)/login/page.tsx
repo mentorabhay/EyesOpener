@@ -12,7 +12,7 @@ import { holdOf, loginGate } from "@/lib/signin/hold";
 import { settingsProblems, signInSettings } from "@/lib/signin/settings";
 import { LoginView, type DemoGroup } from "./view";
 
-export const metadata: Metadata = { title: t.title, robots: { index: false, follow: false } };
+export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
 
 /** The seeded people of the demo, by the side of IOpener each shows. */
 async function demoGroups(viewer: Viewer | null): Promise<DemoGroup[]> {

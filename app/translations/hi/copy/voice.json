@@ -1,0 +1,163 @@
+{
+ "lang": "hi",
+ "file": "copy/voice",
+ "entries": {
+  "voice.about(*)": {
+   "source": "8d431fa3c7f68d",
+   "english": "Listen: {what}",
+   "text": "सुनें: {what}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "what"
+   ]
+  },
+  "voice.again": {
+   "source": "4623c16fd616b3",
+   "english": "Listen again",
+   "text": "फिर से सुनें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.busy": {
+   "source": "37b8cc7d2d21bd",
+   "english": "Another sound is playing. Pause it first, then press Listen.",
+   "text": "कोई दूसरी आवाज़ बज रही है। पहले उसे रोकें, फिर सुनें दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.failed": {
+   "source": "f0d65954a913fd",
+   "english": "The audio could not be played. Check the connection and try again.",
+   "text": "ऑडियो नहीं चल सका। कनेक्शन जाँचें और फिर से कोशिश करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.goOn": {
+   "source": "670e737112e619",
+   "english": "Go on",
+   "text": "आगे बढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.inLanguage(*)": {
+   "source": "f51c5909a2a7f5",
+   "english": "Spoken in {name}",
+   "text": "{name} में बोला गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "voice.length(0)": {
+   "source": "d46f76dc4ee2e0",
+   "english": "1 s",
+   "text": "1 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.length(1)": {
+   "source": "d46f76dc4ee2e0",
+   "english": "1 s",
+   "text": "1 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/voice:voice.length(0)"
+  },
+  "voice.listen": {
+   "source": "dc028c8a7226b2",
+   "english": "Listen",
+   "text": "सुनें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.loading": {
+   "source": "25a614f52e9f65",
+   "english": "Loading",
+   "text": "लोड हो रहा है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.parts.clip": {
+   "source": "6facf2e8538e2a",
+   "english": "How this clip goes",
+   "text": "यह क्लिप कैसी है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.parts.cues": {
+   "source": "4eb07dcce232f1",
+   "english": "When you see this, do this",
+   "text": "जब यह दिखे, तब यह करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.cues"
+  },
+  "voice.parts.right": {
+   "source": "faf0a5040b557a",
+   "english": "You are doing it right when",
+   "text": "आप इसे सही कर रहे हैं जब",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/train:train.exercise.right"
+  },
+  "voice.parts.see": {
+   "source": "7eb6c18742bb63",
+   "english": "What you should see",
+   "text": "आपको क्या दिखना चाहिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.see"
+  },
+  "voice.parts.setup": {
+   "source": "7f3928a7d76875",
+   "english": "Get ready",
+   "text": "तैयार हो जाएं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.ready"
+  },
+  "voice.parts.steps": {
+   "source": "3059a5aee72961",
+   "english": "Steps",
+   "text": "कदम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.play"
+  },
+  "voice.parts.stop": {
+   "source": "c29e4e37bcca35",
+   "english": "When to stop",
+   "text": "कब रुकना है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.parts.what": {
+   "source": "f0f55d762f3a9a",
+   "english": "What it is",
+   "text": "यह क्या है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.game.guide.what"
+  },
+  "voice.pause": {
+   "source": "58a541e86f31d8",
+   "english": "Pause",
+   "text": "रोकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "voice.progress(*,*)": {
+   "source": "b092fbaad644dd",
+   "english": "{at} of {of}",
+   "text": "{of} में से {at}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "at",
+    "of"
+   ]
+  },
+  "voice.restart": {
+   "source": "dc3bc60134ef6d",
+   "english": "From the start",
+   "text": "शुरुआत से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

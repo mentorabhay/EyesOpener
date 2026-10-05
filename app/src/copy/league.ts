@@ -8,6 +8,8 @@
  * The only names a team can have. A team is never named by a member, and never after a person, a family or a place
  * a family could be found by. A league uses each name once.
  */
+import { texts } from "@/i18n/texts";
+
 export const TEAM_NAMES = [
   "Team Mango", "Starfish", "Kite Club", "Night Owls", "Kingfishers", "Fireflies", "Paper Boats", "Marigolds",
   "Peacocks", "River Otters", "Lanterns", "Blue Hills", "Sparrows", "Sea Turtles", "Jasmine", "Rainbows",
@@ -16,7 +18,7 @@ export const TEAM_NAMES = [
 
 const days = (n: number) => (n === 1 ? "1 day" : `${n} days`);
 
-export const league = {
+export const league = texts("copy/league", "league", () => ({
   title: "Show-up league",
   /** What counts as a day, in one plain sentence. */
   rule: "A day counts when the day's practice minutes are done. Scores, speed, levels and extra minutes never count.",
@@ -128,4 +130,4 @@ export const league = {
     days: "Takes members off teams they may no longer be on, and brings this week's days up to date for every team.",
     done: "done",
   },
-};
+}));

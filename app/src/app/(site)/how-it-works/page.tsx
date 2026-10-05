@@ -12,11 +12,11 @@ import { Glasses, Icon, RingsArt, TwoLights } from "../_components/art";
 import { Cta, Head, Hero, NotBuilt, Points, Section } from "../_components/parts";
 
 const h = t.how;
-export const metadata: Metadata = pageMeta("/how-it-works", h.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/how-it-works", h.meta));
 
 /** How long each part of the check takes, in the app's own words. */
 const o = onboarding.steps;
-const durations: (string | null)[] = [o.screen[1], `${o.L[1]} + ${o.R[1]}`, o.both[1], null, null];
+const durationOf = (i: number): string | null => [o.screen[1], `${o.L[1]} + ${o.R[1]}`, o.both[1], null, null][i] ?? null;
 /** How often check-ups come round, from the catalogue. */
 const every = [...new Set(tests.map((x) => x.everyDays))].sort((a, b) => a - b);
 
@@ -61,7 +61,7 @@ export default function HowItWorksPage() {
             <ol className="s-steps">
               {h.path.steps.map((s, i) => (
                 <li key={s.title} className="s-reveal">
-                  <h3>{s.title}{durations[i] && <Chip><span className="tnum" aria-label={`${h.path.durations}: ${durations[i]}`}>{durations[i]}</span></Chip>}</h3>
+                  <h3>{s.title}{durationOf(i) && <Chip><span className="tnum" aria-label={`${h.path.durations}: ${durationOf(i)}`}>{durationOf(i)}</span></Chip>}</h3>
                   <p>{typeof s.body === "string" ? s.body : s.body(i === 1 ? onboarding.questions.length : TRIAGE_KEYS.length)}</p>
                 </li>
               ))}

@@ -4,6 +4,8 @@
  * A patch, glasses and drops are prescribed by an eye doctor. Every guide here says so, and none sets hours, days or a dose.
  */
 import type { Guide, Measure, Source } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GUIDE_WORDS } from "./words";
 
 /* ── sources (each opened or confirmed when this file was written) ── */
 
@@ -94,7 +96,7 @@ const hoursOfGlasses = typed(
   18, 0.5, "higher",
 );
 
-export const guides: Guide[] = [
+export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
   /* ── the two-eye cinema ── */
   {
     slug: "cinema-session",
@@ -407,7 +409,7 @@ export const guides: Guide[] = [
       "Starting a patch or training early. The eye doctor says when glasses have done their part.",
     ],
     tool: { kind: "log" },
-    evidence: "In a study of 84 children aged 3 to 6 with a lazy eye from unequal focus, glasses alone improved sight by two lines or more in 77%, and the lazy eye resolved in 27%. Sight was checked every five weeks, and the gain took up to 30 weeks.",
+    evidence: "In a study of 84 children aged 3 to 6 with a lazy eye from unequal focus, glasses alone improved sight by two lines or more in 77%, and 27% no longer had a lazy eye. Sight was checked every five weeks, and the gain took up to 30 weeks.",
     sources: [GLASSES_ALONE],
   },
   {
@@ -602,4 +604,4 @@ export const guides: Guide[] = [
     evidence: "Lining-up tasks were among the first shown to improve with practice in adults with lazy eye, sometimes with a gain on the letter chart too. The studies were small and gains were strongest on the task practised. This screen drill itself is untested.",
     sources: [LEARNING_REVIEW, ADULT_TRAINING],
   },
-];
+], GUIDE_WORDS);

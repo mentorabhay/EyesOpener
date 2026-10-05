@@ -7,13 +7,14 @@ import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 
 const n = common.nav;
-const GROUPS = [
+/* Functions, not lists made once: the labels are read for each request, in that reader's language (docs/LANGUAGES.md). */
+const groups = () => [
   { title: n.track, items: [{ href: "/today", label: n.today }] },
   { title: n.test, items: [{ href: "/test", label: n.checkups }, { href: "/onboarding", label: n.onboarding }] },
   { title: n.train, items: [{ href: "/train", label: n.games }, { href: "/train/exercises", label: n.exercises }, { href: "/train/cinema", label: n.cinema }] },
   { title: n.together, items: [{ href: "/together", label: n.community }, { href: "/together/league", label: n.league }] },
 ];
-const TABS = [{ href: "/today", label: n.track }, { href: "/test", label: n.test }, { href: "/train", label: n.train }, { href: "/together", label: n.together }, { href: "/settings", label: n.settings }];
+const tabs = () => [{ href: "/today", label: n.track }, { href: "/test", label: n.test }, { href: "/train", label: n.train }, { href: "/together", label: n.together }, { href: "/settings", label: n.settings }];
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const m = await requireMember();
@@ -40,7 +41,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           <b>{m.profile.displayName}</b>
           <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span>
         </Link>
-        <NavGroups groups={[...GROUPS, { title: "You", items: you }, ...(areas.length && !m.childMode ? [{ title: "Your other areas", items: areas }] : [])]} />
+        <NavGroups groups={[...groups(), { title: n.you, items: you }, ...(areas.length && !m.childMode ? [{ title: n.otherAreas, items: areas }] : [])]} />
         <p className="foot">{common.notMedical}</p>
       </aside>
       <div className="main">
@@ -49,7 +50,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
           {children}
         </main>
       </div>
-      <TabBar items={m.childMode ? [...TABS.slice(0, 4), { href: "/leave-child-mode", label: n.grownUp }] : TABS} />
+      <TabBar items={m.childMode ? [...tabs().slice(0, 4), { href: "/leave-child-mode", label: n.grownUp }] : tabs()} />
     </div>
   );
 }

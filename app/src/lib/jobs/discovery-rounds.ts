@@ -10,7 +10,7 @@ import type { Job } from "./index";
 export const discoveryRounds: Job = {
   name: "discovery-rounds",
   cadence: "daily",
-  what: words.job.what,
+  get what() { return words.job.what; },
   run: async (now) => {
     /* loaded when the job runs, so listing the jobs does not open the Discovery Board's queries */
     const { closeDueRounds } = await import("@/lib/discovery-data");

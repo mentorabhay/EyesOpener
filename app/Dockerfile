@@ -25,6 +25,8 @@ FROM node:22-slim AS runner
 WORKDIR /app
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=8080 HOSTNAME=0.0.0.0
 COPY --from=builder /app/public ./public
+# The reviewed translations are read from files at run time (src/i18n); the build does not trace them.
+COPY --from=builder /app/translations ./translations
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 USER node

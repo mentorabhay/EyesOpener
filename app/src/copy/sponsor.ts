@@ -1,9 +1,10 @@
 /** Words for the sponsor portal. */
 import { SPONSOR_MIN_GROUP } from "@/lib/roles";
+import { texts } from "@/i18n/texts";
 
 export const day = (d: Date) => new Intl.DateTimeFormat("en-IN", { dateStyle: "medium", timeZone: "Asia/Kolkata" }).format(d);
 
-export const sponsor = {
+export const sponsor = texts("copy/sponsor", "sponsor", () => ({
   area: "Sponsor portal",
   role: { owner: "Owner", editor: "Editor" },
   nav: { title: "Your organisation", overview: "Overview", groups: "Groups", glasses: "Glasses", team: "Team", other: "Your other areas", family: "Family app", admin: "Admin console", counsellor: "Counsellor portal" },
@@ -106,4 +107,4 @@ export const sponsor = {
       result: { done: "Added to the team.", invalid: "Type a full email address.", not_found: "No IOpener person has this email.", already: "This person is already on the team." },
     },
   },
-};
+}));

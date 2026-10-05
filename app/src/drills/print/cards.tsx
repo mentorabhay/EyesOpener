@@ -324,7 +324,8 @@ function pairsPage() {
 
 const card = (key: PrintKey, pages: ReactNode[]): PrintCard => ({ title: c[key].title, how: c[key].how, pages });
 
-export const cards: Record<PrintKey, PrintCard> = {
+/** Built when asked for, never while the file loads: the words on a card are read for the person who prints it. */
+export const allCards = (): Record<PrintKey, PrintCard> => ({
   barrel: card("barrel", [barrelPage()]),
   dots: card("dots", [dotsPage()]),
   lifesaver: card("lifesaver", [lifesaverPage()]),
@@ -332,6 +333,6 @@ export const cards: Record<PrintKey, PrintCard> = {
   letter: card("letter", [letterPage()]),
   grid: card("grid", [gridPage()]),
   pairs: card("pairs", [pairsPage()]),
-};
+});
 
-export const cardFor = (key: PrintKey): PrintCard => cards[key];
+export const cardFor = (key: PrintKey): PrintCard => allCards()[key];

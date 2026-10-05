@@ -33,6 +33,8 @@ export type SitePath = (typeof SITE_PAGES)[number];
 export const PRIVATE_PATHS = [
   "/admin", "/counsellor", "/sponsor", "/login", "/join", "/today", "/train", "/test", "/together", "/family",
   "/settings", "/onboarding", "/circle", "/leave-child-mode",
+  /* the addresses that set a browser's language and carry its words: nothing for a search engine to read */
+  "/lang",
 ] as const;
 
 /** Title, description, canonical address and Open Graph for one public page. The root layout adds the site name to the title. */

@@ -46,7 +46,7 @@
   },
   {
    "key": "verg",
-   "label": "Vergence training",
+   "label": "Eye-teaming training",
    "evidence": "sup",
    "basis": "With weekly supervised sessions, 73% of children succeeded or improved. Adults gained 17 prism dioptres of reserve."
   },
@@ -132,7 +132,7 @@
    "key": "monitor",
    "label": "Home monitoring",
    "evidence": "measures",
-   "basis": "Cleared home tests of this kind exist. Results are compared with the user's own baseline."
+   "basis": "Cleared home tests of this kind exist. Results are compared with the person's own first results."
   },
   {
    "key": "drops",
@@ -367,7 +367,7 @@
    "for": "Ages 3+ · level 0",
    "playsOn": "TV at 3 m, tablet",
    "gear": "Patch for one eye at a time",
-   "session": "3 min per eye",
+   "session": "3 min for each eye",
    "tags": [
     "all"
    ],
@@ -484,8 +484,8 @@
    "name": "Flip Switch",
    "group": "Convergence",
    "mechanism": "verg",
-   "how": "Alternate converge and diverge demand and count the flips per minute.",
-   "purpose": "Vergence flexibility",
+   "how": "The targets ask the eyes to turn in, then out, in turn. Count how many switches you make in a minute.",
+   "purpose": "Switching quickly between turning the eyes in and turning them out",
    "for": "Convergence insufficiency · ages 9+",
    "gear": "Red-cyan glasses, tablet",
    "dose": "3 min"
@@ -496,7 +496,7 @@
    "group": "Convergence",
    "mechanism": "verg",
    "how": "Hold a high demand for two minutes without doubling.",
-   "purpose": "Slow adaptation of the vergence system",
+   "purpose": "Holding the eyes turned in for longer, without strain",
    "for": "Convergence insufficiency · ages 12+ and adults",
    "gear": "Red-cyan glasses, tablet",
    "dose": "2 min, 3 sets"
@@ -521,7 +521,7 @@
    "purpose": "Equal focusing in each eye",
    "for": "Focusing problems · ages 8+",
    "gear": "Patch, chart and card",
-   "dose": "2 min per eye"
+   "dose": "2 min for each eye"
   },
   {
    "slug": "cinema-session",
@@ -772,7 +772,7 @@
    "mechanism": "verg",
    "how": "The home half of supervised therapy: the drills the therapist set that week, timed and logged.",
    "purpose": "Doing the home practice the trials required",
-   "for": "People in supervised vergence therapy",
+   "for": "People doing eye-teaming therapy with a therapist",
    "gear": "Phone",
    "dose": "15 min a day, 5 days a week, 12 weeks"
   },

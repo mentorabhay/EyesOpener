@@ -1,0 +1,402 @@
+{
+ "lang": "hi",
+ "file": "copy/programme",
+ "entries": {
+  "programme.card.finished": {
+   "source": "5bd7fa9fff932a",
+   "english": "Today's practice is done.",
+   "text": "आज का अभ्यास पूरा हो गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.goOn": {
+   "source": "048968df5f7228",
+   "english": "Carry on with today's practice",
+   "text": "आज का अभ्यास जारी रखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.habits": {
+   "source": "5964c8a0e413c4",
+   "english": "Today's habits are done.",
+   "text": "आज की आदतें पूरी हो गईं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.next(*,*,*)": {
+   "source": "8cd468ad3ae08f",
+   "english": "Part {n} of {total}: {part}.",
+   "text": "{total} में से भाग {n}: {part}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "n",
+    "total",
+    "part"
+   ]
+  },
+  "programme.card.openPlan": {
+   "source": "f971aff8caa736",
+   "english": "See the plan",
+   "text": "प्लान देखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.plan": {
+   "source": "cafa6535390dd6",
+   "english": "This week's plan",
+   "text": "इस सप्ताह का प्लान",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.rest": {
+   "source": "610aed96f643fa",
+   "english": "Today is a rest day. Nothing to do.",
+   "text": "आज आराम का दिन है। कुछ नहीं करना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.start": {
+   "source": "76914265fdb5ff",
+   "english": "Start today's practice",
+   "text": "आज का अभ्यास शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.card.weekOf(*,*,*)": {
+   "source": "e4e4e96b7033ca",
+   "english": "{name} programme, week {week} of {weeks}.",
+   "text": "{name} प्रोग्राम, {weeks} में से सप्ताह {week}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name",
+    "week",
+    "weeks"
+   ]
+  },
+  "programme.card.weekOf(*,*,null)": {
+   "source": "42cfde7dfff065",
+   "english": "{name} programme, week {week}.",
+   "text": "{name} प्रोग्राम, सप्ताह {week}।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name",
+    "week",
+    "weeks"
+   ]
+  },
+  "programme.card.weekOf(*,0,null)": {
+   "source": "2a7a5f1f65de10",
+   "english": "{name} programme, week 0.",
+   "text": "{name} प्रोग्राम, सप्ताह 0।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name",
+    "week",
+    "weeks"
+   ]
+  },
+  "programme.card.weekOf(*,1,null)": {
+   "source": "74e2d26f811558",
+   "english": "{name} programme, week 1.",
+   "text": "{name} प्रोग्राम, सप्ताह 1।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "name",
+    "week",
+    "weeks"
+   ]
+  },
+  "programme.today.breaks(*,*)": {
+   "source": "27bf48df555d0c",
+   "english": "{done} of {goal} breaks",
+   "text": "{goal} में से {done} ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.breaks(*,1)": {
+   "source": "1c497abce40bad",
+   "english": "{done} of 1 break",
+   "text": "1 में से {done} ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.cannotTrain": {
+   "source": "4ef4ca154ff0bc",
+   "english": "You can look at the plan. A guardian or the member starts the practice.",
+   "text": "आप प्लान देख सकते हैं। अभ्यास अभिभावक या सदस्य शुरू करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.care": {
+   "source": "5098ae9d9de18f",
+   "english": "Away from the screen",
+   "text": "स्क्रीन से दूर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.careNote": {
+   "source": "e4ff10f74353bb",
+   "english": "These do not use up training minutes.",
+   "text": "इनमें ट्रेनिंग के मिनट इस्तेमाल नहीं होते।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.done": {
+   "source": "60609f822e0571",
+   "english": "Done",
+   "text": "पूरा हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.empty.body": {
+   "source": "1e8f29b942bd1f",
+   "english": "The items of this programme are for other ages, or staff have closed them for now. Check-ups still work.",
+   "text": "इस प्रोग्राम की चीज़ें दूसरी उम्र के लिए हैं, या स्टाफ़ ने इन्हें अभी के लिए बंद कर दिया है। जाँच अब भी काम करती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.empty.title": {
+   "source": "6e50a84040b36a",
+   "english": "Nothing in the library fits this profile yet",
+   "text": "लाइब्रेरी में अभी इस प्रोफ़ाइल के लिए कुछ नहीं है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.finished.body": {
+   "source": "34a31bc4c8df03",
+   "english": "That is all for today. Rest your eyes. The next day's practice opens tomorrow.",
+   "text": "आज के लिए बस इतना ही। अपनी आँखों को आराम दें। अगले दिन का अभ्यास कल खुलेगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.finished.title": {
+   "source": "a586dc5a3f7704",
+   "english": "Today's practice is done",
+   "text": "आज का अभ्यास पूरा हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.goOn": {
+   "source": "b57fcc720e6f92",
+   "english": "Carry on",
+   "text": "जारी रखें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.habitsDone.body": {
+   "source": "759855db470ffa",
+   "english": "The rings for today are closed.",
+   "text": "आज के रिंग पूरे हो गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.habitsDone.title": {
+   "source": "38c39b129c5398",
+   "english": "Today's habits are done",
+   "text": "आज की आदतें पूरी हुईं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.instead": {
+   "source": "43221391c5f21c",
+   "english": "Seeing a therapist? Do the list they gave you instead. The time counts as today's practice.",
+   "text": "क्या किसी थेरेपिस्ट को दिखा रहे हैं? इसके बजाय उनकी दी हुई लिस्ट करें। यह समय आज के अभ्यास में गिना जाएगा।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.insteadLink": {
+   "source": "a6a226373f2ec6",
+   "english": "Open the homework timer",
+   "text": "होमवर्क टाइमर खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.logged": {
+   "source": "043798d02cb690",
+   "english": "Logged today",
+   "text": "आज दर्ज किया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.minutes(0,*)": {
+   "source": "06fadfcb793566",
+   "english": "0 of {goal} minutes",
+   "text": "{goal} में से 0 मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.minutes(0,1)": {
+   "source": "c4c395dcd83d32",
+   "english": "0 of 1 minute",
+   "text": "1 मिनट में से 0",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.minutes(1,*)": {
+   "source": "6de27162507c3a",
+   "english": "1 of {goal} minutes",
+   "text": "{goal} में से 1 मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.minutes(1,1)": {
+   "source": "e4eb729127dd60",
+   "english": "1 of 1 minute",
+   "text": "1 में से 1 मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.notLogged": {
+   "source": "b0d67e45065c02",
+   "english": "Not logged today",
+   "text": "आज दर्ज नहीं किया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.openLog": {
+   "source": "31e153c202f967",
+   "english": "Open the log",
+   "text": "लॉग खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.or": {
+   "source": "5f6486c6b014ee",
+   "english": "Or choose:",
+   "text": "या चुनें:",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.outside(0,*)": {
+   "source": "9b22cf4c241833",
+   "english": "0 of {goal} min outside",
+   "text": "बाहर {goal} में से 0 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.outside(1,*)": {
+   "source": "a69b8981d69b57",
+   "english": "1 of {goal} min outside",
+   "text": "बाहर {goal} में से 1 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.partMinutes(0,*)": {
+   "source": "1ab68a5da799b1",
+   "english": "0 of {goal} min",
+   "text": "{goal} में से 0 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.partMinutes(1,*)": {
+   "source": "b50d6e3ecea381",
+   "english": "1 of {goal} min",
+   "text": "{goal} में से 1 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "done",
+    "goal"
+   ]
+  },
+  "programme.today.progress": {
+   "source": "e508efcb5ec4b8",
+   "english": "Today's practice",
+   "text": "आज का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/programme:programme.today.title"
+  },
+  "programme.today.rest.body": {
+   "source": "b2560495d84d9d",
+   "english": "You have done this week's practice days. Nothing to do today.",
+   "text": "आपने इस सप्ताह के अभ्यास के दिन पूरे कर लिए हैं। आज कुछ नहीं करना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.rest.title": {
+   "source": "80f787ad524bc1",
+   "english": "Today is a rest day",
+   "text": "आज आराम का दिन है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.start": {
+   "source": "344de7fabb13dc",
+   "english": "Start",
+   "text": "शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.startOf(*)": {
+   "source": "b0ac881c8c6d98",
+   "english": "Start: {part}",
+   "text": "शुरू करें: {part}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash",
+   "params": [
+    "part"
+   ]
+  },
+  "programme.today.suggestion": {
+   "source": "b785509440b4a3",
+   "english": "This plan is a suggestion. Your counsellor can see it, and your counsellor sets the minutes and the days.",
+   "text": "यह प्लान एक सुझाव है। आपके काउंसलर इसे देख सकते हैं, और आपके काउंसलर ही मिनट और दिन तय करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.title": {
+   "source": "e508efcb5ec4b8",
+   "english": "Today's practice",
+   "text": "आज का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.waiting.body": {
+   "source": "91fd27a39bd062",
+   "english": "Your counsellor sets the minutes and the days. Until then this is what a day may hold. Nothing can be started yet.",
+   "text": "आपके काउंसलर मिनट और दिन तय करते हैं। तब तक एक दिन में यह सब हो सकता है। अभी कुछ भी शुरू नहीं किया जा सकता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "programme.today.waiting.title": {
+   "source": "41c2ee0e1ad362",
+   "english": "Waiting for your counsellor",
+   "text": "आपके काउंसलर का इंतज़ार है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

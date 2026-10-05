@@ -1,9 +1,10 @@
 /** Words for Keeper Graduation. Finishing means the weeks were kept. It never says what changed in the eyes. */
 import type { KeeperRefusal, ThanksKey, WelcomeKey } from "@/lib/graduation";
+import { texts } from "@/i18n/texts";
 
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 
-export const graduation = {
+export const graduation = texts("copy/graduation", "graduation", () => ({
   stats: { weeks: "Weeks kept", days: "Days with practice" },
   fromWeek: "Open your graduation",
 
@@ -135,4 +136,4 @@ export const graduation = {
     nothing: "There is nothing to change.",
     given: "It has already reached a family, so it cannot be taken back.",
   } satisfies Record<KeeperRefusal, string>,
-};
+}));

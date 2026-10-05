@@ -19,7 +19,7 @@ import { joinExperiment } from "./actions";
 const t = together.idea;
 const g = together.signal;
 const x = experiments;
-export const metadata: Metadata = { title: together.title };
+export const generateMetadata = (): Metadata => ({ title: together.title });
 
 export default async function IdeaPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;

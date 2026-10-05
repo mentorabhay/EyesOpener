@@ -12,7 +12,7 @@ import { Spaces } from "./_landing/Spaces";
 import type { LandingFacts } from "./_landing/types";
 import "./_landing/landing.css";
 
-export const metadata: Metadata = { title: { absolute: `IOpener: ${landing.meta.title}` }, description: landing.meta.description };
+export const generateMetadata = (): Metadata => ({ title: { absolute: `IOpener: ${landing.meta.title}` }, description: landing.meta.description });
 
 const LABEL_ORDER: EvidenceKey[] = ["strong", "sup", "moderate", "limited", "unproven", "measures"];
 /** The game drawn in the two-eye scene. If the catalogue ever drops it, the strongest two-eye game stands in. */

@@ -16,7 +16,7 @@ import { forWhom, isListed, statusOf } from "@/lib/status";
 import css from "./cinema.module.css";
 import { Player } from "./player";
 
-export const metadata: Metadata = { title: t.cinema.title };
+export const generateMetadata = (): Metadata => ({ title: t.cinema.title });
 
 export default async function CinemaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const m = await requireMember();

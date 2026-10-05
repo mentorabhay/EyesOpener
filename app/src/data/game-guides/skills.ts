@@ -8,6 +8,8 @@
 import type { Source } from "@/data/guides/types";
 import { frame, hud, key, tap, words } from "./cue";
 import type { CueInk, GameGuide, Shape } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GAME_GUIDE_WORDS } from "./words";
 
 /** Support for convergence problems; weaker support for depth training and for field loss after brain damage; "no clear scientific evidence" for the other uses of eye exercises. */
 const EXERCISE_REVIEW: Source = {
@@ -71,13 +73,13 @@ const head = (x: number, y: number, size: number, way: Way, ink: CueInk): Shape 
 /** The scene with its four quiet arrows at the edges: the places to tap. */
 const safari = (line: string): Shape[] => [frame(), hud(line), head(13, 50, 5, "left", "weak"), head(147, 50, 5, "right", "weak"), head(80, 24, 5, "up", "weak"), head(80, 81, 5, "down", "weak")];
 
-export const guides: GameGuide[] = [
+export const guides: GameGuide[] = textsEach("data/game-guides/skills", () => [
   {
     slug: "comet-trail",
     what: "A white comet with a tail drifts round the screen on a smooth path. You keep a cyan ring on it, with a finger or with the arrow keys. Every whole second the ring is on the comet adds one to the score.",
     helps:
       "Following something that moves steadily is called smooth tracking. The game gives the eyes a slow, even target to follow, and a hand task that shows whether you stayed with it. " +
-      "No trial shows that tracking games improve the sight or the eye movements of healthy eyes: a review of eye exercises found support for a few uses, such as convergence problems, and no clear evidence for the rest. Use it as a two-minute warm-up, not as a treatment.",
+      "No trial shows that tracking games improve the sight or the eye movements of healthy eyes. A review of eye exercises found support for a few uses, such as convergence problems, and no clear evidence for the rest. Use it as a two-minute warm-up, not as a treatment.",
     need: [NO_GLASSES, "Any screen: a phone, tablet, computer or TV, square in front of you.", "A seat where you can see the whole scene without moving your head."],
     see: [
       "A white comet with a fading tail on a black sky with a few faint stars. It wanders smoothly and never jumps or turns sharply.",
@@ -142,8 +144,8 @@ export const guides: GameGuide[] = [
     slug: "spot-jump",
     what: "A white spot appears to the left or the right of a centre line. You look at it and tap it, and the next spot appears somewhere else. Each spot hit is one point.",
     helps:
-      "A quick jump of the eyes from one place to another is called a saccade. Reading uses one at the end of every line. The game asks for one jump after another and moves the spots further out as you hit them. " +
-      "No trial shows that jump practice improves healthy eyes, and a joint statement of children's doctors and eye doctors says the evidence does not support eye exercises for reading or learning problems. Use it as a two-minute warm-up, not as a treatment.",
+      "The eyes move from one place to another in quick jumps. Reading uses one at the end of every line. The game asks for one jump after another and moves the spots further out as you hit them. " +
+      "No trial shows that jump practice improves healthy eyes. A joint statement of children's doctors and eye doctors says the evidence does not support eye exercises for reading or learning problems. Use it as a two-minute warm-up, not as a treatment.",
     need: [NO_GLASSES, "Any screen: a phone, tablet, computer or TV, square in front of you.", "A seat where you can see both sides of the scene without moving your head."],
     see: [
       "A faint dashed line down the middle of the scene. Left of it is Left, right of it is Right.",
@@ -212,7 +214,7 @@ export const guides: GameGuide[] = [
     slug: "e-safari",
     what: "A check, in game form, of how small a shape one eye can read. An animal track with three toes, like a letter E, shows in the middle. You point the way the toes face, and the track shrinks until you can no longer tell.",
     helps:
-      "It is a check, not training: it does not improve sight. Done with each eye in turn, it lets a family notice that one eye reads smaller tracks than the other, which is a reason to book an eye test. " +
+      "It is a check, not training: it does not improve sight. Done with each eye in turn, it lets a family notice that one eye reads smaller tracks than the other. That is a reason to book an eye test. " +
       "A phone test that uses the same pointing E came, on average, within one chart line of a clinic chart in 233 people. This game has not been compared with a clinic chart, and its steps are not chart lines. It cannot show that an eye is healthy.",
     need: [
       "A patch for the eye that is not being checked, or a clean cupped hand. Do not press on the eye.",
@@ -283,10 +285,10 @@ export const guides: GameGuide[] = [
     mistakes: [
       "Peeking round the patch, or pressing on the covered eye.",
       "Leaning toward the screen as the tracks get small. The distance must stay the same.",
-      "Checking with both eyes open. That only shows what the better eye can do.",
+      "Checking with both eyes open. That only shows what the stronger eye can do.",
       "Reading the step as a chart line or a pass mark. It can only be compared with your own earlier steps, on the same screen at the same distance.",
     ],
     evidence: "This game has not been compared with a clinic chart. A phone test that uses the same pointing E came, on average, within one chart line of clinic charts in 233 people in Kenya. That was a different app, used at a fixed 2 metres.",
     sources: [PHONE_TEST, HOME_TESTS],
   },
-];
+], GAME_GUIDE_WORDS);

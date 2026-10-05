@@ -5,10 +5,11 @@
  */
 import type { StarterKey } from "@/games/hero";
 import type { TraceFail } from "@/lib/hero/trace";
+import { texts } from "@/i18n/texts";
 
 const heroes = (n: number) => (n === 1 ? "1 hero" : `${n} heroes`);
 
-export const hero = {
+export const hero = texts("copy/hero", "hero", () => ({
   sub: "Draw a hero. It becomes your character in the game, in the weaker eye's colour.",
   stats: { kept: "Heroes kept", games: "Games it plays in" },
 
@@ -126,4 +127,4 @@ export const hero = {
     guardianOnly: "Only a parent or guardian can allow the camera.",
     notTicked: "Tick the box to allow the camera.",
   },
-};
+}));

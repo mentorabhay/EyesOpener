@@ -1,0 +1,181 @@
+{
+ "lang": "hi",
+ "file": "copy/results",
+ "entries": {
+  "results.best": {
+   "source": "9b687e38c90000",
+   "english": "Best so far",
+   "text": "अब तक का सबसे अच्छा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.ended.daily_cap": {
+   "source": "412309f52a366b",
+   "english": "Daily limit reached",
+   "text": "दैनिक सीमा पूरी हो गई",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.ended.stop_rule": {
+   "source": "9801fe9c98f991",
+   "english": "Stopped: felt unwell",
+   "text": "रुक गया: तबीयत ठीक नहीं लगी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.film.sessions": {
+   "source": "5ed426d2c40c41",
+   "english": "Sittings",
+   "text": "सत्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.film.title": {
+   "source": "9a76194a2ad405",
+   "english": "Your cinema time",
+   "text": "आपका सिनेमा का समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.film.week": {
+   "source": "39ace3dd0b97c7",
+   "english": "Watched in the last 7 days",
+   "text": "पिछले 7 दिनों में देखा गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.conv.label": {
+   "source": "c2affdee04ea1e",
+   "english": "Furthest turned in",
+   "text": "सबसे ज़्यादा अंदर मुड़ीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.conv.unit": {
+   "source": "9e2d9b71b1c692",
+   "english": "prism dioptres",
+   "text": "डायोप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.div.label": {
+   "source": "1dc0b75dbb9fe0",
+   "english": "Furthest turned out",
+   "text": "सबसे ज़्यादा बाहर मुड़ीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.div.unit": {
+   "source": "9e2d9b71b1c692",
+   "english": "prism dioptres",
+   "text": "डायोप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.conv.unit"
+  },
+  "results.game.hits.label": {
+   "source": "4d4127eb7af91b",
+   "english": "Right",
+   "text": "सही",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.misses.label": {
+   "source": "88334a8a42d804",
+   "english": "Missed",
+   "text": "छूटे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.splits.label": {
+   "source": "715d6c77bb520e",
+   "english": "Times it split in two",
+   "text": "जितनी बार दो दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.top.label": {
+   "source": "64eaf183ef7567",
+   "english": "Highest level",
+   "text": "सबसे ऊँचा लेवल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.game.top.unit": {
+   "source": "90a9ccdbab953a",
+   "english": "of 10",
+   "text": "10 में से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.minutes(0)": {
+   "source": "6460a27f801c68",
+   "english": "0 s",
+   "text": "0 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.minutes(1)": {
+   "source": "82f6892c2ece3a",
+   "english": "1 min 0 s",
+   "text": "1 min 0 s",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.none": {
+   "source": "81373418829cfd",
+   "english": "No finished session yet. Your results appear here after the first one.",
+   "text": "अभी कोई सत्र पूरा नहीं हुआ है। पहला सत्र पूरा होने के बाद आपके परिणाम यहाँ दिखाई देंगे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.score": {
+   "source": "f469688270fa41",
+   "english": "Score",
+   "text": "स्कोर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.thisTime": {
+   "source": "d9feb2adfd68b9",
+   "english": "This session",
+   "text": "यह सत्र",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.time": {
+   "source": "f241d8588e6fc5",
+   "english": "Time",
+   "text": "समय",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.title": {
+   "source": "57b8bf59094761",
+   "english": "Your results",
+   "text": "आपके परिणाम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.today": {
+   "source": "7fca2ff1421477",
+   "english": "Today",
+   "text": "आज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/common:common.nav.today"
+  },
+  "results.when": {
+   "source": "73cc128f69897c",
+   "english": "When",
+   "text": "कब",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  },
+  "results.yesterday": {
+   "source": "7ce037280a3d49",
+   "english": "Yesterday",
+   "text": "कल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash"
+  }
+ }
+}

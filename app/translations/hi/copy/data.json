@@ -1,0 +1,323 @@
+{
+ "lang": "hi",
+ "file": "copy/data",
+ "entries": {
+  "data.all.ask": {
+   "source": "90c64965887232",
+   "english": "Delete everything",
+   "text": "सब कुछ डिलीट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/data:data.all.title"
+  },
+  "data.all.asked(*)": {
+   "source": "0c51bda682a78b",
+   "english": "Deletion was asked for on {on}. The date will be set within a day. You can cancel.",
+   "text": "{on} पर डिलीट करने का अनुरोध किया गया था। तारीख एक दिन के भीतर तय हो जाएगी। आप रद्द कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.all.cancel": {
+   "source": "0e289718ba18bb",
+   "english": "Cancel the deletion",
+   "text": "डिलीट करना रद्द करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.all.cancelled(*)": {
+   "source": "2a59f7a8892c96",
+   "english": "The deletion was cancelled on {on}. Nothing was deleted.",
+   "text": "{on} पर डिलीट करना रद्द कर दिया गया था। कुछ भी डिलीट नहीं किया गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.all.due": {
+   "source": "2782a083b39b63",
+   "english": "The waiting time is over. Everything is deleted within a day. You can still cancel now.",
+   "text": "प्रतीक्षा का समय समाप्त हो गया है। एक दिन के भीतर सब कुछ डिलीट कर दिया जाता है। आप अभी भी रद्द कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.all.look(*)": {
+   "source": "791a47e8deda4c",
+   "english": "A guardian asked for everything to be deleted on {date}.",
+   "text": "एक अभिभावक ने {date} को सब कुछ डिलीट करने का अनुरोध किया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "date"
+   ]
+  },
+  "data.all.title": {
+   "source": "90c64965887232",
+   "english": "Delete everything",
+   "text": "सब कुछ डिलीट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.all.waiting(*)": {
+   "source": "ed2aa1c4fe57df",
+   "english": "Everything will be deleted on {date}. You can cancel until then.",
+   "text": "{date} को सब कुछ डिलीट कर दिया जाएगा। आप तब तक रद्द कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "date"
+   ]
+  },
+  "data.all.warn": {
+   "source": "0c9d486627d187",
+   "english": "Nothing is deleted for 7 days, and a guardian can cancel in that time. After that everything is removed for good: profiles, eye settings, results, practice, care logs, and the stories, ideas and notes you shared. It cannot be brought back. Make a copy first if you want to keep one.",
+   "text": "7 दिन तक कुछ भी डिलीट नहीं किया जाता है, और उस समय के दौरान अभिभावक रद्द कर सकता है। उसके बाद सब कुछ हमेशा के लिए हटा दिया जाता है: प्रोफ़ाइल, आँखों की सेटिंग्स, परिणाम, अभ्यास, देखभाल के लॉग, और जो कहानियाँ, विचार और नोट्स आपने शेयर किए हैं। इसे वापस नहीं लाया जा सकता है। यदि आप एक कॉपी रखना चाहते हैं तो पहले एक कॉपी बनाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.all.what": {
+   "source": "d740a1731d2073",
+   "english": "Delete this family's account, every profile in it and everything the family shared.",
+   "text": "इस परिवार का खाता, इसमें मौजूद हर प्रोफ़ाइल और परिवार द्वारा शेयर की गई हर चीज़ डिलीट करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.all.yes": {
+   "source": "6d2f6ad0b07b9f",
+   "english": "Yes, delete everything in 7 days",
+   "text": "हाँ, 7 दिन में सब कुछ डिलीट कर दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.again": {
+   "source": "cb4eb2facabc7e",
+   "english": "Make a new copy",
+   "text": "एक नई कॉपी बनाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.ask": {
+   "source": "9f7bd9f184dd3f",
+   "english": "Make a copy",
+   "text": "एक कॉपी बनाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.asked(*)": {
+   "source": "26b9d3a71d1a17",
+   "english": "Asked on {on}. It will be ready within a day.",
+   "text": "{on} को अनुरोध किया गया। यह एक दिन के भीतर तैयार हो जाएगी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.copy.download": {
+   "source": "c1b4927249e7cd",
+   "english": "Download the file",
+   "text": "फ़ाइल डाउनलोड करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.downloaded(*)": {
+   "source": "b869fe82f5c5e0",
+   "english": "Last downloaded on {on}.",
+   "text": "आख़िरी बार {on} को डाउनलोड किया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.copy.keepSafe": {
+   "source": "22198236a7d215",
+   "english": "The file holds your family's eye data. Keep it somewhere safe.",
+   "text": "फ़ाइल में आपके परिवार का आँखों का डेटा है। इसे किसी सुरक्षित जगह पर रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.note": {
+   "source": "04cc5d2ace3774",
+   "english": "The file is made fresh each time you download it. IOpener keeps no copy of it. After 7 days, ask again.",
+   "text": "जब भी आप इसे डाउनलोड करते हैं, फ़ाइल को नए सिरे से बनाया जाता है। IOpener इसकी कोई कॉपी नहीं रखता है। 7 दिन बाद, दोबारा अनुरोध करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.ready(*)": {
+   "source": "920fafb7240be1",
+   "english": "Your copy is ready. You can download it until {until}.",
+   "text": "आपकी कॉपी तैयार है। आप इसे {until} तक डाउनलोड कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "until"
+   ]
+  },
+  "data.copy.summary": {
+   "source": "b16e503f068a32",
+   "english": "Read the summary",
+   "text": "सारांश पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.title": {
+   "source": "cd25c1359010c6",
+   "english": "A copy of your data",
+   "text": "आपके डेटा की एक कॉपी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.copy.what": {
+   "source": "f91dd73b8a4b24",
+   "english": "One file with everything IOpener stores about this family, and a summary you can read and print.",
+   "text": "एक फ़ाइल जिसमें इस परिवार के बारे में IOpener द्वारा स्टोर किया गया सब कुछ है, और एक सारांश जिसे आप पढ़ और प्रिंट सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.demo": {
+   "source": "6bbece84943f41",
+   "english": "This is the demo family, so you can try every step. Nothing is deleted in the demo: when the day comes, the request is closed instead.",
+   "text": "यह डेमो परिवार है, इसलिए आप हर कदम आज़मा सकते हैं। डेमो में कुछ भी डिलीट नहीं होता है: समय आने पर, इसके बजाय अनुरोध बंद कर दिया जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.allGoing": {
+   "source": "0cdd3e17d8c683",
+   "english": "Everything is set to be deleted, every profile included.",
+   "text": "हर चीज़ मिटाई जाने के लिए सेट है, हर प्रोफ़ाइल समेत।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.ask": {
+   "source": "81a51048adcea6",
+   "english": "Delete a profile",
+   "text": "एक प्रोफ़ाइल डिलीट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.cancel": {
+   "source": "f12e2e8ecda428",
+   "english": "Cancel",
+   "text": "रद्द करें",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.newProfile.cancel"
+  },
+  "data.one.cancelOf(*)": {
+   "source": "d48154cfdb17ce",
+   "english": "Cancel the deletion of {name}'s profile",
+   "text": "{name} की प्रोफ़ाइल डिलीट करना रद्द करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "data.one.cancelled(*)": {
+   "source": "f7a650186a9eb1",
+   "english": "A profile deletion was cancelled on {on}. Nothing was deleted.",
+   "text": "{on} पर एक प्रोफ़ाइल डिलीट करना रद्द कर दिया गया था। कुछ भी डिलीट नहीं किया गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.one.choose": {
+   "source": "de04cbf5a13a92",
+   "english": "Choose a profile",
+   "text": "एक प्रोफ़ाइल चुनें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.deleted(*)": {
+   "source": "0757eff0522a04",
+   "english": "A profile was deleted on {on}.",
+   "text": "{on} पर एक प्रोफ़ाइल डिलीट कर दी गई थी।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "on"
+   ]
+  },
+  "data.one.due(*)": {
+   "source": "86f6cfa60a3892",
+   "english": "The waiting time is over. {name}'s profile is deleted within a day. You can still cancel now.",
+   "text": "प्रतीक्षा का समय समाप्त हो गया है। एक दिन के भीतर {name} की प्रोफ़ाइल डिलीट कर दी जाती है। आप अभी भी रद्द कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "data.one.onlyOne": {
+   "source": "d8f58298e27ae0",
+   "english": "This family has one profile. To remove it, delete everything instead.",
+   "text": "इस परिवार में एक प्रोफ़ाइल है। इसे हटाने के लिए, इसके बजाय सब कुछ डिलीट करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.pick": {
+   "source": "b426dd0c1c8dc2",
+   "english": "Which profile?",
+   "text": "कौन सी प्रोफ़ाइल?",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.someone": {
+   "source": "a72ed4392c16e8",
+   "english": "A family member",
+   "text": "परिवार का एक सदस्य",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.title": {
+   "source": "087240beb6c681",
+   "english": "Delete one profile",
+   "text": "एक प्रोफ़ाइल डिलीट करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.waiting(*,*)": {
+   "source": "08868249023938",
+   "english": "{name}'s profile will be deleted on {date}. You can cancel until then.",
+   "text": "{date} को {name} की प्रोफ़ाइल डिलीट कर दी जाएगी। आप तब तक रद्द कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name",
+    "date"
+   ]
+  },
+  "data.one.warn": {
+   "source": "fe04111f814d75",
+   "english": "Nothing is deleted for 7 days, and a guardian can cancel in that time. After that the profile and everything kept about it are removed for good: eye settings, results, practice, care logs, and what that family member shared. It cannot be brought back.",
+   "text": "7 दिन तक कुछ भी डिलीट नहीं किया जाता है, और उस समय के दौरान अभिभावक रद्द कर सकता है। उसके बाद प्रोफ़ाइल और उसके बारे में रखी गई हर चीज़ को हमेशा के लिए हटा दिया जाता है: आँखों की सेटिंग्स, परिणाम, अभ्यास, देखभाल के लॉग, और परिवार के उस सदस्य ने जो शेयर किया था। इसे वापस नहीं लाया जा सकता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.what": {
+   "source": "3ed37eed1567d6",
+   "english": "Remove one family member's profile and everything kept about them. The rest of the family stays.",
+   "text": "परिवार के एक सदस्य की प्रोफ़ाइल और उनके बारे में रखी गई हर चीज़ को हटा दें। बाकी परिवार बना रहता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.one.yes": {
+   "source": "fd21678c187a02",
+   "english": "Yes, delete this profile in 7 days",
+   "text": "हाँ, 7 दिन में इस प्रोफ़ाइल को डिलीट कर दें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "data.title": {
+   "source": "81b9dd56c063ba",
+   "english": "Your data",
+   "text": "आपका डेटा",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

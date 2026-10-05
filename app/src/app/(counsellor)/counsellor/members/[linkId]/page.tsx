@@ -11,7 +11,7 @@ import { DoseForm, NoteForm } from "./forms";
 import css from "./member.module.css";
 import { WeekCard } from "./week";
 
-export const metadata: Metadata = { title: t.member.crumb };
+export const generateMetadata = (): Metadata => ({ title: t.member.crumb });
 
 export default async function MemberPage({ params }: { params: Promise<{ linkId: string }> }) {
   const viewer = await requireCounsellor();

@@ -1,8 +1,9 @@
 import type { GroupResult, JoinRefusal } from "@/lib/family";
+import { texts } from "@/i18n/texts";
 
 const SEAT = { guardian: "Guardian", co_guardian: "Co-guardian", circle: "Cheer seat" };
 
-export const family = {
+export const family = texts("copy/family", "family", () => ({
   title: "Family",
   sub: "The children in this household, the people who can sign in, child mode and sponsor groups.",
   notAllowed: "Only a guardian can do this.",
@@ -70,9 +71,9 @@ export const family = {
       already_in: "This household is already in that group.",
     } satisfies Record<GroupResult, string>,
   },
-};
+}));
 
-export const circle = {
+export const circle = texts("copy/family", "circle", () => ({
   title: "Cheer seat",
   sub: "See how practice is going and send some encouragement.",
   none: "No child profiles in this family yet.",
@@ -83,18 +84,18 @@ export const circle = {
   noNote: "No note yet",
   mail: "Send a note",
   lights: "Give a light",
-};
+}));
 
-export const leave = {
+export const leave = texts("copy/family", "leave", () => ({
   title: "Leave child mode",
   sub: "For grown-ups. Type the exit PIN to open the family screens again.",
   pin: "Exit PIN",
   submit: "Leave child mode",
   wrong: "That is not the PIN. Try again.",
   locked: (minutes: number) => `Too many wrong tries. Try again in ${minutes === 1 ? "1 minute" : `${minutes} minutes`}.`,
-};
+}));
 
-export const join = {
+export const join = texts("copy/family", "join", () => ({
   title: "Join a household",
   sub: "A guardian gives you an invite code. Type it here to join their family.",
   code: "Invite code",
@@ -107,4 +108,4 @@ export const join = {
     invite_not_found: "No open invite uses that code. Ask the guardian for a new one.",
     has_household: "You are already in a household.",
   } satisfies Record<JoinRefusal, string>,
-};
+}));

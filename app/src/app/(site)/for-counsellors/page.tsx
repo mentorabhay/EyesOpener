@@ -9,7 +9,7 @@ import { Head, Hero, Points, Section } from "../_components/parts";
 import { SeesAndNot, TakePart, WriteToUs } from "../_components/roles";
 
 const c = t.counsellors;
-export const metadata: Metadata = pageMeta("/for-counsellors", c.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/for-counsellors", c.meta));
 
 export default function ForCounsellorsPage() {
   const level2 = programmes.filter((p) => p.level === 2);

@@ -9,6 +9,7 @@ import { testByKey } from "@/data";
 import { db, schema } from "@/db";
 import { balanceCyanEye, blankEye, canStart, derive, type Derived, type Eye, type EyeResult, type Measured } from "@/engine";
 import type { Member } from "@/lib/session";
+import { inEnglish } from "@/i18n/runtime";
 
 type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 type Side = "left" | "right";
@@ -86,7 +87,7 @@ export async function saveMeasured(member: Member, input: unknown): Promise<Deri
     const screen = { pxPerCm: measured.ppc, distanceCm: measured.dist, calibratedAt: new Date() };
     const [device] = member.device
       ? await tx.update(schema.device).set(screen).where(eq(schema.device.id, member.device.id)).returning()
-      : await tx.insert(schema.device).values({ ...screen, accountId: member.account.id, kind: "web", label: onboarding.deviceLabel }).returning();
+      : await tx.insert(schema.device).values({ ...screen, accountId: member.account.id, kind: "web", label: inEnglish(() => onboarding.deviceLabel) }).returning();
     await tx.insert(schema.onboardingRun).values({
       profileId, deviceId: device.id, answers: { left: measured.eyes.L.q, right: measured.eyes.R.q },
       leftSeconds: seconds?.L, rightSeconds: seconds?.R, finishedAt: new Date(),

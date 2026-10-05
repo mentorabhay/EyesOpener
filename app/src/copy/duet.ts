@@ -3,9 +3,11 @@
  * A missed day is never blamed on anyone: no line here says who missed, and a day the stop rule ended is
  * called a rest day like any other. Nothing here promises a result.
  */
+import { texts } from "@/i18n/texts";
+
 const days = (n: number) => (n === 1 ? "1 day" : `${n} days`);
 
-export const duet = {
+export const duet = texts("copy/duet", "duet", () => ({
   rule: "The streak grows on a day when both did their part. A rest day changes nothing. A day without both parts ends the run quietly, and what you reached stays.",
 
   stats: { current: "Days in a row now", longest: "Longest run", kept: "Days kept in all" },
@@ -93,4 +95,4 @@ export const duet = {
     done: "The duet has ended.",
     gone: "That duet could not be found.",
   },
-};
+}));

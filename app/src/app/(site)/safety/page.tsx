@@ -14,7 +14,7 @@ import { LevelChip } from "../_components/catalogue";
 import { Cta, Head, Hero, Section } from "../_components/parts";
 
 const s = t.safety;
-export const metadata: Metadata = pageMeta("/safety", s.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/safety", s.meta));
 
 /**
  * The order the engine checks before a session, read from the engine itself: each case below trips one more

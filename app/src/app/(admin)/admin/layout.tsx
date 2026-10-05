@@ -5,7 +5,7 @@ import { admin as t } from "@/copy/admin";
 import { roomHref, roomsFor } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
 
-export const metadata: Metadata = { title: { default: t.area, template: `%s · ${t.area}` }, robots: { index: false } };
+export const generateMetadata = (): Metadata => ({ title: { default: t.area, template: `%s · ${t.area}` }, robots: { index: false } });
 
 /** The frame of the admin console. The gate runs here and again in every page and every action. */
 export default async function AdminLayout({ children }: { children: ReactNode }) {

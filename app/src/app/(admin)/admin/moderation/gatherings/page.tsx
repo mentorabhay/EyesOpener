@@ -21,7 +21,7 @@ import { removeClubAction } from "./actions";
 import { HourForm, StaffClubForm, TieGameForm, WishStepForm } from "./forms";
 
 const g = gatherings.staff;
-export const metadata: Metadata = { title: g.title };
+export const generateMetadata = (): Metadata => ({ title: g.title });
 
 const clubTone: Record<ClubStatus, Tone> = { in_review: "warn", listed: "ok", closed: "plain", removed: "none" };
 const wishTone: Record<WishStatus, Tone> = { in_review: "warn", listed: "plain", matched: "grad", built: "ok", blocked: "none" };

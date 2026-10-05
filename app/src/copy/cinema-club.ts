@@ -5,6 +5,7 @@
  * judge a child's eyes. A club keeps no list of children: the sheet is paper and has no place for a name.
  */
 import type { ClubStatus, ListingRefusal, PlaceKind } from "@/lib/cinema-club";
+import { texts } from "@/i18n/texts";
 
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 export const CLUB_WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] as const;
@@ -12,7 +13,7 @@ export const CLUB_WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thurs
 /** The numbers the kit prints. They come from the cinema's own rules (src/components/film/chapters.ts, src/lib/cinema-club.ts). */
 export interface KitNumbers { chapters: number; chapterMinutes: number; breakSeconds: number; filmMinutes: number; breakMetres: number; dayCap: number }
 
-export const cinemaClub = {
+export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
   nav: "Cinema Club",
   stats: { clubs: "Clubs listed", film: "Minutes of film in one club hour" },
 
@@ -323,4 +324,4 @@ export const cinemaClub = {
       note: "Approving shows the club to families. Removing keeps it off the list.",
     },
   },
-};
+}));

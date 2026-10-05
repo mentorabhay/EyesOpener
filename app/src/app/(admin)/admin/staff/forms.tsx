@@ -8,7 +8,7 @@ import { changeRole, giveRole } from "./actions";
 
 const t = admin.staff;
 const ROLES: StaffRole[] = ["ops", "content", "super_admin"];
-const options = ROLES.map((r) => <option key={r} value={r}>{admin.roles[r]}</option>);
+const options = () => ROLES.map((r) => <option key={r} value={r}>{admin.roles[r]}</option>);
 
 export function GiveRoleForm() {
   return (
@@ -19,7 +19,7 @@ export function GiveRoleForm() {
       </div>
       <div className="field">
         <label htmlFor="staff-role">{t.give.role}</label>
-        <select id="staff-role" name="role" defaultValue="ops">{options}</select>
+        <select id="staff-role" name="role" defaultValue="ops">{options()}</select>
       </div>
     </AnswerForm>
   );
@@ -32,7 +32,7 @@ export function RoleControls({ id, name, role, removable }: { id: string; name: 
     <div className="stack">
       <form action={run} className={`field ${css.inline}`}>
         <input type="hidden" name="id" value={id} />
-        <select name="role" defaultValue={role} aria-label={t.roleLabel(name)}>{options}</select>
+        <select name="role" defaultValue={role} aria-label={t.roleLabel(name)}>{options()}</select>
         <button className="btn btn-sm" disabled={pending}>{t.save}</button>
       </form>
       {removable && (

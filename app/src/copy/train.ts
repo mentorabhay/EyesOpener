@@ -1,7 +1,9 @@
 /** Words for the Train space: games, exercises, the two-eye cinema and the session clock. */
+import { texts } from "@/i18n/texts";
+
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 
-export const train = {
+export const train = texts("copy/train", "train", () => ({
   /* dose and session, shared by every activity */
   minutesLeft: (minutes: number) => `${plural(Math.ceil(minutes), "minute")} left today.`,
   noProgramme: "No programme sets your minutes, so the daily limit of 90 applies.",
@@ -234,4 +236,4 @@ export const train = {
     watched: "Watched this session",
     clockNote: "The clock runs while the film plays. The film stops when today's minutes are used.",
   },
-};
+}));

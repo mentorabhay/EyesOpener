@@ -208,3 +208,30 @@ Some editions of IOpener have an assistant (AI). The public edition has none, an
 - **What an assistant leaves in the database** has a shape that is public and checked on reading: `AiFlagZ` for `moderation_item.ai_flag`. The vectors of the search by meaning are `protocol.embedding` and the table `library_vector`; they need the PostgreSQL extension `vector`.
 - **Two more slots** follow the same pattern: `src/lib/jobs/extra.ts` (scheduled jobs an edition adds; empty here) and `src/app/(admin)/admin/switchboard/extra.tsx` (what an edition adds to the Switchboard; nothing here).
 - **The research library** (`src/lib/library.ts`, `/together/research`) is part of every edition. It returns passages of the app's own pages, word for word, with their sources, and never writes an answer. It searches by words; an assistant may add a search by meaning through the seam.
+
+---
+
+# Addendum: languages
+
+The app can be read in ten languages besides English. Read `docs/LANGUAGES.md` before adding a page or a file of words.
+
+- **A file of words is made with `texts(...)`**: `export const today = texts("copy/today", "today", () => ({ ... }))`. It types and reads like the plain object; a word is looked up in the reader's language at the moment it is read. `npx tsx scripts/i18n.ts wrap --write` does this for a new file.
+- **Never read a word while a module loads.** `const tabs = [{ label: n.today }]` at the top of a file keeps one reader's language for everybody: write `const tabs = () => [...]`. A page's title is `generateMetadata`, not `metadata`.
+- **Never decide by a word, cut a word up, or store a word.** Compare values, not labels. What goes into the database or the audit log is written inside `inEnglish(() => ...)`.
+- **No words typed into a page.** A string written straight into a page or a component stays English in every language.
+- **Catalogue lines a person reads** come from `src/data/words.ts` (`gameWords(game).purpose`), not from `game.purpose`.
+- **Numbers and units in a sentence** are written as figures with their unit ("20 minutes", "40 cm"): that is what lets a translation be checked against the English.
+- After changing words: `npx tsx scripts/i18n.ts count --write`, then `npx vitest run src/i18n`. The tests fail on a word read too early, on a list that is older than the words, and on any translation that changes a number, a unit, a placeholder or a name.
+
+---
+
+# Addendum: the plain-words check
+
+Every sentence a person reads is checked by rule (`src/lib/plain-words.ts`); a test runs the rules over every file of words, every guide and every catalogue line (`src/lib/plain-words.test.ts`).
+
+- **Must not exist (the test fails):** an emoji; a code or a file name on screen; a note left for a builder; a doubled word or a doubled space; "good eye", "bad eye", "lazy eye" said of a person's eye, "better eye"; a promise of a cure; a diagnosis stated by the app; a sentence over 45 words; a trade word with no meaning beside it (the list is `JARGON`); a hard word that has a plain one (`HARD_WORDS`); "patients", "users"; a wrong name for the glasses; "!!".
+- **Counted, and may only go down:** sentences over 28 words, and sentences that read above school year 11. Today's counts are in `src/lib/plain-words.baseline.json`. A change that adds one fails; a change that removes some should write the lower counts with `npx tsx scripts/plain-words.ts --baseline`.
+- **Who reads it decides how strict it is.** Words for a family and for the public pages get every rule. Words for a counsellor may use the trade words. Words for staff may use both.
+- **A source is not a sentence.** A citation keeps its own title, journal and names.
+- **The answer to a finding is to rewrite the sentence.** `ALLOWED` in the rules file lists the few places a person has read and found right, each with its reason; a test fails when an entry there no longer matches anything.
+- To read the findings: `npx tsx scripts/plain-words.ts` (add `--soft` for the counted ones).

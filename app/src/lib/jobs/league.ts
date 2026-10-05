@@ -16,7 +16,7 @@ import type { Job } from "./index";
 export const leagueWeek: Job = {
   name: "league-week",
   cadence: "weekly",
-  what: words.jobs.week,
+  get what() { return words.jobs.week; },
   run: async (now) => {
     const today = dayOf(now);
     const closed = await closeWeeks(undefined, today);
@@ -28,7 +28,7 @@ export const leagueWeek: Job = {
 export const leagueDays: Job = {
   name: "league-days",
   cadence: "daily",
-  what: words.jobs.days,
+  get what() { return words.jobs.days; },
   run: async (now) => {
     const today = dayOf(now);
     const removed = await tidySeats(today);

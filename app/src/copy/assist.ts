@@ -6,6 +6,7 @@
  */
 import type { Closed, HazardReason, IdeaGap, IdeaRefusal, ReviewRule } from "@/lib/assist/types";
 import type { PassageKind } from "@/lib/library";
+import { texts } from "@/i18n/texts";
 
 const many = (n: number, one: string, more: string) => `${n} ${n === 1 ? one : more}`;
 
@@ -43,7 +44,7 @@ const rule: Record<ReviewRule, string> = {
   unclear: "Hard to tell what it asks others to do",
 };
 
-export const assistCopy = {
+export const assistCopy = texts("copy/assist", "assistCopy", () => ({
   closed,
   hazard,
   rule,
@@ -139,4 +140,4 @@ export const assistCopy = {
     notAdvice: "A passage says what a study found in the people it studied. It cannot say what will happen for you. Ask an eye doctor about your own eyes.",
     tooLong: "Use a shorter question, up to 200 letters.",
   },
-};
+}));

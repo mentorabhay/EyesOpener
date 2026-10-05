@@ -7,6 +7,7 @@
  * Figures in `basis` come from the sources each plan lists in that file.
  */
 import type { DayState } from "@/lib/programme-rules";
+import { texts } from "@/i18n/texts";
 
 const plural = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
 const whole = (n: number) => Math.round(n);
@@ -15,7 +16,7 @@ export const dayLabel = (key: string) => new Intl.DateTimeFormat("en-IN", { week
 /** "5 Oct 2026" from a date, in the member's calendar. */
 export const dateLabel = (d: Date) => new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(d);
 
-export const programme = {
+export const programme = texts("copy/programme", "programme", () => ({
   title: "This week",
   crumb: "Today",
   sub: (name: string) => `${name} programme.`,
@@ -124,7 +125,7 @@ export const programme = {
         "Another study found that most of the gain from patching came in the first six weeks. That is why the plan asks for an eye test in week 6.",
       ],
       convergence: [
-        "The trial behind this programme set 15 minutes of home practice a day, five days a week, for 12 weeks, together with a visit to a therapist every week.",
+        "The trial behind this programme set 15 minutes of home practice a day, five days a week, for 12 weeks. It also set a visit to a therapist every week.",
         "Home practice with no therapist did no better than pretend therapy. This plan is the home half. It is not the whole treatment.",
         "The drills come in the order the trial's therapy used them: first the string and a near target, then cards and a wider range, then quick changes.",
       ],
@@ -284,4 +285,4 @@ export const programme = {
     distance: { name: "Screen distance", how: "Put the screen back at about an arm's length." },
     "reading-distance": { name: "Reading distance", how: "Hold the page a forearm's length from the eyes." },
   } as Record<string, { name: string; how: string }>,
-};
+}));

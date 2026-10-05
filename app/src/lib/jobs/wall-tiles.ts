@@ -14,7 +14,7 @@ import type { Job } from "./index";
 export const wallTiles: Job = {
   name: "wall-tiles",
   cadence: "daily",
-  what: words.job.what,
+  get what() { return words.job.what; },
   run: async (now) => {
     const today = dayOf(now), month = monthOf(today), before = shiftMonth(month, -1);
     /* Last month's picture is only added to, never made after the month has ended. */

@@ -2,7 +2,9 @@
  * Words for the Together space.
  * Ideas from members are untested until a pooled result is published, and nothing here may promise to treat or cure.
  */
-export const together = {
+import { texts } from "@/i18n/texts";
+
+export const together = texts("copy/together", "together", () => ({
   title: "Together",
   sub: "Ideas from members, tested in the open. Nothing here is medical advice.",
   crumb: { href: "/together", label: "Together" },
@@ -195,4 +197,4 @@ export const together = {
     status: { wearing: "Wearing now", finished: "Finished", passed_on: "Passed on" } as Record<string, string>,
     span: (from: string, to: string | null) => (to ? `${from} to ${to}` : `Since ${from}`),
   },
-};
+}));

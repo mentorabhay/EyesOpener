@@ -1,0 +1,1329 @@
+{
+ "lang": "hi",
+ "file": "copy/landing",
+ "entries": {
+  "landing.closing.lead": {
+   "source": "b88e79d099a58a",
+   "english": "Two minutes for each eye. Then one minute with the glasses on.",
+   "text": "हर आँख के लिए दो मिनट। फिर चश्मा पहनकर एक मिनट।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.flow.check.body"
+  },
+  "landing.closing.links.0.label": {
+   "source": "d1af60a3ff8b68",
+   "english": "Stories",
+   "text": "कहानियाँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.links.1.label": {
+   "source": "caa6e3e28058c9",
+   "english": "Evidence",
+   "text": "सबूत",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.links.2.label": {
+   "source": "8e6369fca51e15",
+   "english": "How it works",
+   "text": "यह कैसे काम करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.links.3.label": {
+   "source": "b3ccd499d6a12b",
+   "english": "For counsellors",
+   "text": "काउंसलर के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.links.4.label": {
+   "source": "beb2dbb1854a57",
+   "english": "For sponsors and schools",
+   "text": "प्रायोजकों और स्कूलों के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.more": {
+   "source": "598c76fadccf79",
+   "english": "Or read more first",
+   "text": "या पहले और पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.closing.note": {
+   "source": "f526692a34bde9",
+   "english": "Free. Open-source core. No ads.",
+   "text": "मुफ़्त। ओपन-सोर्स कोर। कोई विज्ञापन नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.hero.note"
+  },
+  "landing.closing.start": {
+   "source": "bfa16a83630d0a",
+   "english": "Start the two-minute check",
+   "text": "दो मिनट की जाँच शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.hero.start"
+  },
+  "landing.closing.title": {
+   "source": "7411220692f85a",
+   "english": "Start with the two-minute check.",
+   "text": "दो मिनट की जाँच से शुरू करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.art(*,*)": {
+   "source": "9804217d2f24d2",
+   "english": "{label}: {total} games and exercises",
+   "text": "{label}: {total} गेम और एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "label",
+    "total"
+   ]
+  },
+  "landing.evidence.art(*,1)": {
+   "source": "550a1ebb1ad75e",
+   "english": "{label}: 1 game or exercise",
+   "text": "{label}: 1 गेम या एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "label",
+    "total"
+   ]
+  },
+  "landing.evidence.count(*,*)": {
+   "source": "ac67063a6abb8f",
+   "english": "{games} games, {exercises} exercises",
+   "text": "{games} गेम, {exercises} एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.count(*,0)": {
+   "source": "e98510aec88a8e",
+   "english": "{games} games",
+   "text": "{games} गेम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.count(*,1)": {
+   "source": "42a0a11c3ffa8e",
+   "english": "{games} games, 1 exercise",
+   "text": "{games} गेम, 1 एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.count(0,*)": {
+   "source": "b0d28bcce9d134",
+   "english": "{exercises} exercises",
+   "text": "{exercises} एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.count(0,1)": {
+   "source": "2d2ad3d2f24c36",
+   "english": "1 exercise",
+   "text": "1 एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.count(1,*)": {
+   "source": "e6a568e80a239f",
+   "english": "1 game, {exercises} exercises",
+   "text": "1 गेम, {exercises} एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.count(1,0)": {
+   "source": "e07cbf1ff16c90",
+   "english": "1 game",
+   "text": "1 गेम",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.count(1,1)": {
+   "source": "8dd04ec1543f9d",
+   "english": "1 game, 1 exercise",
+   "text": "1 गेम, 1 एक्सरसाइज",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.lead(*,*)": {
+   "source": "f79fbb221b8d86",
+   "english": "{games} games and {exercises} exercises. Each one carries a label. When the proof is thin, the label says so.",
+   "text": "{games} गेम और {exercises} एक्सरसाइज। हर एक पर एक लेबल होता है। जब प्रमाण कम होता है, तो लेबल ऐसा बताता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.lead(*,1)": {
+   "source": "ec134a3c6e69fd",
+   "english": "{games} games and 1 exercise. Each one carries a label. When the proof is thin, the label says so.",
+   "text": "{games} गेम और 1 एक्सरसाइज। हर एक पर एक लेबल होता है। जब प्रमाण कम होता है, तो लेबल ऐसा बताता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.lead(1,*)": {
+   "source": "e5b73721a540f4",
+   "english": "1 game and {exercises} exercises. Each one carries a label. When the proof is thin, the label says so.",
+   "text": "1 गेम और {exercises} एक्सरसाइज। हर एक पर एक लेबल होता है। जब प्रमाण कम होता है, तो लेबल ऐसा बताता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.evidence.lead(1,1)": {
+   "source": "790acc09080e49",
+   "english": "1 game and 1 exercise. Each one carries a label. When the proof is thin, the label says so.",
+   "text": "1 गेम और 1 एक्सरसाइज। हर एक पर एक लेबल होता है। जब प्रमाण कम होता है, तो लेबल ऐसा बताता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.link": {
+   "source": "b7be5e4bddb292",
+   "english": "Read the evidence",
+   "text": "प्रमाण पढ़ें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.samples": {
+   "source": "5586ac4ede6946",
+   "english": "Three games from the library, each with its label.",
+   "text": "लाइब्रेरी से तीन गेम, हर एक अपने लेबल के साथ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.evidence.title": {
+   "source": "a4a9d6ff2fbe3c",
+   "english": "Every game says how strong its proof is.",
+   "text": "हर गेम बताता है कि उसका प्रमाण कितना पुख्ता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.art": {
+   "source": "620a289661dff1",
+   "english": "Four seats around one family account: child mode, guardian, cheer seat and counsellor.",
+   "text": "एक पारिवारिक खाते के आसपास चार सीटें: चाइल्ड मोड, अभिभावक, प्रोत्साहन सीट और काउंसलर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.core.body": {
+   "source": "1c285a967ccf05",
+   "english": "A child is a profile inside the parent's account. A child never needs an email address.",
+   "text": "बच्चा माता-पिता के खाते के भीतर एक प्रोफ़ाइल है। बच्चे को कभी भी ईमेल पते की आवश्यकता नहीं होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.core.title": {
+   "source": "d25ab9c2b0c3bc",
+   "english": "One family account",
+   "text": "एक पारिवारिक खाता",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.lead": {
+   "source": "7cfb4784161ecb",
+   "english": "One household account. Each person gets the seat that fits.",
+   "text": "एक घर का खाता। हर व्यक्ति को अपनी ज़रूरत के हिसाब से सीट मिलती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.cheer.body": {
+   "source": "493fb88cbde45c",
+   "english": "For grandparents and others who care. They see progress and send cheers. Nothing more.",
+   "text": "दादा-दादी और अन्य लोगों के लिए जो परवाह करते हैं। वे प्रगति देखते हैं और प्रोत्साहन भेजते हैं। इससे ज्यादा कुछ नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.cheer.name": {
+   "source": "e8cdf6b9e248e3",
+   "english": "Cheer seat",
+   "text": "चीयर सीट",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.nav.circle"
+  },
+  "landing.family.seats.cheer.verb": {
+   "source": "0896ce3c9a272a",
+   "english": "Cheers",
+   "text": "प्रोत्साहन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.child.body": {
+   "source": "5f16297c4fb4af",
+   "english": "The child plays and does check-ups. Everything else stays behind a grown-up's PIN.",
+   "text": "बच्चा खेलता है और जाँच करता है। बाकी सब कुछ बड़े के पिन के पीछे रहता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.child.name": {
+   "source": "b6aa438999eefc",
+   "english": "Child mode",
+   "text": "चाइल्ड मोड",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.nav.childMode"
+  },
+  "landing.family.seats.child.verb": {
+   "source": "8fb8b9fa158322",
+   "english": "Plays",
+   "text": "खेलता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.counsellor.body": {
+   "source": "e3ddee6024fc84",
+   "english": "An eye-care professional you link. They can set the plan and the daily minutes.",
+   "text": "एक आँखों का डॉक्टर जिसे आप जोड़ते हैं। वे योजना और दैनिक मिनट तय कर सकते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.counsellor.name": {
+   "source": "d582f98744a4ce",
+   "english": "Counsellor",
+   "text": "काउंसलर",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/settings:settings.counsellor.title"
+  },
+  "landing.family.seats.counsellor.verb": {
+   "source": "c6a323f68dfa74",
+   "english": "Sets the plan",
+   "text": "योजना तय करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.guardian.body": {
+   "source": "c2996fad576ae2",
+   "english": "A parent or guardian runs the account and gives consent.",
+   "text": "माता-पिता या अभिभावक खाता चलाते हैं और सहमति देते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.guardian.name": {
+   "source": "15003793739d5e",
+   "english": "Guardian",
+   "text": "अभिभावक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.seats.guardian.verb": {
+   "source": "68afcabf8cd399",
+   "english": "Decides",
+   "text": "तय करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.family.title": {
+   "source": "d824fb551a5693",
+   "english": "Made for the whole family.",
+   "text": "पूरे परिवार के लिए बनाया गया।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.art": {
+   "source": "3686a05470614b",
+   "english": "A tree: the check leads to your eye profile, and the profile leads to the programmes.",
+   "text": "एक पेड़: जाँच से आपकी आँख की प्रोफ़ाइल बनती है, और प्रोफ़ाइल से प्रोग्राम।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.check.body": {
+   "source": "b88e79d099a58a",
+   "english": "Two minutes for each eye. Then one minute with the glasses on.",
+   "text": "हर आँख के लिए दो मिनट। फिर चश्मा पहनकर एक मिनट।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.check.title": {
+   "source": "0ae9ed31f13d6e",
+   "english": "The check",
+   "text": "जाँच",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.counsellorDose": {
+   "source": "1bc7da12425f8b",
+   "english": "Minutes set by the counsellor",
+   "text": "काउंसलर द्वारा तय किए गए मिनट",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.dose(*,*)": {
+   "source": "e4ef20f2bbfc93",
+   "english": "{minutes} min a day, {days} days a week",
+   "text": "दिन में {minutes} min, सप्ताह में {days} दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "minutes",
+    "days"
+   ]
+  },
+  "landing.flow.everyone(*)": {
+   "source": "dd406755895c64",
+   "english": "No eye condition? {name} is for everyone: breaks, daylight and check-ups.",
+   "text": "कोई आँख की समस्या नहीं? {name} सभी के लिए है: ब्रेक, दिन की रोशनी और जाँच।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "name"
+   ]
+  },
+  "landing.flow.gate.body": {
+   "source": "b0bad8b91e6f11",
+   "english": "An eye-care professional sets the plan.",
+   "text": "एक आँखों के डॉक्टर प्लान सेट करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.gate.title": {
+   "source": "db0043d13e5132",
+   "english": "A linked counsellor",
+   "text": "एक जुड़े हुए काउंसलर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.gated": {
+   "source": "dfd9e44302ac14",
+   "english": "Open with a counsellor",
+   "text": "काउंसलर के साथ खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.habits": {
+   "source": "d8ef51904fc904",
+   "english": "Daily habits, no set minutes",
+   "text": "रोज़ाना की आदतें, कोई तय मिनट नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.open": {
+   "source": "79ac8f827910a9",
+   "english": "Open after the safety questions",
+   "text": "सुरक्षा प्रश्नों के बाद खोलें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.profile.body": {
+   "source": "3482a3bd5ff5c3",
+   "english": "The weaker eye, the letter sizes and the balance between the eyes.",
+   "text": "कमज़ोर आँख, अक्षर का साइज़ और दोनों आँखों के बीच का संतुलन।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.profile.title": {
+   "source": "a427ad266ecf38",
+   "english": "Your eye profile",
+   "text": "आपकी आँख की प्रोफ़ाइल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.0.body": {
+   "source": "ec8b3cd1b374d6",
+   "english": "Cover one eye. Read the smallest letter and the faintest letter you can. Then swap.",
+   "text": "एक आँख को ढकें। सबसे छोटे अक्षर को और सबसे धुंधले अक्षर को पढ़ें जिसे आप पढ़ सकें। फिर बदल लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.0.head": {
+   "source": "750fe97eaf274b",
+   "english": "Check each eye",
+   "text": "हर आँख की जाँच करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.1.body": {
+   "source": "91d384c2fcd888",
+   "english": "It sets the contrast and the sizes for every game, so each game fits your eyes.",
+   "text": "यह हर गेम के लिए कंट्रास्ट और साइज़ सेट करती है, ताकि हर गेम आपकी आँखों के हिसाब से हो।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.1.head": {
+   "source": "25f13993abc7ec",
+   "english": "Get your eye profile",
+   "text": "अपनी आँख की प्रोफाइल पाएँ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.2.body": {
+   "source": "61c85f8c8852e7",
+   "english": "Pick the one that fits. Some of them open only with a linked counsellor.",
+   "text": "वह चुनें जो सही बैठे। उनमें से कुछ केवल किसी जुड़े हुए काउंसलर के साथ खुलते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.steps.2.head": {
+   "source": "57bd56936ec395",
+   "english": "Start the right programme",
+   "text": "सही प्रोग्राम शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.flow.title": {
+   "source": "91efb34c35ba4c",
+   "english": "A two-minute check for each eye shows where to start.",
+   "text": "हर आँख के लिए दो मिनट की जाँच दिखाती है कि कहाँ से शुरू करना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.chips.both": {
+   "source": "a97cd6187cede9",
+   "english": "Together they see one picture",
+   "text": "साथ में वे एक तस्वीर देखती हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.chips.strong": {
+   "source": "d96186f4e61593",
+   "english": "The stronger eye sees red",
+   "text": "मज़बूत आँख लाल देखती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.chips.weak": {
+   "source": "5b2ee13966d330",
+   "english": "The weaker eye sees cyan",
+   "text": "कमज़ोर आँख सियान देखती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.how": {
+   "source": "9a6c76813f5e2a",
+   "english": "See how it works",
+   "text": "देखें कि यह कैसे काम करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.lead": {
+   "source": "6112f6db88c780",
+   "english": "IOpener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
+   "text": "IOpener आपकी आँखों के लिए एक फ़िटनेस ऐप है। यह ट्रैक करता है कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करता है और गेम के साथ उन्हें प्रशिक्षित करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.line1": {
+   "source": "fcb03e25c43a29",
+   "english": "Two eyes.",
+   "text": "दो आँखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.line2": {
+   "source": "8e3cd729a77400",
+   "english": "One picture.",
+   "text": "एक तस्वीर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.note": {
+   "source": "f526692a34bde9",
+   "english": "Free. Open-source core. No ads.",
+   "text": "मुफ़्त। ओपन-सोर्स कोर। कोई विज्ञापन नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.hero.start": {
+   "source": "bfa16a83630d0a",
+   "english": "Start the two-minute check",
+   "text": "दो मिनट की जाँच शुरू करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.meta.description": {
+   "source": "f661756c03faae",
+   "english": "IOpener is a free fitness app for your eyes, with an open-source core. Track how you use them, check them at home and practise with games. The web app works today.",
+   "text": "IOpener आपकी आँखों के लिए एक मुफ़्त फ़िटनेस ऐप है, जिसका कोर ओपन-सोर्स है। ट्रैक करें कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करें और गेम के साथ अभ्यास करें। वेब ऐप आज ही काम करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.meta.title": {
+   "source": "3b80c2c6cb7976",
+   "english": "Two eyes. One picture.",
+   "text": "दो आँखें। एक तस्वीर।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.not.is": {
+   "source": "c545dff540cdb3",
+   "english": "It supports the plan your eye doctor sets.",
+   "text": "यह आपके आँखों के डॉक्टर द्वारा तय किए गए प्लान का समर्थन करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.not.lines.0": {
+   "source": "c8d7a148f68cc8",
+   "english": "It is not a medical device.",
+   "text": "यह कोई मेडिकल डिवाइस नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.not.lines.1": {
+   "source": "90e2fc6d6e6040",
+   "english": "It does not diagnose, treat or cure any condition.",
+   "text": "यह किसी भी स्थिति का निदान, इलाज या सुधार नहीं करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.not.lines.2": {
+   "source": "43ad9ba043dda8",
+   "english": "It does not replace your eye doctor.",
+   "text": "यह आपके आँखों के डॉक्टर की जगह नहीं लेता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.not.title": {
+   "source": "02a1927255970a",
+   "english": "What IOpener is not.",
+   "text": "IOpener क्या नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.art.glasses": {
+   "source": "6761e252c73839",
+   "english": "Red-cyan glasses",
+   "text": "लाल-सियान चश्मा",
+   "status": "machine",
+   "made": "2026-10-05 copied from data/words:exercise.see-both-lights.gear"
+  },
+  "landing.reveal.art.strong": {
+   "source": "b191e557b9791f",
+   "english": "The stronger eye's picture: crates in dim red, with the ground and a string of lights.",
+   "text": "मज़बूत आँख की तस्वीर: मंद लाल रंग में बक्से, ज़मीन और रोशनी की एक माला के साथ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.art.weak": {
+   "source": "7224f18d6bb9da",
+   "english": "The weaker eye's picture: a runner and four coins in cyan, with the ground and a string of lights.",
+   "text": "कमज़ोर आँख की तस्वीर: सियान में एक धावक और चार सिक्के, ज़मीन और रोशनी की एक माला के साथ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.caption(*)": {
+   "source": "1161650fcb5512",
+   "english": "A scene from {game}, one of the two-eye games. These games need red-cyan glasses.",
+   "text": "{game} का एक दृश्य, दो-आँख वाले गेम में से एक। इन गेम के लिए लाल-सियान चश्मे की आवश्यकता होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "game"
+   ]
+  },
+  "landing.reveal.lead": {
+   "source": "c2415db60fced7",
+   "english": "Red-cyan glasses send one picture to each eye. The game only works when the brain joins the two. That is the practice: using both eyes together.",
+   "text": "लाल-सियान चश्मा प्रत्येक आँख को एक तस्वीर भेजता है। गेम तभी काम करता है जब दिमाग दोनों को जोड़ता है। वह अभ्यास है: दोनों आँखों का एक साथ उपयोग करना।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.both.body": {
+   "source": "fe0eab1f6b3583",
+   "english": "Both eyes see the ground and the lights. The brain joins it all into one game.",
+   "text": "दोनों आँखें ज़मीन और रोशनी देखती हैं। दिमाग इस सबको एक गेम में जोड़ता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.both.title": {
+   "source": "8423a60d55829c",
+   "english": "White, for both",
+   "text": "सफेद, दोनों के लिए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.strong.body": {
+   "source": "d3a14891e7160f",
+   "english": "Only the stronger eye sees the crates. Their red is turned down until both eyes pull equally.",
+   "text": "केवल मज़बूत आँख बक्से देखती है। उनका लाल रंग तब तक कम किया जाता है जब तक कि दोनों आँखें समान रूप से जोर न लगाएं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.strong.title": {
+   "source": "f345cb3204a671",
+   "english": "Red, turned down",
+   "text": "लाल, कम किया गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.weak.body": {
+   "source": "4ae54d329a271c",
+   "english": "Only the weaker eye sees the runner and the coins.",
+   "text": "केवल कमज़ोर आँख धावक और सिक्के देखती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.legend.weak.title": {
+   "source": "f305f3c4a5d197",
+   "english": "Cyan, at full strength",
+   "text": "सियान, पूरी ताक़त पर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.tags.both": {
+   "source": "caf2e30c3e6822",
+   "english": "Both eyes together",
+   "text": "दोनों आँखें एक साथ",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.both.title"
+  },
+  "landing.reveal.tags.strong": {
+   "source": "1c4faacb4bdfc7",
+   "english": "Stronger eye",
+   "text": "मज़बूत आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.reveal.tags.weak": {
+   "source": "cb406704dee0af",
+   "english": "Weaker eye",
+   "text": "कमज़ोर आँख",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/onboarding:onboarding.settings.weak"
+  },
+  "landing.reveal.title": {
+   "source": "240cff4915e97a",
+   "english": "Each eye gets half the picture.",
+   "text": "प्रत्येक आँख को आधी तस्वीर मिलती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.age.body": {
+   "source": "5c449c4d91ed73",
+   "english": "Younger children get off-screen exercises only.",
+   "text": "छोटे बच्चों के लिए केवल स्क्रीन के बिना वाले अभ्यास।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.age.head(*)": {
+   "source": "747ca514182211",
+   "english": "No screen sessions under age {age}",
+   "text": "{age} साल से कम उम्र के बच्चों के लिए कोई स्क्रीन सेशन नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "age"
+   ]
+  },
+  "landing.safety.cap.body": {
+   "source": "80445810eb6328",
+   "english": "The daily limit holds for every programme and every person.",
+   "text": "यह दैनिक सीमा हर प्रोग्राम और हर व्यक्ति के लिए लागू होती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.cap.head(*)": {
+   "source": "8329eba7e8a595",
+   "english": "Never more than {minutes} minutes a day",
+   "text": "एक दिन में कभी भी {minutes} मिनट से ज़्यादा नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "minutes"
+   ]
+  },
+  "landing.safety.doctor.body": {
+   "source": "8e2f13c0a2d741",
+   "english": "When an answer points to a warning sign, training stays closed. IOpener never says all clear.",
+   "text": "जब कोई उत्तर किसी चेतावनी के संकेत की ओर इशारा करता है, तो अभ्यास बंद रहता है। IOpener कभी नहीं कहता कि सब साफ है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.doctor.head": {
+   "source": "0f411be71ac672",
+   "english": "Something is wrong? See an eye doctor first.",
+   "text": "कुछ गलत है? पहले आँखों के डॉक्टर से मिलें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.lead": {
+   "source": "08b58c34e856fc",
+   "english": "These rules are built in. No reward and no setting can stretch them.",
+   "text": "ये नियम पहले से तय हैं। कोई भी इनाम या सेटिंग इन्हें बदल नहीं सकती।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.questions.body": {
+   "source": "431a18d4ed1615",
+   "english": "Warning-sign questions run before any training, and again when a new symptom shows up.",
+   "text": "चेतावनी वाले प्रश्न किसी भी प्रशिक्षण से पहले पूछे जाते हैं, और नया लक्षण दिखने पर फिर से पूछे जाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.questions.head": {
+   "source": "1619ac421c4e22",
+   "english": "Questions come first",
+   "text": "प्रश्न पहले आते हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.session.alt": {
+   "source": "9da27e807177cd",
+   "english": "Drawing of a practice session: it opens only after the four checks pass, it shows the daily limit and it has a stop button.",
+   "text": "अभ्यास सत्र का चित्र: यह केवल चारों जाँच पास होने के बाद खुलता है, यह दैनिक सीमा दिखाता है और इसमें एक स्टॉप बटन है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.session.closed": {
+   "source": "8b6786ea4cb280",
+   "english": "Closed until the checks pass",
+   "text": "जब तक जाँच पास न हो जाए तब तक बंद",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.session.meter(*)": {
+   "source": "655ea4f4b78d17",
+   "english": "0 of {minutes} minutes used today",
+   "text": "आज {minutes} मिनट में से 0 मिनट इस्तेमाल हुए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "minutes"
+   ]
+  },
+  "landing.safety.session.open": {
+   "source": "9eb05d665a1c3d",
+   "english": "Ready to start",
+   "text": "शुरू करने के लिए तैयार",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.session.stop": {
+   "source": "e889ad146e26ca",
+   "english": "Stop",
+   "text": "रोकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.train.stop"
+  },
+  "landing.safety.session.title": {
+   "source": "e508efcb5ec4b8",
+   "english": "Today's practice",
+   "text": "आज का अभ्यास",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/programme:programme.today.progress"
+  },
+  "landing.safety.stop.body": {
+   "source": "9dcc6bbca3907c",
+   "english": "Double vision, a headache or strain: one press ends the session at once.",
+   "text": "दोहरा दिखना, सिरदर्द या तनाव: एक बार दबाने से सत्र तुरंत समाप्त हो जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.stop.head": {
+   "source": "f6808c9417b536",
+   "english": "A stop button on every session",
+   "text": "हर सत्र पर एक स्टॉप बटन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.safety.title": {
+   "source": "9b4ec9fdbbfe35",
+   "english": "Safety comes before training.",
+   "text": "प्रशिक्षण से पहले सुरक्षा आती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.art.phone": {
+   "source": "e0f99cd2af6569",
+   "english": "A phone with a hatched screen: not built yet.",
+   "text": "एक हैच की गई स्क्रीन वाला फोन: अभी तक नहीं बनाया गया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.art.tv": {
+   "source": "c2dc5766f6835a",
+   "english": "A TV with a hatched screen: not built yet.",
+   "text": "एक टीवी हैच्ड स्क्रीन के साथ: अभी बना नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.art.web": {
+   "source": "0e4d6deda23da8",
+   "english": "A browser window showing a game.",
+   "text": "एक ब्राउज़र विंडो जिसमें एक गेम दिखाई दे रहा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.hatch": {
+   "source": "51e0f134dedf62",
+   "english": "Hatching means not built yet.",
+   "text": "हैचिंग का मतलब है कि अभी तक नहीं बनाया गया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.lead": {
+   "source": "75d23792c92916",
+   "english": "IOpener is made for the browser, the phone and the TV. Here is what exists today.",
+   "text": "IOpener ब्राउज़र, फोन और टीवी के लिए बनाया गया है। यहाँ वह है जो आज मौजूद है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.phone.body": {
+   "source": "a398f84eb80970",
+   "english": "Until it is ready, the web app opens in the phone's browser.",
+   "text": "जब तक यह तैयार नहीं हो जाता, वेब ऐप फोन के ब्राउज़र में खुलता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.phone.name": {
+   "source": "87306a44868c2c",
+   "english": "Phone app",
+   "text": "फोन ऐप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.phone.state": {
+   "source": "c46646b07786fc",
+   "english": "Being built",
+   "text": "बनाया जा रहा है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.title": {
+   "source": "965a7ccbba6d65",
+   "english": "On the screens you already have.",
+   "text": "उन स्क्रीन पर जो आपके पास पहले से हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.tv.body": {
+   "source": "e491260239fd6c",
+   "english": "For Android TV, played with the remote.",
+   "text": "Android TV के लिए, रिमोट से खेला जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.tv.name": {
+   "source": "ac223e6c692e19",
+   "english": "TV app",
+   "text": "टीवी ऐप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.tv.state": {
+   "source": "c46646b07786fc",
+   "english": "Being built",
+   "text": "बनाया जा रहा है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.screens.phone.state"
+  },
+  "landing.screens.web.body": {
+   "source": "cead47d7c64936",
+   "english": "Open it in a browser on a laptop, a tablet or a phone.",
+   "text": "इसे लैपटॉप, टैबलेट या फोन पर ब्राउज़र में खोलें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.web.name": {
+   "source": "8c39266cbaf31e",
+   "english": "Web app",
+   "text": "वेब ऐप",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.screens.web.state": {
+   "source": "067d8b7d0dcfa6",
+   "english": "Works today",
+   "text": "आज काम करता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.example": {
+   "source": "c2b5a6c1c03961",
+   "english": "Example screens. The family and the numbers in them are made up.",
+   "text": "उदाहरण स्क्रीन। परिवार और उनमें दिए गए नंबर काल्पनिक हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.lead": {
+   "source": "64f472a45ff7d2",
+   "english": "Four spaces, like the ones in a step counter or a workout plan.",
+   "text": "चार स्पेस, जैसे कि स्टेप काउंटर या कसरत योजना में होते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.loop": {
+   "source": "17f8db07f71c5c",
+   "english": "Track and Test give you numbers. Train and Together help you keep going.",
+   "text": "ट्रैक और टेस्ट आपको नंबर देते हैं। ट्रेन और टुगेदर आपको आगे बढ़ने में मदद करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.test.alt": {
+   "source": "255c3572d2653f",
+   "english": "Example of a check-up: a chart of letters that get smaller, and a line for each eye over six weeks. The weeks still to come are hatched.",
+   "text": "जाँच का उदाहरण: छोटे होते जाने वाले अक्षरों का एक चार्ट, और छह सप्ताह तक हर आँख के लिए एक लाइन। आने वाले सप्ताहों पर धारियाँ हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.test.left": {
+   "source": "bdaacc57d7b062",
+   "english": "Left eye",
+   "text": "बाईं आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.test.none": {
+   "source": "3d2629a83f95ab",
+   "english": "Not measured yet",
+   "text": "अभी मापा नहीं गया है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.test.right": {
+   "source": "186ba579361e43",
+   "english": "Right eye",
+   "text": "दाहिनी आँख",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.test.title": {
+   "source": "0ab52de0a30330",
+   "english": "Letter size",
+   "text": "अक्षर का साइज़",
+   "status": "machine",
+   "made": "2026-10-05 copied from data/words:test.acuity.name"
+  },
+  "landing.spaces.shots.test.when": {
+   "source": "80eead3cb47bc0",
+   "english": "Every week",
+   "text": "हर सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.alt": {
+   "source": "6e23db8999b158",
+   "english": "Example of a family board: three family members and the days each one practised this week, and a cheer from a grandparent.",
+   "text": "फैमिली बोर्ड का उदाहरण: परिवार के तीन सदस्य और इस सप्ताह हर एक द्वारा अभ्यास किए गए दिन, और एक दादा-दादी या नाना-नानी की ओर से हौसला अफ़्ज़ाही।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.cheer": {
+   "source": "8443517ae30865",
+   "english": "Nani sent a cheer",
+   "text": "नानी ने हौसला अफ़्ज़ाही भेजी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.of(*)": {
+   "source": "52165bb6c45a88",
+   "english": "{days} of 7",
+   "text": "7 में से {days}",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "days"
+   ]
+  },
+  "landing.spaces.shots.together.rows.0.name": {
+   "source": "f4af66f37c9e49",
+   "english": "Aarav",
+   "text": "आरव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.track.who"
+  },
+  "landing.spaces.shots.together.rows.1.name": {
+   "source": "8677a607bfb49f",
+   "english": "Priya",
+   "text": "प्रिया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.rows.2.name": {
+   "source": "69ad854e2762c1",
+   "english": "Dadi",
+   "text": "दादी",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.sub": {
+   "source": "fc606fb8d23fc4",
+   "english": "Days practised this week",
+   "text": "इस सप्ताह अभ्यास किए गए दिन",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.together.title": {
+   "source": "45de0b3ce7c220",
+   "english": "Family board",
+   "text": "फैमिली बोर्ड",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.alt": {
+   "source": "11ae8dd566e3fb",
+   "english": "Example of the Today screen: three rings for rest, practice and daylight, and one bar for each day of the week. One day is hatched: no practice that day.",
+   "text": "Today स्क्रीन का उदाहरण: आराम, अभ्यास और दिन की रोशनी के लिए तीन रिंग, और सप्ताह के हर दिन के लिए एक बार। एक दिन पर धारियाँ हैं: उस दिन कोई अभ्यास नहीं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.0": {
+   "source": "4af7293d0bdf83",
+   "english": "M",
+   "text": "M",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.1": {
+   "source": "a4a000b3842c8e",
+   "english": "T",
+   "text": "T",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.2": {
+   "source": "81c1568339229c",
+   "english": "W",
+   "text": "W",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.3": {
+   "source": "a4a000b3842c8e",
+   "english": "T",
+   "text": "T",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.track.days.1"
+  },
+  "landing.spaces.shots.track.days.4": {
+   "source": "ea7f3a8256e561",
+   "english": "F",
+   "text": "F",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.5": {
+   "source": "b6a715c725d406",
+   "english": "S",
+   "text": "S",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.days.6": {
+   "source": "b6a715c725d406",
+   "english": "S",
+   "text": "S",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as copy/landing:landing.spaces.shots.track.days.5"
+  },
+  "landing.spaces.shots.track.light": {
+   "source": "5bd79ce045f09a",
+   "english": "Light",
+   "text": "रोशनी",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/today:today.rings.light"
+  },
+  "landing.spaces.shots.track.lightValue": {
+   "source": "18288bb9e497c0",
+   "english": "45 of 90 min",
+   "text": "90 में से 45 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.rest": {
+   "source": "6e5d144f9a070c",
+   "english": "Rest",
+   "text": "आराम",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/today:today.rings.rest"
+  },
+  "landing.spaces.shots.track.restValue": {
+   "source": "cf2c276efcb503",
+   "english": "4 of 5 breaks",
+   "text": "5 में से 4 ब्रेक",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.title": {
+   "source": "7fca2ff1421477",
+   "english": "Today",
+   "text": "आज",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.nav.today"
+  },
+  "landing.spaces.shots.track.train": {
+   "source": "dd097011bdcc8d",
+   "english": "Train",
+   "text": "ट्रेनिंग",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/common:common.nav.train"
+  },
+  "landing.spaces.shots.track.trainValue": {
+   "source": "c637297d942996",
+   "english": "20 of 30 min",
+   "text": "30 में से 20 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.track.week": {
+   "source": "12b36cfb448aa7",
+   "english": "This week",
+   "text": "इस सप्ताह",
+   "status": "machine",
+   "made": "2026-10-05 copied from copy/today:today.week"
+  },
+  "landing.spaces.shots.track.who": {
+   "source": "f4af66f37c9e49",
+   "english": "Aarav",
+   "text": "आरव",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.train.alt": {
+   "source": "8b4327ded30899",
+   "english": "Example of a game: a runner and coins in cyan, crates in dim red and the ground in white on a black field, with a stop button below.",
+   "text": "एक गेम का उदाहरण: काले मैदान पर सायन रंग में एक रनर और सिक्के, हल्के लाल रंग में क्रेट और सफेद रंग में ज़मीन, और नीचे एक स्टॉप बटन।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.train.stop": {
+   "source": "e889ad146e26ca",
+   "english": "Stop",
+   "text": "रोकें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.shots.train.time": {
+   "source": "66e83c31fc69b8",
+   "english": "6 of 10 min",
+   "text": "10 में से 6 min",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.test.body(*)": {
+   "source": "6fb1a4d5a7100b",
+   "english": "{checkups} check-ups on a schedule. Each result is set beside your own earlier ones.",
+   "text": "एक शेड्यूल पर {checkups} जाँच। प्रत्येक परिणाम को आपके अपने पहले के परिणामों के साथ रखा जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "checkups"
+   ]
+  },
+  "landing.spaces.test.body(1)": {
+   "source": "f8d47c25c67325",
+   "english": "1 check-up on a schedule. Each result is set beside your own earlier ones.",
+   "text": "एक शेड्यूल पर 1 जाँच। प्रत्येक परिणाम को आपके अपने पहले के परिणामों के साथ रखा जाता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.test.head": {
+   "source": "10db6112a75c00",
+   "english": "Check your eyes at home",
+   "text": "घर पर अपनी आँखों की जाँच करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.title": {
+   "source": "e6a9c5801f49ef",
+   "english": "It works like a fitness app, for your eyes.",
+   "text": "यह आपकी आँखों के लिए एक फ़िटनेस ऐप की तरह काम करता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.together.body": {
+   "source": "cb96bbff7d9965",
+   "english": "A family board, cheers from the people who care, and ideas from other members, tested in the open.",
+   "text": "एक फैमिली बोर्ड, देखभाल करने वाले लोगों की तालियाँ, और दूसरे सदस्यों के विचार, जो खुले में परखे गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.together.head": {
+   "source": "6d6bb42ec1e175",
+   "english": "Keep going together",
+   "text": "साथ में आगे बढ़ते रहें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.track.body": {
+   "source": "8f37e07b9a685f",
+   "english": "Three rings for the day: screen breaks, today's practice and time in daylight.",
+   "text": "दिन के लिए तीन रिंग: स्क्रीन ब्रेक, आज का अभ्यास और दिन के उजाले में समय।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.track.head": {
+   "source": "4d3c7aa1a38d94",
+   "english": "See how you use your eyes",
+   "text": "देखें कि आप अपनी आँखों का उपयोग कैसे करते हैं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.train.body(*,*)": {
+   "source": "cb024983481fc1",
+   "english": "{games} games and {exercises} exercises, set to your own eye profile.",
+   "text": "{games} गेम और {exercises} एक्सरसाइज, आपकी अपनी आँख की प्रोफाइल के अनुसार सेट किए गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.spaces.train.body(*,1)": {
+   "source": "29a91bac81ba6b",
+   "english": "{games} games and 1 exercise, set to your own eye profile.",
+   "text": "{games} गेम और 1 एक्सरसाइज, आपकी अपनी आँख की प्रोफाइल के अनुसार सेट किए गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.spaces.train.body(1,*)": {
+   "source": "fcf6d5bb86d72e",
+   "english": "1 game and {exercises} exercises, set to your own eye profile.",
+   "text": "1 गेम और {exercises} एक्सरसाइज, आपकी अपनी आँख की प्रोफाइल के अनुसार सेट किए गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite",
+   "params": [
+    "games",
+    "exercises"
+   ]
+  },
+  "landing.spaces.train.body(1,1)": {
+   "source": "707b6d53c377f8",
+   "english": "1 game and 1 exercise, set to your own eye profile.",
+   "text": "1 गेम और 1 एक्सरसाइज, आपकी अपनी आँख की प्रोफाइल के अनुसार सेट किए गए हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "landing.spaces.train.head": {
+   "source": "a4ab196cd6f04f",
+   "english": "Practise with games",
+   "text": "गेम के साथ अभ्यास करें",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

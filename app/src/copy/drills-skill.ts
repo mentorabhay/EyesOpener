@@ -1,5 +1,7 @@
 /** Words drawn inside the skill drills, and one line of help for each. */
-export const words = {
+import { texts } from "@/i18n/texts";
+
+export const words = texts("copy/drills-skill", "words", () => ({
   contrastLadder: {
     ask: "Which way do the stripes lean?",
     now: "Stripes at",
@@ -59,13 +61,13 @@ export const words = {
     other: "other side",
     s: "s",
   },
-};
+}));
 
-export const help: Record<string, string> = {
-  "contrast-ladder": "Cover the stronger eye with the patch. Look at the round patch of stripes and say which way they lean: tap the left or right half of the scene, or press Left or Right on the keys or a remote. Two right answers make the stripes fainter. One wrong answer makes them clearer.",
-  "crowding-drill": "Cover the stronger eye with the patch. Look at the middle E and say which way its arms point: tap the left, right, top or bottom part of the scene, or press that arrow on the keys or a remote. Two right answers bring the other letters closer.",
-  "line-up-drill": "Cover the stronger eye with the patch. Move the lower line until it sits exactly under the upper one: tap the left or right half for one small step, or keep a finger there to slide it. On the keys or a remote, press or hold Left or Right. Then tap OK or press OK.",
+export const help: Record<string, string> = texts("copy/drills-skill", "help", () => ({
+  "contrast-ladder": "Cover the stronger eye with the patch. Look at the round patch of stripes and say which way they lean. Tap the left or right half of the scene, or press Left or Right on the keys or a remote. Two right answers make the stripes fainter. One wrong answer makes them clearer.",
+  "crowding-drill": "Cover the stronger eye with the patch. Look at the middle E and say which way its arms point. Tap the left, right, top or bottom part of the scene, or press that arrow on the keys or a remote. Two right answers bring the other letters closer.",
+  "line-up-drill": "Cover the stronger eye with the patch. Move the lower line until it sits exactly under the upper one. Tap the left or right half for one small step, or keep a finger there to slide it. On the keys or a remote, press or hold Left or Right. Then tap OK or press OK.",
   "see-both-lights": "Wear the red-cyan glasses and look at the white dot. When the question comes, say how many lights you see: tap the left half or press Left for one, tap the right half or press Right for two. There is no hurry.",
   "stereogram-pairs": "No glasses. Join the two rings into a third ring in the middle, the way the words at the top say. Then say where the dot in the middle ring floats: tap the left half or press Left for nearer, tap the right half or press Right for farther. If the rings will not join, tap Cannot join or press Down.",
   "blind-side-sweeps": "First say which side is hard to see: tap that half or press Left or Right. Then sweep your eyes across the scene to find the white dot. Tap the dot, or press Left or Right for the side it is on. There is no hurry.",
-};
+}));

@@ -1,0 +1,419 @@
+{
+ "lang": "hi",
+ "file": "data/game-guides/verg",
+ "entries": {
+  "tunnel-glide.controls.keys": {
+   "source": "b0e1fda2e6144a",
+   "english": "Space, Enter or OK on a TV remote for \"it is one ring\". Down for \"it split\". Esc or Back moves to the Stop button.",
+   "text": "\"it is one ring\" के लिए Space, Enter या टीवी रिमोट पर OK दबाएँ। \"it split\" के लिए Down दबाएँ। Esc या Back से Stop बटन पर जाते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.controls.touch": {
+   "source": "f36206c673f216",
+   "english": "Tap anywhere in the scene for \"it is one ring\". Tap the It split box in the corner when it doubles.",
+   "text": "\"it is one ring\" के लिए दृश्य में कहीं भी टैप करें। जब यह दो हो जाए तो कोने में दिए गए It split बॉक्स पर टैप करें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.0.shapes.11.s": {
+   "source": "25af90b5e931f4",
+   "english": "Rings 3 · Reach 4",
+   "text": "Rings 3 · Reach 4",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.0.shapes.13.s": {
+   "source": "0d0ef7ac8a1c65",
+   "english": "It split",
+   "text": "अलग हो गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/games-verg:games.split"
+  },
+  "tunnel-glide.cues.0.then": {
+   "source": "77a15409035859",
+   "english": "Wait. Keep looking at the ring and let your eyes pull the two together.",
+   "text": "प्रतीक्षा करें। रिंग को देखते रहें और अपनी आँखों को दोनों को एक साथ खींचने दें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.0.title": {
+   "source": "ed2f6293759a22",
+   "english": "Two rings, ring still coming",
+   "text": "दो रिंग, रिंग अभी भी आ रही है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.1.shapes.7.s": {
+   "source": "25af90b5e931f4",
+   "english": "Rings 3 · Reach 4",
+   "text": "Rings 3 · Reach 4",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.cues.0.shapes.11.s"
+  },
+  "tunnel-glide.cues.1.shapes.9.s": {
+   "source": "0d0ef7ac8a1c65",
+   "english": "It split",
+   "text": "अलग हो गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/games-verg:games.split"
+  },
+  "tunnel-glide.cues.1.then": {
+   "source": "6ec9f2f0ced114",
+   "english": "Now: tap the scene or press Space. That ring counts.",
+   "text": "अब: दृश्य पर टैप करें या Space दबाएँ। वह रिंग गिनी जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.1.title": {
+   "source": "ad8e240bec5b23",
+   "english": "One ring with both dots, tunnel mouth lit",
+   "text": "दोनों बिंदुओं के साथ एक रिंग, सुरंग का मुँह जला हुआ",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.2.shapes.11.s": {
+   "source": "25af90b5e931f4",
+   "english": "Rings 3 · Reach 4",
+   "text": "Rings 3 · Reach 4",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.cues.0.shapes.11.s"
+  },
+  "tunnel-glide.cues.2.shapes.13.s": {
+   "source": "0d0ef7ac8a1c65",
+   "english": "It split",
+   "text": "अलग हो गया",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/games-verg:games.split"
+  },
+  "tunnel-glide.cues.2.then": {
+   "source": "1fcf2c432f80f7",
+   "english": "Tap It split or press Down. The game eases off. This is not a failure.",
+   "text": "It split पर टैप करें या Down दबाएँ। गेम आसान हो जाता है। यह कोई असफलता नहीं है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.2.title": {
+   "source": "f65314b98ddf26",
+   "english": "It doubled and will not join",
+   "text": "यह दो हो गया है और जुड़ेगा नहीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.3.shapes.10.s": {
+   "source": "25af90b5e931f4",
+   "english": "Rings 3 · Reach 4",
+   "text": "Rings 3 · Reach 4",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite, as data/game-guides/verg:tunnel-glide.cues.0.shapes.11.s"
+  },
+  "tunnel-glide.cues.3.shapes.9.s": {
+   "source": "7480f5abf6e240",
+   "english": "bottom dot missing",
+   "text": "नीचे वाला डॉट गायब है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.3.then": {
+   "source": "c8082869ac7280",
+   "english": "One eye has switched off. Blink, look far away, then look again. Do not press yet.",
+   "text": "एक आँख बंद हो गई है। पलक झपकाएँ, दूर देखें, फिर दोबारा देखें। अभी मत दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.cues.3.title": {
+   "source": "00febbd554e109",
+   "english": "One ring, but one dot is missing",
+   "text": "एक रिंग, लेकिन एक बिंदु गायब है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.evidence": {
+   "source": "f11539d5e1529b",
+   "english": "No trial tested this game. In the trial behind it, weekly therapy with a therapist plus home practice helped 73 in 100 children, while computer practice at home alone helped 33 in 100, about the same as pretend therapy.",
+   "text": "किसी ट्रायल ने इस गेम का परीक्षण नहीं किया। इसके पीछे के ट्रायल में, थेरेपिस्ट के साथ साप्ताहिक थेरेपी और घर पर अभ्यास ने 100 में से 73 बच्चों की मदद की, जबकि अकेले घर पर कंप्यूटर अभ्यास ने 100 में से 33 बच्चों की मदद की, जो कि नकली थेरेपी के लगभग बराबर है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.helps": {
+   "source": "f68bef46270f00",
+   "english": "Each ring is drawn a little further apart than the last, so your eyes must turn in a little more to join it. That is the turning-in practice used in therapy for convergence insufficiency, where the eyes tire or drift when working up close. Therapy with a therapist every week helped most children in trials; computer practice at home alone did no better than pretend therapy, so treat this as practice, not as treatment.",
+   "text": "हर रिंग पिछली रिंग से थोड़ी अधिक दूरी पर दिखाई जाती है, इसलिए आपकी आँखों को इसे जोड़ने के लिए थोड़ा और अंदर की ओर घूमना होगा। यह कन्वर्जेंस इनसफिशिएंसी के लिए थेरेपी में इस्तेमाल होने वाला अंदर की ओर घूमने का अभ्यास है, जहाँ पास में काम करते समय आँखें थक जाती हैं या भटक जाती हैं। परीक्षणों में अधिकांश बच्चों के लिए हर सप्ताह एक थेरेपिस्ट के साथ थेरेपी से सबसे अधिक मदद मिली; घर पर अकेले कंप्यूटर अभ्यास ने बनावटी थेरेपी से बेहतर प्रदर्शन नहीं किया, इसलिए इसे इलाज के रूप में नहीं, बल्कि अभ्यास के रूप में लें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.0.how": {
+   "source": "93b3e98588a837",
+   "english": "Each press at the tunnel mouth while you saw one ring with both dots adds one.",
+   "text": "सुरंग के मुँह पर हर बार दबाना जब आपको दोनों डॉट के साथ एक रिंग दिखाई दिया, एक जोड़ता है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.0.label": {
+   "source": "c8ecbaec0526db",
+   "english": "Rings passed as one",
+   "text": "रिंग जो एक के रूप में पार किए गए",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.1.how": {
+   "source": "ea550838449976",
+   "english": "The largest pull the screen drew this session. One prism dioptre means aiming 1 cm to the side at a distance of 1 metre. A small screen cannot draw as far as a large one.",
+   "text": "सबसे बड़ा खिंचाव जो स्क्रीन ने इस सत्र में खींचा। एक डायोप्टर का मतलब है 1 मीटर की दूरी पर एक तरफ 1 cm निशाना लगाना। एक छोटी स्क्रीन बड़ी स्क्रीन जितना दूर नहीं खींच सकती।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.1.label": {
+   "source": "c2affdee04ea1e",
+   "english": "Furthest turned in",
+   "text": "सबसे ज़्यादा अंदर मुड़ीं",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.conv.label"
+  },
+  "tunnel-glide.measures.1.unit": {
+   "source": "9e2d9b71b1c692",
+   "english": "prism dioptres",
+   "text": "डायोप्टर",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.conv.unit"
+  },
+  "tunnel-glide.measures.2.how": {
+   "source": "84f2a2ae1a8e2a",
+   "english": "How often you pressed It split. Fewer at the same Reach means the pull is getting easier to hold.",
+   "text": "आपने कितनी बार It split दबाया। समान Reach पर कम बार दबाने का मतलब है कि खिंचाव संभालना आसान हो रहा है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.2.label": {
+   "source": "715d6c77bb520e",
+   "english": "Times it split in two",
+   "text": "जितनी बार दो दिखे",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.splits.label"
+  },
+  "tunnel-glide.measures.3.how": {
+   "source": "1b30f56801071c",
+   "english": "Three rings in a row raise the level, and the steps between rings grow. Two splits in a row lower it.",
+   "text": "लगातार तीन रिंग लेवल बढ़ाते हैं, और रिंगों के बीच के कदम बढ़ते हैं। लगातार दो splits इसे कम करते हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.measures.3.label": {
+   "source": "64eaf183ef7567",
+   "english": "Highest level",
+   "text": "सबसे ऊँचा लेवल",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.top.label"
+  },
+  "tunnel-glide.measures.3.unit": {
+   "source": "90a9ccdbab953a",
+   "english": "of 10",
+   "text": "10 में से",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/results:results.game.top.unit"
+  },
+  "tunnel-glide.mistakes.0": {
+   "source": "281a8ebe4ebc33",
+   "english": "Playing without the glasses, or with them the wrong way round. Close your right eye: the dot you still see should be the top one.",
+   "text": "बिना चश्मे के खेलना, या चश्मा उल्टा पहनना। अपनी दाहिने आँख बंद करें: जो डॉट आपको अभी भी दिखाई दे रहा है वह ऊपर वाला होना चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.mistakes.1": {
+   "source": "5d9a7442e56b6e",
+   "english": "Pressing because the tunnel mouth lit up, while you still see two rings.",
+   "text": "सुरंग का मुँह रोशन होने पर दबाना, जबकि आप अभी भी दो रिंग देख रहे हैं।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.mistakes.2": {
+   "source": "a74af3a9f339c8",
+   "english": "Leaning toward the screen when it gets hard. Stay at your set distance.",
+   "text": "मुश्किल होने पर स्क्रीन की तरफ झुकना। अपनी तय दूरी पर रहें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.mistakes.3": {
+   "source": "ac42db83517ac0",
+   "english": "Carrying on with one dot missing.",
+   "text": "एक डॉट गायब होने के बावजूद जारी रखना।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.need.0": {
+   "source": "9fa3fe4e142271",
+   "english": "Red-cyan glasses. Without them the game cannot work: you will always see two rings, one red and one cyan.",
+   "text": "लाल-सियान चश्मा। इसके बिना गेम काम नहीं कर सकता: आप हमेशा दो रिंग देखेंगे, एक लाल और एक सियान।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.need.1": {
+   "source": "2533ea6597c0fd",
+   "english": "A tablet, computer or TV. A wider screen lets the rings go further apart.",
+   "text": "एक टैबलेट, कंप्यूटर या टीवी। एक चौड़ी स्क्रीन रिंगों को और अधिक दूर जाने देती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.need.2": {
+   "source": "7a38f3e2cce958",
+   "english": "A seat square to the screen, at the distance this screen was measured for in onboarding.",
+   "text": "स्क्रीन के सामने सीधी सीट, उस दूरी पर जिसके लिए इस स्क्रीन को ऑनबोर्डिंग में मापा गया था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.0": {
+   "source": "c487d86c78612d",
+   "english": "Put the glasses on, cyan lens over the eye your eye settings name, and press Start.",
+   "text": "चश्मा पहनें, सियान लेंस को उस आँख के ऊपर रखें जिसका नाम आपकी आँख की सेटिंग में है, और Start दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.1": {
+   "source": "83526632ddbad1",
+   "english": "Watch the ring come toward you from the far end of the tunnel. Keep looking at the ring, not at the walls.",
+   "text": "सुरंग के दूर के छोर से रिंग को अपनी ओर आते हुए देखें। दीवारों को नहीं, बल्कि रिंग को देखते रहें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.2": {
+   "source": "9c926432a7e9f8",
+   "english": "Let your eyes pull the two rings together until you see one ring with both dots.",
+   "text": "अपनी आँखों को दोनों रिंगों को तब तक एक साथ खींचने दें जब तक आपको दोनों बिंदुओं के साथ एक रिंग न दिखाई दे।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.3": {
+   "source": "57fa4e51028b79",
+   "english": "When the tunnel mouth lights up (its outline turns thick) and you still see one ring with both dots, tap the scene or press Space.",
+   "text": "जब सुरंग का मुँह जगमगा उठे (इसकी रूपरेखा मोटी हो जाती है) और आपको दोनों बिंदुओं के साथ अभी भी एक रिंग दिखाई दे, तो दृश्य पर टैप करें या Space दबाएँ।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.4": {
+   "source": "ba94665485b488",
+   "english": "The next ring starts far away and asks for a little more. Keep going.",
+   "text": "अगली रिंग दूर से शुरू होती है और थोड़ा अधिक मांग करती है। जारी रखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.5": {
+   "source": "19868bdedf1ee6",
+   "english": "If the ring doubles and will not come back, tap It split or press Down. The game eases off and the ring goes back a little.",
+   "text": "यदि रिंग दो हो जाती है और वापस नहीं आती है, तो It split पर टैप करें या Down दबाएँ। गेम आसान हो जाता है और रिंग थोड़ा पीछे चली जाती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.play.6": {
+   "source": "6182665ded7f12",
+   "english": "After 5 minutes press Finish now, then look across the room for a minute.",
+   "text": "5 मिनट के बाद Finish now दबाएँ, फिर एक मिनट के लिए कमरे में दूर देखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.see.0": {
+   "source": "1074c7eb235d6c",
+   "english": "On the screen there are always two rings: a cyan one and a red one. That is how it is meant to be.",
+   "text": "स्क्रीन पर हमेशा दो रिंग होती हैं: एक सियान और एक लाल। यह ऐसा ही होना चाहिए।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.see.1": {
+   "source": "d67fc4ef71e442",
+   "english": "Through the glasses each eye gets one ring. When your eyes turn in by the right amount, your brain joins them: you see ONE ring, with a dot at the top and a dot at the bottom.",
+   "text": "चश्मे के माध्यम से प्रत्येक आँख को एक रिंग मिलती है। जब आपकी आँखें सही मात्रा में अंदर की ओर घूमती हैं, तो आपका मस्तिष्क उन्हें जोड़ देता है: आपको ऊपर एक बिंदु और नीचे एक बिंदु के साथ एक रिंग दिखाई देती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.see.2": {
+   "source": "820528a8d61075",
+   "english": "Two rings through the glasses means your eyes have not joined them yet, or have let go.",
+   "text": "चश्मे के माध्यम से दो रिंग दिखने का मतलब है कि आपकी आँखों ने अभी तक उन्हें जोड़ा नहीं है, या उन्हें छोड़ दिया है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.see.3": {
+   "source": "26e6525b8a183d",
+   "english": "One ring with only one dot means one eye has switched off. Blink and look again.",
+   "text": "केवल एक बिंदु वाली एक रिंग का मतलब है कि एक आँख बंद हो गई है। पलक झपकाएं और फिर से देखें।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.stop.0": {
+   "source": "356ad427c1b11d",
+   "english": "Double vision that stays after you look far away and blink",
+   "text": "दोहरा दिखना जो दूर देखने और पलक झपकाने के बाद भी बना रहता है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.stop.1": {
+   "source": "29247be057940a",
+   "english": "A headache",
+   "text": "सिरदर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.stop.2": {
+   "source": "901cad27d1fbd6",
+   "english": "Eye pain",
+   "text": "आँखों में दर्द",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.8-flash, as copy/train:train.stop.symptoms.eye_pain"
+  },
+  "tunnel-glide.stop.3": {
+   "source": "5a84db7493d48a",
+   "english": "Feeling dizzy or sick",
+   "text": "चक्कर आना या तबीयत खराब लगना",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.stop.4": {
+   "source": "da38978e571831",
+   "english": "A pulling or aching feeling round the eyes that is still there after a minute of looking far away",
+   "text": "आँखों के आस-पास खिंचाव या दर्द की भावना जो दूर देखने के एक मिनट बाद भी बनी रहती है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.stop.5": {
+   "source": "62b3ef44eb8a3a",
+   "english": "One of the two dots keeps going missing: one eye is switching off",
+   "text": "दो डॉट में से एक लगातार गायब हो रहा है: एक आँख बंद हो रही है",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.success.0": {
+   "source": "24b1ba2daa5e7a",
+   "english": "One point is one ring that you passed while it was truly one ring with both dots.",
+   "text": "एक पॉइंट एक रिंग है जिसे आपने तब पार किया जब वह दोनों डॉट के साथ सचमुच एक रिंग था।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.success.1": {
+   "source": "7029ea1035abf8",
+   "english": "\"Reach\" on the top line is the largest pull at which you passed a ring. A good session is one where Reach climbs by a step or two and you rarely need It split.",
+   "text": "ऊपर की लाइन पर \"Reach\" वह सबसे बड़ा खिंचाव है जिस पर आपने एक रिंग को पार किया। एक अच्छा सत्र वह है जहाँ Reach एक या दो कदम बढ़ जाता है और आपको शायद ही कभी It split की ज़रूरत पड़ती है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.success.2": {
+   "source": "06ad0199cf4014",
+   "english": "The game only knows what you tell it. Pressing when you still see two rings raises the numbers and trains nothing.",
+   "text": "गेम सिर्फ वही जानता है जो आप उसे बताते हैं। जब आप अभी भी दो रिंग देखते हैं तब दबाने से नंबर बढ़ जाते हैं और कुछ भी अभ्यास नहीं होता।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.success.3": {
+   "source": "acaa967b20a133",
+   "english": "Needing It split is normal. It tells the game where your limit is today.",
+   "text": "It split की ज़रूरत पड़ना सामान्य है। यह गेम को बताता है कि आज आपकी सीमा कहाँ है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  },
+  "tunnel-glide.what": {
+   "source": "69673eabbbd4cf",
+   "english": "A ring flies toward you down a tunnel. The screen draws it twice, once for each eye, a little apart. Your job is to pull the two into one ring with your eyes, and say so when the ring reaches the tunnel mouth.",
+   "text": "एक रिंग सुरंग में आपकी ओर उड़ती है। स्क्रीन इसे दो बार दिखाती है, हर आँख के लिए एक, थोड़ा अलग। आपका काम अपनी आँखों से दोनों रिंग को एक करना है, और जब रिंग सुरंग के मुँह पर पहुँचे तो ऐसा ही बताना है।",
+   "status": "machine",
+   "made": "2026-10-05 gemini-3.5-flash-lite"
+  }
+ }
+}

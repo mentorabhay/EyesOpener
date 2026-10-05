@@ -9,7 +9,7 @@ import { switchRule } from "./actions";
 import { AddRuleForm, TrySentenceForm } from "./forms";
 
 const h = t.hazards;
-export const metadata: Metadata = { title: t.rooms.hazards.name };
+export const generateMetadata = (): Metadata => ({ title: t.rooms.hazards.name });
 
 export default async function HazardsPage() {
   await requireStaff("hazards");

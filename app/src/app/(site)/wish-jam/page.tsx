@@ -7,7 +7,7 @@ import { Head, Hero, Points, Section } from "../_components/parts";
 import { TakePart, WriteToUs } from "../_components/roles";
 
 const w = wishJam.site;
-export const metadata: Metadata = pageMeta("/wish-jam", w.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/wish-jam", w.meta));
 
 /**
  * Wish Jam, the public page: the wishes families have shared, the game kit's rules in short, and the form a

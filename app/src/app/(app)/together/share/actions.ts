@@ -11,6 +11,7 @@ import { assist } from "@/lib/assist/extra";
 import type { AiFlag, IdeaSuggestion, SimilarIdea } from "@/lib/assist/types";
 import { fieldProblems, screenHazards } from "@/lib/community";
 import { requireMember } from "@/lib/session";
+import { inEnglish } from "@/i18n/runtime";
 
 const t = together.shareForm;
 const words = (min: number, max: number) => z.string().trim().min(min).max(max);
@@ -52,7 +53,7 @@ export async function shareIdea(_: FormState, form: FormData): Promise<FormState
       .values({ ...idea, storyId: kept.id, profileId: m.profile.id, step: "protocol", status: "in_review", hazard: { blocked: [], flagged } })
       .returning({ id: schema.protocol.id });
     const [item] = await tx.insert(schema.moderationItem)
-      .values({ kind: "protocol", refId: protocol.id, reason: flagged.length ? assistCopy.review.reasonFlagged : REASON, aiFlag })
+      .values({ kind: "protocol", refId: protocol.id, reason: flagged.length ? inEnglish(() => assistCopy.review.reasonFlagged) : REASON, aiFlag })
       .returning({ id: schema.moderationItem.id });
     return { id: protocol.id, itemId: item.id };
   });

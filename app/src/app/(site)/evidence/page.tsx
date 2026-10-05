@@ -7,7 +7,7 @@ import { evidenceCounts, libraryHref, mechanismUse, pageMeta } from "@/lib/site"
 import { Cta, Head, Hero, Section } from "../_components/parts";
 
 const e = t.evidence;
-export const metadata: Metadata = pageMeta("/evidence", e.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/evidence", e.meta));
 
 export default function EvidencePage() {
   const counts = evidenceCounts();

@@ -7,6 +7,8 @@
 import type { Source } from "@/data/guides/types";
 import { frame, hud, key, tap, words } from "./cue";
 import type { CueInk, GameGuide, Shape } from "./types";
+import { textsEach } from "@/i18n/texts";
+import { GAME_GUIDE_WORDS } from "./words";
 
 /** Of the adults who had measurable depth vision before training, 34% improved it by two octaves (four times finer) or more. The authors urge caution: coarse depth scores vary between sessions with no training. */
 const ADULT_TRAINING: Source = {
@@ -37,13 +39,13 @@ const joined = (y: number): Shape[] => ROW.flatMap((x) => board(x, y, "both"));
 const corner = (): Shape => ({ t: "text", x: 9, y: 82, s: "Depth step: 600", ink: "both", size: 6.5 });
 const scene = (hits: number): Shape[] => [frame(), hud(`Hits ${hits}`), corner()];
 
-export const guides: GameGuide[] = [
+export const guides: GameGuide[] = textsEach("data/game-guides/depth", () => [
   {
     slug: "depth-darts",
     what: "A row of three or four round targets. One of them floats a little nearer to you than the others. You throw a dart at that one.",
     helps:
       "Depth vision is the brain comparing the two eyes' pictures. Every target is drawn once for each eye; for one target the two drawings sit a small step apart, and joined eyes see that target as nearer. Right answers make the step finer. " +
-      "In pooled studies of training in adults with a lazy eye, about a third of those who started with some depth vision made it four times finer or better, but coarse depth scores also change from test to test with no training. A score here is not a clinic depth test.",
+      "In pooled studies of training in adults with a lazy eye, about a third of those who started with some depth vision made it four times finer or better. But coarse depth scores also change from test to test with no training. A score here is not a clinic depth test.",
     need: [
       "Red-cyan glasses, cyan lens over the eye your eye settings name. Without them no target can float: every one looks flat.",
       "Your own prescribed glasses, if you have them, under the red-cyan pair.",
@@ -54,7 +56,7 @@ export const guides: GameGuide[] = [
       "On the screen itself every target is drawn twice, once in red and once in cyan, one on top of the other. For one target the two drawings sit a small step apart, so with no glasses it shows a thin red edge and a thin cyan edge.",
       "Through the glasses each eye gets one drawing of every target. One eye alone sees a row of targets that all look the same. With both eyes working together, one target floats in front of the screen, nearer to you than the rest.",
       "The red drawing may be fainter than the cyan one: red is dimmed to your own setting. It is not a fault of the screen.",
-      "\"Depth step\" in the bottom corner is the size of the step, in arcseconds (a measure of angle: 3,600 make one degree). A smaller number is a finer step and harder to see.",
+      "\"Depth step\" in the bottom corner is the size of the step, in seconds of arc (a measure of angle: 3,600 make one degree). A smaller number is a finer step and harder to see.",
     ],
     play: [
       "Put the glasses on and press Start. Keep both eyes open.",
@@ -109,13 +111,13 @@ export const guides: GameGuide[] = [
     success: [
       "One point is one dart thrown at the target that was nearest. \"Hits\" on the top line is your score.",
       "Three hits in a row make the depth step finer; two misses in a row make it bigger again. A good session ends on a smaller Depth step than it began, with few misses.",
-      "The level (1 to 10) is the step: level 1 asks for 1,200 arcseconds and level 10 for 40. A screen cannot draw a step finer than one of its own dots, so the corner shows the step that was really drawn.",
+      "The level (1 to 10) is the step: level 1 asks for 1,200 seconds of arc and level 10 for 40. A screen cannot draw a step finer than one of its own dots, so the corner shows the step that was really drawn.",
       "The game only knows which target you chose. Choosing by the coloured edges with the glasses off, or by luck, raises the numbers and trains nothing.",
     ],
     measures: [
       { key: "score", label: "Darts on the nearest target", unit: "", how: "Each dart thrown at the target that floated nearest adds one.", better: "higher" },
       { key: "misses", label: "Darts on a wrong target", unit: "", how: "Each dart thrown at a target that was not the nearest. With three targets, luck alone puts two darts in three here.", better: "lower" },
-      { key: "top", label: "Highest level", unit: "of 10", how: "The finest step you reached. Level 1 is a step of 1,200 arcseconds and level 10 is 40. A small or coarse screen cannot draw the finest steps.", better: "higher" },
+      { key: "top", label: "Highest level", unit: "of 10", how: "The finest step you reached. Level 1 is a step of 1,200 seconds of arc and level 10 is 40. A small or coarse screen cannot draw the finest steps.", better: "higher" },
     ],
     stop: [...STOP, "The targets go double and will not settle", "One colour of the targets keeps fading away: one eye is switching off"],
     mistakes: [
@@ -127,4 +129,4 @@ export const guides: GameGuide[] = [
     evidence: "No trial tested this game. In pooled studies of training in adults with a lazy eye, about a third of those who started with some depth vision made it four times finer or better. The authors warn that coarse depth scores vary between tests even with no training.",
     sources: [ADULT_TRAINING, EXERCISE_REVIEW],
   },
-];
+], GAME_GUIDE_WORDS);

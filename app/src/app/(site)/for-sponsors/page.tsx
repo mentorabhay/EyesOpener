@@ -8,7 +8,7 @@ import { Head, Hero, Points, Section } from "../_components/parts";
 import { SeesAndNot, TakePart, WriteToUs } from "../_components/roles";
 
 const s = t.sponsors;
-export const metadata: Metadata = pageMeta("/for-sponsors", s.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/for-sponsors", s.meta));
 
 export default function ForSponsorsPage() {
   const cannot = { title: s.sees.cannot.title, items: s.sees.cannot.items.map((line) => (typeof line === "string" ? line : line(SPONSOR_MIN_GROUP))) };

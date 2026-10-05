@@ -6,7 +6,7 @@ import { day } from "@/copy/settings";
 import { circleFacts } from "@/lib/family";
 import { requireMember } from "@/lib/session";
 
-export const metadata: Metadata = { title: t.title };
+export const generateMetadata = (): Metadata => ({ title: t.title });
 
 export default async function CirclePage() {
   const m = await requireMember();

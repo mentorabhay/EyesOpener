@@ -8,9 +8,10 @@ import { catalogue, games, isStrong, mechanismOf } from "@/data";
 import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { doseFor } from "@/lib/sessions";
-import { forWhom, isListed, statusOf } from "@/lib/status";
+import { isListed, statusOf } from "@/lib/status";
+import { gameWords } from "@/data/words";
 
-export const metadata: Metadata = { title: t.games.title };
+export const generateMetadata = (): Metadata => ({ title: t.games.title });
 
 export default async function TrainPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const sp = await searchParams;
@@ -50,8 +51,8 @@ export default async function TrainPage({ searchParams }: { searchParams: Promis
                   {isBuilt(g.slug) && <Chip tone="grad">{t.games.playable}</Chip>}
                   {status(g.slug) !== "open" && <Chip tone={status(g.slug) === "counsellor" ? "plain" : "warn"}>{t.game.statusFor[status(g.slug)]}</Chip>}
                 </div>
-                <p>{forWhom(g.for)}</p>
-                <p className="small">{g.session}</p>
+                <p>{gameWords(g).who}</p>
+                <p className="small">{gameWords(g).session}</p>
               </div>
             </Link>
           ))}

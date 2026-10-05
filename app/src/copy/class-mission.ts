@@ -4,10 +4,11 @@
  * It is a game, not an eye test: no line here scores, compares or judges anyone, and none promises a result.
  */
 import type { MissionRefusal, MissionState, StepKey } from "@/lib/class-mission";
+import { texts } from "@/i18n/texts";
 
 const seconds = (n: number) => (n % 60 === 0 ? `${n / 60} min` : n > 60 ? `${Math.floor(n / 60)} min ${n % 60} s` : `${n} s`);
 
-export const classMission = {
+export const classMission = texts("copy/class-mission", "classMission", () => ({
   stats: { length: "Minutes, start to finish", state: "Where it stands" },
   state: { none: "Not given", given: "Given, not run yet", done: "Run" } satisfies Record<MissionState, string>,
   seconds,
@@ -203,4 +204,4 @@ export const classMission = {
       noNames: "No other names go on this sheet.",
     },
   },
-};
+}));

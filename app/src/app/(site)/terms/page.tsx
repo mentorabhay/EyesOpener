@@ -5,7 +5,7 @@ import { pageMeta } from "@/lib/site";
 import { LegalPage, type LegalSection } from "../_components/legal";
 
 const c = t.legal.terms;
-export const metadata: Metadata = pageMeta("/terms", c.meta);
+export const generateMetadata = (): Metadata => (pageMeta("/terms", c.meta));
 
 export default function TermsPage() {
   /* The limits are read from the engine, so this page cannot drift from what the app enforces. */

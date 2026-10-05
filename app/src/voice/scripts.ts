@@ -24,6 +24,7 @@ import { train } from "@/copy/train";
 import { CLIP_DEFS, LOOKS, type OfferedClip } from "@/data/clips";
 import { gameGuides, type GameGuide } from "@/data/game-guides";
 import { guides, type Guide } from "@/data/guides";
+import { inEnglish } from "@/i18n/runtime";
 import { charsOf, hashOf, sentence, spokenList, spokenParts, spokenSection, spokenSteps } from "./speak";
 
 export const SCRIPT_PARTS = {
@@ -113,11 +114,13 @@ export function clipScripts(def: OfferedClip): Script[] {
 let built: { list: Script[]; byId: Map<string, Script> } | null = null;
 function build() {
   if (built) return built;
-  const list = [
+  /* Always the English scripts, whatever language the request is in: a script's mark is the mark of its English
+     text, and this list is kept for every request that follows. */
+  const list = inEnglish(() => [
     ...guides.flatMap(exerciseScripts),
     ...gameGuides.flatMap(gameScripts),
     ...CLIP_DEFS.flatMap((d) => (d.offered ? clipScripts(d) : [])),
-  ];
+  ]);
   built = { list, byId: new Map(list.map((s) => [s.id, s])) };
   return built;
 }
