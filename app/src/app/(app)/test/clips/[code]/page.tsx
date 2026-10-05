@@ -4,13 +4,16 @@ import { notFound } from "next/navigation";
 import clipCss from "@/components/clips/clips.module.css";
 import { ClipRunner } from "@/components/clips/runner";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
+import { Listen } from "@/components/voice/listen";
 import { clips as c, reading, usedFor } from "@/copy/clips";
 import { test } from "@/copy/test";
+import { voice } from "@/copy/voice";
 import { clipDef, clipLine, clipTest, type OfferedClip } from "@/data/clips";
 import { EYE_NAME } from "@/engine";
 import { clipState } from "@/lib/clip-rules";
 import { clipContext, clipPerson, clipResults, clipRuns } from "@/lib/clips";
 import { requireMember } from "@/lib/session";
+import { clipScriptId } from "@/voice/scripts";
 import { dayText } from "../../results";
 
 type Props = { params: Promise<{ code: string }> };
@@ -75,7 +78,10 @@ export default async function ClipPage({ params }: Props) {
       <PageHead title={line.title} sub={c.what(code)} crumb={crumb} stats={[{ value: c.short(line.seconds), label: c.page.length }]} />
       <div className="bento">
         <div className="span7 stack" style={{ gap: 16 }}>
-          <ClipRunner key={`${m.profile.id}${code}`} def={def} ctx={ctx} blocked={blocked} />
+          <ClipRunner
+            key={`${m.profile.id}${code}`} def={def} ctx={ctx} blocked={blocked}
+            listen={<Listen id={clipScriptId(def, ctx.cyanEye === "R" ? "right" : "left")} what={voice.parts.clip} locale={m.account.locale} />}
+          />
         </div>
         <div className="span5 stack" style={{ gap: 16 }}>
           <Card title={c.page.measures}>

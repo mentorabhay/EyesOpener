@@ -11,6 +11,7 @@
  * - The live camera needs the household's camera consent for that profile. A photo the family picks and a drawing
  *   made on the screen do not use the camera.
  */
+import { heroGamesExtra } from "@/copy/hero-games.extra";
 
 /** How a hero was made. Only "camera" needs the camera consent. */
 export const HERO_VIAS = ["camera", "photo", "screen", "starter"] as const;
@@ -20,8 +21,11 @@ export const isHeroVia = (v: unknown): v is HeroVia => (HERO_VIAS as readonly un
 /** Heroes kept for one profile. Earlier ones stay until the family deletes them. */
 export const HERO_KEEP = 12;
 
-/** The games in this edition whose character is the member's hero, by catalogue slug. */
-export const HERO_GAMES: readonly string[] = ["lantern-run"];
+/**
+ * The games in this edition whose character is the member's hero, by catalogue slug: the ones built here, then
+ * the ones a fuller build adds through its own file.
+ */
+export const HERO_GAMES: readonly string[] = ["lantern-run", ...heroGamesExtra.map((g) => g.slug)];
 
 export type HeroBlock = "guardian" | "consent" | "camera" | "shape" | "full";
 

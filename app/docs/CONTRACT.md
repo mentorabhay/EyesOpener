@@ -194,3 +194,17 @@ Read `src/data/game-guides/types.ts`, `src/data/game-guides/cue.ts`, the referen
 - **`helps` and `evidence`** are honest: what the method is, what trials found for the method, and that no trial tested this game. Sources are real papers or guidelines with a working URL. The exercise guides (`src/data/guides/*.ts`) and the evidence page (`src/copy/site.ts`) already carry sources that were opened and read: reuse those by copying the label and the URL. A new source must be opened and checked first.
 - **`stop`** always includes: double vision that stays, a headache, eye pain, feeling dizzy or sick. A care companion (a family log with no scene) needs only what fits it.
 - `npx vitest run src/data/game-guides` checks every guide.
+
+---
+
+# Addendum: the assistant seam
+
+Some editions of IOpener have an assistant (AI). The public edition has none, and its pages must work, and say nothing about AI, without one.
+
+- **The seam is `src/lib/assist/`.** `types.ts` holds what an assistant may be asked and the shapes it answers in, with the rules every assistant must keep. `extra.ts` is this edition's assistant: it answers "none" to everything. A fuller build replaces that one file. Never import an assistant from anywhere else.
+- **A page asks first.** Draw nothing about AI unless `assist.available` is true. Offer a member a button only when `assist.ready(job)` is true as well, so nobody presses a button that cannot answer.
+- **An assistant suggests and flags. A person decides.** Nothing it returns is saved, published, approved or removed by the page on its say-so. The fixed hazard rules (`screenHazards`) run first and their answer stands whatever an assistant says: it can only add caution.
+- **Say when words came from AI.** Wherever a member or a reviewer reads an assistant's words, the page says so in the same place. The words are in `src/copy/assist.ts`.
+- **What an assistant leaves in the database** has a shape that is public and checked on reading: `AiFlagZ` for `moderation_item.ai_flag`. The vectors of the search by meaning are `protocol.embedding` and the table `library_vector`; they need the PostgreSQL extension `vector`.
+- **Two more slots** follow the same pattern: `src/lib/jobs/extra.ts` (scheduled jobs an edition adds; empty here) and `src/app/(admin)/admin/switchboard/extra.tsx` (what an edition adds to the Switchboard; nothing here).
+- **The research library** (`src/lib/library.ts`, `/together/research`) is part of every edition. It returns passages of the app's own pages, word for word, with their sources, and never writes an answer. It searches by words; an assistant may add a search by meaning through the seam.

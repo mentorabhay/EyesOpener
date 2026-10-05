@@ -142,7 +142,7 @@ export interface ModerationEntry { item: ModerationItem; subject: Subject; /** N
 const idsOf = (items: ModerationItem[], kind: string) => items.filter((i) => i.kind === kind).map((i) => i.refId);
 
 /** The text of a subject that the hazard screen reads: the same fields the member-side screen checks. */
-function screenText(subject: Subject): string | null {
+export function screenText(subject: Subject): string | null {
   if (subject.kind === "protocol") return [subject.story ?? "", subject.title, subject.forWhom, subject.doWhat, subject.howMuch].join("\n");
   if (subject.kind === "note") return `${subject.body}\n${subject.signature}`;
   if (subject.kind === "mail") return subject.body;

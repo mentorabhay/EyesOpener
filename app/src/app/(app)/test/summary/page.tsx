@@ -1,47 +1,27 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { and, desc, eq, gte, isNotNull } from "drizzle-orm";
 import { Btn, Card, PageHead } from "@/components/ui";
 import { test as c } from "@/copy/test";
 import { common } from "@/copy/common";
-import { programmeBySlug, tests } from "@/data";
-import { db, schema } from "@/db";
-import { requireMember, todayKey } from "@/lib/session";
-import { changesOf, dayText, reading, resultsOf, seriesOf, type Result } from "../results";
+import { assist } from "@/lib/assist/extra";
+import { requireMember } from "@/lib/session";
+import { dayText, reading, type Result } from "../results";
+import { firstOf, fullDay, lineName, summaryData, symptomText, type SummaryLine } from "./facts";
+import { PlainWords } from "./plain-words";
 import { PrintButton } from "./print-button";
 import css from "./summary.module.css";
 
 const s = c.summary;
 export const metadata: Metadata = { title: s.title };
 
-const DAYS = 28, DAY_MS = 86_400_000;
-const fullDay = (d: Date) => new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(d);
-
 /** Everything an eye doctor may want from the home measurements, on one printable page. Read-only: anyone who may look may open it. */
 export default async function SummaryPage() {
   const m = await requireMember();
   if (!m.can("view")) notFound();
-  const profileId = m.profile.id, now = new Date(), from = new Date(now.getTime() - (DAYS - 1) * DAY_MS);
-
-  const [rows, days, stops] = await Promise.all([
-    resultsOf(profileId),
-    db.select({ day: schema.daySummary.day, minutes: schema.daySummary.trainMinutes }).from(schema.daySummary)
-      .where(and(eq(schema.daySummary.profileId, profileId), gte(schema.daySummary.day, todayKey(from)))),
-    db.select({ symptom: schema.session.stopSymptom, at: schema.session.startedAt }).from(schema.session)
-      .where(and(eq(schema.session.profileId, profileId), isNotNull(schema.session.stopSymptom), gte(schema.session.startedAt, new Date(from.getTime() - DAY_MS))))
-      .orderBy(desc(schema.session.startedAt)),
-  ]);
-  const practised = days.filter((d) => d.minutes > 0);
-  const minutes = Math.round(practised.reduce((sum, d) => sum + d.minutes, 0));
-  const programme = m.enrolment && programmeBySlug(m.enrolment.programme);
-  /* only stops inside the 28 days, by the member's own calendar */
-  const recent = stops.filter((x) => todayKey(x.at) >= todayKey(from));
-
-  const lines = tests.flatMap((t) => {
-    const series = seriesOf(t, rows), changed = changesOf(t, series);
-    return series.map((line) => ({ t, line, changed: changed.some((x) => x.eye === line.eye) }));
-  });
-  const cell = (r: Result | undefined, line: (typeof lines)[number]) =>
+  const { now, lines, minutes, practisedDays, programme, recent } = await summaryData(m);
+  /* Only an edition with an assistant offers a paragraph in plain words, only to a grown-up, and only while it can answer. */
+  const plain = assist.available && !m.childMode && m.can("test") && (await assist.ready("exam").catch(() => false));
+  const cell = (r: Result | undefined, line: SummaryLine) =>
     (r ? <>{reading(line.t, r)}<small>{fullDay(r.takenAt)}</small></> : <span className="muted">{s.none}</span>);
 
   return (
@@ -60,11 +40,11 @@ export default async function SummaryPage() {
             <thead><tr><th>{s.test}</th><th>{s.latest}</th><th>{s.first}</th><th className="n">{s.count}</th></tr></thead>
             <tbody>
               {lines.map((x) => {
-                const { t, line } = x, first = line.first && line.last && line.first.id !== line.last.id ? line.first : undefined;
+                const { t, line } = x, first = firstOf(x);
                 return (
                   <tr key={`${t.key} ${line.eye}`}>
                     <td>
-                      {t.name}{line.eye && `, ${c.eye[line.eye].toLowerCase()}`}
+                      {lineName(x)}
                       {line.rows.length > 1 && <small>{s.span(dayText(line.rows[0].takenAt), dayText(line.rows.at(-1)!.takenAt))}</small>}
                       {x.changed && <small className={css.mark}>{s.changedMark}</small>}
                     </td>
@@ -92,18 +72,20 @@ export default async function SummaryPage() {
         <Card title={s.practice} span={6}>
           <dl className="kv">
             <div><dt>{s.programme}</dt><dd>{programme && m.enrolment ? s.programmeLine(programme.name, m.enrolment.week, m.enrolment.dailyMinutes, m.enrolment.daysPerWeek) : s.noProgramme}</dd></div>
-            <div><dt>{s.minutes}</dt><dd className="tnum">{s.minutesLine(minutes, practised.length)}</dd></div>
+            <div><dt>{s.minutes}</dt><dd className="tnum">{s.minutesLine(minutes, practisedDays)}</dd></div>
             <div>
               <dt>{s.stops}</dt>
               <dd>
                 {recent.length
-                  ? <ul className={css.list}>{recent.map((x, i) => <li key={i}>{s.stopLine(s.symptom[x.symptom ?? ""] ?? x.symptom ?? "", dayText(x.at))}</li>)}</ul>
+                  ? <ul className={css.list}>{recent.map((x, i) => <li key={i}>{s.stopLine(symptomText(x.symptom), dayText(x.at))}</li>)}</ul>
                   : s.noStops}
               </dd>
             </div>
           </dl>
         </Card>
       </div>
+
+      {plain && <PlainWords />}
 
       <Card title={s.notes}>
         <p>{s.howMeasured}</p>

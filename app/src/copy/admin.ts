@@ -56,6 +56,10 @@ const did: Record<string, (name?: string) => string> = {
   "admin.switchboard.saver_on": () => "turned saver mode on",
   "admin.switchboard.saver_off": () => "turned saver mode off",
   "admin.switchboard.cap": (n) => `set the monthly AI limit${n ? ` to ${n}` : ""}`,
+  "admin.switchboard.ai_models": () => "changed the AI model names",
+  "admin.switchboard.ai_prices": () => "changed the AI price table",
+  "admin.switchboard.ai_test": (n) => `tested the connection to the AI model${n ? `: ${n}` : ""}`,
+  "admin.moderation.notes": () => "asked the AI check for notes on open items",
   "admin.stories.publish": (n) => `published ${n ?? "a story"}`,
   "admin.stories.unpublish": (n) => `unpublished ${n ?? "a story"}`,
   "admin.stories.create": (n) => `started ${n ?? "a story"}`,
@@ -353,9 +357,9 @@ export const admin = {
       saved: (cap: string) => `The limit is now ${cap}.`,
       invalid: "Type a number from 1 to 40.",
     },
-    notBuilt: {
-      title: "Nothing reads these switches yet",
-      body: "Both values are saved. The AI features that will obey them arrive with a later task.",
+    noAssistant: {
+      title: "Nothing reads these switches in this edition",
+      body: "This edition of IOpener has no AI features, so it never makes an AI call. Both values are saved for an edition that has them.",
     },
     changed: (on: string) => `Last changed on ${on}`,
   },

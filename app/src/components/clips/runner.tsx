@@ -5,7 +5,7 @@
  * A clip can be left at any point: nothing is saved until its measurement is complete.
  */
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition, type ReactNode } from "react";
 import { allowCamera, saveClipRun } from "@/app/(app)/test/clips/actions";
 import { Cover, GlassesOn } from "@/components/measure/cover";
 import { stepsOf } from "@/clips/steps";
@@ -21,8 +21,10 @@ import { TimeBar } from "./time-bar";
 type Refusal = Extract<ClipSaved, { ok: false }>["why"];
 type Phase = { at: "intro" } | { at: "play" } | { at: "saving" } | { at: "result"; saved: Extract<ClipSaved, { ok: true }> } | { at: "refused"; why: Refusal | "cannot" };
 
-export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next }: {
+export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, listen }: {
   def: OfferedClip; ctx: ClipCtx;
+  /** The Listen button for this clip's instructions, drawn by the page. Shown before the clip starts. */
+  listen?: ReactNode;
   /** Why the clip cannot run now, as the server sees it. The server checks again when the result arrives. */
   blocked: Blocked | null;
   setKey?: SetKey | null;
@@ -89,6 +91,7 @@ export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next }: 
     const steps = stepsOf(def);
     body = (
       <>
+        {listen}
         {eye && <Cover eye={eye} />}
         {glasses && !ownSteps && <GlassesOn cyanEye={ctx.cyanEye} />}
         {steps.length > 0 && <ol className={css.list}>{steps.map((s) => <li key={s}>{s}</li>)}</ol>}

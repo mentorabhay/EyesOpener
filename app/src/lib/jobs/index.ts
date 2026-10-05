@@ -13,6 +13,7 @@ import { db, schema } from "@/db";
 import { dataRequests } from "./data-requests";
 import { discoveryRounds } from "./discovery-rounds";
 import { experimentSignals } from "./experiment-signals";
+import { extraJobs } from "./extra";
 import { leagueDays, leagueWeek } from "./league";
 import { monitorSamples } from "./monitor-samples";
 import { programmeWeeks } from "./programme-weeks";
@@ -41,6 +42,8 @@ export const JOBS: readonly Job[] = [
   monitorSamples,
   discoveryRounds,
   wallTiles,
+  /* jobs an edition adds (./extra.ts) */
+  ...extraJobs,
 ];
 
 /** The secret a scheduler must send. Null when jobs cannot be called from outside. */

@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t, day, dollars } from "@/copy/admin";
 import { aiSpendThisMonth, CAP_MAX, CAP_MIN, readSwitches } from "@/lib/admin";
+import { assist } from "@/lib/assist/extra";
 import { requireStaff } from "@/lib/auth";
 import { setSaver } from "./actions";
+import { SwitchboardExtra } from "./extra";
 import { CapForm } from "./forms";
 
 const sw = t.switchboard;
@@ -33,7 +35,8 @@ export default async function SwitchboardPage() {
           {now.capChangedAt && <p className="muted small">{sw.changed(day(now.capChangedAt))}</p>}
         </Card>
       </div>
-      <Empty title={sw.notBuilt.title}><span>{sw.notBuilt.body}</span></Empty>
+      {/* What an edition with an assistant adds to this room: its models, its prices and a test of the connection. */}
+      {assist.available ? <SwitchboardExtra /> : <Empty title={sw.noAssistant.title}><span>{sw.noAssistant.body}</span></Empty>}
     </>
   );
 }

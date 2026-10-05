@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
+import { heroGamesExtra } from "@/copy/hero-games.extra";
+import { gameBySlug } from "@/data";
+import { isBuilt } from "@/games/built";
 import { memberCan } from "./roles";
-import { HERO_KEEP, isHeroVia, keepBlock, mayAllowCamera, mayDropHero, mayPickHero, type KeepInput } from "./hero-rules";
+import { HERO_GAMES, HERO_KEEP, isHeroVia, keepBlock, mayAllowCamera, mayDropHero, mayPickHero, type KeepInput } from "./hero-rules";
 
 const ok: KeepInput = { guardianHere: true, child: true, parental: true, via: "photo", cameraAllowed: false, shapeOk: true, kept: 0 };
 
@@ -60,5 +63,26 @@ describe("using a hero", () => {
     expect(mayPickHero(memberCan("guardian", "train"))).toBe(true);
     expect(mayDropHero(memberCan("co_guardian", "share"))).toBe(true);
     expect(mayAllowCamera(memberCan("guardian", "consent"))).toBe(true);
+  });
+});
+
+describe("the games a hero plays in", () => {
+  it("are the one built here, then every game a fuller build adds, each once", () => {
+    expect(HERO_GAMES[0]).toBe("lantern-run");
+    expect(HERO_GAMES).toEqual(["lantern-run", ...heroGamesExtra.map((g) => g.slug)]);
+    expect(new Set(HERO_GAMES).size).toBe(HERO_GAMES.length);
+  });
+
+  it("are all games of this edition, and each added one says what the hero is there", () => {
+    for (const slug of HERO_GAMES) {
+      expect(gameBySlug(slug), slug).toBeDefined();
+      expect(isBuilt(slug), slug).toBe(true);
+    }
+    for (const g of heroGamesExtra) {
+      /* The words finish the sentence "In <game> your hero is ...". */
+      expect(g.as, g.slug).toMatch(/^[a-z]/);
+      expect(g.as.endsWith("."), g.slug).toBe(false);
+      expect(g.as.length, g.slug).toBeLessThanOrEqual(120);
+    }
   });
 });

@@ -225,7 +225,10 @@ export const TABLES = {
   protocol: {
     holds: "An idea a member wrote down as steps.",
     owner: { profile: ["profileId"] },
-    copy: { part: "ideas" },
+    copy: { part: "ideas", hide: {
+      embedding: "A list of numbers the search uses to find ideas that say something similar. It is worked out from the idea's own words, which are in the file.",
+      embeddedAs: "A mark of which model made those numbers. It says nothing about the family.",
+    } },
     erase: "rows",
     links: { storyId: { fate: "cleared", why: "An idea and the story it grew from belong to the same profile, so both are removed together." } },
   },
@@ -370,8 +373,8 @@ export const TABLES = {
   },
   aiCall: {
     holds: "The size and cost of each AI call.",
-    copy: { leftOut: "Counts and costs only. No row is tied to a household." },
-    erase: { untouched: "Counts and costs only. No row is tied to a household." },
+    copy: { leftOut: "Counts and costs only. A call a member started carries a scrambled mark that changes every day and cannot be turned back into a household, so no row can be tied to one." },
+    erase: { untouched: "Counts and costs only. The scrambled mark on a row cannot be turned back into a household." },
   },
   setting: {
     holds: "Switches such as saver mode.",
@@ -531,6 +534,13 @@ export const TABLES = {
     holds: "A sign-in account still to be removed from the sign-in service after its person was deleted: only its id there.",
     copy: { leftOut: "It exists only after a person has been deleted, so it belongs to no household that could ask for a copy." },
     erase: { untouched: "A deletion makes this row. It goes as soon as the sign-in service confirms that the account is removed." },
+  },
+
+  /* ───────────── package: ai (the assistant's side of the database) ───────────── */
+  libraryVector: {
+    holds: "Where each passage of the research library sits by meaning: the passage's key and a list of numbers.",
+    copy: { leftOut: "Worked out from IOpener's own pages and published stories. Nothing about a household." },
+    erase: { untouched: "Worked out from IOpener's own pages and published stories. Nothing about a household." },
   },
 } satisfies { [K in TableName]: Rule<K> };
 

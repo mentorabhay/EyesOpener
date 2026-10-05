@@ -1,0 +1,10 @@
+/* The Listen button: small, beside a card's heading or above a list of steps. It wraps under the heading on a phone. */
+.listen { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; max-width: 100%; }
+.listen audio { display: none; }
+.icon { width: 15px; height: 15px; flex: none; fill: currentColor; }
+.len { color: var(--ink-3, currentColor); font-weight: 400; }
+.time, .note { font-size: 12.5px; color: var(--ink-3, currentColor); }
+.says { font-size: 12.5px; flex-basis: 100%; }
+.says:empty { display: none; }
+/* A wide ring that stays visible on a TV from across the room. */
+.listen :global(.btn):focus-visible { outline: 3px solid var(--g1); outline-offset: 2px; border-radius: var(--r-pill); }

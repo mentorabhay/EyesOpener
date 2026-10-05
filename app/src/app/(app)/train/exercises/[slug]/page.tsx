@@ -4,7 +4,9 @@ import { History, type Labels } from "@/components/play/results";
 import { DoseLine } from "@/components/play/session-ui";
 import { Stage } from "@/components/play/stage";
 import { Btn, Card, Chip, Empty, EvidenceChip, PageHead } from "@/components/ui";
+import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
+import { voice } from "@/copy/voice";
 import { evidenceOf, exerciseBySlug, mechanismOf } from "@/data";
 import { guideFor, type Guide } from "@/data/guides";
 import { drillHelp, hasDrill } from "@/drills";
@@ -16,6 +18,7 @@ import { SupervisionNote } from "@/components/play/supervision";
 import { supervisionFor } from "@/data/supervision";
 import { doseFor, isCareRoutine, pastSessions, statusFor } from "@/lib/sessions";
 import { exerciseLevel, forWhom, isListed } from "@/lib/status";
+import { exerciseScriptId, type ExercisePart } from "@/voice/scripts";
 import css from "@/components/play/guide.module.css";
 import { Routine, type Hand } from "./routine";
 
@@ -50,13 +53,15 @@ export default async function ExercisePage({ params }: Props) {
     targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc,
     distCm: m.device?.distanceCm ?? 0, cyanEye: m.eye?.cyanEye === "right" ? ("R" as const) : ("L" as const),
   };
+  /* The spoken version of a card. It draws nothing where no audio exists. */
+  const say = (part: ExercisePart) => <Listen id={exerciseScriptId(slug, part)} what={voice.parts[part]} locale={m.account.locale} />;
 
   return (
     <>
       <PageHead title={e.name} sub={e.purpose} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
       {(status !== "open" || m.tester) && <div className="row"><Chip tone={status === "open" ? "ok" : status === "counsellor" ? "plain" : "warn"}>{x.statusFor[status]}</Chip></div>}
       <div className="bento">
-        <Card title={x.what} span={7}>
+        <Card title={x.what} span={7} right={say("what")}>
           <p>{g?.what ?? e.how}</p>
           <dl className="kv">
             <div><dt>{k.for}</dt><dd>{forWhom(e.for)}</dd></div>
@@ -64,7 +69,7 @@ export default async function ExercisePage({ params }: Props) {
             <div><dt>{k.dose}</dt><dd>{e.dose}</dd></div>
           </dl>
         </Card>
-        <Card title={x.ready} span={5}>
+        <Card title={x.ready} span={5} right={say("setup")}>
           {g ? (
             <>
               <p className="small muted">{x.need}</p>
@@ -77,12 +82,12 @@ export default async function ExercisePage({ params }: Props) {
         </Card>
 
         {g && (
-          <Card title={x.steps} span={7}>
+          <Card title={x.steps} span={7} right={say("steps")}>
             <ol className={css.steps}>{g.steps.map((line) => <li key={line}>{line}</li>)}</ol>
           </Card>
         )}
         {g && (
-          <Card title={x.right} span={5}>
+          <Card title={x.right} span={5} right={say("right")}>
             <ul className={css.list}>{g.right.map((line) => <li key={line}>{line}</li>)}</ul>
             <p className="small muted">{x.mistakes}</p>
             <ul className={css.list}>{g.mistakes.map((line) => <li key={line}>{line}</li>)}</ul>
@@ -117,7 +122,7 @@ export default async function ExercisePage({ params }: Props) {
           </Card>
         )}
         {g && (
-          <Card title={x.stop} span={g.measures.length > 0 ? (tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 5 : 12) : 5}>
+          <Card title={x.stop} span={g.measures.length > 0 ? (tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 5 : 12) : 5} right={say("stop")}>
             <ul className={css.list}>{g.stop.map((line) => <li key={line}>{line}</li>)}</ul>
             <p className="small muted">{x.stopNote}</p>
           </Card>

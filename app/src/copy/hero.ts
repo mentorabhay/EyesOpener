@@ -9,7 +9,7 @@ import type { TraceFail } from "@/lib/hero/trace";
 const heroes = (n: number) => (n === 1 ? "1 hero" : `${n} heroes`);
 
 export const hero = {
-  sub: "Draw a hero. It becomes the runner in the game, in the weaker eye's colour.",
+  sub: "Draw a hero. It becomes your character in the game, in the weaker eye's colour.",
   stats: { kept: "Heroes kept", games: "Games it plays in" },
 
   make: {
@@ -61,7 +61,7 @@ export const hero = {
     style: { label: "How to draw it", drawn: "As drawn", filled: "Filled in" },
     keep: "Keep this hero",
     keeping: "Keeping it.",
-    kept: "Kept. This hero is now the runner.",
+    kept: "Kept. This hero now plays in the game.",
     again: "Try again",
     nothing: "Your hero shows here once it is drawn.",
   },
@@ -77,7 +77,7 @@ export const hero = {
 
   mine: {
     title: (name: string) => `${name}'s heroes`,
-    none: "No hero yet. Until there is one, games use their own runner.",
+    none: "No hero yet. Until there is one, games use their own character.",
     current: "In the game now",
     use: "Use this one",
     useLabel: (n: number) => `Use hero ${n}`,
@@ -86,8 +86,8 @@ export const hero = {
     removeAsk: "Delete this hero? It cannot be brought back.",
     removeYes: "Yes, delete it",
     picture: (n: number, current: boolean) => (current ? `Hero ${n}, in the game now` : `Hero ${n}`),
-    own: "Use the game's own runner",
-    ownOn: "Games are using their own runner.",
+    own: "Use the game's own character",
+    ownOn: "Games are using their own character.",
     count: (n: number, most: number) => `${heroes(n)} kept, of ${most} at most.`,
     child: "To make a new hero or delete one, ask a grown-up.",
     guardianOnly: "Only a parent or guardian can make or delete a hero.",
@@ -96,11 +96,13 @@ export const hero = {
   inGame: {
     title: "Where the hero plays",
     line: (games: string) => `Your hero is the runner in ${games}.`,
+    /** One line for a game a fuller build adds. `as` comes from that build's own words and finishes the sentence. */
+    also: (game: string, as: string) => `In ${game} your hero is ${as}.`,
     none: "No game that uses a hero is open right now.",
     play: (game: string) => `Play ${game}`,
     scene: "A game scene: the hero in cyan carries a lantern along a white street, with a cyan coin above and a red crate ahead",
     sceneEmpty: "A game scene: a dashed outline on a white street shows where the hero will stand, with a cyan coin above and a red crate ahead",
-    rule: "The hero is drawn in the weaker eye's colour, like the runner it replaces. The game's rules stay the same.",
+    rule: "The hero takes the place of the game's own character, in the same colour. What the weaker eye must find stays in the weaker eye's colour. The game's rules stay the same.",
   },
 
   privacy: {

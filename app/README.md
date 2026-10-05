@@ -49,7 +49,7 @@ npm run db:seed          # reset the demo data
 
 ## How more is added
 
-A fuller build adds games and features without changing this code. The places it plugs into are small files that are empty here: `src/edition.ts` and `src/edition-server.ts` (optional features), `src/games/extra.ts` and `src/games/extra-ui.tsx` (whole game families), `src/games/<family>/extra.ts` with `src/copy/games-<family>.extra.ts` (more games in a family), `src/games/care/extra.tsx` with `extra-slugs.ts` (more care companions) and `src/data/catalogue.extra.json` (their catalogue entries). This edition must always build and pass its tests with those files as they are.
+A fuller build adds games and features without changing this code. The places it plugs into are small files that are empty here: `src/edition.ts` and `src/edition-server.ts` (optional features), `src/games/extra.ts` and `src/games/extra-ui.tsx` (whole game families), `src/games/<family>/extra.ts` with `src/copy/games-<family>.extra.ts` (more games in a family), `src/games/care/extra.tsx` with `extra-slugs.ts` (more care companions), `src/data/catalogue.extra.json` (their catalogue entries) and `src/copy/hero-games.extra.ts` (more games the member's hero plays in). This edition must always build and pass its tests with those files as they are.
 
 ## Where things are
 

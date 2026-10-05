@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import form from "@/app/(app)/settings/form.module.css";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { SignalChart, signed } from "@/components/together/SignalChart";
 import { StateForm } from "@/components/together/StateForm";
+import { assistCopy } from "@/copy/assist";
 import { experiments } from "@/copy/experiments";
 import { together } from "@/copy/together";
 import { testByKey } from "@/data";
+import { assist } from "@/lib/assist/extra";
 import { dayText, isTested, mayJoin, protocolById } from "@/lib/community";
 import { progressOf } from "@/lib/experiment-data";
 import { MIN_FINISHED_PER_GROUP, enough, lean } from "@/lib/experiments";
@@ -34,6 +37,8 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
   const signal = experiment?.signal && enough(experiment.signal.nTried, experiment.signal.nControl) ? experiment.signal : null;
   const progress = experiment && !inReview ? await progressOf(experiment.id, p.moves, p.weeks) : null;
   const spread = (sd: number | null) => (sd === null ? "" : `. ${x.pooled.spread}: ${Number(sd.toFixed(2))}`);
+  /* Only an edition with an assistant has worked out which published ideas say something similar. */
+  const similar = inReview || !assist.available ? [] : await assist.similarToIdea(p.id).catch(() => []);
 
   return (
     <>
@@ -117,6 +122,23 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
         )}
 
         {story && <Card title={t.story} span={5}><p>{story.body}</p></Card>}
+
+        {similar.length > 0 && (
+          <Card title={assistCopy.idea.similarTitle} span={12}>
+            <p className="muted small">{assistCopy.idea.similarWhat}{similar.some((i) => i.standIn) ? ` ${assistCopy.standIn}` : ""}</p>
+            <div>
+              {similar.map((i) => (
+                <div className="ins" key={i.id}>
+                  <div className="tx">
+                    <Link href={`/together/ideas/${i.id}`}><b>{i.title}</b></Link>
+                    <div className="sub">{i.forWhom}</div>
+                  </div>
+                  <Chip tone={isTested(i.step) ? "plain" : "none"}>{together.ladder.steps[i.step].name}</Chip>
+                </div>
+              ))}
+            </div>
+          </Card>
+        )}
       </div>
     </>
   );

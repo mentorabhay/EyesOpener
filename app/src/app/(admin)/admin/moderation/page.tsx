@@ -2,19 +2,59 @@ import type { Metadata } from "next";
 import { GatheringNote, GatheringRows, gatheringHeading } from "@/components/gatherings/review";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t, ageText } from "@/copy/admin";
+import { assistCopy } from "@/copy/assist";
 import { discovery } from "@/copy/discovery";
 import { gatherings } from "@/copy/gatherings";
 import { programmeBySlug, testByKey } from "@/data";
 import { openModeration, type ModerationEntry } from "@/lib/admin";
+import { assist } from "@/lib/assist/extra";
+import { readAiFlag, type AiFlag } from "@/lib/assist/types";
 import { requireStaff } from "@/lib/auth";
 import css from "../admin.module.css";
 import { Code, Confirm } from "../parts";
 import { approve, remove } from "./actions";
+import { NotesForm } from "./notes-form";
 
 const m = t.moderation;
+const a = assistCopy.review;
 export const metadata: Metadata = { title: t.rooms.moderation.name };
 
-/** What an AI check left on the item, in words. It is stored as free-form data, so every shape is handled. */
+/**
+ * The note an assistant left for the reviewer: what the item is, what the second opinion on hazards flagged, and
+ * which house rule a concern touches. It is something to read. It never approves or removes anything.
+ */
+function AiNote({ flag }: { flag: AiFlag }) {
+  const hazards = flag.hazard?.flags ?? [], concerns = flag.note?.concerns ?? [];
+  const quiet = hazards.length === 0 && concerns.length === 0;
+  return (
+    <div className="notice stack" data-b={quiet ? undefined : "warn"}>
+      <b>{a.title}</b>
+      <span className="small">{a.caution}</span>
+      {flag.standIn && <span className="small">{assistCopy.standIn}</span>}
+      {flag.note && <p><b>{a.what}:</b> {flag.note.what}</p>}
+      {flag.suggested && <p>{a.suggested}</p>}
+      {hazards.length > 0 && (
+        <>
+          <p>{a.hazards}</p>
+          <ul style={{ margin: 0, paddingLeft: 18 }}>
+            {hazards.map((h, i) => <li key={i}>{assistCopy.hazard[h.reason]}{h.quote && <> <span className="muted small">{a.quote(h.quote)}</span></>}</li>)}
+          </ul>
+        </>
+      )}
+      {concerns.length > 0 && (
+        <>
+          <p>{a.concerns}</p>
+          <ul style={{ margin: 0, paddingLeft: 18 }}>
+            {concerns.map((c, i) => <li key={i}><b>{assistCopy.rule[c.rule]}.</b> {c.why}{c.quote && <> <span className="muted small">{a.quote(c.quote)}</span></>}</li>)}
+          </ul>
+        </>
+      )}
+      {flag.note && quiet && <p>{a.nothing}</p>}
+    </div>
+  );
+}
+
+/** What a check left on the item in some other shape, in words. It is stored as free-form data, so every shape is handled. */
 function flagLines(flag: unknown): string[] {
   if (flag === null || flag === undefined) return [];
   if (typeof flag !== "object") return [String(flag)];
@@ -24,7 +64,8 @@ function flagLines(flag: unknown): string[] {
 function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry }) {
   const kind = m.kind[item.kind] ?? m.otherKind;
   const name = subject.kind === "protocol" ? subject.title : subject.kind === "gathering" ? gatheringHeading(subject) : kind;
-  const flags = flagLines(item.aiFlag);
+  const note = readAiFlag(item.aiFlag);
+  const flags = note ? [] : flagLines(item.aiFlag);
   return (
     <Card title={name} span={6} as="article" right={<>{subject.kind === "protocol" && <Chip>{kind}</Chip>}<Chip tone="warn">{m.waiting(ageText(item.createdAt))}</Chip></>}>
       <dl className="kv">
@@ -59,6 +100,7 @@ function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry })
       {subject.kind === "other" && <p className="muted small">{m.other.onlyItem}</p>}
       {subject.kind === "gathering" && <GatheringNote subject={subject} />}
 
+      {note && <AiNote flag={note} />}
       {flags.length > 0 && (
         <div className="notice stack" data-b="warn">
           <b>{m.aiFlag}</b>
@@ -100,11 +142,14 @@ function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry })
 export default async function ModerationPage() {
   await requireStaff("moderation");
   const entries = await openModeration();
+  /* Items with words to read that have no note yet. Only an edition with an assistant can write one. */
+  const noteless = assist.available ? entries.filter((e) => e.hazards !== null && !readAiFlag(e.item.aiFlag)?.note).length : 0;
   return (
     <>
       <PageHead title={t.rooms.moderation.name} sub={m.sub} crumb={[{ href: "/admin", label: t.back }]} stats={[{ value: entries.length, label: m.stat }]} />
       {/* The Discovery Board's question list is kept in this room (package "people"). */}
-      <div className="row"><Btn href="/admin/moderation/discovery">{discovery.staff.link}</Btn><Btn href="/admin/moderation/gatherings">{gatherings.staff.link}</Btn></div>
+      <div className="row"><Btn href="/admin/moderation/discovery">{discovery.staff.link}</Btn><Btn href="/admin/moderation/gatherings">{gatherings.staff.link}</Btn><Btn href="/together/research">{a.library}</Btn></div>
+      {noteless > 0 && <NotesForm count={noteless} />}
       {entries.length
         ? <div className="bento">{entries.map((entry) => <Item key={entry.item.id} entry={entry} />)}</div>
         : <Empty title={m.empty.title}><span>{m.empty.body}</span></Empty>}

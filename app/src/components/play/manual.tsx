@@ -1,5 +1,7 @@
 import { Card, Chip, Empty, EvidenceChip } from "@/components/ui";
+import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
+import { voice } from "@/copy/voice";
 import { evidenceOf, exerciseBySlug, gameBySlug, gameLevel, mechanismOf } from "@/data";
 import { gameGuideFor } from "@/data/game-guides";
 import { staffNotesFor } from "@/data/game-guides/staff-notes";
@@ -7,6 +9,7 @@ import { guideFor } from "@/data/guides";
 import { exerciseStaffNotesFor } from "@/data/guides/staff-notes";
 import { supervisionFor } from "@/data/supervision";
 import { exerciseLevel, forWhom, recommendedStatus, type Status } from "@/lib/status";
+import { gameScriptId, type GamePart } from "@/voice/scripts";
 import { Cues } from "./cue";
 import css from "./guide.module.css";
 import { SupervisionNote } from "./supervision";
@@ -46,14 +49,16 @@ function ForStaff({ mechanism, level, recommended, status, notes, catalogue }: {
  * what counts as success, what is measured, when to stop, what supervision adds and where it all comes from.
  * With `staff`, it adds what staff need to explain the game: the method, its evidence, and what the game cannot tell.
  */
-export function GameManual({ slug, staff = false, status }: { slug: string; staff?: boolean; status?: Status }) {
+export function GameManual({ slug, staff = false, status, locale }: { slug: string; staff?: boolean; status?: Status; /** The household's language, for the Listen buttons. */ locale?: string | null }) {
   const g = gameBySlug(slug)!, guide = gameGuideFor(slug);
   const mech = mechanismOf(g.mechanism), level = gameLevel(g);
   const sup = supervisionFor(g.mechanism, level);
   const k = t.game.kv;
+  /* The spoken version of a card. It draws nothing where no audio exists. */
+  const say = (part: GamePart) => <Listen id={gameScriptId(slug, part)} what={part === "play" ? voice.parts.steps : voice.parts[part]} locale={locale} />;
   return (
     <div className="bento">
-      <Card title={x.what} span={7}>
+      <Card title={x.what} span={7} right={say("what")}>
         <p>{guide?.what ?? g.play}</p>
         <dl className="kv">
           <div><dt>{k.for}</dt><dd>{forWhom(g.for)}</dd></div>
@@ -69,8 +74,8 @@ export function GameManual({ slug, staff = false, status }: { slug: string; staf
       {guide && (
         <>
           <Card title={x.ready} span={5}><p className="small muted">{x.need}</p><Lines items={guide.need} /></Card>
-          <Card title={x.see} span={7}><Lines items={guide.see} /></Card>
-          <Card title={x.play} span={7}>
+          <Card title={x.see} span={7} right={say("see")}><Lines items={guide.see} /></Card>
+          <Card title={x.play} span={7} right={say("play")}>
             <Lines items={guide.play} numbered />
             <p className="small muted">{x.controls}</p>
             <ul className={css.list}><li><b>{x.touch}.</b> {guide.controls.touch}</li><li><b>{x.keys}.</b> {guide.controls.keys}</li></ul>
@@ -80,7 +85,7 @@ export function GameManual({ slug, staff = false, status }: { slug: string; staf
             <p className="small muted">{x.mistakes}</p>
             <Lines items={guide.mistakes} />
           </Card>
-          {guide.cues.length > 0 && <Card title={x.cues}><Cues cues={guide.cues} tones={x.tone} /></Card>}
+          {guide.cues.length > 0 && <Card title={x.cues} right={say("cues")}><Cues cues={guide.cues} tones={x.tone} /></Card>}
           {guide.measures.length > 0 && (
             <Card title={x.measure} span={7}>
               <div>
@@ -94,7 +99,7 @@ export function GameManual({ slug, staff = false, status }: { slug: string; staf
               <p className="small muted">{x.noNorm}</p>
             </Card>
           )}
-          <Card title={x.stop} span={guide.measures.length > 0 ? 5 : 12}>
+          <Card title={x.stop} span={guide.measures.length > 0 ? 5 : 12} right={say("stop")}>
             <Lines items={guide.stop} />
             <p className="small muted">{x.stopNote}</p>
           </Card>

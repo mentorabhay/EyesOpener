@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Btn, Card, Chip, PageHead, type Tone } from "@/components/ui";
 import s from "@/components/together/together.module.css";
+import { assistCopy } from "@/copy/assist";
 import { experiments } from "@/copy/experiments";
 import { together as t } from "@/copy/together";
 import { catalogue, ideaBySlug } from "@/data";
@@ -23,6 +24,7 @@ export default async function TogetherPage() {
   const features = [
     { href: "/together/experiments", name: experiments.hub.name, what: experiments.hub.what, theme: null },
     { href: "/together/league", name: t.features.league.name, what: t.features.league.what, theme: null },
+    { href: "/together/research", name: assistCopy.research.name, what: assistCopy.research.what, theme: null },
     ...Object.entries(IDEA_PAGES).map(([slug, page]) => {
       const idea = ideaBySlug(slug)!;
       return { href: `/together/${page}`, name: idea.name, what: idea.what, theme: catalogue.themes.find((x) => x.key === idea.theme)?.name ?? null };

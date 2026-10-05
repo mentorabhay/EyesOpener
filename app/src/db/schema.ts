@@ -9,7 +9,7 @@
  * - The games, exercises and clips catalogue lives in code (src/data); rows here point at it by slug.
  */
 import {
-  pgTable, pgEnum, text, integer, real, boolean, timestamp, date, jsonb, uuid, index, uniqueIndex, primaryKey,
+  pgTable, pgEnum, text, integer, real, boolean, timestamp, date, jsonb, uuid, index, uniqueIndex, primaryKey, vector,
 } from "drizzle-orm/pg-core";
 
 const id = () => uuid().primaryKey().defaultRandom();
@@ -368,6 +368,11 @@ export const protocol = pgTable("protocol", {
   hazard: jsonb().notNull().default({}),
   createdAt: now(),
   publishedAt: when(),
+  /* ai package (see the note at the end of this file) */
+  /** Where this idea sits among the others by meaning: a list of numbers worked out from its own words. Set only while it is published. */
+  embedding: vector({ dimensions: 768 }),
+  /** Which model made `embedding`, and a short mark of the words it was made from, so a changed idea or model is done again. */
+  embeddedAs: text(),
 }, (t) => [index().on(t.status, t.step)]);
 
 export const experiment = pgTable("experiment", {
@@ -621,6 +626,12 @@ export const aiCall = pgTable("ai_call", {
   outputTokens: integer().notNull(),
   costUsd: real().notNull(),
   createdAt: now(),
+  /* ai package (see the note at the end of this file) */
+  /**
+   * Set on a call a member started: a scrambled mark of the household and the day, so a household's calls can be
+   * counted against a daily limit. It cannot be turned back into a household, and it changes every day.
+   */
+  caller: text(),
 }, (t) => [index().on(t.createdAt)]);
 
 /** Switches such as saver mode. Mirrors Remote Config for the server. */
@@ -1070,3 +1081,23 @@ export const clipRun = pgTable("clip_run", {
   setKey: text(),
   takenAt: now(),
 }, (t) => [index().on(t.profileId, t.code, t.takenAt), index().on(t.accountId, t.code, t.takenAt)]);
+
+/* ───────────── package: ai (the assistant's side of the database) ─────────────
+ * The public edition has no assistant: nothing writes these columns or this table in it (src/lib/assist/extra.ts).
+ * An edition with an assistant keeps here what its search by meaning needs. A vector is a list of 768 numbers that
+ * says where a text sits among the others by meaning; it is worked out from words the database already holds.
+ *  - `protocol.embedding`, `protocol.embeddedAs`: the vector of a published idea, for "similar ideas".
+ *  - `library_vector`: the vector of each passage of the research library (src/lib/library.ts), by the passage's key.
+ *  - `ai_call.caller`: a scrambled mark of a household and a day, for the daily limit on calls a member starts.
+ * The vectors need the PostgreSQL extension "vector" (pgvector): the migration must create it first.
+ * The same change as SQL: drizzle/pending/ai.sql. */
+
+/** Where each passage of the research library sits by meaning. Holds no words: a key, a mark and the numbers. */
+export const libraryVector = pgTable("library_vector", {
+  /** The passage's key: "exercise:<slug>", "game:<slug>", "trial:<name>", "method:<key>", "label:<key>", and keys an edition adds. */
+  key: text().primaryKey(),
+  /** Which model made the vector, and a short mark of the words it was made from, so a changed passage or model is done again. */
+  madeFrom: text().notNull(),
+  embedding: vector({ dimensions: 768 }).notNull(),
+  updatedAt: now(),
+});

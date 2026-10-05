@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { planFor } from "@/components/film/chapters";
 import { PageHead } from "@/components/ui";
 import { GlassesNote, HowToPlay, labelsFor } from "@/components/play/how-to";
 import { ScreenWarning } from "@/components/screen/warning";
@@ -17,13 +18,13 @@ import { requireMember } from "@/lib/session";
 import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: gameBySlug((await params).slug)?.name };
 }
 
-export default async function PlayPage({ params }: Props) {
+export default async function PlayPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const g = gameBySlug(slug), kind = kindOf(slug);
   if (!g || !kind) notFound();
@@ -34,7 +35,7 @@ export default async function PlayPage({ params }: Props) {
   const guide = gameGuideFor(slug);
   /* The guide is open for a first visit and folded away once the member has finished a session of this game. */
   const known = guide ? (await pastSessions(m, "game", slug, 1)).length > 0 : false;
-  const how = guide && <HowToPlay g={guide} open={!known} />;
+  const how = guide && <HowToPlay g={guide} open={!known} locale={m.account.locale} />;
 
   /* A care companion is a log the family keeps. It is not a screen session, so it has no dose and no glasses. */
   if (kind === "care") return <>{head}{how}<CarePanel slug={slug} m={m} /></>;
@@ -52,6 +53,9 @@ export default async function PlayPage({ params }: Props) {
     /* The hero this profile made in Draw Your Hero, for the games that have a character. */
     hero: await currentHero(m),
   };
+  /* A film activity is watched in chapters with eye breaks, as the two-eye cinema is. Only a staff test household may shorten them. */
+  const asked = kind === "cinema" ? await searchParams : {};
+  const plan = planFor(m.tester, { chapter: asked.chapter, rest: asked.break });
   return (
     <>
       {head}
@@ -60,7 +64,7 @@ export default async function PlayPage({ params }: Props) {
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
       {how}
       {kind === "cinema"
-        ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} {...eye} />
+        ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} plan={plan} profileId={m.profile.id} tester={m.tester} {...eye} />
         : <Stage slug={slug} dose={dose} help={helpFor(slug)} labels={labelsFor(guide, results.game)} joinable={!!guide?.joined} lens={/red-cyan/i.test(g.gear)} {...eye} />}
       {guide && <p className="small"><Link href={`/train/games/${slug}/manual`}>{t.game.guide.fullGuide}</Link></p>}
     </>

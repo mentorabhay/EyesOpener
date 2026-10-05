@@ -34,7 +34,7 @@ export default async function GameManualPage({ params }: Props) {
       />
       <div className="row"><Btn href={`/train/games/${slug}/play`} kind="g">{kindOf(slug) === "care" ? t.game.open : t.game.play}</Btn><Btn href={`/train/games/${slug}`}>{t.manual.back}</Btn></div>
       <GlassesNote gear={g.gear} cyanEye={m.eye?.cyanEye === "right" ? "R" : "L"} joined={!!gameGuideFor(slug)?.joined} />
-      <GameManual slug={slug} />
+      <GameManual slug={slug} locale={m.account.locale} />
     </>
   );
 }

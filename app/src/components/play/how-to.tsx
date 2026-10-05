@@ -1,5 +1,8 @@
+import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
+import { voice } from "@/copy/voice";
 import type { GameGuide } from "@/data/game-guides";
+import { gameScriptId } from "@/voice/scripts";
 import { Cues } from "./cue";
 import css from "./guide.module.css";
 import type { Labels } from "./results";
@@ -23,16 +26,16 @@ export function GlassesNote({ gear, cyanEye, joined }: { gear: string; cyanEye: 
   );
 }
 
-/** The short guide shown with the game: when to press, how to play, what success is. */
-export function HowToPlay({ g, open = true }: { g: GameGuide; open?: boolean }) {
+/** The short guide shown with the game: when to press, how to play, what success is. `locale` is the household's language, for the Listen buttons. */
+export function HowToPlay({ g, open = true, locale }: { g: GameGuide; open?: boolean; locale?: string | null }) {
   return (
     <details className="c span12" open={open}>
       <summary><b>{x.howTitle}</b> <span className="muted small">{x.howToggle}</span></summary>
       <div className="stack" style={{ marginTop: 12 }}>
-        {g.cues.length > 0 && (<><p className="small muted">{x.cues}</p><Cues cues={g.cues} tones={x.tone} /></>)}
+        {g.cues.length > 0 && (<><div className="row"><p className="small muted">{x.cues}</p><Listen id={gameScriptId(g.slug, "cues")} what={voice.parts.cues} locale={locale} /></div><Cues cues={g.cues} tones={x.tone} /></>)}
         <div className="bento">
           <div className="span7 stack">
-            <p className="small muted">{x.play}</p>
+            <div className="row"><p className="small muted">{x.play}</p><Listen id={gameScriptId(g.slug, "play")} what={voice.parts.steps} locale={locale} /></div>
             <ol className={css.steps}>{g.play.map((line) => <li key={line}>{line}</li>)}</ol>
           </div>
           <div className="span5 stack">
