@@ -32,11 +32,11 @@ const begin = (step: Step, red?: LensMatch): At =>
   step === "gamma" ? { at: "gamma", greys: [] } : step === "leak" ? { at: "leak", lens: red ? "cyan" : "red", levels: [], red } : { at: "ink", xs: [], turned: null };
 
 /* where each match starts: the first clearly on one side, the second clearly on the other side of the first answer */
-const GREY_START = 150, GREY_OVER = 25, LEVEL_OVER = 45, INK_OVER = 0.4, INK_STEP = 0.02;
+export const GREY_START = 150, GREY_OVER = 25, LEVEL_OVER = 45, INK_OVER = 0.4, INK_STEP = 0.02;
 const clamp = (v: number, [lo, hi]: readonly [number, number]) => Math.max(lo, Math.min(hi, v));
 
 /** Fine lines, one device pixel white and one black in turn, beside a plain grey. */
-const stripes = (grey: number): Draw => (g, w, h) => {
+export const stripes = (grey: number): Draw => (g, w, h) => {
   const half = Math.floor(w / 2);
   g.fillStyle = "#000";
   g.fillRect(0, 0, half, h);
@@ -47,7 +47,7 @@ const stripes = (grey: number): Draw => (g, w, h) => {
 };
 
 /** Two squares that touch on the black field: the wrong ink at full on the left, the lens's own ink at `level` on the right. */
-const squares = (lens: Lens) => (level: number): Draw => (g, w, h) => {
+export const squares = (lens: Lens) => (level: number): Draw => (g, w, h) => {
   const s = Math.round(Math.min(h * 0.72, w * 0.42)), x = Math.round(w / 2), y = Math.round((h - s) / 2);
   g.fillStyle = SCENE_FIELD;
   g.fillRect(0, 0, w, h);
@@ -58,7 +58,7 @@ const squares = (lens: Lens) => (level: number): Draw => (g, w, h) => {
 };
 
 /** A red square for one eye and a cyan square for the other, apart, inside the white frame both eyes see. */
-const pair = (gamma: number) => (x: number): Draw => (g, w, h) => {
+export const pair = (gamma: number) => (x: number): Draw => (g, w, h) => {
   const k = devicePixels(), s = Math.round(Math.min(h * 0.5, w * 0.26)), y = Math.round((h - s) / 2), con = balanceContrasts(x);
   g.fillStyle = SCENE_FIELD;
   g.fillRect(0, 0, w, h);
@@ -72,7 +72,7 @@ const pair = (gamma: number) => (x: number): Draw => (g, w, h) => {
 };
 
 /** The glasses, and which lens to look through. `turned` draws them the other way round. */
-function Lenses({ look, turned = false, label }: { look: Lens | "both"; turned?: boolean; label: string }) {
+export function Lenses({ look, turned = false, label }: { look: Lens | "both"; turned?: boolean; label: string }) {
   const red = turned ? 66 : 30, cyan = turned ? 30 : 66;
   const lens = (cx: number, which: Lens) => (look === "both" || look === which
     ? <circle cx={cx} cy="28" r="15" fill={lensFilter(which === "red" ? "strong" : "weak")} />

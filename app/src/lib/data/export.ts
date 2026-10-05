@@ -21,9 +21,11 @@
  * the messages sent from the public site are only the downloader's own.
  */
 import { asc, eq, inArray } from "drizzle-orm";
+import { clips } from "@/copy/clips";
 import { data as copy } from "@/copy/data";
 import { results } from "@/copy/results";
 import { exerciseBySlug, gameBySlug, programmeBySlug, testByKey } from "@/data";
+import { clipTest } from "@/data/clips/keys";
 import { gameGuideFor } from "@/data/game-guides";
 import { guideFor } from "@/data/guides";
 import { db, schema } from "@/db";
@@ -203,8 +205,10 @@ export async function buildFamilyFile(accountId: string, viewer: { id: string; e
     }
     for (const slug of idsIn(raw.programmes, "programme")) { const p = programmeBySlug(slug); if (p) names.programmes[slug] = p.name; }
     for (const key of new Set([...idsIn(raw.checkUps, "testKey"), ...raw.sessions.filter((s) => s.kind === "test").map((s) => String(s.itemSlug))])) {
-      const t = testByKey(key);
+      const t = testByKey(key), own = t ? undefined : clipTest(key);
       if (t) names.checkUps[key] = { name: t.name, unit: t.unit, what: t.what };
+      /* a result a clip keeps under a key of its own (src/data/clips/keys.ts) */
+      else if (own) names.checkUps[key] = { name: own.name, unit: own.unit, what: clips.inFile };
     }
 
     const madeAt = now.toISOString(), r = copy.file.readme;

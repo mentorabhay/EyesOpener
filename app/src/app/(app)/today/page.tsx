@@ -8,6 +8,7 @@ import { canStart, percent, ringShare } from "@/engine";
 import { programme as plan } from "@/copy/programme";
 import { programmeView } from "@/lib/programme";
 import { lastDays, requireMember } from "@/lib/session";
+import { TodayRewards } from "@/components/together/today-rewards";
 import { TodayChapter } from "./chapter";
 
 export const metadata: Metadata = { title: t.title };
@@ -40,6 +41,8 @@ export default async function TodayPage() {
         sub={programme && view.state === "active" ? `${plan.card.weekOf(programme.name, view.week, view.weeks)} ${programme.doseBasis}` : t.notEnrolled}
         stats={[{ value: streak?.current ?? 0, label: `${t.streak}, days` }, { value: `${Math.round(d.screenMinutes / 6) / 10} h`, label: t.screen }]}
       />
+      {/* Rewards: the sunset once the day's minutes are done, and a quiet line on a first depth day. */}
+      <TodayRewards m={m} />
       <div className="bento">
         <Card title={t.ringsTitle} span={7}>
           <div className="rings">

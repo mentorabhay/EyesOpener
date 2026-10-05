@@ -889,3 +889,184 @@ export const signinRemoval = pgTable("signin_removal", {
  * break it saw is a `care_log` row of kind "far" under the same slug. Consent is a `consent` row of kind "camera".
  * No foreign key was added. The same change as SQL: drizzle/pending/monitor.sql.
  * The rules: src/lib/monitor-rules.ts. The database side: src/lib/monitor.ts. */
+
+/* ───────────── package: gatherings (Lights On Hour, Cinema Club, Class Mission, Wish Jam) ─────────────
+ * Lights On Hour needs no table: the hour is one row of `setting` (key "lights_on_hour"), and who is practising in
+ * it is counted from the `session` rows that already exist. Nothing is written when a household takes part.
+ * The same change as SQL: drizzle/pending/gatherings.sql. Each table has its line in src/lib/data/tables.ts.
+ * The rules: src/lib/lights-on.ts, src/lib/cinema-club.ts, src/lib/class-mission.ts, src/lib/wish-jam.ts. */
+
+/**
+ * Cinema Club: a public place where a volunteer hosts a weekly film hour. A sponsor or staff lists it; a listing by
+ * a sponsor waits for a person at IOpener. Only the place and the time are kept: no host's name, no address of a
+ * home, nobody who came. A club has no members in the app.
+ */
+export const cinemaClub = pgTable("cinema_club", {
+  id: id(),
+  /** The sponsor that listed it. Null when staff listed it. */
+  sponsorId: uuid().references(() => sponsor.id, { onDelete: "cascade" }),
+  /** school, library, community_hall, clinic. The list has no home in it (src/lib/cinema-club.ts). */
+  placeKind: text().notNull(),
+  /** The name people know the place by, with its town. Typed by a sponsor or staff; never a private home. */
+  placeName: text().notNull(),
+  /** 0 is Sunday, 6 is Saturday, in India time. */
+  weekday: integer().notNull(),
+  /** When the hour starts: minutes after midnight in India time, in steps of 15. */
+  startMinute: integer().notNull(),
+  /** in_review, listed, removed, closed */
+  status: text().notNull().default("in_review"),
+  /** True for demo rows only: the place is made up, and every page that shows it says so. */
+  isSample: boolean().notNull().default(false),
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+  listedAt: when(),
+  closedAt: when(),
+}, (t) => [index().on(t.status)]);
+
+/**
+ * Class Mission: a guardian gave a child the mission, and later marked the day it was run.
+ * Nothing about the class is kept: no school, no teacher, no classmate, no count and no note of how it went.
+ * A mission a guardian takes back before it is run is deleted.
+ */
+export const classMission = pgTable("class_mission", {
+  id: id(),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** The guardian who gave the child the mission. */
+  givenBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  givenAt: now(),
+  /** The day the mission was run, in India time, as a guardian marked it. Null until then. */
+  doneOn: date(),
+}, (t) => [index().on(t.profileId)]);
+
+/**
+ * Wish Jam: what one child wishes a game were about, written by a guardian from a guided form.
+ * It is shown outside the household only after a person at IOpener approved it, and only while the guardian's
+ * consent for the child stands. It never holds a family name, a school, a city or a picture.
+ */
+export const wish = pgTable("wish", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** Six letters and digits shown on the public list, so a builder can say which wish they mean. Never the row's id. */
+  code: text().notNull().unique(),
+  /** What the child loves: a key from the fixed list (src/lib/wish-jam.ts). */
+  loves: text().notNull(),
+  /** What the child likes to do in a game: a key from the fixed list. */
+  play: text().notNull(),
+  /** The kind of game wished for, by the game kit's public families: a key from the fixed list. */
+  game: text().notNull().default("any"),
+  /** One short line in the guardian's words. It passes the hazard screen and waits for a person with the wish. */
+  line: text().notNull().default(""),
+  /** A guardian's choice: show the child's first name beside the wish. Off unless ticked. */
+  showFirstName: boolean().notNull().default(false),
+  /** in_review, listed, matched, built, blocked */
+  status: text().notNull().default("in_review"),
+  /** True for demo rows only: the wish is made up, and every page that shows it says so. */
+  isSample: boolean().notNull().default(false),
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+  listedAt: when(),
+  /** Set by staff when a builder has taken the wish on. */
+  matchedAt: when(),
+  /** Set by staff when the game exists. */
+  builtAt: when(),
+  /** The library game staff tied to the wish, once it was added to the library by the normal route. A slug from src/data. */
+  gameSlug: text(),
+  /** The name the child gave the game. Shown outside the household only once `nameStatus` is "approved". */
+  gameName: text(),
+  /** in_review, approved, blocked. Null until a name is offered. */
+  nameStatus: text(),
+  namedAt: when(),
+}, (t) => [index().on(t.accountId), index().on(t.status)]);
+
+/* ───────────── package: rewards (Locked Gallery, First Depth Day, Sunset Rule, Keeper Graduation) ─────────────
+ * Locked Gallery keeps its rows in `gallery_unlock`, which was already there. Sunset Rule stores nothing: it is
+ * worked out from the day's rows. The same change as SQL: drizzle/pending/rewards.sql. Each table has its line in
+ * src/lib/data/tables.ts. The rules: src/lib/gallery.ts, src/lib/depth-day.ts, src/lib/sunset.ts, src/lib/graduation.ts. */
+
+/**
+ * First Depth Day: the day a Depth check-up first found depth, after at least one earlier check-up that did not.
+ * One row for a profile, written once from its own check-up results and never rewritten. A profile whose very
+ * first Depth check-up already found depth has no row: nothing was first, so there is no day to keep.
+ */
+export const depthDay = pgTable("depth_day", {
+  profileId: uuid().primaryKey().references(() => profile.id, { onDelete: "cascade" }),
+  /** The day of that check-up, in the member's own calendar. */
+  day: date().notNull(),
+  /** The depth step that check-up found, in arcseconds. */
+  arcsec: real().notNull(),
+  /** When the scene was first played by someone who may train. Empty until then: the Today page points at it. */
+  playedAt: when(),
+  createdAt: now(),
+});
+
+/**
+ * Keeper Graduation: the welcome a household left behind when one of its profiles finished a course.
+ * It is a key from a fixed list of lines (src/lib/graduation.ts); nobody types a welcome. One welcome for one
+ * finished course. Nothing in this row says which family received it: only that it was given, and the fixed
+ * thank-you line that family sent back, if it sent one.
+ */
+export const keeperWelcome = pgTable("keeper_welcome", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  enrolmentId: uuid().notNull().unique().references(() => enrolment.id, { onDelete: "cascade" }),
+  /** Programme slug from src/data: a welcome goes to a family on the same programme. */
+  programme: text().notNull(),
+  line: text().notNull(),
+  leftBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+  givenAt: when(),
+  thanks: text(),
+  thanksAt: when(),
+}, (t) => [index().on(t.programme, t.givenAt), index().on(t.accountId)]);
+
+/**
+ * Keeper Graduation, the other side: a family on a course that asked for a welcome. One ask for one course.
+ * When a welcome is given, its line is copied here, so this family keeps what it received even if the keeper's
+ * household is later deleted. Nothing in this row says which family left the welcome.
+ */
+export const keeperAsk = pgTable("keeper_ask", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  enrolmentId: uuid().notNull().unique().references(() => enrolment.id, { onDelete: "cascade" }),
+  programme: text().notNull(),
+  askedBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+  /** The welcome that was given. Emptied when the keeper's household is deleted; `line` stays. */
+  welcomeId: uuid().references(() => keeperWelcome.id, { onDelete: "set null" }),
+  line: text(),
+  receivedAt: when(),
+  thanks: text(),
+  thanksAt: when(),
+}, (t) => [index().on(t.programme, t.receivedAt), index().on(t.accountId)]);
+
+/* ───────────── package: clips (the clip runner) ─────────────
+ * The 100 calibration and measurement clips are played from src/data/clips. What a clip measures about an eye is a
+ * row of `test_result`, under the check-up's own key where it is the same measurement and under a key of its own
+ * otherwise (the keys and units: src/data/clips/keys.ts). What a clip sets on the screen is a column of `device`.
+ * This table is the record that a clip was finished: it lets a set go on where it stopped, shows when a clip was
+ * last done, and holds how a "look and answer" check of the screen came out, which is about a screen and not about
+ * an eye. Numbers and short words only: never a picture. The same change as SQL: drizzle/pending/clips.sql.
+ * The rules: src/lib/clip-rules.ts. The database side: src/lib/clips.ts. */
+export const clipRun = pgTable("clip_run", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  /** The profile that was active when the clip was run. */
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** The household's screen it was run on. Empty for a clip done away from the screen. */
+  deviceId: uuid().references(() => device.id, { onDelete: "set null" }),
+  /** The catalogue code: C01 to C30, M01 to M70. */
+  code: text().notNull(),
+  /** saved (a result or a screen value was stored), pass, note, fail, na */
+  outcome: text().notNull(),
+  /** The first number the clip stored, with its unit, for a list. Empty for a check with no number. */
+  value: real(),
+  unit: text(),
+  /** What the clip recorded on the way: answers by number, matches, seconds. Plain numbers and short words. */
+  detail: jsonb(),
+  /** The set it was played in: screen, weekly, visit. Empty when it was run on its own. */
+  setKey: text(),
+  takenAt: now(),
+}, (t) => [index().on(t.profileId, t.code, t.takenAt), index().on(t.accountId, t.code, t.takenAt)]);

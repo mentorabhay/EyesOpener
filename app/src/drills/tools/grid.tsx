@@ -19,7 +19,7 @@ const TINT = "#8b31f0";
 const MIDDLE = (GRID / 2) * GRID + GRID / 2;
 
 /** The grid itself: dark lines on a light panel, a dot in the middle, the marked squares tinted. */
-function Grid({ marks, label, width, cursor, onCell, onKey, onFocus, describedBy, boxRef }: {
+export function Grid({ marks, label, width, cursor, onCell, onKey, onFocus, describedBy, boxRef }: {
   marks: readonly boolean[]; label: string; width: number | string;
   cursor?: number | null; onCell?: (cell: number) => void; onKey?: (e: KeyboardEvent<SVGSVGElement>) => void;
   onFocus?: (keyboard: boolean) => void; describedBy?: string; boxRef?: Ref<SVGSVGElement>;

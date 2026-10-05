@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { GatheringNote, GatheringRows, gatheringHeading } from "@/components/gatherings/review";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t, ageText } from "@/copy/admin";
 import { discovery } from "@/copy/discovery";
+import { gatherings } from "@/copy/gatherings";
 import { programmeBySlug, testByKey } from "@/data";
 import { openModeration, type ModerationEntry } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
@@ -21,7 +23,7 @@ function flagLines(flag: unknown): string[] {
 
 function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry }) {
   const kind = m.kind[item.kind] ?? m.otherKind;
-  const name = subject.kind === "protocol" ? subject.title : kind;
+  const name = subject.kind === "protocol" ? subject.title : subject.kind === "gathering" ? gatheringHeading(subject) : kind;
   const flags = flagLines(item.aiFlag);
   return (
     <Card title={name} span={6} as="article" right={<>{subject.kind === "protocol" && <Chip>{kind}</Chip>}<Chip tone="warn">{m.waiting(ageText(item.createdAt))}</Chip></>}>
@@ -47,6 +49,7 @@ function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry })
         )}
         {subject.kind === "mail" && <div><dt>{m.mail.from}</dt><dd>{subject.fromName}</dd></div>}
         {subject.kind === "other" && <div><dt>{m.other.id}</dt><dd><Code>{subject.refId}</Code></dd></div>}
+        {subject.kind === "gathering" && <GatheringRows subject={subject} />}
       </dl>
 
       {subject.kind === "protocol" && subject.story && <div className="stack"><h3 className="small muted">{m.fields.story}</h3><p className={css.quote}>{subject.story}</p></div>}
@@ -54,6 +57,7 @@ function Item({ entry: { item, subject, hazards } }: { entry: ModerationEntry })
       {subject.kind === "missing" && <p className="notice" data-b="warn">{m.missing}</p>}
       {subject.kind === "mail" && <p className="muted small">{m.mail.onlyItem}</p>}
       {subject.kind === "other" && <p className="muted small">{m.other.onlyItem}</p>}
+      {subject.kind === "gathering" && <GatheringNote subject={subject} />}
 
       {flags.length > 0 && (
         <div className="notice stack" data-b="warn">
@@ -100,7 +104,7 @@ export default async function ModerationPage() {
     <>
       <PageHead title={t.rooms.moderation.name} sub={m.sub} crumb={[{ href: "/admin", label: t.back }]} stats={[{ value: entries.length, label: m.stat }]} />
       {/* The Discovery Board's question list is kept in this room (package "people"). */}
-      <div className="row"><Btn href="/admin/moderation/discovery">{discovery.staff.link}</Btn></div>
+      <div className="row"><Btn href="/admin/moderation/discovery">{discovery.staff.link}</Btn><Btn href="/admin/moderation/gatherings">{gatherings.staff.link}</Btn></div>
       {entries.length
         ? <div className="bento">{entries.map((entry) => <Item key={entry.item.id} entry={entry} />)}</div>
         : <Empty title={m.empty.title}><span>{m.empty.body}</span></Empty>}

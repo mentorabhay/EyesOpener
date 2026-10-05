@@ -89,7 +89,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
 
   let staff: Id, counsellor: Id, league: Id, team: Id, wall: Id, pair: Id, sponsor: Id, group: Id, round: Id, question: Id;
   let A: Id, PV: Id, gA: Id & { email: string }, cA: Id, K: Id & { email: string }, P1: Id, P2: Id, EA: Id, askA: Id;
-  let B: Id, gB: Id & { email: string }, Q1: Id, EB: Id, linkKB: Id, auditB: Id;
+  let B: Id, gB: Id & { email: string }, Q1: Id, EB: Id, linkKB: Id, auditB: Id, welcomeB: Id, keeperAskB: Id;
   let C: Id, gC: Id & { email: string }, cC: Id, R1: Id, R2: Id;
   let scopeA: Scope, scopeB: Scope;
   let demo: { id: string; profiles: number; sessions: number } | null = null;
@@ -137,6 +137,9 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     await db.insert(s.enquiry).values({ kind: "other", name: `Guardian ${STAY}`, email: gB.email, message: `Message ${STAY}` });
     [auditB] = await db.insert(s.auditLog).values({ userId: staff.id, action: "admin.requests.done", target: askB.id, meta: { kind: "export", accountId: B.id, name: `${STAY} family` } }).returning();
     auditIds.push(auditB.id);
+    /* package "rewards": this family left a welcome, which the other family received (see below) */
+    const [courseB] = await db.insert(s.enrolment).values({ profileId: Q1.id, programme: "lazy-eye", dailyMinutes: 60, daysPerWeek: 6, week: 12, status: "finished", endedAt: runAt }).returning();
+    [welcomeB] = await db.insert(s.keeperWelcome).values({ accountId: B.id, profileId: Q1.id, enrolmentId: courseB.id, programme: "lazy-eye", line: "not_alone", leftBy: gB.id, givenAt: runAt, thanks: "thank_you", thanksAt: runAt }).returning();
 
     /* ── the household that goes ── */
     [A] = note("account", await db.insert(s.account).values({ displayName: `${GONE} family`, exitPinHash: `hash-${GONE}` }).returning());
@@ -162,7 +165,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       { profileId: P1.id, deviceId: dA.id, testKey: "acuity", eye: "left" as const, value: 0.3, unit: "logMAR", note: GONE },
       { profileId: P2.id, testKey: "near_point", value: 9, unit: "cm", note: GONE },
     ]).returning());
-    note("enrolment", await db.insert(s.enrolment).values({ profileId: P1.id, programme: programmes[0].slug, dailyMinutes: 60, daysPerWeek: 6, approvedBy: counsellor.id }).returning());
+    const [courseA] = note("enrolment", await db.insert(s.enrolment).values({ profileId: P1.id, programme: programmes[0].slug, dailyMinutes: 60, daysPerWeek: 6, approvedBy: counsellor.id }).returning());
     note("session", await db.insert(s.session).values([
       { profileId: P1.id, deviceId: dA.id, kind: "game" as const, itemSlug: "firefly-catch", ring: "train" as const, minutes: 12.5, strongContrast: 0.15, score: 31, detail: { hits: 20, misses: 4, top: 3 }, endReason: "stop_rule", stopSymptom: `headache ${GONE}` },
       { profileId: P2.id, kind: "test" as const, itemSlug: "near_point", ring: "rest" as const, minutes: 2 },
@@ -212,6 +215,19 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     note("duet", await db.insert(s.duet).values({ accountId: A.id, aProfileId: P1.id, bUserId: cA.id, startedOn: DAY, createdBy: gA.id }).returning());
     await db.insert(s.discoveryVote).values({ roundId: round.id, profileId: P1.id, questionId: question.id }); tally("discoveryVote");
     await db.insert(s.mapPlace).values({ accountId: A.id, area: "411", joinedBy: gA.id, welcome: "hello" }); tally("mapPlace");
+    /* package "gatherings": a class mission that was run, and a wish with the review item that points at it */
+    note("classMission", await db.insert(s.classMission).values({ profileId: P1.id, givenBy: gA.id, doneOn: DAY }).returning());
+    const [wishA] = note("wish", await db.insert(s.wish).values({ accountId: A.id, profileId: P1.id, code: `W-${GONE}`, loves: "trains", play: "steer", line: `Wish ${GONE}`, gameName: `Game ${GONE}`, createdBy: gA.id }).returning());
+    note("moderationItem", await db.insert(s.moderationItem).values({ kind: "wish", refId: wishA.id, reason: `Review ${GONE}` }).returning());
+    /* package "clips": a clip that was finished on the household's screen */
+    note("clipRun", await db.insert(s.clipRun).values({ accountId: A.id, profileId: P1.id, deviceId: dA.id, code: "C06", outcome: "fail", detail: { scene: "edges", answers: [1], tag: GONE }, setKey: "screen" }).returning());
+    /* package "rewards": the day a Depth check-up first found depth; a welcome this family left, which the other family
+       received and thanked for; and the welcome this family received from the other one. The two families' rows point
+       at each other only through `keeper_ask.welcome_id`. */
+    await db.insert(s.depthDay).values({ profileId: P1.id, day: DAY, arcsec: 800, playedAt: runAt }); tally("depthDay");
+    const [welcomeA] = note("keeperWelcome", await db.insert(s.keeperWelcome).values({ accountId: A.id, profileId: P1.id, enrolmentId: courseA.id, programme: "lazy-eye", line: "split_it", leftBy: gA.id, givenAt: runAt, thanks: "it_helped", thanksAt: runAt }).returning());
+    note("keeperAsk", await db.insert(s.keeperAsk).values({ accountId: A.id, profileId: P1.id, enrolmentId: courseA.id, programme: "lazy-eye", askedBy: gA.id, welcomeId: welcomeB.id, line: "not_alone", receivedAt: runAt, thanks: "thank_you", thanksAt: runAt }).returning());
+    [keeperAskB] = await db.insert(s.keeperAsk).values({ accountId: B.id, profileId: Q1.id, enrolmentId: courseB.id, programme: "lazy-eye", askedBy: gB.id, welcomeId: welcomeA.id, line: "split_it", receivedAt: runAt, thanks: "it_helped", thanksAt: runAt }).returning();
     const [copyA] = note("dataRequest", await db.insert(s.dataRequest).values({ accountId: A.id, kind: "export", status: "ready", askedBy: gA.id, readyAt: runAt, expiresAt: addDays(runAt, COPY_DAYS) }).returning());
     note("enquiry", await db.insert(s.enquiry).values({ kind: "other", name: `Guardian ${GONE}`, email: gA.email.toUpperCase(), message: `Message ${GONE}`, handledBy: staff.id }).returning());
     /* The co-guardian who stays wrote in as a counsellor. That message is hers and stays with her. */
@@ -264,6 +280,10 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     keep(await db.insert(s.glassesLeg).values({ pairId: pair.id, profileId: R1.id, displayName: `Leg ${ONE}`, city: ONE, status: "finished" }).returning());
     await db.insert(s.teamMember).values({ teamId: team.id, profileId: R1.id });
     keep(await db.insert(s.hero).values({ profileId: R1.id, sprite: { tag: ONE } }).returning());
+    /* package "rewards": the profile's depth day, and the welcome left for its finished course */
+    await db.insert(s.depthDay).values({ profileId: R1.id, day: DAY, arcsec: 400 });
+    const [courseC] = keep(await db.insert(s.enrolment).values({ profileId: R1.id, programme: "lazy-eye", dailyMinutes: 60, daysPerWeek: 6, week: 12, status: "finished", endedAt: runAt }).returning());
+    keep(await db.insert(s.keeperWelcome).values({ accountId: C.id, profileId: R1.id, enrolmentId: courseC.id, programme: "lazy-eye", line: "glasses" }).returning());
     await db.insert(s.session).values({ profileId: R2.id, deviceId: dC.id, kind: "game", itemSlug: "firefly-catch", ring: "train", minutes: 7, stopSymptom: REST });
     await db.insert(s.testResult).values({ profileId: R2.id, deviceId: dC.id, testKey: "acuity", value: 0.1, unit: "logMAR", note: REST });
     await db.insert(s.fusionMail).values({ fromUserId: gC.id, toProfileId: R2.id, fromName: "Guardian", body: `MAIL ${REST}` });
@@ -344,6 +364,10 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(out).toMatchObject({ toProfileName: ZED, note: `Out ${GIFT}` });
       expect(out).not.toHaveProperty("toProfileId");
       expect(back).toMatchObject({ fromProfileName: ZED, note: `In ${GIFT}` });
+      /* A welcome from another family: the line that was received is there, the id of that family's row is not. */
+      expect(file.data.keeperAsks[0]).toMatchObject({ line: "not_alone", thanks: "thank_you" });
+      expect(file.data.keeperAsks[0]).not.toHaveProperty("welcomeId");
+      expect(json.includes(welcomeB.id)).toBe(false);
     });
 
     it("gives the downloader's own sign-in in full, and of the other grown-ups only what the Family page shows", () => {
@@ -578,6 +602,10 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(await db.select().from(s.experiment).where(eq(s.experiment.id, EB.id))).toHaveLength(1);
       expect(await db.select().from(s.experimentSignal).where(eq(s.experimentSignal.experimentId, EB.id))).toHaveLength(1);
       expect(await db.select().from(s.experimentEnrolment).where(eq(s.experimentEnrolment.experimentId, EB.id))).toHaveLength(0);
+      /* The welcome it left keeps its record of being given and thanked for. The welcome it received keeps its line, and
+         the pointer at the deleted family's row is emptied. */
+      expect(await db.select().from(s.keeperWelcome).where(eq(s.keeperWelcome.id, welcomeB.id))).toMatchObject([{ line: "not_alone", givenAt: runAt, thanks: "thank_you" }]);
+      expect(await db.select().from(s.keeperAsk).where(eq(s.keeperAsk.id, keeperAskB.id))).toMatchObject([{ line: "split_it", thanks: "it_helped", receivedAt: runAt, welcomeId: null }]);
     });
 
     it("is safe to run twice", async () => {
@@ -608,12 +636,13 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     it("leaves the household, its grown-ups, its screen and its other profile as they were", async () => {
       expect(await scan([], [REST])).toEqual(before.words);
       const ids = await scan([C.id, R2.id, gC.id, cC.id], []);
-      /* What changed: the deleted profile's own row and consent, the mail between the two profiles, and the request made above. */
+      /* What changed: the deleted profile's own row and consent, the mail between the two profiles, the welcome left for its course, and the request made above. */
       const changed = Object.keys({ ...before.restIds, ...ids }).filter((k) => ids[k] !== before.restIds[k]);
       expect(changed.sort()).toEqual([
         "consent.account_id", "consent.user_id", "data_request.account_id", "data_request.asked_by",
-        "fusion_mail.from_profile_id", "fusion_mail.from_user_id", "fusion_mail.to_profile_id", "profile.account_id",
+        "fusion_mail.from_profile_id", "fusion_mail.from_user_id", "fusion_mail.to_profile_id", "keeper_welcome.account_id", "profile.account_id",
       ]);
+      expect(await db.select().from(s.depthDay).where(eq(s.depthDay.profileId, R1.id))).toHaveLength(0);
       expect(await db.select().from(s.profile).where(eq(s.profile.accountId, C.id))).toMatchObject([{ id: R2.id }]);
       expect(await db.select().from(s.device).where(eq(s.device.accountId, C.id))).toHaveLength(1);
       expect(await db.select().from(s.appUser).where(eq(s.appUser.accountId, C.id))).toHaveLength(2);

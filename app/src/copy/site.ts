@@ -54,7 +54,7 @@ export const site = {
     groups: [
       { title: "The app", links: [{ href: "/how-it-works", label: "How it works" }, { href: "/programmes", label: "Programmes" }, { href: "/library", label: "Library" }, { href: "/stories", label: "Stories" }] },
       { title: "Trust", links: [{ href: "/evidence", label: "Evidence" }, { href: "/safety", label: "Safety" }, { href: "/about", label: "About" }] },
-      { title: "Take part", links: [{ href: "/for-counsellors", label: "For counsellors" }, { href: "/for-sponsors", label: "For sponsors and schools" }] },
+      { title: "Take part", links: [{ href: "/for-counsellors", label: "For counsellors" }, { href: "/for-sponsors", label: "For sponsors and schools" }, { href: "/wish-jam", label: "Wish Jam for developers" }] },
       { title: "The small print", links: [{ href: "/privacy", label: "Privacy" }, { href: "/childrens-data", label: "Children's data" }, { href: "/terms", label: "Terms" }] },
     ],
     promises: ["Free", "Open-source core", "No ads"],
@@ -622,7 +622,7 @@ export const site = {
     lead: "A person reads every message. We answer by email.",
     adults: (age: number) => `This form is for adults only. If you are under ${age}, please ask a parent or guardian to write.`,
     fields: { name: "Your name", organisation: "Organisation", organisationHint: "Optional", email: "Email", kind: "You are writing as", message: "Your message", adult: (age: number) => `I am ${age} or older.` },
-    kinds: { counsellor: "An eye counsellor", sponsor: "A sponsor or community group", school: "A school", other: "Someone else" } satisfies Record<EnquiryKind, string>,
+    kinds: { counsellor: "An eye counsellor", sponsor: "A sponsor or community group", school: "A school", wish_jam: "A developer or student, about Wish Jam", other: "Someone else" } satisfies Record<EnquiryKind, string>,
     /** The hidden field. A person never sees or hears this label. */
     trap: "Leave this box empty",
     send: "Send",
@@ -931,7 +931,7 @@ export const site = {
       handled: "Answered or closed",
       emptyOpen: { title: "Nothing is waiting", body: "New messages from the public site show here." },
       emptyHandled: "Nothing has been answered or closed yet.",
-      kind: { counsellor: "Counsellor", sponsor: "Sponsor", school: "School", other: "Other" } as Record<string, string>,
+      kind: { counsellor: "Counsellor", sponsor: "Sponsor", school: "School", wish_jam: "Wish Jam builder", other: "Other" } as Record<string, string>,
       status: { new: "New", answered: "Answered", closed: "Closed" } satisfies Record<EnquiryStatus, string>,
       from: (name: string, organisation: string) => (organisation ? `${name}, ${organisation}` : name),
       sent: (when: string) => `Sent ${when}`,

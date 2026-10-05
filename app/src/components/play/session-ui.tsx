@@ -1,9 +1,11 @@
 "use client";
 import { useState } from "react";
 import { reportStopSymptom } from "@/app/(app)/train/actions";
+import { SunsetNote } from "@/components/together/sunset-note";
 import { train as t } from "@/copy/train";
 import { needsDoctor, STOP_SYMPTOMS, type StopSymptom } from "@/engine";
 import type { TrainDose } from "@/lib/sessions";
+import { isDayDone } from "@/lib/sunset";
 import { Measured, type Labels } from "./results";
 import type { Ended, Refusal, TrainSession } from "./use-session";
 
@@ -69,6 +71,8 @@ export function SessionNote({ s, dose, labels, quiet = false }: { s: TrainSessio
       {ended && <EndNote e={ended} labels={labels} />}
       {/* A care routine uses no training minutes, so `quiet` leaves the minutes line out and keeps only a reason it is closed. */}
       {ended?.endReason !== "stop_rule" && (!quiet || s.refused || dose.reason) && <DoseLine dose={dose} refused={s.refused} />}
+      {/* Sunset Rule: when this session used up the day's minutes, the family sees the sunset. The server decides. */}
+      {ended && ended.endReason !== "stop_rule" && isDayDone(dose.reason) && <SunsetNote />}
     </div>
   );
 }

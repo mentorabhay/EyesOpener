@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Days } from "@/components/programme/days";
 import css from "@/components/programme/week.module.css";
 import { Btn, Card, Chip, Empty, EvidenceChip, PageHead, Progress } from "@/components/ui";
+import { graduation } from "@/copy/graduation";
 import { dateLabel, programme as t } from "@/copy/programme";
 import { train } from "@/copy/train";
 import { mechanismOf, tests } from "@/data";
@@ -240,6 +241,7 @@ function Ended({ e, m }: { e: EndedCourse; m: Member }) {
           <ol className={css.steps}>{x.steps[e.end].map((line) => <li key={line}>{line}</li>)}</ol>
           <div className="row">
             <Btn href="/test/summary" kind="g">{x.summary}</Btn>
+            <Btn href="/together/graduation">{graduation.fromWeek}</Btn>
             {m.can("manage_family") && <Btn href="/settings">{x.settings}</Btn>}
           </div>
         </Card>

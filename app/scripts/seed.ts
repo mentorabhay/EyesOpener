@@ -7,13 +7,16 @@ import "./env";
 import { eq, sql } from "drizzle-orm";
 import { db, schema as s } from "../src/db";
 import { derive, type Measured } from "../src/engine";
+import { seedClips } from "./seed/clips";
 import { seedData } from "./seed/data";
 import { seedExperiments } from "./seed/experiments";
+import { seedGatherings } from "./seed/gatherings";
 import { seedHero } from "./seed/hero";
 import { seedLeague } from "./seed/league";
 import { seedMonitor } from "./seed/monitor";
 import { seedPeople } from "./seed/people";
 import { seedProgramme } from "./seed/programme";
+import { seedRewards } from "./seed/rewards";
 
 const DAY = 86_400_000;
 const key = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
@@ -171,6 +174,9 @@ async function main() {
   await seedExperiments();
   await seedPeople();
   await seedMonitor();
+  await seedRewards();
+  await seedGatherings();
+  await seedClips();
   await seedData();
 
   const counts = await Promise.all(([["account", s.account], ["appUser", s.appUser], ["sponsor", s.sponsor], ["profile", s.profile], ["testResult", s.testResult], ["session", s.session], ["protocol", s.protocol]] as const).map(async ([n, t]) => `${n} ${(await db.select({ c: sql<number>`count(*)::int` }).from(t))[0].c}`));

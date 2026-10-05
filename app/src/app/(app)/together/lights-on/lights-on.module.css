@@ -1,0 +1,65 @@
+/* Lights On Hour: a night sky with one paper lantern for each household practising in the hour.
+   The sky is dark in both themes. Nothing here flashes: a lantern rises once over many seconds, then sways slowly. */
+
+.sky {
+  position: relative; overflow: hidden; border-radius: var(--r-md); isolation: isolate;
+  aspect-ratio: 4 / 3; min-height: 240px; max-height: 70vh; width: 100%;
+  background: linear-gradient(180deg, #0a0c1c 0%, #141833 58%, #241b3d 100%);
+}
+.stars {
+  position: absolute; inset: 0; opacity: 0.55;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 27% 42%, #fff 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 41% 12%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 58% 30%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 69% 9%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 83% 24%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 48%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 7% 55%, #fff 50%, transparent 51%),
+    radial-gradient(1px 1px at 36% 63%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 76% 58%, #fff 50%, transparent 51%);
+}
+.ground { position: absolute; left: 0; right: 0; bottom: 0; height: 9%; background: linear-gradient(180deg, #17122a, #0d0a18); border-top: 1px solid #2c2547; }
+
+/* A lantern sits at (--x, --y) of the sky. It comes up from below the ground once, then stays. */
+.lantern {
+  position: absolute; left: var(--x); top: var(--y); width: calc(clamp(22px, 5.2vw, 46px) * var(--s)); z-index: 1;
+  animation: rise 9s cubic-bezier(0.2, 0.7, 0.3, 1) var(--d) both;
+}
+.lantern svg { display: block; width: 100%; height: auto; overflow: visible; animation: sway 9s ease-in-out var(--d) infinite alternate; }
+.lantern :global(.glow) { fill: #f4aa2d; opacity: 0.16; }
+.lantern :global(.body) { fill: #f4aa2d; }
+.lantern :global(.rim) { fill: #b87512; }
+.lantern :global(.flame) { fill: #fff3d1; }
+.lantern[data-c="1"] :global(.body) { fill: #e07fb8; }
+.lantern[data-c="1"] :global(.rim) { fill: #a44d80; }
+.lantern[data-c="1"] :global(.glow) { fill: #e07fb8; }
+.lantern[data-c="2"] :global(.body) { fill: #b48cf7; }
+.lantern[data-c="2"] :global(.rim) { fill: #7445c9; }
+.lantern[data-c="2"] :global(.glow) { fill: #b48cf7; }
+
+/* The household's own lantern: a little larger, in front, with a white ring so it is told apart by shape as well as place. */
+.own { z-index: 2; }
+.own::after { content: ""; position: absolute; inset: -14% -22% -4%; border: 2px solid #fff; border-radius: 50%; }
+
+/* Before the hour: one lantern on the ground, not lit. */
+.unlit { animation: none; }
+.unlit svg { animation: none; }
+.unlit :global(.glow) { opacity: 0; }
+.unlit :global(.body) { fill: #4d4770; }
+.unlit :global(.rim) { fill: #353050; }
+.unlit :global(.flame) { fill: #353050; }
+
+/* World Sight Day: a string of small lights across the top. They are steady. */
+.garland { position: absolute; left: 0; right: 0; top: 0; width: 100%; height: 12%; z-index: 1; }
+.garland circle[data-c="0"] { fill: #f4aa2d; }
+.garland circle[data-c="1"] { fill: #e07fb8; }
+.garland circle[data-c="2"] { fill: #b48cf7; }
+
+@keyframes rise { from { transform: translateY(38vh); opacity: 0; } 15% { opacity: 1; } to { transform: none; opacity: 1; } }
+@keyframes sway { from { transform: translateY(-3px); } to { transform: translateY(3px); } }
+
+/* What stands over the sky: the state in words. White on the dark sky in both themes. */
+.wrap { position: relative; }
+.over { position: absolute; left: 14px; right: 14px; top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; z-index: 3; color: #fff; }
+.over b { font-size: clamp(15px, 2.2vw, 20px); font-weight: 600; letter-spacing: -0.02em; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85); }
+.sky[data-festival] + .over { top: 15%; }
+.caption { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+
+.list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }

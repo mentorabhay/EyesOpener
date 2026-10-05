@@ -1,0 +1,30 @@
+/* The journey book: one record of a finished course, printed black on white with the app's navigation left out. */
+.sheet { display: flex; flex-direction: column; gap: 18px; max-width: 900px; }
+.sheet h2 { font-size: 16px; }
+.top { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.hero { flex: 0 0 132px; width: 132px; height: 132px; border-radius: var(--r-md); }
+.hero svg { width: 100%; height: 100%; }
+.top > div:last-child { flex: 1; min-width: 200px; }
+.weeks { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; list-style: none; margin: 0; padding: 0; }
+.weeks li { border: 1px solid var(--line-2); border-radius: var(--r-sm); padding: 8px 10px; display: grid; gap: 5px; }
+.weeks b { font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
+.dots { display: flex; gap: 3px; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--ink-3); }
+.dots i[data-on="true"] { background: var(--ink); border-color: var(--ink); }
+.sheet table td small { display: block; color: var(--ink-3); font-size: 12px; }
+.sheet table td:first-child { font-weight: 600; }
+
+@media print {
+  :global(.shell):has(.sheet) { display: block; }
+  :global(.shell):has(.sheet) :global(.side), :global(.shell):has(.sheet) :global(.tabs), .hide { display: none !important; }
+  :global(.page):has(.sheet) { padding: 0; max-width: none; zoom: 1 !important; }
+  :global(body):has(.sheet) { background: #fff; }
+  .sheet { max-width: none; gap: 12px; color: #000; --ink: #000; --ink-2: #000; --ink-3: #333; --line: #999; --line-2: #999; --card: #fff; --sunken: #fff; font-size: 11pt; }
+  .sheet :global(.c) { border: 0; border-top: 1px solid #000; border-radius: 0; box-shadow: none; padding: 10px 0 0; background: #fff; break-inside: avoid; }
+  .sheet :global(.chip), .sheet :global(.notice) { background: #fff; color: #000; border: 1px solid #000; }
+  .sheet :global(.tbwrap) { overflow: visible; }
+  /* the hero is printed dark on white: ink on paper, not light on a black field */
+  .hero { background: #fff !important; border: 1px solid #000; }
+  .hero svg path { fill: #000 !important; }
+  .sheet a { text-decoration: none; }
+}

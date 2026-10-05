@@ -67,6 +67,14 @@ const did: Record<string, (name?: string) => string> = {
   "admin.stories.ai_draft": (n) => `asked for an AI draft of ${n ?? "a story"}`,
   "admin.enquiries.answered": () => "marked an enquiry as answered",
   "admin.enquiries.closed": () => "closed an enquiry",
+  "admin.gatherings.hour.set": (n) => `set the Lights On Hour${n ? ` to ${n}` : ""}`,
+  "admin.gatherings.club.list": (n) => `listed a Cinema Club${n ? `: ${n}` : ""}`,
+  "admin.gatherings.club.remove": (n) => `took a Cinema Club off the list${n ? `: ${n}` : ""}`,
+  "admin.gatherings.wish.match": (n) => `marked ${n ?? "a wish"} as taken on by a builder`,
+  "admin.gatherings.wish.unmatch": (n) => `put ${n ?? "a wish"} back on the list`,
+  "admin.gatherings.wish.built": (n) => `marked ${n ?? "a wish"} as built`,
+  "admin.gatherings.wish.unlist": (n) => `took ${n ?? "a wish"} off the wish list`,
+  "admin.gatherings.wish.tie": (n) => `tied ${n ?? "a wish"} to a library game`,
 };
 
 export const admin = {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Btn, Chip, Empty, PageHead, Void } from "@/components/ui";
+import { clips } from "@/copy/clips";
 import { test as c } from "@/copy/test";
 import { tests } from "@/data";
 import { testBlock } from "@/lib/eye-profile";
@@ -29,6 +30,7 @@ export default async function CheckupsPage() {
       <PageHead title={c.title} sub={c.sub} stats={[{ value: due.length, label: c.dueCount }]} />
       <div className="row">
         <Btn href="/test/summary" small>{c.summaryLink}</Btn>
+        <Btn href="/test/clips" small>{clips.hubLink}</Btn>
         {changed > 0 && <span className={css.changed}>{c.alert.hub(changed)}</span>}
       </div>
       {block && <p className="notice" data-b="warn">{c.blocked[block]}</p>}

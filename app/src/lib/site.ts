@@ -25,6 +25,7 @@ export const siteUrl = (env: string | undefined = process.env.SITE_URL) => (env?
 export const SITE_PAGES = [
   "/", "/how-it-works", "/programmes", "/evidence", "/library", "/safety", "/stories",
   "/for-counsellors", "/for-sponsors", "/about", "/privacy", "/childrens-data", "/terms",
+  "/wish-jam",
 ] as const;
 export type SitePath = (typeof SITE_PAGES)[number];
 
@@ -154,7 +155,8 @@ export function levelCounts(): { level: 0 | 1 | 2; games: number; programmes: nu
 
 /* ───────────── enquiries ───────────── */
 
-export const ENQUIRY_KINDS = ["counsellor", "sponsor", "school", "other"] as const;
+/** "wish_jam" is a developer or a student who wants to build a game for a wish (the public page /wish-jam). */
+export const ENQUIRY_KINDS = ["counsellor", "sponsor", "school", "wish_jam", "other"] as const;
 export type EnquiryKind = (typeof ENQUIRY_KINDS)[number];
 export const ENQUIRY_STATUSES = ["new", "answered", "closed"] as const;
 export type EnquiryStatus = (typeof ENQUIRY_STATUSES)[number];

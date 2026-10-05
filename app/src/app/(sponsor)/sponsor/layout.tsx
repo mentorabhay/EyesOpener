@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { PortalShell } from "@/components/portal";
+import { cinemaClub } from "@/copy/cinema-club";
 import { sponsor as t } from "@/copy/sponsor";
 import { requireSponsor } from "@/lib/auth";
 import { sponsorCan } from "@/lib/roles";
@@ -11,6 +12,7 @@ export default async function SponsorLayout({ children }: { children: ReactNode 
   const rooms = sponsor.status !== "approved" ? [] : [
     { href: "/sponsor/groups", label: n.groups },
     { href: "/sponsor/glasses", label: n.glasses },
+    { href: "/sponsor/cinema-club", label: cinemaClub.nav },
     ...(sponsorCan(sponsor.role, "manage_team") ? [{ href: "/sponsor/team", label: n.team }] : []),
   ];
   const other = [

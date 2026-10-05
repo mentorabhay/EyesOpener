@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { PortalShell } from "@/components/portal";
+import { cinemaClub } from "@/copy/cinema-club";
 import { counsellor as t } from "@/copy/counsellor";
 import { requireCounsellor } from "@/lib/auth";
 
@@ -15,7 +16,7 @@ export default async function CounsellorLayout({ children }: { children: ReactNo
     <PortalShell
       area={t.area} who={viewer.user.displayName} role={t.role}
       groups={[
-        { title: t.nav.title, items: [{ href: "/counsellor", label: t.nav.members }, { href: "/counsellor/profile", label: t.nav.profile }] },
+        { title: t.nav.title, items: [{ href: "/counsellor", label: t.nav.members }, { href: "/counsellor/profile", label: t.nav.profile }, { href: "/counsellor/cinema-club", label: cinemaClub.nav }] },
         ...(other.length ? [{ title: t.nav.other, items: other }] : []),
       ]}
     >

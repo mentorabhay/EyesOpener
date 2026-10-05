@@ -43,6 +43,13 @@
       "when": 1791173987219,
       "tag": "0005_signin_monitor_hero_people",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1791182736314,
+      "tag": "0006_clips_rewards_gatherings",
+      "breakpoints": true
     }
   ]
 }

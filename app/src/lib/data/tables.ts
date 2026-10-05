@@ -29,6 +29,9 @@ export const PARTS = [
   "lights", "weekNotes", "mail", "wallTiles", "gallery", "glassesJourney", "heroes", "teams", "teamMoves",
   "sponsorGroups", "pushTokens", "enquiries", "dataRequests",
   "duets", "discoveryVotes", "mapPlaces",
+  "classMissions", "wishes",
+  "depthDays", "keeperWelcomes", "keeperAsks",
+  "clipRuns",
 ] as const;
 export type PartKey = (typeof PARTS)[number];
 
@@ -256,7 +259,7 @@ export const TABLES = {
   },
   moderationItem: {
     holds: "A shared item waiting for a person to review it, and the decision.",
-    owner: { ref: { kind: "kind", column: "refId", to: { story: "story", protocol: "protocol", note: "aheadNote", mail: "fusionMail" } } },
+    owner: { ref: { kind: "kind", column: "refId", to: { story: "story", protocol: "protocol", note: "aheadNote", mail: "fusionMail", wish: "wish", wish_name: "wish" } } },
     copy: { part: "review" },
     erase: "rows",
     links: { reviewerId: { fate: "cleared", why: staffOnly } },
@@ -458,6 +461,66 @@ export const TABLES = {
     links: { joinedBy: { fate: "cleared", why: sameHousehold } },
   },
 
+  /* ───────────── package: gatherings (Cinema Club, Class Mission, Wish Jam) ───────────── */
+  cinemaClub: {
+    holds: "A public place where a volunteer hosts a weekly film hour: the place, the day and the time.",
+    copy: { leftOut: "Listed by a sponsor or by staff. It names a public place and no household, and nobody who went there is recorded." },
+    erase: { untouched: "A listing of a public place, made by a sponsor or by staff. Nothing in it is about a household." },
+    links: { createdBy: { fate: "cleared", why: "Points at the person who listed the club for a sponsor or for staff. The listing stays, with nobody named." } },
+  },
+  classMission: {
+    holds: "A class mission a guardian gave a child, and the day it was run.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "classMissions" },
+    erase: "rows",
+    links: { givenBy: { fate: "cleared", why: sameHousehold } },
+  },
+  wish: {
+    holds: "A child's wish for a game, written by a guardian, and the name the child gave the game.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "wishes" },
+    erase: "rows",
+    links: { createdBy: { fate: "cleared", why: sameHousehold } },
+  },
+
+  /* ───────────── package: rewards (First Depth Day, Keeper Graduation) ───────────── */
+  depthDay: {
+    holds: "The day a profile's Depth check-up first found depth, and when its scene was first played.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "depthDays" },
+    erase: "rows",
+  },
+  keeperWelcome: {
+    holds: "The welcome line a household left for a new family when one of its profiles finished a course.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "keeperWelcomes" },
+    erase: "rows",
+    links: {
+      enrolmentId: { fate: "falls", why: "A welcome is left for one finished course of the same profile, so it is already removed with that profile." },
+      leftBy: { fate: "cleared", why: sameHousehold },
+    },
+  },
+  keeperAsk: {
+    holds: "A household's ask for a welcome from a family that finished the same programme, and the line it received.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "keeperAsks", hide: { welcomeId: "The id of a row that belongs to the family that left the welcome. The file gives the line that was received." } },
+    erase: "rows",
+    links: {
+      enrolmentId: { fate: "falls", why: "An ask belongs to one course of the same profile, so it is already removed with that profile." },
+      askedBy: { fate: "cleared", why: sameHousehold },
+      welcomeId: { fate: "cleared", why: "The welcome was left by another household. When that household is deleted the pointer is emptied, and this family keeps the line it received." },
+    },
+  },
+
+  /* ───────────── package: clips (the clip runner) ───────────── */
+  clipRun: {
+    holds: "Each clip a profile finished: its code, how it came out, and the answers or numbers it recorded on the way.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "clipRuns" },
+    erase: "rows",
+    links: { deviceId: { fate: "cleared", why: ownScreen } },
+  },
+
   /* ───────────── package: signin (sign-in with Firebase Authentication) ───────────── */
   signinAsk: {
     holds: "A count of sign-in links asked for: a scrambled form of the address or network it came from, and the time.",
@@ -485,6 +548,9 @@ export const ERASE_ORDER: readonly TableName[] = [
   "experimentSignal", "experimentEnrolment", "experiment", "protocol", "story",
   "lightGift", "aheadNote", "fusionMail", "galleryUnlock", "glassesLeg", "hero", "teamMove", "teamMember",
   "duet", "discoveryVote", "mapPlace",
+  "classMission", "wish",
+  "keeperAsk", "keeperWelcome", "depthDay",
+  "clipRun",
   "monitorSample", "careLog", "carePlan", "daySummary", "session", "enrolment", "streak",
   "testResult", "eyeProfile", "onboardingRun", "triage", "consent",
   "enquiry", "pushToken", "invite", "sponsorGroupMember", "dataRequest", "device",

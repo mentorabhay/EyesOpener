@@ -13,4 +13,12 @@ export const IDEA_PAGES: Readonly<Record<string, string>> = {
   "travelling-glasses": "glasses",
   "light-the-map": "map",
   "draw-your-hero": "hero",
+  "locked-gallery": "gallery",
+  "first-depth-day": "depth-day",
+  "sunset-rule": "sunset",
+  "keeper-graduation": "graduation",
+  "lights-on-hour": "lights-on",
+  "cinema-club": "cinema-club",
+  "class-mission": "class-mission",
+  "wish-jam": "wish-jam",
 };

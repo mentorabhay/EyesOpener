@@ -8,6 +8,7 @@
 import { and, asc, count, countDistinct, desc, eq, gte, inArray, isNotNull, isNull, max, or, sql, sum } from "drizzle-orm";
 import { db, schema as s } from "@/db";
 import { edition } from "@/edition";
+import { decideGathering, gatheringSubjects, gatheringText, isGatheringKind, subjectKey, type GatheringSubject } from "@/lib/gatherings-review";
 import { resolveStaffRole, staffAreas, type AdminArea, type StaffRole } from "@/lib/roles";
 
 const DAY = 86_400_000;
@@ -130,6 +131,8 @@ export type Subject =
   | { kind: "protocol"; title: string; author: string; forWhom: string; doWhat: string; howMuch: string; weeks: number; moves: string; story: string | null }
   | { kind: "note"; body: string; signature: string; programme: string; week: number; author: string }
   | { kind: "mail"; body: string; fromName: string }
+  /* a Cinema Club listing, a Wish Jam wish or the name of a Wish Jam game (src/lib/gatherings-review.ts) */
+  | GatheringSubject
   | { kind: "other"; refId: string }
   | { kind: "missing" };
 
@@ -143,6 +146,7 @@ function screenText(subject: Subject): string | null {
   if (subject.kind === "protocol") return [subject.story ?? "", subject.title, subject.forWhom, subject.doWhat, subject.howMuch].join("\n");
   if (subject.kind === "note") return `${subject.body}\n${subject.signature}`;
   if (subject.kind === "mail") return subject.body;
+  if (subject.kind === "gathering") return gatheringText(subject);
   return null;
 }
 
@@ -151,6 +155,7 @@ export async function openModeration(): Promise<ModerationEntry[]> {
   const items = await db.select().from(s.moderationItem).where(eq(s.moderationItem.status, "open")).orderBy(asc(s.moderationItem.createdAt));
   if (!items.length) return [];
   const protocolIds = idsOf(items, "protocol"), noteIds = idsOf(items, "note"), mailIds = idsOf(items, "mail");
+  const gatherings = await gatheringSubjects(items);
   const [protocols, notes, mails, rules] = await Promise.all([
     protocolIds.length ? db.select({
       id: s.protocol.id, title: s.protocol.title, forWhom: s.protocol.forWhom, doWhat: s.protocol.doWhat, howMuch: s.protocol.howMuch,
@@ -169,6 +174,7 @@ export async function openModeration(): Promise<ModerationEntry[]> {
     if (item.kind === "protocol") { const p = protocols.find((x) => x.id === item.refId); subject = p ? { kind: "protocol", ...p } : { kind: "missing" }; }
     if (item.kind === "note") { const n = notes.find((x) => x.id === item.refId); subject = n ? { kind: "note", ...n } : { kind: "missing" }; }
     if (item.kind === "mail") { const m = mails.find((x) => x.id === item.refId); subject = m ? { kind: "mail", ...m } : { kind: "missing" }; }
+    if (isGatheringKind(item.kind)) subject = gatherings.get(subjectKey(item.kind, item.refId)) ?? { kind: "missing" };
     const text = screenText(subject);
     return { item, subject, hazards: text === null ? null : matchHazards(text, rules) };
   });
@@ -202,6 +208,7 @@ export async function decideModeration(itemId: string, decision: "approved" | "r
       }
     }
     if (item.kind === "note") await tx.update(s.aheadNote).set({ status }).where(eq(s.aheadNote.id, item.refId));
+    if (isGatheringKind(item.kind)) name = await decideGathering(tx, item, approved, now);
     return { item, name };
   });
 }
