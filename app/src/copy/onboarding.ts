@@ -82,7 +82,7 @@ export const onboarding = {
     swap: (e: Eye) => `The balance test found the ${eye(e)} eye weaker than the letter test suggested. Turn the glasses round: cyan lens over the ${eye(e)} eye.`,
     skipped: (level: string) => `The balance test was skipped, so the stronger eye starts at ${level}, the starting level used in the Luminopia trial. `,
     skippedCta: "Take the balance test with glasses to replace it.",
-    links: [["/today", "Today", "the day's practice uses these settings."], ["/train", "Games", "the red ink and the target sizes follow them."], ["/test", "Check-ups", "repeat the tests each week and the settings move as the eyes change."]],
+    links: [["/today", "Today", "the day's practice uses these settings."], ["/train", "Games", "the red ink and the target sizes follow them."], ["/test", "Check-ups", "repeat the tests each week and the settings move as the eyes change."], ["/settings/screen", "This screen's colours", "an optional five minutes for a grown-up with the red-cyan glasses. It makes contrast truer on this screen and shows how well the glasses keep the two pictures apart."]],
   },
 
   settings: {

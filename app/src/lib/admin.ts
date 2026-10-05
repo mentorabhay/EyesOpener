@@ -206,33 +206,6 @@ export async function decideModeration(itemId: string, decision: "approved" | "r
   });
 }
 
-/* ───────────── data requests ───────────── */
-
-function requestRows() {
-  return db.select({
-    id: s.dataRequest.id, kind: s.dataRequest.kind, status: s.dataRequest.status, createdAt: s.dataRequest.createdAt, doneAt: s.dataRequest.doneAt,
-    household: s.account.displayName, handler: s.appUser.displayName,
-  }).from(s.dataRequest).innerJoin(s.account, eq(s.account.id, s.dataRequest.accountId)).leftJoin(s.appUser, eq(s.appUser.id, s.dataRequest.handledBy)).$dynamic();
-}
-
-/** Open requests, oldest first, and the ones finished in the last 30 days, newest first. */
-export async function dataRequests() {
-  const [open, done] = await Promise.all([
-    requestRows().where(eq(s.dataRequest.status, "open")).orderBy(asc(s.dataRequest.createdAt)),
-    requestRows().where(and(eq(s.dataRequest.status, "done"), gte(s.dataRequest.doneAt, new Date(Date.now() - 30 * DAY)))).orderBy(desc(s.dataRequest.doneAt)).limit(100),
-  ]);
-  return { open, done };
-}
-
-/** Records that a person handled the request. Null when it is not open any more. */
-export async function finishDataRequest(id: string, staffId: string) {
-  const [row] = await db.update(s.dataRequest).set({ status: "done", handledBy: staffId, doneAt: new Date() })
-    .where(and(eq(s.dataRequest.id, id), eq(s.dataRequest.status, "open"))).returning();
-  if (!row) return null;
-  const [home] = await db.select({ name: s.account.displayName }).from(s.account).where(eq(s.account.id, row.accountId));
-  return { ...row, household: home?.name ?? "" };
-}
-
 /* ───────────── counsellors ───────────── */
 
 export async function counsellors() {

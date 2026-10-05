@@ -138,6 +138,20 @@ export const device = pgTable("device", {
   /** Share of each ink that leaks through the wrong lens, 0 to 1. */
   channelLeak: real().notNull().default(0),
   calibratedAt: now(),
+  /* package "cal": the three colour measurements of this screen with the family's glasses (src/engine/calibrate.ts).
+     Null means "not measured": the engine then uses the usual value and behaves as it did before these existed. */
+  /** When `gamma` was measured on this screen. Null while `gamma` is the usual 2.2. */
+  gammaAt: when(),
+  /** Share of the cyan ink's light that the red lens lets through, next to the red ink at full through the same lens. */
+  leakRedLens: real(),
+  /** Share of the red ink's light that the cyan lens lets through, next to the cyan ink at full through the same lens. */
+  leakCyanLens: real(),
+  leakAt: when(),
+  /** log10 of how much brighter the cyan ink looks through its lens than the red ink through its lens. */
+  inkBalance: real(),
+  inkBalanceAt: when(),
+  /** What the matches were, so a value can be worked out again: { gamma, leak, ink, ppc }. See src/lib/screen-rules.ts. */
+  colourRaw: jsonb().notNull().default({}),
 }, (t) => [index().on(t.accountId)]);
 
 export const onboardingRun = pgTable("onboarding_run", {
@@ -365,6 +379,17 @@ export const experimentEnrolment = pgTable("experiment_enrolment", {
   followupId: uuid().references(() => testResult.id, { onDelete: "set null" }),
   joinedAt: now(),
   finishedAt: when(),
+  /* experiments package (see the note at the end of this file) */
+  /** When the "before" check-up was tied to the enrolment. The idea's weeks are counted from this day. */
+  startedAt: when(),
+  /** When the member left. Their check-ups are untied at once and never counted again. Leaving is final for this experiment. */
+  leftAt: when(),
+  /** The screen as it was measured at the "before" check-up. Null for a check-up done away from the screen. */
+  basePxPerCm: real(),
+  baseDistanceCm: integer(),
+  /** The screen as it was measured at the "after" check-up. When it differs from the one before, the pair is not counted. */
+  followPxPerCm: real(),
+  followDistanceCm: integer(),
 }, (t) => [uniqueIndex().on(t.experimentId, t.profileId)]);
 
 export const experimentSignal = pgTable("experiment_signal", {
@@ -377,6 +402,9 @@ export const experimentSignal = pgTable("experiment_signal", {
   low: real().notNull(),
   high: real().notNull(),
   computedAt: now(),
+  /* experiments package: how much the changes varied inside each group (sample standard deviation), so the range can be checked by hand */
+  sdTried: real(),
+  sdControl: real(),
 });
 
 export const hazardRule = pgTable("hazard_rule", {
@@ -418,6 +446,8 @@ export const team = pgTable("team", {
 export const teamMember = pgTable("team_member", {
   teamId: uuid().notNull().references(() => team.id, { onDelete: "cascade" }),
   profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** The Monday from which this member's days count for the team. Empty means every week. (package: league) */
+  countsFrom: date(),
 }, (t) => [primaryKey({ columns: [t.teamId, t.profileId] })]);
 
 /** Ranked only by days the practice was finished. Scores and extra minutes are not stored here. */
@@ -426,6 +456,8 @@ export const teamWeek = pgTable("team_week", {
   weekStart: date().notNull(),
   daysFinished: integer().notNull().default(0),
   daysPossible: integer().notNull().default(6),
+  /** Set by the weekly job when the week is over and its numbers are final. Empty while the week runs. (package: league) */
+  closedAt: when(),
 }, (t) => [primaryKey({ columns: [t.teamId, t.weekStart] })]);
 
 /* ───────────── community ideas ───────────── */
@@ -599,11 +631,25 @@ export const dataRequest = pgTable("data_request", {
   id: id(),
   accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
   kind: requestKind().notNull(),
-  /** open, done */
+  /** open, ready, done, cancelled. What each means for a copy and for a deletion: src/lib/data/requests.ts */
   status: text().notNull().default("open"),
   handledBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
   createdAt: now(),
   doneAt: when(),
+  /* The columns below were added by the "data" package (the export and deletion jobs). See the note at the end of this file. */
+  /** household, profile. A deletion of one profile leaves the rest of the household alone. */
+  scope: text().notNull().default("household"),
+  /** The one profile to delete, when `scope` is profile. Emptied when that profile is gone. */
+  profileId: uuid().references(() => profile.id, { onDelete: "set null" }),
+  /** The guardian who asked. */
+  askedBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  /** A copy: when it became ready, the last moment it can be downloaded, and the latest download. */
+  readyAt: when(),
+  expiresAt: when(),
+  downloadedAt: when(),
+  /** A deletion: the end of the waiting time. The daily job deletes on the first run after this moment. */
+  deleteAfter: when(),
+  cancelledAt: when(),
 });
 
 /** Who did what in the staff, counsellor and sponsor areas. */
@@ -653,3 +699,43 @@ export const sponsorGroupMember = pgTable("sponsor_group_member", {
   accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
   joinedAt: now(),
 }, (t) => [primaryKey({ columns: [t.groupId, t.accountId] })]);
+
+/* ───────────── experiments (package "experiments") ─────────────
+ * No new table. Nullable columns were added in place, because a column cannot be declared away from its table:
+ *   experiment_enrolment: started_at, left_at, base_px_per_cm, base_distance_cm, follow_px_per_cm, follow_distance_cm
+ *   experiment_signal:    sd_tried, sd_control
+ * The same change as SQL: drizzle/pending/experiments.sql. The rules that use them: src/lib/experiments.ts. */
+
+/* ───────────── package: league ─────────────
+ * Also added above: `team_member.counts_from` and `team_week.closed_at`. */
+
+/**
+ * Each time a profile joined, left or changed team. It keeps two rules: a different team at most once a week,
+ * and a member who leaves and joins again in the same week goes back to the team they left.
+ * Only the household of the profile ever reads its own rows.
+ */
+export const teamMove = pgTable("team_move", {
+  id: id(),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** join, leave, switch */
+  kind: text().notNull(),
+  fromTeamId: uuid().references(() => team.id, { onDelete: "set null" }),
+  toTeamId: uuid().references(() => team.id, { onDelete: "set null" }),
+  at: now(),
+}, (t) => [index().on(t.profileId, t.at)]);
+
+/* ───────────── package: data (the export and deletion jobs) ─────────────
+ * No new table. Columns were added in place to `data_request`, because a column cannot be declared away from its table:
+ *   scope, profile_id, asked_by, ready_at, expires_at, downloaded_at, delete_after, cancelled_at
+ * The same change as SQL: drizzle/pending/data.sql. The rules that use them: src/lib/data/requests.ts.
+ *
+ * Adding a table, or a foreign key that points at a household, a profile or a person? Give it a line in
+ * src/lib/data/tables.ts. That list decides what a family's copy holds and what a deletion removes, and
+ * `npx vitest run src/lib/data` fails until every table and every such key has a decision. */
+
+/* ───────────── package: cal (device calibration) ─────────────
+ * No new table. Columns were added in place to `device`, because a column cannot be declared away from its table:
+ *   gamma_at, leak_red_lens, leak_cyan_lens, leak_at, ink_balance, ink_balance_at, colour_raw
+ * `device.gamma` and `device.channel_leak` already existed and are now written by the calibration
+ * (`channel_leak` holds the larger of the two lens values). No foreign key was added.
+ * The same change as SQL: drizzle/pending/cal.sql. The maths: src/engine/calibrate.ts. The rules: src/lib/screen-rules.ts. */

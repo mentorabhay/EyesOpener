@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { History } from "@/components/play/results";
 import Link from "next/link";
+import { planFor, STANDARD_PLAN } from "@/components/film/chapters";
 import { Card, EvidenceChip, PageHead, SceneThumb } from "@/components/ui";
+import { cinema as c } from "@/copy/cinema";
 import { train as t } from "@/copy/train";
 import { games, mechanismOf } from "@/data";
 import { percent } from "@/engine";
@@ -11,13 +13,18 @@ import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { CINEMA, doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { forWhom, isListed, statusOf } from "@/lib/status";
+import css from "./cinema.module.css";
 import { Player } from "./player";
 
 export const metadata: Metadata = { title: t.cinema.title };
 
-export default async function CinemaPage() {
+export default async function CinemaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const m = await requireMember();
   if (!isListed(await statusFor("film", CINEMA), m.tester)) notFound();
+  /* Chapters and breaks are the same for every family. Only a staff test household may shorten them, to try a break without waiting. */
+  const asked = await searchParams;
+  const plan = planFor(m.tester, { chapter: asked.chapter, rest: asked.break });
+  const cyanEye = m.eye ? (m.eye.cyanEye === "right" ? "R" as const : "L" as const) : null;
   const [dose, past] = await Promise.all([doseFor(m, "film", CINEMA), pastSessions(m, "film", CINEMA)]);
   const contrast = m.eye?.strongContrast ?? 1;
   const statuses = await readStatuses();
@@ -27,20 +34,25 @@ export default async function CinemaPage() {
   return (
     <>
       <PageHead title={t.cinema.title} sub={t.cinema.sub} />
+      <p className="notice" data-b="warn" role="note"><b>{c.glasses.title}</b> {cyanEye ? c.glasses.way(cyanEye) : c.glasses.unknown} {c.glasses.own}</p>
+      {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
+      {plan.shortened && <p className="notice" role="note">{c.how.test(plan.chapterSeconds, plan.breakSeconds, STANDARD_PLAN)}</p>}
       <div className="bento">
-        <Card span={8}>
-          <Player itemSlug={CINEMA} contrast={contrast} dose={dose} />
-        </Card>
+        <Player itemSlug={CINEMA} contrast={contrast} dose={dose} cyanEye={cyanEye} plan={plan} profileId={m.profile.id} tester={m.tester} />
         <Card span={4}>
           <div className="hstat">
             <div className="v tnum">{percent(contrast)}</div>
             <div className="l">{t.cinema.contrast}. {m.eye ? t.cinema.fromProfile : t.cinema.standard}.</div>
           </div>
           <p>{t.cinema.onDevice}</p>
-          <p className="muted small">{t.cinema.clockNote}</p>
+          <p className="muted small">{c.list.onDevice}</p>
+          <b>{c.how.title}</b>
+          <ul className="muted small" style={{ margin: 0, paddingLeft: 18 }}>
+            {c.how.lines(plan.chapterSeconds, plan.breakSeconds).map((line) => <li key={line}>{line}</li>)}
+          </ul>
         </Card>
-        <Card title={t.cinema.results}>
-          <History rows={past} labels={{}} />
+        <Card span={8} title={t.cinema.results}>
+          <div className={css.record}><History rows={past} labels={c.labels} /></div>
         </Card>
       </div>
       {activities.length > 0 && (

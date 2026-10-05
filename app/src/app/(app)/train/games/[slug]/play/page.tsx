@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHead } from "@/components/ui";
 import { GlassesNote, HowToPlay, labelsFor } from "@/components/play/how-to";
+import { ScreenWarning } from "@/components/screen/warning";
 import { Stage } from "@/components/play/stage";
 import { train as t } from "@/copy/train";
 import { gameBySlug } from "@/data";
@@ -52,6 +53,7 @@ export default async function PlayPage({ params }: Props) {
     <>
       {head}
       <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} />
+      {/red-cyan/i.test(g.gear) && <ScreenWarning m={m} />}
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
       {how}
       {kind === "cinema"

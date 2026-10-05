@@ -1,0 +1,31 @@
+/* The four steps of an experiment, top to bottom. Filled: done. Ringed: now. Dashed: not yet. */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+.steps > li { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 7px; min-width: 0; padding: 0 0 18px 36px; counter-increment: step; }
+.steps > li:last-child { padding-bottom: 0; }
+.steps > li::before {
+  content: counter(step); position: absolute; left: 0; top: -1px; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: 600; line-height: 1;
+  color: var(--ink-3); background: var(--card); border: 1px dashed var(--line-2);
+}
+.steps > li::after { content: ""; position: absolute; left: 12px; top: 27px; bottom: 3px; width: 1px; background: var(--line-2); }
+.steps > li:last-child::after { display: none; }
+.steps > li[data-state="done"]::before { color: var(--card); background: var(--ink); border: 1px solid var(--ink); }
+.steps > li[data-state="now"]::before { color: var(--ink); border: 2px solid var(--g1); }
+.steps > li[data-state="next"] > :not(.head) { color: var(--ink-3); }
+
+.head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.head b { font-weight: 600; }
+.steps p { margin: 0; overflow-wrap: anywhere; }
+.steps dl { margin: 0; }
+.value { font-weight: 600; font-size: 15px; }
+
+/* Days done. Ink, not the gradient: the gradient is kept for the one thing to do next. */
+.days { height: 7px; border-radius: 999px; background: var(--sunken); overflow: hidden; }
+.days i { display: block; height: 100%; border-radius: 999px; background: var(--ink-2); }
+
+.group { margin: 0; padding: 10px 12px; border-radius: var(--r-sm); background: var(--sunken); }
+.turn { border: 1px solid var(--line-2); border-radius: var(--r-sm); padding: 12px; display: grid; gap: 8px; }
+.leave { margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--line); }
+
+/* A long button label wraps inside the card at any text size, instead of pushing the page sideways. */
+.steps :global(.btn), .leave :global(.btn) { white-space: normal; height: auto; min-height: 34px; text-align: left; max-width: 100%; }

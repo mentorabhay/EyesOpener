@@ -1,0 +1,32 @@
+/* The colour checks. The matching scenes keep their true size; everything else follows direction B. */
+.stage { min-height: 430px; }
+.stage:focus { outline: none; }
+.stage h2 { font-size: 18px; }
+.stage h3 { font-size: 15px; }
+.stage p, .list { max-width: 64ch; }
+.list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; align-items: baseline; }
+.nth { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-3); }
+/* a striped canvas must reach the screen line for line: no smoothing when the browser places it */
+.sharp { image-rendering: pixelated; }
+.pick { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: 100%; max-width: 560px; align-self: center; }
+.pick button { white-space: normal; text-align: center; padding: 12px 8px; line-height: 1.2; min-height: 56px; border-radius: var(--r-md); touch-action: manipulation; user-select: none; }
+.pick button:focus-visible, .more button:focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; }
+.more { display: flex; flex-wrap: wrap; gap: 8px; }
+.more button { white-space: normal; text-align: left; }
+.lens { display: flex; gap: 14px; align-items: center; }
+.lens svg { flex: 0 0 96px; width: 96px; border-radius: 8px; }
+.lens > div { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.check { display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-top: 1px solid var(--line); }
+.check:first-of-type { border-top: 0; padding-top: 0; }
+.top { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.top :global(.sp) { flex: 1; }
+.check .top b { font-size: 15px; }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-start; }
+/* the hatched motif: this value is the usual one, not a measurement */
+.hatch { display: inline-block; border: 1px dashed var(--line-2); border-radius: 7px; padding: 3px; background: repeating-linear-gradient(135deg, var(--line-2) 0 4px, transparent 4px 8px); font-size: 11.5px; font-weight: 600; color: var(--ink-2); vertical-align: middle; line-height: 1.2; }
+.hatch > span { display: block; background: var(--card); border-radius: 4px; padding: 1px 7px; }
+.value { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.person { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-top: 1px solid var(--line); }
+.person:first-of-type { border-top: 0; padding-top: 0; }
+.person p { font-size: 13.5px; }

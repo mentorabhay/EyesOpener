@@ -8,7 +8,7 @@
  * Stronger-eye ink is never used: it is dimmed for some members.
  *
  * Greys: contrast is set in real light, not in colour values. A stripe's light is half of full light times
- * (1 + contrast x a sine wave), turned into a grey value with a gamma of 2.2. The wave is as often above the
+ * (1 + contrast x a sine wave), turned into a grey value with the screen's gamma (2.2 until the screen is measured). The wave is as often above the
  * field as below it, so the patch gives out the same light as the field and only the stripes tell it apart.
  * An 8-bit screen shows nothing fainter than about 1%, which is the floor.
  *
@@ -20,13 +20,12 @@
  * has room for it. Nothing flashes: a patch eases in and out, and the shortest time between two patches is 0.9 s.
  */
 import { words } from "@/copy/drills-skill";
-import { CONTRAST_BACKGROUND } from "@/engine";
 import { W, type GameDef, type Kit } from "@/games/kit";
 import { clamp, ease, hud } from "@/games/skills/common";
 import { area, dim, foot, mark, r1, sayFoot, sided, type Side } from "./parts";
 
 const t = words.contrastLadder;
-const START = 0.6, DOWN = 0.75, FLOOR = 0.01, GAMMA = 2.2;
+const START = 0.6, DOWN = 0.75, FLOOR = 0.01;
 const TILT = (20 * Math.PI) / 180, PAIRS = 3.5, SETTLE = 0.4, MARK = 0.5, TURN = 6.2832;
 
 /** The last step of the ladder: the first one that reaches the floor. */
@@ -36,7 +35,7 @@ export const contrastAt = (step: number) => Math.max(FLOOR, START * DOWN ** step
 const pct = (step: number) => r1(contrastAt(step) * 100);
 
 /** The grey that shows this share of full light on the screen. Half of full light is the field's own grey. */
-export const greyOf = (light: number) => Math.round(255 * clamp(light, 0, 1) ** (1 / GAMMA));
+export const greyOf = (light: number, gamma = 2.2) => Math.round(255 * clamp(light, 0, 1) ** (1 / gamma));
 const css = (v: number) => `rgb(${v} ${v} ${v})`;
 
 interface State {
@@ -70,7 +69,7 @@ function stripes(k: Kit, cx: number, cy: number, r: number, lean: Side, contrast
   g.rotate(lean * TILT);
   for (let j = 0; j < n; j++) {
     const x = -r + j * wide;
-    g.fillStyle = css(greyOf(0.5 * (1 + contrast * Math.sin(((x + wide / 2) / period) * TURN))));
+    g.fillStyle = css(greyOf(0.5 * (1 + contrast * Math.sin(((x + wide / 2) / period) * TURN)), k.gamma));
     /* Each slice runs a little under the next, so no seam shows between them. */
     g.fillRect(x, -r, wide + 0.5, 2 * r);
   }
@@ -78,8 +77,9 @@ function stripes(k: Kit, cx: number, cy: number, r: number, lean: Side, contrast
   /* The soft edge: the field's grey, clear over the middle of the patch and solid at its rim. */
   const edge = g.createRadialGradient(cx, cy, r * 0.62, cx, cy, r) as CanvasGradient | undefined;
   if (!edge) return;
-  edge.addColorStop(0, `rgb(${CONTRAST_BACKGROUND} ${CONTRAST_BACKGROUND} ${CONTRAST_BACKGROUND} / 0)`);
-  edge.addColorStop(1, css(CONTRAST_BACKGROUND));
+  const field = greyOf(0.5, k.gamma);
+  edge.addColorStop(0, `rgb(${field} ${field} ${field} / 0)`);
+  edge.addColorStop(1, css(field));
   g.fillStyle = edge;
   g.beginPath();
   g.arc(cx, cy, r + 1, 0, TURN);
@@ -126,7 +126,7 @@ export const contrastLadder: GameDef<State> = {
     const L = lay(k);
     k.frame();
     const g = k.ctx("both");
-    g.fillStyle = css(CONTRAST_BACKGROUND);
+    g.fillStyle = css(greyOf(0.5, k.gamma));
     g.fillRect(L.x0, L.y0, L.w, L.h);
     /* The patch eases in, and eases out again under the mark that follows an answer. */
     const there = s.done ? 1 - ease((k.t - s.done.at) / MARK) : ease((k.t - s.born) / SETTLE);

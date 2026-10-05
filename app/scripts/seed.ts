@@ -7,6 +7,10 @@ import "./env";
 import { eq, sql } from "drizzle-orm";
 import { db, schema as s } from "../src/db";
 import { derive, type Measured } from "../src/engine";
+import { seedData } from "./seed/data";
+import { seedExperiments } from "./seed/experiments";
+import { seedLeague } from "./seed/league";
+import { seedProgramme } from "./seed/programme";
 
 const DAY = 86_400_000;
 const key = (d: Date) => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
@@ -156,6 +160,12 @@ async function main() {
   ]);
 
   await db.insert(s.setting).values({ key: "saver_mode", value: false });
+
+  /* Each feature keeps its own demo rows in scripts/seed/. They find what they need by query and can run again. */
+  await seedProgramme();
+  await seedLeague();
+  await seedExperiments();
+  await seedData();
 
   const counts = await Promise.all(([["account", s.account], ["appUser", s.appUser], ["sponsor", s.sponsor], ["profile", s.profile], ["testResult", s.testResult], ["session", s.session], ["protocol", s.protocol]] as const).map(async ([n, t]) => `${n} ${(await db.select({ c: sql<number>`count(*)::int` }).from(t))[0].c}`));
   console.log("Seeded:", counts.join(", "));

@@ -1,15 +1,15 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
-import { finishDataRequest } from "@/lib/admin";
-import { audit, requireStaff } from "@/lib/auth";
+import { requireStaff } from "@/lib/auth";
+import { JOB_NAME } from "@/lib/data/requests";
+import { runJob } from "@/lib/jobs";
 
-/** Records that a person handled the request by hand. It makes no file and deletes nothing. */
-export async function markDone(formData: FormData) {
+/**
+ * Runs the daily data-requests job now, for a member of staff who may open this room.
+ * `runJob` writes the run to the audit log under the staff member's name, with counts only.
+ */
+export async function runNow() {
   const viewer = await requireStaff("requests");
-  const id = z.uuid().safeParse(formData.get("id"));
-  if (!id.success) return;
-  const row = await finishDataRequest(id.data, viewer.user.id);
-  if (row) await audit(viewer, "admin.requests.done", row.id, { kind: row.kind, accountId: row.accountId, name: row.household });
+  await runJob(JOB_NAME, viewer.user.id);
   revalidatePath("/admin", "layout");
 }

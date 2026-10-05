@@ -5,7 +5,10 @@ import { today as t } from "@/copy/today";
 import { programmeBySlug } from "@/data";
 import { db, schema } from "@/db";
 import { canStart, percent, ringShare } from "@/engine";
+import { programme as plan } from "@/copy/programme";
+import { programmeView } from "@/lib/programme";
 import { lastDays, requireMember } from "@/lib/session";
+import { TodayChapter } from "./chapter";
 
 export const metadata: Metadata = { title: t.title };
 
@@ -20,6 +23,8 @@ export default async function TodayPage() {
   const d = days.find((x) => x.day === dayKey) ?? { restBreaks: 0, restGoal: 6, trainMinutes: 0, trainGoal: m.enrolment?.dailyMinutes ?? 0, lightMinutes: 0, lightGoal: 90, screenMinutes: 0 };
   const [streak] = await db.select().from(schema.streak).where(eq(schema.streak.profileId, m.profile.id));
   const programme = m.enrolment ? programmeBySlug(m.enrolment.programme) : null;
+  /* The week of the programme and today's chapter. Reading it also moves the stored week on with the calendar. */
+  const view = await programmeView(m);
   const dose = canStart({ kind: "game", minutesToday: d.trainMinutes, ...m.dose });
 
   const week = span.map(({ key, label }) => {
@@ -32,7 +37,7 @@ export default async function TodayPage() {
     <>
       <PageHead
         title={t.title}
-        sub={programme ? `${programme.name} programme, week ${m.enrolment!.week}. ${programme.doseBasis}` : t.notEnrolled}
+        sub={programme && view.state === "active" ? `${plan.card.weekOf(programme.name, view.week, view.weeks)} ${programme.doseBasis}` : t.notEnrolled}
         stats={[{ value: streak?.current ?? 0, label: `${t.streak}, days` }, { value: `${Math.round(d.screenMinutes / 6) / 10} h`, label: t.screen }]}
       />
       <div className="bento">
@@ -45,9 +50,7 @@ export default async function TodayPage() {
               <div className="k"><i className="dot" style={{ background: "var(--ring-light)" }} /><span>{t.rings.light}</span><b className="tnum">{Math.round(d.lightMinutes)} of {d.lightGoal}</b><span className="muted">{t.rings.minUnit}</span></div>
             </div>
           </div>
-          {dose.ok
-            ? <div className="row"><Btn href="/train" kind="g">{t.start}</Btn><span className="muted small">{Math.round(dose.minutes)} minutes left today</span></div>
-            : <p className="notice" data-b={dose.reason === "doctor_first" ? "danger" : "ok"}>{t.blocked[dose.reason!]}</p>}
+          <TodayChapter view={view} dose={dose} />
           {/* The Rest and Light rings fill from the care companions: breaks taken and time outside. */}
           <div className="row">
             <Btn href="/train/games/far-window/play" small>{t.fill.rest}</Btn>

@@ -1,0 +1,9 @@
+/* The data section of Settings: three parts, each with its own heading, state and one action. */
+.part { display: flex; flex-direction: column; gap: 8px; padding: 14px 0; border-top: 1px solid var(--line); align-items: flex-start; }
+.part:first-of-type { border-top: 0; padding-top: 4px; }
+.part:last-of-type { padding-bottom: 0; }
+.part h3 { font-size: 14.5px; margin: 0; }
+.part p { margin: 0; }
+.part > :global(.notice), .part > details { align-self: stretch; }
+.pending { display: flex; gap: 10px 14px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.pending span { flex: 1 1 220px; }

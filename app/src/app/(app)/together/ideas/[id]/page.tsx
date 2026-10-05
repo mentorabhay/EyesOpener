@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Btn, Card, Chip, PageHead, Void } from "@/components/ui";
+import form from "@/app/(app)/settings/form.module.css";
+import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { SignalChart, signed } from "@/components/together/SignalChart";
 import { StateForm } from "@/components/together/StateForm";
+import { experiments } from "@/copy/experiments";
 import { together } from "@/copy/together";
 import { testByKey } from "@/data";
 import { dayText, isTested, mayJoin, protocolById } from "@/lib/community";
+import { progressOf } from "@/lib/experiment-data";
+import { MIN_FINISHED_PER_GROUP, enough, lean } from "@/lib/experiments";
 import { requireMember } from "@/lib/session";
 import { joinExperiment } from "./actions";
 
 const t = together.idea;
 const g = together.signal;
+const x = experiments;
 export const metadata: Metadata = { title: together.title };
 
 export default async function IdeaPage({ params }: { params: Promise<{ id: string }> }) {
@@ -22,9 +27,13 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
   const test = testByKey(p.moves);
   const testName = test?.name ?? p.moves;
   const inReview = p.status !== "published";
+  const mine = experiment?.mine;
   const cannotJoin = inReview ? t.notYet : experiment?.status !== "open" ? t.closed : !m.can("share") ? together.cannot.share : null;
-  const consent = cannotJoin || experiment?.mine ? true : await mayJoin(m);
-  const done = (resultId: string | null) => (resultId ? t.recorded : <Void label={t.notRecorded} />);
+  const consent = cannotJoin || mine ? true : await mayJoin(m);
+  /* a number is shown only when both groups are large enough to carry it, whatever the stored row says */
+  const signal = experiment?.signal && enough(experiment.signal.nTried, experiment.signal.nControl) ? experiment.signal : null;
+  const progress = experiment && !inReview ? await progressOf(experiment.id, p.moves, p.weeks) : null;
+  const spread = (sd: number | null) => (sd === null ? "" : `. ${x.pooled.spread}: ${Number(sd.toFixed(2))}`);
 
   return (
     <>
@@ -43,37 +52,67 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
           </dl>
         </Card>
 
-        <Card title={t.experiment} span={5} right={experiment && <span className="small muted tnum">{together.list.people(experiment.joined, experiment.signal ? experiment.signal.nTried + experiment.signal.nControl : null)}</span>}>
+        <Card title={t.experiment} span={5} right={experiment && <span className="small muted tnum">{together.list.people(experiment.joined, signal ? signal.nTried + signal.nControl : null)}</span>}>
           <ol className="stack" style={{ margin: 0, paddingLeft: 20 }}>{t.steps(testName, p.weeks).map((step) => <li key={step}>{step}</li>)}</ol>
-          {experiment?.mine ? (
-            <>
-              <p className="notice" data-b="ok">{t.joined(dayText(experiment.mine.joinedAt))}</p>
-              <dl className="kv">
-                <div><dt>{t.before}</dt><dd>{done(experiment.mine.baselineId)}</dd></div>
-                <div><dt>{t.after}</dt><dd>{done(experiment.mine.followupId)}</dd></div>
-              </dl>
-              <div className="row"><Btn href="/test" small>{t.checkups}</Btn></div>
-            </>
-          ) : cannotJoin ? <p className="muted">{cannotJoin}</p>
-            : !consent ? <p className="notice" data-b="warn">{t.needsConsent(m.profile.displayName)}</p>
-            : (
-              <StateForm action={joinExperiment} submit={t.join} primary>
-                <input type="hidden" name="protocolId" value={p.id} />
-                <p className="muted small">{t.joiningAs(m.profile.displayName)}</p>
-              </StateForm>
-            )}
+          {mine?.leftAt ? <p className="muted">{x.leave.left(dayText(mine.leftAt))}</p>
+            : mine ? (
+              <>
+                <p className="notice" data-b="ok">{x.join.joinedAs(dayText(mine.joinedAt), x.group[mine.arm].name)}</p>
+                <div className="row"><Btn href="/together/experiments" kind="g">{x.join.open}</Btn></div>
+              </>
+            ) : cannotJoin ? <p className="muted">{cannotJoin}</p>
+              : !consent ? <p className="notice" data-b="warn">{x.join.needsConsent(m.profile.displayName)}</p>
+                : (
+                  <StateForm action={joinExperiment} submit={x.join.submit} primary>
+                    <input type="hidden" name="protocolId" value={p.id} />
+                    <fieldset className={form.set}>
+                      <legend>{x.join.pick}</legend>
+                      {(["tried", "control"] as const).map((arm) => (
+                        <label key={arm} className={form.check}>
+                          <input type="radio" name="arm" value={arm} required />
+                          <span><b>{x.join[arm].label}</b><br /><span className="small muted">{x.join[arm].hint(testName, p.weeks)}</span></span>
+                        </label>
+                      ))}
+                    </fieldset>
+                    <p className="small muted">{x.join.why} {x.join.choice}</p>
+                    <p className="small muted">{x.join.privacy}</p>
+                    <p className="small muted">{t.joiningAs(m.profile.displayName)}</p>
+                  </StateForm>
+                )}
         </Card>
 
-        {experiment?.signal && (
-          <Card title={g.title} span={7}>
-            <SignalChart signal={experiment.signal} />
-            <dl className="kv">
-              <div><dt>{g.tried}</dt><dd className="tnum">{signed(experiment.signal.changeTried)}<small>{g.members(experiment.signal.nTried)}</small></dd></div>
-              <div><dt>{g.control}</dt><dd className="tnum">{signed(experiment.signal.changeControl)}<small>{g.members(experiment.signal.nControl)}</small></dd></div>
-              <div><dt>{g.range}</dt><dd className="tnum">{signed(experiment.signal.low)} {g.to} {signed(experiment.signal.high)}</dd></div>
-            </dl>
-            {test && <p className="muted small">{g.about(test.name, test.lowerIsBetter)}</p>}
-            <p className="notice">{g.honest}</p>
+        {experiment && progress && (
+          <Card title={x.pooled.title} span={7}>
+            {signal && test ? (
+              <>
+                <p>{x.pooled.lean[lean(signal, test.lowerIsBetter)]}</p>
+                <SignalChart signal={signal} />
+                <dl className="kv">
+                  <div><dt>{g.tried}</dt><dd className="tnum">{signed(signal.changeTried)}<small>{g.members(signal.nTried)}{spread(signal.sdTried)}</small></dd></div>
+                  <div><dt>{g.control}</dt><dd className="tnum">{signed(signal.changeControl)}<small>{g.members(signal.nControl)}{spread(signal.sdControl)}</small></dd></div>
+                  <div><dt>{g.range}</dt><dd className="tnum">{signed(signal.low)} {g.to} {signed(signal.high)}</dd></div>
+                  <div><dt>{x.pooled.now}</dt><dd className="tnum">{x.pooled.people(progress.now)}</dd></div>
+                  <div><dt>{x.pooled.out}</dt><dd className="tnum">{x.pooled.people(progress.out)}</dd></div>
+                </dl>
+                <p className="muted small">{g.about(test.name, test.lowerIsBetter)} {x.pooled.unit(x.pooled.units[test.unit] ?? test.unit)}</p>
+                <p className="notice">{g.honest} {x.pooled.ownChoice}</p>
+                <details>
+                  <summary className="small">{x.pooled.method}</summary>
+                  <ol className="stack small muted" style={{ margin: "8px 0 0", paddingLeft: 20 }}>{x.pooled.steps.map((step) => <li key={step}>{step}</li>)}</ol>
+                  <p className="small muted">{x.pooled.computed(dayText(signal.computedAt))}</p>
+                </details>
+              </>
+            ) : (
+              <>
+                <Empty title={x.pooled.none}><span>{x.pooled.noneWhy(MIN_FINISHED_PER_GROUP)}</span></Empty>
+                <dl className="kv">
+                  <div><dt>{x.pooled.finished}: {x.pooled.tried.toLowerCase()}</dt><dd className="tnum">{x.pooled.of(progress.tried, MIN_FINISHED_PER_GROUP)}</dd></div>
+                  <div><dt>{x.pooled.finished}: {x.pooled.control.toLowerCase()}</dt><dd className="tnum">{x.pooled.of(progress.control, MIN_FINISHED_PER_GROUP)}</dd></div>
+                  <div><dt>{x.pooled.now}</dt><dd className="tnum">{x.pooled.people(progress.now)}</dd></div>
+                  <div><dt>{x.pooled.out}</dt><dd className="tnum">{x.pooled.people(progress.out)}</dd></div>
+                </dl>
+              </>
+            )}
           </Card>
         )}
 

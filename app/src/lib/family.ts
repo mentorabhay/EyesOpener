@@ -1,5 +1,5 @@
 /**
- * The household: profiles, programmes, triage, the counsellor link, data requests, consent, invites,
+ * The household: profiles, programmes, triage, the counsellor link, consent, invites,
  * the child-mode exit PIN, sponsor groups and the cheer seat's view.
  * Every helper that takes an id checks that it belongs to the member's household.
  * Who may call each helper is decided by the action, with `m.can(...)`.
@@ -111,17 +111,6 @@ export async function addProfile(m: Member, p: NewProfile) {
       .returning({ id: schema.profile.id });
     if (p.kind === "child") await tx.insert(schema.consent).values({ profileId: row.id, accountId: m.account.id, userId: m.user.id, kind: "parental", textVersion: CONSENT_VERSION });
   });
-}
-
-export const openRequests = (m: Member) =>
-  db.select().from(schema.dataRequest)
-    .where(and(eq(schema.dataRequest.accountId, m.account.id), eq(schema.dataRequest.status, "open")))
-    .orderBy(desc(schema.dataRequest.createdAt));
-
-/** One open request of each kind is enough. */
-export async function requestData(m: Member, kind: "export" | "delete") {
-  if ((await openRequests(m)).some((r) => r.kind === kind)) return;
-  await db.insert(schema.dataRequest).values({ accountId: m.account.id, kind });
 }
 
 /* ───────────── children and consent ───────────── */

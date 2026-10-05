@@ -1,0 +1,448 @@
+/**
+ * Every table in the database, and what a family's copy and a family's deletion do with it.
+ *
+ * This list is the one place that decides it. The copy (export.ts) and the deletion (erase.ts) are both driven by it,
+ * so they cannot disagree. TypeScript refuses to build while a table has no line here, and `tables.test.ts` checks the
+ * list against the schema: every table, every foreign key that points at something a deletion removes, and the order
+ * rows are removed in. A table or a key added later cannot be left out without a test failing.
+ *
+ * How to add a line:
+ *  - `owner` says which rows are one household's. Leave it out when no row belongs to one household.
+ *  - `copy` names the part of the family's file the rows become, or says in plain words why they are left out.
+ *  - `erase` says what a deletion does: "rows" removes them, "unlink" keeps the row and empties the pointer,
+ *    "people" is the rule for the grown-ups who sign in, "scrub" is the rule for the audit log.
+ *  - `links` lists every other foreign key that points at a row a deletion removes, and what becomes of it.
+ */
+import type { PgTable } from "drizzle-orm/pg-core";
+import type * as schema from "@/db/schema";
+
+type Schema = typeof schema;
+/** The name of every table, as it is exported from the schema. Enums are not tables and are left out. */
+export type TableName = { [K in keyof Schema]: Schema[K] extends PgTable ? K : never }[keyof Schema];
+type Col<K extends TableName> = Extract<keyof Schema[K]["_"]["columns"], string>;
+
+/** The parts of a family's file, in the order they are written. Words for each part: src/copy/data.ts. */
+export const PARTS = [
+  "household", "people", "invites", "profiles", "consent", "safetyAnswers", "screens", "onboardingRuns", "eyeSettings",
+  "checkUps", "programmes", "sessions", "days", "carePlans", "careLog", "monitorSamples", "streaks",
+  "counsellorLinks", "counsellorNotes", "stories", "ideas", "experiments", "experimentPlaces", "review",
+  "lights", "weekNotes", "mail", "wallTiles", "gallery", "glassesJourney", "heroes", "teams", "teamMoves",
+  "sponsorGroups", "pushTokens", "enquiries", "dataRequests",
+] as const;
+export type PartKey = (typeof PARTS)[number];
+
+/** Which rows of a table are one household's. A row that matches any line is theirs. */
+export interface Owner<K extends TableName = TableName> {
+  /** The row is the household itself. */
+  self?: true;
+  /** Columns that hold the household's id. */
+  account?: readonly Col<K>[];
+  /** Columns that hold the id of one of the household's profiles. */
+  profile?: readonly Col<K>[];
+  /** Columns that hold the id of a grown-up who signs in to the household. */
+  person?: readonly Col<K>[];
+  /** The row hangs off a row of another table, and goes where that row goes. */
+  parent?: { table: TableName; column: Col<K> };
+  /** A loose pointer with no foreign key: the `kind` column says which table `column` points into. */
+  ref?: { kind: Col<K>; column: Col<K>; to: Readonly<Record<string, TableName>> };
+  /** A column that holds the email address of a grown-up who signs in to the household. */
+  email?: Col<K>;
+}
+
+/** What becomes of a foreign key that points at a deleted row, when the row holding the key is not itself removed for that reason. */
+export interface Link {
+  /**
+   * cleared: the key is emptied and the row keeps nothing of the household.
+   * guarded: the key would remove the row, but the person it points at is never deleted (see `people` in erase.ts).
+   * falls:   the row is removed with the row it points at. The reason says why that is right.
+   */
+  fate: "cleared" | "guarded" | "falls";
+  why: string;
+}
+
+export interface Rule<K extends TableName = TableName> {
+  /** One plain line: what the table holds. */
+  holds: string;
+  owner?: Owner<K>;
+  copy:
+    | { part: PartKey; /** Columns kept out of the file, each with the reason. */ hide?: Partial<Record<Col<K>, string>> }
+    | { leftOut: string };
+  erase: "rows" | "unlink" | "people" | "scrub" | { untouched: string };
+  links?: Partial<Record<Col<K>, Link>>;
+}
+
+const sameHousehold = "The person is in the same household, so the row is removed with it.";
+const staffOnly = "Points at a member of staff. A person with a staff role is never deleted with a household.";
+const ownScreen = "Points at a screen of the same household. In a deletion of one profile the screen stays, because the family still uses it.";
+
+export const TABLES = {
+  /* ───────────── the household and its people ───────────── */
+  account: {
+    holds: "The household: its name and language.",
+    owner: { self: true },
+    copy: { part: "household", hide: { exitPinHash: "A scrambled PIN. The file says only whether one is set.", previewFor: "The id of the staff member a test household belongs to. The file says only that it is a test household." } },
+    erase: "rows",
+  },
+  appUser: {
+    holds: "A grown-up who signs in: name, email, seat and roles.",
+    owner: { account: ["accountId"] },
+    copy: { part: "people" },
+    erase: "people",
+  },
+  invite: {
+    holds: "A code a guardian shared so another grown-up could join.",
+    owner: { account: ["accountId"] },
+    copy: { part: "invites" },
+    erase: "rows",
+    links: {
+      createdBy: { fate: "falls", why: "An invite is made by a person of the household it belongs to, so it is already removed with that household." },
+      acceptedBy: { fate: "cleared", why: sameHousehold },
+    },
+  },
+  profile: {
+    holds: "A family member: name, adult or child, year of birth.",
+    owner: { account: ["accountId"], profile: ["id"] },
+    copy: { part: "profiles", hide: { pinHash: "A scrambled PIN. The file says only whether one is set." } },
+    erase: "rows",
+  },
+  consent: {
+    holds: "The agreement a guardian gave for a child.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "consent" },
+    erase: "rows",
+    links: { userId: { fate: "cleared", why: sameHousehold } },
+  },
+  triage: {
+    holds: "Answers to the six safety questions.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "safetyAnswers" },
+    erase: "rows",
+  },
+
+  /* ───────────── screens, onboarding, eye settings, check-ups ───────────── */
+  device: {
+    holds: "A screen the family measured: its size and the viewing distance.",
+    owner: { account: ["accountId"] },
+    copy: { part: "screens" },
+    erase: "rows",
+  },
+  onboardingRun: {
+    holds: "One run of onboarding: the yes and no answers for each eye and how long it took.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "onboardingRuns" },
+    erase: "rows",
+    links: { deviceId: { fate: "cleared", why: ownScreen } },
+  },
+  eyeProfile: {
+    holds: "Eye settings: the weaker eye, the stronger-eye contrast, letter and target sizes.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "eyeSettings" },
+    erase: "rows",
+    links: { deviceId: { fate: "cleared", why: ownScreen } },
+  },
+  testResult: {
+    holds: "The number each check-up measured, and when.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "checkUps" },
+    erase: "rows",
+    links: { deviceId: { fate: "cleared", why: ownScreen } },
+  },
+
+  /* ───────────── programmes, sessions, the eye day ───────────── */
+  enrolment: {
+    holds: "A programme a profile is on or was on, with its dose.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "programmes" },
+    erase: "rows",
+    links: { approvedBy: { fate: "cleared", why: "Points at the counsellor who set the dose. A person with a counsellor role is never deleted with a household." } },
+  },
+  session: {
+    holds: "One sitting of a game, exercise, film or check-up, with what it measured.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "sessions" },
+    erase: "rows",
+    links: { deviceId: { fate: "cleared", why: ownScreen } },
+  },
+  daySummary: {
+    holds: "The three rings for one day: breaks, practice minutes, outdoor minutes.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "days" },
+    erase: "rows",
+  },
+  carePlan: {
+    holds: "What an eye doctor prescribed away from the screen, as a guardian typed it.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "carePlans" },
+    erase: "rows",
+    links: { setBy: { fate: "cleared", why: sameHousehold } },
+  },
+  careLog: {
+    holds: "The family's log of patch time, glasses wear, drops, outdoor time and breaks.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "careLog" },
+    erase: "rows",
+    links: { confirmedBy: { fate: "cleared", why: sameHousehold } },
+  },
+  monitorSample: {
+    holds: "One-minute numbers from the workday monitor.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "monitorSamples" },
+    erase: "rows",
+  },
+  streak: {
+    holds: "Days in a row with practice, and lights left to give.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "streaks" },
+    erase: "rows",
+  },
+
+  /* ───────────── counsellor ───────────── */
+  counsellorLink: {
+    holds: "A link between a profile and a counsellor.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "counsellorLinks" },
+    erase: "rows",
+    links: { counsellorId: { fate: "guarded", why: "A person who is, or has been, a counsellor to any family is never deleted with their own household. Only their seat in it is removed." } },
+  },
+  counsellorNote: {
+    holds: "A note a linked counsellor wrote about the member.",
+    owner: { parent: { table: "counsellorLink", column: "linkId" } },
+    copy: { part: "counsellorNotes" },
+    erase: "rows",
+  },
+
+  /* ───────────── what the family shared ───────────── */
+  story: {
+    holds: "A story a member shared in Together.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "stories" },
+    erase: "rows",
+  },
+  protocol: {
+    holds: "An idea a member wrote down as steps.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "ideas" },
+    erase: "rows",
+    links: { storyId: { fate: "cleared", why: "An idea and the story it grew from belong to the same profile, so both are removed together." } },
+  },
+  experiment: {
+    holds: "The experiment that tests one idea.",
+    owner: { parent: { table: "protocol", column: "protocolId" } },
+    copy: { part: "experiments" },
+    erase: "rows",
+  },
+  experimentEnrolment: {
+    holds: "A profile's place in an experiment, with the check-ups tied to it.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "experimentPlaces" },
+    erase: "rows",
+    links: {
+      experimentId: { fate: "falls", why: "When a family's idea is deleted its experiment goes too. Other families who joined lose their place in it and nothing else: their check-ups stay theirs." },
+      baselineId: { fate: "cleared", why: "Points at the same profile's own check-up." },
+      followupId: { fate: "cleared", why: "Points at the same profile's own check-up." },
+    },
+  },
+  experimentSignal: {
+    holds: "The pooled result of an experiment: group sizes and average change.",
+    owner: { parent: { table: "experiment", column: "experimentId" } },
+    copy: { leftOut: "Pooled numbers from several families. No single family's data is in them." },
+    erase: "rows",
+  },
+  hazardRule: {
+    holds: "Words that stop a harmful idea.",
+    copy: { leftOut: "Staff settings. Nothing about a household." },
+    erase: { untouched: "Staff settings. Nothing about a household." },
+  },
+  moderationItem: {
+    holds: "A shared item waiting for a person to review it, and the decision.",
+    owner: { ref: { kind: "kind", column: "refId", to: { story: "story", protocol: "protocol", note: "aheadNote", mail: "fusionMail" } } },
+    copy: { part: "review" },
+    erase: "rows",
+    links: { reviewerId: { fate: "cleared", why: staffOnly } },
+  },
+
+  /* ───────────── leagues ───────────── */
+  league: {
+    holds: "A league: its name, programme and age band.",
+    copy: { leftOut: "Shared by many families. The family's file names the league its teams play in." },
+    erase: { untouched: "Shared by many families and named by staff." },
+  },
+  team: {
+    holds: "A team in a league.",
+    copy: { leftOut: "Shared by many families. The family's file names the teams its profiles are in." },
+    erase: { untouched: "Shared by many families and named by staff." },
+  },
+  teamMember: {
+    holds: "Which team a profile is in.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "teams" },
+    erase: "rows",
+  },
+  teamWeek: {
+    holds: "A team's days finished in one week.",
+    copy: { leftOut: "A count for a whole team. No single family's data is in it." },
+    erase: { untouched: "A count for a whole team, with no name in it." },
+  },
+  teamMove: {
+    holds: "Each time a profile joined, left or changed team.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "teamMoves" },
+    erase: "rows",
+  },
+
+  /* ───────────── community ───────────── */
+  lightGift: {
+    holds: "A light one member gave another, with its short note.",
+    owner: { profile: ["fromProfileId", "toProfileId"] },
+    copy: { part: "lights" },
+    erase: "rows",
+  },
+  aheadNote: {
+    holds: "A note a member left for families who reach a later week.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "weekNotes" },
+    erase: "rows",
+  },
+  fusionMail: {
+    holds: "A short note from one person in the household to a profile in it.",
+    owner: { profile: ["fromProfileId", "toProfileId"], person: ["fromUserId"] },
+    copy: { part: "mail" },
+    erase: "rows",
+  },
+  focusWall: {
+    holds: "The month's shared picture.",
+    copy: { leftOut: "Shared by everyone. The family's file names the wall each of its tiles is on." },
+    erase: { untouched: "Shared by everyone." },
+  },
+  focusTile: {
+    holds: "One tile of the shared picture, and the profile that sharpened it.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "wallTiles" },
+    erase: "unlink",
+  },
+  galleryUnlock: {
+    holds: "A gallery picture a profile unlocked.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "gallery" },
+    erase: "rows",
+  },
+  glassesPair: {
+    holds: "A pair of glasses that travels from family to family.",
+    copy: { leftOut: "Shared by the families on its journey. The family's file gives the pair's code beside its own leg." },
+    erase: { untouched: "Shared by the families on its journey." },
+  },
+  glassesLeg: {
+    holds: "One family's time with a travelling pair: a first name, a city and a note.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "glassesJourney" },
+    erase: "rows",
+  },
+  hero: {
+    holds: "The outline a child traced for Draw Your Hero.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "heroes" },
+    erase: "rows",
+  },
+
+  /* ───────────── the public site and staff ───────────── */
+  blogPost: {
+    holds: "A story on the blog.",
+    copy: { leftOut: "Written by staff. Nothing about a household." },
+    erase: { untouched: "Written by staff." },
+    links: { editedBy: { fate: "cleared", why: staffOnly } },
+  },
+  blogRevision: {
+    holds: "An earlier version of a blog story.",
+    copy: { leftOut: "Written by staff. Nothing about a household." },
+    erase: { untouched: "Written by staff." },
+    links: { editedBy: { fate: "cleared", why: staffOnly } },
+  },
+  enquiry: {
+    holds: "A message sent from the public site: name, organisation, email and message.",
+    owner: { email: "email" },
+    copy: { part: "enquiries" },
+    erase: "rows",
+    links: { handledBy: { fate: "cleared", why: staffOnly } },
+  },
+  aiCall: {
+    holds: "The size and cost of each AI call.",
+    copy: { leftOut: "Counts and costs only. No row is tied to a household." },
+    erase: { untouched: "Counts and costs only. No row is tied to a household." },
+  },
+  setting: {
+    holds: "Switches such as saver mode.",
+    copy: { leftOut: "Staff settings. Nothing about a household." },
+    erase: { untouched: "Staff settings. Nothing about a household." },
+  },
+  pushToken: {
+    holds: "The address a phone gave so the app can send it a message.",
+    owner: { account: ["accountId"] },
+    copy: { part: "pushTokens" },
+    erase: "rows",
+  },
+  dataRequest: {
+    holds: "A request for a copy of the data or for deletion.",
+    owner: { account: ["accountId"] },
+    copy: { part: "dataRequests" },
+    erase: "rows",
+    links: {
+      handledBy: { fate: "cleared", why: staffOnly },
+      askedBy: { fate: "cleared", why: sameHousehold },
+      profileId: { fate: "cleared", why: "After one profile is deleted the request stays as the family's record that it was done. It holds no name." },
+    },
+  },
+  auditLog: {
+    holds: "Who did what in the staff, counsellor and sponsor areas.",
+    copy: { leftOut: "The staff record of staff, counsellor and sponsor actions. It is kept for accountability and is not the family's own data." },
+    erase: "scrub",
+    links: { userId: { fate: "cleared", why: "The line stays, with nobody named." } },
+  },
+
+  /* ───────────── sponsors ───────────── */
+  sponsor: {
+    holds: "An organisation that supports families.",
+    copy: { leftOut: "About the organisation, not a household. The family's file names the sponsor of each group it joined." },
+    erase: { untouched: "About the organisation, not a household." },
+    links: { approvedBy: { fate: "cleared", why: staffOnly } },
+  },
+  sponsorUser: {
+    holds: "A person who signs in for a sponsor.",
+    copy: { leftOut: "A person's role at an organisation, not household data." },
+    erase: { untouched: "A person's role at an organisation." },
+    links: { userId: { fate: "guarded", why: "A person who signs in for a sponsor is never deleted with their own household. Only their seat in it is removed." } },
+  },
+  sponsorGroup: {
+    holds: "A group a sponsor opened for families.",
+    copy: { leftOut: "About the sponsor's group, not a household. The family's file names each group it joined." },
+    erase: { untouched: "About the sponsor's group, not a household." },
+  },
+  sponsorGroupMember: {
+    holds: "Which sponsor groups a household joined.",
+    owner: { account: ["accountId"] },
+    copy: { part: "sponsorGroups" },
+    erase: "rows",
+  },
+} satisfies { [K in TableName]: Rule<K> };
+
+/** The same list, read by name. */
+export const ruleFor = (name: TableName): Rule => (TABLES as unknown as Record<TableName, Rule>)[name];
+export const TABLE_NAMES = Object.keys(TABLES) as TableName[];
+
+/**
+ * The order rows are removed in. A table comes before every table its `owner` reads: a note before its link,
+ * a review item before the story it points at, everything before the profiles, the household last.
+ * `people` (the grown-ups) are handled just before the household.
+ */
+export const ERASE_ORDER: readonly TableName[] = [
+  "moderationItem", "counsellorNote", "counsellorLink",
+  "experimentSignal", "experimentEnrolment", "experiment", "protocol", "story",
+  "lightGift", "aheadNote", "fusionMail", "galleryUnlock", "glassesLeg", "hero", "teamMove", "teamMember",
+  "monitorSample", "careLog", "carePlan", "daySummary", "session", "enrolment", "streak",
+  "testResult", "eyeProfile", "onboardingRun", "triage", "consent",
+  "enquiry", "pushToken", "invite", "sponsorGroupMember", "dataRequest", "device",
+  "profile", "account",
+];
+
+/** The table each part of the file is read from. */
+export const tableOfPart = (part: PartKey): TableName =>
+  TABLE_NAMES.find((n) => { const c = ruleFor(n).copy; return "part" in c && c.part === part; })!;

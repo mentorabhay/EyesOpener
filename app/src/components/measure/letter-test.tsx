@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { measure as t } from "@/copy/test";
 import {
-  CONTRAST_BACKGROUND, acuityLevels, answerStaircase, contrastGrey, contrastLevels, startStaircase, thresholdCm,
+  acuityLevels, answerStaircase, contrastField, contrastGrey, contrastLevels, startStaircase, thresholdCm,
   type EyeResult, type Screen,
 } from "@/engine";
 import { ArrowPad } from "./arrow-pad";
@@ -25,7 +25,7 @@ function levelsFor(kind: LetterKind, screen: Screen): Level[] {
   if (kind === "acuity") return acuityLevels(screen, k).map((l) => ({ stroke: l.stroke, ink: "#000", field: "#fff", value: l.logMar }));
   const tall = Math.min(160, Math.max(60, thresholdCm(screen.dist, FAINT_LETTER_LOGMAR) * screen.ppc));
   const stroke = Math.max(2, Math.round((tall * k) / 5));
-  return contrastLevels().map((cs) => ({ stroke, ink: grey(contrastGrey(cs, screen.gamma)), field: grey(CONTRAST_BACKGROUND), value: cs }));
+  return contrastLevels().map((cs) => ({ stroke, ink: grey(contrastGrey(cs, screen.gamma)), field: grey(contrastField(screen.gamma)), value: cs }));
 }
 
 const randomTurn = () => Math.floor(Math.random() * 4) as Turn;

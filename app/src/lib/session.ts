@@ -49,9 +49,13 @@ export const getMember = cache(async () => {
   const jar = await cookies();
   /* Child mode pins the device to one child until a grown-up types the exit PIN. */
   const child = verifyToken<{ profileId: string; accountId: string }>(jar.get(CHILD_COOKIE)?.value);
-  const childProfile = child?.accountId === account.id ? profiles.find((p) => p.id === child.profileId) : undefined;
-  const childMode = !!childProfile;
-  const profile = childProfile ?? profiles.find((p) => p.id === jar.get(PROFILE_COOKIE)?.value) ?? profiles[0];
+  const childHere = child?.accountId === account.id;
+  const childProfile = childHere ? profiles.find((p) => p.id === child.profileId) : undefined;
+  /* The device stays in child mode even when the pinned child's profile has since been deleted or archived:
+     the grown-up screens open only with the exit PIN, never because a profile went away. */
+  const childMode = childHere;
+  const profile = childProfile ?? (childHere ? profiles.find((p) => p.kind === "child") : undefined)
+    ?? profiles.find((p) => p.id === jar.get(PROFILE_COOKIE)?.value) ?? profiles[0];
 
   const [eye] = await db.select().from(schema.eyeProfile)
     .where(and(eq(schema.eyeProfile.profileId, profile.id), eq(schema.eyeProfile.isCurrent, true)))

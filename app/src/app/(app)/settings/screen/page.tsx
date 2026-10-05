@@ -1,0 +1,115 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import type { ReactNode } from "react";
+import { Btn, Card, Chip, Empty, PageHead, Void, type Tone } from "@/components/ui";
+import { screen as t } from "@/copy/screen";
+import { day } from "@/copy/settings";
+import type { LeakLevel } from "@/engine";
+import { profileLines } from "@/lib/screen";
+import { mayCalibrate, screenFacts, type Step } from "@/lib/screen-rules";
+import { requireMember } from "@/lib/session";
+import { Flow } from "./flow";
+import css from "./screen.module.css";
+
+export const metadata: Metadata = { title: t.title };
+
+const TONE: Record<LeakLevel, Tone> = { clean: "ok", ghost: "warn", high: "danger" };
+const crumb = [{ href: "/settings", label: t.crumb }];
+/** The hatched motif: the usual value is in use, nothing was measured. */
+const Usual = ({ children }: { children: ReactNode }) => <span className={css.hatch}><span>{children}</span></span>;
+
+/**
+ * The colours of the household's screen with its red-cyan glasses: what is on record, the three checks that measure
+ * it, and what it means for each person. Everyone with a seat may look; a guardian or co-guardian measures.
+ * These are home estimates made by eye, not light-meter readings: src/engine/calibrate.ts.
+ */
+export default async function ScreenPage() {
+  const m = await requireMember();
+  if (!m.device) {
+    return (
+      <>
+        <PageHead title={t.title} sub={t.sub} crumb={crumb} />
+        <Empty title={t.noScreen.title}><span>{t.noScreen.body}</span></Empty>
+        {m.can("test") && <div className="row"><Btn href="/onboarding" kind="g">{t.noScreen.cta}</Btn></div>}
+      </>
+    );
+  }
+  const device = m.device, facts = screenFacts(device);
+  const people = await profileLines(m, facts);
+  const { gamma, leak, ink } = facts, r = t.record;
+  const measured: Record<Step, string | null> = {
+    gamma: gamma.at && t.home.measured(day(gamma.at)), leak: leak && t.home.measured(day(leak.at)), ink: ink && t.home.measured(day(ink.at)),
+  };
+  const share = (v: number) => (v > 0 ? t.pct(v) : r.none);
+  const tooMuch = people.some((p) => p.leak?.level === "high");
+  const again = people.filter((p) => p.balanceAgain).map((p) => p.name);
+  const empty = <Usual>{r.notMeasured}</Usual>;
+
+  return (
+    <>
+      <PageHead
+        title={t.title} sub={t.sub} crumb={crumb}
+        stats={[
+          { value: gamma.value.toFixed(2), label: gamma.at ? r.stat.gamma : `${r.stat.gamma} · ${r.usual.toLowerCase()}` },
+          { value: leak ? (Math.max(leak.red, leak.cyan) > 0 ? t.pct(Math.max(leak.red, leak.cyan)) : r.statNone) : <Void label={r.notMeasured} />, label: r.stat.leak },
+          { value: ink ? t.ink.stat(ink.value) : <Void label={r.notMeasured} />, label: t.ink.statLabel(ink?.value ?? null) },
+        ]}
+      />
+      <div className="bento">
+        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} />
+
+        <Card title={r.title} span={5}>
+          {facts.moved && <p className="notice" data-b="warn">{r.moved}</p>}
+          <dl className="kv">
+            <div>
+              <dt>{r.rows.gamma}</dt>
+              <dd className="tnum"><span className={css.value}>{gamma.value.toFixed(2)}{!gamma.at && <Usual>{r.usual}</Usual>}</span><small>{gamma.at ? `${measured.gamma}. ${r.from.gamma}` : r.from.gamma}</small></dd>
+            </div>
+            <div><dt>{r.rows.leakRed}</dt><dd className="tnum">{leak ? share(leak.red) : empty}<small>{leak ? `${measured.leak}. ${r.from.leakRed}` : r.from.leakRed}</small></dd></div>
+            <div><dt>{r.rows.leakCyan}</dt><dd className="tnum">{leak ? share(leak.cyan) : empty}<small>{leak ? `${measured.leak}. ${r.from.leakCyan}` : r.from.leakCyan}</small></dd></div>
+            <div>
+              <dt>{r.rows.ink}</dt>
+              <dd className="tnum">{ink ? t.ink.short(ink.value) : empty}<small>{ink ? `${measured.ink}. ${ink.turned ? r.from.ink : r.from.inkNotTurned}` : r.from.ink}</small></dd>
+            </div>
+            <div><dt>{r.rows.size}</dt><dd className="tnum">{r.size(device.pxPerCm, device.distanceCm, day(device.calibratedAt))}<small>{r.sizeFrom}</small></dd></div>
+          </dl>
+          <p className="muted small">{r.oneScreen}</p>
+        </Card>
+
+        <Card title={t.people.title} span={7}>
+          {again.length > 0 && (
+            <p className="notice" data-b="warn">{t.people.balanceAgain(again)} <Link href="/test/balance">{t.people.balanceLink}</Link>. {t.people.balanceSwitch}</p>
+          )}
+          {leak ? (
+            <>
+              <div>
+                {people.map((p) => (
+                  <div className={css.person} key={p.id}>
+                    <div className={css.top}>
+                      <b>{p.name}</b>
+                      <span className="muted small">{p.contrast === null ? t.people.noEye : t.people.contrast(p.contrast)}</span>
+                      <span className="sp" />
+                      {p.leak ? <Chip tone={TONE[p.leak.level]}>{t.people.chip[p.leak.level]}</Chip> : <Void label={t.people.noEye} />}
+                    </div>
+                    {p.leak && <p>{p.leak.level === "ghost" ? t.people.line.ghost(p.leak.inStrong) : t.people.line[p.leak.level]}</p>}
+                  </div>
+                ))}
+              </div>
+              {tooMuch && (
+                <div className="notice stack" data-b="danger">
+                  <b>{t.people.helpTitle}</b>
+                  <ul className={css.list}>{t.people.help.map((l) => <li key={l}>{l}</li>)}</ul>
+                  <p className="small">{t.people.noFix}</p>
+                </div>
+              )}
+            </>
+          ) : <Empty title={t.people.none.title}><span>{t.people.none.body}</span></Empty>}
+        </Card>
+
+        <Card title={t.limits.title} span={5}>
+          <ul className={css.list}>{t.limits.body.map((l) => <li key={l}>{l}</li>)}</ul>
+        </Card>
+      </div>
+    </>
+  );
+}

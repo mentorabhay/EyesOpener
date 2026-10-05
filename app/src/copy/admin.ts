@@ -39,6 +39,9 @@ const did: Record<string, (name?: string) => string> = {
   "admin.hazards.on": (n) => `switched a hazard rule on${n ? `: ${n}` : ""}`,
   "admin.hazards.off": (n) => `switched a hazard rule off${n ? `: ${n}` : ""}`,
   "admin.requests.done": (n) => `marked a data request done${n ? ` for ${n}` : ""}`,
+  "job.data-requests": () => "ran the data requests job",
+  "data.household_deleted": () => "a household that asked for it was deleted",
+  "data.profile_deleted": () => "a profile was deleted at its family's request",
   "admin.counsellors.verify": (n) => `verified ${n ?? "a counsellor"}`,
   "admin.counsellors.withdraw": (n) => `withdrew the verification of ${n ?? "a counsellor"}`,
   "admin.sponsors.approve": (n) => `approved ${n ?? "a sponsor"}`,
@@ -114,6 +117,8 @@ export const admin = {
       title: "Recent activity",
       empty: { title: "Nothing yet", body: "What staff, counsellors and sponsors change is listed here." },
       gone: "Someone who has left",
+      job: "A scheduled job",
+      ranJob: (name: string) => `ran the job "${name}"`,
       did,
       /** An action from another area, shown in its own words. */
       other: (action: string) => `did this: ${action.replace(/[._]/g, " ")}`,
@@ -186,23 +191,6 @@ export const admin = {
       hit: (n: number) => many(n, "rule matches:", "rules match:"),
       offNote: "Switched off, so it would not stop this today",
     },
-  },
-
-  requests: {
-    sub: "Families ask for these from their Settings page.",
-    stat: "Open requests",
-    notBuilt: {
-      title: "The export file and the deletion job are not built yet",
-      body: "Marking a request done only records that a person handled it by hand. It does not make a file and it does not delete anything.",
-    },
-    open: "Open",
-    done: "Done in the last 30 days",
-    cols: { household: "Household", kind: "They asked for", asked: "Asked on", age: "Waiting", by: "Handled by", doneOn: "Done on", action: "Action" },
-    kind: { export: "A copy of their data", delete: "Everything deleted" },
-    markDone: "Mark done",
-    markDoneOf: (household: string) => `Mark the request from ${household} done`,
-    emptyOpen: { title: "No open requests", body: "A new request shows up here as soon as a family asks." },
-    emptyDone: "No requests were finished in the last 30 days.",
   },
 
   counsellors: {

@@ -1,0 +1,5 @@
+/* League page. The table's own row and day bar come from components/together/together.module.css. */
+.teamName { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; overflow-wrap: anywhere; }
+.points { margin: 0; padding-left: 18px; display: grid; gap: 7px; font-size: 13.5px; line-height: 1.45; }
+.moves { display: grid; gap: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
+.place { white-space: nowrap; }

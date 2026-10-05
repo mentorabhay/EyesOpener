@@ -108,6 +108,7 @@ export const counsellor = {
     },
     notes: {
       title: "Your notes",
+      family: "The family can read these notes: they are part of the copy of its data a guardian can download. They are deleted if the family deletes this profile.",
       label: "New note",
       add: "Save note",
       none: "No notes yet.",

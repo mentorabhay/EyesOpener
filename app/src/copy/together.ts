@@ -32,10 +32,10 @@ export const together = {
     none: "No ideas are published yet. Yours could be the first.",
     untested: "Untested",
     waiting: "Waiting for review",
-    /** Who is counted on an idea: the people in its published signal, and anyone enrolled now. */
+    /** Who is counted on an idea: everyone who joined and has not left, and how many of them the published result counts. */
     people: (joined: number, tookPart: number | null) => [
-      tookPart !== null && (tookPart === 1 ? "1 member took part" : `${tookPart} members took part`),
-      (tookPart === null || joined > 0) && (joined === 1 ? "1 member joined" : `${joined} members joined`),
+      joined === 1 ? "1 member joined" : `${joined} members joined`,
+      tookPart !== null && `${tookPart} in the result`,
     ].filter(Boolean).join(", "),
   },
 
@@ -109,8 +109,8 @@ export const together = {
 
   signal: {
     title: "The signal so far",
-    tried: "Tried it",
-    control: "Did not try it",
+    tried: "Tried the idea",
+    control: "Carried on as usual",
     gap: "Gap between the groups",
     range: "Likely range of the gap",
     members: (n: number) => (n === 1 ? "1 member" : `${n} members`),
@@ -120,20 +120,7 @@ export const together = {
     honest: "This is an early signal from members, not proof. It does not show that the idea treats or cures anything.",
   },
 
-  league: {
-    title: "Show-up league",
-    rule: "Teams are ranked only by the days they finished their practice this week. Scores and extra minutes do not count.",
-    place: "Place",
-    team: "Team",
-    days: "Days finished",
-    of: "of",
-    yours: "Your team",
-    yourPlace: "Your team's place",
-    weekOf: (day: string) => `Week starting ${day}`,
-    ages: (band: string) => `ages ${band}`,
-    noTeam: "Nobody in this family is on a team yet. Teams are made when a programme starts.",
-    tie: "Teams with the same number of days share a place.",
-  },
+  /* The league's words are in src/copy/league.ts. */
 
   mail: {
     inbox: (name: string) => `Notes for ${name}`,
@@ -186,7 +173,7 @@ export const together = {
     streakOf: (name: string, days: number) => `${name}, ${days} days in a row`,
     note: "A few words, if you like",
     submit: "Give one light",
-    nobody: "There is nobody to give a light to yet. People on your team and people who gave you a light appear here.",
+    nobody: "There is nobody to give a light to yet. People in your family and people who gave you a light appear here.",
     none: "You have no lights to give right now.",
     errors: { to: "Choose who gets the light.", note: "Keep the words to 80 letters." },
     invalid: "The light could not be given.",

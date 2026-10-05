@@ -25,6 +25,11 @@ export interface Screen {
   /** Viewing distance in centimetres. */
   dist: number;
   gamma?: number;
+  /**
+   * How much brighter the cyan ink looks through its lens than the red ink through its lens on this screen, as log10
+   * (calibrate.ts). Unset or 0 until a grown-up has measured it: the balance test is then read exactly as before.
+   */
+  inkBalance?: number | null;
 }
 
 export interface BalanceResult {
@@ -90,11 +95,17 @@ export function derive(m: Measured): Derived {
   let conSource: Derived["conSource"] = "equal";
 
   if (m.bal) {
-    const x = m.bal.x;
+    /* The balance point holds two things added together: how the member's two eyes differ, and how much brighter one
+       ink is than the other through these glasses on this screen. `ink` is the second part (0 until it is measured),
+       so `x` is the member's own share, and the weaker eye is decided on that. The contrast is the balance point for
+       this screen with the cyan lens on the weaker eye, and never above full. With `ink` at 0 this is the rule as it
+       was before calibration: 10 to the power of minus the balance value. */
+    const ink = Number.isFinite(m.inkBalance) ? (m.inkBalance as number) : 0;
+    const x = m.bal.x - ink;
     if (Math.abs(x) < 0.1) { con = 1; conSource = "balance_equal"; }
     else {
       weak = x < 0 ? m.bal.cyanEye : other(m.bal.cyanEye);
-      con = Math.max(MIN_CONTRAST, Math.pow(10, -Math.abs(x)));
+      con = Math.min(1, Math.max(MIN_CONTRAST, Math.pow(10, ink - Math.abs(x))));
       conSource = "balance";
     }
   } else if (weak) { con = STARTING_CONTRAST; conSource = "starting_level"; }

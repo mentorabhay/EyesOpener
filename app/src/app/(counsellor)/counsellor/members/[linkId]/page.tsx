@@ -9,6 +9,7 @@ import { memberView, NOTE_MAX } from "@/lib/counsellor";
 import { end } from "./actions";
 import { DoseForm, NoteForm } from "./forms";
 import css from "./member.module.css";
+import { WeekCard } from "./week";
 
 export const metadata: Metadata = { title: t.member.crumb };
 
@@ -130,6 +131,7 @@ export default async function MemberPage({ params }: { params: Promise<{ linkId:
         </Card>
 
         <Card title={n.title} span={6}>
+          <p className="muted small">{n.family}</p>
           <NoteForm linkId={m.linkId} max={NOTE_MAX} />
           {m.notes.length ? (
             <div>
@@ -144,6 +146,9 @@ export default async function MemberPage({ params }: { params: Promise<{ linkId:
             </div>
           ) : <p className="muted">{n.none}</p>}
         </Card>
+
+        {/* The member's week on their programme, read-only. For a counsellor-led programme it is a suggestion. */}
+        <WeekCard viewer={viewer} linkId={m.linkId} />
 
         <Card title={x.title} span={12}>
           <p className="muted small">{x.about}</p>

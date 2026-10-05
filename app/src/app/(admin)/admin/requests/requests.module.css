@@ -1,0 +1,8 @@
+/* One request: the household and what it asked for on the left, where it stands on the right. On a phone the state drops below. */
+.req { display: flex; gap: 8px 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 11px 0; border-bottom: 1px solid var(--line); }
+.req:last-child { border-bottom: 0; padding-bottom: 0; }
+.req:first-child { padding-top: 0; }
+.who { flex: 1 1 240px; min-width: 0; }
+.who small { display: block; color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+/* A state can be a full sentence, so its chip may wrap on a narrow screen. */
+.state :global(.chip) { white-space: normal; border-radius: var(--r-sm); }

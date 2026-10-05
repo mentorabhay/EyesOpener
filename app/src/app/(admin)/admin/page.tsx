@@ -24,7 +24,7 @@ export default async function AdminOverviewPage() {
   /* The name of what was changed is shown only to a role that may open the room it was changed in. */
   const say = (action: string, meta: unknown) => {
     const words = o.activity.did[action];
-    if (!words) return o.activity.other(action);
+    if (!words) return action.startsWith("job.") ? o.activity.ranJob(action.slice(4)) : o.activity.other(action);
     const room = action.split(".")[1] ?? "";
     const name = meta && typeof meta === "object" && "name" in meta && typeof meta.name === "string" ? meta.name : undefined;
     return words(isArea(room) && may(room) ? name : undefined);
@@ -81,7 +81,7 @@ export default async function AdminOverviewPage() {
             <div>
               {activity.map((a) => (
                 <div className="ins" key={a.id}>
-                  <div className="tx"><b>{a.who ?? o.activity.gone}</b> {say(a.action, a.meta)}<div className="sub">{dayTime(a.createdAt)}</div></div>
+                  <div className="tx"><b>{a.who ?? (a.action.startsWith("job.") ? o.activity.job : o.activity.gone)}</b> {say(a.action, a.meta)}<div className="sub">{dayTime(a.createdAt)}</div></div>
                 </div>
               ))}
             </div>

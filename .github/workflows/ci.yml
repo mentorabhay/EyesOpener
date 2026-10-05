@@ -26,6 +26,22 @@ jobs:
     defaults:
       run:
         working-directory: app
+    # A throwaway database, so the tests that need real tables run here too (a family's copy and its deletion).
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: iopener
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:5432/iopener
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -38,6 +54,8 @@ jobs:
         run: npm run typecheck
       - name: Lint
         run: npm run lint
+      - name: Database tables
+        run: npm run db:migrate
       - name: Tests
         run: npm test
       - name: Build

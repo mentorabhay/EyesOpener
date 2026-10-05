@@ -3,7 +3,7 @@ export const today = {
   fill: { rest: "Take a 20-second break", light: "Log time outside" },
   rings: { rest: "Rest", train: "Train", light: "Light", restUnit: "breaks", minUnit: "min" },
   ringsTitle: "The eye day",
-  start: "Start today's chapter",
+  start: "Start today's practice",
   doneForToday: "Today's practice is done",
   blocked: {
     under_age: "No screen sessions under age 4. Off-screen exercises are open.",

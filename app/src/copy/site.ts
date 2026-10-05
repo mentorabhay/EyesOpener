@@ -9,6 +9,7 @@
  * - Nothing about money beyond "free" and "open source".
  */
 import type { EvidenceKey } from "@/data";
+import { WAIT_DAYS } from "@/lib/data/state";
 import type { EnquiryField, EnquiryKind, EnquiryStatus } from "@/lib/site";
 
 const WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
@@ -711,7 +712,7 @@ export const site = {
             "There is no advertising in IOpener, and no advertising data is collected.",
             "There are no analytics on child profiles.",
             "Sponsors see counts only. A linked counsellor sees only the member linked to them.",
-            "You can ask for a copy of your data, or for it to be deleted. Handling those requests automatically is being built.",
+            `A guardian can download a copy of the family's data, and can delete one profile or everything. A deletion waits ${WAIT_DAYS} days first, so that it can be cancelled.`,
           ],
         },
         {
@@ -724,6 +725,8 @@ export const site = {
             "Check-up results: the number each check-up measured, and when.",
             "Practice: which game or exercise was done, for how many minutes, the score, and whether the session was stopped by a symptom.",
             "The day's rings: breaks taken, minutes of practice, and minutes outdoors.",
+            "Care away from the screen that a guardian logged: patch time, glasses wear, drops and time outdoors, and the plan an eye doctor gave.",
+            "If your family links a counsellor: the link, and the notes the counsellor writes about the member.",
             "The screens you set up: the size of the screen and how far you sit from it.",
             "Answers to the safety questions, and the consent a guardian gave for a child.",
             "What you choose to share in Together: stories, notes and encouragement.",
@@ -768,8 +771,10 @@ export const site = {
         {
           id: "rights", title: "A copy of your data, and deleting it",
           body: [
-            "A guardian can ask in Settings for a copy of everything stored for the family, or for the account and every profile in it to be deleted.",
-            "Today the request is recorded and a person on the IOpener team handles it by hand. Making the copy and the deletion automatic is being built.",
+            "A guardian can get a copy of everything stored for the family in Settings: one file, and a summary to read and print. The file is made at the moment you download it, and IOpener keeps no copy of it. It includes the notes a linked counsellor wrote about a family member.",
+            `A guardian can delete one profile, or the account and every profile in it. Nothing is deleted for ${WAIT_DAYS} days, and a guardian can cancel in that time. After that it is removed for good, together with what the family shared in Together, and it cannot be brought back.`,
+            "What stays after a deletion is a count that a deletion happened, with no name in it. A grown-up who also signs in as a counsellor, for a sponsor or as staff keeps that sign-in and loses only the seat in the family.",
+            "The IOpener team sees that a request was made and where it stands. It does not see what a copy holds.",
           ],
         },
         {
@@ -843,8 +848,8 @@ export const site = {
         {
           id: "rights", title: "Seeing and deleting a child's data",
           body: [
-            "A guardian can see everything kept about a child in the app, and can ask for a copy or for deletion in Settings.",
-            "Today a person on the IOpener team handles each request by hand. Doing it automatically is being built.",
+            "A guardian can see everything kept about a child: in the app, and in the copy of the family's data from Settings. The copy includes any notes a linked counsellor wrote about the child.",
+            `A guardian can delete a child's profile on its own, or the whole account, in Settings. A deletion waits ${WAIT_DAYS} days so that it can be cancelled. After that it is for good.`,
           ],
         },
       ],

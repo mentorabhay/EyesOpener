@@ -44,6 +44,8 @@ GoogleService-Info.plist
 .gcloud/
 
 # Build output and local files
+# The camera features' runtime and model: copied and fetched by app/scripts/vision-files.mjs
+app/public/vision/
 node_modules/
 .next/
 out/

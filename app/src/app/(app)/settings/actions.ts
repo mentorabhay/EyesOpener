@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import type { FormState } from "@/components/together/StateForm";
 import { settings as t } from "@/copy/settings";
-import { leaveProgramme, requestCounsellor, requestData, startProgramme } from "@/lib/family";
+import { leaveProgramme, requestCounsellor, startProgramme } from "@/lib/family";
 import { requireMember } from "@/lib/session";
 
 export async function start(formData: FormData) {
@@ -30,12 +30,4 @@ export async function askCounsellor(_: FormState, formData: FormData): Promise<F
   const result = await requestCounsellor(m, input.data.profileId, input.data.email);
   revalidatePath("/settings");
   return { ok: result === "done", message: t.counsellor.result[result] };
-}
-
-export async function askForData(formData: FormData) {
-  const m = await requireMember();
-  const kind = z.enum(["export", "delete"]).safeParse(formData.get("kind"));
-  if (!m.can("data") || !kind.success) return;
-  await requestData(m, kind.data);
-  revalidatePath("/settings");
 }

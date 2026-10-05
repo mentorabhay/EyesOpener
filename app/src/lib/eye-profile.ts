@@ -62,7 +62,9 @@ async function insertResults(x: Tx | typeof db, profileId: string, deviceId: str
 
 /** Derives the settings and makes them the profile's current eye profile. */
 async function writeProfile(tx: Tx, profileId: string, deviceId: string, measured: Measured, source: "onboarding" | "weekly_check") {
-  const d = derive(measured);
+  /* The balance test is read with this screen's ink balance when a grown-up has measured it (src/lib/screen.ts). Null leaves the reading as it was. */
+  const [screen] = await tx.select({ inkBalance: schema.device.inkBalance }).from(schema.device).where(eq(schema.device.id, deviceId)).limit(1);
+  const d = derive({ ...measured, inkBalance: screen?.inkBalance });
   await tx.update(schema.eyeProfile).set({ isCurrent: false }).where(and(eq(schema.eyeProfile.profileId, profileId), eq(schema.eyeProfile.isCurrent, true)));
   await tx.insert(schema.eyeProfile).values({
     profileId, deviceId, weakEye: d.weak && side(d.weak), cyanEye: side(d.cyanEye), strongContrast: d.con, balanceLogRatio: measured.bal?.x ?? null,

@@ -56,7 +56,7 @@ const decide = (m: Member, kind: TrainKind, minutesToday: number, slug?: string)
  * A level 2 game (squint, after concussion, after stroke) also needs the member to be on the matching programme;
  * the dose check then asks for the counsellor's minutes. Any other item needs a linked counsellor.
  */
-const onCounsellorPlan = (m: Member, kind: TrainKind, slug: string) => {
+export const onCounsellorPlan = (m: { enrolment: { programme: string } | null; linked: boolean }, kind: TrainKind, slug: string) => {
   const g = kind === "game" ? gameBySlug(slug) : undefined;
   if (g && gameLevel(g) >= 2) {
     const p = m.enrolment ? programmeBySlug(m.enrolment.programme) : undefined;

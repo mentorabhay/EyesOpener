@@ -1,0 +1,42 @@
+/* The week, day by day, and the parts of a chapter. Neutral fills: the gradient is kept for the chapter's one progress bar. */
+.days { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.day { display: grid; grid-template-columns: minmax(0, 7.5em) minmax(40px, 1fr) auto; align-items: center; gap: 6px 12px; padding: 9px 10px; border-bottom: 1px solid var(--line); border-radius: var(--r-sm); }
+.day:last-child { border-bottom: 0; }
+.day[aria-current="date"] { background: var(--sunken); border-bottom-color: transparent; box-shadow: inset 0 0 0 1px var(--line-2); }
+.when { font-size: 13.5px; font-weight: 600; min-width: 0; }
+.when small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12px; }
+.bar { height: 8px; border-radius: var(--r-pill); background: var(--sunken); border: 1px solid var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--ink-2); border-radius: var(--r-pill); }
+.bar[data-state="done"] i { background: var(--ok); }
+.bar[data-state="none"], .bar[data-state="waiting"] { background: repeating-linear-gradient(135deg, var(--line-2) 0 4px, transparent 4px 8px); border-color: var(--line-2); }
+.bar[data-state="rest"], .bar[data-state="rest_ahead"] { background: transparent; border-style: dashed; border-color: var(--line-2); }
+.end { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.end span:first-child { font-size: 12px; color: var(--ink-3); }
+
+.parts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; counter-reset: part; }
+.part { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 4px 12px; padding: 14px 0; border-bottom: 1px solid var(--line); counter-increment: part; }
+.part:first-child { padding-top: 0; }
+.part:last-child { border-bottom: 0; padding-bottom: 0; }
+.part::before { content: counter(part); grid-row: span 3; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 600; background: var(--sunken); border: 1px solid var(--line-2); color: var(--ink-2); }
+.part[data-state="done"]::before { content: "\2713"; background: var(--ok-bg); border-color: transparent; color: var(--ok); }
+.part[data-next="true"]::before { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.care .part::before { content: ""; width: 10px; height: 10px; margin: 6px 10px; background: var(--line-2); border: 0; }
+.care .part[data-state="done"]::before { content: ""; background: var(--ok); }
+.head { display: flex; align-items: baseline; gap: 6px 10px; flex-wrap: wrap; }
+.head b { font-size: 15px; }
+.head .sp { flex: 1; }
+.how { color: var(--ink-2); font-size: 13.5px; }
+.item { display: flex; align-items: center; gap: 6px 8px; flex-wrap: wrap; font-size: 13px; color: var(--ink-3); }
+.item b { color: var(--ink); font-weight: 600; }
+.acts { display: flex; align-items: center; gap: 8px 10px; flex-wrap: wrap; margin-top: 4px; font-size: 13px; }
+.acts a:not([class]) { color: var(--ink-2); }
+.thin { margin-top: 8px; height: 5px; border-radius: var(--r-pill); background: var(--sunken); overflow: hidden; max-width: 220px; }
+.thin i { display: block; height: 100%; background: var(--ink-2); border-radius: var(--r-pill); }
+.steps3 { display: flex; gap: 5px; max-width: 360px; }
+.steps3 > div { flex: 1; max-width: none; height: 6px; margin-top: 0; }
+.sub { font-size: 12.5px; font-weight: 600; color: var(--ink-3); margin-top: 4px; }
+.steps { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.sources { margin: 0; padding-left: 1.3em; font-size: 12.5px; color: var(--ink-3); display: flex; flex-direction: column; gap: 4px; overflow-wrap: anywhere; }
+@media (max-width: 460px) {
+  .day { grid-template-columns: minmax(0, 6.2em) minmax(28px, 1fr) auto; gap: 6px 8px; padding: 9px 8px; }
+}

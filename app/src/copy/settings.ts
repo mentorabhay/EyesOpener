@@ -78,20 +78,10 @@ export const settings = {
 
   devices: {
     title: "Devices",
+    colours: "This screen's colours",
     empty: { title: "No screen measured yet", body: "Onboarding measures your screen and how far you sit from it." },
     kind: { web: "Computer", phone: "Phone", tv: "TV" },
     line: (kind: string, pxPerCm: number, cm: number, date: string) => `${kind}. ${pxPerCm} dots per cm, viewed from ${cm} cm. Measured on ${date}.`,
-  },
-
-  data: {
-    title: "Your data",
-    export: { what: "An export asks for a copy of everything stored for this family; the request stays open here until the copy is ready.", ask: "Ask for an export" },
-    delete: {
-      what: "Deletion asks for this account and every profile in it to be removed for good; nothing is removed until the request is handled.",
-      ask: "Ask for deletion", warn: "Deletion cannot be undone once it is handled.", yes: "Yes, ask for deletion",
-    },
-    open: (date: string) => `Asked on ${date}. Still open.`,
-    guardianOnly: "A guardian asks for an export or for deletion.",
   },
 
   newProfile: {

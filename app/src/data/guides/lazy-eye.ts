@@ -113,16 +113,16 @@ export const guides: Guide[] = [
     ],
     steps: [
       "Press play on the film. The session clock starts, and it runs only while the film plays.",
-      "Watch with both eyes open for about 20 minutes. That is one chapter.",
+      "Watch with both eyes open. After every 10 minutes of watching the cinema pauses the film for an eye break. Those 10 minutes are one chapter.",
       "Keep the glasses on for the whole chapter. No looking over or under them.",
-      "At the end of the chapter pause the film, take the glasses off and look at something far away for a few minutes.",
-      "Watch two more chapters the same way, straight after or later in the day. Three chapters make the daily hour.",
+      "In the break, take the glasses off and look at something far away, 6 metres or more, until the countdown ends. It lasts at least 20 seconds. Rest for longer if you like.",
+      "Press \"Carry on watching\" for the next chapter, or \"End the session here\" and come back later in the day. Six chapters make the daily hour.",
       "Press \"Finish now\" when you stop. The time watched is saved. The film stops by itself when today's minutes are used.",
       "Do this six days a week and take one day off.",
     ],
     right: [
       "With both eyes open you see one whole picture. Its colours look washed out: that is normal through these glasses.",
-      "The time watched climbs while the film plays and stands still when it is paused.",
+      "The time watched climbs while the film plays and stands still when it is paused and during an eye break.",
       "The child can tell you what is happening in the story.",
     ],
     measures: [],
@@ -130,7 +130,7 @@ export const guides: Guide[] = [
     mistakes: [
       "Glasses the wrong way round. The cyan lens belongs over the weaker eye.",
       "Counting ordinary TV as practice. Only time in the two-eye cinema with the glasses on counts.",
-      "One long sitting with a young child. Chapters of about 20 minutes are easier to keep up for weeks.",
+      "One long sitting with a young child. Sittings of about 20 minutes, two chapters, are easier to keep up for weeks.",
       "Sitting much closer or further away than the distance this screen was set up for.",
     ],
     tool: { kind: "cinema" },
@@ -153,7 +153,7 @@ export const guides: Guide[] = [
     ],
     steps: [
       "After school, open the two-eye cinema and put the glasses on, cyan (blue-green) lens over the weaker eye.",
-      "Press play and watch for 20 minutes with both eyes open.",
+      "Press play and watch for 20 minutes with both eyes open. The cinema pauses the film once, after 10 minutes, for a short eye break.",
       "Press \"Finish now\". The page shows the time watched in that sitting.",
       "Before dinner, watch the second 20 minutes the same way.",
       "Before bed, watch the third 20 minutes the same way.",

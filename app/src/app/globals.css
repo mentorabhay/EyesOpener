@@ -149,7 +149,7 @@ p { margin: 0; }
 .seg i.on { background: var(--grad); }
 .void { display: inline-block; min-width: 54px; height: 18px; border-radius: 5px; border: 1px dashed var(--line-2); background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 8px); vertical-align: middle; }
 .empty { border: 1px dashed var(--line-2); border-radius: var(--r-md); padding: 22px; background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 10px); display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
-.empty > * { background: var(--card); padding: 2px 6px; border-radius: 6px; }
+.empty > :not(.btn, .row) { background: var(--card); padding: 2px 6px; border-radius: 6px; }
 
 /* ── lists and tables ── */
 .ins { display: flex; gap: 11px; padding: 11px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }

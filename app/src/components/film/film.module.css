@@ -1,0 +1,101 @@
+/* The two-eye film player: IOpener's own controls around a film that plays from the member's device.
+   The picture keeps the therapy field (black, white words); the controls follow direction B. */
+
+.shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+/* Full screen keeps every control with the film. The field goes dark so nothing bright sits beside the picture. */
+.shell:fullscreen {
+  color-scheme: dark;
+  --ink: #f2f3f5; --ink-2: #b4bac2; --ink-3: #979da6; --ink-4: #7c828b;
+  --paper: #000000; --card: #15171c; --sunken: #1a1d23; --line: #23262d; --line-2: #2e323a;
+  --warn-bg: #2e2411; --ok-bg: #0f2e24; --danger-bg: #2e1416;
+  background: #000; color: var(--ink); padding: 10px 14px 12px; gap: 8px; width: 100%; height: 100%; overflow: auto;
+}
+.shell:fullscreen .stage { flex: 1; min-height: 0; border-radius: 0; }
+.shell:fullscreen .frame { aspect-ratio: auto; height: 100%; }
+.shell :focus-visible { outline-width: 3px; }
+.shell:fullscreen :focus-visible { outline-color: #fff; }
+/* Full screen is how a film is watched from across a room, so the words over the picture grow with the screen. */
+.shell:fullscreen .card { font-size: clamp(15px, 1.25vw, 30px); gap: clamp(10px, 1vw, 24px); }
+.shell:fullscreen .card h3 { font-size: clamp(22px, 2.6vw, 56px); }
+.shell:fullscreen .card .soft { font-size: 0.9em; }
+.shell:fullscreen .card :global(.btn) { font-size: inherit; padding: 0.55em 1.2em; }
+.shell:fullscreen .count { font-size: clamp(40px, 6.5vw, 140px); }
+.shell:fullscreen .drain { height: clamp(6px, 0.5vw, 12px); width: min(40vw, 70%); }
+.shell:fullscreen svg.glasses { width: clamp(84px, 9vw, 190px); height: auto; }
+
+/* The picture and whatever card lies over it share one cell, so a tall card on a small phone makes the cell taller. */
+.stage { display: grid; cursor: pointer; }
+.stage > * { grid-area: 1 / 1; min-width: 0; }
+.stage:focus-visible { outline: 3px solid #fff; outline-offset: -5px; border-radius: var(--r-md); }
+.stage :focus-visible { outline-color: #fff; }
+.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; align-self: center; }
+.film { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; filter: url(#two-eye); }
+.defs { position: absolute; width: 0; height: 0; }
+
+/* A card over the picture. `solid` hides the film (an eye break); the others dim it. */
+.card {
+  position: relative; z-index: 1; cursor: default; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  padding: 18px 16px; text-align: center; color: #fff; background: rgba(0, 0, 0, 0.78); font-size: 14.5px; line-height: 1.45;
+  animation: settle 0.6s ease-out both;
+}
+.card.solid { background: #000; }
+.card h3 { font-size: clamp(19px, 2.6vw, 26px); color: #fff; }
+.card p { max-width: 46ch; }
+.card .soft { color: #c4c9d1; font-size: 13.5px; }
+.card :global(.row) { justify-content: center; width: 100%; }
+.card :global(.btn) { color: #111418; background: #fff; border-color: #fff; min-height: 42px; }
+.card :global(.btn-g) { color: #fff; background: var(--grad); border-color: transparent; }
+.card :global(.btn)[aria-disabled="true"] { opacity: 0.45; }
+.card :global(.btn) svg { width: 18px; height: 18px; flex: none; }
+@keyframes settle { from { opacity: 0; } to { opacity: 1; } }
+
+/* Which way round the glasses go. */
+.card svg.glasses, svg.glasses { width: 84px; height: 46px; flex: none; }
+.lens { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+/* The eye break's slow countdown: one number that changes once a second, and a bar that empties without a jump. */
+.count { font-size: clamp(34px, 7vw, 64px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.drain { width: min(260px, 70%); height: 6px; border-radius: var(--r-pill); background: #2a2d33; overflow: hidden; }
+.drain i { display: block; height: 100%; background: #fff; border-radius: var(--r-pill); transform-origin: left center; transition: transform 1s linear; }
+
+/* A quiet mark that the film is paused. It is not a control: the whole picture is. */
+.mark { position: relative; z-index: 1; place-self: center; width: 64px; height: 64px; border-radius: 50%; background: rgba(0, 0, 0, 0.6); color: #fff; display: grid; place-items: center; pointer-events: none; }
+.stage .mark svg { width: 30px; height: 30px; }
+.empty { position: relative; z-index: 1; cursor: default; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; text-align: center; }
+.empty :global(.btn) { color: #111418; background: #fff; border-color: #fff; }
+
+/* Controls */
+.bar { display: flex; flex-direction: column; gap: 8px; }
+.seek { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 10px; font-size: 13px; }
+.seek input { width: 100%; height: 28px; margin: 0; accent-color: var(--ink); cursor: pointer; }
+.seek input:disabled { cursor: not-allowed; opacity: 0.5; }
+.buttons { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.buttons :global(.btn) { min-height: 42px; }
+.icon { width: 42px; padding: 0; flex: none; }
+.icon svg, .lead svg { width: 20px; height: 20px; flex: none; }
+.lead { min-width: 104px; }
+.sound { display: flex; align-items: center; gap: 6px; }
+.level { display: flex; align-items: flex-end; gap: 2px; height: 18px; padding: 0 2px; }
+.level i { width: 3px; border-radius: 1px; background: var(--line-2); }
+.level i[data-on] { background: var(--ink); }
+
+.status { display: flex; align-items: baseline; gap: 4px 14px; flex-wrap: wrap; font-size: 13px; }
+.status b { font-variant-numeric: tabular-nums; }
+
+/* The list of films. It often sits in a narrow column and members may use large text, so its buttons may wrap. */
+.films { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.films :global(.btn) { white-space: normal; text-align: center; max-width: 100%; }
+.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.item { display: flex; flex-direction: column; gap: 7px; padding: 12px 0; border-top: 1px solid var(--line); min-width: 0; }
+.item:first-child { border-top: 0; padding-top: 0; }
+.item[data-current] .name { font-weight: 600; }
+.head { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.name { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
+.meta { font-size: 12.5px; color: var(--ink-3); display: flex; gap: 4px 10px; flex-wrap: wrap; align-items: center; }
+.item .buttons :global(.btn) { min-height: 36px; }
+.picker { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .card { animation: none; }
+  .drain i { transition: none; }
+}

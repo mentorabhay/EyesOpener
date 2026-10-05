@@ -20,8 +20,11 @@ export function phraseMatches(given: string, phrase: string): boolean {
   return crypto.timingSafeEqual(a, b);
 }
 
-/** Paths that stay open while the site is locked: the gate itself, the health check and the robots file. */
-export const isOpenPath = (path: string) => path === "/gate" || path === "/health" || path === "/robots.txt";
+/**
+ * Paths that stay open while the site is locked: the gate itself, the health check, the robots file, and the
+ * address a scheduler calls (it has its own secret and answers "not found" without it).
+ */
+export const isOpenPath = (path: string) => path === "/gate" || path === "/health" || path === "/robots.txt" || path === "/api/jobs/daily" || path === "/api/jobs/weekly";
 
 /** Where to go after the gate. Only a path on this site is accepted; anything else becomes the home page. */
 export const safeNext = (next: string | null | undefined): string =>

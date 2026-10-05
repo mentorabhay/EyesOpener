@@ -85,6 +85,8 @@ export interface Kit {
   miss(): void;
   score: number;
   add(n?: number): void;
+  /** The screen's gamma, for a scene that works out its own greys in real light. Inks already use it. */
+  gamma: number;
   /** What this session has measured so far. Read it for the score line; write it with `report` and `peak`. */
   stats: Stats;
   /** Records a number under a key, replacing the one before: "flips a minute", "seconds held". */
@@ -165,7 +167,7 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
   };
   const k: Kit = {
     t: 0, dt: 0, slow, k: 1, perCm: 37.8, distCm: p.distCm || 50, letter: 22, level: 1, score: 0, input,
-    convMax: 20, divMax: 8, pxArcsec: 100, stats,
+    convMax: 20, divMax: 8, pxArcsec: 100, stats, gamma: p.gamma > 0 ? p.gamma : 2.2,
     hit() { stats.hits++; misses = 0; if (++streak >= 3) { streak = 0; lvl(Math.min(10, k.level + 1)); } },
     miss() { stats.misses++; streak = 0; if (++misses >= 2) { misses = 0; lvl(Math.max(1, k.level - 1)); } },
     add(n = 1) { k.score += n; p.onScore(k.score); },

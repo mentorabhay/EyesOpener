@@ -1,0 +1,25 @@
+/* The summary of a family's data: readable on screen, and printed black on white with the app's navigation left out. */
+.sheet { display: flex; flex-direction: column; gap: 18px; max-width: 980px; }
+.sheet h2 { font-size: 16px; }
+.sheet h3 { font-size: 14.5px; margin: 0; }
+.who { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; }
+.note { white-space: pre-wrap; overflow-wrap: anywhere; }
+.list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; }
+.sheet :global(.ins .sub) { overflow-wrap: anywhere; }
+.rows { flex: none; font-weight: 600; white-space: nowrap; }
+
+@page { size: A4; margin: 14mm; }
+
+@media print {
+  :global(.shell):has(.sheet) { display: block; min-height: 0; }
+  :global(.shell):has(.sheet) :global(.side), :global(.shell):has(.sheet) :global(.tabs), .hide { display: none !important; }
+  :global(.main):has(.sheet) { display: block; }
+  :global(.page):has(.sheet) { display: block; padding: 0; max-width: none; zoom: 1 !important; }
+  :global(body):has(.sheet) { background: #fff; }
+  .sheet { display: block; max-width: none; color: #000; --ink: #000; --ink-2: #000; --ink-3: #333; --line: #999; --line-2: #999; --card: #fff; --sunken: #fff; font-size: 10.5pt; }
+  .sheet :global(.bento) { display: block; }
+  .sheet :global(.c) { border: 0; border-top: 1px solid #000; border-radius: 0; box-shadow: none; padding: 10px 0 0; margin: 0 0 14px; background: #fff; break-inside: avoid; }
+  .sheet :global(.chip), .sheet :global(.notice) { background: #fff; color: #000; border: 1px solid #000; }
+  .sheet :global(.tbwrap) { overflow: visible; }
+  .sheet a { text-decoration: none; color: #000; }
+}

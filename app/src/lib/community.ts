@@ -50,7 +50,8 @@ export function listProtocols(profileId: string) {
     open: sql<number>`count(distinct ${s.experiment.id}) filter (where ${s.experiment.status} = 'open')`.mapWith(Number),
   }).from(s.protocol)
     .leftJoin(s.experiment, eq(s.experiment.protocolId, s.protocol.id))
-    .leftJoin(s.experimentEnrolment, eq(s.experimentEnrolment.experimentId, s.experiment.id))
+    /* a member who left is not counted as joined */
+    .leftJoin(s.experimentEnrolment, and(eq(s.experimentEnrolment.experimentId, s.experiment.id), isNull(s.experimentEnrolment.leftAt)))
     .leftJoin(s.experimentSignal, eq(s.experimentSignal.experimentId, s.experiment.id))
     .where(visibleTo(profileId))
     .groupBy(s.protocol.id)
@@ -71,7 +72,7 @@ export async function protocolById(id: string, profileId: string) {
   if (!experiment) return { protocol, story, experiment: null };
   const inExperiment = eq(s.experimentEnrolment.experimentId, experiment.id);
   const [[{ joined }], [mine], [signal]] = await Promise.all([
-    db.select({ joined: count() }).from(s.experimentEnrolment).where(inExperiment),
+    db.select({ joined: count() }).from(s.experimentEnrolment).where(and(inExperiment, isNull(s.experimentEnrolment.leftAt))),
     db.select().from(s.experimentEnrolment).where(and(inExperiment, eq(s.experimentEnrolment.profileId, profileId))),
     db.select().from(s.experimentSignal).where(eq(s.experimentSignal.experimentId, experiment.id)).orderBy(desc(s.experimentSignal.computedAt)).limit(1),
   ]);
@@ -94,30 +95,6 @@ export function weekStart(day = todayKey()) {
   const d = new Date(`${day}T00:00:00Z`);
   d.setUTCDate(d.getUTCDate() - ((d.getUTCDay() + 6) % 7));
   return d.toISOString().slice(0, 10);
-}
-
-/**
- * This week's table for the league the family's team plays in, ranked only by days finished.
- * Teams level on days share a place. Null when no profile in the account is on a team.
- */
-export async function leagueFor(m: Member) {
-  const teams = await db.select({ teamId: s.team.id, leagueId: s.team.leagueId, profileId: s.teamMember.profileId })
-    .from(s.teamMember).innerJoin(s.team, eq(s.team.id, s.teamMember.teamId))
-    .where(inArray(s.teamMember.profileId, m.profiles.map((p) => p.id)));
-  const mine = teams.find((x) => x.profileId === m.profile.id) ?? teams[0];
-  if (!mine) return null;
-  const week = weekStart();
-  const [[league], rows] = await Promise.all([
-    db.select().from(s.league).where(eq(s.league.id, mine.leagueId)),
-    db.select({ id: s.team.id, name: s.team.name, daysFinished: s.teamWeek.daysFinished, daysPossible: s.teamWeek.daysPossible })
-      .from(s.team).leftJoin(s.teamWeek, and(eq(s.teamWeek.teamId, s.team.id), eq(s.teamWeek.weekStart, week)))
-      .where(eq(s.team.leagueId, mine.leagueId)).orderBy(asc(s.team.name)),
-  ]);
-  const table = rows
-    .map((r) => ({ ...r, daysFinished: r.daysFinished ?? 0, daysPossible: r.daysPossible ?? 6 }))
-    .sort((a, b) => b.daysFinished - a.daysFinished)
-    .map((r, _, all) => ({ ...r, place: 1 + all.filter((o) => o.daysFinished > r.daysFinished).length, mine: r.id === mine.teamId }));
-  return { league, week, table };
 }
 
 /* ───────────── community ideas ───────────── */
@@ -167,18 +144,17 @@ export const giftsTo = (profileId: string) =>
     .where(eq(s.lightGift.toProfileId, profileId)).orderBy(desc(s.lightGift.forDay)).limit(30);
 
 /**
- * Who this profile may give a light to: people with a streak who are in the family, on the same team,
+ * Who this profile may give a light to: people with a streak who are in the family,
  * or who once gave this profile a light. Never the profile itself.
+ * Not the members of its league team: a team shows other households a name and a number, never who is on it.
  */
 export function lightCandidates(m: Member) {
   const me = m.profile.id;
-  const myTeams = db.select({ id: s.teamMember.teamId }).from(s.teamMember).where(eq(s.teamMember.profileId, me));
-  const teamMates = db.select({ id: s.teamMember.profileId }).from(s.teamMember).where(inArray(s.teamMember.teamId, myTeams));
   const givers = db.select({ id: s.lightGift.fromProfileId }).from(s.lightGift).where(eq(s.lightGift.toProfileId, me));
   return db.select({ id: s.profile.id, name: s.profile.displayName, current: s.streak.current }).from(s.streak)
     .innerJoin(s.profile, eq(s.profile.id, s.streak.profileId))
     .where(and(ne(s.profile.id, me), isNull(s.profile.archivedAt),
-      or(eq(s.profile.accountId, m.account.id), inArray(s.profile.id, teamMates), inArray(s.profile.id, givers))))
+      or(eq(s.profile.accountId, m.account.id), inArray(s.profile.id, givers))))
     .orderBy(asc(s.profile.displayName));
 }
 

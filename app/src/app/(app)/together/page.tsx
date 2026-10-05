@@ -3,9 +3,11 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import { Btn, Card, Chip, PageHead, type Tone } from "@/components/ui";
 import s from "@/components/together/together.module.css";
+import { experiments } from "@/copy/experiments";
 import { together as t } from "@/copy/together";
 import { catalogue, ideaBySlug } from "@/data";
 import { LADDER, isTested, listProtocols, type LadderStep } from "@/lib/community";
+import { IDEA_PAGES } from "@/lib/idea-pages";
 import { requireMember } from "@/lib/session";
 
 export const metadata: Metadata = { title: t.title };
@@ -13,14 +15,13 @@ export const metadata: Metadata = { title: t.title };
 /** Hatched until a pooled result exists; green only once someone outside the community has checked it. */
 const stepTone = (step: LadderStep): Tone => (!isTested(step) ? "none" : step === "signal" ? "plain" : "ok");
 
-/** The community ideas built so far, by catalogue slug, and the page each one lives on. */
-const IDEA_PAGES = { "fusion-mail": "mail", "notes-from-four-weeks-ahead": "notes", "lend-a-light": "lights", "focus-wall": "wall", "travelling-glasses": "glasses" };
 
 export default async function TogetherPage() {
   const m = await requireMember();
   const all = await listProtocols(m.profile.id);
   const published = all.filter((p) => p.status === "published");
   const features = [
+    { href: "/together/experiments", name: experiments.hub.name, what: experiments.hub.what, theme: null },
     { href: "/together/league", name: t.features.league.name, what: t.features.league.what, theme: null },
     ...Object.entries(IDEA_PAGES).map(([slug, page]) => {
       const idea = ideaBySlug(slug)!;

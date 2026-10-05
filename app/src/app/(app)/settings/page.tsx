@@ -8,25 +8,25 @@ import { programmeBySlug, programmes } from "@/data";
 import { db, schema } from "@/db";
 import { ageFrom, MIN_SCREEN_AGE, percent } from "@/engine";
 import { switchProfile } from "@/lib/actions";
-import { blockedBy, gates, openRequests } from "@/lib/family";
+import { blockedBy, gates } from "@/lib/family";
 import { requireMember } from "@/lib/session";
-import { askCounsellor, askForData, leave, start } from "./actions";
+import { askCounsellor, leave, start } from "./actions";
 import { Confirm } from "./confirm";
+import { DataCard } from "./data/card";
 
 export const metadata: Metadata = { title: t.title };
 
 export default async function SettingsPage() {
   const m = await requireMember();
-  const [g, devices, requests] = await Promise.all([
+  const [g, devices] = await Promise.all([
     gates(m, m.profile.id),
     db.select().from(schema.device).where(eq(schema.device.accountId, m.account.id)).orderBy(desc(schema.device.calibratedAt)),
-    openRequests(m),
   ]);
   if (!g) throw new Error("The active profile is not in this account.");
   const { eye, enrolment } = m;
   const programme = enrolment ? programmeBySlug(enrolment.programme) : null;
   const waiting = programme?.level === 2 && enrolment?.dailyMinutes === 0;
-  const e = t.eye, f = t.family, p = t.programme, c = t.counsellor, d = t.data;
+  const e = t.eye, f = t.family, p = t.programme, c = t.counsellor;
   /* A cheer seat may look. Every control that writes is left out for them, and the actions refuse them too. */
   const canManage = m.can("manage_family");
 
@@ -152,7 +152,7 @@ export default async function SettingsPage() {
           )}
         </Card>
 
-        <Card title={t.devices.title} span={6}>
+        <Card title={t.devices.title} span={6} right={<Btn href="/settings/screen" small>{t.devices.colours}</Btn>}>
           {devices.length ? (
             <div>
               {devices.map((dv) => (
@@ -164,27 +164,8 @@ export default async function SettingsPage() {
           ) : <Empty title={t.devices.empty.title}><span>{t.devices.empty.body}</span></Empty>}
         </Card>
 
-        <Card title={d.title} span={6}>
-          {!m.can("data") && <p className="notice">{d.guardianOnly}</p>}
-          {(["export", "delete"] as const).map((kind) => {
-            const open = requests.find((r) => r.kind === kind);
-            const form = (label: string, dark?: boolean) => (
-              <form action={askForData}>
-                <input type="hidden" name="kind" value={kind} />
-                <button className={`btn btn-sm${dark ? " btn-d" : ""}`}>{label}</button>
-              </form>
-            );
-            return (
-              <div className="stack" key={kind}>
-                <p>{d[kind].what}</p>
-                {open ? <p className="row"><Chip tone="warn">{d.open(day(open.createdAt))}</Chip></p>
-                  : !m.can("data") ? null
-                  : kind === "delete" ? <Confirm ask={d.delete.ask} warn={d.delete.warn}>{form(d.delete.yes, true)}</Confirm>
-                  : form(d.export.ask)}
-              </div>
-            );
-          })}
-        </Card>
+        {/* The family's copy of its data, and deletion: src/app/(app)/settings/data/card.tsx */}
+        <DataCard m={m} />
       </div>
     </>
   );

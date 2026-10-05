@@ -44,6 +44,14 @@ export const contrastLevels = (): number[] => Array.from({ length: 12 }, (_, i) 
 
 export const CONTRAST_BACKGROUND = 186;
 
+/**
+ * Grey value of the mid-grey background: half of full light on a screen with this gamma. With the usual gamma it is
+ * `CONTRAST_BACKGROUND`. The letter's grey follows the screen's gamma, so the background must follow it too: on a
+ * screen measured at another gamma a fixed 186 would no longer be half light, and the faintest letters would come
+ * out lighter than the background instead of darker.
+ */
+export const contrastField = (gamma = 2.2) => Math.round(255 * Math.pow(0.5, 1 / gamma));
+
 /** Grey value of the letter for a logCS step, on the mid-grey background. */
 export const contrastGrey = (logCs: number, gamma = 2.2) =>
   Math.round(255 * Math.pow(0.5 * (1 - Math.pow(10, -logCs)), 1 / gamma));
