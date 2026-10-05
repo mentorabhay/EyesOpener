@@ -15,7 +15,7 @@ describe("the data requests job", () => {
   });
 
   it("has a label in the staff room for every count it reports", () => {
-    expect(Object.keys(dataAdmin.job.counts).sort()).toEqual(["copiesClosed", "copiesReady", "datesSet", "failed", "householdsDeleted", "kept", "profilesDeleted"]);
+    expect(Object.keys(dataAdmin.job.counts).sort()).toEqual(["copiesClosed", "copiesReady", "datesSet", "failed", "householdsDeleted", "kept", "profilesDeleted", "signInsLeft", "signInsRemoved"]);
   });
 });
 

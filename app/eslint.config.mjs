@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The camera features' runtime, copied from an npm package by scripts/vision-files.mjs:
+    "public/vision/**",
   ]),
 ]);
 

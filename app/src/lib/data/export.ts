@@ -93,6 +93,14 @@ const SHARED: Partial<Record<TableName, { keepId?: boolean; describe: (tx: Tx, i
       .from(schema.experiment).innerJoin(schema.protocol, eq(schema.protocol.id, schema.experiment.protocolId)).where(inArray(schema.experiment.id, ids)))
       .map((r) => [r.id, { Idea: r.idea }])),
   },
+  discoveryRound: {
+    describe: async (tx, ids) => new Map((await tx.select({ id: schema.discoveryRound.id, title: schema.discoveryRound.title })
+      .from(schema.discoveryRound).where(inArray(schema.discoveryRound.id, ids))).map((r) => [r.id, { "": r.title }])),
+  },
+  discoveryQuestion: {
+    describe: async (tx, ids) => new Map((await tx.select({ id: schema.discoveryQuestion.id, question: schema.discoveryQuestion.question })
+      .from(schema.discoveryQuestion).where(inArray(schema.discoveryQuestion.id, ids))).map((r) => [r.id, { "": r.question }])),
+  },
 };
 /** The shared tables the copy can put into words. A test checks that every key from a family's rows to a shared table is one of these. */
 export const DESCRIBED = Object.keys(SHARED) as TableName[];
@@ -190,6 +198,8 @@ export async function buildFamilyFile(accountId: string, viewer: { id: string; e
       if (game) names.items[slug] = { name: game.name, kind: copy.file.kinds.game, numbers: numbers(gameGuideFor(slug)?.measures, true) };
       else if (exercise) names.items[slug] = { name: exercise.name, kind: copy.file.kinds.exercise, numbers: numbers(guideFor(slug)?.measures, false) };
       else if (slug === CINEMA) names.items[slug] = { name: copy.file.cinema, kind: copy.file.kinds.film };
+      /* the workday monitor is not a catalogue item: its runs and the breaks it saw carry this slug (src/lib/monitor-rules.ts) */
+      else if (slug === "workday-monitor") names.items[slug] = { name: copy.file.monitor, kind: copy.file.kinds.monitor };
     }
     for (const slug of idsIn(raw.programmes, "programme")) { const p = programmeBySlug(slug); if (p) names.programmes[slug] = p.name; }
     for (const key of new Set([...idsIn(raw.checkUps, "testKey"), ...raw.sessions.filter((s) => s.kind === "test").map((s) => String(s.itemSlug))])) {

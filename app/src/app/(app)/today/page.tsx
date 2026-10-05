@@ -55,6 +55,8 @@ export default async function TodayPage() {
           <div className="row">
             <Btn href="/train/games/far-window/play" small>{t.fill.rest}</Btn>
             <Btn href="/train/games/sky-spotter/play" small>{t.fill.light}</Btn>
+            {/* The workday monitor is for a grown-up's profile, opened by a guardian seat. */}
+            {m.profile.kind === "adult" && m.seat !== "circle" && <Btn href="/today/monitor" small>{t.fill.monitor}</Btn>}
           </div>
         </Card>
 

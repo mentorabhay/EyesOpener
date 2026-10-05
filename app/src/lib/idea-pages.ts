@@ -6,6 +6,11 @@ export const IDEA_PAGES: Readonly<Record<string, string>> = {
   "fusion-mail": "mail",
   "notes-from-four-weeks-ahead": "notes",
   "lend-a-light": "lights",
+  "proof-of-help": "proof",
+  "duet-streak": "duet",
   "focus-wall": "wall",
+  "discovery-board": "discovery",
   "travelling-glasses": "glasses",
+  "light-the-map": "map",
+  "draw-your-hero": "hero",
 };

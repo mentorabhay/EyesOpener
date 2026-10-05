@@ -28,6 +28,7 @@ export const PARTS = [
   "counsellorLinks", "counsellorNotes", "stories", "ideas", "experiments", "experimentPlaces", "review",
   "lights", "weekNotes", "mail", "wallTiles", "gallery", "glassesJourney", "heroes", "teams", "teamMoves",
   "sponsorGroups", "pushTokens", "enquiries", "dataRequests",
+  "duets", "discoveryVotes", "mapPlaces",
 ] as const;
 export type PartKey = (typeof PARTS)[number];
 
@@ -422,6 +423,52 @@ export const TABLES = {
     copy: { part: "sponsorGroups" },
     erase: "rows",
   },
+
+  /* ───────────── package: people (Duet Streak, Discovery Board, Light the Map) ───────────── */
+  duet: {
+    holds: "A duet: two people of the household who keep one streak, and the day it started.",
+    owner: { account: ["accountId"], profile: ["aProfileId", "bProfileId"], person: ["bUserId"] },
+    copy: { part: "duets" },
+    erase: "rows",
+    links: { createdBy: { fate: "cleared", why: sameHousehold } },
+  },
+  discoveryRound: {
+    holds: "A round of voting on the Discovery Board.",
+    copy: { leftOut: "Opened by staff and shared by everyone. The family's file names the round each of its votes was given in." },
+    erase: { untouched: "Opened by staff and shared by everyone." },
+    links: { createdBy: { fate: "cleared", why: staffOnly } },
+  },
+  discoveryQuestion: {
+    holds: "A question staff put on the Discovery Board, and its answer once there is one.",
+    copy: { leftOut: "Written by staff and shared by everyone. The family's file gives the question each of its votes went to." },
+    erase: { untouched: "Written by staff and shared by everyone. An answer holds pooled numbers and no household." },
+    links: { createdBy: { fate: "cleared", why: staffOnly }, answeredBy: { fate: "cleared", why: staffOnly } },
+  },
+  discoveryVote: {
+    holds: "The question a profile voted for in one round of the Discovery Board.",
+    owner: { profile: ["profileId"] },
+    copy: { part: "discoveryVotes" },
+    erase: "rows",
+  },
+  mapPlace: {
+    holds: "The household's place on the map: the first three digits of its PIN code, and a welcome line if it chose one.",
+    owner: { account: ["accountId"] },
+    copy: { part: "mapPlaces" },
+    erase: "rows",
+    links: { joinedBy: { fate: "cleared", why: sameHousehold } },
+  },
+
+  /* ───────────── package: signin (sign-in with Firebase Authentication) ───────────── */
+  signinAsk: {
+    holds: "A count of sign-in links asked for: a scrambled form of the address or network it came from, and the time.",
+    copy: { leftOut: "Holds a scrambled key that cannot be turned back into an address, so no row can be tied to a household." },
+    erase: { untouched: "Every row is removed a day after it is made. It holds a scrambled key, never an address." },
+  },
+  signinRemoval: {
+    holds: "A sign-in account still to be removed from the sign-in service after its person was deleted: only its id there.",
+    copy: { leftOut: "It exists only after a person has been deleted, so it belongs to no household that could ask for a copy." },
+    erase: { untouched: "A deletion makes this row. It goes as soon as the sign-in service confirms that the account is removed." },
+  },
 } satisfies { [K in TableName]: Rule<K> };
 
 /** The same list, read by name. */
@@ -437,6 +484,7 @@ export const ERASE_ORDER: readonly TableName[] = [
   "moderationItem", "counsellorNote", "counsellorLink",
   "experimentSignal", "experimentEnrolment", "experiment", "protocol", "story",
   "lightGift", "aheadNote", "fusionMail", "galleryUnlock", "glassesLeg", "hero", "teamMove", "teamMember",
+  "duet", "discoveryVote", "mapPlace",
   "monitorSample", "careLog", "carePlan", "daySummary", "session", "enrolment", "streak",
   "testResult", "eyeProfile", "onboardingRun", "triage", "consent",
   "enquiry", "pushToken", "invite", "sponsorGroupMember", "dataRequest", "device",

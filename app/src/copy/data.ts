@@ -153,9 +153,10 @@ export const data = {
     outside: "A person at IOpener",
     counsellor: (name: string) => `${name} (counsellor)`,
     otherFamily: "A member of another family",
-    kinds: { game: "Game", exercise: "Exercise", film: "Two-eye cinema" } as Record<string, string>,
+    kinds: { game: "Game", exercise: "Exercise", film: "Two-eye cinema", monitor: "Habit coaching by camera" } as Record<string, string>,
     measure: (label: string, unit: string) => (unit ? `${label} (${unit})` : label),
     cinema: "Two-eye cinema",
+    monitor: "Workday monitor",
     /** A number every game keeps that the results screen does not label: the level the game stood at when the session ended. */
     level: "Level when the session ended (of 10)",
     parts: {
@@ -193,7 +194,7 @@ export const data = {
       days: { title: "Days", what: "The three rings for each day.", units: { restBreaks: "breaks taken", restGoal: "breaks", trainMinutes: "minutes", trainGoal: "minutes", lightMinutes: "minutes outdoors", lightGoal: "minutes", screenMinutes: "minutes" } },
       carePlans: { title: "Care plans", what: "What an eye doctor prescribed away from the screen, as a guardian typed it in. IOpener never sets or changes it.", units: { perDay: "hours a day for a patch or glasses; 1 for a day with drops", days: "days of the week, 0 Sunday to 6 Saturday; empty means every day" } },
       careLog: { title: "Care log", what: "The family's own log of patch time, glasses wear, drops, outdoor time and breaks.", units: { minutes: "minutes", count: "times" } },
-      monitorSamples: { title: "Workday monitor", what: "One-minute numbers from the workday monitor. No picture is ever stored.", units: { distanceCm: "centimetres from the screen", blinksPerMin: "blinks a minute", posture: "a posture score worked out on the device", minutesSinceBreak: "minutes" } },
+      monitorSamples: { title: "Workday monitor", what: "One-minute numbers from the workday monitor. No picture is ever stored.", units: { distanceCm: "centimetres from the screen", blinksPerMin: "blinks a minute, full and half blinks together", halfBlinksPerMin: "of those, half blinks a minute (a rough figure)", posture: "share of the minute with the head level and not leaning in, from 0 to 1", minutesSinceBreak: "minutes of screen work since the last break", faceSeconds: "seconds of the minute with a face in view", prompt: "what fell due or was shown in that minute: break, close, blink or tilt", takenAt: "the start of the minute that was measured" } },
       streaks: { title: "Streaks", what: "Days in a row with practice, the longest run, and lights left to give.", units: { current: "days", longest: "days", lights: "lights" } },
       counsellorLinks: { title: "Counsellor links", what: "Each link between a profile and a counsellor, by the counsellor's name, and whether it is pending, active or ended." },
       counsellorNotes: { title: "Counsellor notes", what: "The notes a linked counsellor wrote about the member. linkId points at a row in counsellorLinks." },
@@ -215,6 +216,9 @@ export const data = {
       pushTokens: { title: "Phones that get messages", what: "The address each phone gave so the app can send it a message." },
       enquiries: { title: "Messages you sent from the site", what: "Messages sent from the forms on the public site with the email address you sign in with. Messages another grown-up of the household sent are not here: each person gets their own." },
       dataRequests: { title: "Data requests", what: "Every request for a copy or for deletion, this one included." },
+      duets: { title: "Duet streaks", what: "Each duet a guardian set up: the two people who keep one streak and the day it started. The streak itself is not stored: it is counted from the days and notes in the other parts." },
+      discoveryVotes: { title: "Discovery Board votes", what: "The question each profile voted for in a round of the Discovery Board, by the round's name and the question's words." },
+      mapPlaces: { title: "Place on the map", what: "The household's place on the map, if a guardian joined it: the first three digits of the PIN code, the day it joined and the key of the welcome line it chose. The full PIN code was never asked for." },
     } satisfies Record<PartKey, { title: string; what: string; units?: Record<string, string> }>,
   },
 };
@@ -238,6 +242,7 @@ export const dataAdmin = {
     counts: {
       copiesReady: "Copies made ready", copiesClosed: "Copies closed after their days ran out", datesSet: "Deletions given a date",
       householdsDeleted: "Households deleted", profilesDeleted: "Profiles deleted", kept: "Deletions closed without deleting", failed: "Deletions that failed",
+      signInsRemoved: "Sign-in accounts removed from the sign-in service", signInsLeft: "Sign-in accounts still waiting to be removed",
     } as Record<string, string>,
     nothing: "Nothing was due.",
   },

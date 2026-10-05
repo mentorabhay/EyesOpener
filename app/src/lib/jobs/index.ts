@@ -11,9 +11,13 @@
 import crypto from "node:crypto";
 import { db, schema } from "@/db";
 import { dataRequests } from "./data-requests";
+import { discoveryRounds } from "./discovery-rounds";
 import { experimentSignals } from "./experiment-signals";
 import { leagueDays, leagueWeek } from "./league";
+import { monitorSamples } from "./monitor-samples";
 import { programmeWeeks } from "./programme-weeks";
+import { signInTidy } from "./sign-in";
+import { wallTiles } from "./wall-tiles";
 
 export type Cadence = "daily" | "weekly";
 export interface JobResult { ok: boolean; note: string; counts?: Record<string, number> }
@@ -32,7 +36,11 @@ export const JOBS: readonly Job[] = [
   leagueWeek,
   leagueDays,
   dataRequests,
+  signInTidy,
   programmeWeeks,
+  monitorSamples,
+  discoveryRounds,
+  wallTiles,
 ];
 
 /** The secret a scheduler must send. Null when jobs cannot be called from outside. */

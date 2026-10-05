@@ -2,7 +2,6 @@ export const auth = {
   title: "Sign in",
   demoTitle: "Demo sign-in",
   demoSub: "Pick a person to see their side of IOpener. Each has their own pages and their own limits.",
-  off: "Sign-in with Google and email opens when the Firebase project is connected.",
   groups: {
     household: { title: "A family", sub: "Guardians manage the household. A cheer seat can look and encourage." },
     staff: { title: "IOpener staff", sub: "The admin console. Each role sees only its rooms." },

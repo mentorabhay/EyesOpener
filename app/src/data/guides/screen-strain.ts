@@ -60,7 +60,7 @@ export const guides: Guide[] = [
     need: [
       "A timer that can ring every 20 minutes: a phone alarm, a kitchen timer or a clock you can see.",
       "Something to look at 6 metres away or more: out of a window, down a corridor, across a large room.",
-      "Timing by the laptop camera is not built yet. For now you set the timer yourself and log each break by hand.",
+      "A grown-up at a computer can let the workday monitor time the breaks with the camera: open Today, then Workday monitor. Everyone else sets the timer and logs each break by hand, as below.",
     ],
     setup: [
       "Before you start work, pick your far thing: a tree, a rooftop, the end of a corridor. Six metres is about eight normal steps.",
@@ -144,7 +144,7 @@ export const guides: Guide[] = [
     need: [
       "The laptop or desk screen you work at. The figures here are for a screen on a desk, not a phone held in the hand.",
       "A tape measure or ruler. With neither, a sheet of A4 paper: its long side is almost exactly 30 cm.",
-      "Measuring by camera is not built yet. For now you measure by hand.",
+      "A grown-up at a computer can let the workday monitor read this distance with the camera, once it has been set with a tape: open Today, then Workday monitor. This routine is the check by hand.",
     ],
     setup: [
       "Sit the way you really sit when you work. Do not sit up straight just for the check.",

@@ -4,6 +4,8 @@
  * Weaker-eye ink: the runner and the coins. Every coin hangs just too high to be run into, so it is only
  * collected by a jump timed from where the coin and the runner are, and coins are the only thing that
  * scores. With the stronger eye alone there is no runner and no coin to time a jump from.
+ * A member who has made a hero in Draw Your Hero runs as that hero: the same place, the same height, the
+ * same weaker-eye ink, with the lantern carried in front. The rules do not change with the shape.
  * Stronger-eye ink, at that eye's contrast: what is in the way. Crates and stalls stand on the ground
  * and have to be jumped; signs hang overhead and have to be run under. Hitting one is a quiet stumble:
  * the pace eases and the lantern goes out until the next one is passed cleanly, and only a lit lantern
@@ -190,6 +192,21 @@ export const lanternRun: GameDef<State> = {
     const me = k.ctx("weak");
     me.globalAlpha = s.dark ? 0.5 : 1;
     const a = 0.08 + 0.6 * Math.sin((s.stumble / 0.7) * Math.PI), cos = Math.cos(a), sin = Math.sin(a), fy = GROUND - s.f;
+    if (k.hasHero) {
+      /* The member's own hero is the runner: as tall as the runner, feet on the same spot, with a small step in its walk. */
+      const tall = (BODY + 1) * u, hop = s.f > 0 ? 0 : Math.abs(Math.sin(s.step)) * 1.2 * u, lean = tall * sin;
+      const { w, h } = k.hero(l.rx, fy - hop, tall, "weak", lean);
+      /* The lantern hangs from a short arm in front, lit or out, as it does for the runner. */
+      const hx = l.rx + w / 2 + lean * 0.6, hy = fy - hop - h * 0.62, lx = hx + 6 * u, ly = hy + 8 * u;
+      k.line(hx - 3 * u, hy, lx, hy, "weak", 1.8 * u);
+      k.line(lx, hy, lx, ly - 4 * u, "weak", 1.5 * u);
+      k.ring(lx, ly, 4 * u, "weak", 1.5 * u);
+      if (!s.dark) k.disc(lx, ly, 2.2 * u, "weak");
+      me.globalAlpha = 1;
+      done();
+      k.hud(`${t.lanternRun.coins} ${k.score}`);
+      return;
+    }
     const at = (x: number, y: number): [number, number] => [l.rx + (x * cos - y * sin) * u, fy + (x * sin + y * cos) * u];
     const limb = (p: [number, number], q: [number, number], w: number) => k.line(p[0], p[1], q[0], q[1], "weak", w * u);
     const swing = Math.sin(s.step), hip = at(0, -13);

@@ -22,6 +22,7 @@ import { and, desc, eq, gte, inArray, isNotNull, isNull, lte, or } from "drizzle
 import { db, schema } from "@/db";
 import type { JobResult } from "@/lib/jobs";
 import type { Member } from "@/lib/session";
+import { removeQueued, REMOVAL_NOTES } from "@/lib/signin/removal";
 import { eraseHousehold, eraseProfile } from "./erase";
 import { addDays, canDeleteProfile, canDownload, COPY_DAYS, isLive, stepFor, WAIT_DAYS } from "./state";
 
@@ -150,6 +151,7 @@ export async function carryOut(requestId: string, now = new Date()): Promise<Out
  *  2. A copy whose days ran out is closed.
  *  3. A deletion with no date gets one, WAIT_DAYS from now: the family was never shown a date, so the wait starts today.
  *  4. Every deletion whose waiting time is over is carried out, each in its own transaction, so one failure stops only itself.
+ *  5. The sign-in accounts of the people those deletions removed are removed from Firebase Authentication.
  */
 export async function runDataRequests(now = new Date()): Promise<JobResult> {
   const counts = { copiesReady: 0, copiesClosed: 0, datesSet: 0, householdsDeleted: 0, profilesDeleted: 0, kept: 0, failed: 0 };
@@ -170,7 +172,13 @@ export async function runDataRequests(now = new Date()): Promise<JobResult> {
       else if (out === "kept") counts.kept++;
     } catch { counts.failed++; }
   }
-  return { ok: counts.failed === 0, note: counts.failed ? "A deletion failed and was left as it was. Nothing of it was removed." : "done", counts };
+  /* The people who were deleted are removed from the sign-in service too, in this same run. What cannot be removed now stays queued. */
+  const signIns = await removeQueued(now);
+  const all = { ...counts, signInsRemoved: signIns.removed, signInsLeft: signIns.left };
+  const notes = [counts.failed ? "A deletion failed and was left as it was. Nothing of it was removed." : "", signIns.note].filter(Boolean);
+  /* A developer's machine has no service account: leaving the queue there is expected, and not a failure. */
+  const ok = counts.failed === 0 && (signIns.left === 0 || signIns.note === REMOVAL_NOTES.noIdentity || signIns.note === REMOVAL_NOTES.notSetUp);
+  return { ok, note: notes.join(" ") || "done", counts: all };
 }
 
 /* ───────────── the staff room ───────────── */

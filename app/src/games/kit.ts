@@ -9,6 +9,7 @@
  * A game never sets contrast and never ends a session. The Stage around it owns the dose clock and the stop rule.
  */
 import { channel } from "@/engine";
+import { defaultHero, type Sprite } from "./hero";
 
 export type Ink = "weak" | "strong" | "both";
 export const W = 640, H = 360;
@@ -42,6 +43,11 @@ export interface GameProps {
    * The Stage keeps it and saves a copy when the session ends.
    */
   onStats?: (stats: Stats) => void;
+  /**
+   * The hero this member made in Draw Your Hero: a small grid of cells, already checked on the server.
+   * Left out or null when the member has made none.
+   */
+  hero?: Sprite | null;
 }
 
 /**
@@ -104,6 +110,16 @@ export interface Kit {
   text(s: string, x: number, y: number, ink: Ink, size?: number, align?: CanvasTextAlign): void;
   /** The white frame both eyes see. Draw it in every scene: it holds the two eyes together. */
   frame(): void;
+  /** True when the member has made a hero. A game with a character of its own may keep that character when this is false. */
+  hasHero: boolean;
+  /**
+   * Draws the member's hero in one ink, or the kit's own figure when the member has made none.
+   * The hero is fitted into a square `size` units a side that stands on (x, y): x is its middle, y is under its feet.
+   * `lean` tips it over: the top moves that many units sideways and the feet stay where they are.
+   * Returns the width and height that were drawn. The hero is ink like any other shape: where it is what the
+   * weaker eye must find, draw it in weaker-eye ink.
+   */
+  hero(x: number, y: number, size: number, ink: Ink, lean?: number): { w: number; h: number };
   /**
    * Draw one shape for each eye, pulled apart by a vergence demand in prism dioptres.
    * Positive turns the eyes in (convergence); negative turns them out (divergence).
@@ -157,6 +173,7 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
   const left: Ink = p.cyanEye === "L" ? "weak" : "strong", right: Ink = p.cyanEye === "L" ? "strong" : "weak";
   let streak = 0, misses = 0;
   const stats: Stats = { hits: 0, misses: 0, level: 1, top: 1 };
+  const own = p.hero && Array.isArray(p.hero.rows) && p.hero.rows.length ? p.hero : null;
   const lvl = (n: number) => { k.level = n; stats.level = n; stats.top = Math.max(stats.top, n); };
   const num = (v: number) => (Number.isFinite(v) ? Math.round(v * 100) / 100 : 0);
   /* Crossed images make the eyes turn in: the left eye's picture sits to the right, the right eye's to the left. */
@@ -186,6 +203,21 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
     },
     text(s, x, y, ink, size = 20, align = "left") { const g = k.ctx(ink); g.font = `700 ${size}px Verdana, sans-serif`; g.textAlign = align; g.textBaseline = "alphabetic"; g.fillText(s, x, y); },
     frame() { k.box(8, 8, W - 16, H - 16, "both", false, 3); },
+    hasHero: !!own,
+    hero(x, y, size, ink, lean = 0) {
+      const sp = own ?? defaultHero(), g = k.ctx(ink), c = size / Math.max(sp.w, sp.h), left = x - (sp.w * c) / 2, top = y - sp.h * c;
+      /* One path for the whole shape, so its cells join with no seams and a dimmed hero is dimmed evenly. */
+      g.beginPath();
+      sp.rows.forEach((row, r) => {
+        const y0 = top + r * c, s0 = lean * (1 - r / sp.h), s1 = lean * (1 - (r + 1) / sp.h);
+        for (let i = 0; i < row.length; i += 2) {
+          const x0 = left + row[i] * c, x1 = x0 + row[i + 1] * c;
+          g.moveTo(x0 + s0, y0); g.lineTo(x1 + s0, y0); g.lineTo(x1 + s1, y0 + c); g.lineTo(x0 + s1, y0 + c); g.closePath();
+        }
+      });
+      g.fill();
+      return { w: sp.w * c, h: sp.h * c };
+    },
     hud(s) {
       /* A long line at a large letter size is shrunk to fit the scene rather than run off it. */
       const g = k.ctx("both");

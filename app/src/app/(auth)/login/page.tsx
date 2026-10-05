@@ -1,52 +1,58 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 import { asc, eq } from "drizzle-orm";
-import { Card, Chip, PageHead } from "@/components/ui";
-import { auth as t } from "@/copy/auth";
-import { common } from "@/copy/common";
+import { auth as demo } from "@/copy/auth";
+import { signin as t } from "@/copy/signin";
 import { db, schema } from "@/db";
-import { demoSignIn } from "@/lib/actions";
-import { demoLoginOn, getViewer } from "@/lib/auth";
+import { CHILD_COOKIE, demoLoginOn, getViewer, isDemoPerson, type Viewer } from "@/lib/auth";
+import { getMember } from "@/lib/session";
+import { cleanNext } from "@/lib/signin/flow";
+import { holdOf, loginGate } from "@/lib/signin/hold";
+import { settingsProblems, signInSettings } from "@/lib/signin/settings";
+import { LoginView, type DemoGroup } from "./view";
 
-export const metadata: Metadata = { title: t.title };
+export const metadata: Metadata = { title: t.title, robots: { index: false, follow: false } };
 
-export default async function LoginPage() {
-  if (!demoLoginOn()) {
-    return <main className="page" style={{ maxWidth: 720, marginInline: "auto" }}><PageHead title={t.title} sub={t.off} /></main>;
-  }
-  const viewer = await getViewer();
+/** The seeded people of the demo, by the side of IOpener each shows. */
+async function demoGroups(viewer: Viewer | null): Promise<DemoGroup[]> {
   const users = await db.select().from(schema.appUser).orderBy(asc(schema.appUser.createdAt));
   const sponsors = await db.select({ userId: schema.sponsorUser.userId, name: schema.sponsor.name, status: schema.sponsor.status })
     .from(schema.sponsorUser).innerJoin(schema.sponsor, eq(schema.sponsor.id, schema.sponsorUser.sponsorId));
   const households = await db.select().from(schema.account).where(eq(schema.account.isDemo, true));
   const demoIds = new Set(households.map((h) => h.id));
-
-  const groups = [
-    { ...t.groups.household, people: users.filter((u) => u.accountId && demoIds.has(u.accountId)).map((u) => ({ u, role: t.seat[u.seat ?? "guardian"] })) },
-    { ...t.groups.staff, people: users.filter((u) => u.staffRole).map((u) => ({ u, role: t.staff[u.staffRole!] })) },
-    { ...t.groups.counsellor, people: users.filter((u) => u.isCounsellor).map((u) => ({ u, role: u.counsellorVerifiedAt ? t.counsellor.verified : t.counsellor.waiting })) },
-    { ...t.groups.sponsor, people: sponsors.map((s) => ({ u: users.find((u) => u.id === s.userId)!, role: t.sponsor[s.status] })).filter((p) => p.u) },
+  /* Only seeded people are offered: nobody who signed in for real is ever listed here, and `signInAs` refuses them too. */
+  const seeded = users.filter((u) => isDemoPerson(u, !!u.accountId && demoIds.has(u.accountId)));
+  const show = (u: (typeof users)[number], role: string) => ({ id: u.id, name: u.displayName, email: u.email, role, current: viewer?.user.id === u.id });
+  return [
+    { ...demo.groups.household, people: seeded.filter((u) => u.accountId && demoIds.has(u.accountId)).map((u) => show(u, demo.seat[u.seat ?? "guardian"])) },
+    { ...demo.groups.staff, people: seeded.filter((u) => u.staffRole).map((u) => show(u, demo.staff[u.staffRole!])) },
+    { ...demo.groups.counsellor, people: seeded.filter((u) => u.isCounsellor).map((u) => show(u, u.counsellorVerifiedAt ? demo.counsellor.verified : demo.counsellor.waiting)) },
+    { ...demo.groups.sponsor, people: sponsors.flatMap((sp) => { const u = seeded.find((x) => x.id === sp.userId); return u ? [show(u, demo.sponsor[sp.status])] : []; }) },
   ];
+}
 
+export default async function LoginPage({ searchParams }: { searchParams: Promise<{ next?: string; done?: string; why?: string }> }) {
+  const q = await searchParams;
+  const settings = signInSettings();
+  /* Half-made settings leave sign-in "not set up". The server's log says which one is wrong, never its value. */
+  if (!settings) for (const problem of settingsProblems()) console.warn(`[sign-in] ${problem}`);
+
+  /* Child mode: a child cannot reach this page while the app can open for whoever is signed in. */
+  const hold = await holdOf((await cookies()).get(CHILD_COOKIE)?.value);
+  const gate = loginGate(hold.state, hold.state === "live" && !!(await getMember())?.childMode);
+  if (gate === "to_today") redirect("/today");
+
+  const viewer = await getViewer();
   return (
-    <main className="page" style={{ maxWidth: 1040, marginInline: "auto" }}>
-      <PageHead title={t.demoTitle} sub={t.demoSub} />
-      <div className="bento">
-        {groups.map((g) => (
-          <Card key={g.title} title={g.title} span={6}>
-            <p className="muted small">{g.sub}</p>
-            <div>
-              {g.people.map(({ u, role }) => (
-                <form className="ins" key={u.id + role} action={demoSignIn}>
-                  <input type="hidden" name="userId" value={u.id} />
-                  <div className="tx"><b>{u.displayName}</b><div className="sub">{role} · {u.email}</div></div>
-                  {viewer?.user.id === u.id ? <Chip tone="ok">{t.current}</Chip> : <button className="btn btn-sm" type="submit">{t.signIn}</button>}
-                </form>
-              ))}
-            </div>
-          </Card>
-        ))}
-      </div>
-      <p className="muted small">{common.notMedical}</p>
-    </main>
+    <LoginView
+      signIn={settings && { google: settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null }}
+      demo={demoLoginOn() ? await demoGroups(viewer) : null}
+      me={viewer?.real ? { name: viewer.user.displayName, email: viewer.user.email, go: viewer.home === "/login" ? "/login/welcome" : viewer.home } : null}
+      held={gate === "sign_in_held"}
+      next={cleanNext(q.next)}
+      done={typeof q.done === "string" && Object.hasOwn(t.done, q.done) ? t.done[q.done] : undefined}
+      why={q.why === "child_mode" ? t.refused.child_mode : undefined}
+    />
   );
 }

@@ -1,0 +1,40 @@
+/* Draw Your Hero. Every hero sits on the black field of a .scene, in the weaker eye's ink. */
+.maker { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.steps { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 13.5px; }
+.square { width: 100%; max-width: 320px; aspect-ratio: 1; }
+.stage { composes: square; display: grid; place-items: center; padding: 8%; }
+.stage svg { width: 100%; height: 100%; }
+.waiting { composes: square; border: 1px dashed var(--line-2); border-radius: var(--r-md); display: grid; place-items: center; padding: 18px; text-align: center; color: var(--ink-3); font-size: 13px; }
+
+/* The drawing sheet is white paper whatever the theme: the tracing reads dark ink on light paper. */
+.pad { composes: square; display: block; background: #fff; border: 1px solid var(--line-2); border-radius: var(--r-md); touch-action: none; cursor: crosshair; }
+.pad:focus-visible { outline: 2px solid var(--g1); outline-offset: 2px; }
+
+.cam { composes: square; position: relative; overflow: hidden; border-radius: var(--r-md); background: #000; }
+.cam video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cam i { position: absolute; inset: 7%; border: 2px dashed #fff; border-radius: 10px; pointer-events: none; }
+
+.starters { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+.starters button { border: 2px solid transparent; border-radius: var(--r-md); padding: 0; background: none; cursor: pointer; display: grid; gap: 4px; font-size: 12.5px; color: var(--ink-2); }
+.starters button[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+.starters button:focus-visible { outline: 2px solid var(--g1); outline-offset: 2px; }
+.starters span { padding: 0 2px 5px; }
+.thumb { aspect-ratio: 1; display: grid; place-items: center; padding: 12%; }
+.thumb svg { width: 100%; height: 100%; }
+
+.hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.agree { display: flex; gap: 8px; align-items: flex-start; font-size: 13.5px; }
+.agree input { margin-top: 3px; flex: none; }
+
+/* The heroes a profile keeps. */
+.kept { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+.kept li { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.kept li[data-current] .thumb { box-shadow: 0 0 0 2px var(--card), 0 0 0 4px var(--ink); }
+.kept details summary { cursor: pointer; font-size: 12.5px; color: var(--ink-3); }
+.kept details[open] summary { color: var(--ink); }
+.kept details p { font-size: 12.5px; margin: 6px 0; }
+.points { margin: 0; padding-left: 20px; display: grid; gap: 5px; font-size: 13.5px; }
+
+@media (max-width: 700px) {
+  .maker { grid-template-columns: minmax(0, 1fr); }
+}

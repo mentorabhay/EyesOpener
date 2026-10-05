@@ -66,10 +66,11 @@ A fuller build adds games and features without changing this code. The places it
 | `src/app/(admin)/`, `(counsellor)/`, `(sponsor)/`, `(auth)/` | The staff console, the two portals and sign-in |
 | `src/copy/` | Every word a person reads |
 | `docs/CONTRACT.md` | Build rules for anyone adding to the app, with the rules every game must meet |
+| `docs/SIGN-IN.md`, `src/lib/signin/` | Sign-in with Google and by email link: how it works, its settings, what to switch on at Firebase |
 
 ## Not built yet
 
-- Firebase sign-in (the demo sign-in stands in).
+- Sign-in with Google and by email link is built and waits for a Firebase project (`docs/SIGN-IN.md`). Until its settings are present the demo sign-in stands in.
 - Camera features (blink and distance monitor), voice audio, languages.
 - Data export and deletion jobs, the weekly league reset.
 - The privacy, children's data and terms pages are drafts. A lawyer must review them before launch.

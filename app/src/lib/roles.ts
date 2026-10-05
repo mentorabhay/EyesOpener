@@ -43,8 +43,14 @@ export const isGuardianSeat = (seat: Seat | null) => seat === "guardian" || seat
 
 /* ───────────── child mode containment ───────────── */
 
-/** Screens sealed while the device is in child mode. Everything under these prefixes redirects to /today. */
-export const SEALED_IN_CHILD_MODE = ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share", "/together/lights", "/login"] as const;
+/**
+ * Screens sealed while the device is in child mode. Everything under these prefixes redirects to /today.
+ * The sign-in pages are not in this list, and are sealed all the same: the page itself sends a child to /today
+ * whenever the app can open for whoever is signed in (`loginGate` in src/lib/signin/hold.ts). Sealing them here,
+ * where only a cookie can be read, made a loop: with nobody signed in, /today sent the browser to /login and this
+ * list sent it straight back. A grown-up must be able to reach sign-in on a device whose session has ended.
+ */
+export const SEALED_IN_CHILD_MODE = ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share", "/together/lights"] as const;
 
 export const isSealedPath = (pathname: string) => SEALED_IN_CHILD_MODE.some((p) => pathname === p || pathname.startsWith(p + "/"));
 

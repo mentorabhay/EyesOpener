@@ -1,0 +1,16 @@
+/* The sign-in pages: one narrow column, the same on a phone and on a desk. */
+.col { max-width: 480px; width: 100%; }
+/* Blocks one under another with a gap, where an empty one (a place kept for a message) takes no room at all. */
+.flow > * + *:not(:empty) { margin-top: 10px; }
+.h { font-size: 15px; font-weight: 600; margin: 0; }
+.h:focus { outline: none; }
+.google { min-height: 44px; width: 100%; max-width: 400px; }
+.or { display: flex; align-items: center; gap: 12px; margin: 4px 0; color: var(--ink-3); font-size: 12.5px; }
+.or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line-2); }
+.below { margin-top: 18px; }
+.choice { display: flex; flex-direction: column; gap: 10px; height: 100%; }
+.choice p { margin: 0; }
+.choice .end { margin-top: auto; padding-top: 4px; }
+.second { margin-bottom: 14px; }
+.second h2 { font-size: 22px; line-height: 1.15; margin: 0 0 4px; }
+.second p { margin: 0; max-width: 62ch; }

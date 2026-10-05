@@ -73,6 +73,8 @@ export const appUser = pgTable("app_user", {
   staffRole: staffRole(),
   isCounsellor: boolean().notNull().default(false),
   counsellorVerifiedAt: when(),
+  /** "Sign out on every device": a session that began before this moment no longer counts. Checked on every request. */
+  sessionsValidAfter: when(),
   createdAt: now(),
 }, (t) => [index().on(t.accountId)]);
 
@@ -304,6 +306,13 @@ export const monitorSample = pgTable("monitor_sample", {
   posture: real(),
   minutesSinceBreak: real(),
   takenAt: now(),
+  /* package "monitor": see the block at the end of this file. Null on rows written before these existed. */
+  /** Seconds of the minute with a face in view. A minute with too few is never stored. */
+  faceSeconds: real(),
+  /** Of `blinksPerMin`, the blinks in which the lids did not meet. A rough figure: see src/vision/blink.ts. */
+  halfBlinksPerMin: real(),
+  /** What fell due or came on show in this minute: break, close, blink, tilt. */
+  prompt: text(),
 }, (t) => [index().on(t.profileId, t.takenAt)]);
 
 export const streak = pgTable("streak", {
@@ -512,7 +521,9 @@ export const focusTile = pgTable("focus_tile", {
   idx: integer().notNull(),
   profileId: uuid().references(() => profile.id, { onDelete: "set null" }),
   createdAt: now(),
-}, (t) => [primaryKey({ columns: [t.wallId, t.idx] })]);
+  /** The finished practice day that earned this tile (package "hero"). Null on tiles from before the rule. */
+  day: date(),
+}, (t) => [primaryKey({ columns: [t.wallId, t.idx] }), uniqueIndex("focus_tile_one_a_day").on(t.wallId, t.profileId, t.day)]);
 
 export const galleryUnlock = pgTable("gallery_unlock", {
   profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
@@ -739,3 +750,142 @@ export const teamMove = pgTable("team_move", {
  * `device.gamma` and `device.channel_leak` already existed and are now written by the calibration
  * (`channel_leak` holds the larger of the two lens values). No foreign key was added.
  * The same change as SQL: drizzle/pending/cal.sql. The maths: src/engine/calibrate.ts. The rules: src/lib/screen-rules.ts. */
+
+/* ───────────── package: people (four community ideas) ─────────────
+ * Proof of Help needs no table: it is worked out from the ideas, the experiments and the pooled results above.
+ * The same change as SQL: drizzle/pending/people.sql. Each table has its line in src/lib/data/tables.ts.
+ * The rules: src/lib/duet.ts, src/lib/discovery.ts, src/lib/map.ts. */
+
+/**
+ * Duet Streak: two people of one household, of different generations, who keep one streak.
+ * A guardian sets it up and ends it. Nothing about a day is stored here: whether each did their part is read from
+ * the rows that already exist (the day's rings, finished sessions, the care log, notes sent).
+ * A duet that a guardian ends is deleted; nothing is kept of it.
+ */
+export const duet = pgTable("duet", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  /** The first partner is always a profile of the household. */
+  aProfileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** The second partner is another profile of the household ... */
+  bProfileId: uuid().references(() => profile.id, { onDelete: "cascade" }),
+  /** ... or a grown-up who signs in to the household and has no profile (a cheer seat, a co-guardian). Exactly one of the two is set. */
+  bUserId: uuid().references(() => appUser.id, { onDelete: "cascade" }),
+  /** The first day that counts, in India time. */
+  startedOn: date().notNull(),
+  /** The guardian who set it up. */
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+}, (t) => [index().on(t.accountId)]);
+
+/** Discovery Board: one round of voting. Staff open it with a list of questions; it closes on a set day. */
+export const discoveryRound = pgTable("discovery_round", {
+  id: id(),
+  /** What members see as the round's name, such as "October 2026". */
+  title: text().notNull(),
+  /** The last day a vote can be given or changed, in India time. */
+  closesOn: date().notNull(),
+  /** Set when the round was closed, by the daily job or by staff. Votes are final from then on. */
+  closedAt: when(),
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+});
+
+/** A question staff put on the board: something the pooled records could answer. Members never type one. */
+export const discoveryQuestion = pgTable("discovery_question", {
+  id: id(),
+  roundId: uuid().notNull().references(() => discoveryRound.id, { onDelete: "cascade" }),
+  question: text().notNull(),
+  /** One or two plain sentences: why it is worth asking, and which records could answer it. */
+  why: text().notNull(),
+  position: integer().notNull().default(0),
+  /** Set when staff took the question off the list. Votes for it are removed at the same moment. */
+  withdrawnAt: when(),
+  /** The answer, written by staff from the pooled records. Empty until there is one. */
+  answer: text(),
+  /** What the answer rests on, in words: which records, from when to when. */
+  answerBasis: text(),
+  /** How many members' records the answer rests on. Never fewer than the smallest group a pooled result may show. */
+  answerMembers: integer(),
+  answeredAt: when(),
+  answeredBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  /** True for demo rows only: the answer is sample data, and the page says so. Staff cannot set it. */
+  isSample: boolean().notNull().default(false),
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+}, (t) => [index().on(t.roundId)]);
+
+/** One vote per profile per round. It can be changed until the round closes. */
+export const discoveryVote = pgTable("discovery_vote", {
+  roundId: uuid().notNull().references(() => discoveryRound.id, { onDelete: "cascade" }),
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  questionId: uuid().notNull().references(() => discoveryQuestion.id, { onDelete: "cascade" }),
+  votedAt: now(),
+}, (t) => [primaryKey({ columns: [t.roundId, t.profileId] }), index().on(t.questionId)]);
+
+/**
+ * Light the Map: a household that a guardian has put on the map. One row per household; leaving deletes it.
+ * Only a coarse area is kept: the first three digits of the PIN code, which cover a district or a large part of
+ * a city. The full code is never asked for. An area is shown to anyone only once enough households are in it.
+ */
+export const mapPlace = pgTable("map_place", {
+  accountId: uuid().primaryKey().references(() => account.id, { onDelete: "cascade" }),
+  /** Three digits. */
+  area: text().notNull(),
+  /** The guardian who put the household on the map. */
+  joinedBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  joinedAt: now(),
+  /** A key from the fixed list of welcome lines (src/lib/map.ts). Only the first household of an area can set it. Never free text. */
+  welcome: text(),
+}, (t) => [index().on(t.area, t.joinedAt)]);
+
+/* ───────────── package: hero (Draw Your Hero, and the picture on the Focus Wall) ─────────────
+ * No new table. Added in place to `focus_tile`, because a column cannot be declared away from its table:
+ *   day (date, nullable) and the unique index `focus_tile_one_a_day` on (wall_id, profile_id, day).
+ * Together they keep one rule in the database itself: a profile earns at most one tile for one finished practice
+ * day, however many minutes it trained and however often the tiles are counted. The rule: src/lib/wall-rules.ts.
+ * `hero` is unchanged: `sprite` holds the grid that `cleanSprite` (src/games/hero.ts) passed, and nothing else.
+ * A camera consent is a `consent` row of kind "camera"; that kind was already named in the column's comment.
+ * The same change as SQL: drizzle/pending/hero.sql. */
+
+/* ───────────── package: signin (sign-in with Firebase Authentication) ─────────────
+ * Added in place to `app_user`, because a column cannot be declared away from its table:
+ *   sessions_valid_after (timestamptz, nullable)
+ * The same change as SQL: drizzle/pending/signin.sql. How sign-in works: docs/SIGN-IN.md. The rules: src/lib/signin/. */
+
+/**
+ * One row for each sign-in link asked for, and each try to finish one, so that neither can be done without limit.
+ * The server scales to zero, so the count cannot live in memory. Rows are removed after a day.
+ */
+export const signinAsk = pgTable("signin_ask", {
+  id: id(),
+  /** email: links asked for one address. net: links asked from one network address. finish: tries to finish a link from one network address. */
+  kind: text().notNull(),
+  /** A keyed hash of the email address or of the network address. The table never holds either. */
+  key: text().notNull(),
+  at: now(),
+}, (t) => [index().on(t.kind, t.key, t.at)]);
+
+/**
+ * Sign-in accounts that still have to be removed from Firebase Authentication after their person was deleted here.
+ * It holds only the id the account has at Firebase. A row goes as soon as Firebase confirms the removal.
+ */
+export const signinRemoval = pgTable("signin_removal", {
+  uid: text().primaryKey(),
+  queuedAt: now(),
+  tries: integer().notNull().default(0),
+  lastTryAt: when(),
+});
+
+/* ───────────── package: monitor (the workday monitor) ─────────────
+ * No new table. Nullable columns were added in place to `monitor_sample`, because a column cannot be declared away
+ * from its table:
+ *   face_seconds, half_blinks_per_min, prompt
+ * How the existing columns are used: `taken_at` is the start of the clock minute the row measured (one row for a
+ * profile and a minute); `blinks_per_min` counts full and half blinks together; `posture` is the share of the
+ * minute's pictures with the head level and not leaning in (0 to 1); a null number was not measured in that minute.
+ * A minute that was not measured has no row at all. Rows older than 35 days are removed by the daily job.
+ * A run of the monitor is a `session` of kind "monitor" with the slug "workday-monitor" and the ring "rest"; a
+ * break it saw is a `care_log` row of kind "far" under the same slug. Consent is a `consent` row of kind "camera".
+ * No foreign key was added. The same change as SQL: drizzle/pending/monitor.sql.
+ * The rules: src/lib/monitor-rules.ts. The database side: src/lib/monitor.ts. */

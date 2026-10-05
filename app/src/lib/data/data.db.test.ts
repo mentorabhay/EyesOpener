@@ -12,7 +12,12 @@
 import crypto from "node:crypto";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
-vi.hoisted(() => { try { process.loadEnvFile(".env.local"); } catch { /* no file: the default address is used */ } });
+vi.hoisted(() => {
+  try { process.loadEnvFile(".env.local"); } catch { /* no file: the default address is used */ }
+  /* Sign-in is treated as not set up here, so a deletion queues nothing for the sign-in service and the search below
+     stays a search of the household's own rows. The queue has its own test: src/lib/signin/flow.db.test.ts. */
+  delete process.env.FIREBASE_PROJECT_ID;
+});
 
 import { and, eq, inArray, like, or, sql } from "drizzle-orm";
 import { programmes } from "@/data";
@@ -82,7 +87,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
   const note = <T extends Id>(name: TableName, rows: T[], into = goneIds) => { made[name] = (made[name] ?? 0) + rows.length; into.push(...rows.map((r) => r.id)); return rows; };
   const tally = (name: TableName, n = 1) => { made[name] = (made[name] ?? 0) + n; };
 
-  let staff: Id, counsellor: Id, league: Id, team: Id, wall: Id, pair: Id, sponsor: Id, group: Id;
+  let staff: Id, counsellor: Id, league: Id, team: Id, wall: Id, pair: Id, sponsor: Id, group: Id, round: Id, question: Id;
   let A: Id, PV: Id, gA: Id & { email: string }, cA: Id, K: Id & { email: string }, P1: Id, P2: Id, EA: Id, askA: Id;
   let B: Id, gB: Id & { email: string }, Q1: Id, EB: Id, linkKB: Id, auditB: Id;
   let C: Id, gC: Id & { email: string }, cC: Id, R1: Id, R2: Id;
@@ -111,6 +116,8 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     [pair] = await db.insert(s.glassesPair).values({ code: `ZZ-${x}` }).returning();
     [sponsor] = await db.insert(s.sponsor).values({ name: `Sponsor ${SHARED}`, kind: "ngo", status: "approved" }).returning();
     [group] = await db.insert(s.sponsorGroup).values({ sponsorId: sponsor.id, name: `Group ${SHARED}`, code: `ZZ${x}`.toUpperCase() }).returning();
+    [round] = await db.insert(s.discoveryRound).values({ title: `Round ${SHARED}`, closesOn: DAY, createdBy: staff.id }).returning();
+    [question] = await db.insert(s.discoveryQuestion).values({ roundId: round.id, question: `Question ${SHARED}`, why: `Why ${SHARED}`, createdBy: staff.id }).returning();
 
     /* ── the household that stays ── */
     [B] = await db.insert(s.account).values({ displayName: `${STAY} family` }).returning();
@@ -201,6 +208,10 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     note("hero", await db.insert(s.hero).values({ profileId: P1.id, sprite: { outline: [1, 2, 3], tag: GONE } }).returning());
     note("pushToken", await db.insert(s.pushToken).values({ accountId: A.id, token: `token-${GONE}`, platform: "android" }).returning());
     await db.insert(s.sponsorGroupMember).values({ groupId: group.id, accountId: A.id }); tally("sponsorGroupMember");
+    /* package "people": a duet of the child and the cheer seat, a vote on the Discovery Board, a place on the map */
+    note("duet", await db.insert(s.duet).values({ accountId: A.id, aProfileId: P1.id, bUserId: cA.id, startedOn: DAY, createdBy: gA.id }).returning());
+    await db.insert(s.discoveryVote).values({ roundId: round.id, profileId: P1.id, questionId: question.id }); tally("discoveryVote");
+    await db.insert(s.mapPlace).values({ accountId: A.id, area: "411", joinedBy: gA.id, welcome: "hello" }); tally("mapPlace");
     const [copyA] = note("dataRequest", await db.insert(s.dataRequest).values({ accountId: A.id, kind: "export", status: "ready", askedBy: gA.id, readyAt: runAt, expiresAt: addDays(runAt, COPY_DAYS) }).returning());
     note("enquiry", await db.insert(s.enquiry).values({ kind: "other", name: `Guardian ${GONE}`, email: gA.email.toUpperCase(), message: `Message ${GONE}`, handledBy: staff.id }).returning());
     /* The co-guardian who stays wrote in as a counsellor. That message is hers and stays with her. */
@@ -268,6 +279,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     if (league) await db.delete(s.league).where(eq(s.league.id, league.id));
     if (wall) await db.delete(s.focusWall).where(eq(s.focusWall.id, wall.id));
     if (pair) await db.delete(s.glassesPair).where(eq(s.glassesPair.id, pair.id));
+    if (round) await db.delete(s.discoveryRound).where(eq(s.discoveryRound.id, round.id));
   }
   afterAll(cleanUp);
 
@@ -350,6 +362,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(file.data.wallTiles[0]).toMatchObject({ wall: `Wall ${SHARED}`, idx: 0 });
       expect(file.data.glassesJourney[0]).toMatchObject({ pair: `ZZ-${x}`, city: `City ${GONE}` });
       expect(file.data.sponsorGroups[0]).toMatchObject({ group: `Group ${SHARED}`, groupSponsor: `Sponsor ${SHARED}` });
+      expect(file.data.discoveryVotes[0]).toMatchObject({ round: `Round ${SHARED}`, question: `Question ${SHARED}`, profileId: P1.id });
       expect(file.data.experimentPlaces.find((e) => e.profileId === P1.id)).toMatchObject({ experimentId: EA.id, experimentIdea: IDEA_GONE });
       /* The idea of another family that this family joined: its title is public, and nothing else of it is here. */
       expect(file.data.experimentPlaces.find((e) => e.profileId === P2.id)).toMatchObject({ experimentId: EB.id, experimentIdea: IDEA_STAY });

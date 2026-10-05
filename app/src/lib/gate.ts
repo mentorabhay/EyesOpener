@@ -26,6 +26,10 @@ export function phraseMatches(given: string, phrase: string): boolean {
  */
 export const isOpenPath = (path: string) => path === "/gate" || path === "/health" || path === "/robots.txt" || path === "/api/jobs/daily" || path === "/api/jobs/weekly";
 
-/** Where to go after the gate. Only a path on this site is accepted; anything else becomes the home page. */
+/**
+ * Where to go after the gate. Only a path on this site is accepted; anything else becomes the home page.
+ * A tab or a line break inside the path is refused too: a browser drops them, which would turn "/<tab>/other.site"
+ * into "//other.site", an address on another site.
+ */
 export const safeNext = (next: string | null | undefined): string =>
-  next && next.startsWith("/") && !next.startsWith("//") && !next.includes("\\") && !next.startsWith("/gate") ? next : "/";
+  next && next.startsWith("/") && !next.startsWith("//") && !next.includes("\\") && !/[\u0000-\u0020\u007f]/.test(next) && !next.startsWith("/gate") ? next : "/";

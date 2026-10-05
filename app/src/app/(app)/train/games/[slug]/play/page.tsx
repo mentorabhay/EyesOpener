@@ -12,6 +12,7 @@ import { helpFor, kindOf } from "@/games/built";
 import { CarePanel } from "@/games/care/panel";
 import { CinemaStage } from "@/games/extra-ui";
 import { results } from "@/copy/results";
+import { currentHero } from "@/lib/hero";
 import { requireMember } from "@/lib/session";
 import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
@@ -48,6 +49,8 @@ export default async function PlayPage({ params }: Props) {
     ppc,
     distCm: m.device?.distanceCm ?? 0,
     cyanEye: m.eye?.cyanEye === "right" ? "R" as const : "L" as const,
+    /* The hero this profile made in Draw Your Hero, for the games that have a character. */
+    hero: await currentHero(m),
   };
   return (
     <>

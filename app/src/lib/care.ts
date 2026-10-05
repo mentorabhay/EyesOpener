@@ -101,7 +101,7 @@ export const mine = (m: Member, kind: string, day?: string) =>
 /* ───────────── outdoor time and the Light ring ───────────── */
 
 /** Add to the day's rings. A new day row carries the Train goal, as the session code writes it. */
-const addToDay = (tx: Tx, m: Member, day: string, add: { light: number } | { rest: number }) =>
+export const addToDay = (tx: Tx, m: Member, day: string, add: { light: number } | { rest: number }) =>
   tx.insert(D).values({ profileId: m.profile.id, day, trainGoal: m.enrolment?.dailyMinutes ?? 0, ...("light" in add ? { lightMinutes: add.light } : { restBreaks: add.rest }) })
     .onConflictDoUpdate({
       target: [D.profileId, D.day],

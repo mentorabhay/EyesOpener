@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 /**
- * Sent with every answer. None of them limits what the pages themselves load; they close ways in from outside.
+ * Sent with every answer. They close ways in from outside, and one of them limits where a page may send data.
  *  - nosniff: a browser never guesses a file's type
  *  - frame rules: no other site can show IOpener inside a frame and trick a click
  *  - base-uri, form-action, object-src: a page cannot be pointed at another site's base, forms or plug-ins
+ *  - connect-src: a page's own code can send data only to this site (and to Google's sign-in button). The camera
+ *    features therefore cannot send anything elsewhere, whatever a library inside them tries
  *  - referrer: other sites learn the site's address, never the page a person was on
  *  - permissions: the camera is for IOpener's own pages only (the on-device eye checks); the rest stay off
  *  - transport security: a browser that has seen the site over https never goes back to http
@@ -12,7 +14,7 @@ import type { NextConfig } from "next";
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
-  { key: "Content-Security-Policy", value: "frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" },
+  { key: "Content-Security-Policy", value: "frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; connect-src 'self' blob: data: https://accounts.google.com/gsi/" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()" },
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },

@@ -1,0 +1,24 @@
+/* The map: a grid of tiles drawn as one picture. Lit tiles carry the lamp colour; tiles with no lit area are hatched. */
+.map { display: block; width: 100%; max-width: 470px; height: auto; }
+.map text { font-size: 10.5px; font-weight: 600; text-anchor: middle; fill: var(--ink-3); font-variant-numeric: tabular-nums; }
+.dark { fill: var(--card); stroke: var(--line-2); stroke-width: 1; stroke-dasharray: 3 3; }
+.hatch { stroke: var(--line-2); stroke-width: 2; }
+.lit { fill: var(--g2); }
+/* Ink on the lamp colour is the same in the light and the dark theme: the tile itself does not change. */
+.map g[data-lit] text { fill: #111418; }
+.lamp { fill: #111418; }
+.ring { fill: none; stroke: var(--ink); stroke-width: 2.5; }
+
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; margin: 0; padding: 0; font-size: 12.5px; color: var(--ink-3); }
+.key li { display: flex; align-items: center; gap: 7px; }
+.key i { width: 16px; height: 16px; border-radius: 5px; flex: none; }
+.key i[data-k="lit"] { background: var(--g2); }
+.key i[data-k="dark"] { border: 1px dashed var(--line-2); background: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 5px); }
+.key i[data-k="yours"] { border: 2.5px solid var(--ink); }
+
+.digits { max-width: 9em; font-size: 20px; letter-spacing: 0.2em; font-variant-numeric: tabular-nums; }
+.welcome { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+.leave { margin-top: 4px; padding-top: 12px; border-top: 1px solid var(--line); }
+.leave summary { list-style: none; cursor: pointer; }
+.leave summary::-webkit-details-marker { display: none; }
+.leave[open] summary { margin-bottom: 10px; }

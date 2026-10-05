@@ -16,8 +16,13 @@ export async function switchProfile(formData: FormData) {
 
 /** Demo sign-in: become one of the seeded people and go to their area. */
 export async function demoSignIn(formData: FormData) {
-  const { signInAs, getViewer } = await import("./auth");
-  if (!(await signInAs(String(formData.get("userId") ?? "")))) return;
+  const { signInAs, getViewer, CHILD_COOKIE } = await import("./auth");
   const { redirect } = await import("next/navigation");
+  if (!(await signInAs(String(formData.get("userId") ?? "")))) {
+    /* On a device in child mode only a person of that child's family may sign in: say so rather than do nothing. */
+    const { holdOf } = await import("./signin/hold");
+    if ((await holdOf((await cookies()).get(CHILD_COOKIE)?.value)).state === "live") redirect("/login?why=child_mode");
+    return;
+  }
   redirect((await getViewer())?.home ?? "/login");
 }

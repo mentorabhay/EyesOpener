@@ -16,12 +16,14 @@
  * Never deleted: the demo family (every visitor of the public demo shares it).
  * What survives a deletion is written by the caller: one audit line with counts only.
  *
- * Not done here, because sign-in is not built yet (tracker task A6): removing the person from Firebase
- * Authentication. When Firebase sign-in arrives, the people in `gone` must be deleted there in the same job run.
+ * The sign-in service: a person who is deleted here must also be removed from Firebase Authentication. Their id
+ * there is queued inside this transaction (`queueRemoval`), and the daily job removes the queued accounts right
+ * after its deletions, in the same run (src/lib/signin/removal.ts). People who keep their sign-in are not queued.
  */
 import { and, eq, inArray, isNull, ne, sql } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { resolveStaffRole } from "@/lib/roles";
+import { queueRemoval } from "@/lib/signin/removal";
 import { columnsOf, ownedWhere, tableOf, type Scope } from "./owned";
 import { splitPeople } from "./state";
 import { ERASE_ORDER, ruleFor, TABLE_NAMES } from "./tables";
@@ -67,6 +69,8 @@ async function sweep(tx: Tx, scope: Scope, people: People): Promise<number> {
   for (const name of ERASE_ORDER) {
     if (name === "account") {
       if (people.keep.length) await tx.update(schema.appUser).set({ accountId: null, seat: null }).where(inArray(schema.appUser.id, people.keep));
+      /* Before the people go: note which sign-in accounts must be removed from the sign-in service. */
+      if (people.gone.length) await queueRemoval(tx, people.gone);
       if (people.gone.length) rows += (await tx.delete(schema.appUser).where(inArray(schema.appUser.id, people.gone))).rowCount ?? 0;
     }
     const where = ownedWhere(name, scope);

@@ -1,0 +1,98 @@
+/* The workday monitor. Direction B: white cards, ink, hatching for "not measured". Nothing here blinks or flashes. */
+
+/* the camera sign: a steady mark and plain words */
+.sign { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13.5px; padding: 5px 12px 5px 10px; border-radius: var(--r-pill); background: var(--sunken); border: 1px solid var(--line-2); }
+.sign i { width: 9px; height: 9px; border-radius: 50%; background: var(--ink-4); flex: none; }
+.sign[data-on="true"] { background: var(--ink); border-color: var(--ink); color: var(--card); }
+.sign[data-on="true"] i { background: #ff5a52; }
+.warn { color: var(--risk); }
+.grow { flex: 1; min-width: 200px; }
+
+.body { position: relative; }
+.body[data-on="true"] { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: start; }
+.side { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+/* The camera picture. When it is hidden the video stays in the page, one dot big and clear as glass, so the
+   pictures keep coming to the model. */
+.preview { width: 100%; aspect-ratio: 4 / 3; border-radius: var(--r-md); overflow: hidden; background: #111418; }
+.preview[data-shown="false"] { position: absolute; width: 2px; height: 2px; opacity: 0; pointer-events: none; }
+.video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); display: block; }
+
+.nums { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin: 0; }
+.nums div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.nums dt { font-size: 12.5px; color: var(--ink-3); }
+.nums dd { margin: 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; min-height: 30px; }
+.nums small { font-size: 12.5px; color: var(--ink-3); min-height: 19px; }
+
+/* a reminder: quiet, in the page's own colours, no movement */
+.promptSlot { min-height: 0; }
+.prompt { border: 1px solid var(--line-2); border-left: 4px solid var(--ring-rest); background: var(--sunken); border-radius: var(--r-md); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.prompt b { font-size: 16px; }
+.quiet { color: var(--ink-2); font-size: 13.5px; }
+
+.setUp { border: 1px dashed var(--line-2); border-radius: var(--r-md); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.setUp :global(.row) { align-items: flex-end; }
+.cm { width: 110px; }
+.linkish { border: 0; background: none; padding: 0; color: inherit; text-decoration: underline; cursor: pointer; font: inherit; }
+
+.work { border-top: 1px solid var(--line); padding-top: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; }
+.work h3 { font-size: 14.5px; }
+.settings { border-top: 1px solid var(--line); padding-top: 12px; }
+.settings summary { cursor: pointer; font-weight: 600; margin-bottom: 10px; }
+.check { display: flex; gap: 9px; align-items: flex-start; font-size: 13.5px; }
+.check input { margin-top: 3px; flex: none; }
+.kinds { border: 1px solid var(--line); border-radius: var(--r-md); padding: 10px 14px 12px; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; }
+.kinds legend { font-size: 12.5px; color: var(--ink-3); padding: 0 6px; }
+
+/* the small on-top window */
+.pip { padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; min-height: 100vh; background: var(--card); }
+.pip .prompt { padding: 10px 12px; }
+
+@media (max-width: 720px) {
+  .body[data-on="true"] { grid-template-columns: minmax(0, 1fr); }
+  .preview { max-width: 240px; }
+  .kinds { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) { .nums dd { font-size: 22px; } }
+
+/* ───────────── lists of plain sentences ───────────── */
+.plain { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; }
+.sources { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 12.5px; color: var(--ink-3); }
+.consent { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+/* ───────────── charts ───────────── */
+.chart { position: relative; outline-offset: 4px; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.axis { fill: var(--ink-3); font-size: 11px; font-family: var(--font); }
+.label { fill: var(--ink-2); font-size: 12px; font-weight: 500; font-family: var(--font); }
+.grid { stroke: var(--line); stroke-width: 1; }
+.guide { stroke: var(--ink-4); stroke-width: 1; }
+.mark { fill: var(--ring-rest); }
+.line { fill: none; stroke: var(--ring-rest); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.dot { fill: var(--ring-rest); stroke: var(--card); stroke-width: 2; }
+.ring { fill: var(--card); stroke: var(--ring-rest); stroke-width: 2; }
+.hatchLine { stroke: var(--line-2); stroke-width: 1.5; }
+.cross { stroke: var(--ink-3); stroke-width: 1; }
+.tip { position: absolute; top: 0; z-index: 2; pointer-events: none; background: var(--card); border: 1px solid var(--line-2); border-radius: var(--r-sm); box-shadow: var(--sh-card); padding: 8px 11px; font-size: 12.5px; display: flex; flex-direction: column; gap: 2px; width: max-content; max-width: 220px; }
+.tip b { font-size: 13px; }
+.key { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; font-size: 12.5px; color: var(--ink-3); }
+.key span { display: inline-flex; align-items: center; gap: 6px; }
+.key svg { flex: none; }
+.swatch { width: 22px; height: 12px; border-radius: 3px; border: 1px solid var(--line-2); background: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 6px); display: inline-block; }
+
+.week { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 28px; }
+.week figure { margin: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.week figcaption { font-size: 12.5px; color: var(--ink-2); font-weight: 500; }
+.cols { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; }
+.col { display: flex; flex-direction: column; align-items: center; gap: 5px; min-width: 0; }
+.col .v { font-size: 12px; min-height: 17px; color: var(--ink-2); }
+.col .d { font-size: 11.5px; color: var(--ink-3); }
+.plot { width: 100%; height: 84px; display: flex; align-items: flex-end; justify-content: center; position: relative; }
+.plot .bar { width: min(22px, 70%); background: var(--ring-rest); border-radius: 4px 4px 0 0; min-height: 2px; }
+.plot .back { width: min(22px, 70%); background: color-mix(in srgb, var(--ring-rest) 22%, transparent); border-radius: 4px 4px 0 0; display: flex; align-items: flex-end; }
+.plot .back .bar { width: 100%; }
+.plot .none { position: absolute; inset: 0; border-radius: 8px; border: 1px dashed var(--line-2); background: repeating-linear-gradient(135deg, var(--line-2) 0 2px, transparent 2px 7px); }
+.plot .pin { position: absolute; left: 50%; width: 10px; height: 10px; margin: 0 0 -5px -5px; border-radius: 50%; background: var(--ring-rest); box-shadow: 0 0 0 2px var(--card); }
+.plot .rule { position: absolute; left: 0; right: 0; height: 0; border-top: 1px solid var(--ink-4); }
+@media (max-width: 720px) { .week { grid-template-columns: minmax(0, 1fr); } }

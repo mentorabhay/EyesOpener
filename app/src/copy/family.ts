@@ -101,6 +101,8 @@ export const join = {
   submit: "Join",
   already: (household: string) => `You are already in a household: ${household}. One person can be in one household.`,
   home: "Go to your home page",
+  noCode: "No invite code?",
+  startOwn: "Start a family space of your own",
   result: {
     invite_not_found: "No open invite uses that code. Ask the guardian for a new one.",
     has_household: "You are already in a household.",

@@ -20,7 +20,10 @@ describe("household seats", () => {
 
 describe("child mode containment", () => {
   it("seals grown-up screens and their sub-pages", () => {
-    for (const p of ["/settings", "/settings/triage", "/family", "/admin/moderation", "/counsellor", "/sponsor/groups", "/together/share", "/login"]) expect(isSealedPath(p)).toBe(true);
+    for (const p of ["/settings", "/settings/triage", "/family", "/admin/moderation", "/counsellor", "/sponsor/groups", "/together/share"]) expect(isSealedPath(p)).toBe(true);
+  });
+  it("lets the sign-in pages through, so a device whose grown-up session has ended is not stuck: the page itself turns a child away", () => {
+    for (const p of ["/login", "/login/finish", "/login/welcome"]) expect(isSealedPath(p)).toBe(false);
   });
   it("leaves the child's screens open", () => {
     for (const p of ["/today", "/train", "/train/games/firefly-catch/play", "/test/acuity/run", "/together", "/together/mail", "/settingsx"]) expect(isSealedPath(p)).toBe(false);

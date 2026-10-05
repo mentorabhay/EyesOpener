@@ -1,6 +1,6 @@
 export const today = {
   title: "Today",
-  fill: { rest: "Take a 20-second break", light: "Log time outside" },
+  fill: { rest: "Take a 20-second break", light: "Log time outside", monitor: "Workday monitor" },
   rings: { rest: "Rest", train: "Train", light: "Light", restUnit: "breaks", minUnit: "min" },
   ringsTitle: "The eye day",
   start: "Start today's practice",

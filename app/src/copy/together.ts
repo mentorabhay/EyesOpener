@@ -185,15 +185,6 @@ export const together = {
     from: (name: string, day: string) => `From ${name}, for ${day}`,
   },
 
-  wall: {
-    stats: { focus: "In focus", ours: "Sharpened by your family" },
-    by: (artist: string) => `By ${artist}`,
-    grid: (sharp: number, tiles: number) => `${sharp} of ${tiles} tiles are in focus`,
-    key: "Filled tiles are in focus. Hatched tiles are still waiting. A white ring marks a tile your family sharpened.",
-    picture: "The picture is not shown yet. It arrives with the monthly artist.",
-    noWall: "There is no wall for this month yet.",
-  },
-
   glasses: {
     stats: { pair: "Pair", wearers: "Wearers so far" },
     noPair: "This profile is not wearing a travelling pair. A pair's logbook shows here once its code is added to a profile.",

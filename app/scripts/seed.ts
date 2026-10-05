@@ -9,7 +9,10 @@ import { db, schema as s } from "../src/db";
 import { derive, type Measured } from "../src/engine";
 import { seedData } from "./seed/data";
 import { seedExperiments } from "./seed/experiments";
+import { seedHero } from "./seed/hero";
 import { seedLeague } from "./seed/league";
+import { seedMonitor } from "./seed/monitor";
+import { seedPeople } from "./seed/people";
 import { seedProgramme } from "./seed/programme";
 
 const DAY = 86_400_000;
@@ -148,7 +151,7 @@ async function main() {
     { profileId: zoya.id, programme: "lazy-eye", week: 8, body: "Week eight is when the letter test moved for us. Keep going.", signature: "A family in Jaipur, now at week 12", status: "published" },
   ]);
   await db.insert(s.fusionMail).values({ fromProfileId: dadi.id, toProfileId: aarav.id, fromName: "Dadi", body: "WELL DONE\nI AM PROUD\nOF YOU" });
-  const [wall] = await db.insert(s.focusWall).values({ month: key(new Date()).slice(0, 7), title: "Kite over the hills", artist: "Meera, 8", tiles: 32 }).returning();
+  const [wall] = await db.insert(s.focusWall).values({ month: key(new Date()).slice(0, 7), title: "Kite over the hills", artist: "IOpener", tiles: 32 }).returning();
   await db.insert(s.focusTile).values(Array.from({ length: 32 }, (_, i) => i).filter((i) => (i * 7) % 10 < 7).map((idx) => ({ wallId: wall.id, idx, profileId: idx % 3 === 0 ? aarav.id : null })));
   const [pair] = await db.insert(s.glassesPair).values({ code: "0412", sponsorId: sunrise.id }).returning();
   await db.insert(s.glassesLeg).values([
@@ -164,7 +167,10 @@ async function main() {
   /* Each feature keeps its own demo rows in scripts/seed/. They find what they need by query and can run again. */
   await seedProgramme();
   await seedLeague();
+  await seedHero();
   await seedExperiments();
+  await seedPeople();
+  await seedMonitor();
   await seedData();
 
   const counts = await Promise.all(([["account", s.account], ["appUser", s.appUser], ["sponsor", s.sponsor], ["profile", s.profile], ["testResult", s.testResult], ["session", s.session], ["protocol", s.protocol]] as const).map(async ([n, t]) => `${n} ${(await db.select({ c: sql<number>`count(*)::int` }).from(t))[0].c}`));

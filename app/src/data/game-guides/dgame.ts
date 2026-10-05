@@ -192,7 +192,7 @@ export const guides: GameGuide[] = [
       "On the screen itself there are always both colours: a cyan runner and cyan coins, red crates, stalls and hanging signs, and a white street with a string of lanterns overhead.",
       "Through the glasses the eye behind the cyan lens gets the runner and the coins, and no red things. The eye behind the red lens gets the crates, stalls and signs, and no runner. The white street reaches both eyes, so with both eyes working you see it all on one street.",
       DIMMED,
-      "When the runner turns faint, the lantern is out after a stumble. That is the game, not your eyes.",
+      "When the runner turns faint, the lantern is out after a stumble. That is the game, not your eyes. A hero made in Draw Your Hero takes the runner's place.",
     ],
     play: [
       "Put the glasses on, cyan lens over the weaker eye, and press Start. The runner runs by itself.",

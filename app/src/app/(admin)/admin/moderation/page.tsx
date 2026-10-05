@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Card, Chip, Empty, PageHead } from "@/components/ui";
+import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t, ageText } from "@/copy/admin";
+import { discovery } from "@/copy/discovery";
 import { programmeBySlug, testByKey } from "@/data";
 import { openModeration, type ModerationEntry } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
@@ -98,6 +99,8 @@ export default async function ModerationPage() {
   return (
     <>
       <PageHead title={t.rooms.moderation.name} sub={m.sub} crumb={[{ href: "/admin", label: t.back }]} stats={[{ value: entries.length, label: m.stat }]} />
+      {/* The Discovery Board's question list is kept in this room (package "people"). */}
+      <div className="row"><Btn href="/admin/moderation/discovery">{discovery.staff.link}</Btn></div>
       {entries.length
         ? <div className="bento">{entries.map((entry) => <Item key={entry.item.id} entry={entry} />)}</div>
         : <Empty title={m.empty.title}><span>{m.empty.body}</span></Empty>}

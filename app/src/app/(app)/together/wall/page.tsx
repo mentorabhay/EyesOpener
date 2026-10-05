@@ -1,58 +1,75 @@
 import type { Metadata } from "next";
-import { Card, PageHead } from "@/components/ui";
-import s from "@/components/together/together.module.css";
+import { Btn, Card, Chip, PageHead } from "@/components/ui";
+import { WallPicture } from "@/components/together/wall-art";
 import { together } from "@/copy/together";
+import { wall as t } from "@/copy/wall";
 import { ideaBySlug } from "@/data";
 import { percent } from "@/engine";
-import { wallFor } from "@/lib/community";
 import { requireMember } from "@/lib/session";
+import { wallView, type WallShown } from "@/lib/wall";
+import css from "./wall.module.css";
 
-const t = together.wall;
 const idea = ideaBySlug("focus-wall")!;
 export const metadata: Metadata = { title: idea.name };
-const COLS = 8;
-/** Where a tile's slice of the shared gradient sits, as a background position in percent. */
-const slice = (i: number, n: number) => (n > 1 ? (i / (n - 1)) * 100 : 0);
+
+const monthName = (month: string) => new Intl.DateTimeFormat("en-IN", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${month}-15T00:00:00Z`));
+
+/** One wall as a picture. The name of a picture is said only once the whole of it is in focus. Only this month's wall marks the family's own tiles. */
+function Picture({ w, mine }: { w: WallShown; mine: boolean }) {
+  const art = t.art[w.art], month = monthName(w.month);
+  const label = w.complete ? `${t.gallery.picture(art.title, month)}. ${art.alt}` : mine ? t.blurred(w.count, w.tiles) : t.gallery.unfinished(month, w.count, w.tiles);
+  return (
+    <div className={`scene ${css.frame}`}>
+      <WallPicture art={w.art} id={`wall-${w.month}`} cols={w.cols} rows={w.rows} tiles={w.tiles} sharp={w.sharp} ours={mine ? w.ours : undefined} label={label} />
+    </div>
+  );
+}
 
 export default async function WallPage() {
   const m = await requireMember();
-  const found = await wallFor();
-  if (!found) {
-    return (
-      <>
-        <PageHead title={idea.name} sub={idea.what} crumb={[together.crumb]} />
-        <p className="notice">{t.noWall}</p>
-      </>
-    );
-  }
-  const { wall, sharp } = found;
-  const family = new Set(m.profiles.map((p) => p.id));
-  const owner = new Map(sharp.filter((x) => x.idx < wall.tiles).map((x) => [x.idx, x.profileId]));
-  const ours = [...owner.values()].filter((id) => id && family.has(id)).length;
-  const rows = Math.ceil(wall.tiles / COLS);
+  const { now, today, gallery } = await wallView(m);
+  const name = m.profile.displayName;
+  const mine = now.complete && !today.earned ? t.today.full
+    : today.earned ? t.today.earned(name)
+    : today.goal > 0 ? t.today.notYet(name, today.done, today.goal)
+    : t.today.noGoal(name);
 
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
-        stats={[{ value: percent(owner.size / wall.tiles), label: t.stats.focus }, { value: ours, label: t.stats.ours }]}
+        title={idea.name} sub={t.sub} crumb={[together.crumb]}
+        stats={[{ value: percent(now.share), label: t.stats.focus }, { value: now.ours.size, label: t.stats.ours }]}
       />
       <div className="bento">
-        <Card title={wall.title} right={<span className="small muted">{t.by(wall.artist)}</span>} span={8}>
-          <div className={s.wall} role="img" aria-label={t.grid(owner.size, wall.tiles)}>
-            {Array.from({ length: wall.tiles }, (_, i) => {
-              const by = owner.get(i);
-              return owner.has(i)
-                ? <i key={i} data-sharp="" data-ours={by && family.has(by) ? "" : undefined}
-                    style={{ backgroundSize: `${COLS * 100}% ${rows * 100}%`, backgroundPosition: `${slice(i % COLS, COLS)}% ${slice(Math.floor(i / COLS), rows)}%` }} />
-                : <i key={i} />;
-            })}
-          </div>
-          <p className="tnum">{t.grid(owner.size, wall.tiles)}</p>
+        <Card title={now.complete ? t.art[now.art].title : t.hidden} right={<span className="small muted">{monthName(now.month)}</span>} span={8}>
+          <Picture w={now} mine />
+          <p className="tnum"><b>{t.grid(now.count, now.tiles)}</b></p>
+          {now.complete && <p className="notice" data-b="ok">{t.whole(t.art[now.art].title)}</p>}
           <p className="muted small">{t.key}</p>
-          <p className="notice">{t.picture}</p>
+          <p className="muted small">{t.credit}</p>
+        </Card>
+
+        <Card title={t.rule.title} span={4}>
+          <ul className={css.points}>{t.rule.points.map((p) => <li key={p}>{p}</li>)}</ul>
+          <p className="notice" data-b={today.earned ? "ok" : undefined}>{mine}</p>
+          {!today.earned && !now.complete && today.goal > 0 && m.can("train") && <div className="row"><Btn href="/today" kind="d" small>{t.today.cta}</Btn></div>}
         </Card>
       </div>
+
+      <h2>{t.gallery.title}</h2>
+      {gallery.length === 0 ? <p className="muted">{t.gallery.none}</p> : (
+        <div className={css.past}>
+          {gallery.map((w) => (
+            <article key={w.month}>
+              <Picture w={w} mine={false} />
+              <h3>{w.complete ? t.art[w.art].title : monthName(w.month)}</h3>
+              <div className="row">
+                {w.complete ? <><Chip tone="ok">{t.gallery.finished}</Chip><span className="small muted">{monthName(w.month)}</span></> : <span className="small muted tnum">{t.gallery.ended(w.count, w.tiles)}</span>}
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
     </>
   );
 }

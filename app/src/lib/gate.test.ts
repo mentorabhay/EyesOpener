@@ -28,4 +28,10 @@ describe("site lock", () => {
     expect(safeNext("/stories/a?b=1")).toBe("/stories/a?b=1");
     for (const bad of [null, undefined, "", "https://evil.example", "//evil.example", "/\\evil", "/gate", "today"]) expect(safeNext(bad)).toBe("/");
   });
+  it("refuses a path with a tab, a line break or a space in it, which a browser would read as another site", () => {
+    for (const bad of ["/\t/evil.example", "/\n/evil.example", "/\r/evil.example", "/ /evil.example", "/today\u0000", "/a b"]) expect(safeNext(bad)).toBe("/");
+    /* What a browser makes of the first of these, were it let through. */
+    expect(new URL("/\t/evil.example", "https://iopener.example").host).toBe("evil.example");
+    expect(safeNext("/library?tag=two%20words")).toBe("/library?tag=two%20words");
+  });
 });
