@@ -466,10 +466,10 @@
 
 /* ── a game to play on the landing page ── */
 .lp-play { padding: clamp(40px, 6vw, 88px) 0; }
-.lp-play-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(22px, 4vw, 56px); align-items: center; max-width: 1240px; }
+.lp-play-grid { margin-inline: auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(22px, 4vw, 56px); align-items: center; max-width: 1240px; }
 .lp-play-kicker { display: inline-block; padding: 6px 14px; border-radius: 999px; background: var(--ink); color: var(--card); font-weight: 600; font-size: 13px; margin-bottom: 14px; }
 .lp-play-lead { margin-left: 0; }
-.lp-play-how { margin: 18px 0 0; padding-left: 1.2em; color: var(--ink-2); line-height: 1.6; }
+.lp-play-how { list-style: decimal; margin: 18px 0 0; padding-left: 1.2em; color: var(--ink-2); line-height: 1.6; }
 .lp-play-note { text-align: left; }
 .lp-play-game { background: var(--card); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--lp-lift); padding: 14px; }
 @media (max-width: 900px) { .lp-play-grid { grid-template-columns: 1fr; } }
