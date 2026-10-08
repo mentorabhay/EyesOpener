@@ -59,13 +59,14 @@ export function SiteNav({ home }: { home: string | null }) {
       <nav id={MENU_ID} className="s-links" aria-label={t.nav.label} data-open={open}>
         {t.nav.links.filter((l) => inEdition(l.href)).map((l) => <Link key={l.href} href={l.href} aria-current={current(l.href)} onClick={close}>{l.label}</Link>)}
         {!home && <Link className="s-phone-only" href="/login" onClick={close}>{t.nav.signIn}</Link>}
+        {!home && <Link className="s-phone-only" href="/register" onClick={close}>{t.nav.register}</Link>}
       </nav>
       <div className="s-navr">
         {home
           ? <Link className="btn btn-d btn-sm" href={home}>{t.nav.openApp}</Link>
           : <>
               <Link className="btn btn-gh btn-sm s-wide-only" href="/login">{t.nav.signIn}</Link>
-              <Link className="btn btn-d btn-sm" href="/onboarding">{t.nav.start}</Link>
+              <Link className="btn btn-d btn-sm" href="/register">{t.nav.register}</Link>
             </>}
       </div>
     </header>

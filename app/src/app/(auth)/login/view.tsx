@@ -13,6 +13,8 @@ import { signOutEverywhere, signOutHere, startFamilySpace } from "./actions";
 import { FinishForm } from "./finish/form";
 import { SignInForms } from "./forms";
 import css from "./login.module.css";
+import { marketing } from "@/copy/marketing";
+import { Brand } from "../brand";
 
 export interface DemoGroup { title: string; sub: string; people: { id: string; name: string; email: string; role: string; current: boolean }[] }
 export interface Me { name: string; email: string; /** Their own area, or the welcome page when they have none yet. */ go: string }
@@ -99,14 +101,26 @@ export function LoginView(p: {
   }
 
   const nothing = !p.signIn && !p.me;
+  const m = marketing.login;
   return (
-    <Frame wide={p.demo ? 1040 : 560}>
-      <PageHead title={t.title} sub={nothing ? t.notSetUp : p.me ? undefined : t.sub} />
-      <div className={`stack ${css.col}`}>
-        {notices}
-        {p.me ? <SignedIn me={p.me} /> : p.signIn && <Card><SignInForms google={p.signIn.google} next={p.next} /></Card>}
-        {!nothing && <p className="muted small">{t.children}</p>}
-        {p.signIn && !p.me && !p.held && <p className="muted small">{t.join.text} <Link href="/join">{t.join.link}</Link>.</p>}
+    <Frame wide={1040}>
+      <div className={css.split}>
+        <Brand />
+        <div>
+          <PageHead title={t.title} sub={nothing ? t.notSetUp : p.me ? undefined : t.sub} />
+          <div className={`stack ${css.col}`}>
+            {notices}
+            {p.me ? <SignedIn me={p.me} /> : p.signIn && <Card><SignInForms google={p.signIn.google} next={p.next} /></Card>}
+            {p.signIn && !p.me && (
+              <p className={`small ${css.links}`}>
+                <span>{m.newHere} <Link href="/register">{m.register}</Link></span>
+                <Link href="/login/help">{m.trouble}</Link>
+              </p>
+            )}
+            {!nothing && <p className="muted small">{t.children}</p>}
+            {p.signIn && !p.me && !p.held && <p className="muted small">{t.join.text} <Link href="/join">{t.join.link}</Link>.</p>}
+          </div>
+        </div>
       </div>
       {p.demo && (
         <section className={css.below} aria-labelledby="demo-title">

@@ -25,7 +25,7 @@ export const siteUrl = (env: string | undefined = process.env.SITE_URL) => (env?
 export const SITE_PAGES = [
   "/", "/how-it-works", "/programmes", "/evidence", "/library", "/safety", "/stories",
   "/for-counsellors", "/for-sponsors", "/about", "/privacy", "/childrens-data", "/terms",
-  "/wish-jam",
+  "/wish-jam", "/try", "/register",
 ] as const;
 export type SitePath = (typeof SITE_PAGES)[number];
 

@@ -9,6 +9,8 @@ import { Hero } from "./_landing/Hero";
 import { Motion } from "./_landing/Motion";
 import { Reveal } from "./_landing/Reveal";
 import { Spaces } from "./_landing/Spaces";
+import { Play } from "./_landing/Play";
+import { Tags } from "./_landing/Tags";
 import type { LandingFacts } from "./_landing/types";
 import "./_landing/landing.css";
 
@@ -65,6 +67,8 @@ export default function Landing() {
   return (
     <Motion>
       <Hero />
+      <Tags maxMinutes={f.maxMinutes} />
+      <Play />
       <Reveal facts={f} />
       <Spaces facts={f} />
       <Flow facts={f} />
