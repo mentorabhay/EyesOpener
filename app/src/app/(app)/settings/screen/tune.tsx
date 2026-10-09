@@ -72,7 +72,12 @@ const hexChannels = (code: string) => {
 };
 
 /** Both lenses on one page. `onSave` gets the mix and the ceiling as shares of light; `skip` is the flow's own skip button. */
-export function TuneStep({ gamma, tune, onSave, skip }: { gamma: number; tune: InkTune; onSave: (tune: InkTune) => void; skip: ReactNode }) {
+type Mix = { green: number; blue: number };
+/** The two starting points besides "As usual", as staff set them (src/lib/setup-settings.ts). */
+export type Presets = { lessBlue: Mix; lessGreen: Mix };
+const PRESETS: Presets = { lessBlue: { green: 1, blue: 0 }, lessGreen: { green: 0.5, blue: 1 } };
+
+export function TuneStep({ gamma, tune, onSave, skip, presets = PRESETS }: { gamma: number; tune: InkTune; onSave: (tune: InkTune) => void; skip: ReactNode; presets?: Presets }) {
   /* the sliders work in screen values, 0 to 255, as a colour picker does; what is saved is light, worked out with gamma */
   const [g, setG] = useState(() => channelOf(tune.green, gamma));
   const [b, setB] = useState(() => channelOf(tune.blue, gamma));
@@ -102,8 +107,8 @@ export function TuneStep({ gamma, tune, onSave, skip }: { gamma: number; tune: I
         />
         <div className="row" role="group" aria-label={t.presetsLabel}>
           <button type="button" className="btn btn-sm" onClick={() => preset({ green: 1, blue: 1 })}>{t.presets.usual}</button>
-          <button type="button" className="btn btn-sm" onClick={() => preset({ green: 1, blue: 0 })}>{t.presets.lessBlue}</button>
-          <button type="button" className="btn btn-sm" onClick={() => preset({ green: 0.5, blue: 1 })}>{t.presets.lessGreen}</button>
+          <button type="button" className="btn btn-sm" onClick={() => preset(presets.lessBlue)}>{t.presets.lessBlue}</button>
+          <button type="button" className="btn btn-sm" onClick={() => preset(presets.lessGreen)}>{t.presets.lessGreen}</button>
         </div>
         <div className={css.readout} data-b={!enough ? "danger" : kept >= CLEAR_LOSS ? "ok" : "warn"} role="status">
           <span className="muted small">{t.kept}</span>

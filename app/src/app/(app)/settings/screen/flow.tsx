@@ -16,7 +16,7 @@ import { Confirm } from "../confirm";
 import { forgetScreenStep, saveScreenStep, type StepSaved } from "./actions";
 import { Lenses } from "./lenses";
 import { Match } from "./match";
-import { TuneStep } from "./tune";
+import { TuneStep, type Presets } from "./tune";
 import css from "./screen.module.css";
 
 type Lens = "red" | "cyan";
@@ -94,9 +94,11 @@ interface Props {
   tune: InkTune;
   /** A check to open at once, when the page was opened from a step of setup (/setup). */
   open?: Step | null;
+  /** The mixer's starting points, as staff set them. */
+  presets?: Presets;
 }
 
-export function Flow({ canMeasure, gamma, dist, measured, tune, open = null }: Props) {
+export function Flow({ canMeasure, gamma, dist, measured, tune, open = null, presets }: Props) {
   const [at, setAt] = useState<At>(() => (canMeasure && open ? begin(open) : { at: "home" }));
   /* "Measure all three" walks through the checks in order; one check on its own comes back to the list */
   const [tour, setTour] = useState(false);
@@ -250,7 +252,7 @@ export function Flow({ canMeasure, gamma, dist, measured, tune, open = null }: P
   }
 
   if (at.at === "tune") {
-    body = <TuneStep gamma={gamma} tune={tune} skip={skip("tune")} onSave={(next) => send("tune", { step: "tune", ...next })} />;
+    body = <TuneStep gamma={gamma} tune={tune} presets={presets} skip={skip("tune")} onSave={(next) => send("tune", { step: "tune", ...next })} />;
   }
 
   if (at.at === "saving") body = <p role="status">{t.match.saving}</p>;

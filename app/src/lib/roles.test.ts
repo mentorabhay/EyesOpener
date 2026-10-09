@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { memberCan, isGuardianSeat, isSealedPath, staffCan, staffAreas, resolveStaffRole, sponsorCan, homeFor, MEMBER_ACTIONS, ADMIN_AREAS } from "./roles";
+import { memberCan, isGuardianSeat, isSealedPath, staffCan, staffAreas, resolveStaffRole, sponsorCan, homeFor, MEMBER_ACTIONS, ADMIN_AREAS, ADMIN_GROUPS } from "./roles";
 
 describe("household seats", () => {
   it("lets a guardian do everything", () => { for (const a of MEMBER_ACTIONS) expect(memberCan("guardian", a)).toBe(true); });
@@ -32,6 +32,15 @@ describe("child mode containment", () => {
 
 describe("staff rooms", () => {
   it("opens every room to a super admin", () => { expect(staffAreas("super_admin")).toEqual([...ADMIN_AREAS]); });
+  it("puts every room but the overview in exactly one group of the menu", () => {
+    const grouped = Object.values(ADMIN_GROUPS).flat();
+    expect(new Set(grouped).size).toBe(grouped.length);
+    expect([...grouped].sort()).toEqual(ADMIN_AREAS.filter((a) => a !== "overview").sort());
+  });
+  it("lets ops look at the screens room, and not content staff", () => {
+    expect(staffCan("ops", "screens")).toBe(true);
+    expect(staffCan("content", "screens")).toBe(false);
+  });
   it("keeps ops out of staff management, the switchboard and stories", () => {
     expect(staffCan("ops", "moderation")).toBe(true);
     for (const a of ["staff", "switchboard", "stories"] as const) expect(staffCan("ops", a)).toBe(false);

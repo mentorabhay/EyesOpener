@@ -8,6 +8,7 @@ import { cyanCode, weakLight, type LeakLevel } from "@/engine";
 import { profileLines } from "@/lib/screen";
 import { mayCalibrate, screenFacts, stepSchema, type Step } from "@/lib/screen-rules";
 import { requireMember } from "@/lib/session";
+import { readSetupSettings } from "@/lib/setup-settings";
 import { Flow } from "./flow";
 import css from "./screen.module.css";
 
@@ -37,7 +38,7 @@ export default async function ScreenPage({ searchParams }: { searchParams: Promi
     );
   }
   const device = m.device, facts = screenFacts(device);
-  const people = await profileLines(m, facts);
+  const [people, { presets }] = await Promise.all([profileLines(m, facts), readSetupSettings()]);
   const { gamma, leak, ink, tune } = facts, r = t.record;
   const tunedAt = [tune.greenAt, tune.redTopAt].filter((d): d is Date => !!d).sort((a, b) => b.getTime() - a.getTime())[0];
   const measured: Record<Step, string | null> = {
@@ -61,7 +62,7 @@ export default async function ScreenPage({ searchParams }: { searchParams: Promi
       />
       {open && <p className="notice" role="note">{t.fromSetup} <Btn href="/setup" small>{t.backToSetup}</Btn></p>}
       <div className="bento">
-        <Flow key={device.id} open={open} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
+        <Flow key={device.id} open={open} presets={presets} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
 
         <Card title={r.title} span={5}>
           {facts.moved && <p className="notice" data-b="warn">{r.moved}</p>}

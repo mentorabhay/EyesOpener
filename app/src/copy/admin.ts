@@ -29,6 +29,7 @@ const rooms: Record<AdminArea, { name: string; about: string }> = {
   stories: { name: "Stories", about: "Publish and unpublish the stories on the blog." },
   staff: { name: "Staff", about: "Give, change or remove staff roles." },
   enquiries: { name: "Enquiries", about: "Messages from counsellors, schools and sponsors who wrote in from the public site." },
+  screens: { name: "Screens and glasses", about: "How families' screens and glasses are set up, as counts only." },
   switchboard: { name: "Switchboard", about: "Saver mode and the monthly limit for AI spend." },
 };
 
@@ -88,6 +89,7 @@ export const admin = texts("copy/admin", "admin", () => ({
   roles,
   rooms,
   navTitle: "Rooms",
+  groups: { people: "People", library: "Library", content: "Content", system: "System" },
   back: "Admin console",
   yes: "Yes",
   no: "No",

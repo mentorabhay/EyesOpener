@@ -4,6 +4,7 @@ import { PortalShell } from "@/components/portal";
 import { admin as t } from "@/copy/admin";
 import { roomHref, roomsFor } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
+import { ADMIN_GROUPS, type AdminArea } from "@/lib/roles";
 
 export const generateMetadata = (): Metadata => ({ title: { default: t.area, template: `%s · ${t.area}` }, robots: { index: false } });
 
@@ -11,9 +12,17 @@ export const generateMetadata = (): Metadata => ({ title: { default: t.area, tem
 export default async function AdminLayout({ children }: { children: ReactNode }) {
   const viewer = await requireStaff("overview");
   /* Only the rooms this role may open are listed. Any other room answers "not found". */
-  const items = roomsFor(viewer.staff).map((area) => ({ href: roomHref(area), label: t.rooms[area].name }));
+  const open = roomsFor(viewer.staff);
+  const item = (area: AdminArea) => ({ href: roomHref(area), label: t.rooms[area].name });
+  /* the overview, then the rooms in four groups; a group with no room open to this role is left out */
+  const groups = [
+    { title: t.navTitle, items: open.filter((a) => a === "overview").map(item) },
+    ...(Object.keys(ADMIN_GROUPS) as (keyof typeof ADMIN_GROUPS)[]).map((g) => ({
+      title: t.groups[g], items: (ADMIN_GROUPS[g] as readonly AdminArea[]).filter((a) => open.includes(a)).map(item),
+    })),
+  ].filter((g) => g.items.length);
   return (
-    <PortalShell area={t.area} who={viewer.user.displayName} role={t.roles[viewer.staff]} groups={[{ title: t.navTitle, items }]}>
+    <PortalShell area={t.area} who={viewer.user.displayName} role={t.roles[viewer.staff]} groups={groups}>
       {children}
     </PortalShell>
   );
