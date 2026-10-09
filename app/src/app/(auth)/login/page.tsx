@@ -10,6 +10,7 @@ import { getMember } from "@/lib/session";
 import { cleanNext } from "@/lib/signin/flow";
 import { holdOf, loginGate } from "@/lib/signin/hold";
 import { settingsProblems, signInSettings } from "@/lib/signin/settings";
+import { mailSettings } from "@/lib/signin/mail";
 import { LoginView, type DemoGroup } from "./view";
 
 export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
@@ -46,7 +47,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const viewer = await getViewer();
   return (
     <LoginView
-      signIn={settings && { google: settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null }}
+      signIn={settings && { google: settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null, code: !!mailSettings() }}
       demo={(await demoHere()) ? await demoGroups(viewer) : null}
       demoLocked={demoLoginOn() && !(await demoHere())}
       me={viewer?.real ? { name: viewer.user.displayName, email: viewer.user.email, go: viewer.home === "/login" ? "/login/welcome" : viewer.home } : null}

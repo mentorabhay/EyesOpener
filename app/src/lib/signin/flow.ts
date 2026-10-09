@@ -5,6 +5,10 @@
  *   googleFlow   the browser hands over a Google credential. The server swaps it at Firebase for an ID token.
  *   askFlow      the person types an address. The server asks Firebase to email a link, within the limits.
  *   linkFlow     the person comes back through the link. The server swaps its code, with the address, for an ID token.
+ *   askCodeFlow  the person types an address. The server emails a six-digit code itself (code.ts, mail.ts), within the
+ *                same limits. Used in place of the link when IOpener has an address to send from (Ved, 10 October 2026).
+ *   codeFlow     the person types the code. The server checks it, finds or makes the address's Firebase account as
+ *                the service it runs as (`accountFor`), and signs the person in.
  *
  * Every ID token is then checked in full (`verifyIdToken`), matched to a person (`personFor`), and only then does
  * the browser get IOpener's session cookie. A refusal at any step signs nobody in and makes nobody.
@@ -25,7 +29,10 @@ import { giveBack, take } from "./limit";
 import { personFor, type LinkRefusal } from "./people";
 import { PROFILE_COOKIE, sessionCookie } from "./session-rules";
 import type { SignInSettings } from "./settings";
-import { exchangeGoogle, exchangeLink, sendLink } from "./toolkit";
+import { signin as words } from "@/copy/signin";
+import { checkCode, CODE_MINUTES, issueCode, tidyCode } from "./code";
+import { mailSettings, sendMail, type MailSettings, type Message, type Sent } from "./mail";
+import { accountFor, exchangeGoogle, exchangeLink, sendLink, serviceToken } from "./toolkit";
 
 export interface CookieOptions { path?: string; httpOnly?: boolean; sameSite?: "lax" | "strict" | "none"; secure?: boolean; maxAge?: number }
 /** The browser's cookies, as much of them as sign-in needs. Next.js's cookie store fits. */
@@ -41,7 +48,14 @@ export interface Ctx {
   /** The network address the request came from (`networkAddress` in limit.ts). */
   net: string;
   now?: Date;
+  /** Where sign-in codes are sent from; null when IOpener sends no email itself (the link is used). Read from the settings when left out. */
+  mail?: MailSettings | null;
+  /** How a code email is sent; tests catch it here instead. */
+  send?: (m: Message, s: MailSettings) => Promise<Sent>;
 }
+
+/** Whether this server signs people in with an emailed code rather than a link. */
+export const usesCode = (ctx: Pick<Ctx, "mail">) => !!(ctx.mail === undefined ? mailSettings() : ctx.mail);
 
 /** The person signed in within this long of the server checking. The server checks at once, so this is generous. */
 const RECENT_S = 5 * 60;
@@ -123,7 +137,7 @@ export type Refusal =
   | "not_set_up" | "slow_down" | "unavailable" | "not_confirmed" | "email_unverified"
   | "google_refused" | "other_method" | "disabled"
   | "bad_link" | "need_address" | "link_expired" | "wrong_address"
-  | "child_mode" | LinkRefusal;
+  | "child_mode" | "code_wrong" | "code_expired" | LinkRefusal;
 
 export type Entered =
   | { ok: true; userId: string; isNew: boolean; /** The device is in child mode and stays in it. */ held: boolean; next: string | null }
@@ -145,6 +159,11 @@ async function enter(idToken: string, expect: { providers: readonly string[]; em
   /* The token must be for the way of signing in that was just used, and for the address that was just used. */
   if (!expect.providers.includes(identity.provider) || (expect.email && identity.email !== expect.email)) return { ok: false, why: "not_confirmed" };
 
+  return enterAs(identity, next, ctx);
+}
+
+/** Signs a verified person in on this browser: finds or makes them (personFor), and keeps child mode as it is. */
+async function enterAs(identity: Identity, next: string | null, ctx: Ctx): Promise<Entered> {
   const hold = await holdOf(ctx.jar.get(HOLD_COOKIE)?.value);
   const person = await personFor(identity, { create: hold.state !== "live" });
   if (!person.ok) return { ok: false, why: person.why === "not_known" ? "child_mode" : person.why };
@@ -215,4 +234,76 @@ export async function linkFlow(input: { oobCode: unknown; email: unknown; next: 
 export async function homeOf(userId: string): Promise<string> {
   const [user] = await db.select().from(schema.appUser).where(eq(schema.appUser.id, userId)).limit(1);
   return user ? (await viewerOf(user, true)).home : "/login";
+}
+
+/* ───────────── a six-digit code by email ───────────── */
+
+export type AskedCode =
+  | { ok: true; email: string }
+  | { ok: false; why: "not_set_up" | "bad_address" | "unavailable" }
+  | { ok: false; why: "slow_down"; waitMin: number };
+
+const esc = (t: string) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+/** The email that carries a code: the same sentences as plain text and as simple HTML. */
+export function codeMessage(to: string, code: string): Message {
+  const m = words.mail, use = m.use(CODE_MINUTES);
+  return {
+    to, subject: m.subject(code),
+    text: `${m.intro} ${code}\n\n${use}\n\n${m.ignore}\n\n${m.note}`,
+    html: `<div style="font-family:Arial,sans-serif;font-size:16px;line-height:1.5;color:#111418"><p>${esc(m.intro)}</p>`
+      + `<p style="font-size:32px;font-weight:700;letter-spacing:6px;margin:8px 0 16px">${code}</p><p>${esc(use)}</p>`
+      + `<p style="color:#555">${esc(m.ignore)}</p><p style="color:#777;font-size:13px">${esc(m.note)}</p></div>`,
+  };
+}
+
+/**
+ * Emails a six-digit code. The limits are the link's: a few for one address, more for one network. Too many for one
+ * address answers as if a code went out, so the answer never says whether an address has an account or was asked for.
+ */
+export async function askCodeFlow(input: { email: unknown; next: unknown }, ctx: Ctx): Promise<AskedCode> {
+  const s = ctx.settings, mail = ctx.mail === undefined ? mailSettings() : ctx.mail, now = ctx.now ?? new Date();
+  if (!s || !mail) return { ok: false, why: "not_set_up" };
+  const email = tidyEmail(input.email);
+  if (!email) return { ok: false, why: "bad_address" };
+  const next = cleanNext(input.next);
+  const remember = () => ctx.jar.set(PENDING_COOKIE, signToken({ email, next, exp: now.getTime() + PENDING_MS }), { ...cookieBase(), maxAge: PENDING_MS / 1000 });
+  const room = await take([{ kind: "net", value: ctx.net }, { kind: "email", value: email }], now);
+  if (!room.ok) {
+    if (room.kind === "net") return { ok: false, why: "slow_down", waitMin: Math.max(1, Math.ceil(room.waitS / 60)) };
+    remember();
+    return { ok: true, email };
+  }
+  const code = await issueCode(email, now);
+  const sent = await (ctx.send ?? sendMail)(codeMessage(email, code), mail);
+  if (sent !== "sent") {
+    await giveBack(room.counted.email);
+    return { ok: false, why: "unavailable" };
+  }
+  remember();
+  return { ok: true, email };
+}
+
+/**
+ * Finishes with a code. The address comes from this device's memory of asking, or is typed on another device. Tries
+ * are counted for the network (like finishing a link) and for the code itself (five wrong tries end it).
+ */
+export async function codeFlow(input: { code: unknown; email: unknown; next: unknown }, ctx: Ctx): Promise<Entered> {
+  const s = ctx.settings;
+  if (!s) return { ok: false, why: "not_set_up" };
+  const code = tidyCode(input.code);
+  if (!code) return { ok: false, why: "code_wrong" };
+  const pending = readPending(ctx.jar, ctx.now?.getTime());
+  const email = pending?.email ?? tidyEmail(input.email);
+  if (!email) return { ok: false, why: "need_address" };
+  const over = await tries(ctx);
+  if (over) return over;
+  const checked = await checkCode(email, code, ctx.now);
+  if (checked === "expired" || checked === "none") return { ok: false, why: "code_expired" };
+  if (checked !== "ok") return { ok: false, why: "code_wrong" };
+  const token = await serviceToken(s.endpoints);
+  if (!token) return { ok: false, why: "unavailable" };
+  const account = await accountFor(s, email, token);
+  if (!account.ok) return { ok: false, why: account.why === "disabled" ? "disabled" : "unavailable" };
+  const identity: Identity = { uid: account.uid, email, name: account.name, provider: "emailCode", authTime: Math.floor((ctx.now ?? new Date()).getTime() / 1000) };
+  return enterAs(identity, pending ? pending.next : cleanNext(input.next), ctx);
 }

@@ -1,3 +1,4 @@
+import { mailSettings } from "@/lib/signin/mail";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, PageHead } from "@/components/ui";
@@ -24,7 +25,7 @@ export default function SignInHelp() {
           <div className={`stack ${css.col}`}>
             <Card title={t.sendTitle}>
               <p className="small">{t.sendBody}</p>
-              {settings ? <SignInForms google={null} next={null} /> : <p className="notice" data-b="warn">{signin.notSetUp}</p>}
+              {settings ? <SignInForms google={null} next={null} code={!!mailSettings()} /> : <p className="notice" data-b="warn">{signin.notSetUp}</p>}
             </Card>
             <div className="stack">
               {t.faq.map((f) => (

@@ -70,7 +70,7 @@ function SignedIn({ me }: { me: Me }) {
 
 export function LoginView(p: {
   /** Null when sign-in is not set up. `google` is null when only the email link is offered. */
-  signIn: { google: { clientId: string; script: string } | null } | null;
+  signIn: { google: { clientId: string; script: string } | null; code?: boolean } | null;
   /** Null when the demo sign-in is off, or not opened in this browser. */
   demo: DemoGroup[] | null;
   /** The demo is on but needs the access phrase here (SITE_LOCK_SCOPE=demo): a link to the phrase page. */
@@ -112,7 +112,7 @@ export function LoginView(p: {
           <PageHead title={t.title} sub={nothing ? t.notSetUp : p.me ? undefined : t.sub} />
           <div className={`stack ${css.col}`}>
             {notices}
-            {p.me ? <SignedIn me={p.me} /> : p.signIn && <Card><SignInForms google={p.signIn.google} next={p.next} /></Card>}
+            {p.me ? <SignedIn me={p.me} /> : p.signIn && <Card><SignInForms google={p.signIn.google} next={p.next} code={p.signIn.code} /></Card>}
             {p.signIn && !p.me && (
               <p className={`small ${css.links}`}>
                 <span>{m.newHere} <Link href="/register">{m.register}</Link></span>

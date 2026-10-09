@@ -118,6 +118,20 @@ The table holds a keyed hash, never an address, and rows are removed after a day
 is told to wait. Over the limit for one address the page answers exactly as it does when a link is sent, so the form
 never says anything about an address, including whether it has an account.
 
+### A six-digit code by email (`code.ts`, `mail.ts`)
+
+Ved, 10 October 2026: "email with OTP". When IOpener has an address to send from (`MAIL_FROM` and `MAIL_PASSWORD`),
+the email way in is a six-digit code instead of Firebase's link; without them the link is used as before.
+
+| Choice | What was decided |
+|---|---|
+| Who sends it | IOpener itself, by SMTP over TLS to Gmail (`smtp.gmail.com:465`), signed in as a Google account with its app password. No mail package: `mail.ts` speaks SMTP with Node's own `tls` |
+| The code | Six digits from a secure random source. Kept only as a keyed hash beside a keyed hash of the address (`signin_code`): the table holds neither |
+| How long, how often | Works once, for 10 minutes; the fifth wrong try ends it; asking again ends the code before it. Asking is counted exactly as for links (a few for one address, more for one network); tries are counted for the network as for finishing a link |
+| Who it signs in | The address's Firebase account, found or made as the service the app runs as (`accountFor`: `accounts:lookup`, then `accounts` with the address marked verified). So a person who signs in by code and later with Google is one person |
+| On another device | The address is typed again, as for a link |
+| Tidy-up | Codes are removed a day after they are made (the sign-in tidy-up job) |
+
 ### Deleting a person (`removal.ts`)
 
 When a household is deleted, the people who signed in only for it are deleted here and must go from Firebase too.
@@ -140,6 +154,9 @@ no such identity: nothing is removed and the result says so.
 | `ADMIN_EMAILS` | Addresses that are always super admins. Only a verified address counts |
 | `DEMO_LOGIN` | `off` in production |
 | `SIGNIN_STAND_IN` | Development only. Ignored in production |
+| `MAIL_FROM` | The Google account IOpener sends sign-in codes from. With `MAIL_PASSWORD`, codes replace the link |
+| `MAIL_PASSWORD` | That account's app password, from Secret Manager (`mail-app-password`). Never in a file or a log |
+| `MAIL_HOST`, `MAIL_PORT` | `smtp.gmail.com` and `465` unless set |
 
 `FIREBASE_AUTH_DOMAIN` is not needed and is not read: no page of IOpener is served from the Firebase domain, and the
 browser does not run Firebase's own library.

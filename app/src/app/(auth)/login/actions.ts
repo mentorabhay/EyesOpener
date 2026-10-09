@@ -11,14 +11,14 @@ import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect, RedirectType } from "next/navigation";
 import { signin as t } from "@/copy/signin";
 import { CHILD_COOKIE, endSessionsEverywhere, getViewer, signOut } from "@/lib/auth";
-import { askFlow, googleFlow, homeOf, landing, linkFlow, type Ctx, type Entered, type Refusal } from "@/lib/signin/flow";
+import { askCodeFlow, askFlow, codeFlow, googleFlow, homeOf, landing, linkFlow, usesCode, type Ctx, type Entered, type Refusal } from "@/lib/signin/flow";
 import { holdOf } from "@/lib/signin/hold";
 import { networkAddress } from "@/lib/signin/limit";
 import { startFamily } from "@/lib/signin/people";
 import { signInSettings } from "@/lib/signin/settings";
 
 /** What a sign-in form shows after it was sent: a sentence when it was refused, or the address a link went to. */
-export type SignInAnswer = { ok: false; why: Refusal | "bad_address" | "not_sent"; message: string } | { ok: true; sentTo: string } | null;
+export type SignInAnswer = { ok: false; why: Refusal | "bad_address" | "not_sent"; message: string } | { ok: true; sentTo: string; code?: boolean } | null;
 
 async function ctx(): Promise<Ctx> {
   const settings = signInSettings();
@@ -41,14 +41,25 @@ export async function googleSignIn(credential: string, next: string | null): Pro
   return out.ok ? arrive(out) : refused(out);
 }
 
-/** Emails a sign-in link. The answer never says whether the address has an account. */
+/**
+ * Emails a way in: a six-digit code when IOpener has an address to send from (owner step M1), else Firebase's link.
+ * The answer never says whether the address has an account.
+ */
 export async function askForLink(_: SignInAnswer, form: FormData): Promise<SignInAnswer> {
-  const out = await askFlow({ email: form.get("email"), next: form.get("next") }, await ctx());
-  if (out.ok) return { ok: true, sentTo: out.email };
+  const c = await ctx(), code = usesCode(c);
+  const input = { email: form.get("email"), next: form.get("next") };
+  const out = code ? await askCodeFlow(input, c) : await askFlow(input, c);
+  if (out.ok) return code ? { ok: true, sentTo: out.email, code: true } : { ok: true, sentTo: out.email };
   if (out.why === "slow_down") return { ok: false, why: "slow_down", message: t.slowDown(out.waitMin) };
   if (out.why === "bad_address") return { ok: false, why: "bad_address", message: t.badAddress };
   if (out.why === "unavailable") return { ok: false, why: "not_sent", message: t.notSent };
   return { ok: false, why: "not_set_up", message: t.refused.not_set_up };
+}
+
+/** The six-digit code from the email, typed on the sign-in page. */
+export async function finishCode(_: SignInAnswer, form: FormData): Promise<SignInAnswer> {
+  const out = await codeFlow({ code: form.get("code"), email: form.get("email"), next: form.get("next") }, await ctx());
+  return out.ok ? arrive(out) : refused(out);
 }
 
 /** The page an email link returns to sends this. */

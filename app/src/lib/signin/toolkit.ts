@@ -5,6 +5,8 @@
  *   sendLink         accounts:sendOobCode          Firebase emails a sign-in link (request type EMAIL_SIGNIN)
  *   exchangeLink     accounts:signInWithEmailLink  the code in that link, with the address, becomes a Firebase ID token
  *   deleteAccount    projects/<id>/accounts:delete removes a sign-in account, as the service the app runs as
+ *   accountFor       projects/<id>/accounts:lookup, then projects/<id>/accounts: the sign-in account of an address that
+ *                    has just proved itself with an emailed code (code.ts), made when there is none, as the service
  *
  * The server makes every call. A browser never talks to the Identity Toolkit and never holds a Firebase token, so
  * the only things the server accepts from a browser are a Google credential and the code of an email link. A token
@@ -128,4 +130,31 @@ export async function deleteAccount(s: SignInSettings, uid: string, accessToken:
   if (a.code === "USER_NOT_FOUND") return "gone";
   if (a.status === 401 || a.status === 403) return "not_allowed";
   return "failed";
+}
+
+/**
+ * The sign-in account of an address that has just proved itself with a six-digit code, so a person who signs in by
+ * code and later with Google is one person: Firebase keeps one account for one address. Made, with the address marked
+ * verified, when there is none. As the service the app runs as (Firebase Authentication Admin, docs/SIGN-IN.md).
+ */
+export type AccountFound = { ok: true; uid: string; name: string | null } | { ok: false; why: "disabled" | "not_allowed" | "failed" };
+
+export async function accountFor(s: SignInSettings, email: string, accessToken: string): Promise<AccountFound> {
+  const base = `${s.endpoints.toolkit}/projects/${encodeURIComponent(s.projectId)}/accounts`;
+  for (let round = 0; round < 2; round++) {
+    const found = await post(`${base}:lookup`, { email: [email] }, accessToken);
+    if (!found) return { ok: false, why: "failed" };
+    if (found.status === 401 || found.status === 403) { note("accounts:lookup", found); return { ok: false, why: "not_allowed" }; }
+    const user = ((found.body.users as { localId?: unknown; disabled?: unknown; displayName?: unknown }[] | undefined) ?? [])[0];
+    if (user && typeof user.localId === "string") {
+      if (user.disabled === true) return { ok: false, why: "disabled" };
+      return { ok: true, uid: user.localId, name: typeof user.displayName === "string" ? user.displayName : null };
+    }
+    const made = await post(base, { email, emailVerified: true }, accessToken);
+    if (!made) return { ok: false, why: "failed" };
+    if (made.status === 200 && typeof made.body.localId === "string") return { ok: true, uid: made.body.localId, name: null };
+    /* made at the same moment by another sign-in: look again */
+    if (made.code !== "EMAIL_EXISTS" && made.code !== "DUPLICATE_EMAIL") { note("accounts", made); return { ok: false, why: made.status === 403 ? "not_allowed" : "failed" }; }
+  }
+  return { ok: false, why: "failed" };
 }

@@ -9,6 +9,8 @@
  *   POST /v1/accounts:sendOobCode                 "emails" a sign-in link: the link is kept in `mail`
  *   POST /v1/accounts:signInWithEmailLink         the code of a link, with its address, becomes an ID token
  *   POST /v1/projects/<id>/accounts:delete        removes an account; needs the service token
+ *   POST /v1/projects/<id>/accounts:lookup        finds the account of an address; needs the service token
+ *   POST /v1/projects/<id>/accounts               makes an account for an address; needs the service token
  *   GET  /computeMetadata/v1/instance/service-accounts/default/token   the service token, as Google Cloud gives it
  *   GET  /gsi/client, /gsi/credential             a plain button in place of Google's, for a developer's machine
  *
@@ -155,6 +157,22 @@ export async function startStandIn(o: { port?: number; projectId?: string } = {}
       }
 
       if (req.method !== "POST") { res.writeHead(404); return res.end("not found"); }
+
+      const adminFind = /^\/v1\/projects\/([^/]+)\/accounts(:lookup)?$/.exec(path);
+      if (adminFind) {
+        if (req.headers.authorization !== `Bearer ${serviceToken}`) return fail(res, 401, "UNAUTHENTICATED");
+        if (decodeURIComponent(adminFind[1]) !== projectId) return fail(res, 400, "PROJECT_NOT_FOUND");
+        if (adminFind[2]) {
+          const email = String((body.email as unknown[] | undefined)?.[0] ?? "").toLowerCase();
+          const u = byEmail(email);
+          return ok(res, u ? { users: [{ localId: u.uid, email: u.email, emailVerified: u.emailVerified, displayName: u.name ?? undefined, disabled: u.disabled }] } : {});
+        }
+        const email = String(body.email ?? "").toLowerCase();
+        if (byEmail(email)) return fail(res, 400, "EMAIL_EXISTS");
+        const user: StandInUser = { uid: `uid-${crypto.randomBytes(10).toString("hex")}`, email, emailVerified: body.emailVerified === true, name: null, providers: [], disabled: false };
+        users.set(user.uid, user);
+        return ok(res, { localId: user.uid, email });
+      }
 
       const admin = /^\/v1\/projects\/([^/]+)\/accounts:delete$/.exec(path);
       if (admin) {

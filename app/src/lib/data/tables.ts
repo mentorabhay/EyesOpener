@@ -530,6 +530,11 @@ export const TABLES = {
     copy: { leftOut: "Holds a scrambled key that cannot be turned back into an address, so no row can be tied to a household." },
     erase: { untouched: "Every row is removed a day after it is made. It holds a scrambled key, never an address." },
   },
+  signinCode: {
+    holds: "A six-digit sign-in code sent by email: a scrambled form of the address and of the code, when it ends, and how many wrong tries.",
+    copy: { leftOut: "Holds scrambled keys that cannot be turned back into an address or a code, so no row can be tied to a household." },
+    erase: { untouched: "Every row is removed a day after it is made. It holds scrambled keys, never an address." },
+  },
   signinRemoval: {
     holds: "A sign-in account still to be removed from the sign-in service after its person was deleted: only its id there.",
     copy: { leftOut: "It exists only after a person has been deleted, so it belongs to no household that could ask for a copy." },

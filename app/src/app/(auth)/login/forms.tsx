@@ -8,7 +8,8 @@
  */
 import { startTransition, useActionState, useEffect, useRef, useState } from "react";
 import { signin as t } from "@/copy/signin";
-import { askForLink, googleSignIn, type SignInAnswer } from "./actions";
+import { CODE_MINUTES } from "@/lib/signin/code-rules";
+import { askForLink, finishCode, googleSignIn, type SignInAnswer } from "./actions";
 import css from "./login.module.css";
 
 interface GoogleId {
@@ -82,7 +83,42 @@ function GoogleButton({ clientId, script, next, onRefused }: { clientId: string;
   );
 }
 
-export function SignInForms({ google, next }: { google: { clientId: string; script: string } | null; next: string | null }) {
+/** Where the six-digit code is typed, once a code went to `email`. */
+function CodeEntry({ email, next, again, sending, said, onOther }: { email: string; next: string | null; again: (d: FormData) => void; sending: boolean; said: SignInAnswer; onOther: () => void }) {
+  const [answer, enter, working] = useActionState<SignInAnswer, FormData>(finishCode, null);
+  const heading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => { heading.current?.focus(); }, []);
+  return (
+    <div className={css.flow}>
+      <h2 ref={heading} tabIndex={-1} className={css.h}>{t.code.sentTitle}</h2>
+      <p>{t.code.look(email)}</p>
+      <form action={enter} className={css.flow}
+        onSubmit={(e) => { e.preventDefault(); const data = new FormData(e.currentTarget); startTransition(() => enter(data)); }}>
+        <input type="hidden" name="email" value={email} />
+        <input type="hidden" name="next" value={next ?? ""} />
+        <div className="field">
+          <label htmlFor="signin-code">{t.code.label}</label>
+          <input id="signin-code" className="input" name="code" required inputMode="numeric" autoComplete="one-time-code" pattern="[0-9 -]{6,9}" maxLength={9} aria-describedby="signin-code-hint" style={{ letterSpacing: "0.3em", fontSize: "1.25rem", maxWidth: 220 }} />
+          <span id="signin-code-hint" className="muted small">{t.code.works(CODE_MINUTES)}</span>
+        </div>
+        <div className="row"><button className="btn btn-g" disabled={working}>{working ? t.code.entering : t.code.enter}</button></div>
+        <div role="alert">{answer && !answer.ok && <p className="notice" data-b="warn">{answer.message}</p>}</div>
+      </form>
+      <p className="muted small">{t.sent.none}</p>
+      <div className="row">
+        <form action={again}>
+          <input type="hidden" name="email" value={email} />
+          <input type="hidden" name="next" value={next ?? ""} />
+          <button className="btn btn-d" disabled={sending}>{sending ? t.link.sending : t.code.again}</button>
+        </form>
+        <button type="button" className="btn btn-gh" onClick={onOther}>{t.code.other}</button>
+      </div>
+      <div role="alert">{said && !said.ok && <p className="notice" data-b="warn">{said.message}</p>}</div>
+    </div>
+  );
+}
+
+export function SignInForms({ google, next, code = false }: { google: { clientId: string; script: string } | null; next: string | null; code?: boolean }) {
   const [answer, ask, sending] = useActionState<SignInAnswer, FormData>(askForLink, null);
   const [googleSaid, setGoogleSaid] = useState<string | null>(null);
   /* "Use a different address" puts the form back: the answer it was showing is set aside. A later answer is a new one. */
@@ -90,6 +126,10 @@ export function SignInForms({ google, next }: { google: { clientId: string; scri
   const sentTo = answer?.ok && answer !== setAside ? answer.sentTo : null;
   const heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => { if (sentTo) heading.current?.focus(); }, [sentTo]);
+
+  if (sentTo && answer?.ok && answer.code) {
+    return <CodeEntry key={sentTo} email={sentTo} next={next} again={ask} sending={sending} said={null} onOther={() => setSetAside(answer)} />;
+  }
 
   if (sentTo) {
     return (
@@ -121,7 +161,7 @@ export function SignInForms({ google, next }: { google: { clientId: string; scri
           <p className={css.or} aria-hidden="true"><span>{t.or}</span></p>
         </>
       )}
-      <h2 className={css.h}>{t.link.title}</h2>
+      <h2 className={css.h}>{code ? t.code.title : t.link.title}</h2>
       <form
         action={ask} className={css.flow}
         /* Sent by hand so React does not empty the field after a refusal. Without scripts the plain form post still works. */
@@ -131,9 +171,9 @@ export function SignInForms({ google, next }: { google: { clientId: string; scri
         <div className="field">
           <label htmlFor="signin-email">{t.link.label}</label>
           <input id="signin-email" className="input" type="email" name="email" required maxLength={254} autoComplete="email" inputMode="email" autoCapitalize="none" spellCheck={false} aria-describedby="signin-email-hint" />
-          <span id="signin-email-hint" className="muted small">{t.link.hint}</span>
+          <span id="signin-email-hint" className="muted small">{code ? t.code.hint : t.link.hint}</span>
         </div>
-        <div className="row"><button className="btn btn-g" disabled={sending}>{sending ? t.link.sending : t.link.send}</button></div>
+        <div className="row"><button className="btn btn-g" disabled={sending}>{sending ? t.link.sending : code ? t.code.send : t.link.send}</button></div>
         <div role="alert">{answer && !answer.ok && <p className="notice" data-b="warn">{answer.message}</p>}</div>
       </form>
     </div>

@@ -1,3 +1,4 @@
+import { mailSettings } from "@/lib/signin/mail";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -31,7 +32,7 @@ export default async function RegisterPage() {
           <div className={`stack ${css.col}`}>
             <ol className={css.steps}>{t.steps.map((s) => <li key={s}>{s}</li>)}</ol>
             {settings
-              ? <Card><SignInForms google={settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null} next={null} /></Card>
+              ? <Card><SignInForms google={settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null} next={null} code={!!mailSettings()} /></Card>
               : <p className="notice" data-b="warn">{signin.notSetUp}</p>}
             <p className="muted small">{t.noPassword}</p>
             <p className="small">{t.have} <Link href="/login">{t.login}</Link></p>

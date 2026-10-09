@@ -893,6 +893,23 @@ export const signinAsk = pgTable("signin_ask", {
 }, (t) => [index().on(t.kind, t.key, t.at)]);
 
 /**
+ * A six-digit sign-in code sent by email (Ved, 10 October 2026: "email with OTP"). The table never holds the address
+ * or the code: a keyed hash of each. A code works once, for ten minutes, and for five wrong tries at most. Every row is
+ * removed a day after it is made (src/lib/signin/code.ts).
+ */
+export const signinCode = pgTable("signin_code", {
+  id: id(),
+  /** A keyed hash of the email address. */
+  emailKey: text().notNull(),
+  /** A keyed hash of the code, made with the address's key. */
+  codeHash: text().notNull(),
+  expiresAt: timestamp({ withTimezone: true }).notNull(),
+  tries: integer().notNull().default(0),
+  usedAt: when(),
+  createdAt: now(),
+}, (t) => [index().on(t.emailKey, t.createdAt)]);
+
+/**
  * Sign-in accounts that still have to be removed from Firebase Authentication after their person was deleted here.
  * It holds only the id the account has at Firebase. A row goes as soon as Firebase confirms the removal.
  */
