@@ -6,7 +6,7 @@
  */
 import { z } from "zod";
 import {
-  CAL, TUNE, USUAL_GAMMA, gammaFromMatches, inkFromMatches, leakFor, leakFromMatches, regammaBalance, tuneOf,
+  CAL, TUNE, USUAL_GAMMA, gammaFromMatches, inkFromMatches, leakFor, leakFromMatches, mixKeepsEnough, regammaBalance, tuneOf,
   type InkTune, type Leak, type LeakEffect, type LensMatch, type Pair,
 } from "@/engine";
 import type { MemberAction } from "./roles";
@@ -31,7 +31,7 @@ export const stepInput = z.discriminatedUnion("step", [
   z.object({ step: z.literal("leak"), red: lens, cyan: lens }),
   z.object({ step: z.literal("ink"), xs: z.tuple([within(CAL.inkSet), within(CAL.inkSet)]), turned: z.boolean() }),
   /* the fourth step: the inks tuned for the glasses, one setting for each lens (src/engine/tune.ts) */
-  z.object({ step: z.literal("tune"), green: within(TUNE.green), redTop: within(TUNE.redTop) }),
+  z.object({ step: z.literal("tune"), green: within(TUNE.green), blue: within(TUNE.blue), redTop: within(TUNE.redTop) }),
 ]);
 export type StepInput = z.infer<typeof stepInput>;
 
@@ -40,9 +40,9 @@ const rawSchema = z.object({
   /** The two grey values, and the gamma that was in use before this measurement. */
   gamma: z.object({ greys: z.tuple([z.number(), z.number()]), was: z.number() }).optional().catch(undefined),
   /** `green`: the cyan ink's green share when the leak was matched; the red lens's leak holds it (src/engine/tune.ts). */
-  leak: z.object({ red: lens, cyan: lens, green: z.number().optional() }).optional().catch(undefined),
+  leak: z.object({ red: lens, cyan: lens, green: z.number().optional(), blue: z.number().optional() }).optional().catch(undefined),
   /** The two balance settings, whether the glasses were turned round for the second, and the gamma they were drawn with. */
-  ink: z.object({ xs: z.tuple([z.number(), z.number()]), turned: z.boolean(), gamma: z.number(), green: z.number().optional() }).optional().catch(undefined),
+  ink: z.object({ xs: z.tuple([z.number(), z.number()]), turned: z.boolean(), gamma: z.number(), green: z.number().optional(), blue: z.number().optional() }).optional().catch(undefined),
   /** Pixels per centimetre of the screen when a colour step was last saved. */
   ppc: z.number().optional().catch(undefined),
 });
@@ -62,6 +62,7 @@ export interface ScreenRow {
   inkBalanceAt: Date | null;
   colourRaw: unknown;
   cyanGreen: number | null;
+  cyanBlue: number | null;
   cyanGreenAt: Date | null;
   redTop: number | null;
   redTopAt: Date | null;
@@ -70,12 +71,13 @@ export type ScreenChange = Partial<Omit<ScreenRow, "pxPerCm">>;
 
 export type Resolved =
   | { ok: true; set: ScreenChange }
-  /** `lens` names the lens whose two matches were refused, in the leak step. */
-  | { ok: false; why: "apart" | "range"; lens?: "red" | "cyan" };
+  /** `lens` names the lens whose two matches were refused, in the leak step. "dim": a cyan mix that starves the weaker eye. */
+  | { ok: false; why: "apart" | "range" | "dim"; lens?: "red" | "cyan" };
 
 const round2 = (v: number) => Math.round(v * 100) / 100;
-/** Two green shares closer than one slider step are the same tuning. */
-const sameGreen = (a: number, b: number) => Math.abs(a - b) < TUNE.step / 2;
+/** Two cyan mixes closer than this in each share are the same tuning. */
+const SAME = 0.005;
+const sameMix = (a: { green: number; blue: number }, b: { green: number; blue: number }) => Math.abs(a.green - b.green) < SAME && Math.abs(a.blue - b.blue) < SAME;
 const clamp = (v: number, [lo, hi]: readonly [number, number]) => Math.max(lo, Math.min(hi, v));
 
 /**
@@ -113,23 +115,26 @@ export function resolveStep(input: StepInput, row: ScreenRow, now: Date): Resolv
         ok: true,
         set: {
           leakRedLens: red.value, leakCyanLens: cyan.value, channelLeak: Math.max(red.value, cyan.value), leakAt: now,
-          colourRaw: { ...raw, leak: { red: input.red, cyan: input.cyan, green: tuneOf(row).green } },
+          colourRaw: { ...raw, leak: { red: input.red, cyan: input.cyan, green: tuneOf(row).green, blue: tuneOf(row).blue } },
         },
       };
     }
     case "ink": {
       const ink = inkFromMatches(input.xs);
       if (!ink.ok) return ink;
-      return { ok: true, set: { inkBalance: ink.value, inkBalanceAt: now, colourRaw: { ...raw, ink: { xs: input.xs, turned: input.turned, gamma: row.gamma, green: tuneOf(row).green } } } };
+      return { ok: true, set: { inkBalance: ink.value, inkBalanceAt: now, colourRaw: { ...raw, ink: { xs: input.xs, turned: input.turned, gamma: row.gamma, green: tuneOf(row).green, blue: tuneOf(row).blue } } } };
     }
     case "tune": {
+      /* a mix that leaves the weaker eye under the floor is refused here as well as in the browser (engine/tune.ts) */
+      const green = Math.round(input.green * 1000) / 1000, blue = Math.round(input.blue * 1000) / 1000, redTop = Math.round(input.redTop * 1000) / 1000;
+      if (!mixKeepsEnough(green, blue)) return { ok: false, why: "dim" };
       /* a time moves only when its setting moved, so "take the balance check-up again" follows a change of the cyan ink only */
-      const was = tuneOf(row), green = round2(input.green), redTop = round2(input.redTop);
+      const was = tuneOf(row);
       return {
         ok: true,
         set: {
-          cyanGreen: green, cyanGreenAt: sameGreen(green, was.green) ? row.cyanGreenAt : now,
-          redTop, redTopAt: Math.abs(redTop - was.redTop) < TUNE.step / 2 ? row.redTopAt : now,
+          cyanGreen: green, cyanBlue: blue, cyanGreenAt: sameMix({ green, blue }, was) ? row.cyanGreenAt : now,
+          redTop, redTopAt: Math.abs(redTop - was.redTop) < SAME ? row.redTopAt : now,
         },
       };
     }
@@ -149,7 +154,7 @@ export function clearStep(step: Step, row: ScreenRow): ScreenChange {
     case "ink":
       return { inkBalance: null, inkBalanceAt: null, colourRaw: { ...raw, ink: undefined } };
     case "tune":
-      return { cyanGreen: null, cyanGreenAt: null, redTop: null, redTopAt: null };
+      return { cyanGreen: null, cyanBlue: null, cyanGreenAt: null, redTop: null, redTopAt: null };
   }
 }
 
@@ -176,10 +181,10 @@ export function screenFacts(row: ScreenRow): ScreenFacts {
   const raw = rawOf(row.colourRaw);
   const gammaAt = row.gammaAt;
   const tune = tuneOf(row);
-  /* a value matched before the green share last changed was matched with another cyan ink */
-  const stale = (green: number | undefined) => !sameGreen(green ?? 1, tune.green);
-  const leak = row.leakAt && row.leakRedLens !== null && row.leakCyanLens !== null ? { red: row.leakRedLens, cyan: row.leakCyanLens, at: row.leakAt, stale: stale(raw.leak?.green) } : null;
-  const ink = row.inkBalanceAt && row.inkBalance !== null ? { value: row.inkBalance, at: row.inkBalanceAt, turned: raw.ink?.turned ?? false, stale: stale(raw.ink?.green) } : null;
+  /* a value matched before the cyan mix last changed was matched with another cyan ink */
+  const stale = (m: { green?: number; blue?: number } | undefined) => !sameMix({ green: m?.green ?? 1, blue: m?.blue ?? 1 }, tune);
+  const leak = row.leakAt && row.leakRedLens !== null && row.leakCyanLens !== null ? { red: row.leakRedLens, cyan: row.leakCyanLens, at: row.leakAt, stale: stale(raw.leak) } : null;
+  const ink = row.inkBalanceAt && row.inkBalance !== null ? { value: row.inkBalance, at: row.inkBalanceAt, turned: raw.ink?.turned ?? false, stale: stale(raw.ink) } : null;
   const measured = (gammaAt ? 1 : 0) + (leak ? 1 : 0) + (ink ? 1 : 0);
   return {
     gamma: { value: row.gamma, at: gammaAt, movedBy: gammaAt && raw.gamma ? Math.abs(row.gamma - raw.gamma.was) : 0 },

@@ -185,14 +185,14 @@ export interface LeakEffect {
  * The level never gets better as a leak grows, and never gets worse as the member's contrast rises.
  *
  * With the inks tuned (tune.ts): the red lens's leak is measured with the cyan ink as it is drawn, so it already holds
- * the green tuning; the red ink is the member's contrast under the ceiling, so a ceiling below the member's contrast
+ * the cyan mix; the red ink is the member's contrast under the ceiling, so a ceiling below the member's contrast
  * makes the ghost in the stronger eye relatively brighter; and the weaker eye's own pictures carry `weakLight` of the
  * cyan ink's untuned light, which the cyan lens's leak was measured against.
  */
 export function leakFor(leak: Leak, contrast: number, tune: InkTune = USUAL_TUNE): LeakEffect {
   const con = trainRed(clamp(contrast, [MIN_CONTRAST, 1]), tune);
   const red = clamp(leak.red, [0, 1]), cyan = clamp(leak.cyan, [0, 1]);
-  const inStrong = red / con, inWeak = (cyan * con) / weakLight(tune.green);
+  const inStrong = red / con, inWeak = (cyan * con) / weakLight(tune.green, tune.blue);
   return { inStrong, inWeak, level: inStrong >= 1 ? "high" : Math.max(red, cyan) >= LEAK_FAINT ? "ghost" : "clean" };
 }
 

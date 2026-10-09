@@ -1,0 +1,1 @@
+ALTER TABLE "device" ADD COLUMN "cyan_blue" real;

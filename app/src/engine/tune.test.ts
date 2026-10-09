@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import { USUAL_TUNE, currentTune, leakFor, setInkTune, strongInk, trainRed, tuneOf, validTune, videoMatrix, weakInk, weakLight } from "@/engine";
+import { USUAL_TUNE, currentTune, cyanCode, leakFor, parseCyanCode, parseRedCode, redCode, setInkTune, strongInk, trainRed, tuneOf, validTune, videoMatrix, weakInk, weakLight } from "@/engine";
 
 afterEach(() => setInkTune(USUAL_TUNE));
 
@@ -11,34 +11,58 @@ describe("inks tuned for a pair of glasses", () => {
     expect(tuneOf(null)).toEqual(USUAL_TUNE);
   });
   it("takes green out of the cyan ink only, and keeps blue as the contrast sets it", () => {
-    expect(weakInk(1, 2.2, { green: 0.5, redTop: 1 })).toBe("rgb(0 186 255)");
-    expect(weakInk(0.5, 2.2, { green: 0.5, redTop: 1 })).toBe("rgb(0 136 186)");
+    expect(weakInk(1, 2.2, { green: 0.5, blue: 1, redTop: 1 })).toBe("rgb(0 186 255)");
+    expect(weakInk(0.5, 2.2, { green: 0.5, blue: 1, redTop: 1 })).toBe("rgb(0 136 186)");
   });
   it("follows the setting the browser holds for the page", () => {
-    setInkTune({ green: 0.5, redTop: 0.4 });
+    setInkTune({ green: 0.5, blue: 1, redTop: 0.4 });
     expect(weakInk(1)).toBe("rgb(0 186 255)");
-    expect(currentTune()).toEqual({ green: 0.5, redTop: 0.4 });
+    expect(currentTune()).toEqual({ green: 0.5, blue: 1, redTop: 0.4 });
     const m = videoMatrix(1);
     expect(Math.max(m[0] + m[1] + m[2] + m[4])).toBeCloseTo(0.4);
     expect(m[5] + m[6] + m[7]).toBeCloseTo(0.5);
     expect(m[10] + m[11] + m[12]).toBeCloseTo(1);
   });
   it("never lets the ceiling raise the red ink", () => {
-    for (const top of [0.1, 0.4, 1]) for (const c of [0.05, 0.3, 1]) expect(trainRed(c, { green: 1, redTop: top })).toBeLessThanOrEqual(c);
+    for (const top of [0.1, 0.4, 1]) for (const c of [0.05, 0.3, 1]) expect(trainRed(c, { green: 1, blue: 1, redTop: top })).toBeLessThanOrEqual(c);
   });
   it("says how much light the weaker eye keeps", () => {
     expect(weakLight(1)).toBe(1);
     expect(weakLight(0.5)).toBeCloseTo(0.546, 3);
-    expect(weakLight(0)).toBeCloseTo(weakLight(0.2));
+    expect(weakLight(1, 0)).toBeCloseTo(0.908, 3);
   });
   it("makes any setting safe", () => {
-    expect(validTune({ green: 0, redTop: 2 })).toEqual({ green: 0.2, redTop: 1 });
+    expect(validTune({ green: 1, blue: -1, redTop: 2 })).toEqual({ green: 1, blue: 0, redTop: 1 });
+    /* a mix saved before the floor existed is read as the usual cyan */
+    expect(validTune({ green: 0.2, blue: 1, redTop: 0.5 })).toEqual({ green: 1, blue: 1, redTop: 0.5 });
     expect(validTune({ green: Number.NaN })).toEqual(USUAL_TUNE);
   });
   it("judges the leak with the ceiling and the dimmer cyan", () => {
     const leak = { red: 0.05, cyan: 0.03 };
     expect(leakFor(leak, 0.5).inStrong).toBeCloseTo(0.1);
-    expect(leakFor(leak, 0.5, { green: 1, redTop: 0.25 }).inStrong).toBeCloseTo(0.2);
-    expect(leakFor(leak, 0.5, { green: 0.5, redTop: 1 }).inWeak).toBeCloseTo(0.015 / weakLight(0.5));
+    expect(leakFor(leak, 0.5, { green: 1, blue: 1, redTop: 0.25 }).inStrong).toBeCloseTo(0.2);
+    expect(leakFor(leak, 0.5, { green: 0.5, blue: 1, redTop: 1 }).inWeak).toBeCloseTo(0.015 / weakLight(0.5));
+  });
+});
+
+describe("the colour codes", () => {
+  it("reads and writes the cyan ink as #00GGBB and the red ceiling as #RR0000", () => {
+    expect(cyanCode({ green: 1, blue: 1 }, 2.2)).toBe("#00FFFF");
+    expect(cyanCode({ green: 1, blue: 0 }, 2.2)).toBe("#00FF00");
+    expect(redCode(1, 2.2)).toBe("#FF0000");
+    const back = parseCyanCode("#00e650", 2.2);
+    expect(back.ok && cyanCode(back, 2.2)).toBe("#00E650");
+    const red = parseRedCode("c80000", 2.2);
+    expect(red.ok && redCode(red.top, 2.2)).toBe("#C80000");
+  });
+  it("refuses a cyan code with red in it, a red code with green or blue, and anything that is not a code", () => {
+    expect(parseCyanCode("#10FFFF", 2.2)).toEqual({ ok: false, why: "red" });
+    expect(parseRedCode("#FF0010", 2.2)).toEqual({ ok: false, why: "other" });
+    expect(parseCyanCode("cyan", 2.2)).toEqual({ ok: false, why: "form" });
+  });
+  it("blue goes into the weaker eye's ink and the film's blue row", () => {
+    expect(weakInk(1, 2.2, { green: 1, blue: 0, redTop: 1 })).toBe("rgb(0 255 0)");
+    const m = videoMatrix(1, { green: 1, blue: 0.5, redTop: 1 });
+    expect(m[10] + m[11] + m[12]).toBeCloseTo(0.5);
   });
 });

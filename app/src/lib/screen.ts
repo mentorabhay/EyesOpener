@@ -8,7 +8,7 @@ import { db, schema } from "@/db";
 import type { Member } from "@/lib/session";
 import { clearStep, mayCalibrate, profileEffect, resolveStep, screenFacts, stepInput, stepSchema, type ProfileEffect, type ScreenFacts } from "./screen-rules";
 
-export type SaveError = "seat" | "no_screen" | "invalid" | "apart" | "range";
+export type SaveError = "seat" | "no_screen" | "invalid" | "apart" | "range" | "dim";
 export type Saved = { ok: true; facts: ScreenFacts } | { ok: false; why: SaveError; lens?: "red" | "cyan" };
 
 async function write(member: Member, set: Partial<typeof schema.device.$inferInsert>) {

@@ -20,26 +20,26 @@ export const strongInk = (contrast: number, gamma = 2.2) => `rgb(${channel(contr
 
 /**
  * CSS colour of the weaker eye's ink. It is dimmed only when the balance test asks for it. On a screen whose inks were
- * tuned for its glasses (tune.ts), the green share is lowered by the tuning; blue stays as the contrast sets it.
+ * tuned for its glasses (tune.ts), the green and blue shares are those of the tuning's mix.
  */
 export function weakInk(contrast = 1, gamma = 2.2, tune: InkTune = currentTune()): string {
   const c = Math.max(0, Math.min(1, contrast));
-  return `rgb(0 ${channel(c * tune.green, gamma)} ${channel(c, gamma)})`;
+  return `rgb(0 ${channel(c * tune.green, gamma)} ${channel(c * tune.blue, gamma)})`;
 }
 
 /**
  * Colour matrix that turns ordinary video into a two-eye picture.
  * Both eyes get the picture's brightness. The red channel (stronger eye) is pulled toward mid-grey by `contrast`.
- * On a tuned screen (tune.ts) the green row is scaled by the tuning's green share and the red row by its ceiling.
+ * On a tuned screen (tune.ts) the green and blue rows are scaled by the tuning's mix and the red row by its ceiling.
  * Returns the 20 numbers an SVG feColorMatrix takes, row by row.
  */
 export function videoMatrix(contrast: number, tune: InkTune = currentTune()): number[] {
-  const c = Math.max(0.05, Math.min(1, contrast)), top = tune.redTop, gr = tune.green;
+  const c = Math.max(0.05, Math.min(1, contrast)), top = tune.redTop, gr = tune.green, bl = tune.blue;
   const [r, g, b] = [0.2126, 0.7152, 0.0722];
   return [
     top * c * r, top * c * g, top * c * b, 0, top * (1 - c) * 0.5,
     gr * r, gr * g, gr * b, 0, 0,
-    r, g, b, 0, 0,
+    bl * r, bl * g, bl * b, 0, 0,
     0, 0, 0, 1, 0,
   ];
 }

@@ -10,7 +10,7 @@ import { useEffect, useRef, useState, useTransition, type KeyboardEvent, type Re
 import { devicePixels } from "@/components/measure/canvas";
 import type { Draw } from "@/components/measure/canvas";
 import { screen as t } from "@/copy/screen";
-import { CAL, LEAK_FAINT, LEAK_SUSPECT, SCENE_FIELD, SHARED_INK, balanceContrasts, leakFromMatches, strongInk, weakInk, type LensMatch } from "@/engine";
+import { CAL, LEAK_FAINT, LEAK_SUSPECT, SCENE_FIELD, SHARED_INK, balanceContrasts, cyanCode, leakFromMatches, strongInk, weakInk, weakLight, type InkTune, type LensMatch } from "@/engine";
 import type { Step } from "@/lib/screen-rules";
 import { Confirm } from "../confirm";
 import { forgetScreenStep, saveScreenStep, type StepSaved } from "./actions";
@@ -90,8 +90,8 @@ interface Props {
   dist: number;
   /** For each check: when it was measured, in words, or null while the usual value is in use. */
   measured: Record<Step, string | null>;
-  /** The inks' tuning now: the cyan ink's green share and the red ink's ceiling (1 and 1 when not tuned). */
-  tune: { green: number; redTop: number };
+  /** The inks' tuning now: the cyan ink's green and blue shares and the red ink's ceiling (all 1 when not tuned). */
+  tune: InkTune;
 }
 
 export function Flow({ canMeasure, gamma, dist, measured, tune }: Props) {
@@ -248,7 +248,7 @@ export function Flow({ canMeasure, gamma, dist, measured, tune }: Props) {
   }
 
   if (at.at === "tune") {
-    body = <TuneStep gamma={gamma} green={tune.green} redTop={tune.redTop} skip={skip("tune")} onSave={(green, redTop) => send("tune", { step: "tune", green, redTop })} />;
+    body = <TuneStep gamma={gamma} tune={tune} skip={skip("tune")} onSave={(next) => send("tune", { step: "tune", ...next })} />;
   }
 
   if (at.at === "saving") body = <p role="status">{t.match.saving}</p>;
@@ -293,9 +293,9 @@ export function Flow({ canMeasure, gamma, dist, measured, tune }: Props) {
         )}
         {s.step === "tune" && (
           <>
-            <p><b>{t.tune.result.green(s.green)}</b></p>
+            <p><b>{t.tune.result.cyan(cyanCode(s, gamma), weakLight(s.green, s.blue))}</b></p>
             <p><b>{t.tune.result.red(s.redTop)}</b></p>
-            {(s.green < 1 || s.redTop < 1) && <p className="notice">{t.tune.after}</p>}
+            {(s.green < 1 || s.blue < 1 || s.redTop < 1) && <p className="notice">{t.tune.after}</p>}
           </>
         )}
         {s.step === "ink" && (

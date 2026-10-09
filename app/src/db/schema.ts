@@ -157,6 +157,8 @@ export const device = pgTable("device", {
   /* the inks tuned for these glasses (src/engine/tune.ts). Null means "not tuned": the usual inks are drawn. */
   /** Share of the green channel's light kept in the cyan ink, so less of it shows through the red lens. */
   cyanGreen: real(),
+  /** Share of the blue channel's light kept in the cyan ink. `cyanGreenAt` is when the cyan mix (green or blue) last changed. */
+  cyanBlue: real(),
   cyanGreenAt: when(),
   /** The most light the red ink may have in training, so its shadow through the cyan lens stays out of sight. */
   redTop: real(),

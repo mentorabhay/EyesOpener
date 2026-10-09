@@ -5,7 +5,7 @@ import { GAMMA_MOVED, clearStep, mayCalibrate, profileEffect, rawOf, resolveStep
 
 const blank: ScreenRow = {
   pxPerCm: 37.8, gamma: USUAL_GAMMA, gammaAt: null, channelLeak: 0, leakRedLens: null, leakCyanLens: null, leakAt: null,
-  inkBalance: null, inkBalanceAt: null, colourRaw: {}, cyanGreen: null, cyanGreenAt: null, redTop: null, redTopAt: null,
+  inkBalance: null, inkBalanceAt: null, colourRaw: {}, cyanGreen: null, cyanBlue: null, cyanGreenAt: null, redTop: null, redTopAt: null,
 };
 const day = (n: number) => new Date(Date.UTC(2026, 9, n));
 /** The row after a change is saved, read back the way the database returns it (JSON keeps no `undefined`). */
@@ -79,13 +79,13 @@ describe("saving a step", () => {
   it("stores the ink balance with the gamma it was drawn with and whether the glasses were turned", () => {
     const row = save({ ...blank, gamma: 2.4 }, { step: "ink", xs: [0.58, 0.42], turned: true });
     expect(row.inkBalance).toBe(0.5);
-    expect(rawOf(row.colourRaw).ink).toEqual({ xs: [0.58, 0.42], turned: true, gamma: 2.4, green: 1 });
+    expect(rawOf(row.colourRaw).ink).toEqual({ xs: [0.58, 0.42], turned: true, gamma: 2.4, green: 1, blue: 1 });
   });
   it("keeps the other steps when one is saved", () => {
     let row = save(blank, { step: "leak", red: [88, 92], cyan: "unseen" }, day(3));
     row = save(row, { step: "ink", xs: [0.5, 0.5], turned: false }, day(4));
     expect(row.leakRedLens).not.toBeNull();
-    expect(rawOf(row.colourRaw).leak).toEqual({ red: [88, 92], cyan: "unseen", green: 1 });
+    expect(rawOf(row.colourRaw).leak).toEqual({ red: [88, 92], cyan: "unseen", green: 1, blue: 1 });
     expect(screenFacts(row).measured).toBe(2);
   });
 });
@@ -141,7 +141,7 @@ describe("putting a step back to not measured", () => {
 
 describe("what is known about a screen", () => {
   it("says nothing is measured on a new screen", () => {
-    expect(screenFacts(blank)).toEqual({ gamma: { value: 2.2, at: null, movedBy: 0 }, leak: null, ink: null, measured: 0, moved: false, tune: { green: 1, redTop: 1, greenAt: null, redTopAt: null } });
+    expect(screenFacts(blank)).toEqual({ gamma: { value: 2.2, at: null, movedBy: 0 }, leak: null, ink: null, measured: 0, moved: false, tune: { green: 1, blue: 1, redTop: 1, greenAt: null, redTopAt: null } });
     expect(screenFacts({ ...blank, colourRaw: null })).toMatchObject({ measured: 0 });
     expect(screenFacts({ ...blank, colourRaw: "nonsense" })).toMatchObject({ measured: 0 });
   });
@@ -190,41 +190,57 @@ describe("what a screen means for one profile", () => {
 describe("tuning the inks for the glasses", () => {
   const leakMatch: StepInput = { step: "leak", red: [120, 130], cyan: "unseen" };
   it("stores both settings, each with the time it last changed", () => {
-    const row = save(blank, { step: "tune", green: 0.6, redTop: 0.5 }, day(6));
+    const row = save(blank, { step: "tune", green: 0.6, blue: 1, redTop: 0.5 }, day(6));
     expect([row.cyanGreen, row.redTop]).toEqual([0.6, 0.5]);
     expect([row.cyanGreenAt, row.redTopAt]).toEqual([day(6), day(6)]);
-    const again = save(row, { step: "tune", green: 0.6, redTop: 0.4 }, day(8));
+    const again = save(row, { step: "tune", green: 0.6, blue: 1, redTop: 0.4 }, day(8));
     expect(again.cyanGreenAt).toEqual(day(6));
     expect(again.redTopAt).toEqual(day(8));
   });
   it("refuses settings off the scale", () => {
-    expect(stepInput.safeParse({ step: "tune", green: 0.1, redTop: 1 }).success).toBe(false);
-    expect(stepInput.safeParse({ step: "tune", green: 1, redTop: 0.05 }).success).toBe(false);
-    expect(stepInput.safeParse({ step: "tune", green: 1, redTop: 1.2 }).success).toBe(false);
+    expect(stepInput.safeParse({ step: "tune", green: -0.1, blue: 1, redTop: 1 }).success).toBe(false);
+    expect(stepInput.safeParse({ step: "tune", green: 1, blue: 1, redTop: 0.05 }).success).toBe(false);
+    expect(stepInput.safeParse({ step: "tune", green: 1, blue: 1.2, redTop: 1 }).success).toBe(false);
   });
   it("marks the leak and the ink balance to be matched again when the green share changes, not when the ceiling does", () => {
     const measured = save(save(blank, leakMatch, day(3)), { step: "ink", xs: [0.4, 0.5], turned: true }, day(3));
     expect(screenFacts(measured).leak?.stale).toBe(false);
-    const ceiling = save(measured, { step: "tune", green: 1, redTop: 0.5 }, day(4));
+    const ceiling = save(measured, { step: "tune", green: 1, blue: 1, redTop: 0.5 }, day(4));
     expect(screenFacts(ceiling).leak?.stale).toBe(false);
     expect(screenFacts(ceiling).ink?.stale).toBe(false);
-    const tuned = save(ceiling, { step: "tune", green: 0.6, redTop: 0.5 }, day(5));
+    const tuned = save(ceiling, { step: "tune", green: 0.6, blue: 1, redTop: 0.5 }, day(5));
     expect(screenFacts(tuned).leak?.stale).toBe(true);
     expect(screenFacts(tuned).ink?.stale).toBe(true);
     const again = save(tuned, leakMatch, day(6));
     expect(screenFacts(again).leak?.stale).toBe(false);
   });
   it("asks for the balance check-up again after the cyan ink changed, and names whom the ceiling lowers", () => {
-    const tuned = screenFacts(save(blank, { step: "tune", green: 0.6, redTop: 0.4 }, day(5)));
+    const tuned = screenFacts(save(blank, { step: "tune", green: 0.6, blue: 1, redTop: 0.4 }, day(5)));
     expect(profileEffect(tuned, { strongContrast: 0.3 }, day(4)).balanceAgain).toBe(true);
     expect(profileEffect(tuned, { strongContrast: 0.3 }, day(6)).balanceAgain).toBe(false);
     expect(profileEffect(tuned, { strongContrast: 0.3 }, day(6)).capped).toBeNull();
     expect(profileEffect(tuned, { strongContrast: 0.8 }, day(6)).capped).toBe(0.4);
-    const ceilingOnly = screenFacts(save(blank, { step: "tune", green: 1, redTop: 0.4 }, day(5)));
+    const ceilingOnly = screenFacts(save(blank, { step: "tune", green: 1, blue: 1, redTop: 0.4 }, day(5)));
     expect(profileEffect(ceilingOnly, { strongContrast: 0.3 }, day(4)).balanceAgain).toBe(false);
   });
   it("puts the inks back as usual", () => {
-    const tuned = save(blank, { step: "tune", green: 0.6, redTop: 0.4 }, day(5));
+    const tuned = save(blank, { step: "tune", green: 0.6, blue: 1, redTop: 0.4 }, day(5));
     expect(after(tuned, clearStep("tune", tuned))).toEqual(blank);
+  });
+});
+
+describe("the cyan mix's floor", () => {
+  it("refuses a mix that leaves the weaker eye under half its light, and keeps nothing of it", () => {
+    expect(resolveStep({ step: "tune", green: 0.02, blue: 0.02, redTop: 0.5 }, blank, day(5))).toEqual({ ok: false, why: "dim" });
+    expect(resolveStep({ step: "tune", green: 0.4, blue: 1, redTop: 1 }, blank, day(5))).toEqual({ ok: false, why: "dim" });
+  });
+  it("takes a mix with no blue at all, which keeps most of the light", () => {
+    const row = save(blank, { step: "tune", green: 1, blue: 0, redTop: 1 }, day(5));
+    expect([row.cyanGreen, row.cyanBlue]).toEqual([1, 0]);
+    expect(screenFacts(row).tune.blue).toBe(0);
+  });
+  it("marks the leak to be matched again when only the blue changed", () => {
+    const measured = save(blank, { step: "leak", red: [120, 130], cyan: "unseen" }, day(3));
+    expect(screenFacts(save(measured, { step: "tune", green: 1, blue: 0.3, redTop: 1 }, day(4))).leak?.stale).toBe(true);
   });
 });

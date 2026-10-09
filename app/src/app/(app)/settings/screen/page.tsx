@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { Btn, Card, Chip, Empty, PageHead, Void, type Tone } from "@/components/ui";
 import { screen as t } from "@/copy/screen";
 import { day } from "@/copy/settings";
-import type { LeakLevel } from "@/engine";
+import { cyanCode, weakLight, type LeakLevel } from "@/engine";
 import { profileLines } from "@/lib/screen";
 import { mayCalibrate, screenFacts, type Step } from "@/lib/screen-rules";
 import { requireMember } from "@/lib/session";
@@ -58,7 +58,7 @@ export default async function ScreenPage() {
         ]}
       />
       <div className="bento">
-        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, redTop: tune.redTop }} />
+        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
 
         <Card title={r.title} span={5}>
           {facts.moved && <p className="notice" data-b="warn">{r.moved}</p>}
@@ -73,7 +73,7 @@ export default async function ScreenPage() {
               <dt>{r.rows.ink}</dt>
               <dd className="tnum">{ink ? t.ink.short(ink.value) : empty}<small>{ink ? `${measured.ink}. ${ink.stale ? r.stale : ink.turned ? r.from.ink : r.from.inkNotTurned}` : r.from.ink}</small></dd>
             </div>
-            <div><dt>{r.rows.green}</dt><dd className="tnum">{tune.green < 1 ? r.greenValue(tune.green) : <Usual>{r.untuned}</Usual>}<small>{r.from.green}</small></dd></div>
+            <div><dt>{r.rows.green}</dt><dd className="tnum">{tune.green < 1 || tune.blue < 1 ? r.greenValue(cyanCode(tune, gamma.value), weakLight(tune.green, tune.blue)) : <Usual>{r.untuned}</Usual>}<small>{r.from.green}</small></dd></div>
             <div><dt>{r.rows.redTop}</dt><dd className="tnum">{tune.redTop < 1 ? r.redTopValue(tune.redTop) : <Usual>{r.untuned}</Usual>}<small>{r.from.redTop}</small></dd></div>
             <div><dt>{r.rows.size}</dt><dd className="tnum">{r.size(device.pxPerCm, device.distanceCm, day(device.calibratedAt))}<small>{r.sizeFrom}</small></dd></div>
           </dl>

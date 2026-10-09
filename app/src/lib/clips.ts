@@ -181,7 +181,8 @@ export async function saveClip(m: Member, code: unknown, data: unknown, setKey: 
   let device: Member["device"] | null | undefined = d;
   if (resolved.step) {
     const saved = await saveStep(m, resolved.step);
-    if (!saved.ok) return { ok: false, why: saved.why === "seat" ? "seat" : saved.why };
+    /* clips never send a tuning, so "dim" cannot come back from here; it is read as a failure all the same */
+    if (!saved.ok) return { ok: false, why: saved.why === "seat" ? "seat" : saved.why === "dim" ? "failed" : saved.why };
     [device] = await db.select().from(schema.device).where(and(eq(schema.device.id, d!.id), eq(schema.device.accountId, m.account.id))).limit(1);
   }
   if (resolved.screen) {

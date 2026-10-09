@@ -30,3 +30,19 @@
 .person { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-top: 1px solid var(--line); }
 .person:first-of-type { border-top: 0; padding-top: 0; }
 .person p { font-size: 13.5px; }
+/* the ink mixer (tune.tsx): one block per lens */
+.mixer { display: flex; flex-direction: column; gap: 14px; padding: 18px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--card); }
+.slider { display: flex; flex-direction: column; gap: 4px; }
+.sliderHead { display: flex; justify-content: space-between; font-size: 15px; }
+.sliderHead label { font-weight: 600; }
+.slider input[type=range] { width: 100%; min-height: 32px; accent-color: var(--ink); }
+.code { display: flex; flex-direction: column; gap: 6px; }
+.code label { font-size: 14px; font-weight: 600; }
+.code input { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 17px; padding: 10px 14px; border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--sunken); color: var(--ink); min-height: 44px; max-width: 260px; }
+.code input[aria-invalid=true] { border-color: var(--danger); }
+.code p[data-b=warn] { color: var(--danger); }
+.readout { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: var(--r-md); background: var(--sunken); }
+.readout b { font-size: 26px; line-height: 1.1; }
+.readout[data-b=ok] { background: var(--ok-bg); }
+.readout[data-b=warn] { background: var(--warn-bg); }
+.readout[data-b=danger] { background: var(--danger-bg); }
