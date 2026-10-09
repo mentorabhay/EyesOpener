@@ -9,6 +9,7 @@
  * It makes its own people and households, under an address no other row can have, and removes them at the end.
  * It needs a database with the current tables. Where none answers (the checks on GitHub have none), it is skipped.
  */
+import { makeJar } from "@/lib/cookie-jar";
 import crypto from "node:crypto";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -56,6 +57,13 @@ import { forgetOldAsks, hashedKey, LIMITS } from "./limit";
 import { queueRemoval, REMOVAL_NOTES, removeQueued } from "./removal";
 import { sessionCookie, TRUSTED_HOURS } from "./session-rules";
 import { startStandIn, type StandIn } from "./stand-in";
+
+/** What the browser holds, read as the app reads it: entries of `__session`, or an old cookie of the name. */
+const entry = {
+  has: (n: string) => makeJar({ get: (k) => (h.jar.has(k) ? { value: h.jar.get(k)! } : undefined) }, null).has(n),
+  get: (n: string) => makeJar({ get: (k) => (h.jar.has(k) ? { value: h.jar.get(k)! } : undefined) }, null).get(n),
+};
+
 
 const up = await db.execute(sql`select sessions_valid_after from app_user limit 0`).then(() => db.execute(sql`select 1 from signin_ask limit 0`)).then(() => db.execute(sql`select 1 from signin_removal limit 0`)).then(() => true, () => false);
 vi.setConfig({ testTimeout: 60_000, hookTimeout: 60_000 });
@@ -321,20 +329,20 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       const forOther = standIn.googleCredential({ email: at("x") }, { aud: "someone-else.apps.googleusercontent.com" });
       for (const bad of ["", "rubbish", "a.b.c", forOther, "x".repeat(5000)]) expect(refusal(await run(() => googleSignIn(bad, null)))).toBe("google_refused");
       expect(standIn.calls.length).toBe(before);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
     });
 
     it("refuses a credential Google would not stand behind (one that is past its time)", async () => {
       const old = standIn.googleCredential({ email: at("late") }, { expired: true });
       expect(refusal(await run(() => googleSignIn(old, null)))).toBe("google_refused");
       expect(await people(at("late"))).toBe(0);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
     });
 
     it("refuses an account whose address Google has not verified, and makes nobody", async () => {
       expect(refusal(await google(at("unproven"), { emailVerified: false }))).toBe("email_unverified");
       expect(await people(at("unproven"))).toBe(0);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
       expect(await getViewer()).toBeNull();
     });
 
@@ -352,7 +360,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
         newBrowser();
         standIn.knobs.claims = claims;
         expect(refusal(await google(at("checked"))), name).toBe("not_confirmed");
-        expect(h.jar.has(USER_COOKIE), name).toBe(false);
+        expect(entry.has(USER_COOKIE), name).toBe(false);
       }
       expect(await people(at("checked"))).toBe(0);
     });
@@ -385,10 +393,10 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       const mail = lastMail();
       expect(mail.to).toBe(at("lila"));
       expect(mail.continueUrl).toBe("http://localhost:3000/login/finish");
-      expect(readPending({ get: (n) => (h.jar.has(n) ? { value: h.jar.get(n)! } : undefined), set: () => 0, delete: () => 0 })).toEqual({ email: at("lila"), next: null });
+      expect(readPending({ get: (n) => entry.get(n), set: () => 0, delete: () => 0 })).toEqual({ email: at("lila"), next: null });
       /* The device remembers the address: nothing is typed. */
       expect(await finish(mail.code)).toMatchObject({ to: "/login/welcome", how: "replace" });
-      expect(h.jar.has(PENDING_COOKIE)).toBe(false);
+      expect(entry.has(PENDING_COOKIE)).toBe(false);
       expect((await getViewer())!.user.email).toBe(at("lila"));
       expect((await person(at("lila"))).displayName).toBe("lila");
     });
@@ -399,7 +407,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       await finish(code);
       newBrowser();
       expect(refusal(await finish(code, at("once")))).toBe("link_expired");
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
     });
 
     it("on another device asks for the address again, and a link alone signs nobody in", async () => {
@@ -409,7 +417,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       expect(refusal(await finish(code))).toBe("need_address");
       expect(refusal(await finish(code, "not an address"))).toBe("need_address");
       expect(refusal(await finish(code, at("someone-else")))).toBe("wrong_address");
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
       expect(await people(at("phone"))).toBe(0);
       expect(await finish(code, ` ${at("PHONE")} `)).toMatchObject({ to: "/login/welcome" });
     });
@@ -422,7 +430,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       expect(old.answer).toMatchObject({ ok: false, why: "link_expired", message: expect.stringContaining("Ask for a new one") });
       const broken = await finish("not a code");
       expect(broken.answer).toMatchObject({ ok: false, why: "bad_link" });
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
     });
 
     it("forgets a remembered address that the link was not for, and asks", async () => {
@@ -431,7 +439,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       await ask(at("second"));
       /* The device now remembers the second address; the first link is opened. */
       expect(refusal(await finish(first))).toBe("need_address");
-      expect(h.jar.has(PENDING_COOKIE)).toBe(false);
+      expect(entry.has(PENDING_COOKIE)).toBe(false);
       expect(await finish(first, at("first"))).toMatchObject({ to: "/login/welcome" });
     });
 
@@ -450,7 +458,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       standIn.knobs.answerFor = at("victim");
       expect(refusal(await finish(lastMail().code))).toBe("not_confirmed");
       expect(await people(at("victim"))).toBe(0);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
     });
 
     it("never says whether an address has an account", async () => {
@@ -473,7 +481,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
         newBrowser();
         standIn.knobs.sendError = word;
         expect(refusal(await ask(at("quota"))), word).toBe("not_sent");
-        expect(h.jar.has(PENDING_COOKIE)).toBe(false);
+        expect(entry.has(PENDING_COOKIE)).toBe(false);
       }
       standIn.knobs.sendError = null;
       const before = standIn.calls.length;
@@ -541,7 +549,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       const out = await google(at("tied"));
       expect(out.answer).toMatchObject({ ok: false, why: "other_sign_in" });
       expect((await person(at("tied"))).firebaseUid).toBe(`uid-earlier-${x}`);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
       expect(await people(at("tied"))).toBe(1);
     });
 
@@ -565,7 +573,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       newBrowser();
       const out = await google(at("taken"));
       expect(out.answer).toMatchObject({ ok: false, why: "address_in_use" });
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
       expect((await person(at("mover"))).id).toBe(mover.id);
       expect(await person(at("taken"))).toMatchObject({ id: taken.id, firebaseUid: null });
     });
@@ -582,7 +590,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       try {
         expect(refusal(await google(at("demo-guardian")))).toBe("demo");
         expect((await person(at("demo-guardian"))).firebaseUid).toBeNull();
-        expect(h.jar.has(USER_COOKIE)).toBe(false);
+        expect(entry.has(USER_COOKIE)).toBe(false);
       } finally {
         await db.delete(s.appUser).where(eq(s.appUser.id, guardian.id));
         await db.delete(s.account).where(eq(s.account.id, account.id));
@@ -643,7 +651,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       expect(standIn.mail.filter((m) => m.to === at("flooded"))).toHaveLength(LIMITS.email[0].max);
       expect(await rowsFor("email", at("flooded"))).toBe(LIMITS.email[0].max);
       /* The device that asked last still remembers the address, so a link that did arrive can be finished on it. */
-      expect(h.jar.has(PENDING_COOKIE)).toBe(true);
+      expect(entry.has(PENDING_COOKIE)).toBe(true);
       expect(await finish(standIn.mail.filter((m) => m.to === at("flooded"))[0].code)).toMatchObject({ to: "/login/welcome" });
     });
 
@@ -684,7 +692,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
   /* ───────────── child mode ───────────── */
 
   describe("child mode", () => {
-    const gate = async () => { const hold = await holdOf(h.jar.get(CHILD_COOKIE)); return loginGate(hold.state, hold.state === "live" && !!(await getMember())?.childMode); };
+    const gate = async () => { const hold = await holdOf(entry.get(CHILD_COOKIE)?.value); return loginGate(hold.state, hold.state === "live" && !!(await getMember())?.childMode); };
 
     it("lets a device in child mode whose grown-up session has ended reach sign-in, and signing in does not end child mode", async () => {
       const { account, guardian, child } = await family("Held", at("held"));
@@ -693,7 +701,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       expect(await getMember()).toBeNull();
       expect(await gate()).toBe("sign_in_held");
       expect(await google(at("held"), {}, "/family")).toMatchObject({ to: "/today" });
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       const m = await getMember();
       expect(m).toMatchObject({ childMode: true });
       expect(m!.profile.id).toBe(child.id);
@@ -708,7 +716,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       childMode(account.id, child.id);
       await ask(at("held-link"));
       expect(await finish(lastMail().code)).toMatchObject({ to: "/today" });
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       expect((await getMember())!.childMode).toBe(true);
     });
 
@@ -722,8 +730,8 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       await ask(at("a-stranger"));
       expect(refusal(await finish(lastMail().code))).toBe("child_mode");
       expect(await people(at("a-stranger"))).toBe(0);
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       expect(await gate()).toBe("sign_in_held");
     });
 
@@ -742,8 +750,8 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       childMode(account.id, child.id);
       expect(await run(() => signOutHere())).toMatchObject({ to: "/today" });
       expect(await run(() => signOutEverywhere())).toMatchObject({ to: "/today" });
-      expect(h.jar.has(USER_COOKIE)).toBe(true);
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(USER_COOKIE)).toBe(true);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       expect((await person(at("staying"))).sessionsValidAfter).toBeNull();
     });
 
@@ -769,7 +777,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       childMode(crypto.randomUUID(), crypto.randomUUID());
       expect(await gate()).toBe("open");
       expect(await google(at("after-reset"))).toMatchObject({ to: "/login/welcome" });
-      expect(h.jar.has(CHILD_COOKIE)).toBe(false);
+      expect(entry.has(CHILD_COOKIE)).toBe(false);
     });
 
     it("signing out never touches child mode", async () => {
@@ -777,8 +785,8 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       /* A cookie for a household that is gone: nothing holds the device, so signing out is allowed, and the cookie is left for the PIN or the clock. */
       childMode(crypto.randomUUID(), crypto.randomUUID());
       expect(await run(() => signOutHere())).toMatchObject({ to: "/login?done=out" });
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
     });
   });
 
@@ -799,12 +807,12 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       process.env.DEMO_LOGIN = "on";
       childMode(demo.account.id, demo.child.id);
       expect(await signInAs(demo.guardian.id)).toBe(demo.guardian.id);
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       expect((await getMember())).toMatchObject({ childMode: true });
       /* Before, picking any person removed the child-mode cookie. Now the pick is refused, and says why. */
       expect(await signInAs(demo.staff.id)).toBeNull();
       expect(await run(() => demoSignIn(form({ userId: demo.staff.id })))).toMatchObject({ to: "/login?why=child_mode" });
-      expect(h.jar.has(CHILD_COOKIE)).toBe(true);
+      expect(entry.has(CHILD_COOKIE)).toBe(true);
       expect((await getViewer())!.user.id).toBe(demo.guardian.id);
     });
 
@@ -825,7 +833,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
       expect(await signInAs(real.id)).toBeNull();
       expect(await signInAs(unlinked.id)).toBeNull();
       expect(await signInAs("not-an-id")).toBeNull();
-      expect(h.jar.has(USER_COOKIE)).toBe(false);
+      expect(entry.has(USER_COOKIE)).toBe(false);
       const demo = await demoFamily();
       if (!demo) return;
       process.env.DEMO_LOGIN = "off";

@@ -2,6 +2,7 @@
  * The rules of sign-in that need no database and no network: the settings, the session, child mode, the limits,
  * who a sign-in is, and where it lands.
  */
+import { encodeBundle } from "@/lib/cookie-jar";
 import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
 import { isDemoPerson } from "../auth";
@@ -167,8 +168,25 @@ describe("the proxy, child mode and the site lock", () => {
   const run = async (path: string, cookies?: Record<string, string>) => {
     const { proxy } = await import("../../proxy");
     const res = await proxy(request(path, cookies));
-    return res.headers.get("location") ? new URL(res.headers.get("location")!).pathname + new URL(res.headers.get("location")!).search : "through";
+    const to = res.headers.get("location");
+    if (!to) return "through";
+    return new URL(to).pathname + new URL(to).search;
   };
+
+  it("moves the browser on the address it used: behind Firebase Hosting, the front door's", async () => {
+    const { proxy } = await import("../../proxy");
+    const sealed = { cookie: `io_child=${childCookie()}` };
+    const direct = await proxy(new NextRequest("http://localhost:3000/settings", { headers: sealed }));
+    expect(direct.headers.get("location")).toBe("http://localhost:3000/today");
+    const hosted = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { ...sealed, "x-forwarded-host": "iopener-staging.web.app", "x-forwarded-proto": "https" } }));
+    expect(hosted.headers.get("location")).toBe("https://iopener-staging.web.app/today");
+    expect(hosted.headers.get("cache-control")).toBe("no-store");
+    /* the same seal when child mode is an entry of __session, as every browser holds it after the change */
+    const bundled = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { cookie: `__session=${encodeBundle({ io_child: [childCookie()] })}` } }));
+    expect(new URL(bundled.headers.get("location")!).pathname).toBe("/today");
+    const odd = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { ...sealed, "x-forwarded-host": "evil.example/path" } }));
+    expect(new URL(odd.headers.get("location")!).host).toBe("localhost:3000");
+  });
 
   it("lets a device in child mode reach the sign-in pages, with nobody signed in: no loop between Today and sign-in", async () => {
     delete process.env.SITE_LOCK;

@@ -19,14 +19,14 @@ import { writeLangCookies } from "./household";
 import { isLang, LANGUAGE, LANGS } from "./languages";
 import { current, setRequestChoice } from "./runtime";
 import { langStatuses } from "./status";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 
 export type LanguageAnswer = { ok: boolean; message: string; reload?: boolean } | null;
 
 export async function chooseLanguage(_prev: LanguageAnswer, form: FormData): Promise<LanguageAnswer> {
   const lang = form.get("lang");
   if (!isLang(lang)) return { ok: false, message: t.choose.notOffered };
-  const [viewer, member, statuses, jar] = await Promise.all([getViewer(), getMember(), langStatuses(true), cookies()]);
+  const [viewer, member, statuses, jar] = await Promise.all([getViewer(), getMember(), langStatuses(true), cookieJar()]);
   const staff = !!viewer?.staff;
   /* the development switch for drafts opens every language to the developer's own browser, and nothing else */
   const preview = draftsAllowed(process.env.NODE_ENV === "production", jar.get(DRAFTS_COOKIE)?.value);

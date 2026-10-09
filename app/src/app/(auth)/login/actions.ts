@@ -6,7 +6,8 @@
  * another site from signing a visitor in as someone else.
  */
 import { revalidatePath } from "next/cache";
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect, RedirectType } from "next/navigation";
 import { signin as t } from "@/copy/signin";
 import { CHILD_COOKIE, endSessionsEverywhere, getViewer, signOut } from "@/lib/auth";
@@ -21,7 +22,7 @@ export type SignInAnswer = { ok: false; why: Refusal | "bad_address" | "not_sent
 
 async function ctx(): Promise<Ctx> {
   const settings = signInSettings();
-  return { jar: await cookies(), settings, net: networkAddress((await headers()).get("x-forwarded-for"), settings?.proxyHops ?? 0) };
+  return { jar: await cookieJar(), settings, net: networkAddress((await headers()).get("x-forwarded-for"), settings?.proxyHops ?? 0) };
 }
 
 const refused = (out: Extract<Entered, { ok: false }>): SignInAnswer =>
@@ -57,7 +58,7 @@ export async function finishLink(_: SignInAnswer, form: FormData): Promise<SignI
 }
 
 /** True on a device in child mode: a grown-up leaves child mode with the exit PIN before signing out. */
-const held = async () => (await holdOf((await cookies()).get(CHILD_COOKIE)?.value)).state === "live";
+const held = async () => (await holdOf((await cookieJar()).get(CHILD_COOKIE)?.value)).state === "live";
 
 export async function signOutHere() {
   if (await held()) redirect("/today");

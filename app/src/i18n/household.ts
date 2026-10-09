@@ -9,7 +9,8 @@
  *     sends it straight back. The page is then loaded afresh, whole, in the right language.
  *   - choosing a language (src/i18n/actions.ts) writes both at once.
  */
-import { cookies, headers } from "next/headers";
+import { headers } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";
 import { secureCookies, signToken } from "@/lib/token";
 import { draftsAllowed, DRAFTS_COOKIE, householdLang, LANG_COOKIE, PASS_COOKIE, PATH_HEADER, statusOfLang, SYNCED_COOKIE } from "./decide";
@@ -22,7 +23,7 @@ const HALF_DAY = 12 * 60 * 60;
 
 /** Writes the browser's language. For a language in review, also the signed note that lets a staff member read it. */
 export async function writeLangCookies(lang: Lang, staff: boolean): Promise<void> {
-  const jar = await cookies();
+  const jar = await cookieJar();
   jar.set(LANG_COOKIE, lang, langCookieOptions());
   if (staff && statusOfLang(await langStatuses(), lang) === "review") {
     jar.set(PASS_COOKIE, signToken({ lang, exp: Date.now() + HALF_DAY * 1000 }), { path: "/", sameSite: "lax", maxAge: HALF_DAY, secure: secureCookies(), httpOnly: true });
@@ -35,7 +36,7 @@ export async function writeLangCookies(lang: Lang, staff: boolean): Promise<void
  * for anything that is not a page, right after a pick-up, and while the development switch for drafts is on.
  */
 export async function keepHouseholdLanguage(locale: string, staff: boolean): Promise<void> {
-  const [h, jar] = await Promise.all([headers(), cookies()]);
+  const [h, jar] = await Promise.all([headers(), cookieJar()]);
   if (h.get("next-action")) return;
   const page = h.get("rsc") !== null || (h.get("accept") ?? "").includes("text/html");
   const path = h.get(PATH_HEADER);

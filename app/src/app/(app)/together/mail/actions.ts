@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { z } from "zod";
 import type { FormState } from "@/components/together/StateForm";
 import { together } from "@/copy/together";
@@ -31,7 +31,7 @@ export async function sendMail(_: FormState, form: FormData): Promise<FormState>
 
   /* The note is from the person. A profile is recorded beside them only when they picked it themselves, hold a guardian seat
      and are not writing to it: a cheer seat has no profile, and the profile a household opens on is nobody's choice. */
-  const picked = (await cookies()).get(PROFILE_COOKIE)?.value === m.profile.id;
+  const picked = (await cookieJar()).get(PROFILE_COOKIE)?.value === m.profile.id;
   await db.insert(schema.fusionMail).values({
     fromUserId: m.user.id, fromName: m.user.displayName.trim().split(/\s+/)[0],
     fromProfileId: picked && m.seat !== "circle" && m.profile.id !== to.id ? m.profile.id : null,

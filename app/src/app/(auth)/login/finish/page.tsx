@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";
 import { signin as t } from "@/copy/signin";
 import { CHILD_COOKIE } from "@/lib/auth";
@@ -18,7 +18,7 @@ export const generateMetadata = (): Metadata => ({ title: t.finish.title, robots
  */
 export default async function FinishPage({ searchParams }: { searchParams: Promise<{ mode?: string; oobCode?: string; next?: string }> }) {
   const q = await searchParams;
-  const jar = await cookies();
+  const jar = await cookieJar();
   const hold = await holdOf(jar.get(CHILD_COOKIE)?.value);
   const gate = loginGate(hold.state, hold.state === "live" && !!(await getMember())?.childMode);
   if (gate === "to_today") redirect("/today");

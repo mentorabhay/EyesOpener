@@ -1,5 +1,5 @@
 "use server";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { revalidatePath } from "next/cache";
 import { PROFILE_COOKIE, requireMember } from "./session";
 import { secureCookies } from "./token";
@@ -10,7 +10,7 @@ export async function switchProfile(formData: FormData) {
   const m = await requireMember();
   /* In child mode the device stays on the child until a grown-up types the exit PIN. */
   if (m.childMode || !m.profiles.some((p) => p.id === id)) return;
-  (await cookies()).set(PROFILE_COOKIE, id, { path: "/", sameSite: "lax", httpOnly: true, secure: secureCookies(), maxAge: 60 * 60 * 24 * 365 });
+  (await cookieJar()).set(PROFILE_COOKIE, id, { path: "/", sameSite: "lax", httpOnly: true, secure: secureCookies(), maxAge: 60 * 60 * 24 * 365 });
   revalidatePath("/", "layout");
 }
 
@@ -21,7 +21,7 @@ export async function demoSignIn(formData: FormData) {
   if (!(await signInAs(String(formData.get("userId") ?? "")))) {
     /* On a device in child mode only a person of that child's family may sign in: say so rather than do nothing. */
     const { holdOf } = await import("./signin/hold");
-    if ((await holdOf((await cookies()).get(CHILD_COOKIE)?.value)).state === "live") redirect("/login?why=child_mode");
+    if ((await holdOf((await cookieJar()).get(CHILD_COOKIE)?.value)).state === "live") redirect("/login?why=child_mode");
     return;
   }
   redirect((await getViewer())?.home ?? "/login");

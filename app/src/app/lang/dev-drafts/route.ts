@@ -13,6 +13,7 @@ import { NextResponse } from "next/server";
 import { DRAFTS_COOKIE, draftsAllowed, LANG_COOKIE } from "@/i18n/decide";
 import { isLang, SOURCE } from "@/i18n/languages";
 import { langCookieOptions } from "@/i18n/request";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { safeNext } from "@/lib/gate";
 
 export async function GET(req: Request) {
@@ -20,12 +21,13 @@ export async function GET(req: Request) {
   const url = new URL(req.url), lang = url.searchParams.get("lang");
   /* by path alone: see /lang/sync */
   const res = new NextResponse(null, { status: 303, headers: { location: safeNext(url.searchParams.get("next")) } });
+  const jar = await cookieJar();
   if (url.searchParams.has("off") || !isLang(lang) || lang === SOURCE) {
-    res.cookies.delete(DRAFTS_COOKIE);
-    res.cookies.set(LANG_COOKIE, SOURCE, langCookieOptions());
+    jar.delete(DRAFTS_COOKIE);
+    jar.set(LANG_COOKIE, SOURCE, langCookieOptions());
   } else {
-    res.cookies.set(DRAFTS_COOKIE, "on", { ...langCookieOptions(), maxAge: 60 * 60 * 12 });
-    res.cookies.set(LANG_COOKIE, lang, langCookieOptions());
+    jar.set(DRAFTS_COOKIE, "on", { ...langCookieOptions(), maxAge: 60 * 60 * 12 });
+    jar.set(LANG_COOKIE, lang, langCookieOptions());
   }
   res.headers.set("cache-control", "no-store");
   return res;

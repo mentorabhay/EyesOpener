@@ -6,7 +6,7 @@ import { lens } from "@/copy/lens";
 import { screen as sc } from "@/copy/screen";
 import { day } from "@/copy/settings";
 import { setup as t } from "@/copy/setup";
-import { cyanCode, EYE_NAME, weakLight } from "@/engine";
+import { cyanCode, weakLight } from "@/engine";
 import { eyeOf, weakInkOf } from "@/lib/eye-profile";
 import { mayCalibrate, screenFacts } from "@/lib/screen-rules";
 import { requireMember } from "@/lib/session";

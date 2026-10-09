@@ -44,10 +44,14 @@ import { GET as devDrafts } from "@/app/lang/dev-drafts/route";
 import { GET as sync } from "@/app/lang/sync/route";
 import { GET as wordsRoute } from "@/app/lang/words/[lang]/[version]/route";
 import { chooseLanguage } from "./actions";
+import { makeJar, SESSION_COOKIE } from "@/lib/cookie-jar";
 import { DRAFTS_COOKIE, LANG_COOKIE, PASS_COOKIE, PATH_HEADER, SYNCED_COOKIE } from "./decide";
 import { keepHouseholdLanguage } from "./household";
 import { mark } from "./mark";
 import { readTranslationsFrom } from "./runtime";
+
+/** What the browser holds, read as the app reads it: entries of `__session`, or an old cookie of the name. */
+const entry = (n: string) => makeJar({ get: (k) => (h.jar.has(k) ? { value: h.jar.get(k)! } : undefined) }, null).get(n)?.value;
 
 const member = (seat: Seat, o: { childMode?: boolean; locale?: string; staff?: string | null; account?: string } = {}) => ({
   account: { id: o.account ?? "household-1", locale: o.locale ?? "en" }, viewer: { staff: o.staff ?? null },
@@ -85,7 +89,7 @@ describe("choosing a language", () => {
     h.statuses = { ur: "review" };
     expect(await pick("hi")).toMatchObject({ ok: false });
     expect(await pick("ur")).toMatchObject({ ok: false });
-    expect(h.jar.has(LANG_COOKIE)).toBe(false);
+    expect((entry(LANG_COOKIE) !== undefined)).toBe(false);
     expect(h.updates).toEqual([]);
   });
   it("a guardian changes the language of their own household, and of this browser", async () => {
@@ -96,8 +100,8 @@ describe("choosing a language", () => {
       expect(await pick("hi")).toMatchObject({ ok: true, reload: true });
       /* one write, to the household the sign-in names: the form sends a language and nothing else */
       expect(h.updates).toEqual([{ set: { locale: "hi" }, where: { table: { id: "account.id", _: "account" }, column: "account.id", value: `household-of-${seat}` } }]);
-      expect(h.jar.get(LANG_COOKIE)).toBe("hi");
-      expect(h.jar.has(PASS_COOKIE)).toBe(false);
+      expect(entry(LANG_COOKIE)).toBe("hi");
+      expect((entry(PASS_COOKIE) !== undefined)).toBe(false);
     }
   });
   it("writes nothing to the household when it already has that language", async () => {
@@ -105,42 +109,44 @@ describe("choosing a language", () => {
     h.member = member("guardian", { locale: "hi" });
     expect(await pick("hi")).toMatchObject({ ok: true });
     expect(h.updates).toEqual([]);
-    expect(h.jar.get(LANG_COOKIE)).toBe("hi");
+    expect(entry(LANG_COOKIE)).toBe("hi");
   });
   it("a guardian can go back to English, which is always offered", async () => {
     h.member = member("guardian", { locale: "hi" });
     expect(await pick("en")).toMatchObject({ ok: true });
     expect(h.updates[0].set).toEqual({ locale: "en" });
-    expect(h.jar.get(LANG_COOKIE)).toBe("en");
+    expect(entry(LANG_COOKIE)).toBe("en");
   });
   it("a cheer seat changes nothing: not the household, not the browser", async () => {
     h.statuses = { hi: "on" };
     h.member = member("circle");
     expect(await pick("hi")).toMatchObject({ ok: false });
     expect(h.updates).toEqual([]);
-    expect(h.jar.has(LANG_COOKIE)).toBe(false);
+    expect((entry(LANG_COOKIE) !== undefined)).toBe(false);
   });
   it("a device in child mode changes nothing, whoever is signed in", async () => {
     h.statuses = { hi: "on" };
     h.member = member("guardian", { childMode: true });
     expect(await pick("hi")).toMatchObject({ ok: false });
     expect(h.updates).toEqual([]);
-    expect(h.jar.has(LANG_COOKIE)).toBe(false);
+    expect((entry(LANG_COOKIE) !== undefined)).toBe(false);
   });
   it("a visitor with no household changes only their own browser", async () => {
     h.statuses = { hi: "on" };
     expect(await pick("hi")).toMatchObject({ ok: true, reload: true });
     expect(h.updates).toEqual([]);
-    expect(h.jar.get(LANG_COOKIE)).toBe("hi");
+    expect(entry(LANG_COOKIE)).toBe("hi");
     expect(h.options.get(LANG_COOKIE)).toMatchObject({ path: "/", sameSite: "lax" });
   });
   it("staff may read a language that is in review, with a signed pass for that language only", async () => {
     h.statuses = { ur: "review" };
     h.viewer = { staff: "content" };
     expect(await pick("ur")).toMatchObject({ ok: true });
-    expect(h.jar.get(LANG_COOKIE)).toBe("ur");
-    expect(verifyToken<{ lang: string }>(h.jar.get(PASS_COOKIE))?.lang).toBe("ur");
-    expect(h.options.get(PASS_COOKIE)).toMatchObject({ httpOnly: true });
+    expect(entry(LANG_COOKIE)).toBe("ur");
+    expect(verifyToken<{ lang: string }>(entry(PASS_COOKIE))?.lang).toBe("ur");
+    /* the pass lives only inside __session, which scripts cannot read */
+    expect(h.jar.has(PASS_COOKIE)).toBe(false);
+    expect(h.options.get(SESSION_COOKIE)).toMatchObject({ httpOnly: true });
     /* and not one that is off */
     expect(await pick("ta")).toMatchObject({ ok: false });
   });
@@ -168,15 +174,18 @@ describe("the development address for machine drafts", () => {
     const res = await get("?lang=hi&next=/today");
     expect(res.status).toBe(303);
     expect(res.headers.get("location")).toBe("/today");
-    expect(res.headers.get("set-cookie")).toContain(`${DRAFTS_COOKIE}=on`);
-    expect(res.headers.get("set-cookie")).toContain(`${LANG_COOKIE}=hi`);
+    expect(entry(DRAFTS_COOKIE)).toBe("on");
+    expect(entry(LANG_COOKIE)).toBe("hi");
+    /* the page's own script reads the language and the switch, so each also has a plain copy */
+    expect(h.jar.get(LANG_COOKIE)).toBe("hi");
+    expect(h.jar.get(DRAFTS_COOKIE)).toBe("on");
     for (const next of ["//evil.example", "https://evil.example", "/\\evil.example", "/%09/evil.example".replace("%09", "\t")]) {
       expect((await get(`?lang=hi&next=${encodeURIComponent(next)}`)).headers.get("location"), next).toBe("/");
     }
     /* a language that is not one of the eleven switches drafts off and goes back to English */
-    const odd = await get("?lang=xx");
-    expect(odd.headers.get("set-cookie")).toContain(`${LANG_COOKIE}=en`);
-    expect(odd.headers.get("set-cookie")).not.toContain(`${DRAFTS_COOKIE}=on`);
+    await get("?lang=xx");
+    expect(entry(LANG_COOKIE)).toBe("en");
+    expect(entry(DRAFTS_COOKIE)).toBeUndefined();
   });
 });
 
@@ -245,13 +254,13 @@ describe("keeping a browser on its household's language", () => {
     const res = await sync(new Request("http://localhost:3000/lang/sync?next=/today"));
     expect(res.status).toBe(303);
     expect(res.headers.get("location")).toBe("/today");
-    expect(h.jar.get(LANG_COOKIE)).toBe("hi");
-    expect(res.headers.get("set-cookie")).toContain(`${SYNCED_COOKIE}=1`);
+    expect(entry(LANG_COOKIE)).toBe("hi");
+    expect(entry(SYNCED_COOKIE)).toBe("1");
     expect((await sync(new Request("http://localhost:3000/lang/sync?next=//evil.example"))).headers.get("location")).toBe("/");
     /* nobody signed in: nothing is set, and the browser is simply sent back */
     h.member = null; h.jar.clear();
     expect((await sync(new Request("http://localhost:3000/lang/sync?next=/"))).status).toBe(303);
-    expect(h.jar.has(LANG_COOKIE)).toBe(false);
+    expect((entry(LANG_COOKIE) !== undefined)).toBe(false);
   });
   it("a staff pass is signed: a made-up one opens nothing", () => {
     expect(verifyToken("made.up")).toBeNull();

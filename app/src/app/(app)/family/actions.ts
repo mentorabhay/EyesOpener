@@ -1,5 +1,5 @@
 "use server";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -62,7 +62,7 @@ export async function handOver(formData: FormData) {
   if (!m.can("manage_family") || !profileId.success) return;
   const child = await childToHandTo(m, profileId.data);
   if (!child) return;
-  (await cookies()).set(CHILD_COOKIE, signToken({ profileId: child.id, accountId: m.account.id, exp: Date.now() + CHILD_MODE_MS }),
+  (await cookieJar()).set(CHILD_COOKIE, signToken({ profileId: child.id, accountId: m.account.id, exp: Date.now() + CHILD_MODE_MS }),
     { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: CHILD_MODE_MS / 1000 });
   revalidatePath("/", "layout");
   redirect("/today");

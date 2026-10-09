@@ -1,5 +1,5 @@
 "use server";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";
 import { gate as t } from "@/copy/gate";
 import { GATE_COOKIE, GATE_DAYS, gateMark, phraseMatches, safeNext, siteLock } from "@/lib/gate";
@@ -15,6 +15,6 @@ export async function openGate(_: { error: string } | null, form: FormData): Pro
     return { error: t.wrong };
   }
   const seconds = GATE_DAYS * 86_400;
-  (await cookies()).set(GATE_COOKIE, signToken({ gate: gateMark(lock), exp: Date.now() + seconds * 1000 }), { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: seconds });
+  (await cookieJar()).set(GATE_COOKIE, signToken({ gate: gateMark(lock), exp: Date.now() + seconds * 1000 }), { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: seconds });
   redirect(next);
 }

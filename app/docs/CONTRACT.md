@@ -88,7 +88,8 @@ Shared shell for the three non-member areas: `PortalShell` from `src/components/
 - **Sponsors see counts only.** Never a member's name, profile, result or session. Any count that covers fewer than `SPONSOR_MIN_GROUP` (5) households is not shown: render the hatched "not enough families yet" state instead.
 - **Ops sees households, not eyes.** The households room lists a household's name, number of profiles and seats, last activity and open requests. It never shows test results, eye profiles or session detail.
 - **Counsellors see linked profiles only**, and only while the link is `active`. A pending link shows the request and nothing else.
-- **Child profiles:** no child sign-in exists. A child uses the app in child mode on a guardian's device (`io_child` cookie, exit by PIN; sealed paths in `SEALED_IN_CHILD_MODE`).
+- **Child profiles:** no child sign-in exists. A child uses the app in child mode on a guardian's device (`io_child` entry of the `__session` cookie, exit by PIN; sealed paths in `SEALED_IN_CHILD_MODE`).
+- **Cookies:** every cookie is an entry of the one cookie `__session`, read and written through `src/lib/cookie-jar.ts` (`jar()` in place of Next's `cookies()`; `requestJar` and `responseJar` in the proxy). Firebase Hosting passes on no other name. Never set a cookie of another name.
 - **Dose:** only a verified, actively linked counsellor may set `enrolment.dailyMinutes` for a level 2 programme, never above `MAX_DAILY_MINUTES`; record `approvedBy`. Nobody else and no AI sets a dose.
 
 ## Demo people (seeded; pick one at `/login`)

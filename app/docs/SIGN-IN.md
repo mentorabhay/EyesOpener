@@ -56,10 +56,10 @@ Clocks may differ by up to 60 seconds for times that must be in the past. The en
 
 | Choice | What was decided |
 |---|---|
-| What the browser holds | One cookie, `io_user`: the person's id, when the session began, how they signed in. Signed with `SESSION_SECRET`. Scripts cannot read it; it travels over https only when `SITE_URL` is https |
+| What the browser holds | One entry, `io_user`, inside the cookie `__session` (every cookie of the app is an entry of that one, `src/lib/cookie-jar.ts`, because Firebase Hosting passes on no other name): the person's id, when the session began, how they signed in. Signed with `SESSION_SECRET`. Scripts cannot read it; it travels over https only when `SITE_URL` is https |
 | How long it lasts | 30 days from signing in. It is not renewed by use |
 | Staff, counsellors, sponsors | Asked to sign in again after 12 hours. The role is read on every request, so this holds from the moment a role is given |
-| Sign out | Removes the cookie on that device |
+| Sign out | Removes the entry on that device. The phone and TV apps ask the server to do it (`POST /api/phone/v1/signout`, full edition) |
 | Sign out on every device | Sets `app_user.sessions_valid_after` to now. Every session of that person that began earlier stops counting on its next request. Checked on every request, with the row that is read anyway |
 | A deleted person | Their cookie names nobody and signs nobody in |
 | The demo | A demo session is marked as one. It counts only while `DEMO_LOGIN` is on, and can only ever be a seeded person |

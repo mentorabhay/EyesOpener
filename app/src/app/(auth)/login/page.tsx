@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";
 import { asc, eq } from "drizzle-orm";
 import { auth as demo } from "@/copy/auth";
@@ -39,7 +39,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   if (!settings) for (const problem of settingsProblems()) console.warn(`[sign-in] ${problem}`);
 
   /* Child mode: a child cannot reach this page while the app can open for whoever is signed in. */
-  const hold = await holdOf((await cookies()).get(CHILD_COOKIE)?.value);
+  const hold = await holdOf((await cookieJar()).get(CHILD_COOKIE)?.value);
   const gate = loginGate(hold.state, hold.state === "live" && !!(await getMember())?.childMode);
   if (gate === "to_today") redirect("/today");
 

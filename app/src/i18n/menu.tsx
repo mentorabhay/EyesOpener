@@ -3,7 +3,7 @@
  * Only languages offered to this person are listed: English, those staff have switched on, and for staff those
  * in review. The form itself is src/i18n/choose.tsx.
  */
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { Card } from "@/components/ui";
 import { languages as t } from "@/copy/languages";
 import { getViewer } from "@/lib/auth";
@@ -15,7 +15,7 @@ import { langStatuses } from "./status";
 
 /** The languages this person may choose, each with its own name. */
 async function offeredNow(staff: boolean): Promise<{ offered: Offered[]; preview: boolean }> {
-  const [statuses, jar] = await Promise.all([langStatuses(), cookies()]);
+  const [statuses, jar] = await Promise.all([langStatuses(), cookieJar()]);
   /* the development switch for drafts lists every language, for the developer's own browser only */
   const preview = draftsAllowed(process.env.NODE_ENV === "production", jar.get(DRAFTS_COOKIE)?.value);
   const list = preview ? [...LANGS] : offeredLangs(statuses, staff);

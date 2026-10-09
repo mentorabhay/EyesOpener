@@ -1,5 +1,5 @@
 "use server";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -18,7 +18,7 @@ const TRIES_KEPT_MS = 60 * 60_000;
 export async function leaveChildMode(_: FormState, formData: FormData): Promise<FormState> {
   const m = await requireMember();
   if (!m.childMode) redirect(m.viewer.home);
-  const jar = await cookies();
+  const jar = await cookieJar();
   const now = Date.now();
   const tries = verifyToken<{ wrong: number; lockedUntil: number }>(jar.get(TRIES_COOKIE)?.value) ?? { wrong: 0, lockedUntil: 0 };
   if (tries.lockedUntil > now) return { ok: false, message: t.locked(Math.ceil((tries.lockedUntil - now) / 60_000)) };

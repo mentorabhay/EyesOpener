@@ -4,6 +4,7 @@
  */
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { requestJar, responseJar } from "@/lib/cookie-jar";
 import { secureCookies, verifyToken } from "@/lib/token";
 import { decide, draftsAllowed, DRAFTS_COOKIE, LANG_COOKIE, PASS_COOKIE, PATH_HEADER } from "./decide";
 import { isLang, SOURCE } from "./languages";
@@ -15,12 +16,13 @@ export const langCookieOptions = () => ({ path: "/", sameSite: "lax" as const, m
 
 /** A request that asks for English costs nothing: the database is read only when another language is asked for. */
 export async function choiceOf(req: NextRequest): Promise<Choice> {
-  const cookie = req.cookies.get(LANG_COOKIE)?.value;
+  const jar = requestJar(req);
+  const cookie = jar.get(LANG_COOKIE)?.value;
   if (!isLang(cookie) || cookie === SOURCE) return { lang: SOURCE, drafts: false };
-  const production = process.env.NODE_ENV === "production", drafts = req.cookies.get(DRAFTS_COOKIE)?.value;
+  const production = process.env.NODE_ENV === "production", drafts = jar.get(DRAFTS_COOKIE)?.value;
   if (draftsAllowed(production, drafts)) return decide({ cookie, drafts, pass: null, statuses: {}, production });
   let pass: string | null = null;
-  try { pass = verifyToken<{ lang: string }>(req.cookies.get(PASS_COOKIE)?.value)?.lang ?? null; } catch { pass = null; }
+  try { pass = verifyToken<{ lang: string }>(jar.get(PASS_COOKIE)?.value)?.lang ?? null; } catch { pass = null; }
   return decide({ cookie, drafts, pass, statuses: await langStatuses(), production });
 }
 
@@ -34,7 +36,8 @@ export function passOn(req: NextRequest, choice: Choice): NextResponse {
   headers.set(LANG_HEADER, writeChoice(choice));
   headers.set(PATH_HEADER, req.nextUrl.pathname + req.nextUrl.search);
   const res = NextResponse.next({ request: { headers } });
-  const cookie = req.cookies.get(LANG_COOKIE)?.value;
-  if (cookie !== undefined && cookie !== choice.lang) res.cookies.set(LANG_COOKIE, choice.lang, langCookieOptions());
+  const jar = responseJar(req, res);
+  const cookie = jar.get(LANG_COOKIE)?.value;
+  if (cookie !== undefined && cookie !== choice.lang) jar.set(LANG_COOKIE, choice.lang, langCookieOptions());
   return res;
 }

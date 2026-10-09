@@ -3,7 +3,7 @@
  * Built on auth.ts. Pages call `requireMember()`; actions also check `m.can(action)`.
  */
 import { cache } from "react";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";
 import { and, asc, desc, eq, isNull } from "drizzle-orm";
 import { db, schema } from "@/db";
@@ -47,7 +47,7 @@ export const getMember = cache(async () => {
     .orderBy(asc(schema.profile.createdAt));
   if (!profiles.length) return null;
 
-  const jar = await cookies();
+  const jar = await cookieJar();
   /* Child mode pins the device to one child until a grown-up types the exit PIN. */
   const child = verifyToken<{ profileId: string; accountId: string }>(jar.get(CHILD_COOKIE)?.value);
   const childHere = child?.accountId === account.id;

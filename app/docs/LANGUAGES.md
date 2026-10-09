@@ -72,7 +72,7 @@ stronger promise, an unkind or a childish tone.
 
 ## How a request gets its language
 
-1. `src/proxy.ts` runs before anything is drawn. It reads the cookie `io_lang`, matches it against the fixed list
+1. `src/proxy.ts` runs before anything is drawn. It reads the entry `io_lang` of the cookie `__session` (`src/lib/cookie-jar.ts`), matches it against the fixed list
    of eleven, and asks `src/i18n/decide.ts` whether this browser may have that language: it is on, or it is in
    review and the browser carries a signed staff pass for it (`io_lang_pass`). A request for English reads
    nothing. A request for another language reads the statuses, kept in memory for half a minute.
@@ -355,7 +355,8 @@ switch is ignored everywhere.
   moment. The browser then shows the words it was given and does not keep that file; the next page is right.
 - **Statuses are kept in memory for half a minute** on each server, so a change by staff reaches every server
   within that time.
-- **Cookies.** The language is carried in cookies named `io_lang`, `io_lang_pass` and `io_lang_synced`. A front
-  door that forwards only some cookies to the app must forward these, like the app's other cookies.
+- **Cookies.** The language is carried in the entries `io_lang`, `io_lang_pass` and `io_lang_synced` of the one cookie
+  `__session`, the only name Firebase Hosting passes on. `io_lang` is also written as a plain cookie of that name,
+  because the page's own script compares it (`src/i18n/watch.tsx`); the server never relies on that copy.
 - **Counting forms.** A sentence has one form for a number, with separate forms for 0 and 1 where the English has
   them. A language that needs more forms than that writes around it.

@@ -10,7 +10,7 @@
  * When a session stops counting is in src/lib/signin/session-rules.ts.
  */
 import { cache } from "react";
-import { cookies } from "next/headers";
+import { jar as cookieJar } from "@/lib/cookie-jar";
 import { notFound, redirect } from "next/navigation";
 import { and, asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
@@ -26,7 +26,7 @@ export const demoLoginOn = () => process.env.DEMO_LOGIN !== "off";
 
 /** The session this browser carries, if its cookie is good. Whether it still counts for the person is decided in `getViewer`. */
 async function signedIn(): Promise<Session | null> {
-  return readSession((await cookies()).get(USER_COOKIE)?.value, demoLoginOn());
+  return readSession((await cookieJar()).get(USER_COOKIE)?.value, demoLoginOn());
 }
 
 export interface SponsorSeat { sponsorId: string; name: string; status: "pending" | "approved" | "suspended"; role: SponsorRole }
@@ -130,7 +130,7 @@ export async function signInAs(userId: string): Promise<string | null> {
   if (!user) return null;
   const [household] = user.accountId ? await db.select({ isDemo: schema.account.isDemo }).from(schema.account).where(eq(schema.account.id, user.accountId)).limit(1) : [];
   if (!isDemoPerson(user, !!household?.isDemo)) return null;
-  const jar = await cookies();
+  const jar = await cookieJar();
   const hold = await holdOf(jar.get(CHILD_COOKIE)?.value);
   if (hold.state === "live" && !mayResume(hold, user)) return null;
   const c = sessionCookie(user.id, "demo");
@@ -143,7 +143,7 @@ export async function signInAs(userId: string): Promise<string | null> {
 
 /** Ends the session on this browser. Child mode is not touched: only the exit PIN ends it. */
 export async function signOut() {
-  const jar = await cookies();
+  const jar = await cookieJar();
   jar.delete(USER_COOKIE); jar.delete(PROFILE_COOKIE);
 }
 
