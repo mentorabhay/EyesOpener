@@ -11,6 +11,7 @@
  */
 import { cache } from "react";
 import { jar as cookieJar } from "@/lib/cookie-jar";
+import { GATE_COOKIE, gatePassed, lockScope } from "./gate";
 import { notFound, redirect } from "next/navigation";
 import { and, asc, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
@@ -24,9 +25,20 @@ export const CHILD_COOKIE = HOLD_COOKIE;
 /** The demo sign-in is for development and the public demo. Production sets DEMO_LOGIN=off. */
 export const demoLoginOn = () => process.env.DEMO_LOGIN !== "off";
 
+/**
+ * Whether the demo is on for this browser: switched on, and, when the site lock covers only the demo people
+ * (SITE_LOCK_SCOPE=demo), opened here with the access phrase. Without it a demo session counts for nothing, a first
+ * visit is not the demo guardian, and nobody can sign in as a demo person.
+ */
+export async function demoHere(): Promise<boolean> {
+  if (!demoLoginOn()) return false;
+  if (lockScope() !== "demo") return true;
+  return gatePassed((await cookieJar()).get(GATE_COOKIE)?.value);
+}
+
 /** The session this browser carries, if its cookie is good. Whether it still counts for the person is decided in `getViewer`. */
 async function signedIn(): Promise<Session | null> {
-  return readSession((await cookieJar()).get(USER_COOKIE)?.value, demoLoginOn());
+  return readSession((await cookieJar()).get(USER_COOKIE)?.value, await demoHere());
 }
 
 export interface SponsorSeat { sponsorId: string; name: string; status: "pending" | "approved" | "suspended"; role: SponsorRole }
@@ -65,7 +77,7 @@ export const getViewer = cache(async (): Promise<Viewer | null> => {
   if (user && session && endedEverywhere(session, user.sessionsValidAfter)) user = undefined;
   let viewer = user && session ? await viewerOf(user, session.via === "signin") : null;
   if (viewer && session && tooOldForRole(session, seesBeyondFamily(viewer))) viewer = null;
-  if (!viewer && demoLoginOn()) {
+  if (!viewer && (await demoHere())) {
     /* First visit to the demo: the demo household's guardian. */
     const [row] = await db.select({ user: schema.appUser }).from(schema.appUser)
       .innerJoin(schema.account, eq(schema.account.id, schema.appUser.accountId))
@@ -125,7 +137,7 @@ export const isDemoPerson = (user: { email: string; firebaseUid: string | null }
  * Before, it removed the cookie, which let anyone who could send this form end child mode without the PIN.
  */
 export async function signInAs(userId: string): Promise<string | null> {
-  if (!demoLoginOn() || !/^[0-9a-f-]{36}$/i.test(userId)) return null;
+  if (!(await demoHere()) || !/^[0-9a-f-]{36}$/i.test(userId)) return null;
   const [user] = await db.select().from(schema.appUser).where(eq(schema.appUser.id, userId)).limit(1);
   if (!user) return null;
   const [household] = user.accountId ? await db.select({ isDemo: schema.account.isDemo }).from(schema.account).where(eq(schema.account.id, user.accountId)).limit(1) : [];

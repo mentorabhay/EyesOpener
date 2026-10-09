@@ -71,8 +71,10 @@ function SignedIn({ me }: { me: Me }) {
 export function LoginView(p: {
   /** Null when sign-in is not set up. `google` is null when only the email link is offered. */
   signIn: { google: { clientId: string; script: string } | null } | null;
-  /** Null when the demo sign-in is off. */
+  /** Null when the demo sign-in is off, or not opened in this browser. */
   demo: DemoGroup[] | null;
+  /** The demo is on but needs the access phrase here (SITE_LOCK_SCOPE=demo): a link to the phrase page. */
+  demoLocked?: boolean;
   /** The person who signed in for real, if anyone. */
   me: Me | null;
   /** The device is in child mode and nobody it can show the app for is signed in. */
@@ -122,6 +124,9 @@ export function LoginView(p: {
           </div>
         </div>
       </div>
+      {p.demoLocked && !p.me && (
+        <p className={`small muted ${css.below}`}>{demo.demoLocked} <Link href="/gate?next=/login">{demo.demoOpen}</Link></p>
+      )}
       {p.demo && (
         <section className={css.below} aria-labelledby="demo-title">
           <header className={css.second}><h2 id="demo-title">{demo.demoTitle}</h2><p className="muted">{demo.demoSub}</p></header>

@@ -5,7 +5,7 @@ import { asc, eq } from "drizzle-orm";
 import { auth as demo } from "@/copy/auth";
 import { signin as t } from "@/copy/signin";
 import { db, schema } from "@/db";
-import { CHILD_COOKIE, demoLoginOn, getViewer, isDemoPerson, type Viewer } from "@/lib/auth";
+import { CHILD_COOKIE, demoHere, demoLoginOn, getViewer, isDemoPerson, type Viewer } from "@/lib/auth";
 import { getMember } from "@/lib/session";
 import { cleanNext } from "@/lib/signin/flow";
 import { holdOf, loginGate } from "@/lib/signin/hold";
@@ -47,7 +47,8 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   return (
     <LoginView
       signIn={settings && { google: settings.googleClientId ? { clientId: settings.googleClientId, script: settings.endpoints.gsi } : null }}
-      demo={demoLoginOn() ? await demoGroups(viewer) : null}
+      demo={(await demoHere()) ? await demoGroups(viewer) : null}
+      demoLocked={demoLoginOn() && !(await demoHere())}
       me={viewer?.real ? { name: viewer.user.displayName, email: viewer.user.email, go: viewer.home === "/login" ? "/login/welcome" : viewer.home } : null}
       held={gate === "sign_in_held"}
       next={cleanNext(q.next)}

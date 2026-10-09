@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { gateMark, isOpenPath, phraseMatches, safeNext, siteLock } from "./gate";
+import { gateMark, gatePassed, isOpenPath, lockScope, phraseMatches, safeNext, siteLock } from "./gate";
+import { signToken } from "./token";
 
 describe("site lock", () => {
   it("does not exist without a phrase, and ignores one too short to be a lock", () => {
@@ -33,5 +34,22 @@ describe("site lock", () => {
     /* What a browser makes of the first of these, were it let through. */
     expect(new URL("/\t/evil.example", "https://iopener.example").host).toBe("evil.example");
     expect(safeNext("/library?tag=two%20words")).toBe("/library?tag=two%20words");
+  });
+});
+
+describe("a lock on the demo people only", () => {
+  it("covers every page unless told to cover only the demo", () => {
+    expect(lockScope(undefined)).toBe("all");
+    expect(lockScope("all")).toBe("all");
+    expect(lockScope(" demo ")).toBe("demo");
+    expect(lockScope("something else")).toBe("all");
+  });
+  it("is opened by a gate entry made for the phrase in force, and by nothing else", () => {
+    const lock = "a phrase long enough";
+    expect(gatePassed(undefined, null)).toBe(true);
+    expect(gatePassed(undefined, lock)).toBe(false);
+    expect(gatePassed(signToken({ gate: gateMark(lock), exp: Date.now() + 60_000 }), lock)).toBe(true);
+    expect(gatePassed(signToken({ gate: gateMark("an older phrase"), exp: Date.now() + 60_000 }), lock)).toBe(false);
+    expect(gatePassed(signToken({ gate: gateMark(lock), exp: Date.now() - 1 }), lock)).toBe(false);
   });
 });

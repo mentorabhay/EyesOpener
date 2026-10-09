@@ -14,7 +14,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { choiceOf, passOn } from "@/i18n/request";
 import { requestJar } from "@/lib/cookie-jar";
-import { GATE_COOKIE, gateMark, isOpenPath, siteLock } from "@/lib/gate";
+import { GATE_COOKIE, gatePassed, isOpenPath, lockScope, siteLock } from "@/lib/gate";
 import { isSealedPath } from "@/lib/roles";
 import { verifyToken } from "@/lib/token";
 
@@ -26,7 +26,8 @@ export async function proxy(req: NextRequest) {
 
   const jar = requestJar(req);
   const lock = siteLock();
-  if (lock && !isOpenPath(path) && verifyToken<{ gate: string }>(jar.get(GATE_COOKIE)?.value)?.gate !== gateMark(lock)) {
+  /* with the lock on the demo people only (SITE_LOCK_SCOPE=demo), every page is open: the demo checks it itself */
+  if (lock && lockScope() === "all" && !isOpenPath(path) && !gatePassed(jar.get(GATE_COOKIE)?.value, lock)) {
     return moveTo(req, path === "/" ? "/gate" : `/gate?next=${encodeURIComponent(path + req.nextUrl.search)}`);
   }
 

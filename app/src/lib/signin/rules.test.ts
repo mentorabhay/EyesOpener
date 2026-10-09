@@ -173,6 +173,16 @@ describe("the proxy, child mode and the site lock", () => {
     return new URL(to).pathname + new URL(to).search;
   };
 
+  it("with the lock on the demo only, opens every page without the phrase", async () => {
+    process.env.SITE_LOCK = "a-test-phrase-1234";
+    process.env.SITE_LOCK_SCOPE = "demo";
+    try {
+      expect(await run("/")).toBe("through");
+      expect(await run("/login")).toBe("through");
+      expect(await run("/today")).toBe("through");
+    } finally { delete process.env.SITE_LOCK; delete process.env.SITE_LOCK_SCOPE; }
+  });
+
   it("lets the built files through with the site lock on and no cookie at all, and nothing else", async () => {
     process.env.SITE_LOCK = "a-test-phrase-1234";
     try {

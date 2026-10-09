@@ -2,14 +2,26 @@
  * The site lock. When SITE_LOCK holds an access phrase, every page asks for it once per browser.
  * It is for a site that is deployed but not open yet (a staging copy, the days before launch).
  * With SITE_LOCK unset the lock does not exist. Pure functions, unit-tested.
+ *
+ * SITE_LOCK_SCOPE=demo (Ved, 10 October 2026: staging opens with the landing page first, and anyone may register)
+ * keeps the phrase for the demo people only: every page is open, and the seeded demo people, who include a super
+ * admin, can be seen and signed in as only in a browser that has typed the phrase.
  */
 import crypto from "node:crypto";
+import { verifyToken } from "./token";
 
 export const GATE_COOKIE = "io_gate";
 export const GATE_DAYS = 30;
 
 /** The access phrase, or null when the site is open. */
 export const siteLock = (env: string | undefined = process.env.SITE_LOCK): string | null => (env && env.trim().length >= 8 ? env.trim() : null);
+
+/** "all": every page asks for the phrase. "demo": only the demo people do. */
+export const lockScope = (env: string | undefined = process.env.SITE_LOCK_SCOPE): "all" | "demo" => (env?.trim() === "demo" ? "demo" : "all");
+
+/** Whether a browser's gate entry opens the lock in force (always, when there is no lock). */
+export const gatePassed = (cookie: string | undefined, lock: string | null = siteLock()): boolean =>
+  !lock || verifyToken<{ gate: string }>(cookie)?.gate === gateMark(lock);
 
 /** What the cookie carries instead of the phrase. Changing the phrase makes every old cookie useless. */
 export const gateMark = (phrase: string) => crypto.createHash("sha256").update(`io-gate:${phrase}`).digest("hex").slice(0, 24);
