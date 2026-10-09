@@ -244,3 +244,11 @@ describe("the cyan mix's floor", () => {
     expect(screenFacts(save(measured, { step: "tune", green: 1, blue: 0.3, redTop: 1 }, day(4))).leak?.stale).toBe(true);
   });
 });
+
+describe("the lens choice and the balance check-up", () => {
+  it("asks for the balance check-up again when the choice changed after it", () => {
+    const facts = screenFacts(blank);
+    expect(profileEffect(facts, { strongContrast: 0.3 }, day(4), day(5)).balanceAgain).toBe(true);
+    expect(profileEffect(facts, { strongContrast: 0.3 }, day(6), day(5)).balanceAgain).toBe(false);
+  });
+});

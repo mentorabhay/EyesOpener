@@ -1,4 +1,5 @@
 import { Listen } from "@/components/voice/listen";
+import { lens } from "@/copy/lens";
 import { train as t } from "@/copy/train";
 import { voice } from "@/copy/voice";
 import type { GameGuide } from "@/data/game-guides";
@@ -14,14 +15,14 @@ export const labelsFor = (g: GameGuide | undefined, fallback: Labels): Labels =>
   g && g.measures.length ? { ...Object.fromEntries(g.measures.map((m) => [m.key, { label: m.label, unit: m.unit }])) } : fallback;
 
 /** Says plainly that a game needs red-cyan glasses, which way round they go, and what to do with none at hand. */
-export function GlassesNote({ gear, cyanEye, joined }: { gear: string; cyanEye: "L" | "R"; joined: boolean }) {
+export function GlassesNote({ gear, cyanEye, joined, swapped = false }: { gear: string; cyanEye: "L" | "R"; joined: boolean; /** The weaker eye sees red (engine/profile.ts): the guides are written for the usual way. */ swapped?: boolean }) {
   if (!/red-cyan/i.test(gear)) return null;
   const q = x.glasses;
   /* A game a patch can also do: nothing on its screen is red or cyan. */
   if (/patch/i.test(gear)) return <p className="notice" data-b="warn" role="note"><b>{q.patchTitle}</b> {q.patch}</p>;
   return (
     <p className="notice" data-b="warn" role="note">
-      <b>{q.title}</b> {q.way(cyanEye)} {joined ? `${q.twoPictures} ${q.practice}` : `${q.bothSeeAll} ${q.check}`}
+      <b>{q.title}</b> {q.way(cyanEye)} {joined ? `${q.twoPictures} ${q.practice}` : `${q.bothSeeAll} ${q.check}`}{swapped && ` ${lens.swappedNote}`}
     </p>
   );
 }

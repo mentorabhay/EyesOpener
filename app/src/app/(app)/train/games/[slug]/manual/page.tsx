@@ -33,7 +33,7 @@ export default async function GameManualPage({ params }: Props) {
         crumb={[film ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]}
       />
       <div className="row"><Btn href={`/train/games/${slug}/play`} kind="g">{kindOf(slug) === "care" ? t.game.open : t.game.play}</Btn><Btn href={`/train/games/${slug}`}>{t.manual.back}</Btn></div>
-      <GlassesNote gear={g.gear} cyanEye={m.eye?.cyanEye === "right" ? "R" : "L"} joined={!!gameGuideFor(slug)?.joined} />
+      <GlassesNote gear={g.gear} cyanEye={m.eye?.cyanEye === "right" ? "R" : "L"} joined={!!gameGuideFor(slug)?.joined} swapped={m.eye?.weakInk === "red"} />
       <GameManual slug={slug} locale={m.account.locale} />
     </>
   );

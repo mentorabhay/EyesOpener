@@ -199,18 +199,18 @@ export interface ProfileEffect {
   contrast: number | null;
   /** What the leak does to this profile; null when the leak is not measured or the profile has no eye settings. */
   leak: LeakEffect | null;
-  /** True when the profile's contrast came from a balance check-up taken before the gamma or the ink balance was measured, or before the cyan ink was tuned. */
+  /** True when the profile's contrast came from a balance check-up taken before the gamma or the ink balance was measured, before the cyan ink was tuned, or before the lens choice changed. */
   balanceAgain: boolean;
   /** The red ink's ceiling in training, when it is below this profile's contrast; null when the ceiling changes nothing for this profile. */
   capped: number | null;
 }
 
-export function profileEffect(facts: ScreenFacts, eye: { strongContrast: number } | null, balanceAt: Date | null): ProfileEffect {
+export function profileEffect(facts: ScreenFacts, eye: { strongContrast: number } | null, balanceAt: Date | null, lensAt: Date | null = null): ProfileEffect {
   const after = (at: Date | null | undefined) => !!at && !!balanceAt && at.getTime() > balanceAt.getTime();
   return {
     contrast: eye?.strongContrast ?? null,
     leak: eye && facts.leak ? leakFor(facts.leak, eye.strongContrast, facts.tune) : null,
-    balanceAgain: after(facts.ink?.at) || (after(facts.gamma.at) && facts.gamma.movedBy >= GAMMA_MOVED) || after(facts.tune.greenAt),
+    balanceAgain: after(facts.ink?.at) || (after(facts.gamma.at) && facts.gamma.movedBy >= GAMMA_MOVED) || after(facts.tune.greenAt) || after(lensAt),
     capped: eye && eye.strongContrast > facts.tune.redTop ? facts.tune.redTop : null,
   };
 }

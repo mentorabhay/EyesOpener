@@ -54,7 +54,7 @@ export default async function ExercisePage({ params }: Props) {
   const eye = {
     contrast: m.eye?.strongContrast ?? 1, gamma: m.device?.gamma ?? 2.2,
     targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc,
-    distCm: m.device?.distanceCm ?? 0, cyanEye: m.eye?.cyanEye === "right" ? ("R" as const) : ("L" as const),
+    distCm: m.device?.distanceCm ?? 0, cyanEye: m.eye?.cyanEye === "right" ? ("R" as const) : ("L" as const), weakInk: m.eye?.weakInk === "red" ? ("red" as const) : ("cyan" as const),
   };
   /* The spoken version of a card. It draws nothing where no audio exists. */
   const say = (part: ExercisePart) => <Listen id={exerciseScriptId(slug, part)} what={voice.parts[part]} locale={m.account.locale} />;

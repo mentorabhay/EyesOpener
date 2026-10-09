@@ -36,10 +36,12 @@ const KEEP_EVERY = 5;
  *  - Watching is cut into chapters with an eye break between them (see chapters.ts). A break is not watching.
  *  - A list of films plays one after another inside the same session, so it can never run past the dose.
  */
-export function Player({ itemSlug, contrast, dose, cyanEye, plan, profileId, tester }: {
+export function Player({ itemSlug, contrast, dose, cyanEye, weakInk = "cyan", plan, profileId, tester }: {
   itemSlug: string; contrast: number; dose: TrainDose;
   /** The eye the cyan lens goes over, or null when the eye settings do not say yet. */
   cyanEye: "L" | "R" | null;
+  /** Which ink the weaker eye sees (engine/profile.ts): the film's dimmed rows follow it. */
+  weakInk?: "cyan" | "red";
   plan: ChapterPlan; profileId: string;
   /** A staff test household: the daily limits are off, so "today's minutes are used" never applies. */
   tester: boolean;
@@ -302,7 +304,7 @@ export function Player({ itemSlug, contrast, dose, cyanEye, plan, profileId, tes
             </div>
             {/* The matrix works in real light (linearRGB), as the engine's contrast values do. */}
             <svg className={css.defs} aria-hidden="true">
-              <filter id="two-eye" colorInterpolationFilters="linearRGB"><feColorMatrix type="matrix" values={videoMatrix(contrast).join(" ")} /></filter>
+              <filter id="two-eye" colorInterpolationFilters="linearRGB"><feColorMatrix type="matrix" values={videoMatrix(contrast, undefined, weakInk).join(" ")} /></filter>
             </svg>
 
             {open && <FilmControls film={film} full={full} mayPlay={mayPlay} locked={!src || rest} onToggle={toggle} />}

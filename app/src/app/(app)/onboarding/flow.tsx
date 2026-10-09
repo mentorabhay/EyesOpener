@@ -9,8 +9,8 @@ import { LIMITS } from "@/components/measure/limits";
 import { Empty } from "@/components/ui";
 import { onboarding as o } from "@/copy/onboarding";
 import {
-  STARTING_CONTRAST, acuityOf, acuityText, balanceCyanEye, contrastLevels, contrastText, percent, snellen, standardMeasured,
-  type BalanceResult, type Derived, type Eye, type EyeResult, type Measured, type Screen,
+  STARTING_CONTRAST, acuityOf, acuityText, balanceCyanEye, contrastLevels, contrastText, other, percent, snellen, standardMeasured,
+  type BalanceResult, type Derived, type Eye, type EyeResult, type Measured, type Screen, type WeakInk,
 } from "@/engine";
 import { finishOnboarding } from "./actions";
 import css from "./onboarding.module.css";
@@ -36,7 +36,7 @@ function Clock({ from }: { from: number }) {
 }
 
 /** The five steps of onboarding. `screen` and `saved` are what the member already has; the settings are derived and saved on the server. */
-export function Flow({ screen, saved }: { screen: Screen | null; saved: Derived | null }) {
+export function Flow({ screen, saved, weakInk = "cyan" }: { screen: Screen | null; saved: Derived | null; /** The profile's lens choice (engine/profile.ts). */ weakInk?: WeakInk }) {
   const [step, setStep] = useState<Step>({ at: "intro" });
   const [p, setP] = useState<Measured>(() => ({ ...standardMeasured(), ...screen, tested: true }));
   const [startedAt, setStartedAt] = useState(0);
@@ -73,7 +73,9 @@ export function Flow({ screen, saved }: { screen: Screen | null; saved: Derived 
 
   const settings = fresh ?? saved;
   const at = stepKey(step);
-  const cyanEye = balanceCyanEye(p.eyes.L.va, p.eyes.R.va);
+  /* the balance test is taken with the glasses as they will be worn: cyan over the weaker-reading eye, or over the other eye when the inks are swapped */
+  const worse = balanceCyanEye(p.eyes.L.va, p.eyes.R.va);
+  const cyanEye = weakInk === "red" ? other(worse) : worse;
 
   return (
     <>
@@ -188,7 +190,7 @@ export function Flow({ screen, saved }: { screen: Screen | null; saved: Derived 
               <h2>{o.done.title}</h2>
               {fresh.flags.stop && <p className="notice" data-b="danger">{o.settings.doctorFirst}</p>}
               <p>{fresh.weak ? o.done.weak(fresh.weak, percent(fresh.con)) : o.done.equal}{o.done.everywhere}</p>
-              {p.bal && fresh.weak && fresh.weak !== p.bal.cyanEye && <p className="notice" data-b="warn">{o.done.swap(fresh.weak)}</p>}
+              {p.bal && fresh.weak && fresh.cyanEye !== p.bal.cyanEye && <p className="notice" data-b="warn">{o.done.swap(fresh.weak, fresh.cyanEye)}</p>}
               {!p.bal && fresh.weak && <p className="muted small">{o.done.skipped(percent(STARTING_CONTRAST))}<Link href="/test/balance/run">{o.done.skippedCta}</Link></p>}
               <ul className={css.list}>{o.done.links.map(([href, name, why]) => <li key={href}><Link href={href}>{name}</Link>: {why}</li>)}</ul>
               <button type="button" className="btn btn-sm" onClick={begin}>{o.intro.again}</button>

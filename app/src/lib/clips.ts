@@ -66,8 +66,10 @@ export async function clipPerson(m: Member): Promise<ClipPerson> {
 /** Everything a clip's screen part needs from the server. Plain values: it crosses to the browser. */
 export interface ClipCtx {
   screen: { ppc: number; dist: number; gamma: number } | null;
-  /** The eye the cyan lens sits over: the weaker eye, or the left eye until a weaker eye is known. */
+  /** The eye the cyan lens sits over: the weaker eye (the stronger one when the inks are swapped), or the left eye until a weaker eye is known. */
   cyanEye: Eye;
+  /** Which ink the weaker eye sees (engine/profile.ts). */
+  weakInk: "cyan" | "red";
   /** The stronger eye's contrast from the eye settings, and the member's letter and target sizes in page dots. */
   contrast: number; letterPx: number; targetPx: number;
   /** Under 12: a grown-up runs the near point check. */
@@ -94,6 +96,7 @@ export async function clipContext(m: Member): Promise<ClipCtx> {
   return {
     screen: d ? { ppc: d.pxPerCm, dist: d.distanceCm, gamma: d.gamma } : null,
     cyanEye: m.eye ? eyeOf(m.eye.cyanEye) : "L",
+    weakInk: m.eye?.weakInk === "red" ? "red" : "cyan",
     contrast: m.eye?.strongContrast ?? 1, letterPx: (m.eye?.letterCm ?? 0) * ppc, targetPx: (m.eye?.targetCm ?? 0) * ppc,
     young: m.age !== null && m.age < 12,
     child: m.profile.kind === "child",

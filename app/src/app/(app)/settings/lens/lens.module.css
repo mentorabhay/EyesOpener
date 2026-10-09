@@ -1,0 +1,8 @@
+.option { display: flex; flex-direction: column; gap: 12px; }
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.top h2 { margin: 0; font-size: 20px; flex: 1 1 auto; }
+.glasses { display: flex; align-items: center; gap: 14px; }
+.glasses svg { flex: 0 0 96px; width: 96px; border-radius: 8px; }
+.facts { display: flex; flex-direction: column; gap: 10px; }
+.leak { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 14.5px; }

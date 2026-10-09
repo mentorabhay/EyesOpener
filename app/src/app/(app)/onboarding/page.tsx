@@ -18,6 +18,7 @@ export default async function OnboardingPage() {
           key={m.profile.id}
           screen={m.device && { ppc: m.device.pxPerCm, dist: m.device.distanceCm, gamma: m.device.gamma }}
           saved={m.eye && settingsOf(m.eye)}
+          weakInk={m.profile.weakInk === "red" ? "red" : "cyan"}
         />
       )}
     </>

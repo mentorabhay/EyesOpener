@@ -48,7 +48,7 @@ export default async function GamePage({ params }: Props) {
         <EvidenceChip level={mech.evidence} />
         {(status !== "open" || m.tester) && <Chip tone={status === "open" ? "ok" : status === "counsellor" ? "plain" : "warn"}>{t.game.statusFor[status]}</Chip>}
       </div>
-      <GlassesNote gear={g.gear} cyanEye={m.eye?.cyanEye === "right" ? "R" : "L"} joined={!!guide?.joined} />
+      <GlassesNote gear={g.gear} cyanEye={m.eye?.cyanEye === "right" ? "R" : "L"} joined={!!guide?.joined} swapped={m.eye?.weakInk === "red"} />
       <div className="bento">
         <Card span={7}>
           <SceneThumb thumb={g.thumb} label={g.name} />

@@ -8,9 +8,10 @@ import { measure as t } from "@/copy/test";
 import { SCENE_FIELD, SHARED_INK, strongInk, weakInk, type Eye } from "@/engine";
 import { TrueSize, devicePixels, useDraw, type Draw } from "./canvas";
 
-/** The ink that reaches each eye: [left eye, right eye]. The cyan lens sits over `cyanEye`; red is at `contrast` of full light. */
-export function eyeInks(cyanEye: Eye, contrast = 1, gamma?: number): [string, string] {
-  const cyan = weakInk(1, gamma), red = strongInk(contrast, gamma);
+/** The ink that reaches each eye: [left eye, right eye]. The cyan lens sits over `cyanEye`; the stronger eye's ink is at `contrast` of full light. */
+export function eyeInks(cyanEye: Eye, contrast = 1, gamma?: number, swapped = false): [string, string] {
+  /* `contrast` dims the stronger eye's ink: the red one the usual way, the cyan one when the weaker eye sees red */
+  const cyan = weakInk(swapped ? contrast : 1, gamma), red = strongInk(swapped ? 1 : contrast, gamma);
   return cyanEye === "L" ? [cyan, red] : [red, cyan];
 }
 

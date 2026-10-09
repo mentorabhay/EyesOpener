@@ -55,6 +55,6 @@ export async function profileLines(member: Member, facts: ScreenFacts): Promise<
   ]);
   return member.profiles.map((p) => ({
     id: p.id, name: p.displayName, active: p.id === member.profile.id,
-    ...profileEffect(facts, eyes.find((x) => x.profileId === p.id) ?? null, balances.find((x) => x.profileId === p.id)?.takenAt ?? null),
+    ...profileEffect(facts, eyes.find((x) => x.profileId === p.id) ?? null, balances.find((x) => x.profileId === p.id)?.takenAt ?? null, p.weakInkAt ?? null),
   }));
 }

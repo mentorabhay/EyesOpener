@@ -44,7 +44,7 @@ export function AlignTask({ axis, lock, ctx, onDone }: { axis: "h" | "v"; lock: 
     if (!cv) return;
     const k = devicePixels(), w = Math.max(1, Math.round(cv.clientWidth * k)), h = Math.max(1, Math.round(cv.clientHeight * k));
     if (cv.width !== w || cv.height !== h) { cv.width = w; cv.height = h; }
-    const g = cv.getContext("2d")!, [left, right] = eyeInks(ctx.cyanEye, ctx.contrast, screen.gamma), s = live.current;
+    const g = cv.getContext("2d")!, [left, right] = eyeInks(ctx.cyanEye, ctx.contrast, screen.gamma, ctx.weakInk === "red"), s = live.current;
     const t = Math.max(2, Math.round(0.05 * screen.ppc * k));
     g.globalCompositeOperation = "source-over";
     g.fillStyle = SCENE_FIELD; g.fillRect(0, 0, w, h);
@@ -64,7 +64,7 @@ export function AlignTask({ axis, lock, ctx, onDone }: { axis: "h" | "v"; lock: 
       g.fillStyle = left; g.fillRect(Math.round(w * 0.2), y - t / 2, Math.round(w * 0.26), t);
       g.fillStyle = right; g.fillRect(Math.round(w * 0.54), y - t / 2 + s.pos, Math.round(w * 0.26), t);
     }
-  }, [axis, lock, ctx.cyanEye, ctx.contrast, screen]);
+  }, [axis, lock, ctx.cyanEye, ctx.contrast, ctx.weakInk, screen]);
 
   useEffect(() => {
     const cv = canvas.current!;

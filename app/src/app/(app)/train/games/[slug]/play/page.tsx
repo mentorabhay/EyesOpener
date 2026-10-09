@@ -51,6 +51,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
     ppc,
     distCm: m.device?.distanceCm ?? 0,
     cyanEye: m.eye?.cyanEye === "right" ? "R" as const : "L" as const,
+    weakInk: m.eye?.weakInk === "red" ? "red" as const : "cyan" as const,
     /* The hero this profile made in Draw Your Hero, for the games that have a character. */
     hero: await currentHero(m),
   };
@@ -60,7 +61,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
   return (
     <>
       {head}
-      <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} />
+      <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} swapped={eye.weakInk === "red"} />
       {/red-cyan/i.test(g.gear) && <ScreenWarning m={m} />}
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
       {how}

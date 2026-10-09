@@ -102,6 +102,10 @@ export const profile = pgTable("profile", {
   accessLevel: integer().notNull().default(0),
   createdAt: now(),
   archivedAt: when(),
+  /** Which ink the weaker eye sees: "cyan" (the usual way) or "red" (the swap). Set by a guardian; engine/profile.ts. */
+  weakInk: text().notNull().default("cyan"),
+  /** When the choice was last changed; null while it has never been changed from the usual way. */
+  weakInkAt: when(),
 }, (t) => [index().on(t.accountId)]);
 
 export const consent = pgTable("consent", {
@@ -184,7 +188,9 @@ export const eyeProfile = pgTable("eye_profile", {
   deviceId: uuid().references(() => device.id, { onDelete: "set null" }),
   weakEye: eye(),
   cyanEye: eye().notNull().default("left"),
-  /** Stronger-eye contrast, 0.05 to 1. */
+  /** The ink the weaker eye sees in this eye profile: "cyan" or "red" (the profile's choice when it was derived). */
+  weakInk: text().notNull().default("cyan"),
+  /** Stronger-eye contrast, 0.05 to 1: of the red ink, or of the cyan ink when the weaker eye sees red. */
   strongContrast: real().notNull().default(1),
   /** log10 of red over cyan contrast at balance; null until the balance test is taken. */
   balanceLogRatio: real(),

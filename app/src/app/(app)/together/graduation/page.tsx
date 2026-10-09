@@ -34,6 +34,7 @@ export default async function GraduationPage() {
     contrast: m.eye?.strongContrast ?? 1, gamma: m.device?.gamma ?? 2.2,
     targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc, distCm: m.device?.distanceCm ?? 0,
     cyanEye: m.eye?.cyanEye === "right" ? "R" as const : "L" as const,
+    weakInk: m.eye?.weakInk === "red" ? "red" as const : "cyan" as const,
   };
   /* The welcome side shows for a family on a course, and for one that already asked. */
   const newSide = !!k.course || !!k.ask;

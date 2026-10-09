@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { z } from "zod";
 import { Card, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { counsellor as t, day, shortDay } from "@/copy/counsellor";
+import { lens } from "@/copy/lens";
 import { MAX_DAILY_MINUTES, percent } from "@/engine";
 import { requireCounsellor } from "@/lib/auth";
 import { memberView, NOTE_MAX } from "@/lib/counsellor";
@@ -45,6 +46,7 @@ export default async function MemberPage({ params }: { params: Promise<{ linkId:
           {m.eye ? (
             <dl className="kv">
               <div><dt>{e.rows.weak}</dt><dd>{m.eye.weakEye ? e.name[m.eye.weakEye] : e.noWeak}</dd></div>
+              {m.weakInk === "red" && <div><dt>{lens.settingsRow}</dt><dd>{lens.counsellorLine(m.weakInkAt ? day(m.weakInkAt) : null)}</dd></div>}
               <div><dt>{e.rows.contrast}</dt><dd className="tnum">{percent(m.eye.strongContrast)}<small>{m.eye.balanceLogRatio === null ? e.fromStart : e.fromBalance}</small></dd></div>
               <div><dt>{e.rows.letter}</dt><dd className="tnum">{e.mm(m.eye.letterCm)}</dd></div>
               <div><dt>{e.rows.target}</dt><dd className="tnum">{e.mm(m.eye.targetCm)}</dd></div>

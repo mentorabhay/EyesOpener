@@ -28,8 +28,10 @@ export interface GameProps {
   /** CSS pixels per centimetre and viewing distance. 0 when the screen was never measured. */
   ppc: number;
   distCm: number;
-  /** The eye behind the cyan lens. It sees the weaker-eye ink. */
+  /** The eye behind the cyan lens. It sees the cyan ink: the weaker eye's, unless `weakInk` is "red". */
   cyanEye: "L" | "R";
+  /** Which ink the weaker eye sees (engine/profile.ts, `WeakInk`). "cyan" when unset: the usual way. */
+  weakInk?: "cyan" | "red";
   onScore: (score: number) => void;
   /**
    * The practice view for someone with no glasses at hand: the two eyes' pictures are drawn in one place, the way
@@ -169,10 +171,16 @@ type Ctx = CanvasRenderingContext2D;
 /** Builds the kit a game talks to. `ctxOf` gives the drawing surface for each ink. */
 export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, rand: () => number = Math.random): Kit {
   /* the inks of this screen's tuning for its glasses (engine/tune.ts): less green in the cyan, a ceiling on the red */
-  const tune = currentTune();
-  const colour: Record<Ink, string> = { weak: weakInk(1, p.gamma, tune), strong: `rgb(${channel(trainRed(p.contrast, tune), p.gamma)} 0 0)`, both: "#fff" };
+  const tune = currentTune(), swapped = p.weakInk === "red";
+  /* The usual way: the weaker eye's cyan at full, the stronger eye's red at its contrast under the ceiling.
+     Swapped: the weaker eye's red at full (the ceiling is only ever for the stronger eye), the stronger eye's cyan at its contrast. */
+  const colour: Record<Ink, string> = swapped
+    ? { weak: `rgb(${channel(1, p.gamma)} 0 0)`, strong: weakInk(p.contrast, p.gamma, tune), both: "#fff" }
+    : { weak: weakInk(1, p.gamma, tune), strong: `rgb(${channel(trainRed(p.contrast, tune), p.gamma)} 0 0)`, both: "#fff" };
   const input: Input = { x: W / 2, y: H / 2, down: false, tapped: false, dx: 0, dy: 0, action: false, held: false, taps: [], pressed: new Set() };
-  const left: Ink = p.cyanEye === "L" ? "weak" : "strong", right: Ink = p.cyanEye === "L" ? "strong" : "weak";
+  /* the weaker eye is behind the cyan lens, or behind the red lens when the inks are swapped */
+  const weakIsLeft = swapped ? p.cyanEye === "R" : p.cyanEye === "L";
+  const left: Ink = weakIsLeft ? "weak" : "strong", right: Ink = weakIsLeft ? "strong" : "weak";
   let streak = 0, misses = 0;
   const stats: Stats = { hits: 0, misses: 0, level: 1, top: 1 };
   const own = p.hero && Array.isArray(p.hero.rows) && p.hero.rows.length ? p.hero : null;

@@ -7,7 +7,7 @@ import { LIMITS } from "@/components/measure/limits";
 import { onboarding } from "@/copy/onboarding";
 import { testByKey } from "@/data";
 import { db, schema } from "@/db";
-import { balanceCyanEye, blankEye, canStart, derive, type Derived, type Eye, type EyeResult, type Measured } from "@/engine";
+import { balanceCyanEye, blankEye, canStart, derive, type Derived, type Eye, type EyeResult, type Measured, type WeakInk } from "@/engine";
 import type { Member } from "@/lib/session";
 import { inEnglish } from "@/i18n/runtime";
 
@@ -16,6 +16,8 @@ type Side = "left" | "right";
 const EYES: Eye[] = ["L", "R"];
 const side = (e: Eye): Side => (e === "L" ? "left" : "right");
 export const eyeOf = (s: Side): Eye => (s === "left" ? "L" : "R");
+/** A stored ink choice, read safely: anything but "red" is the usual way. */
+export const weakInkOf = (v: string | null | undefined): WeakInk => (v === "red" ? "red" : "cyan");
 
 /** A number inside one of the measurement ranges. */
 export const within = ([lo, hi]: readonly [number, number]) => z.number().min(lo).max(hi);
@@ -62,13 +64,15 @@ async function insertResults(x: Tx | typeof db, profileId: string, deviceId: str
 }
 
 /** Derives the settings and makes them the profile's current eye profile. */
-async function writeProfile(tx: Tx, profileId: string, deviceId: string, measured: Measured, source: "onboarding" | "weekly_check") {
+async function writeProfile(tx: Tx, profileId: string, deviceId: string, measured: Measured, source: "onboarding" | "weekly_check" | "lens_choice") {
   /* The balance test is read with this screen's ink balance when a grown-up has measured it (src/lib/screen.ts). Null leaves the reading as it was. */
   const [screen] = await tx.select({ inkBalance: schema.device.inkBalance }).from(schema.device).where(eq(schema.device.id, deviceId)).limit(1);
-  const d = derive({ ...measured, inkBalance: screen?.inkBalance });
+  /* and with the profile's choice of ink for the weaker eye */
+  const [person] = await tx.select({ weakInk: schema.profile.weakInk }).from(schema.profile).where(eq(schema.profile.id, profileId)).limit(1);
+  const d = derive({ ...measured, inkBalance: screen?.inkBalance, weakInk: weakInkOf(person?.weakInk) });
   await tx.update(schema.eyeProfile).set({ isCurrent: false }).where(and(eq(schema.eyeProfile.profileId, profileId), eq(schema.eyeProfile.isCurrent, true)));
   await tx.insert(schema.eyeProfile).values({
-    profileId, deviceId, weakEye: d.weak && side(d.weak), cyanEye: side(d.cyanEye), strongContrast: d.con, balanceLogRatio: measured.bal?.x ?? null,
+    profileId, deviceId, weakEye: d.weak && side(d.weak), cyanEye: side(d.cyanEye), weakInk: d.weakInk, strongContrast: d.con, balanceLogRatio: measured.bal?.x ?? null,
     letterCm: d.letterCm, targetCm: d.targetCm, appTextPx: d.appPx, faintText: d.faint, flags: d.flags, source,
   });
   return d;
@@ -118,7 +122,7 @@ export async function saveResults(member: Member, results: NewResult[], { onScre
  * then writes a new current eye profile. Null when there is no screen or an eye has no letter result yet:
  * sizes are never made up.
  */
-export async function recomputeFromResults(member: Member): Promise<Derived | null> {
+export async function recomputeFromResults(member: Member, source: "weekly_check" | "lens_choice" = "weekly_check"): Promise<Derived | null> {
   const { device, profile } = member;
   if (!device) return null;
   const t = schema.testResult;
@@ -139,11 +143,12 @@ export async function recomputeFromResults(member: Member): Promise<Derived | nu
   const [L, R] = eyes;
   if (!L || !R) return null;
   const bal = find("balance", null);
-  /* older balance rows do not say which eye wore the cyan lens: it was the eye the profile gives the cyan lens to */
+  /* Older balance rows do not say which eye wore the cyan lens. They were all taken before the inks could be swapped,
+     when the cyan lens was on the weaker eye, so that eye is used; the profile's present cyan eye would flip after a swap. */
   const cyanEye = eyeSchema.safeParse((bal?.raw as { cyanEye?: unknown } | null)?.cyanEye).data
-    ?? (member.eye ? eyeOf(member.eye.cyanEye) : balanceCyanEye(L.va, R.va));
+    ?? (member.eye?.weakEye ? eyeOf(member.eye.weakEye) : member.eye ? eyeOf(member.eye.cyanEye) : balanceCyanEye(L.va, R.va));
   const measured: Measured = { tested: true, ppc: device.pxPerCm, dist: device.distanceCm, eyes: { L, R }, bal: bal ? { x: bal.value, cyanEye } : null };
-  return db.transaction((tx) => writeProfile(tx, profile.id, device.id, measured, "weekly_check"));
+  return db.transaction((tx) => writeProfile(tx, profile.id, device.id, measured, source));
 }
 
 /** A stored eye profile, read back in the shape the engine derives. */
@@ -152,7 +157,7 @@ export function settingsOf(row: NonNullable<Member["eye"]>): Derived {
   const flags = { ownGlasses: false, lazyBefore: false, eyeTurn: false, stop: false, ...(row.flags as Partial<Derived["flags"]>) };
   const x = row.balanceLogRatio;
   return {
-    weak, cyanEye: eyeOf(row.cyanEye), con: row.strongContrast,
+    weak, cyanEye: eyeOf(row.cyanEye), weakInk: weakInkOf(row.weakInk), con: row.strongContrast,
     conSource: x === null ? (weak ? "starting_level" : "equal") : Math.abs(x) < 0.1 ? "balance_equal" : "balance",
     letterCm: row.letterCm, targetCm: row.targetCm, appPx: row.appTextPx, faint: row.faintText, flags,
     opens: flags.stop ? "doctor_first" : flags.eyeTurn ? "counsellor" : weak ? "lazy_eye" : "eye_fitness",

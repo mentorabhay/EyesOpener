@@ -32,6 +32,7 @@ export default async function DepthDayPage() {
     contrast: m.eye?.strongContrast ?? 1, gamma: m.device?.gamma ?? 2.2,
     targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc, distCm: m.device?.distanceCm ?? 0,
     cyanEye: m.eye?.cyanEye === "right" ? "R" as const : "L" as const,
+    weakInk: m.eye?.weakInk === "red" ? "red" as const : "cyan" as const,
   };
   /* A kept day stays the day, whatever the check-up rows say later: it decides what the page shows. */
   const kept = v.kept, day = kept?.day ?? null;

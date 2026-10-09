@@ -3,12 +3,14 @@ import Link from "next/link";
 import { desc, eq } from "drizzle-orm";
 import { StateForm } from "@/components/together/StateForm";
 import { Btn, Card, Chip, Empty, PageHead, Void } from "@/components/ui";
+import { lens } from "@/copy/lens";
 import { day, settings as t } from "@/copy/settings";
 import { programmeBySlug, programmes } from "@/data";
 import { db, schema } from "@/db";
 import { ageFrom, MIN_SCREEN_AGE, percent } from "@/engine";
 import { LanguageCard } from "@/i18n/menu";
 import { switchProfile } from "@/lib/actions";
+import { weakInkOf } from "@/lib/eye-profile";
 import { blockedBy, gates } from "@/lib/family";
 import { requireMember } from "@/lib/session";
 import { askCounsellor, leave, start } from "./actions";
@@ -42,6 +44,7 @@ export default async function SettingsPage() {
             <dl className="kv">
               <div><dt>{e.rows.weak}</dt><dd>{eye.weakEye ? e.name[eye.weakEye] : e.noWeak}</dd></div>
               <div><dt>{e.rows.lens}</dt><dd>{e.lens(eye.cyanEye)}</dd></div>
+              <div><dt>{lens.settingsRow}</dt><dd>{lens.settingsValue[weakInkOf(eye.weakInk)]} · <Link href="/settings/lens">{lens.settingsLink}</Link></dd></div>
               <div><dt>{e.rows.contrast}</dt><dd className="tnum">{percent(eye.strongContrast)}</dd></div>
               <div><dt>{e.rows.letter}</dt><dd className="tnum">{e.mm(eye.letterCm)}</dd></div>
               <div><dt>{e.rows.target}</dt><dd className="tnum">{e.mm(eye.targetCm)}</dd></div>

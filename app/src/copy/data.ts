@@ -164,19 +164,19 @@ export const data = texts("copy/data", "data", () => ({
       household: { title: "Household", what: "The household's name and language, and whether a PIN to leave child mode is set." },
       people: { title: "Grown-ups who sign in", what: "Each grown-up who signs in to this household. Your own row is complete: name, email, seat (guardian, co_guardian or circle, the cheer seat) and any other role you hold. For the others the file gives the name, the seat and the day they joined, which is what the Family page shows you." },
       invites: { title: "Invites", what: "Codes a guardian made so another grown-up could join, and whether each was used." },
-      profiles: { title: "Profiles", what: "Each family member: name, adult or child, the year of birth for a child, and the access level (0 everyone, 1 a named condition, 2 with a counsellor)." },
+      profiles: { title: "Profiles", what: "Each family member: name, adult or child, the year of birth for a child, and the access level (0 everyone, 1 a named condition, 2 with a counsellor). Then the colour the weaker eye sees: cyan, the usual way, or red, swapped." },
       consent: { title: "Consent", what: "The agreement a guardian gave for a child, who gave it, when, and when it was taken back if it was." },
       safetyAnswers: { title: "Safety questions", what: "Each time the six safety questions were answered: the answers, whether any was yes, and what followed." },
       screens: {
         title: "Screens", what: "Each screen the family measured.",
-        units: { pxPerCm: "screen dots in one centimetre", distanceCm: "centimetres from the eyes to the screen", gamma: "the screen's brightness curve (2.2 is usual)", channelLeak: "share of each colour that leaks through the wrong lens, from 0 to 1", leakRedLens: "share of the blue-green ink that gets through the red lens, from 0 to 1 (empty until it is measured)", leakCyanLens: "share of the red ink that gets through the blue-green lens, from 0 to 1 (empty until it is measured)", inkBalance: "log10 of how much brighter the blue-green ink looks through its lens than the red ink through its lens (empty until it is measured)", colourRaw: "the matches a grown-up made by eye when measuring this screen's colours" },
+        units: { pxPerCm: "screen dots in one centimetre", distanceCm: "centimetres from the eyes to the screen", gamma: "the screen's brightness curve (2.2 is usual)", channelLeak: "share of each colour that leaks through the wrong lens, from 0 to 1", leakRedLens: "share of the blue-green ink that gets through the red lens, from 0 to 1 (empty until it is measured)", leakCyanLens: "share of the red ink that gets through the blue-green lens, from 0 to 1 (empty until it is measured)", inkBalance: "log10 of how much brighter the blue-green ink looks through its lens than the red ink through its lens (empty until it is measured)", colourRaw: "the matches a grown-up made by eye when measuring this screen's colours", cyanGreen: "share of the green light kept in the blue-green ink, from 0 to 1 (empty while the ink is as usual)", cyanBlue: "share of the blue light kept in the blue-green ink, from 0 to 1 (empty while the ink is as usual)", redTop: "the most light the red ink may have in games and films, from 0.1 to 1 (empty while there is no ceiling)" },
       },
       onboardingRuns: { title: "Onboarding runs", what: "Each run of onboarding: the four yes or no answers for each eye, and the time each eye took.", units: { leftSeconds: "seconds", rightSeconds: "seconds" } },
       eyeSettings: {
         title: "Eye settings", what: "Every set of eye settings a profile has had. isCurrent marks the one in use.",
         units: {
           strongContrast: "contrast shown to the stronger eye, from 0.05 to 1 (1 is full contrast)", balanceLogRatio: "log10 of red contrast over blue-green contrast at balance",
-          letterCm: "centimetres on the screen", targetCm: "centimetres on the screen", appTextPx: "pixels", cyanEye: "the eye behind the blue-green lens",
+          letterCm: "centimetres on the screen", targetCm: "centimetres on the screen", appTextPx: "pixels", cyanEye: "the eye behind the blue-green lens", weakInk: "the colour the weaker eye sees: cyan (blue-green, the usual way) or red (swapped)",
         },
       },
       checkUps: {

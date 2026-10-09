@@ -133,6 +133,8 @@ export async function memberView(viewer: Viewer, linkId: string) {
     name: profile.displayName,
     age: ageFrom(profile.birthYear),
     accessLevel: profile.accessLevel,
+    /** The lens choice (engine/profile.ts) and when it was made: a counsellor sees it, a family makes it. */
+    weakInk: profile.weakInk === "red" ? ("red" as const) : ("cyan" as const), weakInkAt: profile.weakInkAt,
     eye: eye ?? null,
     results: resultLines(results),
     practice: span.map(({ key }) => ({ key, minutes: Math.round(days.find((d) => d.day === key)?.minutes ?? 0) })),

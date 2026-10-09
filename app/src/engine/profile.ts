@@ -39,18 +39,31 @@ export interface BalanceResult {
   cyanEye: Eye;
 }
 
+/**
+ * Which ink the weaker eye sees. "cyan" is the usual way: the weaker eye behind the cyan lens sees the cyan ink at full
+ * and the stronger eye's red ink is dimmed. "red" is the swap, for glasses whose red lens leaks far more than their cyan
+ * lens: the weaker eye goes behind the red lens and sees the red ink at full, and the stronger eye's cyan ink is dimmed.
+ * Both ways are in use (one cleared device puts the blue lens over the weaker eye; vision therapists also put the red
+ * lens there); no trial compares them. What matters is that each eye sees only its own picture, and the balance.
+ */
+export type WeakInk = "cyan" | "red";
+
 export interface Measured extends Screen {
   tested: boolean;
   eyes: Record<Eye, EyeResult>;
   bal: BalanceResult | null;
+  /** The profile's choice of ink for the weaker eye; "cyan" when unset. */
+  weakInk?: WeakInk;
 }
 
 export interface Derived {
   /** The weaker eye, or null when the two eyes tested equal. */
   weak: Eye | null;
-  /** Which eye the cyan lens goes over. The weaker eye always gets the cyan ink. */
+  /** Which eye the cyan lens goes over: the weaker eye, or the stronger eye when the weaker eye sees red. */
   cyanEye: Eye;
-  /** Stronger-eye contrast, 0.05 to 1. */
+  /** The ink the weaker eye sees (see `WeakInk`). */
+  weakInk: WeakInk;
+  /** Stronger-eye contrast, 0.05 to 1: the red ink's, or the cyan ink's when the weaker eye sees red. */
   con: number;
   conSource: "balance" | "balance_equal" | "starting_level" | "equal" | "default";
   /** Letter height for two-eye text, in centimetres. */
@@ -89,6 +102,7 @@ export const standardMeasured = (): Measured => ({
 
 export function derive(m: Measured): Derived {
   const { L, R } = m.eyes;
+  const weakInk: WeakInk = m.weakInk === "red" ? "red" : "cyan";
   const gap = L.va - R.va;
   let weak: Eye | null = Math.abs(gap) >= WEAKER_EYE_GAP ? (gap > 0 ? "L" : "R") : null;
   let con = 1;
@@ -99,13 +113,16 @@ export function derive(m: Measured): Derived {
        ink is than the other through these glasses on this screen. `ink` is the second part (0 until it is measured),
        so `x` is the member's own share, and the weaker eye is decided on that. The contrast is the balance point for
        this screen with the cyan lens on the weaker eye, and never above full. With `ink` at 0 this is the rule as it
-       was before calibration: 10 to the power of minus the balance value. */
+       was before calibration: 10 to the power of minus the balance value.
+       When the weaker eye sees red, the stronger eye's cyan ink is the one dimmed. The weaker eye's red then gives
+       10^-ink of the light the cyan would have given, so the cyan must come down by that much more: 10^(-ink - |x|).
+       With `ink` at 0 the two ways give the same number. */
     const ink = Number.isFinite(m.inkBalance) ? (m.inkBalance as number) : 0;
     const x = m.bal.x - ink;
     if (Math.abs(x) < 0.1) { con = 1; conSource = "balance_equal"; }
     else {
       weak = x < 0 ? m.bal.cyanEye : other(m.bal.cyanEye);
-      con = Math.min(1, Math.max(MIN_CONTRAST, Math.pow(10, ink - Math.abs(x))));
+      con = Math.min(1, Math.max(MIN_CONTRAST, Math.pow(10, (weakInk === "red" ? -ink : ink) - Math.abs(x))));
       conSource = "balance";
     }
   } else if (weak) { con = STARTING_CONTRAST; conSource = "starting_level"; }
@@ -120,7 +137,9 @@ export function derive(m: Measured): Derived {
 
   return {
     weak,
-    cyanEye: weak ?? m.bal?.cyanEye ?? "L",
+    /* the cyan lens goes over the eye that sees the cyan ink */
+    cyanEye: weak ? (weakInk === "red" ? other(weak) : weak) : m.bal?.cyanEye ?? "L",
+    weakInk,
     con,
     conSource,
     letterCm: LETTER_MULTIPLE * thresholdCm(m.dist, worst),

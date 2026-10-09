@@ -38,7 +38,7 @@ export default async function CinemaPage({ searchParams }: { searchParams: Promi
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
       {plan.shortened && <p className="notice" role="note">{c.how.test(plan.chapterSeconds, plan.breakSeconds, STANDARD_PLAN)}</p>}
       <div className="bento">
-        <Player itemSlug={CINEMA} contrast={contrast} dose={dose} cyanEye={cyanEye} plan={plan} profileId={m.profile.id} tester={m.tester} />
+        <Player itemSlug={CINEMA} contrast={contrast} dose={dose} cyanEye={cyanEye} weakInk={m.eye?.weakInk === "red" ? "red" : "cyan"} plan={plan} profileId={m.profile.id} tester={m.tester} />
         <Card span={4}>
           <div className="hstat">
             <div className="v tnum">{percent(contrast)}</div>

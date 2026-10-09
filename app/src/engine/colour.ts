@@ -33,9 +33,17 @@ export function weakInk(contrast = 1, gamma = 2.2, tune: InkTune = currentTune()
  * On a tuned screen (tune.ts) the green and blue rows are scaled by the tuning's mix and the red row by its ceiling.
  * Returns the 20 numbers an SVG feColorMatrix takes, row by row.
  */
-export function videoMatrix(contrast: number, tune: InkTune = currentTune()): number[] {
+export function videoMatrix(contrast: number, tune: InkTune = currentTune(), weakInk: "cyan" | "red" = "cyan"): number[] {
   const c = Math.max(0.05, Math.min(1, contrast)), top = tune.redTop, gr = tune.green, bl = tune.blue;
   const [r, g, b] = [0.2126, 0.7152, 0.0722];
+  /* swapped: the red row is the weaker eye's, at full brightness and never under the ceiling; the cyan rows are the
+     stronger eye's, pulled toward mid-grey by `contrast` as the red row is the usual way */
+  if (weakInk === "red") return [
+    r, g, b, 0, 0,
+    gr * c * r, gr * c * g, gr * c * b, 0, gr * (1 - c) * 0.5,
+    bl * c * r, bl * c * g, bl * c * b, 0, bl * (1 - c) * 0.5,
+    0, 0, 0, 1, 0,
+  ];
   return [
     top * c * r, top * c * g, top * c * b, 0, top * (1 - c) * 0.5,
     gr * r, gr * g, gr * b, 0, 0,

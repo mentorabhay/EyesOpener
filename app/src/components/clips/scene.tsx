@@ -62,7 +62,7 @@ function Scene({ Game, ctx, seconds, help, onEnd }: { Game: Game; ctx: TaskProps
     <>
       <div ref={wrap} className={css.sceneFill}>
         <div className="scene ratio">
-          <Game running={running} contrast={ctx.contrast} gamma={screen.gamma} targetPx={ctx.targetPx} letterPx={ctx.letterPx} ppc={screen.ppc} distCm={screen.dist} cyanEye={ctx.cyanEye} onScore={onScore} onStats={onStats} />
+          <Game running={running} contrast={ctx.contrast} gamma={screen.gamma} targetPx={ctx.targetPx} letterPx={ctx.letterPx} ppc={screen.ppc} distCm={screen.dist} cyanEye={ctx.cyanEye} weakInk={ctx.weakInk} onScore={onScore} onStats={onStats} />
         </div>
         <button type="button" className={`btn btn-sm ${css.leave}`} onClick={leaveFill}>{c.scene.leave}</button>
       </div>
