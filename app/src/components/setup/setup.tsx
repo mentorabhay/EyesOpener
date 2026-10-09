@@ -4,14 +4,13 @@ import { minutesLeft, missing } from "@/lib/setup-rules";
 import type { Setup } from "@/lib/setup";
 import css from "./setup.module.css";
 
-/** A small ring that fills as the required steps are done. */
+/** A small ring that fills as the required steps are done. A plain colour, not a gradient: a gradient defined in the hidden sidebar would not paint on a phone. */
 export function Ring({ done, of, size = 30 }: { done: number; of: number; size?: number }) {
   const r = 12, c = 2 * Math.PI * r, share = of ? done / of : 1;
   return (
     <svg className={css.ring} width={size} height={size} viewBox="0 0 30 30" aria-hidden="true">
-      <defs><linearGradient id="setup-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#8b31f0" /><stop offset="0.52" stopColor="#c4569c" /><stop offset="1" stopColor="#f4aa2d" /></linearGradient></defs>
       <circle cx="15" cy="15" r={r} fill="none" stroke="var(--line)" strokeWidth="4" />
-      <circle cx="15" cy="15" r={r} fill="none" stroke="url(#setup-ring)" strokeWidth="4" strokeLinecap="round" strokeDasharray={`${c * share} ${c}`} transform="rotate(-90 15 15)" />
+      <circle cx="15" cy="15" r={r} fill="none" stroke="var(--g1)" strokeWidth="4" strokeLinecap="round" strokeDasharray={`${c * share} ${c}`} transform="rotate(-90 15 15)" />
     </svg>
   );
 }

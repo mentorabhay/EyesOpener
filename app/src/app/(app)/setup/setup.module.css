@@ -7,7 +7,7 @@
 .steps li[data-state="done"], .steps li[data-state="skip"] { background: var(--sunken); }
 .mark { flex: 0 0 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line); font-size: 13px; font-weight: 700; margin-top: 1px; }
 li[data-state="done"] .mark { background: var(--ink); color: var(--card); border-color: var(--ink); }
-li[data-state="again"] .mark { border-color: #c98a16; }
+li[data-state="again"] .mark { border-color: var(--warn); }
 .body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .body p { margin: 0; }
 .top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }

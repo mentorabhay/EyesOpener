@@ -9,6 +9,21 @@ export const settings = texts("copy/settings", "settings", () => ({
   sub: (name: string) => `These are ${name}'s settings. Switch profile to see another family member.`,
   guardianOnly: "You can look at these settings. A guardian makes the changes.",
 
+  /** The groups of the page, and the menu that leads to them. */
+  groups: {
+    menu: "Parts of settings",
+    before: {
+      title: "Before training",
+      sub: "These decide how two-eye games are drawn for this person on this screen.",
+      ready: "Ready",
+      finish: (left: number) => (left === 1 ? "Finish setup · 1 left" : `Finish setup · ${left} left`),
+    },
+    profile: { title: "Profile and programme", sub: "The eye settings and the practice plan of this person." },
+    family: { title: "Family and counsellor", sub: "Who is in the family, and who helps." },
+    screens: { title: "Screens and glasses", sub: "Each screen the family uses, and how its colours suit the glasses." },
+    language: { title: "Language and your data", sub: "The language of the app, a copy of the family's data, and deleting it." },
+  },
+
   eye: {
     title: "Eye settings",
     again: "Run the eye check again",
