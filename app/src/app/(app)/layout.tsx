@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
+import { InkTuneSet } from "@/components/ink-tune";
 import { NavGroups, TabBar } from "@/components/nav";
 import { common } from "@/copy/common";
-import { pageZoom, strongInk } from "@/engine";
+import { pageZoom, strongInk, trainRed, tuneOf } from "@/engine";
 import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 
@@ -32,9 +33,12 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     ...(m.viewer.sponsors.length ? [{ href: "/sponsor", label: n.sponsor }] : []),
     { href: "/login", label: n.switchPerson },
   ];
-  const style = { "--strong": strongInk(con, m.device?.gamma ?? 2.2) } as CSSProperties;
+  /* the inks of this screen as tuned for its glasses (engine/tune.ts): set for the browser's scenes, and for the red ink here */
+  const tune = tuneOf(m.device);
+  const style = { "--strong": strongInk(trainRed(con, tune), m.device?.gamma ?? 2.2) } as CSSProperties;
   return (
     <div className="shell" style={style}>
+      <InkTuneSet tune={tune} />
       <aside className="side">
         <Link href="/today" className="logo"><span className="mark" aria-hidden="true"><i /><i /></span>{common.product}</Link>
         <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">

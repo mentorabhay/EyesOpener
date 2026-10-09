@@ -1,7 +1,8 @@
 "use client";
 /**
  * The three colour checks of a screen, each one a pair of matches a grown-up makes by eye:
- * the brightness curve (gamma), the colour leak of each lens, and the ink balance.
+ * the brightness curve (gamma), the colour leak of each lens, and the ink balance; and the fourth step, which tunes
+ * the inks for the glasses, one setting for each lens (tune.tsx, src/engine/tune.ts).
  * The browser keeps only what was matched; the values are worked out and saved on the server.
  * A home estimate, not a light meter: src/engine/calibrate.ts says what each number is worth.
  */
@@ -9,11 +10,13 @@ import { useEffect, useRef, useState, useTransition, type KeyboardEvent, type Re
 import { devicePixels } from "@/components/measure/canvas";
 import type { Draw } from "@/components/measure/canvas";
 import { screen as t } from "@/copy/screen";
-import { CAL, LEAK_FAINT, LEAK_SUSPECT, SCENE_FIELD, SHARED_INK, balanceContrasts, leakFromMatches, lensFilter, strongInk, weakInk, type LensMatch } from "@/engine";
+import { CAL, LEAK_FAINT, LEAK_SUSPECT, SCENE_FIELD, SHARED_INK, balanceContrasts, leakFromMatches, strongInk, weakInk, type LensMatch } from "@/engine";
 import type { Step } from "@/lib/screen-rules";
 import { Confirm } from "../confirm";
 import { forgetScreenStep, saveScreenStep, type StepSaved } from "./actions";
+import { Lenses } from "./lenses";
 import { Match } from "./match";
+import { TuneStep } from "./tune";
 import css from "./screen.module.css";
 
 type Lens = "red" | "cyan";
@@ -23,13 +26,19 @@ type At =
   | { at: "gamma"; greys: number[] }
   | { at: "leak"; lens: Lens; levels: number[]; red?: LensMatch }
   | { at: "ink"; xs: number[]; turned: boolean | null }
+  | { at: "tune" }
   | { at: "saving" }
   | { at: "result"; saved: Extract<StepSaved, { ok: true }> }
   | { at: "refused"; step: Step; refusal: Refusal; red?: LensMatch };
 
-const ORDER: Step[] = ["gamma", "leak", "ink"];
+/* the list keeps the three checks first and the tuning fourth; walking through all of them tunes the inks right after
+   the brightness curve, so the leak and the ink balance are then matched with the inks as they will be drawn */
+const LIST: Step[] = ["gamma", "leak", "ink", "tune"];
+const ORDER: Step[] = ["gamma", "tune", "leak", "ink"];
 const begin = (step: Step, red?: LensMatch): At =>
-  step === "gamma" ? { at: "gamma", greys: [] } : step === "leak" ? { at: "leak", lens: red ? "cyan" : "red", levels: [], red } : { at: "ink", xs: [], turned: null };
+  step === "gamma" ? { at: "gamma", greys: [] } : step === "leak" ? { at: "leak", lens: red ? "cyan" : "red", levels: [], red } : step === "tune" ? { at: "tune" } : { at: "ink", xs: [], turned: null };
+
+export { Lenses };
 
 /* where each match starts: the first clearly on one side, the second clearly on the other side of the first answer */
 export const GREY_START = 150, GREY_OVER = 25, LEVEL_OVER = 45, INK_OVER = 0.4, INK_STEP = 0.02;
@@ -71,21 +80,6 @@ export const pair = (gamma: number) => (x: number): Draw => (g, w, h) => {
   g.fillRect(Math.round(w * 0.7 - s / 2), y, s, s);
 };
 
-/** The glasses, and which lens to look through. `turned` draws them the other way round. */
-export function Lenses({ look, turned = false, label }: { look: Lens | "both"; turned?: boolean; label: string }) {
-  const red = turned ? 66 : 30, cyan = turned ? 30 : 66;
-  const lens = (cx: number, which: Lens) => (look === "both" || look === which
-    ? <circle cx={cx} cy="28" r="15" fill={lensFilter(which === "red" ? "strong" : "weak")} />
-    : <><circle cx={cx} cy="28" r="15" fill="#3a3d44" /><path d={`M${cx - 9} 28q9 7 18 0`} fill="none" stroke="#9aa1ac" strokeWidth="2.5" strokeLinecap="round" /></>);
-  return (
-    <svg viewBox="0 0 96 56" role="img" aria-label={label}>
-      <rect width="96" height="56" rx="8" fill="#000" />
-      {lens(red, "red")}{lens(cyan, "cyan")}
-      <path d="M45 28h6" fill="none" stroke="#fff" strokeWidth="2.5" />
-    </svg>
-  );
-}
-
 const Todo = ({ lines }: { lines: string[] }) => <ol className={css.list}>{lines.map((l) => <li key={l}>{l}</li>)}</ol>;
 
 interface Props {
@@ -96,9 +90,11 @@ interface Props {
   dist: number;
   /** For each check: when it was measured, in words, or null while the usual value is in use. */
   measured: Record<Step, string | null>;
+  /** The inks' tuning now: the cyan ink's green share and the red ink's ceiling (1 and 1 when not tuned). */
+  tune: { green: number; redTop: number };
 }
 
-export function Flow({ canMeasure, gamma, dist, measured }: Props) {
+export function Flow({ canMeasure, gamma, dist, measured, tune }: Props) {
   const [at, setAt] = useState<At>({ at: "home" });
   /* "Measure all three" walks through the checks in order; one check on its own comes back to the list */
   const [tour, setTour] = useState(false);
@@ -145,16 +141,16 @@ export function Flow({ canMeasure, gamma, dist, measured }: Props) {
         <h2>{t.home.title}</h2>
         <p>{t.home.body}</p>
         <div>
-          {ORDER.map((step, n) => (
+          {LIST.map((step, n) => (
             <div className={css.check} key={step}>
               <div className={css.top}>
                 <b>{n + 1}. {t.steps[step].name}</b>
-                {measured[step] ? <span className="chip" data-b="ok">{measured[step]}</span> : <span className={css.hatch}><span>{t.home.usual}</span></span>}
+                {measured[step] ? <span className="chip" data-b="ok">{measured[step]}</span> : <span className={css.hatch}><span>{step === "tune" ? t.home.usualTune : t.home.usual}</span></span>}
               </div>
               <p className="muted small">{t.steps[step].what} {t.steps[step].glasses}.</p>
               {canMeasure && (
                 <div className={css.acts}>
-                  <button type="button" className="btn btn-sm" onClick={() => start(step, false)}>{measured[step] ? t.home.again : t.home.one}</button>
+                  <button type="button" className="btn btn-sm" onClick={() => start(step, false)}>{measured[step] ? (step === "tune" ? t.home.again2 : t.home.again) : t.home.one}</button>
                   {measured[step] && (
                     <Confirm ask={t.home.forget.ask} warn={t.home.forget.warn}>
                       <form action={forgetScreenStep}><input type="hidden" name="step" value={step} /><button className="btn btn-sm btn-d">{t.home.forget.yes}</button></form>
@@ -251,6 +247,10 @@ export function Flow({ canMeasure, gamma, dist, measured }: Props) {
     );
   }
 
+  if (at.at === "tune") {
+    body = <TuneStep gamma={gamma} green={tune.green} redTop={tune.redTop} skip={skip("tune")} onSave={(green, redTop) => send("tune", { step: "tune", green, redTop })} />;
+  }
+
   if (at.at === "saving") body = <p role="status">{t.match.saving}</p>;
 
   if (at.at === "refused") {
@@ -289,6 +289,13 @@ export function Flow({ canMeasure, gamma, dist, measured }: Props) {
             {Math.max(s.red, s.cyan) >= LEAK_SUSPECT && <p className="notice" data-b="warn">{t.leak.suspect}</p>}
             <p className={s.worst === "high" ? "notice" : undefined} data-b={s.worst === "high" ? "danger" : undefined}>{t.leak.means[s.worst ?? (Math.max(s.red, s.cyan) >= LEAK_FAINT ? "ghost" : "clean")]}</p>
             <p className="muted small">{t.leak.compare}</p>
+          </>
+        )}
+        {s.step === "tune" && (
+          <>
+            <p><b>{t.tune.result.green(s.green)}</b></p>
+            <p><b>{t.tune.result.red(s.redTop)}</b></p>
+            {(s.green < 1 || s.redTop < 1) && <p className="notice">{t.tune.after}</p>}
           </>
         )}
         {s.step === "ink" && (

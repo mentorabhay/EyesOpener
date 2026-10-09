@@ -11,12 +11,14 @@
  *
  * What the engine does with each value:
  *  1. Gamma goes into `channel()` (colour.ts), and so into every ink and every grey the engine draws.
- *  2. Colour leak is reported and judged (`leakFor`). It is not corrected: see "Why the leak is not cancelled".
+ *  2. Colour leak is reported and judged (`leakFor`). It is not cancelled (see "Why the leak is not cancelled"), but
+ *     the inks can be tuned for the glasses so that less of it shows (tune.ts, the fourth step).
  *  3. Ink balance is taken out of the balance check-up's result when the eye profile is derived (`derive`, profile.ts).
  * With nothing measured (gamma 2.2, no leak, no ink balance) the engine returns exactly what it did before
  * calibration existed.
  */
 import { MIN_CONTRAST } from "./profile";
+import { USUAL_TUNE, trainRed, weakLight, type InkTune } from "./tune";
 
 /** The gamma of a standard screen, used until this screen is measured. */
 export const USUAL_GAMMA = 2.2;
@@ -121,7 +123,9 @@ export const lightOf = (level: number, gamma = USUAL_GAMMA) => Math.pow(clamp(le
  * Lifting the field to grey would break the three-ink rule and lower contrast for both eyes; dimming the cyan ink
  * until its ghost was gone would take most of the light from the weaker eye. So the engine never changes an ink
  * because of the leak, and the leak can therefore never raise the stronger eye's contrast above what the eye
- * profile sets. The engine says what the leak does to each member (`leakFor`), and the screen page shows it. */
+ * profile sets. The engine says what the leak does to each member (`leakFor`), and the screen page shows it.
+ * What can be done is to change the inks themselves so that less of each shows through the wrong lens, without
+ * lifting the field: less green in the cyan for the red lens, a ceiling on the red for the cyan lens (tune.ts). */
 
 export interface Leak {
   /** Through the red lens: the cyan ink's light as a share of the red ink at full. */
@@ -179,11 +183,16 @@ export interface LeakEffect {
  *   picture shows, and fine depth steps and joining tasks are less exact.
  * - "clean": under `LEAK_FAINT` through both lenses.
  * The level never gets better as a leak grows, and never gets worse as the member's contrast rises.
+ *
+ * With the inks tuned (tune.ts): the red lens's leak is measured with the cyan ink as it is drawn, so it already holds
+ * the green tuning; the red ink is the member's contrast under the ceiling, so a ceiling below the member's contrast
+ * makes the ghost in the stronger eye relatively brighter; and the weaker eye's own pictures carry `weakLight` of the
+ * cyan ink's untuned light, which the cyan lens's leak was measured against.
  */
-export function leakFor(leak: Leak, contrast: number): LeakEffect {
-  const con = clamp(contrast, [MIN_CONTRAST, 1]);
+export function leakFor(leak: Leak, contrast: number, tune: InkTune = USUAL_TUNE): LeakEffect {
+  const con = trainRed(clamp(contrast, [MIN_CONTRAST, 1]), tune);
   const red = clamp(leak.red, [0, 1]), cyan = clamp(leak.cyan, [0, 1]);
-  const inStrong = red / con, inWeak = cyan * con;
+  const inStrong = red / con, inWeak = (cyan * con) / weakLight(tune.green);
   return { inStrong, inWeak, level: inStrong >= 1 ? "high" : Math.max(red, cyan) >= LEAK_FAINT ? "ghost" : "clean" };
 }
 

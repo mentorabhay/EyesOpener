@@ -8,7 +8,7 @@
  *
  * A game never sets contrast and never ends a session. The Stage around it owns the dose clock and the stop rule.
  */
-import { channel } from "@/engine";
+import { channel, currentTune, trainRed, weakInk } from "@/engine";
 import { defaultHero, type Sprite } from "./hero";
 
 export type Ink = "weak" | "strong" | "both";
@@ -168,7 +168,9 @@ type Ctx = CanvasRenderingContext2D;
 
 /** Builds the kit a game talks to. `ctxOf` gives the drawing surface for each ink. */
 export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, rand: () => number = Math.random): Kit {
-  const colour: Record<Ink, string> = { weak: "rgb(0 255 255)", strong: `rgb(${channel(p.contrast, p.gamma)} 0 0)`, both: "#fff" };
+  /* the inks of this screen's tuning for its glasses (engine/tune.ts): less green in the cyan, a ceiling on the red */
+  const tune = currentTune();
+  const colour: Record<Ink, string> = { weak: weakInk(1, p.gamma, tune), strong: `rgb(${channel(trainRed(p.contrast, tune), p.gamma)} 0 0)`, both: "#fff" };
   const input: Input = { x: W / 2, y: H / 2, down: false, tapped: false, dx: 0, dy: 0, action: false, held: false, taps: [], pressed: new Set() };
   const left: Ink = p.cyanEye === "L" ? "weak" : "strong", right: Ink = p.cyanEye === "L" ? "strong" : "weak";
   let streak = 0, misses = 0;

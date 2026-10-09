@@ -6,8 +6,8 @@
  */
 import { z } from "zod";
 import {
-  CAL, USUAL_GAMMA, gammaFromMatches, inkFromMatches, leakFor, leakFromMatches, regammaBalance,
-  type Leak, type LeakEffect, type LensMatch, type Pair,
+  CAL, TUNE, USUAL_GAMMA, gammaFromMatches, inkFromMatches, leakFor, leakFromMatches, regammaBalance, tuneOf,
+  type InkTune, type Leak, type LeakEffect, type LensMatch, type Pair,
 } from "@/engine";
 import type { MemberAction } from "./roles";
 
@@ -17,7 +17,7 @@ import type { MemberAction } from "./roles";
  */
 export const mayCalibrate = (member: { can: (action: MemberAction) => boolean }) => member.can("manage_family");
 
-export const STEPS = ["gamma", "leak", "ink"] as const;
+export const STEPS = ["gamma", "leak", "ink", "tune"] as const;
 export type Step = (typeof STEPS)[number];
 export const stepSchema = z.enum(STEPS);
 
@@ -30,6 +30,8 @@ export const stepInput = z.discriminatedUnion("step", [
   z.object({ step: z.literal("gamma"), greys: z.tuple([whole(CAL.grey), whole(CAL.grey)]) }),
   z.object({ step: z.literal("leak"), red: lens, cyan: lens }),
   z.object({ step: z.literal("ink"), xs: z.tuple([within(CAL.inkSet), within(CAL.inkSet)]), turned: z.boolean() }),
+  /* the fourth step: the inks tuned for the glasses, one setting for each lens (src/engine/tune.ts) */
+  z.object({ step: z.literal("tune"), green: within(TUNE.green), redTop: within(TUNE.redTop) }),
 ]);
 export type StepInput = z.infer<typeof stepInput>;
 
@@ -37,9 +39,10 @@ export type StepInput = z.infer<typeof stepInput>;
 const rawSchema = z.object({
   /** The two grey values, and the gamma that was in use before this measurement. */
   gamma: z.object({ greys: z.tuple([z.number(), z.number()]), was: z.number() }).optional().catch(undefined),
-  leak: z.object({ red: lens, cyan: lens }).optional().catch(undefined),
+  /** `green`: the cyan ink's green share when the leak was matched; the red lens's leak holds it (src/engine/tune.ts). */
+  leak: z.object({ red: lens, cyan: lens, green: z.number().optional() }).optional().catch(undefined),
   /** The two balance settings, whether the glasses were turned round for the second, and the gamma they were drawn with. */
-  ink: z.object({ xs: z.tuple([z.number(), z.number()]), turned: z.boolean(), gamma: z.number() }).optional().catch(undefined),
+  ink: z.object({ xs: z.tuple([z.number(), z.number()]), turned: z.boolean(), gamma: z.number(), green: z.number().optional() }).optional().catch(undefined),
   /** Pixels per centimetre of the screen when a colour step was last saved. */
   ppc: z.number().optional().catch(undefined),
 });
@@ -58,6 +61,10 @@ export interface ScreenRow {
   inkBalance: number | null;
   inkBalanceAt: Date | null;
   colourRaw: unknown;
+  cyanGreen: number | null;
+  cyanGreenAt: Date | null;
+  redTop: number | null;
+  redTopAt: Date | null;
 }
 export type ScreenChange = Partial<Omit<ScreenRow, "pxPerCm">>;
 
@@ -67,6 +74,8 @@ export type Resolved =
   | { ok: false; why: "apart" | "range"; lens?: "red" | "cyan" };
 
 const round2 = (v: number) => Math.round(v * 100) / 100;
+/** Two green shares closer than one slider step are the same tuning. */
+const sameGreen = (a: number, b: number) => Math.abs(a - b) < TUNE.step / 2;
 const clamp = (v: number, [lo, hi]: readonly [number, number]) => Math.max(lo, Math.min(hi, v));
 
 /**
@@ -104,14 +113,25 @@ export function resolveStep(input: StepInput, row: ScreenRow, now: Date): Resolv
         ok: true,
         set: {
           leakRedLens: red.value, leakCyanLens: cyan.value, channelLeak: Math.max(red.value, cyan.value), leakAt: now,
-          colourRaw: { ...raw, leak: { red: input.red, cyan: input.cyan } },
+          colourRaw: { ...raw, leak: { red: input.red, cyan: input.cyan, green: tuneOf(row).green } },
         },
       };
     }
     case "ink": {
       const ink = inkFromMatches(input.xs);
       if (!ink.ok) return ink;
-      return { ok: true, set: { inkBalance: ink.value, inkBalanceAt: now, colourRaw: { ...raw, ink: { xs: input.xs, turned: input.turned, gamma: row.gamma } } } };
+      return { ok: true, set: { inkBalance: ink.value, inkBalanceAt: now, colourRaw: { ...raw, ink: { xs: input.xs, turned: input.turned, gamma: row.gamma, green: tuneOf(row).green } } } };
+    }
+    case "tune": {
+      /* a time moves only when its setting moved, so "take the balance check-up again" follows a change of the cyan ink only */
+      const was = tuneOf(row), green = round2(input.green), redTop = round2(input.redTop);
+      return {
+        ok: true,
+        set: {
+          cyanGreen: green, cyanGreenAt: sameGreen(green, was.green) ? row.cyanGreenAt : now,
+          redTop, redTopAt: Math.abs(redTop - was.redTop) < TUNE.step / 2 ? row.redTopAt : now,
+        },
+      };
     }
   }
 }
@@ -128,6 +148,8 @@ export function clearStep(step: Step, row: ScreenRow): ScreenChange {
       return { leakRedLens: null, leakCyanLens: null, channelLeak: 0, leakAt: null, colourRaw: { ...raw, leak: undefined } };
     case "ink":
       return { inkBalance: null, inkBalanceAt: null, colourRaw: { ...raw, ink: undefined } };
+    case "tune":
+      return { cyanGreen: null, cyanGreenAt: null, redTop: null, redTopAt: null };
   }
 }
 
@@ -139,8 +161,11 @@ export const GAMMA_MOVED = 0.1;
 /** What is known about a screen's colours. Null, or a null time, means "not measured: the usual value is in use". */
 export interface ScreenFacts {
   gamma: { value: number; at: Date | null; /** How far the measurement moved gamma from what was in use before. */ movedBy: number };
-  leak: (Leak & { at: Date }) | null;
-  ink: { value: number; at: Date; /** False when the glasses could not be turned round for the second match. */ turned: boolean } | null;
+  /** `stale`: matched with the cyan ink as it was before the inks were last tuned, so it should be matched again. */
+  leak: (Leak & { at: Date; stale: boolean }) | null;
+  ink: { value: number; at: Date; /** False when the glasses could not be turned round for the second match. */ turned: boolean; stale: boolean } | null;
+  /** The inks as they are drawn on this screen, and when each setting was last changed; null times while untuned. */
+  tune: InkTune & { greenAt: Date | null; redTopAt: Date | null };
   /** How many of the three are measured. */
   measured: number;
   /** True when the size of the screen was measured again since, and came out different: the colours belong to another screen. */
@@ -150,12 +175,15 @@ export interface ScreenFacts {
 export function screenFacts(row: ScreenRow): ScreenFacts {
   const raw = rawOf(row.colourRaw);
   const gammaAt = row.gammaAt;
-  const leak = row.leakAt && row.leakRedLens !== null && row.leakCyanLens !== null ? { red: row.leakRedLens, cyan: row.leakCyanLens, at: row.leakAt } : null;
-  const ink = row.inkBalanceAt && row.inkBalance !== null ? { value: row.inkBalance, at: row.inkBalanceAt, turned: raw.ink?.turned ?? false } : null;
+  const tune = tuneOf(row);
+  /* a value matched before the green share last changed was matched with another cyan ink */
+  const stale = (green: number | undefined) => !sameGreen(green ?? 1, tune.green);
+  const leak = row.leakAt && row.leakRedLens !== null && row.leakCyanLens !== null ? { red: row.leakRedLens, cyan: row.leakCyanLens, at: row.leakAt, stale: stale(raw.leak?.green) } : null;
+  const ink = row.inkBalanceAt && row.inkBalance !== null ? { value: row.inkBalance, at: row.inkBalanceAt, turned: raw.ink?.turned ?? false, stale: stale(raw.ink?.green) } : null;
   const measured = (gammaAt ? 1 : 0) + (leak ? 1 : 0) + (ink ? 1 : 0);
   return {
     gamma: { value: row.gamma, at: gammaAt, movedBy: gammaAt && raw.gamma ? Math.abs(row.gamma - raw.gamma.was) : 0 },
-    leak, ink, measured,
+    leak, ink, measured, tune: { ...tune, greenAt: row.cyanGreenAt, redTopAt: row.redTopAt },
     moved: measured > 0 && raw.ppc !== undefined && Math.abs(row.pxPerCm - raw.ppc) / raw.ppc > MOVED_SHARE,
   };
 }
@@ -166,15 +194,18 @@ export interface ProfileEffect {
   contrast: number | null;
   /** What the leak does to this profile; null when the leak is not measured or the profile has no eye settings. */
   leak: LeakEffect | null;
-  /** True when the profile's contrast came from a balance check-up taken before the gamma or the ink balance was measured. */
+  /** True when the profile's contrast came from a balance check-up taken before the gamma or the ink balance was measured, or before the cyan ink was tuned. */
   balanceAgain: boolean;
+  /** The red ink's ceiling in training, when it is below this profile's contrast; null when the ceiling changes nothing for this profile. */
+  capped: number | null;
 }
 
 export function profileEffect(facts: ScreenFacts, eye: { strongContrast: number } | null, balanceAt: Date | null): ProfileEffect {
   const after = (at: Date | null | undefined) => !!at && !!balanceAt && at.getTime() > balanceAt.getTime();
   return {
     contrast: eye?.strongContrast ?? null,
-    leak: eye && facts.leak ? leakFor(facts.leak, eye.strongContrast) : null,
-    balanceAgain: after(facts.ink?.at) || (after(facts.gamma.at) && facts.gamma.movedBy >= GAMMA_MOVED),
+    leak: eye && facts.leak ? leakFor(facts.leak, eye.strongContrast, facts.tune) : null,
+    balanceAgain: after(facts.ink?.at) || (after(facts.gamma.at) && facts.gamma.movedBy >= GAMMA_MOVED) || after(facts.tune.greenAt),
+    capped: eye && eye.strongContrast > facts.tune.redTop ? facts.tune.redTop : null,
   };
 }

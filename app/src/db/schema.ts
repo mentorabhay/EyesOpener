@@ -154,6 +154,13 @@ export const device = pgTable("device", {
   inkBalanceAt: when(),
   /** What the matches were, so a value can be worked out again: { gamma, leak, ink, ppc }. See src/lib/screen-rules.ts. */
   colourRaw: jsonb().notNull().default({}),
+  /* the inks tuned for these glasses (src/engine/tune.ts). Null means "not tuned": the usual inks are drawn. */
+  /** Share of the green channel's light kept in the cyan ink, so less of it shows through the red lens. */
+  cyanGreen: real(),
+  cyanGreenAt: when(),
+  /** The most light the red ink may have in training, so its shadow through the cyan lens stays out of sight. */
+  redTop: real(),
+  redTopAt: when(),
 }, (t) => [index().on(t.accountId)]);
 
 export const onboardingRun = pgTable("onboarding_run", {

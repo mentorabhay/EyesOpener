@@ -36,9 +36,11 @@ export default async function ScreenPage() {
   }
   const device = m.device, facts = screenFacts(device);
   const people = await profileLines(m, facts);
-  const { gamma, leak, ink } = facts, r = t.record;
+  const { gamma, leak, ink, tune } = facts, r = t.record;
+  const tunedAt = [tune.greenAt, tune.redTopAt].filter((d): d is Date => !!d).sort((a, b) => b.getTime() - a.getTime())[0];
   const measured: Record<Step, string | null> = {
     gamma: gamma.at && t.home.measured(day(gamma.at)), leak: leak && t.home.measured(day(leak.at)), ink: ink && t.home.measured(day(ink.at)),
+    tune: tunedAt ? t.home.tuned(day(tunedAt)) : null,
   };
   const share = (v: number) => (v > 0 ? t.pct(v) : r.none);
   const tooMuch = people.some((p) => p.leak?.level === "high");
@@ -56,7 +58,7 @@ export default async function ScreenPage() {
         ]}
       />
       <div className="bento">
-        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} />
+        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, redTop: tune.redTop }} />
 
         <Card title={r.title} span={5}>
           {facts.moved && <p className="notice" data-b="warn">{r.moved}</p>}
@@ -65,12 +67,14 @@ export default async function ScreenPage() {
               <dt>{r.rows.gamma}</dt>
               <dd className="tnum"><span className={css.value}>{gamma.value.toFixed(2)}{!gamma.at && <Usual>{r.usual}</Usual>}</span><small>{gamma.at ? `${measured.gamma}. ${r.from.gamma}` : r.from.gamma}</small></dd>
             </div>
-            <div><dt>{r.rows.leakRed}</dt><dd className="tnum">{leak ? share(leak.red) : empty}<small>{leak ? `${measured.leak}. ${r.from.leakRed}` : r.from.leakRed}</small></dd></div>
-            <div><dt>{r.rows.leakCyan}</dt><dd className="tnum">{leak ? share(leak.cyan) : empty}<small>{leak ? `${measured.leak}. ${r.from.leakCyan}` : r.from.leakCyan}</small></dd></div>
+            <div><dt>{r.rows.leakRed}</dt><dd className="tnum">{leak ? share(leak.red) : empty}<small>{leak ? `${measured.leak}. ${leak.stale ? r.stale : r.from.leakRed}` : r.from.leakRed}</small></dd></div>
+            <div><dt>{r.rows.leakCyan}</dt><dd className="tnum">{leak ? share(leak.cyan) : empty}<small>{leak ? `${measured.leak}. ${leak.stale ? r.stale : r.from.leakCyan}` : r.from.leakCyan}</small></dd></div>
             <div>
               <dt>{r.rows.ink}</dt>
-              <dd className="tnum">{ink ? t.ink.short(ink.value) : empty}<small>{ink ? `${measured.ink}. ${ink.turned ? r.from.ink : r.from.inkNotTurned}` : r.from.ink}</small></dd>
+              <dd className="tnum">{ink ? t.ink.short(ink.value) : empty}<small>{ink ? `${measured.ink}. ${ink.stale ? r.stale : ink.turned ? r.from.ink : r.from.inkNotTurned}` : r.from.ink}</small></dd>
             </div>
+            <div><dt>{r.rows.green}</dt><dd className="tnum">{tune.green < 1 ? r.greenValue(tune.green) : <Usual>{r.untuned}</Usual>}<small>{r.from.green}</small></dd></div>
+            <div><dt>{r.rows.redTop}</dt><dd className="tnum">{tune.redTop < 1 ? r.redTopValue(tune.redTop) : <Usual>{r.untuned}</Usual>}<small>{r.from.redTop}</small></dd></div>
             <div><dt>{r.rows.size}</dt><dd className="tnum">{r.size(device.pxPerCm, device.distanceCm, day(device.calibratedAt))}<small>{r.sizeFrom}</small></dd></div>
           </dl>
           <p className="muted small">{r.oneScreen}</p>
@@ -92,6 +96,7 @@ export default async function ScreenPage() {
                       {p.leak ? <Chip tone={TONE[p.leak.level]}>{t.people.chip[p.leak.level]}</Chip> : <Void label={t.people.noEye} />}
                     </div>
                     {p.leak && <p>{p.leak.level === "ghost" ? t.people.line.ghost(p.leak.inStrong) : t.people.line[p.leak.level]}</p>}
+                    {p.capped !== null && <p className="muted small">{t.people.capped(p.capped)}</p>}
                   </div>
                 ))}
               </div>
@@ -103,7 +108,13 @@ export default async function ScreenPage() {
                 </div>
               )}
             </>
-          ) : <Empty title={t.people.none.title}><span>{t.people.none.body}</span></Empty>}
+          ) : (
+            <>
+              <Empty title={t.people.none.title}><span>{t.people.none.body}</span></Empty>
+              {/* the red ink's ceiling lowers someone's red ink whether or not the leak is measured */}
+              {people.filter((p) => p.capped !== null).map((p) => <p className="small" key={p.id}><b>{p.name}</b>: {t.people.capped(p.capped!)}</p>)}
+            </>
+          )}
         </Card>
 
         <Card title={t.limits.title} span={5}>

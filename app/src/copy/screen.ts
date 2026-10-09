@@ -1,6 +1,7 @@
 /**
  * Words for the screen colour checks (Settings, "This screen's colours").
- * Three measurements a grown-up makes by eye: the brightness curve, the colour leak and the ink balance.
+ * Three measurements a grown-up makes by eye: the brightness curve, the colour leak and the ink balance; then the inks
+ * can be tuned for the glasses, one setting for each lens (src/engine/tune.ts).
  * Figures quoted as "for comparison" come from the sources named beside them; the maths is in src/engine/calibrate.ts.
  */
 import type { LeakLevel } from "@/engine";
@@ -14,7 +15,7 @@ const names = (list: string[]) => (list.length < 2 ? list.join("") : `${list.sli
 export const screen = texts("copy/screen", "screen", () => ({
   title: "This screen's colours",
   crumb: "Settings",
-  sub: "Three short checks for a grown-up. They make contrast on this screen match the eye settings, and show how well your red-cyan glasses keep the two eyes' pictures apart.",
+  sub: "Three short checks for a grown-up, and a setting for each lens of your red-cyan glasses. They make contrast on this screen match the eye settings, and keep the two eyes' pictures apart as well as these glasses allow.",
   pct,
 
   /** The three checks, in the order they are done. */
@@ -22,6 +23,7 @@ export const screen = texts("copy/screen", "screen", () => ({
     gamma: { name: "Brightness curve", what: "How this screen turns a number into light. Every contrast the app draws uses it.", glasses: "No glasses" },
     leak: { name: "Colour leak", what: "How much of one eye's picture slips through the other eye's lens.", glasses: "Glasses, one eye at a time" },
     ink: { name: "Ink balance", what: "How bright the red pictures look next to the cyan ones through these glasses.", glasses: "Glasses, both eyes" },
+    tune: { name: "Tune the inks for these glasses", what: "Changes the two inks so that less of each one shows through the wrong lens.", glasses: "Glasses, one eye at a time" },
   },
 
   noScreen: {
@@ -42,14 +44,17 @@ export const screen = texts("copy/screen", "screen", () => ({
       "Set the screen's brightness the way you use it for games, and leave it there.",
       "Turn off night light, reading mode and any vivid or dynamic picture mode.",
       `Sit at your usual distance, about ${cm} cm.`,
-      "Have the red-cyan glasses ready for checks 2 and 3.",
+      "Have the red-cyan glasses ready for steps 2, 3 and 4.",
     ],
-    all: "Measure all three",
-    allTime: "About 5 minutes",
+    all: "Measure all four",
+    allTime: "About 6 minutes",
     one: "Measure",
     again: "Measure again",
     measured: (date: string) => `Measured on ${date}`,
     usual: "Usual value in use",
+    usualTune: "Usual inks in use",
+    tuned: (date: string) => `Tuned on ${date}`,
+    again2: "Tune again",
     forget: { ask: "Go back to the usual value", warn: "The measurement is removed. Nothing is made up in its place: the usual value is used again.", yes: "Remove the measurement" },
   },
 
@@ -178,9 +183,57 @@ export const screen = texts("copy/screen", "screen", () => ({
     compare: "For comparison: on a standard screen, before any lens, cyan ink carries about 3.7 times the light of red ink.",
   },
 
+  /** The fourth step. Each lens has its own setting; nothing here flashes or moves by itself. */
+  tune: {
+    title: "Tune the inks for these glasses",
+    why: "Through the red lens the cyan shapes should vanish, and through the cyan lens the red ones. If something still shows, these two settings change the inks so that less of it does. Each lens has its own setting.",
+    lens: {
+      red: {
+        head: "Red lens: take green out of the cyan",
+        picture: "The glasses with only the red lens open",
+        todo: [
+          "Close the eye behind the cyan lens, or cover the cyan lens with your hand.",
+          "Look at the cyan shapes through the red lens.",
+          "Press Fainter until the shapes are gone, or as faint as they get. Then press This is the best.",
+        ],
+        scene: "Cyan shapes on black, seen through the red lens",
+        fainter: "Fainter",
+        back: "Back a step",
+        done: "This is the best",
+        nothing: "Nothing shows: keep the cyan as it is",
+        noHelp: "If the shapes do not get fainter at all, the leak is in the blue part of the cyan, and taking green out cannot help. Choose Back a step until you are at the start, then keep the cyan as it is.",
+      },
+      cyan: {
+        head: "Cyan lens: a ceiling for the red ink",
+        picture: "The glasses with only the cyan lens open",
+        todo: [
+          "Close the eye behind the red lens, or cover the red lens with your hand.",
+          "Look at the red shapes through the cyan lens.",
+          "Press Fainter until their shadow is gone. Then press This is the best.",
+        ],
+        scene: "Red shapes on black, seen through the cyan lens",
+        fainter: "Fainter",
+        back: "Back a step",
+        done: "This is the best",
+        nothing: "Nothing shows: no ceiling",
+      },
+    },
+    nth: (n: number) => `Lens ${n} of 2`,
+    keys: "With keys or a remote: the left arrow is Fainter and the right arrow is Back a step. Up and down move between the buttons. OK presses.",
+    end: "That is as far as this setting goes.",
+    keeps: (share: number) => `The weaker eye's pictures keep about ${pct(share)} of their brightness.`,
+    dimWarn: "That is a big loss of light for the weaker eye. If the shapes were only a little fainter at this point, go back to where they first got hard to see.",
+    result: {
+      green: (share: number) => (share >= 0.995 ? "Cyan ink: as usual." : `Cyan ink: ${pct(share)} of its green light, so less of it shows through the red lens.`),
+      red: (share: number) => (share >= 0.995 ? "Red ink: no ceiling." : `Red ink: never brighter than ${pct(share)} in games and films.`),
+    },
+    after: "Now measure the colour leak and the ink balance again, so they are read with the new inks. Then each person with eye settings takes the balance check-up again.",
+    redOnly: "The ceiling is used in games and films only. Check-ups and these checks draw the red ink without it, so what they measure is the eye and not the ceiling.",
+  },
+
   record: {
     title: "On record for this screen",
-    rows: { gamma: "Brightness curve", leakRed: "Leak through the red lens", leakCyan: "Leak through the cyan lens", ink: "Ink balance", size: "Size and distance" },
+    rows: { gamma: "Brightness curve", leakRed: "Leak through the red lens", leakCyan: "Leak through the cyan lens", ink: "Ink balance", green: "Cyan ink", redTop: "Red ink ceiling", size: "Size and distance" },
     stat: { gamma: "Brightness curve", leak: "Most that leaks through a lens" },
     notMeasured: "Not measured yet",
     usual: "Usual value, not measured",
@@ -190,7 +243,13 @@ export const screen = texts("copy/screen", "screen", () => ({
       leakCyan: "The weaker eye's lens. This is red ink it should not see",
       ink: "Read by the balance check-up",
       inkNotTurned: "Read by the balance check-up. The glasses were not turned round for the second match",
+      green: "Less green means less shows through the red lens",
+      redTop: "Used in games and films only",
     },
+    greenValue: (share: number) => `${pct(share)} of its green`,
+    redTopValue: (share: number) => `At most ${pct(share)}`,
+    untuned: "As usual",
+    stale: "Matched before the inks were last tuned. Measure it again.",
     none: "too little to see",
     statNone: "None seen",
     size: (ppc: number, cm: number, date: string) => `${ppc.toFixed(1)} px per cm, viewed from ${cm} cm. Measured on ${date}`,
@@ -216,7 +275,8 @@ export const screen = texts("copy/screen", "screen", () => ({
       "Turn off vivid or dynamic picture modes, and dim the room.",
       "Tell your counsellor or eye doctor what this page shows.",
     ],
-    noFix: "The app does not change the contrast to hide a leak. Therapy scenes are drawn on black, and nothing can be taken away from black.",
+    noFix: "The app never raises the contrast to hide a leak, and it keeps the black field. What it can do is tune the inks for these glasses: step 4 above.",
+    capped: (top: number) => `In games and films the red ink is held at ${pct(top)}, under this person's own setting, because of the ceiling for the cyan lens.`,
     balanceAgain: (list: string[]) => `Take the balance check-up again for ${names(list)}. The contrast was set before this screen was measured, so it does not use the new values yet.`,
     balanceLink: "Balance check-up",
     balanceSwitch: "It runs for the active profile. Switch profile in Settings for anyone else.",

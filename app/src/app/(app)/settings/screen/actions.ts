@@ -10,6 +10,7 @@ export type StepSaved =
   /** `worst` is the strongest effect of the leak on anyone in the household; null when nobody has eye settings yet. */
   | { ok: true; step: "leak"; red: number; cyan: number; worst: LeakLevel | null }
   | { ok: true; step: "ink"; ink: number; turned: boolean }
+  | { ok: true; step: "tune"; green: number; redTop: number }
   | { ok: false; why: SaveError | "failed"; lens?: "red" | "cyan" };
 
 const RANK: Record<LeakLevel, number> = { clean: 0, ghost: 1, high: 2 };
@@ -35,6 +36,7 @@ export async function saveScreenStep(input: unknown): Promise<StepSaved> {
     return { ok: true, step: "leak", red: f.leak.red, cyan: f.leak.cyan, worst: levels.sort((a, b) => RANK[b] - RANK[a])[0] ?? null };
   }
   if (sent.step === "ink" && f.ink) return { ok: true, step: "ink", ink: f.ink.value, turned: f.ink.turned };
+  if (sent.step === "tune") return { ok: true, step: "tune", green: f.tune.green, redTop: f.tune.redTop };
   return { ok: false, why: "failed" };
 }
 
