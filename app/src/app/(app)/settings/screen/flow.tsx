@@ -92,10 +92,12 @@ interface Props {
   measured: Record<Step, string | null>;
   /** The inks' tuning now: the cyan ink's green and blue shares and the red ink's ceiling (all 1 when not tuned). */
   tune: InkTune;
+  /** A check to open at once, when the page was opened from a step of setup (/setup). */
+  open?: Step | null;
 }
 
-export function Flow({ canMeasure, gamma, dist, measured, tune }: Props) {
-  const [at, setAt] = useState<At>({ at: "home" });
+export function Flow({ canMeasure, gamma, dist, measured, tune, open = null }: Props) {
+  const [at, setAt] = useState<At>(() => (canMeasure && open ? begin(open) : { at: "home" }));
   /* "Measure all three" walks through the checks in order; one check on its own comes back to the list */
   const [tour, setTour] = useState(false);
   const [, startSaving] = useTransition();

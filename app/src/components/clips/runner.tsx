@@ -71,7 +71,7 @@ export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, li
     body = (
       <>
         <p className="notice" data-b="warn">{blocked === "need_near" || blocked === "need_far" ? c.blocked[blocked](ctx.screen?.dist ?? 0) : c.blocked[blocked]}</p>
-        {blocked === "no_screen" && <Link className="btn btn-g" style={{ alignSelf: "flex-start" }} href="/onboarding">{c.onboarding}</Link>}
+        {blocked === "no_screen" && <Link className="btn btn-g" style={{ alignSelf: "flex-start" }} href="/setup">{c.onboarding}</Link>}
         {(blocked === "need_near" || blocked === "need_far") && <Link className="btn btn-sm" style={{ alignSelf: "flex-start" }} href="/test/clips/C03">{c.seatClip}</Link>}
         {blocked === "camera" && (
           <>

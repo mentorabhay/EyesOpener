@@ -125,7 +125,7 @@ function Experiment({ row, offer, primary, canAct, canLeave, block, hasScreen, n
         </>
       );
     } else if (pick.why === "screen_unknown" && !hasScreen) {
-      beforeBody = <><p>{t.before.noScreen}</p><div className="row"><Btn href="/onboarding" kind={primary ? "g" : ""} small>{t.before.onboarding}</Btn></div></>;
+      beforeBody = <><p>{t.before.noScreen}</p><div className="row"><Btn href="/setup" kind={primary ? "g" : ""} small>{t.before.onboarding}</Btn></div></>;
     } else {
       const why = pick.why === "too_old" ? t.before.problem.too_old(testName, BASELINE_MAX_AGE_DAYS)
         : pick.why === "at_limit" ? t.before.problem.at_limit(name)

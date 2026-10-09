@@ -28,9 +28,11 @@ export const screen = texts("copy/screen", "screen", () => ({
 
   noScreen: {
     title: "Measure the size of this screen first",
-    body: "Onboarding measures the screen with a bank card and asks how far you sit from it. The colour checks come after that.",
-    cta: "Go to onboarding",
+    body: "Setup measures the screen with a bank card and asks how far you sit from it. The colour checks come after that.",
+    cta: "Go to setup",
   },
+  fromSetup: "This check is a step of setup. When it is saved, go back to see what is left.",
+  backToSetup: "Back to setup",
   lookOnly: "You can see what was measured. A guardian does the measuring, and not in child mode.",
   /** For pages that show two-eye scenes, when the leak is too high for the active profile. The page's name follows as a link. */
   warning: "On this screen with these glasses, the stronger eye can see the weaker eye's pictures as well as its own. Two-eye games will not work as intended. See what helps:",
@@ -82,7 +84,7 @@ export const screen = texts("copy/screen", "screen", () => ({
     range: "This reading is outside what a screen and glasses can give, so nothing was saved.",
     invalid: "That could not be read, so nothing was saved.",
     seat: "A guardian does the measuring.",
-    no_screen: "The size of this screen has not been measured yet. Run onboarding first.",
+    no_screen: "The size of this screen has not been measured yet. Start setup first.",
     failed: "It could not be saved. Nothing was changed.",
     dim: "This cyan mix leaves the weaker eye less than half its light, so it was not saved.",
   },
@@ -255,7 +257,7 @@ export const screen = texts("copy/screen", "screen", () => ({
     none: "too little to see",
     statNone: "None seen",
     size: (ppc: number, cm: number, date: string) => `${ppc.toFixed(1)} px per cm, viewed from ${cm} cm. Measured on ${date}`,
-    sizeFrom: "From onboarding",
+    sizeFrom: "From setup",
     moved: "The size of this screen was measured again after these colours, and it came out different. If this is another screen, measure the colours again.",
     oneScreen: "These values belong to the screen and the glasses they were measured with. Measure again when you change the screen, its picture settings or the glasses.",
   },

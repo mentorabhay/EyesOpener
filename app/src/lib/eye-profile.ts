@@ -1,7 +1,7 @@
 /**
  * Writing the eye profile. The browser sends only what it measured; every setting is derived here, on the server.
  */
-import { and, desc, eq, inArray } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { z } from "zod";
 import { LIMITS } from "@/components/measure/limits";
 import { onboarding } from "@/copy/onboarding";
@@ -38,6 +38,8 @@ const measuredSchema = z.object({
   bal: z.object({ x: within(LIMITS.bal), cyanEye: eyeSchema }).nullable(),
   /** How long each eye took, for the onboarding record. */
   seconds: z.object({ L: z.number().int().min(0).max(3600), R: z.number().int().min(0).max(3600) }).optional(),
+  /** The lens choice made in the flow, before the balance test (engine/profile.ts, `WeakInk`); absent when the flow did not ask. */
+  weakInk: z.enum(["cyan", "red"]).optional(),
 });
 
 /**
@@ -85,9 +87,14 @@ async function writeProfile(tx: Tx, profileId: string, deviceId: string, measure
 export async function saveMeasured(member: Member, input: unknown): Promise<Derived | null> {
   const parsed = measuredSchema.safeParse(input);
   if (!parsed.success || testBlock(member)) return null;
-  const { seconds, ...measured } = parsed.data;
+  const { seconds, weakInk, ...measured } = parsed.data;
   const profileId = member.profile.id;
   return db.transaction(async (tx) => {
+    /* The lens choice, when the flow asked it of a guardian. Its time is the transaction's own, the same as the balance
+       row's below, so the balance just taken is not read as older than the choice (src/lib/screen-rules.ts, profileEffect). */
+    if (weakInk && member.can("manage_family")) {
+      await tx.update(schema.profile).set({ weakInk, weakInkAt: sql`now()` }).where(and(eq(schema.profile.id, profileId), eq(schema.profile.accountId, member.account.id)));
+    }
     const screen = { pxPerCm: measured.ppc, distanceCm: measured.dist, calibratedAt: new Date() };
     const [device] = member.device
       ? await tx.update(schema.device).set(screen).where(eq(schema.device.id, member.device.id)).returning()

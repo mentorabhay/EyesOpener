@@ -1,0 +1,17 @@
+.ring { flex: 0 0 auto; }
+.side { margin: 0 14px 16px; padding: 10px 12px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--grad-soft); display: flex; align-items: center; gap: 11px; text-decoration: none; color: var(--ink); }
+.side span { display: flex; flex-direction: column; gap: 1px; }
+.side b { font-size: 13.5px; font-weight: 600; }
+.side small { font-size: 11.5px; color: var(--ink-3); }
+.side:hover { border-color: var(--ink-3); }
+.bar { display: none; }
+@media (max-width: 980px) {
+  .bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--grad-soft); text-decoration: none; color: var(--ink); font-size: 13.5px; }
+  .go { margin-left: auto; font-weight: 600; white-space: nowrap; }
+}
+.gate { gap: 16px; max-width: 640px; }
+.gate h2 { font-size: 22px; }
+.left { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; counter-reset: step; }
+.left li { counter-increment: step; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 14px; border-radius: var(--r-sm); background: var(--sunken); border: 1px solid var(--line); }
+.left li::before { content: counter(step); flex: 0 0 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--card); border: 1px solid var(--line); font-size: 12.5px; font-weight: 600; }
+.left li > span:first-child { flex: 1; }

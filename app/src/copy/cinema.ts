@@ -16,7 +16,7 @@ export const cinema = texts("copy/cinema", "cinema", () => ({
   glasses: {
     title: "Put the red-cyan glasses on.",
     way: (cyan: Side) => `Cyan (blue-green) lens over your ${side(cyan)} eye, red lens over your ${other(cyan)} eye.`,
-    unknown: "The cyan (blue-green) lens goes over the weaker eye. Onboarding finds which eye that is.",
+    unknown: "The cyan (blue-green) lens goes over the weaker eye, or over the stronger eye when the colours are swapped. Setup finds which eye that is.",
     own: "Keep your own glasses on underneath if an eye doctor prescribed them.",
     short: (cyan: Side) => `Cyan lens over your ${side(cyan)} eye`,
     shortUnknown: "Cyan lens over the weaker eye",

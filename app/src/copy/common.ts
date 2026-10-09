@@ -7,7 +7,7 @@ export const common = texts("copy/common", "common", () => ({
   nav: {
     track: "Track", test: "Test", train: "Train", together: "Together",
     today: "Today", checkups: "Check-ups", games: "Games", exercises: "Exercises", cinema: "Two-eye cinema",
-    community: "Community", league: "League", settings: "Settings", onboarding: "Onboarding",
+    community: "Community", league: "League", settings: "Settings", onboarding: "Setup",
     family: "Family", circle: "Cheer seat", admin: "Admin console", counsellor: "Counsellor portal", sponsor: "Sponsor portal",
     switchPerson: "Sign in as someone else", childMode: "Child mode", leaveChildMode: "Child mode · grown-up? Tap to leave", grownUp: "Grown-up",
     you: "You", otherAreas: "Your other areas",
@@ -19,8 +19,8 @@ export const common = texts("copy/common", "common", () => ({
     label: "Check the scene without glasses",
     none: "As on screen", weak: "Weaker eye sees", strong: "Stronger eye sees", joined: "Eyes joined",
     note: {
-      weak: "This is what the eye behind the cyan lens gets. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
-      strong: "This is what the eye behind the red lens gets, at your setting. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+      weak: "This is what the weaker eye gets through its lens. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
+      strong: "This is what the stronger eye gets through its lens, at your setting. It is for checking. To play, choose \"As on screen\" and put the glasses on.",
       joined: "Practice view for when you have no glasses: the two pictures are drawn as one, the way joined eyes see them. Nothing is trained in this view.",
     },
   },

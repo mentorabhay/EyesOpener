@@ -284,7 +284,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
 
     it("starts a family space when they choose to: a household, the person as its guardian, one adult profile, then onboarding", async () => {
       await google(at("nora"), { name: "Nora Khan" });
-      expect(await run(() => startFamilySpace())).toMatchObject({ to: "/onboarding" });
+      expect(await run(() => startFamilySpace())).toMatchObject({ to: "/setup" });
       const me = await person(at("nora"));
       expect(me.seat).toBe("guardian");
       const [account] = await db.select().from(s.account).where(eq(s.account.id, me.accountId!));

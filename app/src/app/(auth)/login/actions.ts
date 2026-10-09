@@ -82,5 +82,5 @@ export async function startFamilySpace() {
   if (!viewer?.real) redirect("/login");
   const out = await startFamily(viewer.user.id, t.welcome.household);
   revalidatePath("/", "layout");
-  redirect(out === "started" ? "/onboarding" : out === "has_household" ? viewer.home : "/login");
+  redirect(out === "started" ? "/setup" : out === "has_household" ? viewer.home : "/login");
 }

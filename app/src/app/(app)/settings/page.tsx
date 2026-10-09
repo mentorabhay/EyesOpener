@@ -39,7 +39,7 @@ export default async function SettingsPage() {
       <PageHead title={t.title} sub={t.sub(m.profile.displayName)} />
       {!canManage && <p className="notice">{t.guardianOnly}</p>}
       <div className="bento">
-        <Card title={e.title} span={7} right={m.can("test") && <Btn href="/onboarding" small kind={eye ? "" : "g"}>{eye ? e.again : e.empty.cta}</Btn>}>
+        <Card title={e.title} span={7} right={m.can("test") && <Btn href={eye ? "/setup/eyes" : "/setup"} small kind={eye ? "" : "g"}>{eye ? e.again : e.empty.cta}</Btn>}>
           {eye ? (
             <dl className="kv">
               <div><dt>{e.rows.weak}</dt><dd>{eye.weakEye ? e.name[eye.weakEye] : e.noWeak}</dd></div>

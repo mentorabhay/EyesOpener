@@ -11,14 +11,14 @@ type Lens = (typeof LENSES)[number];
  *  - eyes joined (only when `onJoined` is given): asks the game to draw the two eyes' pictures in one place,
  *    the way joined eyes see them. It is a practice view; nothing is trained in it.
  */
-export function LensView({ right, children, onJoined }: { right?: ReactNode; children: ReactNode; onJoined?: (on: boolean) => void }) {
+export function LensView({ right, children, onJoined, swapped = false }: { right?: ReactNode; children: ReactNode; onJoined?: (on: boolean) => void; /** The weaker eye sees red (engine/profile.ts): its lens tints red. */ swapped?: boolean }) {
   const [lens, setLens] = useState<Lens>("none");
   const pick = (l: Lens) => {
     setLens(l);
     onJoined?.(l === "joined");
   };
   return (
-    <div className="stack" data-lens={lens === "weak" || lens === "strong" ? lens : undefined}>
+    <div className="stack" data-lens={lens === "weak" || lens === "strong" ? lens : undefined} data-swapped={swapped || undefined}>
       <div className="row">
         <div className="pills" role="group" aria-label={common.lens.label}>
           {LENSES.filter((l) => l !== "joined" || onJoined).map((l) => <button key={l} type="button" className="pill" aria-pressed={lens === l} onClick={() => pick(l)}>{common.lens[l]}</button>)}

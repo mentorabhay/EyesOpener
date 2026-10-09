@@ -61,7 +61,7 @@ export function Cta({ second }: { second?: { href: string; label: string } }) {
           <h2 id="cta-h">{t.cta.title}</h2>
           <p>{t.cta.body}</p>
           <div className="s-ctas">
-            <Link className="btn btn-g s-btn-lg" href="/onboarding">{t.cta.start}</Link>
+            <Link className="btn btn-g s-btn-lg" href="/setup">{t.cta.start}</Link>
             {second && <Link className="btn s-btn-lg" href={second.href}>{second.label}</Link>}
           </div>
         </div>

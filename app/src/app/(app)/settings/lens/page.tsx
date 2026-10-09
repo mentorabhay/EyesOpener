@@ -25,6 +25,8 @@ export default async function LensPage({ searchParams }: { searchParams: Search 
   const leak = m.device ? screenFacts(m.device).leak : null;
   const suggestion = suggestInk(leak);
   const canChoose = mayCalibrate(m);
+  /* a choice never made, or never confirmed, is a step of setup still to do */
+  const confirmed = !!m.profile.weakInkAt;
 
   const option = (ink: WeakInk) => {
     const words = t.options[ink], cyanEye = weak ? cyanEyeFor(weak, ink) : null;
@@ -40,8 +42,8 @@ export default async function LensPage({ searchParams }: { searchParams: Search 
           {cyanEye && <div className={css.glasses}><Lenses look="both" turned={cyanEye === "L"} label={t.picture(cyanEye)} /><span>{t.wear(cyanEye, upsideDown(cyanEye))}</span></div>}
           <p>{words.sees}</p>
           <p className="muted small">{words.ghost}</p>
-          {canChoose && ink !== now && (
-            <form action={chooseInk}><input type="hidden" name="ink" value={ink} /><button className="btn btn-g">{t.save}</button></form>
+          {canChoose && (ink !== now || !confirmed) && (
+            <form action={chooseInk}><input type="hidden" name="ink" value={ink} /><button className={ink === now ? "btn" : "btn btn-g"}>{ink === now ? t.keep : t.save}</button></form>
           )}
         </div>
       </Card>
@@ -50,7 +52,9 @@ export default async function LensPage({ searchParams }: { searchParams: Search 
 
   return (
     <>
-      <PageHead title={t.title(m.profile.displayName)} sub={t.sub} crumb={[{ href: "/settings", label: t.crumb }]} />
+      <PageHead title={t.title(m.profile.displayName)} sub={t.sub} crumb={[{ href: "/setup", label: t.crumbSetup }, { href: "/settings", label: t.crumb }]} />
+      {!confirmed && weak && <p className="notice" data-b="warn">{t.confirm}</p>}
+      {q.kept && <p className="notice" data-b="ok" role="status">{t.kept} <Btn href="/setup" small>{t.crumbSetup}</Btn></p>}
       {q.saved && <p className="notice" data-b="ok" role="status">{t.saved} <Btn href="/test/balance" small>{t.balanceLink}</Btn></p>}
       <Card>
         <div className={css.facts}>

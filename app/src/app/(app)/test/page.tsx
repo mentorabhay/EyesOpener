@@ -36,7 +36,7 @@ export default async function CheckupsPage() {
       </div>
       {block && <p className="notice" data-b="warn">{c.blocked[block]}</p>}
       {!block && !m.device && (
-        <Empty title={c.noScreen.title}><span>{c.noScreen.body}</span><Btn href="/onboarding" kind="g" small>{c.noScreen.cta}</Btn></Empty>
+        <Empty title={c.noScreen.title}><span>{c.noScreen.body}</span><Btn href="/setup" kind="g" small>{c.noScreen.cta}</Btn></Empty>
       )}
       <div className={`grid-cards ${css.cards}`}>
         {cards.map(({ t, series, days }) => (

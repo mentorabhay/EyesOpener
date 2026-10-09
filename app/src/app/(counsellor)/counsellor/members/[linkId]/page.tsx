@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { z } from "zod";
 import { Card, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { counsellor as t, day, shortDay } from "@/copy/counsellor";
+import { setup as setupWords } from "@/copy/setup";
+import { missing } from "@/lib/setup-rules";
 import { lens } from "@/copy/lens";
 import { MAX_DAILY_MINUTES, percent } from "@/engine";
 import { requireCounsellor } from "@/lib/auth";
@@ -43,6 +45,7 @@ export default async function MemberPage({ params }: { params: Promise<{ linkId:
         </Card>
 
         <Card title={e.title} span={7}>
+          {!m.setup.ready && <p className="notice" data-b="warn">{setupWords.counsellor(m.setup.done, m.setup.of, missing(m.setup.steps).map((st) => setupWords.steps[st.key].name))}</p>}
           {m.eye ? (
             <dl className="kv">
               <div><dt>{e.rows.weak}</dt><dd>{m.eye.weakEye ? e.name[m.eye.weakEye] : e.noWeak}</dd></div>

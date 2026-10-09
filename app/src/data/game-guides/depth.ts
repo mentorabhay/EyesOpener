@@ -50,7 +50,7 @@ export const guides: GameGuide[] = textsEach("data/game-guides/depth", () => [
       "Red-cyan glasses, cyan lens over the eye your eye settings name. Without them no target can float: every one looks flat.",
       "Your own prescribed glasses, if you have them, under the red-cyan pair.",
       "A tablet, computer or TV. On a small phone the targets are crowded.",
-      "A seat square to the screen, at the distance this screen was measured for in onboarding. The depth step is worked out for that distance.",
+      "A seat square to the screen, at the distance this screen was measured for in setup. The depth step is worked out for that distance.",
     ],
     see: [
       "On the screen itself every target is drawn twice, once in red and once in cyan, one on top of the other. For one target the two drawings sit a small step apart, so with no glasses it shows a thin red edge and a thin cyan edge.",

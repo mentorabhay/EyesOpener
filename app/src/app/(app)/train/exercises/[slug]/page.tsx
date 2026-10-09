@@ -14,6 +14,8 @@ import { GridTool } from "@/drills/tools/grid";
 import { ReadingTool } from "@/drills/tools/reading";
 import { kindOf } from "@/games/built";
 import { requireMember } from "@/lib/session";
+import { setupOf } from "@/lib/setup";
+import { SetupGate } from "@/components/setup/setup";
 import { SupervisionNote } from "@/components/play/supervision";
 import { supervisionFor } from "@/data/supervision";
 import { doseFor, isCareRoutine, pastSessions, statusFor } from "@/lib/sessions";
@@ -51,6 +53,8 @@ export default async function ExercisePage({ params }: Props) {
   /* A companion that is not in this edition falls back to the stopwatch. */
   const tool = g?.tool.kind === "companion" && !kindOf(g.tool.game) ? ({ kind: "timer" } as const) : (g?.tool ?? ({ kind: "timer" } as const));
   const ppc = m.device?.pxPerCm ?? 0;
+  /* an on-screen drill seen through the red-cyan glasses waits until this person's setup is done */
+  const setup = tool.kind === "drill" && /red-cyan/i.test(e.gear) ? await setupOf(m) : null;
   const eye = {
     contrast: m.eye?.strongContrast ?? 1, gamma: m.device?.gamma ?? 2.2,
     targetPx: (m.eye?.targetCm ?? 0) * ppc, letterPx: (m.eye?.letterCm ?? 0) * ppc, ppc,
@@ -101,7 +105,8 @@ export default async function ExercisePage({ params }: Props) {
           <p className="muted small">{x.toolNote[tool.kind]}{isCareRoutine("exercise", slug) && tool.kind !== "companion" ? ` ${x.careNote}` : ""}</p>
           {tool.kind === "drill" ? (
             hasDrill(slug)
-              ? <Stage kind="exercise" slug={slug} dose={dose} help={drillHelp[slug]} labels={labels} lens={/red-cyan/i.test(e.gear)} {...eye} />
+              ? (setup?.held ? <SetupGate s={setup} name={m.profile.displayName} />
+                : <Stage kind="exercise" slug={slug} dose={dose} help={drillHelp[slug]} labels={labels} lens={/red-cyan/i.test(e.gear)} {...eye} />)
               : <Empty title={t.game.notBuilt.title} />
           ) : tool.kind === "reading" ? <ReadingTool slug={slug} dose={dose} labels={labels} ppc={ppc} />
             : tool.kind === "grid" ? <GridTool slug={slug} dose={dose} labels={labels} ppc={ppc} />

@@ -10,7 +10,7 @@ export function Settings({ d, ppc, gamma, warn }: { d: Derived; ppc?: number; ga
   const size = (cm: number) => `${(cm * 10).toFixed(1)} mm` + (ppc ? ` · ${Math.max(1, Math.round(cm * ppc))} px` : "");
   const rows: [string, ReactNode, string][] = [
     [s.weak, d.weak ? EYE_NAME[d.weak] : s.noWeak, s.weakFrom],
-    [s.lens, s.lensWhere(d.weak), d.flags.ownGlasses ? s.lensOwn : s.lensFrom],
+    [s.lens, s.lensWhere(d.weak ? d.cyanEye : null), d.flags.ownGlasses ? s.lensOwn : s.lensFrom],
     [s.contrast, <span className={css.ink} key="ink"><i style={{ background: strongInk(d.con, gamma) }} />{percent(d.con)}</span>, s.contrastFrom[d.conSource]],
     [s.letter, size(d.letterCm), s.letterFrom(LETTER_MULTIPLE)],
     [s.target, size(d.targetCm), s.targetFrom(TARGET_MULTIPLE)],

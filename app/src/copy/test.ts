@@ -114,7 +114,7 @@ export const test = texts("copy/test", "test", () => ({
   title: "Check-ups",
   sub: "Short tests you repeat at home. Each result is compared with your first one.",
   dueCount: "due now",
-  noScreen: { title: "Set up this screen first", body: "Check-ups need the true size of this screen and how far you sit from it. Onboarding measures both.", cta: "Start onboarding" },
+  noScreen: { title: "Set up this screen first", body: "Check-ups need the true size of this screen and how far you sit from it. Setup measures both.", cta: "Start setup" },
   blocked: { seat: "Your seat can look at results and cheer. A guardian runs the check-ups.", under_age: "No screen check-ups under age 4." },
   eye: { left: "Left eye", right: "Right eye" },
   eyeShort: { left: "Left", right: "Right" },

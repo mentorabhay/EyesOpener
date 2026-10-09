@@ -20,11 +20,11 @@ export const today = texts("copy/today", "today", () => ({
   /** Read out for the week's bars: "Tue 60 minutes". */
   weekDay: (day: string, minutes: number) => `${day} ${minutes} minutes`,
   settings: "Your settings",
-  again: "Run onboarding again",
+  again: "Run the eye check again",
   rows: { weak: "Weaker eye", contrast: "Stronger-eye contrast", letter: "Two-eye letter size" },
   eye: { left: "Left", right: "Right", none: "None found" },
   contrastFrom: { start: "Starting level until the balance test is done", balance: "From the balance test" },
-  noProfile: { title: "No eye settings yet", body: "Onboarding takes about five minutes and sets the contrast and sizes for every game.", cta: "Start onboarding" },
+  noProfile: { title: "No eye settings yet", body: "Setup takes about ten minutes and sets the contrast and sizes for every game.", cta: "Start setup" },
   streak: "Streak",
   streakDays: "Streak, days",
   inARow: "days in a row",

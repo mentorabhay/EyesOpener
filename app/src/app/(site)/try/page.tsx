@@ -32,7 +32,7 @@ export default function TryPage() {
         </div>
         <div className="s-ctas" style={{ justifyContent: "center" }}>
           <Link className="btn btn-g" href="/register">{t.register}</Link>
-          <Link className="btn" href="/onboarding">{t.check}</Link>
+          <Link className="btn" href="/setup">{t.check}</Link>
         </div>
         <p className="small muted" style={{ textAlign: "center", marginTop: 14 }}>{t.note}</p>
       </Section>

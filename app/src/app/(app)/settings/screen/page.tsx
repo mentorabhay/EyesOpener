@@ -6,7 +6,7 @@ import { screen as t } from "@/copy/screen";
 import { day } from "@/copy/settings";
 import { cyanCode, weakLight, type LeakLevel } from "@/engine";
 import { profileLines } from "@/lib/screen";
-import { mayCalibrate, screenFacts, type Step } from "@/lib/screen-rules";
+import { mayCalibrate, screenFacts, stepSchema, type Step } from "@/lib/screen-rules";
 import { requireMember } from "@/lib/session";
 import { Flow } from "./flow";
 import css from "./screen.module.css";
@@ -23,14 +23,16 @@ const Usual = ({ children }: { children: ReactNode }) => <span className={css.ha
  * it, and what it means for each person. Everyone with a seat may look; a guardian or co-guardian measures.
  * These are home estimates made by eye, not light-meter readings: src/engine/calibrate.ts.
  */
-export default async function ScreenPage() {
+export default async function ScreenPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const m = await requireMember();
+  /* opened from a step of setup: that check opens at once, and a link leads back */
+  const open = stepSchema.safeParse((await searchParams).step).data ?? null;
   if (!m.device) {
     return (
       <>
         <PageHead title={t.title} sub={t.sub} crumb={crumb()} />
         <Empty title={t.noScreen.title}><span>{t.noScreen.body}</span></Empty>
-        {m.can("test") && <div className="row"><Btn href="/onboarding" kind="g">{t.noScreen.cta}</Btn></div>}
+        {m.can("test") && <div className="row"><Btn href="/setup" kind="g">{t.noScreen.cta}</Btn></div>}
       </>
     );
   }
@@ -57,8 +59,9 @@ export default async function ScreenPage() {
           { value: ink ? t.ink.stat(ink.value) : <Void label={r.notMeasured} />, label: t.ink.statLabel(ink?.value ?? null) },
         ]}
       />
+      {open && <p className="notice" role="note">{t.fromSetup} <Btn href="/setup" small>{t.backToSetup}</Btn></p>}
       <div className="bento">
-        <Flow key={device.id} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
+        <Flow key={device.id} open={open} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
 
         <Card title={r.title} span={5}>
           {facts.moved && <p className="notice" data-b="warn">{r.moved}</p>}

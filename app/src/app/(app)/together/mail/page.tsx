@@ -30,7 +30,7 @@ export default async function MailPage() {
       <div className="bento">
         <Card title={t.inbox(m.profile.displayName)} span={7}>
           <p className="muted small">{t.how}</p>
-          {!m.eye && <div className="row"><span className="muted small">{t.standardSize}</span><Btn href="/onboarding" small>{t.onboarding}</Btn></div>}
+          {!m.eye && <div className="row"><span className="muted small">{t.standardSize}</span><Btn href="/setup" small>{t.onboarding}</Btn></div>}
           {notes.length === 0 ? <p className="muted">{t.empty}</p> : (
             <LensView label={t.lens}>
               {notes.map((n) => (

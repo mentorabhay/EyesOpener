@@ -46,7 +46,7 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
         )}
       >
         <div className="s-ctas">
-          <Link className="btn btn-d s-btn-lg" href="/onboarding">{t.cta.start}</Link>
+          <Link className="btn btn-d s-btn-lg" href="/setup">{t.cta.start}</Link>
           <Link className="btn s-btn-lg" href="/safety">{t.cta.safety}</Link>
         </div>
       </Hero>

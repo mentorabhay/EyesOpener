@@ -77,7 +77,7 @@ export default async function TodayPage() {
           <p className="muted small">{t.weekNote}</p>
         </Card>
 
-        <Card title={t.settings} span={7} right={<Btn href="/onboarding" small>{m.eye ? t.again : t.noProfile.cta}</Btn>}>
+        <Card title={t.settings} span={7} right={<Btn href={m.eye ? "/setup/eyes" : "/setup"} small>{m.eye ? t.again : t.noProfile.cta}</Btn>}>
           {m.eye ? (
             <dl className="kv">
               <div><dt>{t.rows.weak}</dt><dd>{m.eye.weakEye === "left" ? t.eye.left : m.eye.weakEye === "right" ? t.eye.right : t.eye.none}</dd></div>

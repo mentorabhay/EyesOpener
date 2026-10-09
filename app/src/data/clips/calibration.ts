@@ -21,7 +21,7 @@ const sets = (code: string, play: Play, field: Extract<Store, { to: "screen" }>[
 
 export const CALIBRATION: ClipDef[] = [
   sets("C01", { template: "measure", kind: "card" }, "size", ["card"],
-    "A bar on the screen is made as tall as the short edge of a bank card held against it. Every bank card has the same size, so the match gives the number of screen dots in a centimetre. It is the same step onboarding uses.", []),
+    "A bar on the screen is made as tall as the short edge of a bank card held against it. Every bank card has the same size, so the match gives the number of screen dots in a centimetre. It is the same step setup uses.", []),
   sets("C02", { template: "measure", kind: "ruler" }, "size", ["tape"],
     "For a screen too large to hold a card against. The size printed on the TV (its diagonal in inches) gives a first value. A ruler is then drawn on the screen and measured with a tape, and the value is corrected by what the tape says. The tape has the last word.", []),
   sets("C03", { template: "measure", kind: "seat" }, "distance", ["tape"],

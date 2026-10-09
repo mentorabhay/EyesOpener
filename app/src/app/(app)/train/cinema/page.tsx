@@ -11,6 +11,8 @@ import { percent } from "@/engine";
 import { kindOf } from "@/games/built";
 import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
+import { setupOf } from "@/lib/setup";
+import { SetupGate } from "@/components/setup/setup";
 import { CINEMA, doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { forWhom, isListed, statusOf } from "@/lib/status";
 import css from "./cinema.module.css";
@@ -25,7 +27,7 @@ export default async function CinemaPage({ searchParams }: { searchParams: Promi
   const asked = await searchParams;
   const plan = planFor(m.tester, { chapter: asked.chapter, rest: asked.break });
   const cyanEye = m.eye ? (m.eye.cyanEye === "right" ? "R" as const : "L" as const) : null;
-  const [dose, past] = await Promise.all([doseFor(m, "film", CINEMA), pastSessions(m, "film", CINEMA)]);
+  const [dose, past, setup] = await Promise.all([doseFor(m, "film", CINEMA), pastSessions(m, "film", CINEMA), setupOf(m)]);
   const contrast = m.eye?.strongContrast ?? 1;
   const statuses = await readStatuses();
   /* Films with a task on top: the same cinema, with something to do while watching. */
@@ -35,10 +37,11 @@ export default async function CinemaPage({ searchParams }: { searchParams: Promi
     <>
       <PageHead title={t.cinema.title} sub={t.cinema.sub} />
       <p className="notice" data-b="warn" role="note"><b>{c.glasses.title}</b> {cyanEye ? c.glasses.way(cyanEye) : c.glasses.unknown} {c.glasses.own}</p>
-      {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
+      {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/setup">{t.noEye.cta}</Link></p>}
       {plan.shortened && <p className="notice" role="note">{c.how.test(plan.chapterSeconds, plan.breakSeconds, STANDARD_PLAN)}</p>}
+      {setup.held && <SetupGate s={setup} name={m.profile.displayName} />}
       <div className="bento">
-        <Player itemSlug={CINEMA} contrast={contrast} dose={dose} cyanEye={cyanEye} weakInk={m.eye?.weakInk === "red" ? "red" : "cyan"} plan={plan} profileId={m.profile.id} tester={m.tester} />
+        {!setup.held && <Player itemSlug={CINEMA} contrast={contrast} dose={dose} cyanEye={cyanEye} weakInk={m.eye?.weakInk === "red" ? "red" : "cyan"} plan={plan} profileId={m.profile.id} tester={m.tester} />}
         <Card span={4}>
           <div className="hstat">
             <div className="v tnum">{percent(contrast)}</div>

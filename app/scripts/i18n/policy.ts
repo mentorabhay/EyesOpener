@@ -22,7 +22,7 @@ export const NOT_WORDS: readonly { at: string; why: string }[] = [
 export const ALLOWED: readonly { file: string; kind: string; text: string; why: string }[] = [
   ...MORE_ALLOWED,
   { file: "lib/hero-rules.ts", kind: "word", text: "heroGamesExtra.map((g) => g.slug)", why: "Reads the slugs of the games, which are values and never translated." },
-  { file: "app/(app)/onboarding/flow.tsx", kind: "call", text: "Object.keys(o.steps)", why: "Reads the names of the steps, not their words." },
+  { file: "app/(app)/setup/eyes/flow.tsx", kind: "call", text: "Object.keys(o.steps)", why: "Reads the names of the steps, not their words." },
   { file: "drills/index.ts", kind: "call", text: "joined(hVerg, hSkill)", why: "`joined` reads a word only when it is asked for." },
   { file: "games/built.ts", kind: "call", text: "joined(", why: "`joined` reads a word only when it is asked for." },
   { file: "games/care/far-break.tsx", kind: "logic", text: "picked.includes(x.id)", why: "`id` is a value, not a word: the extractor leaves every `id` out." },

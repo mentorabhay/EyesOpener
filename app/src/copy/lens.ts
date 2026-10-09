@@ -11,6 +11,10 @@ const pct = (share: number) => (share > 0 && share < 0.005 ? "under 1%" : `${Mat
 export const lens = texts("copy/lens", "lens", () => ({
   title: (name: string) => `Which colour ${name}'s weaker eye sees`,
   crumb: "Settings",
+  crumbSetup: "Setup",
+  confirm: "Setup asks for this choice once. Keep the usual way, or swap, then take the balance check-up.",
+  keep: "Keep this",
+  kept: "Kept. Nothing else changes, and the balance check-up still holds.",
   sub: "Each eye sees only its own colour through the glasses. The stronger eye must not see the weaker eye's pictures, so it goes behind the lens that leaks least on this screen.",
   noWeak: "No weaker eye has been found yet, so this does not change anything for now. It matters once the eye check finds one eye weaker.",
   weakIs: (e: Eye) => `The weaker eye is the ${side(e)} one.`,

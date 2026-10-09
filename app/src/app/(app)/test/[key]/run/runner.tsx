@@ -22,6 +22,8 @@ interface Props {
   cyanEye: Eye;
   /** The stronger eye's contrast from the eye profile. */
   contrast: number;
+  /** The weaker eye sees red (engine/profile.ts): the stronger eye's dimmed ink is cyan. */
+  swapped?: boolean;
   /** Under 12: a grown-up runs the near point check. */
   young: boolean;
   child: boolean;
@@ -31,7 +33,7 @@ interface Props {
  * Runs one check-up. The letter tests go left eye then right eye; the glasses tests use both eyes together;
  * the near point and the survey need no drawing, so they begin at once.
  */
-export function Runner({ testKey, screen, cyanEye, contrast, young, child }: Props) {
+export function Runner({ testKey, screen, cyanEye, contrast, swapped = false, young, child }: Props) {
   const [eye, setEye] = useState<Eye>("L");
   /* a test starts on a press, so its random letters are only ever drawn in the browser */
   const [started, setStarted] = useState(false);
@@ -72,7 +74,7 @@ export function Runner({ testKey, screen, cyanEye, contrast, young, child }: Pro
       case "stereo":
         return withGlasses(<DepthTest screen={screen!} cyanEye={cyanEye} onDone={(r) => save({ key: "stereo", ...r })} />);
       case "fusion_break":
-        return withGlasses(<FusionTest screen={screen!} cyanEye={cyanEye} contrast={contrast} onDone={(r) => save({ key: "fusion_break", ...r })} />);
+        return withGlasses(<FusionTest screen={screen!} cyanEye={cyanEye} contrast={contrast} swapped={swapped} onDone={(r) => save({ key: "fusion_break", ...r })} />);
       case "suppression":
         return withGlasses(<FourDotTest ppc={screen!.ppc} onDone={(r) => save({ key: "suppression", ...r })} />);
       case "near_point":

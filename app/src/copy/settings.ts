@@ -11,8 +11,8 @@ export const settings = texts("copy/settings", "settings", () => ({
 
   eye: {
     title: "Eye settings",
-    again: "Run onboarding again",
-    empty: { title: "No eye settings yet", body: "Onboarding takes about five minutes and sets the contrast and sizes for every game.", cta: "Start onboarding" },
+    again: "Run the eye check again",
+    empty: { title: "No eye settings yet", body: "Setup takes about ten minutes and sets the contrast and sizes for every game.", cta: "Start setup" },
     rows: {
       weak: "Weaker eye", lens: "Glasses", contrast: "Stronger-eye contrast", letter: "Two-eye letter size",
       target: "Smallest game target", text: "App text size", faint: "Faint text", measured: "Measured on",
@@ -80,7 +80,7 @@ export const settings = texts("copy/settings", "settings", () => ({
   devices: {
     title: "Devices",
     colours: "This screen's colours",
-    empty: { title: "No screen measured yet", body: "Onboarding measures your screen and how far you sit from it." },
+    empty: { title: "No screen measured yet", body: "Setup measures your screen and how far you sit from it." },
     kind: { web: "Computer", phone: "Phone", tv: "TV" },
     line: (kind: string, pxPerCm: number, cm: number, date: string) => `${kind}. ${pxPerCm} dots per cm, viewed from ${cm} cm. Measured on ${date}.`,
   },

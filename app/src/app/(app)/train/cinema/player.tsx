@@ -233,7 +233,7 @@ export function Player({ itemSlug, contrast, dose, cyanEye, weakInk = "cyan", pl
   return (
     <div ref={root} onKeyDown={arrows} style={{ display: "contents" }}>
       <section className="c span8" aria-label={c.player.region}>
-        <LensView>
+        <LensView swapped={weakInk === "red"}>
           <div ref={shell} className={css.shell} data-film-shell data-full={full.on ? "" : undefined}>
             <div
               ref={stage} className={`scene ${css.stage}`} tabIndex={picture ? 0 : -1} role={picture ? "button" : undefined} aria-label={picture ? c.player.picture : undefined}

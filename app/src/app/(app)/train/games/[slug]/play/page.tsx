@@ -15,6 +15,8 @@ import { CinemaStage } from "@/games/extra-ui";
 import { results } from "@/copy/results";
 import { currentHero } from "@/lib/hero";
 import { requireMember } from "@/lib/session";
+import { setupOf } from "@/lib/setup";
+import { SetupGate } from "@/components/setup/setup";
 import { doseFor, pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
 import { gameWords } from "@/data/words";
@@ -41,6 +43,11 @@ export default async function PlayPage({ params, searchParams }: Props) {
   /* A care companion is a log the family keeps. It is not a screen session, so it has no dose and no glasses. */
   if (kind === "care") return <>{head}{how}<CarePanel slug={slug} m={m} /></>;
 
+  /* a two-eye game waits until this person's setup is done (src/lib/setup-rules.ts); the dose is not touched meanwhile */
+  if (/red-cyan/i.test(g.gear)) {
+    const s = await setupOf(m);
+    if (s.held) return <>{head}<SetupGate s={s} name={m.profile.displayName} />{how}</>;
+  }
   const dose = await doseFor(m, "game", slug);
   const ppc = m.device?.pxPerCm ?? 0;
   const eye = {
@@ -63,7 +70,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
       {head}
       <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} swapped={eye.weakInk === "red"} />
       {/red-cyan/i.test(g.gear) && <ScreenWarning m={m} />}
-      {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/onboarding">{t.noEye.cta}</Link></p>}
+      {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/setup">{t.noEye.cta}</Link></p>}
       {how}
       {kind === "cinema"
         ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} plan={plan} profileId={m.profile.id} tester={m.tester} {...eye} />

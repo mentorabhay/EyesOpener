@@ -64,7 +64,7 @@ export function Closing() {
           <h2 data-enter><Words text={t.title} /></h2>
           <p className="lp-close-lead" data-enter>{t.lead}</p>
           <div className="lp-ctas" data-enter>
-            <Link className="btn btn-g lp-btn" href="/onboarding">{t.start}</Link>
+            <Link className="btn btn-g lp-btn" href="/setup">{t.start}</Link>
           </div>
           <p className="lp-hero-note" data-enter>{t.note}</p>
           <nav className="lp-more" aria-label={t.more} data-enter>

@@ -32,7 +32,7 @@ export type SitePath = (typeof SITE_PAGES)[number];
 /** Areas a search engine must stay out of: the member app, the three portals and sign-in. */
 export const PRIVATE_PATHS = [
   "/admin", "/counsellor", "/sponsor", "/login", "/join", "/today", "/train", "/test", "/together", "/family",
-  "/settings", "/onboarding", "/circle", "/leave-child-mode",
+  "/settings", "/setup", "/onboarding", "/circle", "/leave-child-mode",
   /* the addresses that set a browser's language and carry its words: nothing for a search engine to read */
   "/lang",
 ] as const;

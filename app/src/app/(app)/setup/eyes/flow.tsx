@@ -7,17 +7,19 @@ import { Cover, GlassesOn } from "@/components/measure/cover";
 import { LetterTest } from "@/components/measure/letter-test";
 import { LIMITS } from "@/components/measure/limits";
 import { Empty } from "@/components/ui";
+import { lens as ln } from "@/copy/lens";
 import { onboarding as o } from "@/copy/onboarding";
 import {
-  STARTING_CONTRAST, acuityOf, acuityText, balanceCyanEye, contrastLevels, contrastText, other, percent, snellen, standardMeasured,
+  STARTING_CONTRAST, WEAKER_EYE_GAP, acuityOf, acuityText, balanceCyanEye, contrastLevels, contrastText, other, percent, snellen, standardMeasured,
   type BalanceResult, type Derived, type Eye, type EyeResult, type Measured, type Screen, type WeakInk,
 } from "@/engine";
+import { cyanEyeFor, upsideDown, type Suggestion } from "@/lib/lens-choice";
 import { finishOnboarding } from "./actions";
 import css from "./onboarding.module.css";
 import { Settings } from "./settings";
 
 type Step =
-  | { at: "intro" | "screen" | "both" | "done" }
+  | { at: "intro" | "screen" | "lens" | "both" | "done" }
   | { at: "survey" | "acuity" | "contrast" | "eyeDone"; eye: Eye };
 type StepKey = keyof typeof o.steps;
 
@@ -35,14 +37,28 @@ function Clock({ from }: { from: number }) {
   return <span className={css.time}>{o.timer(seconds)}</span>;
 }
 
-/** The five steps of onboarding. `screen` and `saved` are what the member already has; the settings are derived and saved on the server. */
-export function Flow({ screen, saved, weakInk = "cyan" }: { screen: Screen | null; saved: Derived | null; /** The profile's lens choice (engine/profile.ts). */ weakInk?: WeakInk }) {
+interface Props {
+  /** What the member already has; the settings are derived and saved on the server. */
+  screen: Screen | null;
+  saved: Derived | null;
+  /** The profile's lens choice (engine/profile.ts). */
+  weakInk?: WeakInk;
+  /** May this person choose the lens (a guardian, not in child mode), and the leak check's suggestion (src/lib/lens-choice.ts). */
+  choose?: Suggestion | null;
+  /** The glasses are tuned and their leak checked on this screen: the balance test can be taken now (src/lib/setup-rules.ts). */
+  glassesReady?: boolean;
+}
+
+/** The steps of the eye check: screen size, each eye, the lens choice, then both eyes with the glasses. */
+export function Flow({ screen, saved, weakInk = "cyan", choose = null, glassesReady = true }: Props) {
   const [step, setStep] = useState<Step>({ at: "intro" });
   const [p, setP] = useState<Measured>(() => ({ ...standardMeasured(), ...screen, tested: true }));
   const [startedAt, setStartedAt] = useState(0);
   const [seconds, setSeconds] = useState({ L: 0, R: 0 });
   const [fresh, setFresh] = useState<Derived | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [ink, setInk] = useState<WeakInk>(weakInk);
+  const [asked, setAsked] = useState(false);
   const [saving, startSaving] = useTransition();
   const stage = useRef<HTMLElement>(null);
   const first = useRef(true);
@@ -65,7 +81,7 @@ export function Flow({ screen, saved, weakInk = "cyan" }: { screen: Screen | nul
     setError(null);
     setStep({ at: "done" });
     startSaving(async () => {
-      const r = await finishOnboarding({ ...measured, seconds });
+      const r = await finishOnboarding({ ...measured, seconds, ...(asked ? { weakInk: ink } : {}) });
       if ("error" in r) setError(r.error);
       else setFresh(r.settings);
     });
@@ -75,7 +91,9 @@ export function Flow({ screen, saved, weakInk = "cyan" }: { screen: Screen | nul
   const at = stepKey(step);
   /* the balance test is taken with the glasses as they will be worn: cyan over the weaker-reading eye, or over the other eye when the inks are swapped */
   const worse = balanceCyanEye(p.eyes.L.va, p.eyes.R.va);
-  const cyanEye = weakInk === "red" ? other(worse) : worse;
+  const cyanEye = ink === "red" ? other(worse) : worse;
+  /* the lens is asked when the letters already show a weaker eye, and only of a guardian */
+  const lensNext = () => { if (choose && Math.abs(p.eyes.L.va - p.eyes.R.va) >= WEAKER_EYE_GAP) { setAsked(true); setStep({ at: "lens" }); } else setStep({ at: "both" }); };
 
   return (
     <>
@@ -163,18 +181,46 @@ export function Flow({ screen, saved, weakInk = "cyan" }: { screen: Screen | nul
                     <div><dt>{o.eyeDone.faintest}</dt><dd>{contrastText(p.eyes[step.eye])}<small>{p.eyes[step.eye].cs >= FAINTEST ? o.eyeDone.faintestFloor : o.eyeDone.faintestHow}</small></dd></div>
                   </dl>
                   {p.eyes[step.eye].q[3] && <p className="notice" data-b="danger">{o.eyeDone.sudden}</p>}
-                  <button type="button" className="btn btn-g" onClick={() => (step.eye === "L" ? survey("R") : setStep({ at: "both" }))}>{o.eyeDone.next(step.eye)}</button>
+                  <button type="button" className="btn btn-g" onClick={() => (step.eye === "L" ? survey("R") : lensNext())}>{o.eyeDone.next(step.eye)}</button>
                 </>
               )}
+            </>
+          )}
+
+          {step.at === "lens" && choose && (
+            <>
+              <div className={css.head}><h2>{o.lens.title}</h2><span className={css.time}>{o.lens.time}</span></div>
+              <p>{ln.weakIs(worse)} {ln.suggest[choose.why]}</p>
+              <div className={css.lens} role="radiogroup" aria-label={o.lens.title}>
+                {(["cyan", "red"] as const).map((k) => (
+                  <button type="button" role="radio" key={k} className={css.option} aria-checked={ink === k} onClick={() => setInk(k)}>
+                    <b>{ln.options[k].title}</b>
+                    <span className="muted small">{ln.options[k].tag}{k === choose.ink && choose.why === "red_leaks_more" ? ` · ${ln.suggested}` : ""}</span>
+                    <span className="small">{ln.options[k].sees}</span>
+                    <span className="small">{ln.wear(cyanEyeFor(worse, k), upsideDown(cyanEyeFor(worse, k)))}</span>
+                  </button>
+                ))}
+              </div>
+              <p className="muted small">{ln.evidence.body}</p>
+              <button type="button" className="btn btn-g" onClick={() => setStep({ at: "both" })}>{o.lens.next}</button>
             </>
           )}
 
           {step.at === "both" && (
             <>
               <div className={css.head}><h2>{o.both.title}</h2><span className={css.time}>{o.both.time}</span></div>
-              <GlassesOn cyanEye={cyanEye} />
-              <BalanceTest gamma={p.gamma} onDone={(x) => finish({ x, cyanEye })} />
-              <button type="button" className="btn btn-sm" onClick={() => finish(null)}>{o.both.skip}</button>
+              {glassesReady ? (
+                <>
+                  <GlassesOn cyanEye={cyanEye} />
+                  <BalanceTest gamma={p.gamma} onDone={(x) => finish({ x, cyanEye })} />
+                  <button type="button" className="btn btn-sm" onClick={() => finish(null)}>{o.both.skip}</button>
+                </>
+              ) : (
+                <>
+                  <p className="notice" data-b="warn">{o.both.glassesFirst}</p>
+                  <button type="button" className="btn btn-g" onClick={() => finish(null)}>{o.both.saveFirst}</button>
+                </>
+              )}
             </>
           )}
 

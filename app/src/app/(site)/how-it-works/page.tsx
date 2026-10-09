@@ -33,7 +33,7 @@ export default function HowItWorksPage() {
     <main className="s-page">
       <Hero kicker={h.hero.kicker} title={h.hero.title} lead={h.hero.lead} visual={<TwoLights />}>
         <div className="s-ctas">
-          <Link className="btn btn-d s-btn-lg" href="/onboarding">{t.cta.start}</Link>
+          <Link className="btn btn-d s-btn-lg" href="/setup">{t.cta.start}</Link>
           <Link className="btn s-btn-lg" href="/programmes">{t.cta.programmes}</Link>
         </div>
         <div className="s-tags">{h.hero.points.map((p) => <Chip key={p}>{p}</Chip>)}</div>

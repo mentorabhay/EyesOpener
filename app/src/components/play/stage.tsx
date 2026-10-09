@@ -43,5 +43,5 @@ export function Stage({ slug, dose, help, kind = "game", labels, lens = true, jo
     </>
   );
   /* A drill done with a patch or with no glasses has nothing to show through a lens, so the switch is left out. */
-  return lens ? <LensView right={playing && <Clock s={s} />} onJoined={joinable ? setJoined : undefined}>{body}</LensView> : <div className="stack">{playing && <div className="row"><span className="sp" /><Clock s={s} /></div>}{body}</div>;
+  return lens ? <LensView right={playing && <Clock s={s} />} onJoined={joinable ? setJoined : undefined} swapped={eye.weakInk === "red"}>{body}</LensView> : <div className="stack">{playing && <div className="row"><span className="sp" /><Clock s={s} /></div>}{body}</div>;
 }

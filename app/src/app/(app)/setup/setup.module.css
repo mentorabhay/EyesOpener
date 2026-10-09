@@ -1,0 +1,16 @@
+.stat { display: inline-flex; align-items: center; gap: 10px; }
+.next { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.next span { color: var(--ink-2); }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.steps li { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--card); }
+.steps li[data-next] { border-color: var(--g1); box-shadow: 0 0 0 1px var(--g1) inset; }
+.steps li[data-state="done"], .steps li[data-state="skip"] { background: var(--sunken); }
+.mark { flex: 0 0 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--line); font-size: 13px; font-weight: 700; margin-top: 1px; }
+li[data-state="done"] .mark { background: var(--ink); color: var(--card); border-color: var(--ink); }
+li[data-state="again"] .mark { border-color: #c98a16; }
+.body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.body p { margin: 0; }
+.top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.top b { font-size: 15px; margin-right: 2px; }
+.top > span:last-child { margin-left: auto; }
+li[data-state="done"] .mark::before, li[data-state="skip"] .mark::before { content: "\2713"; }

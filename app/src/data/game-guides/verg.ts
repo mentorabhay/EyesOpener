@@ -48,7 +48,7 @@ export const guides: GameGuide[] = textsEach("data/game-guides/verg", () => [
     need: [
       "Red-cyan glasses. Without them the game cannot work: you will always see two rings, one red and one cyan.",
       "A tablet, computer or TV. A wider screen lets the rings go further apart.",
-      "A seat square to the screen, at the distance this screen was measured for in onboarding.",
+      "A seat square to the screen, at the distance this screen was measured for in setup.",
     ],
     see: [
       "On the screen there are always two rings: a cyan one and a red one. That is how it is meant to be.",

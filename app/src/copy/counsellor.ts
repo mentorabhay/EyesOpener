@@ -55,7 +55,7 @@ export const counsellor = texts("copy/counsellor", "counsellor", () => ({
       fromBalance: "From the balance test",
       mm: (cm: number) => `${(cm * 10).toFixed(1)} mm`,
       px: (n: number) => `${n} px`,
-      none: { title: "No eye settings yet", body: "This member has not finished onboarding." },
+      none: { title: "No eye settings yet", body: "This member has not finished setup." },
     },
     results: {
       title: "Check-up results",

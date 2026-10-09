@@ -42,7 +42,7 @@ export const train = texts("copy/train", "train", () => ({
     doctor: "Do not practise again today. See an eye doctor before the next session.",
     rest: "Do not practise again today. If it comes back in another session, tell an eye doctor.",
   },
-  noEye: { body: "No eye settings yet, so this uses standard sizes and full contrast for both eyes.", cta: "Start onboarding" },
+  noEye: { body: "No eye settings yet, so this uses standard sizes and full contrast for both eyes.", cta: "Start setup" },
 
   manual: {
     title: (name: string) => `Manual: ${name}`,
@@ -232,7 +232,7 @@ export const train = texts("copy/train", "train", () => ({
     film: "Your film, shown as a two-eye picture",
     contrast: "Stronger-eye contrast",
     fromProfile: "Set from your eye settings",
-    standard: "Standard level until onboarding is done",
+    standard: "Standard level until setup is done",
     watched: "Watched this session",
     clockNote: "The clock runs while the film plays. The film stops when today's minutes are used.",
   },

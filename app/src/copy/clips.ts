@@ -331,7 +331,7 @@ export const clips = texts("copy/clips", "clips", () => ({
     under_age: "No screen clips under age 4.",
     guardian: "A guardian or co-guardian runs this clip, outside child mode. It changes how the screen is drawn for everyone in the household.",
     adult: "This clip is for a grown-up's profile. It reads habits with the camera, and that is never done for a child.",
-    no_screen: "This clip needs the true size of this screen and how far you sit from it. Onboarding measures both.",
+    no_screen: "This clip needs the true size of this screen and how far you sit from it. Setup measures both.",
     need_near: (cm: number) => `This clip is for a screen within arm's reach (100 cm or less). This screen is set at ${cm} cm.`,
     need_far: (cm: number) => `This clip is for a screen across the room (200 cm or more). This screen is set at ${cm} cm.`,
     camera: "A guardian has not allowed the camera for this profile yet.",
@@ -340,7 +340,7 @@ export const clips = texts("copy/clips", "clips", () => ({
     withheld: "Not offered here", seat: "For a guardian", under_age: "From age 4", guardian: "For a guardian", adult: "For a grown-up",
     no_screen: "Needs a measured screen", need_near: "Needs the screen near", need_far: "Needs the screen far", camera: "Camera not allowed",
   },
-  onboarding: "Start onboarding",
+  onboarding: "Start setup",
   seatClip: "Set the distance with the seat clip",
 
   page: {

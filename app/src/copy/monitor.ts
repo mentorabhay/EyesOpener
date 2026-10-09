@@ -145,7 +145,7 @@ export const monitor = texts("copy/monitor", "monitor", () => ({
     label: "Distance in centimetres",
     go: "Set",
     again: "Set the distance again",
-    from: (cm: number) => `Onboarding measured ${cm} cm for this household's screen. Use that number only if you are sitting at that distance now.`,
+    from: (cm: number) => `Setup measured ${cm} cm for this household's screen. Use that number only if you are sitting at that distance now.`,
     setAt: (cm: number) => `Set at ${cm} cm for this camera.`,
     working: "Hold still.",
     result: {

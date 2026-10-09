@@ -8,6 +8,7 @@ import { and, asc, count, desc, eq, gt, gte, inArray, isNull } from "drizzle-orm
 import { counsellor as c } from "@/copy/counsellor";
 import { exerciseBySlug, gameBySlug, programmeBySlug, tests, type TestDef } from "@/data";
 import { db, schema } from "@/db";
+import { setupOf } from "./setup";
 import { acuityText, ageFrom, blankEye, contrastText, MAX_DAILY_MINUTES, percent, snellen } from "@/engine";
 import { audit, type Viewer } from "./auth";
 import { lastDays } from "./session";
@@ -127,9 +128,14 @@ export async function memberView(viewer: Viewer, linkId: string) {
     db.select({ id: schema.counsellorNote.id, body: schema.counsellorNote.body, createdAt: schema.counsellorNote.createdAt })
       .from(schema.counsellorNote).where(eq(schema.counsellorNote.linkId, link.id)).orderBy(desc(schema.counsellorNote.createdAt)),
   ]);
+  /* the household's screen and this person's setup, the same steps the family sees (src/lib/setup-rules.ts) */
+  const [device] = await db.select().from(schema.device).where(and(eq(schema.device.accountId, profile.accountId), eq(schema.device.kind, "web")))
+    .orderBy(desc(schema.device.calibratedAt)).limit(1);
+  const setup = await setupOf({ profile, device: device ?? null, eye: eye ?? null, tester: false });
   return {
     linkId: link.id,
     askedAt: link.createdAt,
+    setup,
     name: profile.displayName,
     age: ageFrom(profile.birthYear),
     accessLevel: profile.accessLevel,

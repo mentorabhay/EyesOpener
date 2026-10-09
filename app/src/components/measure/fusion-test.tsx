@@ -25,7 +25,7 @@ const MAX_FRAME_SECONDS = 0.1;
  * the member reports two, then back until the member reports one. The red ink is at the member's own contrast,
  * as in training, so both eyes' pictures have the best chance of being seen.
  */
-export function FusionTest({ screen, cyanEye, contrast, onDone }: { screen: Screen; cyanEye: Eye; contrast: number; onDone: (r: FusionResult) => void }) {
+export function FusionTest({ screen, cyanEye, contrast, swapped = false, onDone }: { screen: Screen; cyanEye: Eye; contrast: number; /** The weaker eye sees red: the cyan ink is the dimmed one. */ swapped?: boolean; onDone: (r: FusionResult) => void }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const [phase, setPhase] = useState<Phase>("check");
   const [limit, setLimit] = useState(0);
@@ -33,7 +33,7 @@ export function FusionTest({ screen, cyanEye, contrast, onDone }: { screen: Scre
   const [why, setWhy] = useState<"ranOut" | "noJoin" | null>(null);
   /** The demand drawn now, the demand at the split, and when this phase began. */
   const now = useRef(0), split = useRef(0), since = useRef(0);
-  const inks = useMemo(() => eyeInks(cyanEye, contrast, screen.gamma), [cyanEye, contrast, screen.gamma]);
+  const inks = useMemo(() => eyeInks(cyanEye, contrast, screen.gamma, swapped), [cyanEye, contrast, screen.gamma, swapped]);
   const moving = phase === "out" || phase === "back";
 
   function finish(one: FusionTry, reason: typeof why) {

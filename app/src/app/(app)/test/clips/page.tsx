@@ -39,7 +39,7 @@ export default async function ClipsPage({ searchParams }: { searchParams: Promis
       />
       {person.block && <p className="notice" data-b="warn">{c.blocked[person.block]}</p>}
       {!person.block && !m.device && (
-        <Empty title={test.noScreen.title}><span>{c.blocked.no_screen}</span><Btn href="/onboarding" kind="g" small>{c.onboarding}</Btn></Empty>
+        <Empty title={test.noScreen.title}><span>{c.blocked.no_screen}</span><Btn href="/setup" kind="g" small>{c.onboarding}</Btn></Empty>
       )}
       <p className="muted small">{c.estimate}</p>
 
