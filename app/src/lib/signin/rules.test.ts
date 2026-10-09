@@ -173,6 +173,18 @@ describe("the proxy, child mode and the site lock", () => {
     return new URL(to).pathname + new URL(to).search;
   };
 
+  it("lets the built files through with the site lock on and no cookie at all, and nothing else", async () => {
+    process.env.SITE_LOCK = "a-test-phrase-1234";
+    try {
+      expect(await run("/_next/static/chunks/abc123.js")).toBe("through");
+      expect(await run("/favicon.ico")).toBe("through");
+      expect(await run("/static/a.js")).toBe("/gate?next=%2Fstatic%2Fa.js");
+      expect(await run("/_next/staticx/a.js")).not.toBe("through");
+      const { config } = await import("../../proxy");
+      expect(config.matcher).toEqual(["/((?!_next/static|_next/image|favicon.ico).*)"]);
+    } finally { delete process.env.SITE_LOCK; }
+  });
+
   it("moves the browser on the address it used: behind Firebase Hosting, the front door's", async () => {
     const { proxy } = await import("../../proxy");
     const sealed = { cookie: `io_child=${childCookie()}` };

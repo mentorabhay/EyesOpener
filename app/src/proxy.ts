@@ -20,6 +20,9 @@ import { verifyToken } from "@/lib/token";
 
 export async function proxy(req: NextRequest) {
   const path = req.nextUrl.pathname;
+  /* The built files hold nothing private and the gate page needs them. The matcher below keeps the proxy away from
+     them; this says so again, so that losing the matcher (as happened once, 10 October 2026) cannot lock them. */
+  if (isBuiltFile(path)) return NextResponse.next();
 
   const jar = requestJar(req);
   const lock = siteLock();
@@ -45,3 +48,10 @@ export function moveTo(req: NextRequest, path: string): NextResponse {
   res.headers.set("cache-control", "no-store");
   return res;
 }
+
+export const isBuiltFile = (path: string) => path.startsWith("/_next/static/") || path === "/favicon.ico";
+
+/* Every page. Built files and images are left alone: they hold nothing private and are needed by the gate page itself. */
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+};
