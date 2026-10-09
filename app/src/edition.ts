@@ -6,6 +6,8 @@
 export const edition = {
   /** The stories at /stories and their studio in the staff console. */
   stories: false as boolean,
+  /** The staff research pages (camera, depth, photo screen) and their room in the staff console. */
+  research: false as boolean,
 };
 
 /** True when a link leads somewhere this edition has. Menus, footers and the sitemap pass their links through it. */

@@ -56,20 +56,20 @@ export const isSealedPath = (pathname: string) => SEALED_IN_CHILD_MODE.some((p) 
 
 /* ───────────── staff rooms ───────────── */
 
-export const ADMIN_AREAS = ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue", "manual", "stories", "staff", "screens", "switchboard"] as const;
+export const ADMIN_AREAS = ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue", "manual", "stories", "staff", "research", "screens", "switchboard"] as const;
 export type AdminArea = (typeof ADMIN_AREAS)[number];
 
 /** The rooms grouped for the console's menu (the setup plan, 9 October 2026). The overview sits above the groups. */
 export const ADMIN_GROUPS = {
   people: ["households", "counsellors", "sponsors", "staff", "requests"],
-  library: ["catalogue", "manual"],
+  library: ["catalogue", "manual", "research"],
   content: ["stories", "moderation", "hazards", "enquiries"],
   system: ["screens", "switchboard"],
 } as const satisfies Record<string, readonly AdminArea[]>;
 
 const ROOMS: Record<Exclude<StaffRole, "super_admin">, readonly AdminArea[]> = {
-  ops: ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue", "manual", "screens"],
-  content: ["overview", "catalogue", "manual", "stories"],
+  ops: ["overview", "moderation", "hazards", "requests", "counsellors", "sponsors", "households", "enquiries", "catalogue", "manual", "research", "screens"],
+  content: ["overview", "catalogue", "manual", "research", "stories"],
 };
 
 export const staffCan = (role: StaffRole | null, area: AdminArea): boolean =>

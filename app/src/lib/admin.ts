@@ -366,5 +366,6 @@ export async function setStaffRole(viewerId: string, who: { id: string } | { ema
 /** Where a room lives. The overview is the console's front page. */
 export const roomHref = (area: string) => (area === "overview" ? "/admin" : `/admin/${area}`);
 
-/** The rooms a staff role may open in this edition. The stories studio exists only where the stories do. */
-export const roomsFor = (role: StaffRole | null): AdminArea[] => staffAreas(role).filter((area) => area !== "stories" || edition.stories);
+/** The rooms a staff role may open in this edition. The stories studio and the research room exist only where the edition has them. */
+export const roomsFor = (role: StaffRole | null): AdminArea[] =>
+  staffAreas(role).filter((area) => (area !== "stories" || edition.stories) && (area !== "research" || edition.research));
