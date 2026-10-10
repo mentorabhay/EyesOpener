@@ -8,7 +8,8 @@ import { onboarding } from "@/copy/onboarding";
 import { testByKey } from "@/data";
 import { db, schema } from "@/db";
 import { balanceCyanEye, blankEye, canStart, derive, type Derived, type Eye, type EyeResult, type Measured, type WeakInk } from "@/engine";
-import type { Member } from "@/lib/session";
+import { jar as cookieJar } from "@/lib/cookie-jar";
+import { SCREEN_COOKIE, SCREEN_KIND_COOKIE, screenKindOf, type Member } from "@/lib/session";
 import { inEnglish } from "@/i18n/runtime";
 
 type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
@@ -89,7 +90,11 @@ export async function saveMeasured(member: Member, input: unknown): Promise<Deri
   if (!parsed.success || testBlock(member)) return null;
   const { seconds, weakInk, ...measured } = parsed.data;
   const profileId = member.profile.id;
-  return db.transaction(async (tx) => {
+  /* a screen measured here for the first time is of this browser's kind, and this browser keeps it as its own */
+  const jar = await cookieJar();
+  const kind = screenKindOf(jar.get(SCREEN_KIND_COOKIE)?.value);
+  let made: string | null = null;
+  const derived = await db.transaction(async (tx) => {
     /* The lens choice, when the flow asked it of a guardian. Its time is the transaction's own, the same as the balance
        row's below, so the balance just taken is not read as older than the choice (src/lib/screen-rules.ts, profileEffect). */
     if (weakInk && member.can("manage_family")) {
@@ -98,7 +103,8 @@ export async function saveMeasured(member: Member, input: unknown): Promise<Deri
     const screen = { pxPerCm: measured.ppc, distanceCm: measured.dist, calibratedAt: new Date() };
     const [device] = member.device
       ? await tx.update(schema.device).set(screen).where(eq(schema.device.id, member.device.id)).returning()
-      : await tx.insert(schema.device).values({ ...screen, accountId: member.account.id, kind: "web", label: inEnglish(() => onboarding.deviceLabel) }).returning();
+      : await tx.insert(schema.device).values({ ...screen, accountId: member.account.id, kind, label: inEnglish(() => onboarding.deviceLabel) }).returning();
+    if (!member.device) made = device.id;
     await tx.insert(schema.onboardingRun).values({
       profileId, deviceId: device.id, answers: { left: measured.eyes.L.q, right: measured.eyes.R.q },
       leftSeconds: seconds?.L, rightSeconds: seconds?.R, finishedAt: new Date(),
@@ -112,6 +118,8 @@ export async function saveMeasured(member: Member, input: unknown): Promise<Deri
     ]);
     return writeProfile(tx, profileId, device.id, measured, "onboarding");
   });
+  if (made) { try { jar.set(SCREEN_COOKIE, made, { maxAge: 400 * 86_400 }); } catch { /* read-only here: the kind's latest screen is found instead */ } }
+  return derived;
 }
 
 /**

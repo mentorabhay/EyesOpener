@@ -61,7 +61,9 @@ describe("setup", () => {
   });
   it("warns about a size at either end of the slider without holding anyone", () => {
     expect(atLimit(75)).toBe(true);
-    expect(atLimit(10)).toBe(true);
+    expect(atLimit(4)).toBe(true);
+    /* a large TV showing a web page can have about 10 pixels a centimetre: not the slider's end any more */
+    expect(atLimit(10)).toBe(false);
     expect(atLimit(37.8)).toBe(false);
     const steps = setupSteps({ ...done, screen: { pxPerCm: 75, facts: screenFacts({ ...tuned, pxPerCm: 75 }) } });
     expect(steps.find((x) => x.key === "size")).toMatchObject({ state: "done", why: "at_limit" });

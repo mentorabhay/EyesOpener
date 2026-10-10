@@ -15,6 +15,17 @@ import { memberCan, type MemberAction } from "./roles";
 import { verifyToken } from "./token";
 
 export const PROFILE_COOKIE = "io_profile";
+/**
+ * Which of the household's screens this browser is: a device id, written when the screen is first measured here. A
+ * household with a laptop and a TV keeps each one's size and colours apart. With none, the screen of `SCREEN_KIND_COOKIE`
+ * measured last is used ("web" unless the browser says otherwise), as before there were several.
+ */
+export const SCREEN_COOKIE = "io_screen";
+/** The kind of screen this browser is ("web", "phone" or "tv"), for a screen measured here for the first time. */
+export const SCREEN_KIND_COOKIE = "io_screen_kind";
+export const SCREEN_KINDS = ["web", "phone", "tv"] as const;
+export type ScreenKind = (typeof SCREEN_KINDS)[number];
+export const screenKindOf = (v: string | undefined): ScreenKind => ((SCREEN_KINDS as readonly string[]).includes(v ?? "") ? (v as ScreenKind) : "web");
 
 export type Member = NonNullable<Awaited<ReturnType<typeof getMember>>>;
 
@@ -61,8 +72,14 @@ export const getMember = cache(async () => {
   const [eye] = await db.select().from(schema.eyeProfile)
     .where(and(eq(schema.eyeProfile.profileId, profile.id), eq(schema.eyeProfile.isCurrent, true)))
     .orderBy(desc(schema.eyeProfile.createdAt)).limit(1);
-  const [device] = await db.select().from(schema.device)
-    .where(and(eq(schema.device.accountId, account.id), eq(schema.device.kind, "web")))
+  /* this browser's own screen when it has one, else the household's screen of this kind measured last */
+  const screenId = jar.get(SCREEN_COOKIE)?.value ?? "";
+  type Screen = typeof schema.device.$inferSelect;
+  const mine: Screen | undefined = /^[0-9a-f-]{36}$/.test(screenId)
+    ? (await db.select().from(schema.device).where(and(eq(schema.device.id, screenId), eq(schema.device.accountId, account.id))).limit(1))[0]
+    : undefined;
+  const [device]: (Screen | undefined)[] = mine ? [mine] : await db.select().from(schema.device)
+    .where(and(eq(schema.device.accountId, account.id), eq(schema.device.kind, screenKindOf(jar.get(SCREEN_KIND_COOKIE)?.value))))
     .orderBy(desc(schema.device.calibratedAt)).limit(1);
   const [enrolment] = await db.select().from(schema.enrolment)
     .where(and(eq(schema.enrolment.profileId, profile.id), eq(schema.enrolment.status, "active")))

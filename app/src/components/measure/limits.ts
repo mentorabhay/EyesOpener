@@ -1,7 +1,7 @@
 /** The ranges a measurement may fall in. The tests clamp to them and the server refuses anything outside. */
 export const LIMITS = {
-  /** CSS pixels per centimetre. */
-  ppc: [10, 75],
+  /** CSS pixels per centimetre. A large TV showing a web page can have fewer than 10. */
+  ppc: [4, 75],
   /** Viewing distance in centimetres. */
   dist: [30, 300],
   /** Acuity in logMAR. */
