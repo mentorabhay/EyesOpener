@@ -97,7 +97,9 @@ export async function requireViewer(): Promise<Viewer> {
 /** Staff gate for one room of the admin console. Not permitted means not found. */
 export async function requireStaff(area: AdminArea): Promise<Viewer & { staff: StaffRole }> {
   const v = await getViewer();
-  if (!v || !staffCan(v.staff, area)) notFound();
+  const next = area === "overview" ? "/admin" : `/admin/${area}`;
+  if (!v || !v.staff) redirect(`/login?next=${encodeURIComponent(next)}`);
+  if (!staffCan(v.staff, area)) notFound();
   return v as Viewer & { staff: StaffRole };
 }
 

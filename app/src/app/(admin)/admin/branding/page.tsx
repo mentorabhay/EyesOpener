@@ -73,7 +73,7 @@ const LOGO_SLOTS = [
 ];
 
 export default async function AdminBrandingPage() {
-  await requireStaff("overview");
+  await requireStaff("branding");
 
   return (
     <>
