@@ -1,3 +1,4 @@
+// Eyes Opener: The 30 calibration clips: the screen, the seat and the glasses. None of them measures an eye.
 /**
  * The 30 calibration clips: the screen, the seat and the glasses. None of them measures an eye.
  *

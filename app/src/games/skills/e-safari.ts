@@ -1,3 +1,4 @@
+// Eyes Opener: E Safari. A practice check of how small a shape a young child can read, one eye at a time (the other eye is.
 /**
  * E Safari. A practice check of how small a shape a young child can read, one eye at a time (the other eye is
  * under a patch). The animal track is a tumbling E: three toes that point right, down, left or up. The child

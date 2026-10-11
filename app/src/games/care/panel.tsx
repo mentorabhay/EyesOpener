@@ -1,3 +1,4 @@
+// Eyes Opener: A care companion: a log the family keeps about care away from the screen, shown as a small story.
 /**
  * A care companion: a log the family keeps about care away from the screen, shown as a small story.
  * It is not a screen session, so it has no dose, no glasses and no black therapy scene.

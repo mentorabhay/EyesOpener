@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying care functionality.
 import { describe, it, expect } from "vitest";
 import {
   addDays, BREAKS_A_DAY, breakCounts, breakSeconds, isDayKey, isOutdoorEntry, OUTDOOR_DAY_CAP, outdoorCounted, pickSeeded, ranLongEnough, seedOf,

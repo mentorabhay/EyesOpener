@@ -1,3 +1,4 @@
+// Eyes Opener: Counts only: the query behind this page never reads a test result, an eye profile or what happened in a session. .
 import type { Metadata } from "next";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t, day } from "@/copy/admin";

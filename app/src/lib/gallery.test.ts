@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying gallery functionality.
 import { describe, expect, it } from "vitest";
 import { depthLevels, depthValue, pixelArcsec } from "@/engine";
 import {

@@ -1,3 +1,4 @@
+// Eyes Opener: The language of a request, worked out once by the proxy before anything is drawn. Server only.
 /**
  * The language of a request, worked out once by the proxy before anything is drawn. Server only.
  * See decide.ts for the rules and docs/LANGUAGES.md for the design.

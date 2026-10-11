@@ -1,3 +1,4 @@
+// Eyes Opener: What the controls need to know about the film on screen. .
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type RefObject, type SyntheticEvent } from "react";
 

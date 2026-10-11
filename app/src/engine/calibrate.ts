@@ -1,3 +1,4 @@
+// Eyes Opener: Calibration of one screen with one pair of red-cyan glasses: gamma, colour leak and ink balance.
 /**
  * Calibration of one screen with one pair of red-cyan glasses: gamma, colour leak and ink balance.
  * Pure functions. The screens that take the measurements are in src/app/(app)/settings/screen.

@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the clips: the library, the runner, every template and the sets.
 /**
  * Words for the clips: the library, the runner, every template and the sets.
  * Plain words a school student can follow. A result is a home estimate; nothing here names a condition.

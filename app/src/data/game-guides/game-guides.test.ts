@@ -1,3 +1,4 @@
+// Eyes Opener: Words a guide must never use: promises of a result. .
 import { describe, expect, it } from "vitest";
 import { gameBySlug } from "@/data";
 import { builtSlugs, kindOf } from "@/games/built";

@@ -1,3 +1,4 @@
+// Eyes Opener: Locked Gallery: reading the active profile's gallery and keeping its marks. Server only. The rules are in gallery.ts.
 /**
  * Locked Gallery: reading the active profile's gallery and keeping its marks. Server only. The rules are in gallery.ts.
  *

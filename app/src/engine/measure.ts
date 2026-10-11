@@ -1,3 +1,4 @@
+// Eyes Opener: The measurement core: letter sizes, contrast steps and the two staircases.
 /**
  * The measurement core: letter sizes, contrast steps and the two staircases.
  * State machines are pure, so the same logic is unit-tested here and drawn by any screen.

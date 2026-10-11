@@ -1,3 +1,4 @@
+// Eyes Opener: Firefly Catch. The reference game: copy its shape for a new one.
 /**
  * Firefly Catch. The reference game: copy its shape for a new one.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: The workday monitor's engine: what happens to each camera picture's facts, and to each tick of the clock.
 /**
  * The workday monitor's engine: what happens to each camera picture's facts, and to each tick of the clock.
  * Pure. The page (src/app/(app)/today/monitor/monitor.tsx) owns the camera, the model and the sending; this file

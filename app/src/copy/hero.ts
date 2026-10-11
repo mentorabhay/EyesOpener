@@ -1,3 +1,4 @@
+// Eyes Opener: Words for Draw Your Hero.
 /**
  * Words for Draw Your Hero.
  * A hero is a shape and nothing more: no name, no writing. Nothing here may ask a child to type anything,

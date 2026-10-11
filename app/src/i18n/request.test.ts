@@ -1,3 +1,4 @@
+// Eyes Opener: What the proxy does with the language of a request: decides it once, writes it on the request, never believes.
 /**
  * What the proxy does with the language of a request: decides it once, writes it on the request, never believes
  * a header a browser sent, and reads the database only when a language other than English is asked for.

@@ -1,3 +1,4 @@
+// Eyes Opener: Other addresses a page's own code may send data to, read when the site is built: a list in `csp-connect.json`.
 import { existsSync, readFileSync } from "node:fs";
 import type { NextConfig } from "next";
 

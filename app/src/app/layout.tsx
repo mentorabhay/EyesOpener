@@ -1,3 +1,4 @@
+// Eyes Opener: Root layout component defining UI structure, styling, theme providers, and global meta tags.
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import type { ReactNode } from "react";

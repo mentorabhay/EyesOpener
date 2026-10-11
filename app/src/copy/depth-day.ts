@@ -1,3 +1,4 @@
+// Eyes Opener: Words for First Depth Day. They say what a check-up found, never why, and never that it will stay. .
 /** Words for First Depth Day. They say what a check-up found, never why, and never that it will stay. */
 import { texts } from "@/i18n/texts";
 

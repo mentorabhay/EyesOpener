@@ -1,3 +1,4 @@
+// Eyes Opener: Blocks shared by the pages for counsellors and for sponsors: what a role sees, the steps to take part, the form. .
 /** Blocks shared by the pages for counsellors and for sponsors: what a role sees, the steps to take part, the form. */
 import { site as t } from "@/copy/site";
 import { ENQUIRY_KINDS, ENQUIRY_MAX, ENQUIRY_MIN_AGE, HONEYPOT_FIELD, type EnquiryKind } from "@/lib/site";

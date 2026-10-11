@@ -1,3 +1,4 @@
+// Eyes Opener: Core system module providing logic and utilities for forms.
 "use client";
 import { admin } from "@/copy/admin";
 import { AnswerForm } from "../answer-form";

@@ -1,3 +1,4 @@
+// Eyes Opener: Ten full blinks, guided by words and a slow bar. Nothing is measured: the member follows along.
 "use client";
 /**
  * Ten full blinks, guided by words and a slow bar. Nothing is measured: the member follows along.

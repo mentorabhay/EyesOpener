@@ -1,3 +1,4 @@
+// Eyes Opener: Small helpers shared by the seeing-skill games. No state, no colours: only layout, pointing and words. .
 /** Small helpers shared by the seeing-skill games. No state, no colours: only layout, pointing and words. */
 import { H, W, type Ink, type Kit } from "../kit";
 

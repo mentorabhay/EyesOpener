@@ -1,3 +1,4 @@
+// Eyes Opener: Checks the access phrase. A right answer sets the cookie and goes on; a wrong one waits a moment and says so. .
 "use server";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";

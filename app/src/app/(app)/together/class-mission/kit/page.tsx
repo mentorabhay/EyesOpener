@@ -1,3 +1,4 @@
+// Eyes Opener: The Class Mission kit, to print: a note for the teacher, the plan, the leader's cards, a paper comet and a.
 import type { Metadata } from "next";
 import paper from "@/components/gatherings/paper.module.css";
 import { PrintButton } from "@/components/gatherings/print-button";

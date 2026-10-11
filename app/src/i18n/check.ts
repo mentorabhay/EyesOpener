@@ -1,3 +1,4 @@
+// Eyes Opener: What must be the same in a translation as in the English it stands for. Pure, and the same on the server, in the.
 /**
  * What must be the same in a translation as in the English it stands for. Pure, and the same on the server, in the
  * browser, in the pipeline and in the tests.

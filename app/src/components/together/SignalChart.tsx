@@ -1,3 +1,4 @@
+// Eyes Opener: A stored number as written, with a true minus sign and a plus on gains. .
 import { together } from "@/copy/together";
 import s from "./together.module.css";
 

@@ -1,3 +1,4 @@
+// Eyes Opener: Opens the browser's print window. The print styles of the summary do the rest. .
 "use client";
 
 /** Opens the browser's print window. The print styles of the summary do the rest. */

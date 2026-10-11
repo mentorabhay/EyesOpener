@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for experiments.module. */
 /* The four steps of an experiment, top to bottom. Filled: done. Ringed: now. Dashed: not yet. */
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
 .steps > li { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 7px; min-width: 0; padding: 0 0 18px 36px; counter-increment: step; }

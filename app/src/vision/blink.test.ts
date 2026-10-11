@@ -1,3 +1,4 @@
+// Eyes Opener: Lid opening of the made-up face with its lids at a share of fully open, read through face.ts. .
 import { describe, expect, it } from "vitest";
 import { BLINK_MAX_MS, blinkStep, MAX_GAP_MS, startBlinks, type BlinkKind, type BlinkState } from "./blink";
 import { readFace } from "./face";

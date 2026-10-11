@@ -1,3 +1,4 @@
+// Eyes Opener: Which games are built, and how each one is shown. Safe to import on the server.
 /**
  * Which games are built, and how each one is shown. Safe to import on the server.
  *  - "kit": a canvas game inside the Stage (session clock, stop rule, glasses view).

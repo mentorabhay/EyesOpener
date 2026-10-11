@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero: who may do what. Pure rules, unit-tested; src/lib/hero.ts asks them before every write.
 /**
  * Draw Your Hero: who may do what. Pure rules, unit-tested; src/lib/hero.ts asks them before every write.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: Lists every piece of English text the app can show, with the key it is looked up under and its mark.
 /**
  * Lists every piece of English text the app can show, with the key it is looked up under and its mark.
  * This is the one list the counts, the checks and the translation pipeline all work from, in both editions.

@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for paper.module. */
 /* Pages to print: the Cinema Club host guide and session sheet, and the Class Mission kit.
    On screen: a note and a Print button, then the sheets as white paper. On paper: only the sheets.
    The sheets are black on white in both themes, so what is on screen is what comes out of the printer. */

@@ -1,3 +1,4 @@
+// Eyes Opener: Every exercise guide, by slug. The group files hold the words; this file only joins them. .
 /** Every exercise guide, by slug. The group files hold the words; this file only joins them. */
 import { guides as afterConcussion } from "./after-concussion";
 import { guides as afterStroke } from "./after-stroke";

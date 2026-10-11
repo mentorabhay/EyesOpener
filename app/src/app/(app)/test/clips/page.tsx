@@ -1,3 +1,4 @@
+// Eyes Opener: The clip library: the three sets, then every one of the 100 clips by group, with what it needs and whether it.
 import type { Metadata } from "next";
 import Link from "next/link";
 import clipCss from "@/components/clips/clips.module.css";

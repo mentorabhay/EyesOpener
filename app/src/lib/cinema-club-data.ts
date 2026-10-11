@@ -1,3 +1,4 @@
+// Eyes Opener: Reading and writing Cinema Club listings. Server only.
 /**
  * Reading and writing Cinema Club listings. Server only.
  * This file holds no gate: a page or an action calls `requireSponsor`, `requireStaff` or `requireMember` first.

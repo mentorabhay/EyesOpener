@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying calibrate functionality.
 import { describe, it, expect } from "vitest";
 import {
   CAL, CONTRAST_BACKGROUND, GAMMA_APART, INK_APART, LEAK_FAINT, LEAK_SUSPECT, MIN_CONTRAST, SRGB_INK_BALANCE, STARTING_CONTRAST, STRIPE_LIGHT, USUAL_GAMMA, USUAL_RIG,

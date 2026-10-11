@@ -1,3 +1,4 @@
+// Eyes Opener: Did you see the spot: the eye looks at a cross while a spot eases in at one of a set of places, or at none.
 "use client";
 /**
  * Did you see the spot: the eye looks at a cross while a spot eases in at one of a set of places, or at none.

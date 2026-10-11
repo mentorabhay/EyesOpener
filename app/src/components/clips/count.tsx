@@ -1,3 +1,4 @@
+// Eyes Opener: Count what you see: the four-dot check, played by the suppression check-up's own part. .
 "use client";
 import { FourDotTest } from "@/components/measure/four-dot";
 import type { TaskProps } from "./types";

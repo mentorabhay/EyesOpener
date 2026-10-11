@@ -1,3 +1,4 @@
+// Eyes Opener: The daily job for data requests: copies and deletions that families asked for in Settings.
 /**
  * The daily job for data requests: copies and deletions that families asked for in Settings.
  * The rules and the work are in src/lib/data/requests.ts. Safe to run twice; answers with counts only.

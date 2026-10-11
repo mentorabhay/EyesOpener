@@ -1,3 +1,4 @@
+// Eyes Opener: On-device vision: the camera, the face landmark model and the facts read from its points.
 /**
  * On-device vision: the camera, the face landmark model and the facts read from its points.
  * Camera pictures and face points never leave the device. A feature takes numbers from here and keeps only those.

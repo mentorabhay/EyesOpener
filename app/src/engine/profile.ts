@@ -1,3 +1,4 @@
+// Eyes Opener: The eye profile: what onboarding measures and what the engine derives from it.
 /**
  * The eye profile: what onboarding measures and what the engine derives from it.
  * Pure functions. The same file runs in the browser, on the server, in the phone WebView and on the TV.

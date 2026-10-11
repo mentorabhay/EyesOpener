@@ -1,3 +1,4 @@
+// Eyes Opener: Keeper Graduation: the ceremony. A plain game-kit scene with nothing to score: it only draws.
 /**
  * Keeper Graduation: the ceremony. A plain game-kit scene with nothing to score: it only draws.
  *

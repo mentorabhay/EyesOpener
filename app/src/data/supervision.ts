@@ -1,3 +1,4 @@
+// Eyes Opener: What supervision is supposed to do, in brief. Shown wherever the evidence label says "with supervision".
 /**
  * What supervision is supposed to do, in brief. Shown wherever the evidence label says "with supervision"
  * or the evidence framework recommends a counsellor (level 2).

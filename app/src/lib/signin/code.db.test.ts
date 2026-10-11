@@ -1,3 +1,4 @@
+// Eyes Opener: Sign-in with a six-digit code by email, against a real database and the Firebase stand-in, with the email caught.
 /**
  * Sign-in with a six-digit code by email, against a real database and the Firebase stand-in, with the email caught
  * instead of sent. Skipped where no database answers.

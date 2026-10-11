@@ -1,3 +1,4 @@
+// Eyes Opener: The steps a clip shows before it starts, by how its template is set. Words only: src/copy/clips.ts.
 /**
  * The steps a clip shows before it starts, by how its template is set. Words only: src/copy/clips.ts.
  * A "look and answer" clip carries its own steps (src/data/clips/looks.ts). The near point check and the surveys

@@ -1,3 +1,4 @@
+// Eyes Opener: The address a scheduler calls: POST /api/jobs/daily and POST /api/jobs/weekly, with the header `x-job-secret`.
 /**
  * The address a scheduler calls: POST /api/jobs/daily and POST /api/jobs/weekly, with the header `x-job-secret`.
  * Anything else, a wrong secret, or no secret set on the server answers "not found".

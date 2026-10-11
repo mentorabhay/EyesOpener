@@ -1,3 +1,4 @@
+// Eyes Opener: Small drawn pictures for the step strips (flow.tsx). Each is 160 by 100 and moves gently, and only while its step.
 /**
  * Small drawn pictures for the step strips (flow.tsx). Each is 160 by 100 and moves gently, and only while its step
  * is the one in view: the classes named `a-*` are animated by guide.module.css under the active step. Nothing

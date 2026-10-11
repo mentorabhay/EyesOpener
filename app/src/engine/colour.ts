@@ -1,3 +1,4 @@
+// Eyes Opener: The three inks and the colour matrix.
 /**
  * The three inks and the colour matrix.
  * Contrast is set in real light, not in raw colour values, so every value goes through the screen's gamma.

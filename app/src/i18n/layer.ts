@@ -1,3 +1,4 @@
+// Eyes Opener: Which side of a page this copy of the code draws.
 /**
  * Which side of a page this copy of the code draws.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: The hero tracing, checked with pictures drawn by code: a drawn test image in, the expected shape out.
 /**
  * The hero tracing, checked with pictures drawn by code: a drawn test image in, the expected shape out.
  */

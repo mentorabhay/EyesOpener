@@ -1,3 +1,4 @@
+// Eyes Opener: The note an assistant left for the reviewer: what the item is, what the second opinion on hazards flagged, and.
 import type { Metadata } from "next";
 import { GatheringNote, GatheringRows, gatheringHeading } from "@/components/gatherings/review";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";

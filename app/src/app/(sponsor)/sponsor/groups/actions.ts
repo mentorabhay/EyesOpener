@@ -1,3 +1,4 @@
+// Eyes Opener: Close a group to new families, or open it again. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

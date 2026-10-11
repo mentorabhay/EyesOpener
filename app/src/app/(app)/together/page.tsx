@@ -1,3 +1,4 @@
+// Eyes Opener: Hatched until a pooled result exists; green only once someone outside the community has checked it. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";

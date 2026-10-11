@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the counsellor portal. .
 /** Words for the counsellor portal. */
 import { MAX_DAILY_MINUTES } from "@/engine";
 import { texts } from "@/i18n/texts";

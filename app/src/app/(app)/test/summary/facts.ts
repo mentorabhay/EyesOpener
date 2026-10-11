@@ -1,3 +1,4 @@
+// Eyes Opener: What the summary for an eye exam shows, read once. The page draws these values, and the plain-words paragraph.
 /**
  * What the summary for an eye exam shows, read once. The page draws these values, and the plain-words paragraph
  * an assistant may write is built from the same values and from nothing else (`examFacts`).

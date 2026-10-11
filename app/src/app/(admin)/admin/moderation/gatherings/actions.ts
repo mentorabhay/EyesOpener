@@ -1,3 +1,4 @@
+// Eyes Opener: Staff changes for the four gatherings. The page is kept in the moderation room: that room's gate runs in every.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

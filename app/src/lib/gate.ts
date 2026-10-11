@@ -1,3 +1,4 @@
+// Eyes Opener: The site lock. When SITE_LOCK holds an access phrase, every page asks for it once per browser.
 /**
  * The site lock. When SITE_LOCK holds an access phrase, every page asks for it once per browser.
  * It is for a site that is deployed but not open yet (a staging copy, the days before launch).

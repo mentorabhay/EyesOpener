@@ -1,3 +1,4 @@
+// Eyes Opener: One training session in the browser. The server decides whether it may start and for how long;.
 "use client";
 import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
 import { finishTrainSession, startTrainSession } from "@/app/(app)/train/actions";

@@ -1,3 +1,4 @@
+// Eyes Opener: The clips on the server: who may run one, saving what it measured, and what was done before.
 /**
  * The clips on the server: who may run one, saving what it measured, and what was done before.
  * The rules are in clip-rules.ts and are tested without a database.

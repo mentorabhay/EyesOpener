@@ -1,3 +1,4 @@
+// Eyes Opener: Runs one move for the active profile. Only a guardian seat outside child mode may move a profile: a child joins.
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

@@ -1,3 +1,4 @@
+// Eyes Opener: What a data request is doing right now, worked out from its row. Pure rules, unit-tested.
 /**
  * What a data request is doing right now, worked out from its row. Pure rules, unit-tested.
  * The Settings page, the staff room and the daily job all read a request through these functions.

@@ -1,3 +1,4 @@
+// Eyes Opener: Sunset Rule: the rules, pure. Tested in sunset.test.ts; src/lib/sunset-data.ts reads the rows.
 /**
  * Sunset Rule: the rules, pure. Tested in sunset.test.ts; src/lib/sunset-data.ts reads the rows.
  *

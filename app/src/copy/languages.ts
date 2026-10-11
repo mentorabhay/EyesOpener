@@ -1,3 +1,4 @@
+// Eyes Opener: Words for choosing a language: the household's setting, the menu on the public site, and the section staff use.
 /**
  * Words for choosing a language: the household's setting, the menu on the public site, and the section staff use
  * to switch a language on. Plain words a school student can follow.

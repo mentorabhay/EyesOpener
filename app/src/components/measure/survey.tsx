@@ -1,3 +1,4 @@
+// Eyes Opener: The symptom survey: fifteen questions, each answered never (0) to always (4). `onDone` gets the fifteen answers. .
 "use client";
 import { useState } from "react";
 import { measure as t } from "@/copy/test";

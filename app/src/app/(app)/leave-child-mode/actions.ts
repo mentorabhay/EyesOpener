@@ -1,3 +1,4 @@
+// Eyes Opener: The right PIN ends child mode. Five wrong tries in a row close the form for five minutes. .
 "use server";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { revalidatePath } from "next/cache";

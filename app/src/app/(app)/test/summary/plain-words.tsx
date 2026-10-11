@@ -1,3 +1,4 @@
+// Eyes Opener: One paragraph that says the page's numbers in plain words, written by an assistant when a grown-up asks.
 "use client";
 import { useState, useTransition } from "react";
 import { assistCopy } from "@/copy/assist";

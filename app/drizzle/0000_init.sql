@@ -1,3 +1,4 @@
+-- Eyes Opener: Core system module providing logic and utilities for 0000_init.
 CREATE TYPE "public"."arm" AS ENUM('tried', 'control');--> statement-breakpoint
 CREATE TYPE "public"."device_kind" AS ENUM('web', 'phone', 'tv');--> statement-breakpoint
 CREATE TYPE "public"."enrol_status" AS ENUM('active', 'paused', 'finished');--> statement-breakpoint

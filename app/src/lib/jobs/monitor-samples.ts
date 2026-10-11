@@ -1,3 +1,4 @@
+// Eyes Opener: The daily job for the workday monitor: one-minute samples are kept for a limited time, then removed.
 /**
  * The daily job for the workday monitor: one-minute samples are kept for a limited time, then removed.
  * Day totals (screen time, breaks on the Rest ring) stay. It also closes runs a closed tab left open.

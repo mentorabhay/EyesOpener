@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the Train space: games, exercises, the two-eye cinema and the session clock. .
 /** Words for the Train space: games, exercises, the two-eye cinema and the session clock. */
 import { texts } from "@/i18n/texts";
 

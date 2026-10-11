@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying tools functionality.
 import { describe, expect, it } from "vitest";
 import { passages, tools } from "@/copy/drills-tools";
 import {

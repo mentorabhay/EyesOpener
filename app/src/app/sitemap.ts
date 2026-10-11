@@ -1,3 +1,4 @@
+// Eyes Opener: The public pages a search engine may list: the site's own pages and one page for each programme.
 import type { MetadataRoute } from "next";
 import { programmes } from "@/data";
 import { inEdition } from "@/edition";

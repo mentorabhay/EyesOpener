@@ -1,3 +1,4 @@
+// Eyes Opener: A test helper: plays one vergence game with no screen and watches its demand on every frame.
 /**
  * A test helper: plays one vergence game with no screen and watches its demand on every frame.
  * The demand is the treatment and the safety, so the rules are checked frame by frame: it starts at rest, stays

@@ -1,3 +1,4 @@
+// Eyes Opener: The member's own films, lined up on this device: order, length and where each one stopped. Pure rules, unit-tested.
 /**
  * The member's own films, lined up on this device: order, length and where each one stopped. Pure rules, unit-tested.
  *

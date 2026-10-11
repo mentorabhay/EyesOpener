@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the sponsor portal. .
 /** Words for the sponsor portal. */
 import { SPONSOR_MIN_GROUP } from "@/lib/roles";
 import { texts } from "@/i18n/texts";

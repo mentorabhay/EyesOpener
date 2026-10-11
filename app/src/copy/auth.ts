@@ -1,3 +1,4 @@
+// Eyes Opener: Localized strings, user interface copy, and text dictionary for auth.
 import { texts } from "@/i18n/texts";
 
 export const auth = texts("copy/auth", "auth", () => ({

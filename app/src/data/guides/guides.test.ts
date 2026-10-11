@@ -1,3 +1,4 @@
+// Eyes Opener: Words a guide must never use: promises and jargon the copy rules rule out. .
 import { describe, expect, it } from "vitest";
 import { exercises } from "@/data";
 import { AUTO_KEYS, guides, TOOL_KIND } from "./index";

@@ -1,3 +1,4 @@
+// Eyes Opener: The data section of Settings: a copy of the family's data, deleting everything, deleting one profile.
 import Link from "next/link";
 import { Card } from "@/components/ui";
 import { data as t, day } from "@/copy/data";

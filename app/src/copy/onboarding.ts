@@ -1,3 +1,4 @@
+// Eyes Opener: Localized strings, user interface copy, and text dictionary for onboarding.
 import { EYE_NAME, other, type Derived, type Eye } from "@/engine";
 import { texts } from "@/i18n/texts";
 

@@ -1,3 +1,4 @@
+// Eyes Opener: What the depth game in this edition promises, checked with no screen: the depth step is honest, one eye.
 /**
  * What the depth game in this edition promises, checked with no screen: the depth step is honest, one eye
  * alone gets no clue, and the words are never smaller than the member's letters.

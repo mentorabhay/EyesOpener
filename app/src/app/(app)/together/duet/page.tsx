@@ -1,3 +1,4 @@
+// Eyes Opener: One sentence saying what this partner's part is. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, Empty, PageHead, type Tone } from "@/components/ui";

@@ -1,3 +1,4 @@
+// Eyes Opener: A date as the member reads it, for example 4 Oct 2026. .
 import type { Blocked, LinkResult, TriageKey } from "@/lib/family";
 import { texts } from "@/i18n/texts";
 

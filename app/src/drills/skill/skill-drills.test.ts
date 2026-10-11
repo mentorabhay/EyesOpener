@@ -1,3 +1,4 @@
+// Eyes Opener: Plays the six skill drills: with random input at three screen sizes (nothing throws, every number is sane and.
 /**
  * Plays the six skill drills: with random input at three screen sizes (nothing throws, every number is sane and
  * only the agreed keys are reported), then the way a member would (right answers reach a good measure, wrong

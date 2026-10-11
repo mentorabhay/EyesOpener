@@ -1,3 +1,4 @@
+-- Eyes Opener: Core system module providing logic and utilities for 0006_clips_rewards_gatherings.
 CREATE TABLE "cinema_club" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"sponsor_id" uuid,

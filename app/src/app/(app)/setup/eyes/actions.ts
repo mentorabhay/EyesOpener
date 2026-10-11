@@ -1,3 +1,4 @@
+// Eyes Opener: Saves a finished onboarding for the active profile. The input is checked, and the settings derived, in saveMeasured. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { onboarding as o } from "@/copy/onboarding";

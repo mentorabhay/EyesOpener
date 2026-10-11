@@ -1,3 +1,4 @@
+-- Eyes Opener: User authentication, token verification, and session state management (0011_signin_code).
 CREATE TABLE "signin_code" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"email_key" text NOT NULL,

@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the Locked Gallery. Plain words; no promise that anything will change. .
 /** Words for the Locked Gallery. Plain words; no promise that anything will change. */
 import { texts } from "@/i18n/texts";
 

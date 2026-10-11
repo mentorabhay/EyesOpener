@@ -1,3 +1,4 @@
+// Eyes Opener: On-screen skill drills, by exercise slug. .
 /** On-screen skill drills, by exercise slug. */
 import type { GameDef } from "@/games/kit";
 import { blindSideSweeps } from "./blind-side-sweeps";

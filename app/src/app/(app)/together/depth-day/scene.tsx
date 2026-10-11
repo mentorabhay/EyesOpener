@@ -1,3 +1,4 @@
+// Eyes Opener: How long the scene plays before it comes to rest by itself, in seconds. .
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { KitScene, type SceneEye } from "@/components/together/kit-scene";

@@ -1,3 +1,4 @@
+// Eyes Opener: Drawings for the public site. All inline SVG: no photos, no image files.
 /**
  * Drawings for the public site. All inline SVG: no photos, no image files.
  * A drawing that says something carries a label; one that only decorates is hidden from screen readers.

@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for guide.module. */
 /* The step strip (flow.tsx), its pictures (icons.tsx) and the folded details (more.tsx).
    Motion is slow and soft: nothing flashes, nothing moves faster than about one change a second, and the global
    "reduce motion" rule in globals.css turns every animation and transition here off. */

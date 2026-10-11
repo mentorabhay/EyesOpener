@@ -1,3 +1,4 @@
+// Eyes Opener: Which way round the red-cyan glasses go, drawn as a mirror: the wearer's left eye is on the left.
 "use client";
 import type { KeyboardEvent, ReactNode } from "react";
 import { cinema as c } from "@/copy/cinema";

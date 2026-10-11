@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(sponsor)/sponsor/groups web route.
 import type { Metadata } from "next";
 import { Card, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { day, sponsor as t } from "@/copy/sponsor";

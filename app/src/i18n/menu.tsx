@@ -1,3 +1,4 @@
+// Eyes Opener: Where a language is chosen: the card in Settings and the menu at the foot of the public site. Server parts.
 /**
  * Where a language is chosen: the card in Settings and the menu at the foot of the public site. Server parts.
  * Only languages offered to this person are listed: English, those staff have switched on, and for staff those

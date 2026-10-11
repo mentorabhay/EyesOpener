@@ -1,3 +1,4 @@
+// Eyes Opener: Words a plan must never use: promises the copy rules rule out. .
 import { describe, expect, it } from "vitest";
 import { programme as words } from "@/copy/programme";
 import { catalogue, exerciseBySlug, gameBySlug, programmeBySlug, programmes, testByKey } from "@/data";

@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(app)/test/clips/[code] web route.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";

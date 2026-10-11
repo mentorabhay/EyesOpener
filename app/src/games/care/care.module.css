@@ -1,3 +1,4 @@
+/* Eyes Opener: Interactive visual exercise and gamified therapy logic for care.module. */
 /* Care companions: direction B. Small route-local styles; everything else is the shared classes. */
 
 .art { display: block; width: 100%; height: auto; border-radius: var(--r-md); border: 1px solid var(--line); background: var(--sunken); }

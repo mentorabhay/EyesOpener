@@ -1,3 +1,4 @@
+// Eyes Opener: Records that a person answered or closed an enquiry. It sends nothing to the person who wrote. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

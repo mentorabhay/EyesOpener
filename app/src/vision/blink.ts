@@ -1,3 +1,4 @@
+// Eyes Opener: Blinks, from how far the lids are apart in each camera picture (`open` from face.ts). Pure: the caller passes the.
 /**
  * Blinks, from how far the lids are apart in each camera picture (`open` from face.ts). Pure: the caller passes the
  * time of each picture, and the state goes in and comes out.

@@ -1,3 +1,4 @@
+-- Eyes Opener: Core system module providing logic and utilities for 0004_screen_data_league_experiments.
 CREATE TABLE "team_move" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"profile_id" uuid NOT NULL,

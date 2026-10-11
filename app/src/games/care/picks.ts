@@ -1,3 +1,4 @@
+// Eyes Opener: What each day shows, worked out from the date alone so the page and the action agree. .
 /** What each day shows, worked out from the date alone so the page and the action agree. */
 import { care as t } from "@/copy/games-care";
 import { pickSeeded } from "@/lib/care";

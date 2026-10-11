@@ -1,3 +1,4 @@
+// Eyes Opener: More care companions, when the build includes them. This edition has none.
 /**
  * More care companions, when the build includes them. This edition has none.
  * Returns the screen for a companion, or nothing when the slug is not one of the extras.

@@ -1,3 +1,4 @@
+// Eyes Opener: Puts every object and array of words in `src/copy/` inside `texts(...)` (see src/i18n/texts.ts), and turns a.
 /**
  * Puts every object and array of words in `src/copy/` inside `texts(...)` (see src/i18n/texts.ts), and turns a
  * page's fixed `metadata` into `generateMetadata`, so a page's title is read for each request.

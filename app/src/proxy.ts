@@ -1,3 +1,4 @@
+// Eyes Opener: Runs before every page request. Three jobs. The first two read one cookie each and do no database work.
 /**
  * Runs before every page request. Three jobs. The first two read one cookie each and do no database work.
  *

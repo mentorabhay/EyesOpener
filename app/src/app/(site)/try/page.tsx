@@ -1,3 +1,4 @@
+// Eyes Opener: try: a 60-second demo game for anyone, with no sign-in. Nothing is saved. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { marketing } from "@/copy/marketing";

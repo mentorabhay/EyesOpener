@@ -1,3 +1,4 @@
+// Eyes Opener: The languages IOpener can be read in: Indian English, which every word is written in, and the ten Indian.
 /**
  * The languages IOpener can be read in: Indian English, which every word is written in, and the ten Indian
  * languages of the tech-stack decision. Pure data. How a page gets its words is in docs/LANGUAGES.md.

@@ -1,3 +1,4 @@
+// Eyes Opener: The rules of the clips, with no database in them, so they can be tested.
 /**
  * The rules of the clips, with no database in them, so they can be tested.
  *

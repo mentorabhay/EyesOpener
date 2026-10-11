@@ -1,3 +1,4 @@
+// Eyes Opener: Cue pictures are drawn on a black field like the game. Red is shown at full strength here so it is easy to see. .
 import type { Cue, CueInk, Shape } from "@/data/game-guides";
 import { CUE_H, CUE_W } from "@/data/game-guides/cue";
 

@@ -1,3 +1,4 @@
+// Eyes Opener: Sets the browser's language to its household's and sends the browser back where it was.
 /**
  * Sets the browser's language to its household's and sends the browser back where it was.
  * A member's page sends the browser here when the two differ (src/i18n/household.ts).

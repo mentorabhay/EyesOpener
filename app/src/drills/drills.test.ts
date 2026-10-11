@@ -1,3 +1,4 @@
+// Eyes Opener: What the kit and the vergence helpers keep in every session. .
 import { describe, expect, it } from "vitest";
 import { exercises } from "@/data";
 import { AUTO_KEYS, guideFor, TOOL_KIND } from "@/data/guides";

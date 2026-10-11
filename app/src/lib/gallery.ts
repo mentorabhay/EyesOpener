@@ -1,3 +1,4 @@
+// Eyes Opener: Locked Gallery: the rules, pure. Tested in gallery.test.ts; src/lib/gallery-data.ts reads and writes.
 /**
  * Locked Gallery: the rules, pure. Tested in gallery.test.ts; src/lib/gallery-data.ts reads and writes.
  *

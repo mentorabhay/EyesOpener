@@ -1,3 +1,4 @@
+// Eyes Opener: Plays pictures every `every` ms for `seconds`, all at the screen or all away. .
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@/db", () => ({ db: {}, schema: { careLog: {}, daySummary: {} } }));

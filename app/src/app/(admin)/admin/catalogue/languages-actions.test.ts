@@ -1,3 +1,4 @@
+// Eyes Opener: Switching a language on: who may, what is refused, and what is written down.
 /**
  * Switching a language on: who may, what is refused, and what is written down.
  * Only a super admin and content staff may change a status; every change goes to the audit log with what it was

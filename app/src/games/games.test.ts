@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying games functionality.
 import { describe, expect, it } from "vitest";
 import { gameBySlug } from "@/data";
 import { builtSlugs, helpFor, isBuilt, kindOf } from "./built";

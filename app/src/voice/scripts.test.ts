@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying scripts functionality.
 import { describe, expect, it } from "vitest";
 import { stepsOf } from "@/clips/steps";
 import { clips as clipWords } from "@/copy/clips";

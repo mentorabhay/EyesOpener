@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying tune functionality.
 import { afterEach, describe, expect, it } from "vitest";
 import { USUAL_TUNE, currentTune, cyanCode, leakFor, parseCyanCode, parseRedCode, redCode, setInkTune, strongInk, trainRed, tuneOf, validTune, videoMatrix, weakInk, weakLight } from "@/engine";
 

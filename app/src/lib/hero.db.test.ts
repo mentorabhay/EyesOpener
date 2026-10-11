@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero against a real database: who may keep, choose and delete a hero, what is stored, and that one.
 /**
  * Draw Your Hero against a real database: who may keep, choose and delete a hero, what is stored, and that one
  * household can never reach another's. It makes two throwaway households and removes them.

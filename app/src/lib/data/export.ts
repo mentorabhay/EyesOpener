@@ -1,3 +1,4 @@
+// Eyes Opener: A family's copy of everything stored about its household.
 /**
  * A family's copy of everything stored about its household.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: Which language a piece of text is wanted in right now, and the translated text if there is a usable one.
 /**
  * Which language a piece of text is wanted in right now, and the translated text if there is a usable one.
  * This file runs in three places and behaves the same in each: while the server draws a page, while the server

@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for book.module. */
 /* The journey book: one record of a finished course, printed black on white with the app's navigation left out. */
 .sheet { display: flex; flex-direction: column; gap: 18px; max-width: 900px; }
 .sheet h2 { font-size: 16px; }

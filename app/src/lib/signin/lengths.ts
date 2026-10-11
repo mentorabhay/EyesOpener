@@ -1,3 +1,4 @@
+// Eyes Opener: How long a session lasts. Kept in a file with no imports, so the words on the sign-in page can quote the numbers.
 /**
  * How long a session lasts. Kept in a file with no imports, so the words on the sign-in page can quote the numbers
  * without pulling server code into the browser. The rules that use them: session-rules.ts.

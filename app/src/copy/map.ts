@@ -1,3 +1,4 @@
+// Eyes Opener: Words for Light the Map: a drawing of India that lights up as families join.
 /**
  * Words for Light the Map: a drawing of India that lights up as families join.
  * Only the first three digits of a PIN code are ever asked for. An area with few families is shown to nobody,

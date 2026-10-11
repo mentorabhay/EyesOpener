@@ -1,3 +1,4 @@
+// Eyes Opener: Writes for the workday monitor. Every action reads the member fresh, checks what this person may do for the.
 "use server";
 /**
  * Writes for the workday monitor. Every action reads the member fresh, checks what this person may do for the

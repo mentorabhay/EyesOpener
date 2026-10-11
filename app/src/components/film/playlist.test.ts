@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying playlist functionality.
 import { describe, expect, it } from "vitest";
 import {
   addFilms, addReel, EMPTY, filmKey, handleKey, isVideoFile, MAX_FILMS, moveFilm, nextFilm, parseStored, REEL_KEY, removeFilm, resumeAt,

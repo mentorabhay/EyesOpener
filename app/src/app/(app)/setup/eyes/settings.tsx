@@ -1,3 +1,4 @@
+// Eyes Opener: The eye settings with where each one comes from. `ppc` adds sizes in pixels for this screen. .
 import type { ReactNode } from "react";
 import { onboarding } from "@/copy/onboarding";
 import { EYE_NAME, LETTER_MULTIPLE, TARGET_MULTIPLE, percent, strongInk, type Derived } from "@/engine";

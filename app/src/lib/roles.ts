@@ -1,3 +1,4 @@
+// Eyes Opener: Who may do what. Pure rules, unit-tested; the server gates in auth.ts and session.ts call these.
 /**
  * Who may do what. Pure rules, unit-tested; the server gates in auth.ts and session.ts call these.
  * Guardian seats write, cheer seats only look and encourage, staff see rooms by role,

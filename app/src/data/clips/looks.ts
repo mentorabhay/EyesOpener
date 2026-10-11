@@ -1,3 +1,4 @@
+// Eyes Opener: The "look and answer" clips: a still picture (or a slow, steady one), what to do, and one or more questions.
 /**
  * The "look and answer" clips: a still picture (or a slow, steady one), what to do, and one or more questions.
  * Each answer carries what it means: "pass" (fine), "note" (worth knowing, nothing to fix today),

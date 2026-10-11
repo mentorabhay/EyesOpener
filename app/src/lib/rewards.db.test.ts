@@ -1,3 +1,4 @@
+// Eyes Opener: The four "rewards" ideas against a real database: what is marked, kept, shown and given, who may do it, and that.
 /**
  * The four "rewards" ideas against a real database: what is marked, kept, shown and given, who may do it, and that
  * one household can never reach another's. It makes throwaway households and removes them.

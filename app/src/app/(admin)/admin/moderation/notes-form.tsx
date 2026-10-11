@@ -1,3 +1,4 @@
+// Eyes Opener: Asks the AI check for notes on the open items that have none. Drawn only in an edition with an assistant. .
 "use client";
 import { assistCopy } from "@/copy/assist";
 import { AnswerForm } from "../answer-form";

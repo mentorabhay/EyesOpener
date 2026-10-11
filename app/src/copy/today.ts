@@ -1,3 +1,4 @@
+// Eyes Opener: Read out for the week's bars: "Tue 60 minutes". .
 import { texts } from "@/i18n/texts";
 
 export const today = texts("copy/today", "today", () => ({

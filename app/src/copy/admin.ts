@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the admin console. Staff read these; they stay as plain as the member screens. .
 import type { AdminArea, StaffRole } from "@/lib/roles";
 import { texts } from "@/i18n/texts";
 

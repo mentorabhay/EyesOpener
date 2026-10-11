@@ -1,3 +1,4 @@
+// Eyes Opener: Tunnel Glide's demand, checked frame by frame with the probe: it starts at rest, stays inside what the screen.
 /**
  * Tunnel Glide's demand, checked frame by frame with the probe: it starts at rest, stays inside what the screen
  * allows, never moves faster than 2 a second, always eases when the member says the picture split, and nothing

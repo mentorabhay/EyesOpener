@@ -1,3 +1,4 @@
+// Eyes Opener: Text sizes in CSS pixels, and the longest line in characters, for the member's two choices. .
 "use client";
 import { useEffect, useEffectEvent, useId, useMemo, useRef, useState } from "react";
 import type { Labels } from "@/components/play/results";

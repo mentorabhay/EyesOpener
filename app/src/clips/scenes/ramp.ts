@@ -1,3 +1,4 @@
+// Eyes Opener: The fusion-range clips on the game kit: how far the eyes follow a ring before it splits in two (the break), and.
 /**
  * The fusion-range clips on the game kit: how far the eyes follow a ring before it splits in two (the break), and
  * where it joins again on the way back (the recovery). One scene, set by direction and speed.

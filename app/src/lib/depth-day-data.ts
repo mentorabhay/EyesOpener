@@ -1,3 +1,4 @@
+// Eyes Opener: First Depth Day: reading the active profile's depth day and keeping it. Server only. The rules are in depth-day.ts.
 /**
  * First Depth Day: reading the active profile's depth day and keeping it. Server only. The rules are in depth-day.ts.
  *

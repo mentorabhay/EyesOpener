@@ -1,3 +1,4 @@
+// Eyes Opener: Removing a deleted person from Firebase Authentication.
 /**
  * Removing a deleted person from Firebase Authentication.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: What the root layout needs to draw a page in the request's language: the `lang` and direction of `<html>`,.
 /**
  * What the root layout needs to draw a page in the request's language: the `lang` and direction of `<html>`,
  * the typeface for the script, and the script that gives the browser its words before the page comes alive.

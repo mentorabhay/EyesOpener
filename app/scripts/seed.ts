@@ -1,3 +1,4 @@
+// Eyes Opener: Seeds the demo family and sample community data. Safe to run again: it clears the demo rows first.
 /**
  * Seeds the demo family and sample community data. Safe to run again: it clears the demo rows first.
  * Every number here is sample data for development, not a measurement.

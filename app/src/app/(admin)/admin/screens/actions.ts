@@ -1,3 +1,4 @@
+// Eyes Opener: Turns the setup hold on or off. Super admin only: ops may look at the room, not change it. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

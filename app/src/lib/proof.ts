@@ -1,3 +1,4 @@
+// Eyes Opener: Proof of Help: what a shared idea has done, said in words the numbers support and no more.
 /**
  * Proof of Help: what a shared idea has done, said in words the numbers support and no more.
  * Pure functions, tested in proof.test.ts. src/lib/proof-data.ts reads the rows.

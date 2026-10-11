@@ -1,3 +1,4 @@
+// Eyes Opener: Core system module providing logic and utilities for flow.
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";

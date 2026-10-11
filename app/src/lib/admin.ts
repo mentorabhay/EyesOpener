@@ -1,3 +1,4 @@
+// Eyes Opener: Queries and writes for the admin console. Server only.
 /**
  * Queries and writes for the admin console. Server only.
  * This file holds no gate: every page and every Server Action calls `requireStaff(room)` first, then audits its write.

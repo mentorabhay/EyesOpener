@@ -1,3 +1,4 @@
+// Eyes Opener: Six-digit sign-in codes sent by email (Ved, 10 October 2026). Server only.
 /**
  * Six-digit sign-in codes sent by email (Ved, 10 October 2026). Server only.
  *

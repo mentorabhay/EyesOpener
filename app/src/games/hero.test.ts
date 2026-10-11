@@ -1,3 +1,4 @@
+// Eyes Opener: A grid from lines of text: "#" is on. .
 import { describe, expect, it } from "vitest";
 import { HERO_CELLS, HERO_MAX_RUNS, HERO_MIN_SIDE, STARTER_KEYS, boundsOf, cleanSprite, defaultHero, fitGrid, gridOf, newGrid, onCells, spriteOf, starter, type Sprite } from "./hero";
 

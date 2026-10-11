@@ -1,3 +1,4 @@
+// Eyes Opener: DEVELOPMENT ONLY: shows machine-draft translations that no person has checked.
 /**
  * DEVELOPMENT ONLY: shows machine-draft translations that no person has checked.
  *

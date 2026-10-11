@@ -1,3 +1,4 @@
+// Eyes Opener: Everything an eye doctor may want from the home measurements, on one printable page. Read-only: anyone who may look may open it. .
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Btn, Card, PageHead } from "@/components/ui";

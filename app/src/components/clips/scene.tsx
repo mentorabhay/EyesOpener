@@ -1,3 +1,4 @@
+// Eyes Opener: The clips that are played as a scene on the game kit: say when it splits, hold and time, count flips, find and.
 "use client";
 /**
  * The clips that are played as a scene on the game kit: say when it splits, hold and time, count flips, find and

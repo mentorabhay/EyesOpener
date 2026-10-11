@@ -1,3 +1,4 @@
+// Eyes Opener: Flip Switch. The demand flips between turning the eyes in and letting them out, and the member says.
 /**
  * Flip Switch. The demand flips between turning the eyes in and letting them out, and the member says
  * "one ring" after each flip. It measures full cycles a minute (in and out is one cycle) and the pair of demands

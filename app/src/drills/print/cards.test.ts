@@ -1,3 +1,4 @@
+// Eyes Opener: Every key of `PrintKey`: the record makes the compiler say so when a key is added. .
 import type { ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";

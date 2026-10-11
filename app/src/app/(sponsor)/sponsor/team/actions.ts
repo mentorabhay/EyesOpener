@@ -1,3 +1,4 @@
+// Eyes Opener: Owners only: add a person who already signs in to IOpener. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

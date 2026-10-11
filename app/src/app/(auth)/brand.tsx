@@ -1,3 +1,4 @@
+// Eyes Opener: The dark panel beside the Log in, Register and "Can't sign in?" forms: what IOpener is, in a few words. .
 /** The dark panel beside the Log in, Register and "Can't sign in?" forms: what IOpener is, in a few words. */
 import Link from "next/link";
 import { marketing } from "@/copy/marketing";

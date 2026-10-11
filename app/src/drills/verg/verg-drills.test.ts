@@ -1,3 +1,4 @@
+// Eyes Opener: The seven vergence drills, played with no screen.
 /**
  * The seven vergence drills, played with no screen.
  * Three things are checked: the demand keeps every safety rule on every frame; each drill reports exactly its

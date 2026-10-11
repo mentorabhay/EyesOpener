@@ -1,3 +1,4 @@
+// Eyes Opener: The public site: the landing page, the stories and the pages about IOpener, inside one navigation and footer.
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { common } from "@/copy/common";

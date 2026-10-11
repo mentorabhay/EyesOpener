@@ -1,3 +1,4 @@
+// Eyes Opener: Parts shared by the skill drills: answering by side, words sized to fit a phone, the row of choices,.
 /**
  * Parts shared by the skill drills: answering by side, words sized to fit a phone, the row of choices,
  * quiet marks and the tumbling E. No state and no colours.

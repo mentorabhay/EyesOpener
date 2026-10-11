@@ -1,3 +1,4 @@
+// Eyes Opener: Tools for the languages of the app. docs/LANGUAGES.md explains the design.
 /**
  * Tools for the languages of the app. docs/LANGUAGES.md explains the design.
  *

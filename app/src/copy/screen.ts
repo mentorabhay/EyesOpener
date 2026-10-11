@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the screen colour checks (Settings, "This screen's colours").
 /**
  * Words for the screen colour checks (Settings, "This screen's colours").
  * Three measurements a grown-up makes by eye: the brightness curve, the colour leak and the ink balance; then the inks

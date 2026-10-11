@@ -1,3 +1,4 @@
+// Eyes Opener: The manifest: the list of audio that exists. It is a file, `manifest.json`, made by the audio pipeline and kept.
 /**
  * The manifest: the list of audio that exists. It is a file, `manifest.json`, made by the audio pipeline and kept
  * beside the audio it lists, so the two always travel together. The app reads it and never writes it.

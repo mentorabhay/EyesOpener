@@ -1,3 +1,4 @@
+// Eyes Opener: The words a browser is given for its language: one script, loaded before the page comes alive, that sets.
 /**
  * The words a browser is given for its language: one script, loaded before the page comes alive, that sets
  * `window.__ioLang`. Server only.

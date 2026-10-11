@@ -1,3 +1,4 @@
+// Eyes Opener: Care away from the screen: the family's own log of time outdoors and of short breaks, and the Light and Rest rings.
 /**
  * Care away from the screen: the family's own log of time outdoors and of short breaks, and the Light and Rest rings.
  *

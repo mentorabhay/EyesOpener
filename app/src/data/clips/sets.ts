@@ -1,3 +1,4 @@
+// Eyes Opener: Sets: clips played one after another. A set is a list of what to consider, in order; which of them run for one.
 /**
  * Sets: clips played one after another. A set is a list of what to consider, in order; which of them run for one
  * member on one screen is worked out in src/lib/clip-rules.ts (`planSet`), from where the screen stands, who is

@@ -1,3 +1,4 @@
+// Eyes Opener: The assistant of this edition. The public edition has none: every question is answered with "none" and nothing.
 /**
  * The assistant of this edition. The public edition has none: every question is answered with "none" and nothing
  * is ever sent anywhere. A fuller build replaces this one file. The shapes and the rules are in ./types.

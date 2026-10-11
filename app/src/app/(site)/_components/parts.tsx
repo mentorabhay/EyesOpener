@@ -1,3 +1,4 @@
+// Eyes Opener: Building blocks shared by the public pages: the page hero, sections, section heads and the closing band. Server-safe. .
 /** Building blocks shared by the public pages: the page hero, sections, section heads and the closing band. Server-safe. */
 import Link from "next/link";
 import type { ReactNode } from "react";

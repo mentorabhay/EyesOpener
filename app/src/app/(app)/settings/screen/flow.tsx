@@ -1,3 +1,4 @@
+// Eyes Opener: The three colour checks of a screen, each one a pair of matches a grown-up makes by eye:.
 "use client";
 /**
  * The three colour checks of a screen, each one a pair of matches a grown-up makes by eye:

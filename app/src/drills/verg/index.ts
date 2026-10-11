@@ -1,3 +1,4 @@
+// Eyes Opener: On-screen vergence drills, by exercise slug. Each reports the keys in `AUTO_KEYS[slug]` (src/data/guides/index.ts). .
 /** On-screen vergence drills, by exercise slug. Each reports the keys in `AUTO_KEYS[slug]` (src/data/guides/index.ts). */
 import type { GameDef } from "@/games/kit";
 import { distanceFusionHold } from "./distance-fusion-hold";

@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the shared test drawings in src/components/measure. .
 import { EYE_NAME, other, type Eye } from "@/engine";
 import { texts } from "@/i18n/texts";
 

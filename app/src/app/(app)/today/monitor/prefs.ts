@@ -1,3 +1,4 @@
+// Eyes Opener: The member's own switches for the monitor, kept in this browser: which reminders to show, sound, system notices,.
 /**
  * The member's own switches for the monitor, kept in this browser: which reminders to show, sound, system notices,
  * a second screen to the side, and whether the camera picture is on show. Nothing here is sent anywhere.

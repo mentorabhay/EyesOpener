@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying experiment-data functionality.
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("@/db", () => ({ db: {}, schema: {} }));

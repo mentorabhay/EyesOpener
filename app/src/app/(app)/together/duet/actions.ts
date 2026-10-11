@@ -1,3 +1,4 @@
+// Eyes Opener: Starts a duet for two people of the household. Only a guardian or co-guardian, and never a device in child mode. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

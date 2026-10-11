@@ -1,3 +1,4 @@
+// Eyes Opener: Each letter with the ink that draws it: the two eyes take turns, and spaces do not use up a turn. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";

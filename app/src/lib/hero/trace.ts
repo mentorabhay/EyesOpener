@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero: turning a picture of a drawing into a hero's shape, on the device.
 /**
  * Draw Your Hero: turning a picture of a drawing into a hero's shape, on the device.
  *

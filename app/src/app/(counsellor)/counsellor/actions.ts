@@ -1,3 +1,4 @@
+// Eyes Opener: Accept or decline a link request. The link must be this counsellor's and still waiting. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

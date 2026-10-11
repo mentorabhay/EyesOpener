@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero. Everything on this page belongs to the active profile of the signed-in household: a hero is.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";

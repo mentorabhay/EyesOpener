@@ -1,3 +1,4 @@
+// Eyes Opener: The film list as this browser keeps it: one list per profile in localStorage, read once and written on every change.
 /**
  * The film list as this browser keeps it: one list per profile in localStorage, read once and written on every change.
  * A browser that refuses storage (private mode, a full disk) still works: the list then lasts for this visit only.

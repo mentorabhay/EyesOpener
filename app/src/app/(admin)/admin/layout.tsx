@@ -1,3 +1,4 @@
+// Eyes Opener: The frame of the admin console. The gate runs here and again in every page and every action. .
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { PortalShell } from "@/components/portal";

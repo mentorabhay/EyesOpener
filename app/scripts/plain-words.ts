@@ -1,3 +1,4 @@
+// Eyes Opener: The plain-words report: every finding of src/lib/plain-words.ts over every English sentence of the app.
 /**
  * The plain-words report: every finding of src/lib/plain-words.ts over every English sentence of the app.
  *   npx tsx scripts/plain-words.ts            counts by rule and by file, then the hard findings

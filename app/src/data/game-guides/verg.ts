@@ -1,3 +1,4 @@
+// Eyes Opener: Game guides for the vergence games: games that train how the two eyes turn in together.
 /**
  * Game guides for the vergence games: games that train how the two eyes turn in together.
  * Tunnel Glide is the reference guide: copy its shape for a new one.

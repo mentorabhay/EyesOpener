@@ -1,3 +1,4 @@
+// Eyes Opener: The Sunset Rule: how the day closes, and where today's sun stands for the active profile. Read-only. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";

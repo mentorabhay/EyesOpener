@@ -1,3 +1,4 @@
+// Eyes Opener: Checks a Firebase ID token with node:crypto alone: no Firebase package.
 /**
  * Checks a Firebase ID token with node:crypto alone: no Firebase package.
  *

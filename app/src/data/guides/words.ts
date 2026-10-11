@@ -1,3 +1,4 @@
+// Eyes Opener: Which fields of an exercise guide are words for the reader (see src/i18n/texts.ts). Everything else in a guide.
 /**
  * Which fields of an exercise guide are words for the reader (see src/i18n/texts.ts). Everything else in a guide
  * is a value the code uses: the slug, a measure's key and limits, the tool, the print card, a source's address.

@@ -1,3 +1,4 @@
+// Eyes Opener: Asks the assistant for one plain-words paragraph about the numbers of the summary page.
 "use server";
 import { assist } from "@/lib/assist/extra";
 import type { ExamParagraph } from "@/lib/assist/types";

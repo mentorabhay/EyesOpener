@@ -1,3 +1,4 @@
+// Eyes Opener: The hero in the game kit: where and how large `k.hero` draws, and that a game which adopts the hero keeps its rules.
 /**
  * The hero in the game kit: where and how large `k.hero` draws, and that a game which adopts the hero keeps its rules.
  */

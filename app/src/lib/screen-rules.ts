@@ -1,3 +1,4 @@
+// Eyes Opener: The rules of the screen calibration, with no database in them, so they can be tested.
 /**
  * The rules of the screen calibration, with no database in them, so they can be tested.
  * The browser sends only what was matched (grey values, channel values, balance settings). Every stored value is

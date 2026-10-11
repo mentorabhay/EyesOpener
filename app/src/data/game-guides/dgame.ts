@@ -1,3 +1,4 @@
+// Eyes Opener: Game guides for two-eye balanced play: games for a lazy eye, played through red-cyan glasses.
 /**
  * Game guides for two-eye balanced play: games for a lazy eye, played through red-cyan glasses.
  * What must be found or steered is drawn in cyan (the weaker eye), what is in the way in red (the stronger eye,

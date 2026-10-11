@@ -1,3 +1,4 @@
+// Eyes Opener: Saves one finished clip for the active profile. The browser sends the clip's code and what it measured; who may.
 "use server";
 import { revalidatePath } from "next/cache";
 import { isSetKey } from "@/data/clips";

@@ -1,3 +1,4 @@
+// Eyes Opener: Words for results: what a session measured, and the member's own record of past sessions. .
 /** Words for results: what a session measured, and the member's own record of past sessions. */
 import type { Labels } from "@/components/play/results";
 import { texts } from "@/i18n/texts";

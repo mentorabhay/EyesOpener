@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(admin)/admin/catalogue web route.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, Chip, PageHead, Pills } from "@/components/ui";

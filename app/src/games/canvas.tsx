@@ -1,3 +1,4 @@
+// Eyes Opener: Turns a game definition into a component the Stage can show. The game starts fresh whenever a session starts. .
 "use client";
 import { useEffect, useMemo, useRef, type ComponentType } from "react";
 import { common } from "@/copy/common";

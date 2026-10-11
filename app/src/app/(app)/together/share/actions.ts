@@ -1,3 +1,4 @@
+// Eyes Opener: Core system module providing logic and utilities for actions.
 "use server";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";

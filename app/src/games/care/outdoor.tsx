@@ -1,3 +1,4 @@
+// Eyes Opener: Sky Spotter: a visit outdoors, logged for the active profile. The minutes go to the Light ring.
 /**
  * Sky Spotter: a visit outdoors, logged for the active profile. The minutes go to the Light ring.
  */

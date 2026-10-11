@@ -1,3 +1,4 @@
+// Eyes Opener: The staff manual: every game and exercise, with why it is in the library. Each row opens the item's full page. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, Chip, EvidenceChip, PageHead, Pills } from "@/components/ui";

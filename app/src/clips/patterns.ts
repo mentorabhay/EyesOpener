@@ -1,3 +1,4 @@
+// Eyes Opener: The still pictures of the "look and answer" clips, by scene name (src/data/clips/looks.ts).
 /**
  * The still pictures of the "look and answer" clips, by scene name (src/data/clips/looks.ts).
  * Each draws on a canvas sized in real dots of the screen. `o.k` is the number of real dots to one page dot,

@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero: reading and writing a profile's heroes. Server only. The rules are in hero-rules.ts.
 /**
  * Draw Your Hero: reading and writing a profile's heroes. Server only. The rules are in hero-rules.ts.
  *

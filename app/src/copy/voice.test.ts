@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying voice functionality.
 import { describe, expect, it } from "vitest";
 import { voice as v } from "./voice";
 

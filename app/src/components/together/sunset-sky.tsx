@@ -1,3 +1,4 @@
+// Eyes Opener: Sunset Rule: the sky, and what the family reads when the day's practice is done.
 /**
  * Sunset Rule: the sky, and what the family reads when the day's practice is done.
  * No hooks beyond `useId` and no browser APIs, so the same components serve the Today page (on the server) and the

@@ -1,3 +1,4 @@
+// Eyes Opener: The community ideas that are built, by catalogue slug, and the page each one lives on under /together.
 /**
  * The community ideas that are built, by catalogue slug, and the page each one lives on under /together.
  * The Together page lists them in this order. An idea is added here, on one line, when its page exists.

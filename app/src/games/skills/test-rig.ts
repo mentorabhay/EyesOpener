@@ -1,3 +1,4 @@
+// Eyes Opener: A test rig for the games of this family: one game on a silent drawing surface, stepped a frame at a time.
 /**
  * A test rig for the games of this family: one game on a silent drawing surface, stepped a frame at a time
  * with the input a test chooses. Used by the test files only; the app never imports it.

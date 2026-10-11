@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for form.module. */
 .set { border: 0; padding: 0; margin: 0; min-width: 0; }
 .set legend { padding: 0; margin-bottom: 4px; font-weight: 500; }
 .check { display: flex; gap: 9px; align-items: flex-start; padding: 5px 0; cursor: pointer; }

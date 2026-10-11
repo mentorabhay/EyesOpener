@@ -1,3 +1,4 @@
+// Eyes Opener: What happens if Next.js ever stops handing this package the request (see next.test.ts for the check that.
 /**
  * What happens if Next.js ever stops handing this package the request (see next.test.ts for the check that
  * catches that before a release): nothing throws, every word is English, and the root layout draws the whole

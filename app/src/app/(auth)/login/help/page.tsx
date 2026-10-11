@@ -1,3 +1,4 @@
+// Eyes Opener: login/help: "Can't sign in?" IOpener has no passwords, so this sends a fresh email link and answers the usual snags. .
 import { mailSettings } from "@/lib/signin/mail";
 import type { Metadata } from "next";
 import Link from "next/link";

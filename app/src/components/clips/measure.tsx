@@ -1,3 +1,4 @@
+// Eyes Opener: Measure it yourself: a card against the screen, a ruler checked with a tape, the seat measured with a tape, and.
 "use client";
 /**
  * Measure it yourself: a card against the screen, a ruler checked with a tape, the seat measured with a tape, and

@@ -1,3 +1,4 @@
+// Eyes Opener: A 60-second taste of one two-eye game for a visitor who has not signed in: Firefly Catch on the game kit, in the.
 "use client";
 /**
  * A 60-second taste of one two-eye game for a visitor who has not signed in: Firefly Catch on the game kit, in the

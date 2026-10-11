@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for wall.module. */
 /* Focus Wall. The picture keeps its two-to-one shape at every width. */
 .frame { aspect-ratio: 2 / 1; }
 .frame svg { width: 100%; height: 100%; }

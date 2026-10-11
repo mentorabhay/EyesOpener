@@ -1,3 +1,4 @@
+// Eyes Opener: What a sponsor may read and change. Every query is scoped to one sponsor.
 /**
  * What a sponsor may read and change. Every query is scoped to one sponsor.
  *

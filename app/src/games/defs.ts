@@ -1,3 +1,4 @@
+// Eyes Opener: Every canvas game in this build, by slug. Plain definitions: no screen code, safe on the server and in tests. .
 /** Every canvas game in this build, by slug. Plain definitions: no screen code, safe on the server and in tests. */
 import { games as depth } from "./depth";
 import { games as dgame } from "./dgame";

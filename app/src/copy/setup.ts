@@ -1,3 +1,4 @@
+// Eyes Opener: Words of Setup (/setup): the steps a person needs before two-eye games, the card that holds a two-eye item until they.
 /**
  * Words of Setup (/setup): the steps a person needs before two-eye games, the card that holds a two-eye item until they
  * are done, and the setup link in the sidebar. The rules: src/lib/setup-rules.ts.

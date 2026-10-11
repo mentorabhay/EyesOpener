@@ -1,3 +1,4 @@
+// Eyes Opener: IOpener database models (PostgreSQL, Drizzle).
 /**
  * IOpener database models (PostgreSQL, Drizzle).
  * Column names are written in camelCase here and stored in snake_case (see drizzle.config.ts and src/db/index.ts).

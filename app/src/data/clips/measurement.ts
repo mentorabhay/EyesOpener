@@ -1,3 +1,4 @@
+// Eyes Opener: The 70 measurement clips. Each is a home estimate of one thing about the eyes, taken on the member's own screen.
 /**
  * The 70 measurement clips. Each is a home estimate of one thing about the eyes, taken on the member's own screen.
  * None of them is a diagnosis, and none replaces an eye examination.

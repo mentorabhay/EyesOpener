@@ -1,3 +1,4 @@
+// Eyes Opener: Jobs that run on a schedule with nobody signed in: clean-up, weekly league rows, pooled results.
 /**
  * Jobs that run on a schedule with nobody signed in: clean-up, weekly league rows, pooled results.
  *

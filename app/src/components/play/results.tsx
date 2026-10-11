@@ -1,3 +1,4 @@
+// Eyes Opener: How to show each measured number: its name and its unit, by key. Keys with no label are not shown. .
 import { results as t } from "@/copy/results";
 import { bestOf, type Detail, type PastSession } from "@/lib/detail";
 

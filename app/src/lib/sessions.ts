@@ -1,3 +1,4 @@
+// Eyes Opener: Training sessions: the dose check, the session row and the day's Train ring.
 /**
  * Training sessions: the dose check, the session row and the day's Train ring.
  * Server only. Limits come from the engine; numbers sent by the browser are clamped, never trusted.

@@ -1,3 +1,4 @@
+// Eyes Opener: What a scene needs to know about the member and the screen: the same values a game gets. .
 "use client";
 import { useEffect, useMemo, useRef } from "react";
 import type { Sprite } from "@/games/hero";

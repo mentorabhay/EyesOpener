@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying state functionality.
 import { describe, expect, it } from "vitest";
 import { addDays, canCancel, canDeleteProfile, canDownload, COPY_DAYS, isLive, splitPeople, stateOf, stepFor, WAIT_DAYS, type RequestFacts } from "./state";
 

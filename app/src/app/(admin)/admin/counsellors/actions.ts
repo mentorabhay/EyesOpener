@@ -1,3 +1,4 @@
+// Eyes Opener: Marks a counsellor as checked, which opens the counsellor portal to them. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

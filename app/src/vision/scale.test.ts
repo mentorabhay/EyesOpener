@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying scale functionality.
 import { describe, expect, it } from "vitest";
 import { cameraKey, cameraProblem } from "./camera";
 import { distanceCm, readFace } from "./face";

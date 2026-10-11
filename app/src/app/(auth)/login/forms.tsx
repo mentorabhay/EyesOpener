@@ -1,3 +1,4 @@
+// Eyes Opener: The two ways to sign in: the Google button and the email-link form.
 "use client";
 /**
  * The two ways to sign in: the Google button and the email-link form.

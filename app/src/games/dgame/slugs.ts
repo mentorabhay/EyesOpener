@@ -1,3 +1,4 @@
+// Eyes Opener: The games in this package, by slug. .
 /** The games in this package, by slug. */
 import { games } from "./index";
 

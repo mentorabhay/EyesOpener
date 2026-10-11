@@ -1,3 +1,4 @@
+// Eyes Opener: Interactive visual exercise and gamified therapy logic for index.
 import type { GameDef } from "../kit";
 import { depthDarts } from "./depth-darts";
 import { extra } from "./extra";

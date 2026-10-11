@@ -1,3 +1,4 @@
+// Eyes Opener: Two different letters, and which ink the first button stands for. .
 "use client";
 import { useState } from "react";
 import { measure as t } from "@/copy/test";

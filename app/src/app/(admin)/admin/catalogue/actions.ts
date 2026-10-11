@@ -1,3 +1,4 @@
+// Eyes Opener: Every screen that lists or opens library items reads the status, so all of them are refreshed. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

@@ -1,3 +1,4 @@
+// Eyes Opener: Answers "ok" without touching the database. For the host's health checks and for smoke tests.
 /**
  * Answers "ok" without touching the database. For the host's health checks and for smoke tests.
  * The path is /health, not /healthz: Cloud Run keeps paths ending in "z" for itself.

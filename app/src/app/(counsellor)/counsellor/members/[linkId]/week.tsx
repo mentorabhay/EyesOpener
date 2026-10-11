@@ -1,3 +1,4 @@
+// Eyes Opener: The member's week on their programme, read-only, for the counsellor.
 /**
  * The member's week on their programme, read-only, for the counsellor.
  * For a counsellor-led programme the plan is a suggestion: the counsellor sets the minutes and the days in the

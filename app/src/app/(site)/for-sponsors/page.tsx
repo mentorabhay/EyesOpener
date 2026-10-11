@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(site)/for-sponsors web route.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Empty } from "@/components/ui";

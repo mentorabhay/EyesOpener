@@ -1,3 +1,4 @@
+// Eyes Opener: The wrapper every file of words is made with.
 /**
  * The wrapper every file of words is made with.
  *

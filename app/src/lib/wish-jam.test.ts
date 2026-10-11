@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying wish-jam functionality.
 import { describe, expect, it } from "vitest";
 import { wishJam as copy } from "@/copy/wish-jam";
 import {

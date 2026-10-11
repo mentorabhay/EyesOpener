@@ -1,3 +1,4 @@
+// Eyes Opener: The assistant: what an edition with AI may add to the pages of this app, and the shapes it answers in.
 /**
  * The assistant: what an edition with AI may add to the pages of this app, and the shapes it answers in.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: The Languages section of the Catalogue room: for each of the ten languages, its status, how much of the app is.
 /**
  * The Languages section of the Catalogue room: for each of the ten languages, its status, how much of the app is
  * translated and how much a person has checked, and the three statuses to choose from.

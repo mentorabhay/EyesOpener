@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying arrows functionality.
 import { describe, expect, it } from "vitest";
 import { directionOf, pickInDirection, pickStop, type Box, type Stop } from "./arrows";
 

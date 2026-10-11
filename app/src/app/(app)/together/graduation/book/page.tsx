@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(app)/together/graduation/book web route.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PrintButton } from "@/app/(app)/test/summary/print-button";

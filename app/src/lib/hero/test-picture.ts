@@ -1,3 +1,4 @@
+// Eyes Opener: Test pictures for the hero tracing, drawn by code: paper, pen strokes, a shadow, camera noise.
 /**
  * Test pictures for the hero tracing, drawn by code: paper, pen strokes, a shadow, camera noise.
  * Not part of the app: only test files and the demo seed import it.

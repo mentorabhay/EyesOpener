@@ -1,3 +1,4 @@
+// Eyes Opener: Turns saver mode on or off. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

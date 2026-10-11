@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(app)/settings/triage web route.
 import type { Metadata } from "next";
 import { StepFlow } from "@/components/guide/flow";
 import { More } from "@/components/guide/more";

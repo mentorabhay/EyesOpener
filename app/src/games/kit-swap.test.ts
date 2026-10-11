@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying kit-swap functionality.
 import { describe, expect, it } from "vitest";
 import { makeKit, type GameProps } from "./kit";
 import { SIM_PROPS } from "./sim";

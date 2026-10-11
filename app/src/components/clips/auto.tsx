@@ -1,3 +1,4 @@
+// Eyes Opener: The screen measures itself. Two things a browser can honestly report without anyone judging by eye:.
 "use client";
 /**
  * The screen measures itself. Two things a browser can honestly report without anyone judging by eye:

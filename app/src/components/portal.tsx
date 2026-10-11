@@ -1,3 +1,4 @@
+// Eyes Opener: Shell for the staff, counsellor and sponsor areas: the same frame as the member app, with that area's own links.
 /**
  * Shell for the staff, counsellor and sponsor areas: the same frame as the member app, with that area's own links.
  * Server-safe. Each area's layout calls its gate first, then renders this.

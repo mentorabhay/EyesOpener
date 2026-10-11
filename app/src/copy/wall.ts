@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the Focus Wall.
 /**
  * Words for the Focus Wall.
  * The wall counts finished practice days and nothing else. Nothing here may praise a score, a speed or extra

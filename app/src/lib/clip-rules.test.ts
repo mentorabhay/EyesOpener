@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying clip-rules functionality.
 import { describe, expect, it } from "vitest";
 import { CLIP_DEFS, OFFERED, clipDef, clipTest, type OfferedClip } from "@/data/clips";
 import { clipState, lookOutcome, planSet, resolveClip, shapeKey, type ClipPerson, type ResolveCtx, type Resolved, type SetPerson } from "./clip-rules";

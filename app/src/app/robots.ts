@@ -1,3 +1,4 @@
+// Eyes Opener: Search engines may read the public site. The member app, the admin console, the two portals and sign-in are closed to them. .
 import type { MetadataRoute } from "next";
 import { siteLock } from "@/lib/gate";
 import { PRIVATE_PATHS, siteUrl } from "@/lib/site";

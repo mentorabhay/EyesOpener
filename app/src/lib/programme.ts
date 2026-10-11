@@ -1,3 +1,4 @@
+// Eyes Opener: The weekly plan of a member's programme: what the week screen, the Today page and the counsellor's page show.
 /**
  * The weekly plan of a member's programme: what the week screen, the Today page and the counsellor's page show.
  * Server only. The rules are in programme-rules.ts; this file reads the rows and keeps `enrolment.week` in step.

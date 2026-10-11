@@ -1,3 +1,4 @@
+// Eyes Opener: Records that the active profile's depth scene was played. It takes nothing from the browser: the profile is the.
 "use server";
 import { revalidatePath } from "next/cache";
 import { markPlayed } from "@/lib/depth-day-data";

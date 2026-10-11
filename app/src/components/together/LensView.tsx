@@ -1,3 +1,4 @@
+// Eyes Opener: Glasses-view switch: tints every scene inside it to show what one eye sees through its lens. .
 "use client";
 import { useState, type ReactNode } from "react";
 import { common } from "@/copy/common";

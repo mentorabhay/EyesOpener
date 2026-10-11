@@ -1,3 +1,4 @@
+// Eyes Opener: The mark of a piece of English text: a short code that changes whenever the text changes.
 /**
  * The mark of a piece of English text: a short code that changes whenever the text changes.
  *

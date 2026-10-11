@@ -1,3 +1,4 @@
+// Eyes Opener: Cinema Club in the counsellor portal: the host kit to read and print, and the listed clubs.
 import type { Metadata } from "next";
 import { ClubList, KitLinks, Limits } from "@/components/gatherings/club-kit";
 import { Card, PageHead } from "@/components/ui";

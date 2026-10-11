@@ -1,3 +1,4 @@
+// Eyes Opener: The clips against a real database: what a finished clip stores and for whom, the baseline rule, who may change.
 /**
  * The clips against a real database: what a finished clip stores and for whom, the baseline rule, who may change
  * the household's screen, and that one household can never reach another's. It makes two throwaway households and

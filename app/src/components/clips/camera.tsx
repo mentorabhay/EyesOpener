@@ -1,3 +1,4 @@
+// Eyes Opener: Sit still for the camera: the camera's scale against a tape, a distance, a minute of working distance, a minute.
 "use client";
 /**
  * Sit still for the camera: the camera's scale against a tape, a distance, a minute of working distance, a minute

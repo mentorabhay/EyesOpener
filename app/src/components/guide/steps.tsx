@@ -1,3 +1,4 @@
+// Eyes Opener: The web's step strips: the plain step lists of src/lib/guide-steps.ts (which the phone and TV apps get too), each.
 /**
  * The web's step strips: the plain step lists of src/lib/guide-steps.ts (which the phone and TV apps get too), each
  * picture turned into its drawing. Server-safe: no hooks, no browser APIs.

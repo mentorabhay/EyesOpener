@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(admin)/admin web route.
 import Link from "next/link";
 import { Card, Chip, Empty, PageHead, Progress } from "@/components/ui";
 import { admin as t, dayTime, dollars } from "@/copy/admin";

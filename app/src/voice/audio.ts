@@ -1,3 +1,4 @@
+// Eyes Opener: Whether a script can be heard, and where from. Server only: a page asks this while it is drawn.
 /**
  * Whether a script can be heard, and where from. Server only: a page asks this while it is drawn.
  *

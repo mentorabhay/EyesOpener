@@ -1,3 +1,4 @@
+// Eyes Opener: Makes a hero on the device. A camera frame, a picked photo or the drawing sheet is read into a small canvas,.
 "use client";
 import { useActionState, useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { HeroShape } from "@/components/together/hero-art";

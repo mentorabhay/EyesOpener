@@ -1,3 +1,4 @@
+// Eyes Opener: Demo rows for Draw Your Hero and the Focus Wall. Run it after the main seed and the league's; safe to run again.
 /**
  * Demo rows for Draw Your Hero and the Focus Wall. Run it after the main seed and the league's; safe to run again.
  *   npx tsx scripts/seed/hero.ts

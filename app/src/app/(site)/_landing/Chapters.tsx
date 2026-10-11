@@ -1,3 +1,4 @@
+// Eyes Opener: Chapter: every game and exercise carries a label. The counts and the wording come from the catalogue. .
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { EvidenceChip, SceneThumb } from "@/components/ui";

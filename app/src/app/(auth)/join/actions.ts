@@ -1,3 +1,4 @@
+// Eyes Opener: User authentication, token verification, and session state management (actions).
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

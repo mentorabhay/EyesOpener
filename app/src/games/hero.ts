@@ -1,3 +1,4 @@
+// Eyes Opener: Draw Your Hero: the shape a child made, in the form the game kit draws.
 /**
  * Draw Your Hero: the shape a child made, in the form the game kit draws.
  *

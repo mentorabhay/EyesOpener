@@ -1,3 +1,4 @@
+// Eyes Opener: Every cookie the app keeps, carried in one cookie named `__session` (tracker K10, 10 October 2026).
 /**
  * Every cookie the app keeps, carried in one cookie named `__session` (tracker K10, 10 October 2026).
  *

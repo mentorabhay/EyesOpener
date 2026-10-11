@@ -1,3 +1,4 @@
+// Eyes Opener: Core system module providing logic and utilities for form.
 "use client";
 import { useActionState } from "react";
 import { gate as t } from "@/copy/gate";

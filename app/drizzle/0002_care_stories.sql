@@ -1,3 +1,4 @@
+-- Eyes Opener: Core system module providing logic and utilities for 0002_care_stories.
 CREATE TABLE "care_log" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"profile_id" uuid NOT NULL,

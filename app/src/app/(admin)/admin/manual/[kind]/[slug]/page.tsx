@@ -1,3 +1,4 @@
+// Eyes Opener: One item of the library, explained in full for staff: the member's guide, then why it is there and what it cannot tell. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";

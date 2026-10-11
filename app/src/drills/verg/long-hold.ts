@@ -1,3 +1,4 @@
+// Eyes Opener: Long Hold. The member picks a demand and holds one ring there for two minutes.
 /**
  * Long Hold. The member picks a demand and holds one ring there for two minutes.
  * It measures the longest unbroken hold (seconds) and the demand of that hold (prism dioptres).

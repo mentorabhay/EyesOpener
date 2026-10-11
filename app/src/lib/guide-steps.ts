@@ -1,3 +1,4 @@
+// Eyes Opener: The steps of each kind of page, as plain data: the web draws them in its step strip (components/guide/flow.tsx), and.
 /**
  * The steps of each kind of page, as plain data: the web draws them in its step strip (components/guide/flow.tsx), and
  * the phone and TV apps get the same list from the server and draw it themselves. Every step's words come from a file

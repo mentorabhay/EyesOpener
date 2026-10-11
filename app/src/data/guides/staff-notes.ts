@@ -1,3 +1,4 @@
+// Eyes Opener: Notes for staff on the exercises: what a routine's tool cannot tell, and open points found when its guide was written.
 /**
  * Notes for staff on the exercises: what a routine's tool cannot tell, and open points found when its guide was written.
  * Shown only in the staff Manual room.

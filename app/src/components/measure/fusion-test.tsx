@@ -1,3 +1,4 @@
+// Eyes Opener: Three repeats and the largest demand this panel could show. The server takes the medians. .
 "use client";
 import { useEffect, useEffectEvent, useMemo, useRef, useState } from "react";
 import { measure as t } from "@/copy/test";

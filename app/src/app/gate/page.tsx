@@ -1,3 +1,4 @@
+// Eyes Opener: The one page a locked site shows. With no lock set it does not exist: it sends people to the home page. .
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { common } from "@/copy/common";

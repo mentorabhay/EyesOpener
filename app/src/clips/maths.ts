@@ -1,3 +1,4 @@
+// Eyes Opener: The arithmetic of the clips. Pure functions: the same ones run in the browser while a clip is drawn and on the.
 /**
  * The arithmetic of the clips. Pure functions: the same ones run in the browser while a clip is drawn and on the
  * server when its result is saved. Nothing here knows about React or the database. Tested in maths.test.ts.

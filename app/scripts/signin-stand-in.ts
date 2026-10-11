@@ -1,3 +1,4 @@
+// Eyes Opener: Starts a stand-in for Firebase sign-in on this machine, so the sign-in pages can be tried with no Firebase project.
 /**
  * Starts a stand-in for Firebase sign-in on this machine, so the sign-in pages can be tried with no Firebase project.
  *

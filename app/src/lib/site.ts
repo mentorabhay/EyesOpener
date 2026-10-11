@@ -1,3 +1,4 @@
+// Eyes Opener: The public site: what its pages read from the catalogue, and the rules for the enquiry form.
 /**
  * The public site: what its pages read from the catalogue, and the rules for the enquiry form.
  *

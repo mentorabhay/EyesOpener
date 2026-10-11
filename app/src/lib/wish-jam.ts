@@ -1,3 +1,4 @@
+// Eyes Opener: Wish Jam: developers and students build a game for one child's wish; the child tries it and names it.
 /**
  * Wish Jam: developers and students build a game for one child's wish; the child tries it and names it.
  * The rules, pure. Tested in wish-jam.test.ts; src/lib/wish-jam-data.ts reads and writes.

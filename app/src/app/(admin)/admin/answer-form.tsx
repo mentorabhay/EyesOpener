@@ -1,3 +1,4 @@
+// Eyes Opener: What an admin action answers: yes or no, and one sentence. .
 "use client";
 import { startTransition, useActionState, useEffect, useRef, type ReactNode } from "react";
 

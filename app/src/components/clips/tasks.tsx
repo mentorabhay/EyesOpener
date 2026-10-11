@@ -1,3 +1,4 @@
+// Eyes Opener: The screen part of every template. The compiler refuses a template with no part. .
 "use client";
 import type { ComponentType } from "react";
 import type { Template } from "@/data/clips";

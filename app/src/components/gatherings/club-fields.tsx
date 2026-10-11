@@ -1,3 +1,4 @@
+// Eyes Opener: The choices a listing form offers. The server page hands them down, so the form itself holds no rules. .
 import { cinemaClub, CLUB_WEEKDAYS } from "@/copy/cinema-club";
 
 /** The choices a listing form offers. The server page hands them down, so the form itself holds no rules. */

@@ -1,3 +1,4 @@
+// Eyes Opener: IOpener's own test reel: a 90-second drawn film kept with the app (see scripts/make-test-reel.mjs).
 /**
  * IOpener's own test reel: a 90-second drawn film kept with the app (see scripts/make-test-reel.mjs).
  * It lets a member, or staff, try the two-eye cinema with no video of their own.

@@ -1,3 +1,4 @@
+// Eyes Opener: What a finished clip found, in plain words: the number with its unit, how to read it, and how it is used.
 "use client";
 /**
  * What a finished clip found, in plain words: the number with its unit, how to read it, and how it is used.

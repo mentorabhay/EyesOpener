@@ -1,3 +1,4 @@
+// Eyes Opener: `worst` is the strongest effect of the leak on anyone in the household; null when nobody has eye settings yet. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { gammaFromMatches, type LeakLevel } from "@/engine";

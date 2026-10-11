@@ -1,3 +1,4 @@
+// Eyes Opener: The glasses as a small picture, with the lens or lenses to look through open and the others shut. .
 /** The glasses as a small picture, with the lens or lenses to look through open and the others shut. */
 import { lensFilter } from "@/engine";
 

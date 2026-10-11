@@ -1,3 +1,4 @@
+// Eyes Opener: The group screen of Cinema Club: one film for a room.
 "use client";
 import { useEffect, useRef, useState, type ChangeEvent, type KeyboardEvent } from "react";
 import { reelSrc } from "@/app/(app)/train/cinema/reel";

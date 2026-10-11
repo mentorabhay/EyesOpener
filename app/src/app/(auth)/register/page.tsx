@@ -1,3 +1,4 @@
+// Eyes Opener: register: making a family account. It is the same Google or email-link sign-in as Log in (IOpener has no.
 import { mailSettings } from "@/lib/signin/mail";
 import type { Metadata } from "next";
 import Link from "next/link";

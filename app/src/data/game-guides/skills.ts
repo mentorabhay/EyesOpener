@@ -1,3 +1,4 @@
+// Eyes Opener: Game guides for the seeing-skill games: eye-movement play with no glasses (Comet Trail, Spot Jump) and a check in.
 /**
  * Game guides for the seeing-skill games: eye-movement play with no glasses (Comet Trail, Spot Jump) and a check in
  * game form done with a patch (E Safari).

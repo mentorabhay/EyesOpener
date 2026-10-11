@@ -1,3 +1,4 @@
+// Eyes Opener: A two-step action with no client code: the first button opens the warning and the real button. .
 import type { ReactNode } from "react";
 import css from "./admin.module.css";
 

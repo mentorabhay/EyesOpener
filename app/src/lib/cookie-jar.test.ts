@@ -1,3 +1,4 @@
+// Eyes Opener: A browser's cookies for one request and the answer's Set-Cookie list, as Next keeps them. .
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("next/headers", () => ({ cookies: async () => { throw new Error("not in this test"); } }));

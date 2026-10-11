@@ -1,3 +1,4 @@
+// Eyes Opener: Programme rules: which week it is, what a day holds, what is done, what is due, and when a course ends.
 /**
  * Programme rules: which week it is, what a day holds, what is done, what is due, and when a course ends.
  * Pure functions, unit-tested (programme-rules.test.ts). No database and no clock: every day is passed in as a

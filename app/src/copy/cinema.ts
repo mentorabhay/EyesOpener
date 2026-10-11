@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the two-eye cinema: the player's own controls, chapters and eye breaks, and the list of the member's films.
 /**
  * Words for the two-eye cinema: the player's own controls, chapters and eye breaks, and the list of the member's films.
  * The page title and the words older screens already use stay in `train.ts` (`train.cinema`).

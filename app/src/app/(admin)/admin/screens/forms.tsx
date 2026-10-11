@@ -1,3 +1,4 @@
+// Eyes Opener: The two starting points as cyan codes (#00GGBB), at the usual gamma. .
 "use client";
 import { screensAdmin as t } from "@/copy/screens-admin";
 import { AnswerForm } from "../answer-form";

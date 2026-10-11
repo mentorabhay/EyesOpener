@@ -1,3 +1,4 @@
+// Eyes Opener: Choosing a language: the card in Settings and the menu on the public site both send this.
 "use server";
 /**
  * Choosing a language: the card in Settings and the menu on the public site both send this.

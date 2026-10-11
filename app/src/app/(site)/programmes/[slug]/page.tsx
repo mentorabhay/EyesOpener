@@ -1,3 +1,4 @@
+// Eyes Opener: One page for each programme in the catalogue, made at build time. Any other address is not found. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";

@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(counsellor)/counsellor/members/[linkid] web route.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { z } from "zod";

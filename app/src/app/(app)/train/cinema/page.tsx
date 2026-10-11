@@ -1,3 +1,4 @@
+// Eyes Opener: Page controller component for the app/src/app/(app)/train/cinema web route.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { History } from "@/components/play/results";

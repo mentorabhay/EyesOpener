@@ -1,3 +1,4 @@
+// Eyes Opener: The app in a scroll: four example screens in direction B. With motion each one opens large, then shrinks and.
 import type { ReactNode } from "react";
 import { EvidenceChip, Rings } from "@/components/ui";
 import { common } from "@/copy/common";

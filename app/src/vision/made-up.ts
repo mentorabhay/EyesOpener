@@ -1,3 +1,4 @@
+// Eyes Opener: A made-up face for tests: a few points of a simple head, turned and placed in front of a pinhole camera, written.
 /**
  * A made-up face for tests: a few points of a simple head, turned and placed in front of a pinhole camera, written
  * into the 478 slots the face model uses. It is geometry, not a person, and it is never shown to anyone.

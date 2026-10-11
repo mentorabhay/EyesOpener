@@ -1,3 +1,4 @@
+// Eyes Opener: Names that stay in English letters in every language: the names of the games and of the exercises.
 /**
  * Names that stay in English letters in every language: the names of the games and of the exercises.
  * They are read from the catalogue, so a new game is covered the day it is added, in whichever edition.

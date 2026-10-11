@@ -1,3 +1,4 @@
+// Eyes Opener: Words drawn inside these games, and one line per game that says how to play it. .
 /** Words drawn inside these games, and one line per game that says how to play it. */
 import { help as moreHelp, words } from "./games-verg.extra";
 import { joined, texts } from "@/i18n/texts";

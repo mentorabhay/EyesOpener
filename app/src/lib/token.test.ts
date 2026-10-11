@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying token functionality.
 import { describe, it, expect } from "vitest";
 import { signToken, verifyToken, hashPin, checkPin } from "./token";
 

@@ -1,3 +1,4 @@
+// Eyes Opener: Locked Gallery: the drawings that are not check-up pictures. Server-safe: no hooks, no browser APIs.
 /**
  * Locked Gallery: the drawings that are not check-up pictures. Server-safe: no hooks, no browser APIs.
  * Everything is drawn here, by code, in the three colours of a scene on its black field. The red is plain red and

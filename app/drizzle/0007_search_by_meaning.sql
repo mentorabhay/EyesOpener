@@ -1,3 +1,4 @@
+-- Eyes Opener: Core system module providing logic and utilities for 0007_search_by_meaning.
 CREATE EXTENSION IF NOT EXISTS vector;--> statement-breakpoint
 CREATE TABLE "library_vector" (
 	"key" text PRIMARY KEY NOT NULL,

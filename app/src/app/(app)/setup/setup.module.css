@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for setup.module. */
 .stat { display: inline-flex; align-items: center; gap: 10px; }
 .next { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
 .next span { color: var(--ink-2); }

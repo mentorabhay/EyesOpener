@@ -1,3 +1,4 @@
+// Eyes Opener: No word may be read while a module loads, compared against, or written to the database in a reader's language.
 /**
  * No word may be read while a module loads, compared against, or written to the database in a reader's language.
  * scripts/i18n/scan.ts reads the whole app with the TypeScript compiler and lists every such place; this test

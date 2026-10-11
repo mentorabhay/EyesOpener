@@ -1,3 +1,4 @@
+// Eyes Opener: IOpener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
 /**
  * IOpener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
  *

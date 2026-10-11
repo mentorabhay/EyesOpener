@@ -1,3 +1,4 @@
+// Eyes Opener: The seeded people of the demo, by the side of IOpener each shows. .
 import type { Metadata } from "next";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";

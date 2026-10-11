@@ -1,3 +1,4 @@
+// Eyes Opener: Unit and regression test suite verifying depth-day functionality.
 import { describe, expect, it } from "vitest";
 import { answerDepth, depthOutcome, startDepth } from "@/engine";
 import {

@@ -1,3 +1,4 @@
+// Eyes Opener: Blind-Side Sweeps. For a member who lost half of the field of view after a stroke. A white dot appears.
 /**
  * Blind-Side Sweeps. For a member who lost half of the field of view after a stroke. A white dot appears
  * somewhere in the scene, more often on the side that is hard to see. The member sweeps the eyes across to find

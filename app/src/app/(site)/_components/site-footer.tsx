@@ -1,3 +1,4 @@
+// Eyes Opener: The footer: the page groups, and the lines that IOpener is not a medical device, has an open-source core and has no ads. .
 import Link from "next/link";
 import { common } from "@/copy/common";
 import { site as t } from "@/copy/site";

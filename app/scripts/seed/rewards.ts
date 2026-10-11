@@ -1,3 +1,4 @@
+// Eyes Opener: Demo rows for the four "rewards" ideas: Locked Gallery, First Depth Day, Sunset Rule and Keeper Graduation.
 /**
  * Demo rows for the four "rewards" ideas: Locked Gallery, First Depth Day, Sunset Rule and Keeper Graduation.
  * Run it after the main seed; it is safe to run again.

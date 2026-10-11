@@ -1,3 +1,4 @@
+// Eyes Opener: A new session may begin: training is open and the last one did not end on a stop symptom. .
 "use client";
 import { useState } from "react";
 import { reportStopSymptom } from "@/app/(app)/train/actions";

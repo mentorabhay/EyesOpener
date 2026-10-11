@@ -1,3 +1,4 @@
+// Eyes Opener: Localized strings, user interface copy, and text dictionary for gate.
 import { texts } from "@/i18n/texts";
 
 export const gate = texts("copy/gate", "gate", () => ({

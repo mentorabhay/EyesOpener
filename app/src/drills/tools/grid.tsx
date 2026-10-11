@@ -1,3 +1,4 @@
+// Eyes Opener: One square is 10 units; the picture has a small rim so the outer lines are drawn whole. .
 "use client";
 import { useEffect, useId, useRef, useState, type KeyboardEvent, type MouseEvent, type Ref } from "react";
 import { TrueSize } from "@/components/measure/canvas";

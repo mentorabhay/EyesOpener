@@ -1,3 +1,4 @@
+// Eyes Opener: Reading and writing Class Mission. Server only.
 /**
  * Reading and writing Class Mission. Server only.
  * Everything is scoped by the member's household: a profile id or a mission id from the browser is only ever

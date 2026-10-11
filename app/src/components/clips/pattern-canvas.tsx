@@ -1,3 +1,4 @@
+// Eyes Opener: Draws one "look and answer" picture at the screen's own dots. A still picture is drawn again only when its box.
 "use client";
 import { useEffect, useRef, type RefObject } from "react";
 import { TrueSize, devicePixels } from "@/components/measure/canvas";

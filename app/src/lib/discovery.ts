@@ -1,3 +1,4 @@
+// Eyes Opener: Discovery Board: members vote on the next question the pooled records should answer. The rules, pure.
 /**
  * Discovery Board: members vote on the next question the pooled records should answer. The rules, pure.
  * Tested in discovery.test.ts; src/lib/discovery-data.ts reads and writes.

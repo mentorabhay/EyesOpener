@@ -1,3 +1,4 @@
+// Eyes Opener: The ceremony with its Play button. It is a short scene, not practice: no session, no training minutes, and it.
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { KitScene, type SceneEye } from "@/components/together/kit-scene";

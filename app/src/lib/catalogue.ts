@@ -1,3 +1,4 @@
+// Eyes Opener: Reads and writes the status of library items (see status.ts). Server only.
 /**
  * Reads and writes the status of library items (see status.ts). Server only.
  * One row of `setting` holds every change staff made; an item that is not in it has the default status.

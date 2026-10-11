@@ -1,3 +1,4 @@
+// Eyes Opener: Reading for Proof of Help. Server only.
 /**
  * Reading for Proof of Help. Server only.
  * A household's own ideas are found by its profile ids, never by an id from the browser. The list everyone sees

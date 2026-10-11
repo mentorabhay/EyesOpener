@@ -1,3 +1,4 @@
+// Eyes Opener: Open a training session for the active profile. Nothing a page shows changes until it is finished, so no path is revalidated. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

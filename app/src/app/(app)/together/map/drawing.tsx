@@ -1,3 +1,4 @@
+// Eyes Opener: Lamps drawn on a tile at most. A tile with more lit areas shows this many; the list below has them all. .
 import { map as t } from "@/copy/map";
 import { GRID, type Tile } from "@/lib/map";
 import css from "./map.module.css";

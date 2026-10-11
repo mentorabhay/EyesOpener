@@ -1,3 +1,4 @@
+// Eyes Opener: A sponsor lists a Cinema Club and closes one of its own. The sponsor is always the signed-in person's own: the.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

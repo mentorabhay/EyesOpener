@@ -1,3 +1,4 @@
+// Eyes Opener: The last seven days as four small charts of seven columns each. Each column carries its own number, so nothing.
 /**
  * The last seven days as four small charts of seven columns each. Each column carries its own number, so nothing
  * has to be read off an axis. A day with nothing measured is hatched. Server-rendered: no client code.

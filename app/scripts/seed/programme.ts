@@ -1,3 +1,4 @@
+// Eyes Opener: Demo rows for the weekly plan. Run it after the main seed; it is safe to run again.
 /**
  * Demo rows for the weekly plan. Run it after the main seed; it is safe to run again.
  *   npx tsx scripts/seed/programme.ts

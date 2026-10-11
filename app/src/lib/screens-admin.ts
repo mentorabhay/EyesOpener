@@ -1,3 +1,4 @@
+// Eyes Opener: The Screens and glasses room (/admin/screens): how families' screens and glasses are set up, as counts only.
 /**
  * The Screens and glasses room (/admin/screens): how families' screens and glasses are set up, as counts only.
  * No household, profile or screen is named or listed. A count from 1 to 4 is shown as "fewer than 5", and a middle value

@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the Listen button: the spoken version of the instructions on a page.
 /**
  * Words for the Listen button: the spoken version of the instructions on a page.
  * Plain words a school student can follow. The button is offered only where audio exists.

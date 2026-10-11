@@ -1,3 +1,4 @@
+// Eyes Opener: Guides for the Focus group: routines that train how quickly the eyes change focus between far and near.
 /**
  * Guides for the Focus group: routines that train how quickly the eyes change focus between far and near.
  * Both use the printed letter chart (read from 3 m) and its small near card (held at 40 cm).

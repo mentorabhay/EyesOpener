@@ -1,3 +1,4 @@
+// Eyes Opener: The measured screen. Null only for a check-up that draws nothing at true size. .
 "use client";
 import Link from "next/link";
 import { useState, useTransition, type ReactNode } from "react";

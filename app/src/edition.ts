@@ -1,3 +1,4 @@
+// Eyes Opener: What this build of IOpener includes on top of the core.
 /**
  * What this build of IOpener includes on top of the core.
  * The public edition includes none of it: every switch is off. A fuller build replaces this one file.

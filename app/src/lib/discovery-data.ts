@@ -1,3 +1,4 @@
+// Eyes Opener: Reading and writing the Discovery Board. Server only.
 /**
  * Reading and writing the Discovery Board. Server only.
  * A member's vote is always for the active profile, found on the server; the browser names only a question, and

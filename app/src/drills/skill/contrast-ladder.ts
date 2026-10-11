@@ -1,3 +1,4 @@
+// Eyes Opener: Contrast Ladder. A round patch of stripes on a mid-grey field leans left or right; the member says which way.
 /**
  * Contrast Ladder. A round patch of stripes on a mid-grey field leans left or right; the member says which way.
  * The stripes get fainter as the answers stay right. It measures the faintest stripes the weaker eye still reads.

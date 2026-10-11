@@ -1,3 +1,4 @@
+// Eyes Opener: The address audio is played from: GET /voice/<language>/<kind>/<item>/<part>.<hash>.mp3.
 /**
  * The address audio is played from: GET /voice/<language>/<kind>/<item>/<part>.<hash>.mp3
  * Everything it does, and every check, is in src/voice/serve.ts. This file only joins it to the server's settings.

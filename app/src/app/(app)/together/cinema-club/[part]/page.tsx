@@ -1,3 +1,4 @@
+// Eyes Opener: One part of the host kit: the guide, the session sheet or the group screen.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { planFor } from "@/components/film/chapters";

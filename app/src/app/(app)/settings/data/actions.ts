@@ -1,3 +1,4 @@
+// Eyes Opener: The data section of Settings. Each action checks `m.can("data")` again on the server, inside the helper it calls:.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

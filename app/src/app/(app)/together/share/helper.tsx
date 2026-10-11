@@ -1,3 +1,4 @@
+// Eyes Opener: Writes the suggested lines into the form. A line the member already wrote is left alone; true when one was. .
 "use client";
 import { useRef, useState, useTransition } from "react";
 import { assistCopy } from "@/copy/assist";

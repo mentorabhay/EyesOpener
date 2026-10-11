@@ -1,3 +1,4 @@
+// Eyes Opener: Which language one request is answered in. Pure rules, unit-tested; src/proxy.ts applies them before anything.
 /**
  * Which language one request is answered in. Pure rules, unit-tested; src/proxy.ts applies them before anything
  * is drawn, so a whole page is always in one language.

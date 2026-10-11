@@ -1,3 +1,4 @@
+// Eyes Opener: Hands the household's ink tuning (src/engine/tune.ts) to the browser's drawing code. It renders nothing. It sits in.
 "use client";
 /**
  * Hands the household's ink tuning (src/engine/tune.ts) to the browser's drawing code. It renders nothing. It sits in

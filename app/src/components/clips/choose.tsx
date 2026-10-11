@@ -1,3 +1,4 @@
+// Eyes Opener: Choose what you see: a direction or a shape, on a staircase. The plain letter test and the two-letter balance.
 "use client";
 /**
  * Choose what you see: a direction or a shape, on a staircase. The plain letter test and the two-letter balance

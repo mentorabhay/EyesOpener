@@ -1,3 +1,4 @@
+// Eyes Opener: Under this age a grown-up runs the near point check. .
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import { StepFlow } from "@/components/guide/flow";

@@ -1,2 +1,3 @@
+/* Eyes Opener: Video playback, stereo anaglyph rendering, and audiovisual pacing component (cinema.module). */
 /* The record of film sessions has several number columns side by side: keep a gap between their headings. */
 .record :global(table.tb) th + th, .record :global(table.tb) td + td { padding-left: 14px; }

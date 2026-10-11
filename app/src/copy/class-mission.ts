@@ -1,3 +1,4 @@
+// Eyes Opener: Words for Class Mission: the child who wears a patch leads a five-minute game for the whole class.
 /**
  * Words for Class Mission: the child who wears a patch leads a five-minute game for the whole class.
  * The kit says what a patch is for in words a class understands, and says nothing about the child's own eyes.

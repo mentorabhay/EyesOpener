@@ -1,3 +1,4 @@
+// Eyes Opener: Finishes an email link. On the device that asked for the link the address is already known, and the form sends.
 "use client";
 /**
  * Finishes an email link. On the device that asked for the link the address is already known, and the form sends

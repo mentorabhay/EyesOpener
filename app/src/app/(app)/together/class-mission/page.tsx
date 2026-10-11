@@ -1,3 +1,4 @@
+// Eyes Opener: One child of the household: where the mission stands, and what a guardian can do next. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { StateForm } from "@/components/together/StateForm";

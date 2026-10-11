@@ -1,3 +1,4 @@
+// Eyes Opener: Queries for the Together space: the evidence engine, the league and the community ideas.
 /**
  * Queries for the Together space: the evidence engine, the league and the community ideas.
  * Server only. Every query is scoped by the active profile or its account.

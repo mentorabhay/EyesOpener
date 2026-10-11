@@ -1,3 +1,4 @@
+// Eyes Opener: The game drawn in the two-eye scene. If the catalogue ever drops it, the strongest two-eye game stands in. .
 import type { Metadata } from "next";
 import { evidenceOf, exercises, gameBySlug, games, mechanismOf, programmes, tests, type EvidenceKey } from "@/data";
 import { MAX_DAILY_MINUTES, MIN_SCREEN_AGE } from "@/engine";

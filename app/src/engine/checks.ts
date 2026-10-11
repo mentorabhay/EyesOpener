@@ -1,3 +1,4 @@
+// Eyes Opener: The later check-ups (depth, fusion range, near point, suppression, symptoms) and the change rules.
 /**
  * The later check-ups (depth, fusion range, near point, suppression, symptoms) and the change rules.
  * Pure maths: the same functions run in the browser while a test is drawn and on the server when it is saved.

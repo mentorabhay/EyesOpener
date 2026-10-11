@@ -1,3 +1,4 @@
+// Eyes Opener: The Listen button: plays the spoken version of the instructions beside it.
 "use client";
 /**
  * The Listen button: plays the spoken version of the instructions beside it.

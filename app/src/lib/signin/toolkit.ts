@@ -1,3 +1,4 @@
+// Eyes Opener: The four calls IOpener makes to Firebase's Identity Toolkit, as plain HTTPS requests: no Firebase package.
 /**
  * The four calls IOpener makes to Firebase's Identity Toolkit, as plain HTTPS requests: no Firebase package.
  *

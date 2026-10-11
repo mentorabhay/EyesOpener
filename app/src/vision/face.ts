@@ -1,3 +1,4 @@
+// Eyes Opener: Facts about a face, worked out from the 478 points the face landmark model gives for one camera picture.
 /**
  * Facts about a face, worked out from the 478 points the face landmark model gives for one camera picture.
  * Pure functions: no camera, no model, no clock. The camera side is in camera.ts, landmarker.ts and runner.ts.

@@ -1,3 +1,4 @@
+// Eyes Opener: Words of the lens choice (Settings, "Which colour the weaker eye sees"): which ink a person's weaker eye sees, and.
 /**
  * Words of the lens choice (Settings, "Which colour the weaker eye sees"): which ink a person's weaker eye sees, and
  * the note on game pages when the inks are swapped. The rule: engine/profile.ts (`WeakInk`) and src/lib/lens-choice.ts.

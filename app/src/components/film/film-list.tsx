@@ -1,3 +1,4 @@
+// Eyes Opener: One line on how far a film is watched. Says nothing it does not know: a length not read yet is left out. .
 "use client";
 import { useRef, type RefObject } from "react";
 import { cinema as c } from "@/copy/cinema";

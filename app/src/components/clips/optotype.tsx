@@ -1,3 +1,4 @@
+// Eyes Opener: The letter test with other targets: the E with a bar close on each side, the four matching letters for a young.
 "use client";
 /**
  * The letter test with other targets: the E with a bar close on each side, the four matching letters for a young

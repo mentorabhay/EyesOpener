@@ -1,3 +1,4 @@
+/* Eyes Opener: Core system module providing logic and utilities for requests.module. */
 /* One request: the household and what it asked for on the left, where it stands on the right. On a phone the state drops below. */
 .req { display: flex; gap: 8px 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 11px 0; border-bottom: 1px solid var(--line); }
 .req:last-child { border-bottom: 0; padding-bottom: 0; }

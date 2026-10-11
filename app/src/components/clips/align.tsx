@@ -1,3 +1,4 @@
+// Eyes Opener: Line up two marks: one short line is shown to each eye, and the member moves the right eye's line until it looks.
 "use client";
 /**
  * Line up two marks: one short line is shown to each eye, and the member moves the right eye's line until it looks

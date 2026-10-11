@@ -1,3 +1,4 @@
+// Eyes Opener: Stereogram Pairs. Two rings side by side, each with a small dot inside it. The member joins the two rings.
 /**
  * Stereogram Pairs. Two rings side by side, each with a small dot inside it. The member joins the two rings
  * into a third ring in the middle, by crossing the eyes or by relaxing them, and says whether the dot in that

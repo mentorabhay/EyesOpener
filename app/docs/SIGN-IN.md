@@ -1,3 +1,4 @@
+<!-- Eyes Opener: Core system module providing logic and utilities for sign-in. -->
 # Sign-in
 
 How people sign in to IOpener, what has to be switched on at Firebase, and how to test it.

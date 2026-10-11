@@ -1,3 +1,4 @@
+// Eyes Opener: See Both Lights. Two still lights and a white dot between them, seen through the red-cyan glasses. Now and.
 /**
  * See Both Lights. Two still lights and a white dot between them, seen through the red-cyan glasses. Now and
  * then a quiet question asks how many lights the member sees. It measures how often both eyes were switched on.

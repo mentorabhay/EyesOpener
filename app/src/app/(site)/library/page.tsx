@@ -1,3 +1,4 @@
+// Eyes Opener: A row of filter links. The choice lives in the address, so the page needs no script and can be shared. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Empty } from "@/components/ui";

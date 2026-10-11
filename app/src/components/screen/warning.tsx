@@ -1,3 +1,4 @@
+// Eyes Opener: One line for any page that shows two-eye scenes: it appears only when the colour leak measured on this screen is.
 import Link from "next/link";
 import { screen as t } from "@/copy/screen";
 import { leakFor } from "@/engine";

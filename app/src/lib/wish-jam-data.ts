@@ -1,3 +1,4 @@
+// Eyes Opener: Reading and writing Wish Jam. Server only.
 /**
  * Reading and writing Wish Jam. Server only.
  *

@@ -1,3 +1,4 @@
+// Eyes Opener: Demo rows for data requests, so the staff room has something in each state that is safe to show.
 /**
  * Demo rows for data requests, so the staff room has something in each state that is safe to show.
  * Run it after the main seed; it is safe to run again.

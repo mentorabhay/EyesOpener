@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the public site and for the enquiries room in the admin console.
 /**
  * Words for the public site and for the enquiries room in the admin console.
  *
@@ -28,8 +29,8 @@ export const dayTime = (d: Date) => new Intl.DateTimeFormat("en-IN", { dateStyle
 export interface Trial { name: string; who: string; found: string; limit?: string; href: string; source: string; more?: { label: string; href: string } }
 
 export const site = texts("copy/site", "site", () => ({
-  name: "IOpener",
-  logoLabel: "IOpener, home",
+  name: "Eyes Opener",
+  logoLabel: "Eyes Opener, home",
   skip: "Skip to the page",
 
   /* ───────────── navigation and footer ───────────── */

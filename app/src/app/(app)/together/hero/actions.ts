@@ -1,3 +1,4 @@
+// Eyes Opener: Keeps the shape the device traced. Only the shape and how it was made arrive here: the photo, the camera.
 "use server";
 import { revalidatePath } from "next/cache";
 import { hero as t } from "@/copy/hero";

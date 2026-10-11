@@ -1,3 +1,4 @@
+// Eyes Opener: Five soft sounds, a second and a half apart. Each one is also the moment the ring on the panel grows. .
 "use client";
 import { useRef, useState } from "react";
 import { clips as c, eyeWord } from "@/copy/clips";

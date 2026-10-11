@@ -1,3 +1,4 @@
+// Eyes Opener: Words for Proof of Help: what a shared idea has done, measured and not applauded.
 /**
  * Words for Proof of Help: what a shared idea has done, measured and not applauded.
  * A pooled result from members is a signal, never proof. Nothing here may say more than the numbers do,

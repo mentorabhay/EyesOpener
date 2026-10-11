@@ -1,3 +1,4 @@
+// Eyes Opener: Words for the landing page.
 /**
  * Words for the landing page.
  * Plain words a school student can follow. One idea per line. Read only the headings and they tell the story.

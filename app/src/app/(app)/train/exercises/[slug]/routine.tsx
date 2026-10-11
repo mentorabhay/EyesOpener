@@ -1,3 +1,4 @@
+// Eyes Opener: The tool for a routine done away from the screen. Starting it opens the session.
 "use client";
 import { useRef, useState } from "react";
 import type { Labels } from "@/components/play/results";
