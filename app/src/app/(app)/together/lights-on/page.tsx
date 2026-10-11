@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, PageHead, Void } from "@/components/ui";
 import { lightsOn as t, longDay } from "@/copy/lights-on";
@@ -31,7 +32,7 @@ export default async function LightsOnPage({ searchParams }: { searchParams: Pro
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[
           { value: t.weekly(v.setting.weekday, v.setting.hour), label: t.stats.weekly },
           v.on ? { value: v.households ?? <Void label={t.stats.tooFew} />, label: t.stats.now } : { value: t.untilShort(left), label: t.stats.until },
@@ -96,6 +97,7 @@ export default async function LightsOnPage({ searchParams }: { searchParams: Pro
       </div>
       {/* While the hour is on, and in the last day before it, the page asks again once a minute; otherwise every ten minutes. */}
       {!v.preview && <Pulse seconds={v.on || left.days === 0 ? REFRESH_SECONDS : REFRESH_SECONDS * 10} at={(v.on ? v.hour.end : v.hour.start).getTime()} />}
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

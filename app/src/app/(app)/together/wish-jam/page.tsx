@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";
 import { StateForm } from "@/components/together/StateForm";
@@ -98,7 +99,7 @@ export default async function WishJamPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: listed.length, label: t.stats.listed }, { value: listed.filter((w) => w.state === "built" || w.state === "named").length, label: t.stats.built }]}
       />
       <div className="bento">
@@ -169,6 +170,7 @@ export default async function WishJamPage() {
           </Card>
         )}
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

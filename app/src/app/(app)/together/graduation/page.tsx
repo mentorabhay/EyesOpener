@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";
 import css from "@/components/together/rewards.module.css";
@@ -45,7 +46,7 @@ export default async function GraduationPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={g && journey ? [{ value: g.weeks, label: t.stats.weeks }, { value: journey.practised, label: t.stats.days }] : undefined}
       />
 
@@ -176,6 +177,7 @@ export default async function GraduationPage() {
           </Card>
         )}
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

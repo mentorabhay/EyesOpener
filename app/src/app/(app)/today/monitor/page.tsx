@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Card, Chip, Empty, EvidenceChip, PageHead, Pills, Void } from "@/components/ui";
@@ -38,7 +39,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
     const adults = m.profiles.filter((p) => isAdultProfile(p, ageFrom(p.birthYear)));
     return (
       <>
-        <PageHead title={t.title} sub={t.sub} crumb={crumb()} />
+        <PageHead title={t.title} crumb={crumb()} />
         <div className="bento">
           <Card title={t.child.title} span={7}>
             <p>{t.child.body(name)}</p>
@@ -56,6 +57,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
           </Card>
           <Card title={t.does.title} span={5}><List items={t.does.list} /></Card>
         </div>
+        <More><p>{t.sub}</p></More>
       </>
     );
   }
@@ -69,7 +71,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub} crumb={crumb()}
+        title={t.title} crumb={crumb()}
         stats={[
           { value: now.measured ? a.measured(now.measured) : none, label: a.stat.measured },
           { value: now.measured ? a.ofDue(now.taken, now.due) : none, label: a.stat.breaks },
@@ -147,6 +149,7 @@ export default async function MonitorPage({ searchParams }: { searchParams: Prom
           )}
         </Card>
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

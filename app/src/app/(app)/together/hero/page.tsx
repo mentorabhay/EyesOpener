@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";
 import { HeroInGame, HeroShape } from "@/components/together/hero-art";
@@ -38,7 +39,7 @@ export default async function HeroPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={t.sub} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: heroes.length, label: t.stats.kept }, { value: games.length, label: t.stats.games }]}
       />
       <div className="bento">
@@ -102,6 +103,7 @@ export default async function HeroPage() {
           )}
         </Card>
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

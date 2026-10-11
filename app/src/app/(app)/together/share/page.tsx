@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Card, PageHead } from "@/components/ui";
 import { StateForm } from "@/components/together/StateForm";
@@ -17,7 +18,7 @@ export default async function SharePage() {
   const helper = assist.available && m.can("share") && (await assist.ready("idea").catch(() => false));
   return (
     <>
-      <PageHead title={t.title} sub={t.sub} crumb={[together.crumb]} />
+      <PageHead title={t.title} crumb={[together.crumb]} />
       <div className="bento">
         <Card span={8}>
           {!m.can("share") ? <p className="notice">{together.cannot.share}</p> : (
@@ -50,6 +51,7 @@ export default async function SharePage() {
           )}
         </Card>
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { StateForm } from "@/components/together/StateForm";
 import { Btn, Card, Chip, Empty, PageHead, type Tone } from "@/components/ui";
@@ -107,7 +108,7 @@ export default async function ClassMissionPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: MISSION_SECONDS / 60, label: t.stats.length }, ...(first ? [{ value: t.state[first.state], label: `${first.name}: ${t.stats.state.toLowerCase()}` }] : [])]}
       />
       <div className="bento">
@@ -154,6 +155,7 @@ export default async function ClassMissionPage() {
           </Card>
         </div>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

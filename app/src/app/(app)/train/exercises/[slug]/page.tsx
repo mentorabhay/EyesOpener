@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { StepFlow } from "@/components/guide/flow";
+import { Facts, Fold, More } from "@/components/guide/more";
+import { exerciseSteps } from "@/components/guide/steps";
 import { History, type Labels } from "@/components/play/results";
 import { DoseLine } from "@/components/play/session-ui";
 import { Stage } from "@/components/play/stage";
 import { Btn, Card, Chip, Empty, EvidenceChip, PageHead } from "@/components/ui";
 import { Listen } from "@/components/voice/listen";
+import { guide as gw } from "@/copy/guide";
 import { train as t } from "@/copy/train";
 import { voice } from "@/copy/voice";
 import { exerciseBySlug, mechanismOf } from "@/data";
@@ -63,46 +67,15 @@ export default async function ExercisePage({ params }: Props) {
   /* The spoken version of a card. It draws nothing where no audio exists. */
   const say = (part: ExercisePart) => <Listen id={exerciseScriptId(slug, part)} what={voice.parts[part]} locale={m.account.locale} />;
 
+  const wide = tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid";
+
   return (
     <>
-      <PageHead title={e.name} sub={w.purpose} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
+      <PageHead title={e.name} crumb={[{ href: "/train/exercises", label: x.crumb }]} />
       {(status !== "open" || m.tester) && <div className="row"><Chip tone={status === "open" ? "ok" : status === "counsellor" ? "plain" : "warn"}>{x.statusFor[status]}</Chip></div>}
+      <StepFlow steps={exerciseSteps(g, e.gear, eye.cyanEye)} />
       <div className="bento">
-        <Card title={x.what} span={7} right={say("what")}>
-          <p>{g?.what ?? w.how}</p>
-          <dl className="kv">
-            <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
-            <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
-            <div><dt>{k.dose}</dt><dd>{w.dose}</dd></div>
-          </dl>
-        </Card>
-        <Card title={x.ready} span={5} right={say("setup")}>
-          {g ? (
-            <>
-              <p className="small muted">{x.need}</p>
-              <ul className={css.list}>{g.need.map((line) => <li key={line}>{line}</li>)}</ul>
-              <p className="small muted">{x.setup}</p>
-              <ol className={css.steps}>{g.setup.map((line) => <li key={line}>{line}</li>)}</ol>
-              {g.print && <div className="row"><Btn href={`/train/exercises/${slug}/print`} small>{x.print}</Btn></div>}
-            </>
-          ) : <Empty title={x.notWritten} />}
-        </Card>
-
-        {g && (
-          <Card title={x.steps} span={7} right={say("steps")}>
-            <ol className={css.steps}>{g.steps.map((line) => <li key={line}>{line}</li>)}</ol>
-          </Card>
-        )}
-        {g && (
-          <Card title={x.right} span={5} right={say("right")}>
-            <ul className={css.list}>{g.right.map((line) => <li key={line}>{line}</li>)}</ul>
-            <p className="small muted">{x.mistakes}</p>
-            <ul className={css.list}>{g.mistakes.map((line) => <li key={line}>{line}</li>)}</ul>
-          </Card>
-        )}
-
-        <Card title={x.doNow} span={tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 12 : 7}>
-          <p className="muted small">{x.toolNote[tool.kind]}{isCareRoutine("exercise", slug) && tool.kind !== "companion" ? ` ${x.careNote}` : ""}</p>
+        <Card title={x.doNow} span={wide ? 12 : 7} right={g?.print && <Btn href={`/train/exercises/${slug}/print`} small>{x.print}</Btn>}>
           {tool.kind === "drill" ? (
             hasDrill(slug)
               ? (setup?.held ? <SetupGate s={setup} name={m.profile.displayName} />
@@ -114,37 +87,57 @@ export default async function ExercisePage({ params }: Props) {
                 : tool.kind === "companion" ? <div className="row"><Btn href={`/train/games/${tool.game}/play`} kind="g">{x.openCompanion}</Btn></div>
                   : <Routine slug={slug} dose={dose} tool={tool as Hand} measures={g?.measures ?? []} labels={labels} care={isCareRoutine("exercise", slug)} />}
         </Card>
-
-        {g && g.measures.length > 0 && (
-          <Card title={x.measure} span={tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 7 : 5}>
-            <div>
-              {g.measures.map((q) => (
-                <div key={q.key} className={css.measure}>
-                  <b>{q.label}{q.unit ? `, ${q.unit}` : ""}</b>
-                  <span>{q.how}</span>
-                  <span className="muted small">{x.measuredBy[q.from]}</span>
-                  <span className="small"><b>{x.usual}.</b> {q.usual ? q.usual.text : x.noUsual}</span>
-                </div>
-              ))}
-            </div>
-          </Card>
-        )}
-        {g && (
-          <Card title={x.stop} span={g.measures.length > 0 ? (tool.kind === "drill" || tool.kind === "reading" || tool.kind === "grid" ? 5 : 12) : 5} right={say("stop")}>
-            <ul className={css.list}>{g.stop.map((line) => <li key={line}>{line}</li>)}</ul>
-            <p className="small muted">{x.stopNote}</p>
-          </Card>
-        )}
-
         {tool.kind !== "cinema" && tool.kind !== "companion" && (
-          <Card title={x.results}>
+          <Card title={x.results} span={wide ? 12 : 5}>
             <History rows={past} labels={labels} lower={lower} />
           </Card>
         )}
+      </div>
 
-        {sup && <Card title={t.supervision.title}><SupervisionNote s={sup} /></Card>}
-
-        <Card title={x.evidence} right={<EvidenceChip level={mech.evidence} />}>
+      <More title={gw.moreAbout(e.name)} hint={w.purpose}>
+        <Facts items={[{ label: k.for, value: w.who }, { label: k.gear, value: w.gear }, { label: k.dose, value: w.dose }]} />
+        <Fold title={x.what} right={say("what")}>
+          <p>{g?.what ?? w.how}</p>
+          <p className="muted small">{x.toolNote[tool.kind]}{isCareRoutine("exercise", slug) && tool.kind !== "companion" ? ` ${x.careNote}` : ""}</p>
+        </Fold>
+        {g ? (
+          <>
+            <Fold title={x.ready} right={say("setup")}>
+              <p className="small muted">{x.need}</p>
+              <ul className={css.list}>{g.need.map((line) => <li key={line}>{line}</li>)}</ul>
+              <p className="small muted">{x.setup}</p>
+              <ol className={css.steps}>{g.setup.map((line) => <li key={line}>{line}</li>)}</ol>
+            </Fold>
+            <Fold title={x.steps} right={say("steps")}>
+              <ol className={css.steps}>{g.steps.map((line) => <li key={line}>{line}</li>)}</ol>
+            </Fold>
+            <Fold title={x.right} right={say("right")}>
+              <ul className={css.list}>{g.right.map((line) => <li key={line}>{line}</li>)}</ul>
+              <p className="small muted">{x.mistakes}</p>
+              <ul className={css.list}>{g.mistakes.map((line) => <li key={line}>{line}</li>)}</ul>
+            </Fold>
+            {g.measures.length > 0 && (
+              <Fold title={x.measure}>
+                <div>
+                  {g.measures.map((q) => (
+                    <div key={q.key} className={css.measure}>
+                      <b>{q.label}{q.unit ? `, ${q.unit}` : ""}</b>
+                      <span>{q.how}</span>
+                      <span className="muted small">{x.measuredBy[q.from]}</span>
+                      <span className="small"><b>{x.usual}.</b> {q.usual ? q.usual.text : x.noUsual}</span>
+                    </div>
+                  ))}
+                </div>
+              </Fold>
+            )}
+            <Fold title={x.stop} right={say("stop")} warn>
+              <ul className={css.list}>{g.stop.map((line) => <li key={line}>{line}</li>)}</ul>
+              <p className="small muted">{x.stopNote}</p>
+            </Fold>
+          </>
+        ) : <Empty title={x.notWritten} />}
+        {sup && <Fold title={t.supervision.title}><SupervisionNote s={sup} /></Fold>}
+        <Fold title={x.evidence} right={<EvidenceChip level={mech.evidence} />}>
           <p><b>{mech.label}.</b> {mech.basis}</p>
           {g && <p>{g.evidence}</p>}
           <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
@@ -154,8 +147,8 @@ export default async function ExercisePage({ params }: Props) {
               <ol className={css.sources}>{g.sources.map((src) => <li key={src.url}><a href={src.url} target="_blank" rel="noreferrer noopener">{src.label}</a></li>)}</ol>
             </>
           )}
-        </Card>
-      </div>
+        </Fold>
+      </More>
     </>
   );
 }

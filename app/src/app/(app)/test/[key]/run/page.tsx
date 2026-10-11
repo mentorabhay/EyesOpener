@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import { StepFlow } from "@/components/guide/flow";
+import { checkupSteps } from "@/components/guide/steps";
 import { PageHead } from "@/components/ui";
 import { test as c } from "@/copy/test";
 import { testByKey } from "@/data";
@@ -35,11 +37,12 @@ export default async function RunPage({ params }: Props) {
   if (needsScreen(key) && !m.device) redirect("/setup");
   /* a two-eye check-up waits for setup; the balance check-up is itself a step of setup */
   const s = TWO_EYE.has(key) ? await setupOf(m) : null;
-  const head = <PageHead title={c.run.title(t.name)} sub={t.what} crumb={[{ href: "/test", label: c.title }, { href: `/test/${key}`, label: t.name }]} />;
+  const head = <PageHead title={c.run.title(t.name)} crumb={[{ href: "/test", label: c.title }, { href: `/test/${key}`, label: t.name }]} />;
   if (s?.held && !block) return <>{head}<SetupGate s={s} name={m.profile.displayName} /></>;
   return (
     <>
       {head}
+      {!block && <StepFlow steps={checkupSteps(key, m.eye ? eyeOf(m.eye.cyanEye) : "L")} compact />}
       {block ? <p className="notice" data-b="warn">{c.blocked[block]}</p> : (
         <Runner
           key={m.profile.id} testKey={key}

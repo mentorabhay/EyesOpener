@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, Empty, PageHead, type Tone } from "@/components/ui";
 import { StateForm } from "@/components/together/StateForm";
@@ -96,7 +97,7 @@ export default async function DuetPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={first && [
           { value: first.streak.current, label: t.stats.current },
           { value: first.streak.longest, label: t.stats.longest },
@@ -136,6 +137,7 @@ export default async function DuetPage() {
           </Card>
         )}
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+import { Fold } from "@/components/guide/more";
 import { Card, Chip, Empty, EvidenceChip } from "@/components/ui";
 import { Listen } from "@/components/voice/listen";
 import { train as t } from "@/copy/train";
@@ -50,7 +52,16 @@ function ForStaff({ mechanism, level, recommended, status, notes, catalogue }: {
  * what counts as success, what is measured, when to stop, what supervision adds and where it all comes from.
  * With `staff`, it adds what staff need to explain the game: the method, its evidence, and what the game cannot tell.
  */
-export function GameManual({ slug, staff = false, status, locale }: { slug: string; staff?: boolean; status?: Status; /** The household's language, for the Listen buttons. */ locale?: string | null }) {
+type BoxProps = { title?: ReactNode; right?: ReactNode; span?: 3 | 4 | 5 | 6 | 7 | 8 | 12; tone?: "dark" | "grad"; /** The stop rules: marked when folded. */ warn?: boolean; children: ReactNode };
+const CardBox = ({ title, right, span, tone, children }: BoxProps) => <Card title={title} right={right} span={span} tone={tone}>{children}</Card>;
+const FoldBox = ({ title, right, warn, children }: BoxProps) => (title ? <Fold title={title} right={right} warn={warn}>{children}</Fold> : <>{children}</>);
+const Bento = ({ children }: { children: ReactNode }) => <div className="bento">{children}</div>;
+const Stack = ({ children }: { children: ReactNode }) => <div className="stack">{children}</div>;
+/** A topic as a card in the bento (staff rooms), or as a fold of its own (the member's manual page). */
+const layout = (folds: boolean) => (folds ? { Box: FoldBox, Wrap: Stack } : { Box: CardBox, Wrap: Bento });
+
+export function GameManual({ slug, staff = false, status, locale, folds = false }: { slug: string; staff?: boolean; status?: Status; /** The household's language, for the Listen buttons. */ locale?: string | null; /** Each topic in its own fold (the member's manual page). */ folds?: boolean }) {
+  const { Box, Wrap } = layout(folds);
   const g = gameBySlug(slug)!, guide = gameGuideFor(slug);
   const mech = mechanismOf(g.mechanism), level = gameLevel(g), w = gameWords(g);
   const sup = supervisionFor(g.mechanism, level);
@@ -58,8 +69,8 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
   /* The spoken version of a card. It draws nothing where no audio exists. */
   const say = (part: GamePart) => <Listen id={gameScriptId(slug, part)} what={part === "play" ? voice.parts.steps : voice.parts[part]} locale={locale} />;
   return (
-    <div className="bento">
-      <Card title={x.what} span={7} right={say("what")}>
+    <Wrap>
+      <Box title={x.what} span={7} right={say("what")}>
         <p>{guide?.what ?? w.play}</p>
         <dl className="kv">
           <div><dt>{k.for}</dt><dd>{w.who}</dd></div>
@@ -67,28 +78,28 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
           <div><dt>{k.gear}</dt><dd>{w.gear}</dd></div>
           <div><dt>{k.session}</dt><dd>{w.session}</dd></div>
         </dl>
-      </Card>
-      <Card title={x.helps} span={5} right={<EvidenceChip level={mech.evidence} />}>
+      </Box>
+      <Box title={x.helps} span={5} right={<EvidenceChip level={mech.evidence} />}>
         <p>{guide?.helps ?? w.purpose}</p>
-      </Card>
-      {!guide && <Card><Empty title={x.notWritten} /></Card>}
+      </Box>
+      {!guide && <Box><Empty title={x.notWritten} /></Box>}
       {guide && (
         <>
-          <Card title={x.ready} span={5}><p className="small muted">{x.need}</p><Lines items={guide.need} /></Card>
-          <Card title={x.see} span={7} right={say("see")}><Lines items={guide.see} /></Card>
-          <Card title={x.play} span={7} right={say("play")}>
+          <Box title={x.ready} span={5}><p className="small muted">{x.need}</p><Lines items={guide.need} /></Box>
+          <Box title={x.see} span={7} right={say("see")}><Lines items={guide.see} /></Box>
+          <Box title={x.play} span={7} right={say("play")}>
             <Lines items={guide.play} numbered />
             <p className="small muted">{x.controls}</p>
             <ul className={css.list}><li><b>{x.touch}.</b> {guide.controls.touch}</li><li><b>{x.keys}.</b> {guide.controls.keys}</li></ul>
-          </Card>
-          <Card title={x.success} span={5}>
+          </Box>
+          <Box title={x.success} span={5}>
             <Lines items={guide.success} />
             <p className="small muted">{x.mistakes}</p>
             <Lines items={guide.mistakes} />
-          </Card>
-          {guide.cues.length > 0 && <Card title={x.cues} right={say("cues")}><Cues cues={guide.cues} tones={x.tone} /></Card>}
+          </Box>
+          {guide.cues.length > 0 && <Box title={x.cues} right={say("cues")}><Cues cues={guide.cues} tones={x.tone} /></Box>}
           {guide.measures.length > 0 && (
-            <Card title={x.measure} span={7}>
+            <Box title={x.measure} span={7}>
               <div>
                 {guide.measures.map((q) => (
                   <div key={q.key} className={css.measure}>
@@ -98,40 +109,41 @@ export function GameManual({ slug, staff = false, status, locale }: { slug: stri
                 ))}
               </div>
               <p className="small muted">{x.noNorm}</p>
-            </Card>
+            </Box>
           )}
-          <Card title={x.stop} span={guide.measures.length > 0 ? 5 : 12} right={say("stop")}>
+          <Box title={x.stop} span={guide.measures.length > 0 ? 5 : 12} right={say("stop")} warn>
             <Lines items={guide.stop} />
             <p className="small muted">{x.stopNote}</p>
-          </Card>
+          </Box>
         </>
       )}
-      {sup && <Card title={t.supervision.title} right={level >= 2 ? <Chip>{e.counsellorLed}</Chip> : undefined}><SupervisionNote s={sup} /></Card>}
-      <Card title={t.game.evidence} right={<EvidenceChip level={mech.evidence} />}>
+      {sup && <Box title={t.supervision.title} right={level >= 2 ? <Chip>{e.counsellorLed}</Chip> : undefined}><SupervisionNote s={sup} /></Box>}
+      <Box title={t.game.evidence} right={<EvidenceChip level={mech.evidence} />}>
         <p><b>{mech.label}.</b> {mech.basis}</p>
         {guide && <p>{guide.evidence}</p>}
         <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
         {guide && <Sources sources={guide.sources} />}
-      </Card>
+      </Box>
       {staff && (
         <ForStaff
           mechanism={g.mechanism} level={level} recommended={recommendedStatus("game", slug)} status={status} notes={staffNotesFor(slug)}
           catalogue={[{ label: m.staff.catPlay, value: g.play }, { label: m.staff.catPurpose, value: g.purpose }, { label: m.staff.catFor, value: g.for }, { label: m.staff.tags, value: g.tags.join(", ") }]}
         />
       )}
-    </div>
+    </Wrap>
   );
 }
 
 /** The manual of one exercise, without its tool. With `staff`, it adds the method, its evidence and what the routine's tool cannot tell. */
-export function ExerciseManual({ slug, staff = false, status }: { slug: string; staff?: boolean; status?: Status }) {
+export function ExerciseManual({ slug, staff = false, status, folds = false }: { slug: string; staff?: boolean; status?: Status; folds?: boolean }) {
+  const { Box, Wrap } = layout(folds);
   const ex = exerciseBySlug(slug)!, g = guideFor(slug);
   const mech = mechanismOf(ex.mechanism), level = exerciseLevel(ex), w = exerciseWords(ex);
   const sup = supervisionFor(ex.mechanism, level);
   const k = e.kv;
   return (
-    <div className="bento">
-      <Card title={e.what} span={7}>
+    <Wrap>
+      <Box title={e.what} span={7}>
         <p>{g?.what ?? w.how}</p>
         <dl className="kv">
           <div><dt>{k.purpose}</dt><dd>{w.purpose}</dd></div>
@@ -140,22 +152,22 @@ export function ExerciseManual({ slug, staff = false, status }: { slug: string; 
           <div><dt>{k.dose}</dt><dd>{w.dose}</dd></div>
           {g && <div><dt>{m.tool}</dt><dd>{e.tool[g.tool.kind]}</dd></div>}
         </dl>
-      </Card>
-      {!g && <Card span={5}><Empty title={e.notWritten} /></Card>}
+      </Box>
+      {!g && <Box span={5}><Empty title={e.notWritten} /></Box>}
       {g && (
         <>
-          <Card title={e.ready} span={5}>
+          <Box title={e.ready} span={5}>
             <p className="small muted">{e.need}</p><Lines items={g.need} />
             <p className="small muted">{e.setup}</p><Lines items={g.setup} numbered />
-          </Card>
-          <Card title={e.steps} span={7}><Lines items={g.steps} numbered /></Card>
-          <Card title={e.right} span={5}>
+          </Box>
+          <Box title={e.steps} span={7}><Lines items={g.steps} numbered /></Box>
+          <Box title={e.right} span={5}>
             <Lines items={g.right} />
             <p className="small muted">{e.mistakes}</p>
             <Lines items={g.mistakes} />
-          </Card>
+          </Box>
           {g.measures.length > 0 && (
-            <Card title={e.measure} span={7}>
+            <Box title={e.measure} span={7}>
               <div>
                 {g.measures.map((q) => (
                   <div key={q.key} className={css.measure}>
@@ -166,24 +178,24 @@ export function ExerciseManual({ slug, staff = false, status }: { slug: string; 
                   </div>
                 ))}
               </div>
-            </Card>
+            </Box>
           )}
-          <Card title={e.stop} span={g.measures.length > 0 ? 5 : 12}><Lines items={g.stop} /><p className="small muted">{e.stopNote}</p></Card>
+          <Box title={e.stop} span={g.measures.length > 0 ? 5 : 12} warn><Lines items={g.stop} /><p className="small muted">{e.stopNote}</p></Box>
         </>
       )}
-      {sup && <Card title={t.supervision.title} right={level >= 2 ? <Chip>{e.counsellorLed}</Chip> : undefined}><SupervisionNote s={sup} /></Card>}
-      <Card title={e.evidence} right={<EvidenceChip level={mech.evidence} />}>
+      {sup && <Box title={t.supervision.title} right={level >= 2 ? <Chip>{e.counsellorLed}</Chip> : undefined}><SupervisionNote s={sup} /></Box>}
+      <Box title={e.evidence} right={<EvidenceChip level={mech.evidence} />}>
         <p><b>{mech.label}.</b> {mech.basis}</p>
         {g && <p>{g.evidence}</p>}
         <p className="muted small">{evidenceWords(mech.evidence).meaning}</p>
         {g && <Sources sources={g.sources} />}
-      </Card>
+      </Box>
       {staff && (
         <ForStaff
           mechanism={ex.mechanism} level={level} recommended={recommendedStatus("exercise", slug)} status={status} notes={exerciseStaffNotesFor(slug)}
           catalogue={[{ label: m.staff.catPlay, value: ex.how }, { label: m.staff.catFor, value: ex.for }, { label: m.staff.group, value: ex.group }]}
         />
       )}
-    </div>
+    </Wrap>
   );
 }

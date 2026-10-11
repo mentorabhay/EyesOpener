@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { StepFlow } from "@/components/guide/flow";
+import { listSteps } from "@/components/guide/steps";
+import { guide as gw } from "@/copy/guide";
 import { Btn, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { clips } from "@/copy/clips";
 import { test as c } from "@/copy/test";
@@ -28,7 +31,8 @@ export default async function CheckupsPage() {
 
   return (
     <>
-      <PageHead title={c.title} sub={c.sub} stats={[{ value: due.length, label: c.dueCount }]} />
+      <PageHead title={c.title} stats={[{ value: due.length, label: c.dueCount }]} />
+      <StepFlow steps={listSteps(gw.checkups, ["tap", "letters", "chart"])} compact />
       <div className="row">
         <Btn href="/test/summary" small>{c.summaryLink}</Btn>
         <Btn href="/test/clips" small>{clips.hubLink}</Btn>

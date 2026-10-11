@@ -3,7 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { planFor } from "@/components/film/chapters";
 import { PageHead } from "@/components/ui";
-import { GlassesNote, HowToPlay, labelsFor } from "@/components/play/how-to";
+import { StepFlow } from "@/components/guide/flow";
+import { Fold, More } from "@/components/guide/more";
+import { gameSteps } from "@/components/guide/steps";
+import { GlassesNote, HowToPlayBody, labelsFor } from "@/components/play/how-to";
+import { guide as gw } from "@/copy/guide";
 import { ScreenWarning } from "@/components/screen/warning";
 import { Stage } from "@/components/play/stage";
 import { train as t } from "@/copy/train";
@@ -33,20 +37,28 @@ export default async function PlayPage({ params, searchParams }: Props) {
   if (!g || !kind) notFound();
   const m = await requireMember();
   if (!isListed(await statusFor("game", slug), m.tester)) notFound();
-  const head = <PageHead title={g.name} sub={gameWords(g).play} crumb={[kind === "cinema" ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
+  const head = <PageHead title={g.name} crumb={[kind === "cinema" ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]} />;
 
   const guide = gameGuideFor(slug);
-  /* The guide is open for a first visit and folded away once the member has finished a session of this game. */
+  const cyanEye = m.eye?.cyanEye === "right" ? "R" as const : "L" as const;
+  /* On top, the steps as moving pictures; the full guide is folded at the bottom. It opens on a first visit and stays folded once the member has finished a session of this game. */
   const known = guide ? (await pastSessions(m, "game", slug, 1)).length > 0 : false;
-  const how = guide && <HowToPlay g={guide} open={!known} locale={m.account.locale} />;
+  const flow = <StepFlow steps={gameSteps({ guide, gear: g.gear, cyan: cyanEye, care: kind === "care" })} compact />;
+  const more = (
+    <More title={gw.moreAbout(g.name)} hint={gameWords(g).play}>
+      {guide && <Fold title={t.game.guide.howTitle} open={!known}><HowToPlayBody g={guide} locale={m.account.locale} /></Fold>}
+      {/red-cyan/i.test(g.gear) && <Fold title={gw.game.glassesMore}><GlassesNote gear={g.gear} cyanEye={cyanEye} joined={!!guide?.joined} swapped={m.eye?.weakInk === "red"} /></Fold>}
+      {guide && <p className="small"><Link href={`/train/games/${slug}/manual`}>{t.game.guide.fullGuide}</Link></p>}
+    </More>
+  );
 
   /* A care companion is a log the family keeps. It is not a screen session, so it has no dose and no glasses. */
-  if (kind === "care") return <>{head}{how}<CarePanel slug={slug} m={m} /></>;
+  if (kind === "care") return <>{head}{flow}<CarePanel slug={slug} m={m} />{more}</>;
 
   /* a two-eye game waits until this person's setup is done (src/lib/setup-rules.ts); the dose is not touched meanwhile */
   if (/red-cyan/i.test(g.gear)) {
     const s = await setupOf(m);
-    if (s.held) return <>{head}<SetupGate s={s} name={m.profile.displayName} />{how}</>;
+    if (s.held) return <>{head}<SetupGate s={s} name={m.profile.displayName} />{more}</>;
   }
   const dose = await doseFor(m, "game", slug);
   const ppc = m.device?.pxPerCm ?? 0;
@@ -57,7 +69,7 @@ export default async function PlayPage({ params, searchParams }: Props) {
     letterPx: (m.eye?.letterCm ?? 0) * ppc,
     ppc,
     distCm: m.device?.distanceCm ?? 0,
-    cyanEye: m.eye?.cyanEye === "right" ? "R" as const : "L" as const,
+    cyanEye,
     weakInk: m.eye?.weakInk === "red" ? "red" as const : "cyan" as const,
     /* The hero this profile made in Draw Your Hero, for the games that have a character. */
     hero: await currentHero(m),
@@ -68,14 +80,13 @@ export default async function PlayPage({ params, searchParams }: Props) {
   return (
     <>
       {head}
-      <GlassesNote gear={g.gear} cyanEye={eye.cyanEye} joined={!!guide?.joined} swapped={eye.weakInk === "red"} />
+      {flow}
       {/red-cyan/i.test(g.gear) && <ScreenWarning m={m} />}
       {!m.eye && <p className="notice" data-b="warn">{t.noEye.body} <Link href="/setup">{t.noEye.cta}</Link></p>}
-      {how}
       {kind === "cinema"
         ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} plan={plan} profileId={m.profile.id} tester={m.tester} {...eye} />
         : <Stage slug={slug} dose={dose} help={helpFor(slug)} labels={labelsFor(guide, results.game)} joinable={!!guide?.joined} lens={/red-cyan/i.test(g.gear)} {...eye} />}
-      {guide && <p className="small"><Link href={`/train/games/${slug}/manual`}>{t.game.guide.fullGuide}</Link></p>}
+      {more}
     </>
   );
 }

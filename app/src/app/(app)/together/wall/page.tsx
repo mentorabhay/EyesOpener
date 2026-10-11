@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, PageHead } from "@/components/ui";
 import { WallPicture } from "@/components/together/wall-art";
@@ -37,7 +38,7 @@ export default async function WallPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={t.sub} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: percent(now.share), label: t.stats.focus }, { value: now.ours.size, label: t.stats.ours }]}
       />
       <div className="bento">
@@ -70,6 +71,7 @@ export default async function WallPage() {
           ))}
         </div>
       )}
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

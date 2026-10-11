@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";
 import { LensView } from "@/components/together/LensView";
@@ -26,7 +27,7 @@ export default async function MailPage() {
 
   return (
     <>
-      <PageHead title={idea.name} sub={idea.what} crumb={[together.crumb]} />
+      <PageHead title={idea.name} crumb={[together.crumb]} />
       <div className="bento">
         <Card title={t.inbox(m.profile.displayName)} span={7}>
           <p className="muted small">{t.how}</p>
@@ -61,6 +62,7 @@ export default async function MailPage() {
           )}
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

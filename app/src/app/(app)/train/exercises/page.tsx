@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { StepFlow } from "@/components/guide/flow";
+import { listSteps } from "@/components/guide/steps";
+import { guide as gw } from "@/copy/guide";
 import { Card, Chip, EvidenceChip, PageHead, Pills } from "@/components/ui";
 import { DoseLine } from "@/components/play/session-ui";
 import { train as t } from "@/copy/train";
@@ -28,9 +31,9 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
     <>
       <PageHead
         title={t.exercises.title}
-        sub={t.exercises.sub}
         stats={[{ value: shown.length, label: t.exercises.shown }, { value: shown.filter((e) => isStrong(e.mechanism)).length, label: t.exercises.strong }]}
       />
+      <StepFlow steps={listSteps(gw.exercises, ["list", "timer", "chart"])} compact />
       <DoseLine dose={dose} enrolled={!!m.enrolment} tester={m.tester} />
       <div className="row">
         <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train/exercises?group=${encodeURIComponent(group)}`} />

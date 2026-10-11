@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { StateForm } from "@/components/together/StateForm";
@@ -25,7 +26,7 @@ export default async function FamilyPage() {
 
   return (
     <>
-      <PageHead title={t.title} sub={t.sub} />
+      <PageHead title={t.title} />
       <div className="bento">
         {kids.length === 0 && <Card><p className="muted">{c.none}</p></Card>}
         {kids.map(({ profile, day: today, streak, enrolment, lastCheck, consent }) => {
@@ -148,6 +149,7 @@ export default async function FamilyPage() {
           </StateForm>
         </Card>
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

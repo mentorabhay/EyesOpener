@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
@@ -66,7 +67,7 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
 
   return (
     <>
-      <PageHead title={t.title} sub={t.sub} crumb={[together.crumb]} stats={[{ value: all.length, label: t.stat }]} />
+      <PageHead title={t.title} crumb={[together.crumb]} stats={[{ value: all.length, label: t.stat }]} />
       <div className="bento">
         <Card span={12}>
           <form action="/together/research" method="get" className="stack" role="search">
@@ -99,6 +100,7 @@ export default async function ResearchPage({ searchParams }: { searchParams: Pro
       </div>
       {q && found.length === 0 && <Empty title={t.none.title}><span>{t.none.body}</span></Empty>}
       {!q && !kind && <Empty title={t.start.title}><span>{t.start.body}</span></Empty>}
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

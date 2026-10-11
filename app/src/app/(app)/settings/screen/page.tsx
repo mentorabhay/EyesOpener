@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { StepFlow } from "@/components/guide/flow";
+import { Fold, More } from "@/components/guide/more";
+import { listSteps } from "@/components/guide/steps";
+import { guide as gw } from "@/copy/guide";
 import { Btn, Card, Chip, Empty, PageHead, Void, type Tone } from "@/components/ui";
 import { screen as t } from "@/copy/screen";
 import { day } from "@/copy/settings";
@@ -31,7 +35,7 @@ export default async function ScreenPage({ searchParams }: { searchParams: Promi
   if (!m.device) {
     return (
       <>
-        <PageHead title={t.title} sub={t.sub} crumb={crumb()} />
+        <PageHead title={t.title} crumb={crumb()} />
         <Empty title={t.noScreen.title}><span>{t.noScreen.body}</span></Empty>
         {m.can("test") && <div className="row"><Btn href="/setup" kind="g">{t.noScreen.cta}</Btn></div>}
       </>
@@ -53,13 +57,14 @@ export default async function ScreenPage({ searchParams }: { searchParams: Promi
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub} crumb={crumb()}
+        title={t.title} crumb={crumb()}
         stats={[
           { value: gamma.value.toFixed(2), label: gamma.at ? r.stat.gamma : `${r.stat.gamma} · ${r.usual.toLowerCase()}` },
           { value: leak ? (Math.max(leak.red, leak.cyan) > 0 ? t.pct(Math.max(leak.red, leak.cyan)) : r.statNone) : <Void label={r.notMeasured} />, label: r.stat.leak },
           { value: ink ? t.ink.stat(ink.value) : <Void label={r.notMeasured} />, label: t.ink.statLabel(ink?.value ?? null) },
         ]}
       />
+      <StepFlow steps={listSteps(gw.screen, ["card", "glasses", "sun"])} compact />
       {open && <p className="notice" role="note">{t.fromSetup} <Btn href="/setup" small>{t.backToSetup}</Btn></p>}
       <div className="bento">
         <Flow key={device.id} open={open} presets={presets} canMeasure={mayCalibrate(m)} gamma={gamma.value} dist={device.distanceCm} measured={measured} tune={{ green: tune.green, blue: tune.blue, redTop: tune.redTop }} />
@@ -121,10 +126,11 @@ export default async function ScreenPage({ searchParams }: { searchParams: Promi
           )}
         </Card>
 
-        <Card title={t.limits.title} span={5}>
-          <ul className={css.list}>{t.limits.body.map((l) => <li key={l}>{l}</li>)}</ul>
-        </Card>
       </div>
+      <More hint={t.sub}>
+        <p>{t.sub}</p>
+        <Fold title={t.limits.title}><ul>{t.limits.body.map((l) => <li key={l}>{l}</li>)}</ul></Fold>
+      </More>
     </>
   );
 }

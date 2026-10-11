@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { StepFlow } from "@/components/guide/flow";
+import { More } from "@/components/guide/more";
+import { listSteps } from "@/components/guide/steps";
+import { guide as gw } from "@/copy/guide";
 import { Btn, Card, PageHead } from "@/components/ui";
 import { day, settings } from "@/copy/settings";
 import { gates, TRIAGE_KEYS } from "@/lib/family";
@@ -16,7 +20,8 @@ export default async function TriagePage() {
 
   return (
     <>
-      <PageHead title={t.title} sub={t.sub(m.profile.displayName)} crumb={[{ href: "/settings", label: settings.title }]} />
+      <PageHead title={t.title} crumb={[{ href: "/settings", label: settings.title }]} />
+      <StepFlow steps={listSteps(gw.triage, ["question", "eye", "play"])} compact />
       <div className="bento">
         {last && (
           <Card span={12} title={last.redFlag ? t.doctor.title : t.proceed.title} right={<span className="muted small">{t.answered(day(last.createdAt))}</span>}>
@@ -54,6 +59,7 @@ export default async function TriagePage() {
           </Card>
         ) : <Card span={12}><p className="notice">{t.guardianOnly}</p></Card>}
       </div>
+      <More hint={t.sub(m.profile.displayName)}><p>{t.sub(m.profile.displayName)}</p></More>
     </>
   );
 }

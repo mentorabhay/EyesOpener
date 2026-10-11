@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SetPlayer } from "@/components/clips/set-player";
+import { StepFlow } from "@/components/guide/flow";
+import { More } from "@/components/guide/more";
+import { listSteps } from "@/components/guide/steps";
 import { Btn, PageHead } from "@/components/ui";
+import { guide as gw } from "@/copy/guide";
 import { clips as c } from "@/copy/clips";
 import { test } from "@/copy/test";
 import { testByKey } from "@/data";
@@ -33,10 +37,11 @@ export default async function SetPage({ params }: Props) {
   return (
     <>
       <PageHead
-        title={c.sets.name[key]} sub={key === "weekly" ? (view.from ? c.sets.weeklyFrom.plan(view.from.name, view.from.week) : c.sets.weeklyFrom.due) : c.sets.what[key]}
+        title={c.sets.name[key]}
         crumb={[{ href: "/test", label: test.title }, { href: "/test/clips", label: c.crumb }]}
         stats={[{ value: seconds, label: c.sets.steps(seconds).replace(/^\d+\s/, "") }]}
       />
+      {!block && <StepFlow steps={listSteps(gw.clipSet, ["play", "tap", "check"])} compact />}
       {block && <p className="notice" data-b="warn">{c.blocked[block]}</p>}
       {view.checkups.length > 0 && (
         <div className="row">
@@ -45,6 +50,10 @@ export default async function SetPage({ params }: Props) {
         </div>
       )}
       <SetPlayer key={`${m.profile.id}${key}`} setKey={key} steps={block ? steps.map((x) => ({ ...x, blocked: x.blocked ?? block })) : steps} ctx={ctx} endHref={end} />
+      <More>
+        <p>{key === "weekly" ? (view.from ? c.sets.weeklyFrom.plan(view.from.name, view.from.week) : c.sets.weeklyFrom.due) : c.sets.what[key]}</p>
+        <p className="muted small">{c.sets.sub}</p>
+      </More>
     </>
   );
 }

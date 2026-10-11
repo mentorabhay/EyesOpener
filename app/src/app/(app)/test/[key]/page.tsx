@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { StepFlow } from "@/components/guide/flow";
+import { More } from "@/components/guide/more";
+import { checkupSteps } from "@/components/guide/steps";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { test as c } from "@/copy/test";
 import { testByKey } from "@/data";
@@ -34,9 +37,10 @@ export default async function HistoryPage({ params }: Props) {
   return (
     <>
       <PageHead
-        title={testWords(t).name} sub={`${testWords(t).what} ${c.every(t.everyDays)}.`} crumb={[{ href: "/test", label: c.title }]}
+        title={testWords(t).name} crumb={[{ href: "/test", label: c.title }]}
         stats={series.filter((s) => s.last).map((s) => ({ value: reading(t, s.last!), label: s.eye ? c.eye[s.eye] : c.latest }))}
       />
+      {t.built && <StepFlow steps={checkupSteps(t.key, m.eye?.cyanEye === "right" ? "R" : "L")} compact />}
       {t.built ? (
         <div className="row">
           {block ? <span>{c.blocked[block]}</span> : <Btn href={runPath(t.key)} kind="g">{c.take}</Btn>}
@@ -74,6 +78,10 @@ export default async function HistoryPage({ params }: Props) {
           </Card>
         </div>
       ) : t.built && <Empty title={h.none.title}><span>{h.none.body}</span></Empty>}
+      <More hint={`${testWords(t).what} ${c.every(t.everyDays)}.`}>
+        <p>{testWords(t).what} {c.every(t.everyDays)}.</p>
+        {t.glasses && <p className="muted small">{c.glasses}</p>}
+      </More>
     </>
   );
 }

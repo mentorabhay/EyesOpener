@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties } from "react";
@@ -34,7 +35,7 @@ export default async function TogetherPage() {
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub}
+        title={t.title}
         stats={[
           { value: published.length, label: t.stats.published },
           { value: published.reduce((n, p) => n + p.open, 0), label: t.stats.open },
@@ -87,6 +88,7 @@ export default async function TogetherPage() {
           </Link>
         ))}
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

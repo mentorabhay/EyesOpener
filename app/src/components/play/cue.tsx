@@ -17,7 +17,7 @@ function Draw({ s }: { s: Shape }) {
     case "text": return <text x={s.x} y={s.y} fill={INK[s.ink]} fontSize={s.size ?? 8} fontWeight={700} textAnchor={s.anchor ?? "start"} fontFamily="Verdana, sans-serif">{s.s}</text>;
     case "tap": return (
       <g>
-        <circle cx={s.x} cy={s.y} r={9} fill="none" stroke={AMBER} strokeWidth={1} opacity={0.55} />
+        <circle className="cue-tap" cx={s.x} cy={s.y} r={9} fill="none" stroke={AMBER} strokeWidth={1} opacity={0.55} />
         <circle cx={s.x} cy={s.y} r={5.5} fill="none" stroke={AMBER} strokeWidth={1.6} />
         <circle cx={s.x} cy={s.y} r={2.2} fill={AMBER} />
       </g>

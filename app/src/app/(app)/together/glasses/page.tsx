@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Card, Chip, PageHead } from "@/components/ui";
 import { together } from "@/copy/together";
@@ -15,8 +16,9 @@ export default async function GlassesPage() {
   if (!found) {
     return (
       <>
-        <PageHead title={idea.name} sub={idea.what} crumb={[together.crumb]} />
+        <PageHead title={idea.name} crumb={[together.crumb]} />
         <p className="notice">{t.noPair}</p>
+        <More><p>{idea.what}</p></More>
       </>
     );
   }
@@ -27,7 +29,7 @@ export default async function GlassesPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: pair.code, label: t.stats.pair }, { value: legs.length, label: t.stats.wearers }]}
       />
       <div className="bento">
@@ -51,6 +53,7 @@ export default async function GlassesPage() {
           </ol>
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

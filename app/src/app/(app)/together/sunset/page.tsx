@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, PageHead } from "@/components/ui";
 import css from "@/components/together/rewards.module.css";
@@ -23,7 +24,7 @@ export default async function SunsetPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[
           { value: `${Math.round(view.minutes)} of ${goal}`, label: t.stats.minutes },
           { value: `${Math.round(view.light.done)} of ${view.light.goal}`, label: t.stats.light },
@@ -48,6 +49,7 @@ export default async function SunsetPage() {
           <p className="muted small">{idea.why}</p>
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

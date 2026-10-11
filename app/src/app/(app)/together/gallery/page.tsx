@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { GlassesOn } from "@/components/measure/cover";
 import css from "@/components/together/rewards.module.css";
@@ -37,7 +38,7 @@ export default async function GalleryPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[
           { value: t.stats.of(pictures.filter((i) => i.reachedAt).length, pictures.length), label: t.stats.pictures },
           { value: g.effort.days, label: t.stats.days },
@@ -122,6 +123,7 @@ export default async function GalleryPage() {
           </article>
         ))}
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

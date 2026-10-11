@@ -21,7 +21,7 @@ import { TimeBar } from "./time-bar";
 type Refusal = Extract<ClipSaved, { ok: false }>["why"];
 type Phase = { at: "intro" } | { at: "play" } | { at: "saving" } | { at: "result"; saved: Extract<ClipSaved, { ok: true }> } | { at: "refused"; why: Refusal | "cannot" };
 
-export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, listen }: {
+export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, listen, shown = false }: {
   def: OfferedClip; ctx: ClipCtx;
   /** The Listen button for this clip's instructions, drawn by the page. Shown before the clip starts. */
   listen?: ReactNode;
@@ -32,6 +32,8 @@ export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, li
   onSaved?: (ok: boolean) => void;
   /** In a set: the button that moves on, shown with the result. */
   next?: { label: string; go: () => void };
+  /** The page already shows this clip's steps in its step strip (components/guide/flow.tsx): the list here is left out. */
+  shown?: boolean;
 }) {
   const [phase, setPhase] = useState<Phase>({ at: "intro" });
   const [, startSaving] = useTransition();
@@ -94,7 +96,7 @@ export function ClipRunner({ def, ctx, blocked, setKey = null, onSaved, next, li
         {listen}
         {eye && <Cover eye={eye} />}
         {glasses && !ownSteps && <GlassesOn cyanEye={ctx.cyanEye} />}
-        {steps.length > 0 && <ol className={css.list}>{steps.map((s) => <li key={s}>{s}</li>)}</ol>}
+        {steps.length > 0 && !shown && <ol className={css.list}>{steps.map((s) => <li key={s}>{s}</li>)}</ol>}
         <p className="muted small">{c.runner.time(c.seconds(line.seconds))}</p>
         <button type="button" className={`btn btn-g ${css.big}`} style={{ alignSelf: "flex-start" }} onClick={() => setPhase({ at: "play" })}>{c.runner.start}</button>
       </>

@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { desc, eq } from "drizzle-orm";
 import { StateForm } from "@/components/together/StateForm";
+import { StepFlow } from "@/components/guide/flow";
+import { setupFlow } from "@/components/guide/steps";
 import { Btn, Card, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { lens } from "@/copy/lens";
 import { day, settings as t } from "@/copy/settings";
@@ -45,16 +47,17 @@ export default async function SettingsPage() {
   const tiles = setup.steps.filter((st) => st.required && st.key !== "safety" && st.key !== "eyes" && st.state !== "skip");
   const left = setup.steps.filter((st) => st.required && (st.state === "todo" || st.state === "again")).length;
   const may = (key: string) => (key === "balance" ? m.can("test") : mayCalibrate(m));
-  const group = (id: string, title: string, sub: string, children: ReactNode, top = false) => (
+  /* a group's heading alone says what it holds: its longer line is no longer shown */
+  const group = (id: string, title: string, _sub: string, children: ReactNode, top = false) => (
     <section id={id} className={css.group} aria-labelledby={`${id}-h`}>
-      <div className={css.ghead}><h2 id={`${id}-h`}>{title}</h2><p className="muted small">{sub}</p></div>
+      <div className={css.ghead}><h2 id={`${id}-h`}>{title}</h2></div>
       <div className={top ? `bento ${css.top}` : "bento"}>{children}</div>
     </section>
   );
 
   return (
     <>
-      <PageHead title={t.title} sub={t.sub(m.profile.displayName)} />
+      <PageHead title={t.title} />
       {!canManage && <p className="notice">{t.guardianOnly}</p>}
       <nav className={css.sub} aria-label={gr.menu}>
         {(["before", "profile", "family", "screens", "language"] as const).map((k) => (
@@ -65,22 +68,15 @@ export default async function SettingsPage() {
       <section id="before" className={`${css.group} ${css.before}`} aria-labelledby="before-h">
         <div className={css.ghead}>
           <h2 id="before-h">{gr.before.title}</h2>
-          <p className="muted small">{gr.before.sub}</p>
           <span className={css.status}>
             <Ring done={setup.done} of={setup.of} size={28} />
             {setup.ready ? <Chip tone="ok">{gr.before.ready}</Chip> : <Btn href="/setup" kind="g" small>{gr.before.finish(left)}</Btn>}
           </span>
         </div>
-        <ul className={css.tiles}>
-          {tiles.map((st) => (
-            <li key={st.key} data-state={st.state}>
-              <span className={css.tstate}>{su.state[st.state]}</span>
-              <b>{su.steps[st.key].name}</b>
-              <span className="muted small">{st.why ? su.why[st.why] : su.steps[st.key].what}</span>
-              {may(st.key) && <Link href={st.href}>{st.state === "done" ? su.doIt.done : su.doIt[st.state]}</Link>}
-            </li>
-          ))}
-        </ul>
+        <StepFlow
+          label={gr.before.title} auto={false} start={Math.max(0, tiles.findIndex((st) => st.state === "todo" || st.state === "again"))}
+          steps={setupFlow(tiles, { name: (k) => su.steps[k].name, line: (st) => (st.why ? su.why[st.why] : su.state[st.state]), doIt: (st) => su.doIt[st.state], may: (st) => may(st.key) })}
+        />
       </section>
 
       {group("profile", gr.profile.title, gr.profile.sub, <>

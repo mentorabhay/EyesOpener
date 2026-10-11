@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, Empty, PageHead } from "@/components/ui";
 import { StateForm } from "@/components/together/StateForm";
@@ -65,7 +66,7 @@ export default async function LeaguePage({ searchParams }: { searchParams: Promi
   if (!view.seat) {
     return (
       <>
-        <PageHead title={t.title} sub={t.rule} crumb={[together.crumb]} />
+        <PageHead title={t.title} crumb={[together.crumb]} />
         {sp.did === "left" && <p className="notice" data-b="ok" role="status">{t.done.left(name)}</p>}
         <div className="bento">
           <Card title={t.join.title(name)} span={7}>
@@ -86,6 +87,7 @@ export default async function LeaguePage({ searchParams }: { searchParams: Promi
           <How span={5} />
           {Family}
         </div>
+        <More><p>{t.rule}</p></More>
       </>
     );
   }
@@ -95,7 +97,7 @@ export default async function LeaguePage({ searchParams }: { searchParams: Promi
   return (
     <>
       <PageHead
-        title={t.title} sub={t.rule} crumb={[together.crumb]}
+        title={t.title} crumb={[together.crumb]}
         stats={mine && [
           { value: mine.place, label: mine.tied ? `${t.table.yourPlace}, ${t.table.shared}` : t.table.yourPlace },
           { value: t.table.daysOf(mine.daysFinished, mine.daysPossible), label: t.table.days },
@@ -172,6 +174,7 @@ export default async function LeaguePage({ searchParams }: { searchParams: Promi
         <How span={4} />
         {Family}
       </div>
+      <More><p>{t.rule}</p></More>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -42,7 +43,7 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
 
   return (
     <>
-      <PageHead title={p.title} sub={p.forWhom} crumb={[together.crumb]} />
+      <PageHead title={p.title} crumb={[together.crumb]} />
       {inReview && <p className="notice">{t.inReview}</p>}
       {!isTested(p.step) && <p className="notice" data-b="warn"><b>{t.untestedTitle}</b> {t.untested}</p>}
 
@@ -140,6 +141,7 @@ export default async function IdeaPage({ params }: { params: Promise<{ id: strin
           </Card>
         )}
       </div>
+      <More><p>{p.forWhom}</p></More>
     </>
   );
 }

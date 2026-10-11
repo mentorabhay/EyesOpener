@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Card, PageHead } from "@/components/ui";
 import { StateForm } from "@/components/together/StateForm";
@@ -18,7 +19,7 @@ export default async function LightsPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: streak?.current ?? 0, label: t.streak }, { value: streak?.lights ?? 0, label: t.lights }]}
       />
       <p className="notice">{t.rule}</p>
@@ -48,6 +49,7 @@ export default async function LightsPage() {
           </div>
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import clipCss from "@/components/clips/clips.module.css";
+import { StepFlow } from "@/components/guide/flow";
+import { More } from "@/components/guide/more";
+import { listSteps } from "@/components/guide/steps";
 import { Btn, Chip, Empty, PageHead, Pills } from "@/components/ui";
+import { guide as gw } from "@/copy/guide";
 import { clips as c } from "@/copy/clips";
 import { test } from "@/copy/test";
 import { CLIPS, SET_KEYS, clipGroups, clipLine, isCalibration } from "@/data/clips";
@@ -34,14 +38,14 @@ export default async function ClipsPage({ searchParams }: { searchParams: Promis
   return (
     <>
       <PageHead
-        title={c.title} sub={c.sub} crumb={[{ href: "/test", label: test.title }]}
+        title={c.title} crumb={[{ href: "/test", label: test.title }]}
         stats={[{ value: here, label: c.stat.here }, { value: all.filter((x) => x.last).length, label: c.stat.done }, { value: withheld, label: c.stat.withheld }]}
       />
       {person.block && <p className="notice" data-b="warn">{c.blocked[person.block]}</p>}
       {!person.block && !m.device && (
         <Empty title={test.noScreen.title}><span>{c.blocked.no_screen}</span><Btn href="/setup" kind="g" small>{c.onboarding}</Btn></Empty>
       )}
-      <p className="muted small">{c.estimate}</p>
+      <StepFlow steps={listSteps(gw.clips, ["tap", "list", "check"])} compact />
 
       <section className={clipCss.group} aria-labelledby="sets-head">
         <h2 id="sets-head">{c.sets.title}<small>{c.sets.sub}</small></h2>
@@ -99,6 +103,7 @@ export default async function ClipsPage({ searchParams }: { searchParams: Promis
           </section>
         );
       })}
+      <More hint={c.sub}><p>{c.sub}</p><p className="muted small">{c.estimate}</p></More>
     </>
   );
 }

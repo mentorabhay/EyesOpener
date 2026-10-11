@@ -36,7 +36,8 @@ const DIRECTIVE = (sf: ts.SourceFile, text: string): boolean => {
 export function clientListOf(root: string, isSource: (relativeToSrc: string) => boolean): ClientList | null {
   const config = ts.readConfigFile(path.join(root, "tsconfig.json"), ts.sys.readFile);
   const parsed = ts.parseJsonConfigFileContent(config.config, ts.sys, root);
-  const src = path.join(root, "src") + path.sep;
+  /* TypeScript names files with "/" on every system, Windows too */
+  const src = path.join(root, "src").split(path.sep).join("/") + "/";
   const files = parsed.fileNames.filter((f) => f.startsWith(src) && !/\.test\.tsx?$/.test(f) && !f.endsWith(".d.ts"));
   const program = ts.createProgram(files, { ...parsed.options, noEmit: true, incremental: false });
   const checker = program.getTypeChecker();

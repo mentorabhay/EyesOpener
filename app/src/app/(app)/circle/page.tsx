@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Btn, Card, PageHead } from "@/components/ui";
@@ -15,7 +16,7 @@ export default async function CirclePage() {
 
   return (
     <>
-      <PageHead title={t.title} sub={t.sub}>
+      <PageHead title={t.title}>
         <div className="row"><Btn href="/together/mail" kind="g">{t.mail}</Btn><Btn href="/together/lights">{t.lights}</Btn></div>
       </PageHead>
       <div className="bento">
@@ -30,6 +31,7 @@ export default async function CirclePage() {
           </Card>
         ))}
       </div>
+      <More><p>{t.sub}</p></More>
     </>
   );
 }

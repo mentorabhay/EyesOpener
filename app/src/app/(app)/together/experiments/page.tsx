@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -58,7 +59,7 @@ export default async function MyExperimentsPage() {
   return (
     <>
       <PageHead
-        title={t.title} sub={t.sub(name)} crumb={[together.crumb]}
+        title={t.title} crumb={[together.crumb]}
         stats={[{ value: running.length, label: t.stats.running }, { value: rows.filter((r) => waiting(r.stage)).length, label: t.stats.todo }]}
       />
       {!consent && rows.length > 0 && <p className="notice" data-b="warn">{t.consentGone(name)} {canAct && <Link href="/family">{t.family}</Link>}</p>}
@@ -72,6 +73,7 @@ export default async function MyExperimentsPage() {
         ))}
       </div>
       {rows.length > 0 && <p className="muted small">{t.honest}</p>}
+      <More><p>{t.sub(name)}</p></More>
     </>
   );
 }

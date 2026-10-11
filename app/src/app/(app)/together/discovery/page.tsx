@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
@@ -67,7 +68,7 @@ export default async function DiscoveryPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: closed.length, label: t.stats.rounds }, { value: answered, label: t.stats.answered }]}
       />
       <div className="bento">
@@ -113,6 +114,7 @@ export default async function DiscoveryPage() {
           {closed.length === 0 ? <p className="muted">{t.past.none}</p> : <div className="stack" style={{ gap: 22 }}>{closed.map((r) => <Past key={r.id} round={r} activeProfileId={m.seat === "circle" ? null : m.profile.id} />)}</div>}
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

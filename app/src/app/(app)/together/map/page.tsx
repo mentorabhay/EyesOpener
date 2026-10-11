@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";
 import { Card, Empty, PageHead, Void } from "@/components/ui";
@@ -24,7 +25,7 @@ export default async function MapPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: lit.length, label: t.stats.lit }, { value: total ?? <Void label={t.tooFew} />, label: t.stats.families }]}
       />
       <div className="bento">
@@ -112,6 +113,7 @@ export default async function MapPage() {
           <p className="muted small">{t.list.rule(MAP_MIN_HOUSEHOLDS)}</p>
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

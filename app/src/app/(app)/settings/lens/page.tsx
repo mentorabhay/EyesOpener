@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import { StepFlow } from "@/components/guide/flow";
+import { Fold, More } from "@/components/guide/more";
+import { listSteps } from "@/components/guide/steps";
+import { guide as gw } from "@/copy/guide";
 import { Btn, Card, Chip, PageHead } from "@/components/ui";
 import { lens as t } from "@/copy/lens";
 import type { WeakInk } from "@/engine";
@@ -52,7 +56,8 @@ export default async function LensPage({ searchParams }: { searchParams: Search 
 
   return (
     <>
-      <PageHead title={t.title(m.profile.displayName)} sub={t.sub} crumb={[{ href: "/setup", label: t.crumbSetup }, { href: "/settings", label: t.crumb }]} />
+      <PageHead title={t.title(m.profile.displayName)} crumb={[{ href: "/setup", label: t.crumbSetup }, { href: "/settings", label: t.crumb }]} />
+      <StepFlow steps={listSteps(gw.lens, ["glasses", "swap", "check"])} compact />
       {!confirmed && weak && <p className="notice" data-b="warn">{t.confirm}</p>}
       {q.kept && <p className="notice" data-b="ok" role="status">{t.kept} <Btn href="/setup" small>{t.crumbSetup}</Btn></p>}
       {q.saved && <p className="notice" data-b="ok" role="status">{t.saved} <Btn href="/test/balance" small>{t.balanceLink}</Btn></p>}
@@ -72,10 +77,13 @@ export default async function LensPage({ searchParams }: { searchParams: Search 
       <div className="bento">
         {option("cyan")}
         {option("red")}
-        <Card title={t.whatChanges.title} span={6}><ul className={css.list}>{t.whatChanges.items.map((l) => <li key={l}>{l}</li>)}</ul></Card>
-        <Card title={t.evidence.title} span={6}><p className="small">{t.evidence.body}</p></Card>
       </div>
       {!canChoose && <p className="notice">{t.lookOnly}</p>}
+      <More hint={t.sub}>
+        <p>{t.sub}</p>
+        <Fold title={t.whatChanges.title}><ul>{t.whatChanges.items.map((l) => <li key={l}>{l}</li>)}</ul></Fold>
+        <Fold title={t.evidence.title}><p>{t.evidence.body}</p></Fold>
+      </More>
     </>
   );
 }

@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Card, Chip, PageHead } from "@/components/ui";
 import { StateForm } from "@/components/together/StateForm";
@@ -17,8 +18,9 @@ export default async function NotesPage() {
   if (!m.enrolment || week === null) {
     return (
       <>
-        <PageHead title={idea.name} sub={idea.what} crumb={[together.crumb]} />
+        <PageHead title={idea.name} crumb={[together.crumb]} />
         <p className="notice">{t.noProgramme}</p>
+        <More><p>{idea.what}</p></More>
       </>
     );
   }
@@ -27,7 +29,7 @@ export default async function NotesPage() {
 
   return (
     <>
-      <PageHead title={idea.name} sub={`${t.reached(programmeBySlug(programme)?.name ?? programme, week)} ${idea.what}`} crumb={[together.crumb]} />
+      <PageHead title={idea.name} crumb={[together.crumb]} />
       <div className="bento">
         <Card title={t.title} span={7}>
           {notes.length === 0 && <p className="muted">{t.empty}</p>}
@@ -59,6 +61,7 @@ export default async function NotesPage() {
           )}
         </Card>
       </div>
+      <More><p>{`${t.reached(programmeBySlug(programme)?.name ?? programme, week)} ${idea.what}`}</p></More>
     </>
   );
 }

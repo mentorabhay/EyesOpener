@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Btn, Card, Chip, Empty, PageHead, Void, type Tone } from "@/components/ui";
@@ -39,7 +40,7 @@ export default async function ProofPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[
           { value: standing.ideas, label: t.stats.ideas },
           { value: standing.joined, label: t.stats.joined },
@@ -95,6 +96,7 @@ export default async function ProofPage() {
           )}
         </Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

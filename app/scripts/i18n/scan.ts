@@ -39,7 +39,8 @@ export type IsSource = (relativeToSrc: string) => boolean;
 export function scan(root: string, isSource: IsSource): Finding[] {
   const config = ts.readConfigFile(path.join(root, "tsconfig.json"), ts.sys.readFile);
   const parsed = ts.parseJsonConfigFileContent(config.config, ts.sys, root);
-  const src = path.join(root, "src") + path.sep;
+  /* TypeScript names files with "/" on every system, Windows too */
+  const src = path.join(root, "src").split(path.sep).join("/") + "/";
   const files = parsed.fileNames.filter((f) => f.startsWith(src) && !/\.test\.tsx?$/.test(f) && !f.endsWith(".d.ts"));
   const fileSet = new Set(files);
   const program = ts.createProgram(files, { ...parsed.options, noEmit: true, incremental: false });

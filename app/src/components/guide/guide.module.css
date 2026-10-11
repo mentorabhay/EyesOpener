@@ -1,0 +1,157 @@
+/* The step strip (flow.tsx), its pictures (icons.tsx) and the folded details (more.tsx).
+   Motion is slow and soft: nothing flashes, nothing moves faster than about one change a second, and the global
+   "reduce motion" rule in globals.css turns every animation and transition here off. */
+
+/* ── step strip ── */
+.flow {
+  position: relative; display: flex; flex-direction: column; gap: 12px; padding: 14px 14px 12px;
+  border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-card);
+  overflow: hidden; isolation: isolate; animation: appear 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.flow::before {
+  content: ""; position: absolute; z-index: -1; inset: -60% -20% auto 40%; height: 160%;
+  background: radial-gradient(closest-side, rgb(139 49 240 / 0.09), transparent 70%); pointer-events: none;
+}
+.top { display: flex; align-items: center; gap: 12px; min-height: 26px; }
+.kicker { font-size: 12px; font-weight: 600; color: var(--ink-3); white-space: nowrap; }
+.bars { display: flex; gap: 4px; flex: 1; min-width: 40px; }
+.bars i { flex: 1; height: 3px; border-radius: 3px; background: var(--line); overflow: hidden; position: relative; }
+.bars i::after { content: ""; position: absolute; inset: 0; background: var(--grad); transform-origin: left center; transform: scaleX(0); transition: transform 0.4s ease; }
+.bars i[data-done]::after, .bars i[data-on]::after { transform: scaleX(1); }
+.bars[data-playing] i[data-on]::after { animation: fill var(--dwell, 3600ms) linear both; }
+.toggle {
+  flex: none; width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--card);
+  display: grid; place-items: center; cursor: pointer; color: var(--ink-2); padding: 0;
+}
+.toggle:hover { border-color: var(--ink-4); color: var(--ink); }
+.toggle svg { width: 12px; height: 12px; fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.track {
+  list-style: none; margin: 0; padding: 2px; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(170px, 1fr);
+  gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.track::-webkit-scrollbar { display: none; }
+.track > li {
+  scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; min-width: 0;
+  animation: rise 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+}
+@media (max-width: 640px) { .track { grid-auto-columns: 74%; } }
+
+.tile {
+  all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 10px; width: 100%; flex: 1;
+  padding: 8px; border-radius: var(--r-md); border: 1px solid transparent; opacity: 0.6;
+  transition: opacity 0.55s ease, background-color 0.55s ease, border-color 0.55s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+}
+.tile:hover { opacity: 0.85; }
+.tile:focus-visible { outline: 2px solid var(--g1); outline-offset: 2px; }
+.track > li[data-on] .tile { opacity: 1; background: var(--sunken); border-color: var(--line-2); transform: translateY(-2px); box-shadow: 0 10px 24px -16px rgb(17 20 24 / 0.35); }
+
+.pic {
+  display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; background: var(--grad-soft);
+  transform: scale(0.95); transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pic[data-dark] { background: #000; }
+.pic > svg { width: 100%; height: 100%; display: block; }
+.track > li[data-on] .pic { transform: scale(1); }
+.track > li[data-tone="stop"] .pic { box-shadow: inset 0 0 0 2px var(--g2); }
+
+.cap { display: flex; gap: 10px; align-items: flex-start; }
+.num {
+  flex: none; width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 11.5px; font-weight: 700;
+  background: var(--card); border: 1px solid var(--line-2); color: var(--ink-3); transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+}
+.num svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.track > li[data-on] .num { background: var(--grad); border-color: transparent; color: #fff; }
+.track > li[data-state="done"] .num { background: var(--ok-bg); border-color: transparent; color: var(--ok); }
+.words { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.words b { font-size: 14px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
+.words span { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
+/* a step that is not lit shows at most three lines of each; the lit one shows all of it */
+.track > li:not([data-on]) .words > * { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+.act { align-self: flex-start; margin-left: 8px; }
+
+.compact { padding: 10px 12px; gap: 8px; }
+.compact .track { grid-auto-columns: minmax(150px, 1fr); }
+.compact .pic { aspect-ratio: 16 / 8; }
+.compact .words b { font-size: 13.5px; }
+
+@keyframes appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ── the pictures ── */
+.icon { fill: none; stroke: var(--ink-2); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; overflow: visible; }
+.icon :global(.a-draw), .icon :global(.a-tick), .icon :global(.a-ring) { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.icon :global(.a-ring) { stroke-dashoffset: 0.25; }
+.track > li[data-on] .icon :global(.a-drop) { animation: drop 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.track > li[data-on] .icon :global(.a-look) { animation: look 3.2s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-draw) { animation: draw 1.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.track > li[data-on] .icon :global(.a-tick) { animation: draw 0.7s ease both; }
+.track > li[data-on] .icon :global(.a-ring) { animation: ring 1.4s cubic-bezier(0.4, 0, 0.2, 1) both; }
+.track > li[data-on] .icon :global(.a-slide) { animation: slide 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.track > li[data-on] .icon :global(.a-slide-x) { animation: slidex 3s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-slide-y) { animation: slidey 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.track > li[data-on] .icon :global(.a-ripple) { animation: ripple 2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+.track > li[data-on] .icon :global(.a-press) { animation: press 2s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-spin) { animation: spin 4s linear infinite; }
+.track > li[data-on] .icon :global(.a-dash) { animation: dash 1.6s linear infinite; }
+.track > li[data-on] .icon :global(.a-breathe) { animation: breathe 2.6s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-knob) { animation: knob 2.8s ease-in-out infinite both; }
+.track > li[data-on] .icon :global(.a-bob) { animation: bob 2.6s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-glow) { animation: glow 2.4s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-swap-l) { animation: swapl 3s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-swap-r) { animation: swapr 3s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-join-l) { animation: joinl 3.2s ease-in-out infinite; }
+.track > li[data-on] .icon :global(.a-join-r) { animation: joinr 3.2s ease-in-out infinite; }
+/* the "tap here" mark of a cue picture (components/play/cue.tsx) */
+.track > li[data-on] :global(.cue-tap) { animation: ripple 2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+
+@keyframes drop { from { transform: translateY(-16px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes look { 0%, 100% { transform: translateX(0); } 30% { transform: translateX(-6px); } 70% { transform: translateX(6px); } }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes ring { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0.25; } }
+@keyframes slide { from { transform: translateX(28px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes slidex { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-22px); } }
+@keyframes slidey { from { transform: translateY(-18px); } to { transform: none; } }
+@keyframes ripple { 0% { transform: scale(0.7); opacity: 0.7; } 100% { transform: scale(1.5); opacity: 0; } }
+@keyframes press { 0%, 60%, 100% { transform: scale(1); } 70% { transform: scale(0.9); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes dash { to { stroke-dashoffset: -20; } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@keyframes knob { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(40px); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes glow { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes swapl { 0%, 20% { transform: none; } 50%, 70% { transform: translateX(52px); } 100% { transform: none; } }
+@keyframes swapr { 0%, 20% { transform: none; } 50%, 70% { transform: translateX(-52px); } 100% { transform: none; } }
+@keyframes joinl { 0%, 100% { transform: translateX(-12px); } 45%, 60% { transform: translateX(10px); } }
+@keyframes joinr { 0%, 100% { transform: translateX(12px); } 45%, 60% { transform: translateX(-10px); } }
+
+/* ── folded details ── */
+.more { border-radius: var(--r-lg); background: var(--card); border: 1px solid var(--line); box-shadow: var(--sh-card); interpolate-size: allow-keywords; }
+.more > summary, .fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; }
+.more > summary::-webkit-details-marker, .fold > summary::-webkit-details-marker { display: none; }
+.more > summary { padding: 16px 20px; border-radius: var(--r-lg); }
+.more > summary:hover { background: var(--sunken); }
+.mt { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.mt b { font-size: 15px; font-weight: 600; }
+.mt span { font-size: 12.5px; color: var(--ink-3); }
+.chev { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--sunken); border: 1px solid var(--line); position: relative; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.chev::before { content: ""; position: absolute; left: 50%; top: 45%; width: 7px; height: 7px; border-right: 2px solid var(--ink-2); border-bottom: 2px solid var(--ink-2); transform: translate(-50%, -50%) rotate(45deg); }
+details[open] > summary > .chev { transform: rotate(180deg); }
+.mbody { padding: 4px 20px 20px; display: flex; flex-direction: column; gap: 10px; }
+.more::details-content, .fold::details-content { height: 0; overflow: clip; transition: height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), content-visibility 0.4s allow-discrete; }
+.more[open]::details-content, .fold[open]::details-content { height: auto; }
+
+.fold { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--sunken); interpolate-size: allow-keywords; }
+.fold > summary { padding: 12px 14px; font-size: 14px; }
+.fold > summary b { flex: 1; font-weight: 600; }
+.fold > summary .chev { width: 22px; height: 22px; background: var(--card); }
+.fold[data-warn] { border-color: transparent; background: var(--warn-bg); }
+.fr { display: flex; align-items: center; gap: 8px; }
+.fbody { padding: 2px 14px 14px; display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; }
+.fbody > ul, .fbody > ol { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; }
+
+.facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.facts > div { background: var(--sunken); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px 12px; min-width: 120px; flex: 1 1 160px; }
+.facts dt { font-size: 11.5px; color: var(--ink-3); }
+.facts dd { margin: 2px 0 0; font-size: 13.5px; font-weight: 600; }

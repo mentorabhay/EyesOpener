@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { ClubList, KitLinks, kitNumbers, Limits } from "@/components/gatherings/club-kit";
 import { Card, PageHead } from "@/components/ui";
@@ -23,7 +24,7 @@ export default async function CinemaClubPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={[{ value: clubs.length, label: t.stats.clubs }, { value: n.filmMinutes, label: t.stats.film }]}
       />
       <div className="bento">
@@ -44,6 +45,7 @@ export default async function CinemaClubPage() {
         </Card>
         <Card title={t.limits.title} span={12}><Limits /></Card>
       </div>
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

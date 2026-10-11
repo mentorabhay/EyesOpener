@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { StepFlow } from "@/components/guide/flow";
+import { More } from "@/components/guide/more";
+import { setupFlow } from "@/components/guide/steps";
 import { Btn, Card, Chip, PageHead, type Tone } from "@/components/ui";
+import { guide as gw } from "@/copy/guide";
 import { Ring } from "@/components/setup/setup";
 import { lens } from "@/copy/lens";
 import { screen as sc } from "@/copy/screen";
@@ -21,6 +25,7 @@ const TONE: Record<SetupStep["state"], Tone> = { done: "ok", todo: "plain", agai
 /**
  * /setup: what this screen, these glasses and this person still need before two-eye games open, in order, each one
  * press from being done. The rules: src/lib/setup-rules.ts. Onboarding (/onboarding) now opens here.
+ * On top, the steps as a strip of pictures with the next one lit; each step explained in full is folded below.
  */
 export default async function SetupPage() {
   const m = await requireMember();
@@ -40,6 +45,8 @@ export default async function SetupPage() {
     if (st.key === "lens") return lens.settingsValue[weakInkOf(m.profile.weakInk)];
     return null;
   };
+  /* the steps that apply to this person, screen part first */
+  const live = [...s.steps.filter((st) => st.part === "screen"), ...s.steps.filter((st) => st.part !== "screen")].filter((st) => st.state !== "skip");
   const may = (st: SetupStep) => (st.part === "screen" ? canScreen : st.key === "lens" ? canScreen : canTest);
 
   const part = (p: SetupPart) => {
@@ -73,7 +80,7 @@ export default async function SetupPage() {
   return (
     <>
       <PageHead
-        title={t.head(name)} sub={t.sub}
+        title={t.head(name)}
         stats={[{ value: <span className={css.stat}><Ring done={s.done} of={s.of} size={40} />{t.count(s.done, s.of)}</span>, label: s.ready ? t.ready(name) : t.left(minutesLeft(s.steps)) }]}
       />
       {m.tester && <p className="notice">{t.tester}</p>}
@@ -85,11 +92,17 @@ export default async function SetupPage() {
             <span>{t.nextIs(t.steps[s.next.key].name)}</span>
           </div>
         )}
-      <div className="bento">
-        {part("screen")}
-        {part("person")}
-        <Card span={12} title={t.open.title}><p className="small">{t.open.body}</p></Card>
-      </div>
+      <StepFlow
+        label={gw.setup.flow} auto={false} start={Math.max(0, live.findIndex((st) => st.key === s.next?.key))}
+        steps={setupFlow(live, { name: (k) => t.steps[k].name, line: (st) => `${t.state[st.state]} · ${t.steps[st.key].time}`, doIt: (st) => t.doIt[st.state], may })}
+      />
+      <More hint={t.sub}>
+        <div className="bento">
+          {part("screen")}
+          {part("person")}
+          <Card span={12} title={t.open.title}><p className="small">{t.open.body}</p></Card>
+        </div>
+      </More>
     </>
   );
 }

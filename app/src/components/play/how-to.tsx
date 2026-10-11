@@ -32,21 +32,28 @@ export function HowToPlay({ g, open = true, locale }: { g: GameGuide; open?: boo
   return (
     <details className="c span12" open={open}>
       <summary><b>{x.howTitle}</b> <span className="muted small">{x.howToggle}</span></summary>
-      <div className="stack" style={{ marginTop: 12 }}>
-        {g.cues.length > 0 && (<><div className="row"><p className="small muted">{x.cues}</p><Listen id={gameScriptId(g.slug, "cues")} what={voice.parts.cues} locale={locale} /></div><Cues cues={g.cues} tones={x.tone} /></>)}
-        <div className="bento">
-          <div className="span7 stack">
-            <div className="row"><p className="small muted">{x.play}</p><Listen id={gameScriptId(g.slug, "play")} what={voice.parts.steps} locale={locale} /></div>
-            <ol className={css.steps}>{g.play.map((line) => <li key={line}>{line}</li>)}</ol>
-          </div>
-          <div className="span5 stack">
-            <p className="small muted">{x.success}</p>
-            <ul className={css.list}>{g.success.map((line) => <li key={line}>{line}</li>)}</ul>
-            <p className="small muted">{x.controls}</p>
-            <ul className={css.list}><li><b>{x.touch}.</b> {g.controls.touch}</li><li><b>{x.keys}.</b> {g.controls.keys}</li></ul>
-          </div>
+      <div style={{ marginTop: 12 }}><HowToPlayBody g={g} locale={locale} /></div>
+    </details>
+  );
+}
+
+/** The same guide without its own fold, for a page that folds it inside "Read more" (src/components/guide/more.tsx). */
+export function HowToPlayBody({ g, locale }: { g: GameGuide; locale?: string | null }) {
+  return (
+    <div className="stack">
+      {g.cues.length > 0 && (<><div className="row"><p className="small muted">{x.cues}</p><Listen id={gameScriptId(g.slug, "cues")} what={voice.parts.cues} locale={locale} /></div><Cues cues={g.cues} tones={x.tone} /></>)}
+      <div className="bento">
+        <div className="span7 stack">
+          <div className="row"><p className="small muted">{x.play}</p><Listen id={gameScriptId(g.slug, "play")} what={voice.parts.steps} locale={locale} /></div>
+          <ol className={css.steps}>{g.play.map((line) => <li key={line}>{line}</li>)}</ol>
+        </div>
+        <div className="span5 stack">
+          <p className="small muted">{x.success}</p>
+          <ul className={css.list}>{g.success.map((line) => <li key={line}>{line}</li>)}</ul>
+          <p className="small muted">{x.controls}</p>
+          <ul className={css.list}><li><b>{x.touch}.</b> {g.controls.touch}</li><li><b>{x.keys}.</b> {g.controls.keys}</li></ul>
         </div>
       </div>
-    </details>
+    </div>
   );
 }

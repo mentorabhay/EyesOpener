@@ -1,3 +1,4 @@
+import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GlassesOn } from "@/components/measure/cover";
@@ -55,7 +56,7 @@ export default async function DepthDayPage() {
   return (
     <>
       <PageHead
-        title={idea.name} sub={idea.what} crumb={[together.crumb]}
+        title={idea.name} crumb={[together.crumb]}
         stats={day ? [{ value: dayText(day), label: t.first.stat }] : undefined}
       />
       {v.years && <p className="notice" data-b="ok"><b>{t.first.years(v.years)}</b></p>}
@@ -108,6 +109,7 @@ export default async function DepthDayPage() {
           {scene}
         </div>
       )}
+      <More><p>{idea.what}</p></More>
     </>
   );
 }

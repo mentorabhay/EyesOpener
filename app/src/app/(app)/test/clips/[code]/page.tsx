@@ -3,7 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import clipCss from "@/components/clips/clips.module.css";
 import { ClipRunner } from "@/components/clips/runner";
+import { StepFlow } from "@/components/guide/flow";
+import { Facts, Fold, More } from "@/components/guide/more";
+import { clipSteps } from "@/components/guide/steps";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
+import { stepsOf } from "@/clips/steps";
 import { Listen } from "@/components/voice/listen";
 import { clips as c, reading, usedFor } from "@/copy/clips";
 import { test } from "@/copy/test";
@@ -48,14 +52,14 @@ export default async function ClipPage({ params }: Props) {
   if (!def.offered) {
     return (
       <>
-        <PageHead title={line.title} sub={c.what(code)} crumb={crumb} />
+        <PageHead title={line.title} crumb={crumb} />
         <div className="bento">
           <Card title={c.withheldWhy} span={7}><Empty title={c.withheld}><span>{def.why}</span></Empty></Card>
           <Card title={c.page.measures} span={5}>
             <dl className="kv"><div><dt>{c.page.catalogue}</dt><dd>{line.measures}</dd></div></dl>
-            {sources}
           </Card>
         </div>
+        <More hint={c.what(code)}><p>{c.what(code)}</p><Fold title={c.page.basis}>{sources}</Fold></More>
       </>
     );
   }
@@ -75,24 +79,16 @@ export default async function ClipPage({ params }: Props) {
 
   return (
     <>
-      <PageHead title={line.title} sub={c.what(code)} crumb={crumb} stats={[{ value: c.short(line.seconds), label: c.page.length }]} />
+      <PageHead title={line.title} crumb={crumb} stats={[{ value: c.short(line.seconds), label: c.page.length }]} />
+      {!blocked && <StepFlow steps={clipSteps({ eye, glasses: def.gear.includes("glasses"), lines: stepsOf(def), cyan: ctx.cyanEye })} compact />}
       <div className="bento">
         <div className="span7 stack" style={{ gap: 16 }}>
           <ClipRunner
-            key={`${m.profile.id}${code}`} def={def} ctx={ctx} blocked={blocked}
+            key={`${m.profile.id}${code}`} def={def} ctx={ctx} blocked={blocked} shown={!blocked}
             listen={<Listen id={clipScriptId(def, ctx.cyanEye === "R" ? "right" : "left")} what={voice.parts.clip} locale={m.account.locale} />}
           />
         </div>
         <div className="span5 stack" style={{ gap: 16 }}>
-          <Card title={c.page.measures}>
-            <dl className="kv">
-              <div><dt>{c.page.catalogue}</dt><dd>{line.measures}</dd></div>
-              <div><dt>{c.page.stores}</dt><dd>{storesText(def)}</dd></div>
-              {need.length > 0 && <div><dt>{c.page.need}</dt><dd><ul className={clipCss.plain}>{need.map((n) => <li key={n}>{n}</li>)}</ul></dd></div>}
-            </dl>
-            <p className="muted small">{c.estimate}</p>
-          </Card>
-          <Card title={c.page.use}><p>{usedFor(def.store, code)}</p></Card>
           {def.store.to === "result" ? (
             <Card title={c.page.past}>
               {results.length ? (
@@ -122,9 +118,15 @@ export default async function ClipPage({ params }: Props) {
               </ul>
             </Card>
           )}
-          <Card title={c.page.basis}>{sources}</Card>
         </div>
       </div>
+      <More hint={c.what(code)}>
+        <Facts items={[{ label: c.page.catalogue, value: line.measures }, { label: c.page.stores, value: storesText(def) }]} />
+        {need.length > 0 && <Fold title={c.page.need}><ul>{need.map((n) => <li key={n}>{n}</li>)}</ul></Fold>}
+        <Fold title={c.page.use}><p>{usedFor(def.store, code)}</p></Fold>
+        <Fold title={c.page.basis}>{sources}</Fold>
+        <p className="muted small">{c.estimate}</p>
+      </More>
     </>
   );
 }
