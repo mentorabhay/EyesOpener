@@ -60,10 +60,8 @@ p { margin: 0; }
 .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 100vh; }
 .side { background: var(--card); border-right: 1px solid var(--line); display: flex; flex-direction: column; padding: 20px 0 16px; position: sticky; top: 0; height: 100vh; }
 .logo { display: flex; align-items: center; gap: 10px; padding: 0 20px 20px; font-size: 19px; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; }
-.logo .mark { width: 28px; height: 28px; border-radius: 9px; background: var(--scene); display: grid; place-items: center; position: relative; overflow: hidden; isolation: isolate; }
-.logo .mark i { position: absolute; width: 13px; height: 13px; border-radius: 50%; mix-blend-mode: screen; top: 7.5px; }
-.logo .mark i:first-child { background: #ff0000; left: 5px; }
-.logo .mark i:last-child { background: #00ffff; left: 10px; }
+.logo .mark { width: 28px; height: 28px; border-radius: 8px; object-fit: contain; display: inline-block; vertical-align: middle; }
+.logo .mark i { display: none; }
 .who { margin: 0 14px 18px; padding: 11px 13px; border-radius: var(--r-md); background: var(--sunken); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
 .who b { font-size: 13.5px; font-weight: 600; }
 .who span { font-size: 11.5px; color: var(--ink-3); }
