@@ -37,14 +37,20 @@ export const PRIVATE_PATHS = [
   "/lang",
 ] as const;
 
+/**
+ * The picture a chat app or a search page shows with a shared link (src/app/opengraph-image.png, made by the brand
+ * script). Next.js adds it by itself only while no page names its own openGraph, and these pages do, so it is named here.
+ */
+export const SHARE_IMAGE = { url: "/opengraph-image.png", width: 1200, height: 630, alt: "Eyes Opener: two eyes looking at one star" } as const;
+
 /** Title, description, canonical address and Open Graph for one public page. The root layout adds the site name to the title. */
 export function pageMeta(path: string, m: { title: string; description: string }, name = "Eyes Opener") {
   return {
     title: m.title,
     description: m.description,
     alternates: { canonical: path },
-    openGraph: { title: `${m.title} · ${name}`, description: m.description, url: path, siteName: name, type: "website" as const, locale: "en_IN" },
-    twitter: { card: "summary" as const, title: `${m.title} · ${name}`, description: m.description },
+    openGraph: { title: `${m.title} · ${name}`, description: m.description, url: path, siteName: name, type: "website" as const, locale: "en_IN", images: [SHARE_IMAGE] },
+    twitter: { card: "summary_large_image" as const, title: `${m.title} · ${name}`, description: m.description, images: [SHARE_IMAGE.url] },
   };
 }
 
