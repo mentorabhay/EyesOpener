@@ -19,7 +19,7 @@ const SLOT_FILES: Record<string, string> = {
 };
 
 export async function uploadLogoSlot(formData: FormData) {
-  await requireStaff("branding");
+  await requireStaff("overview");
   const slot = formData.get("slot") as string;
   const file = formData.get("file") as File | null;
 
