@@ -147,7 +147,7 @@ const WHAT: Record<string, string> = {
 /* ───────────── how a result is used ───────────── */
 
 const USE: Record<string, string> = {
-  size: "Every size IOpener draws on this screen is worked out from this: letters, targets, depth steps and how far the eyes are asked to turn. It is used for everyone in the household.",
+  size: "Every size Eyes Opener draws on this screen is worked out from this: letters, targets, depth steps and how far the eyes are asked to turn. It is used for everyone in the household.",
   distance: "Sizes, depth steps and the pull on the eyes are worked out from this distance, for everyone in the household. Keep the seat where it is.",
   gamma: "It goes into every ink and every grey the engine draws on this screen, so contrast is set in real light.",
   leak: "It is shown on the screen colours page, with what it means for each person. It is not corrected for: nothing can be taken away from a black field.",
@@ -241,13 +241,13 @@ const MEANING: Record<string, string> = {
 export const meaningOf = (key: string, unit: string) =>
   MEANING[key] ?? (key.includes("recovery") && unit === "prism_dioptre" ? "A larger number means the two pictures joined again sooner on the way back." : undefined) ?? (key.startsWith("search_") ? MEANING.search : ["symptoms", "screen_strain", "dry_eye"].includes(key) ? MEANING.score : MEANING[unit] ?? "");
 
-/* ───────────── the surveys that are IOpener's own ───────────── */
+/* ───────────── the surveys that are Eyes Opener's own ───────────── */
 
 export const surveys = texts("copy/clips", "surveys", () => ({
   answers: ["Never", "Not very often", "Sometimes", "Fairly often", "Always"],
   intro: "Think about the last two weeks or so and pick the answer that fits best. There are no right or wrong answers.",
   child: "For a child, a grown-up reads each question aloud and presses the child's answer. Do not suggest an answer.",
-  own: "These questions are IOpener's own. The score is compared only with your own earlier scores.",
+  own: "These questions are Eyes Opener's own. The score is compared only with your own earlier scores.",
   number: (n: number, of: number) => `Question ${n} of ${of}`,
   answered: (n: number, of: number) => `${n} of ${of} answered`,
   save: "Save the answers",
@@ -578,7 +578,7 @@ export const clips = texts("copy/clips", "clips", () => ({
     keys: "Keep looking at the cross. Press the button, or the Right arrow for yes and the Left arrow for no.",
     step: (n: number, of: number) => `${n} of ${of}`,
     radius: (deg: string) => `On this screen the test reaches ${deg} degrees from the middle.`,
-    cannotSee: "IOpener cannot see where you look. This only means something if your eye stays on the cross.",
+    cannotSee: "Eyes Opener cannot see where you look. This only means something if your eye stays on the cross.",
     wait: "Wait for it.",
   },
   pick: {

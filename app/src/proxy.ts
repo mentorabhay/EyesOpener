@@ -50,9 +50,12 @@ export function moveTo(req: NextRequest, path: string): NextResponse {
   return res;
 }
 
-export const isBuiltFile = (path: string) => path.startsWith("/_next/static/") || path === "/favicon.ico";
+/* the brand pictures: the tab icon, the home-screen icons, the picture shown with a shared link, and the mark */
+const BRAND_FILES = new Set(["/favicon.ico", "/icon.png", "/apple-icon.png", "/opengraph-image.png"]);
+export const isBuiltFile = (path: string) => path.startsWith("/_next/static/") || path.startsWith("/brand/") || BRAND_FILES.has(path);
 
 /* Every page. Built files and images are left alone: they hold nothing private and are needed by the gate page itself. */
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  /* the built files and the brand pictures never pass the lock: the lock page shows the mark too */
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|opengraph-image.png|brand/).*)"],
 };

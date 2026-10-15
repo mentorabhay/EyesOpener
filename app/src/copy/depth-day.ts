@@ -13,7 +13,7 @@ export const depthDay = texts("copy/depth-day", "depthDay", () => ({
   notYet: {
     title: "No check-up has found depth so far",
     taken: (n: number, date: string) => `${many(n, "Depth check-up", "Depth check-ups")} taken, the last on ${date}. ${n === 1 ? "It did not find" : "None found"} a ring that floats.`,
-    common: "Many people with a lazy eye or a squint do not see this kind of depth. Some come to see it and some do not. IOpener cannot tell which.",
+    common: "Many people with a lazy eye or a squint do not see this kind of depth. Some come to see it and some do not. Eyes Opener cannot tell which.",
     notAMark: "It is not a mark against anyone, and it does not mean the practice was done wrong.",
     kept: "If a check-up does find depth one day, the date is kept on this page.",
     every: (days: number) => `The Depth check-up comes round every ${days} days.`,
@@ -22,7 +22,7 @@ export const depthDay = texts("copy/depth-day", "depthDay", () => ({
   fromStart: {
     title: "Depth was there from the first check-up",
     body: (date: string, arcsec: number) => `Your first Depth check-up, on ${date}, already found depth at ${step(arcsec)} arc seconds.`,
-    noDay: "So there is no first day to keep. The depth was there before IOpener measured anything.",
+    noDay: "So there is no first day to keep. The depth was there before Eyes Opener measured anything.",
     scene: "You can still watch the scene.",
   },
   first: {
@@ -31,7 +31,7 @@ export const depthDay = texts("copy/depth-day", "depthDay", () => ({
     found: (before: number) => `On this day a Depth check-up found a ring that floats, for the first time. ${many(before, "earlier check-up", "earlier check-ups")} had not.`,
     foundPlain: "On this day a Depth check-up found a ring that floats, for the first time.",
     step: (arcsec: number) => `It found depth at ${step(arcsec)} arc seconds.`,
-    careful: "A check-up measures one day on one screen. It does not say why a result changed, and IOpener does not claim to have caused it. An eye test can say more.",
+    careful: "A check-up measures one day on one screen. It does not say why a result changed, and Eyes Opener does not claim to have caused it. An eye test can say more.",
     since: {
       none: "No Depth check-up has been taken since.",
       some: (checks: number, found: number) => `${many(checks, "check-up", "check-ups")} since then. ${found === checks ? (checks === 1 ? "It found depth too." : "All of them found depth too.") : `${found} of them found depth.`}`,
@@ -48,7 +48,7 @@ export const depthDay = texts("copy/depth-day", "depthDay", () => ({
     again: "Play it again",
     stop: "Stop the scene",
     ownHero: "This is the hero you made in Draw Your Hero.",
-    noHero: "This is IOpener's own figure. Make a hero in Draw Your Hero and the scene uses it.",
+    noHero: "This is Eyes Opener's own figure. Make a hero in Draw Your Hero and the scene uses it.",
     heroLink: "Draw Your Hero",
     flat: "If it looks flat or doubled, that is all right. Rest your eyes and try another day.",
     stopIf: "Stop if you see double for more than a moment, or get a headache, eye pain, or feel dizzy or sick.",

@@ -188,7 +188,7 @@ export const LOOKS: Record<string, Look> = {
     steps: [
       "Open this device's display settings in another window, or the TV's picture menu.",
       "Look for Night light, Night Shift, Eye comfort, Reading mode or a blue-light filter.",
-      "IOpener cannot read this setting itself. A warm filter dims the cyan ink, which the weaker eye depends on.",
+      "Eyes Opener cannot read this setting itself. A warm filter dims the cyan ink, which the weaker eye depends on.",
     ],
     questions: [
       { ask: "The warm colour filter on this screen is:", options: [yes("Off"), yes("It was on. I have switched it off"), no("On"), note("I cannot find the setting")] },
@@ -258,7 +258,7 @@ export const LOOKS: Record<string, Look> = {
     advice: {
       pass: "Sound cues arrive in time and can be heard.",
       note: "Set the volume so the cue is clear but soft. A sound that arrives late usually comes from a wireless speaker or a sound bar: a wired one, or the TV's own speakers, keeps time better.",
-      fail: "No sound was heard. Check that this tab and this device are not muted. IOpener works without sound: every cue is also shown.",
+      fail: "No sound was heard. Check that this tab and this device are not muted. Eyes Opener works without sound: every cue is also shown.",
     },
   },
   zero_offset: {

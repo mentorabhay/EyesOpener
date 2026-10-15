@@ -1,4 +1,4 @@
-# IOpener web app: build contract
+# Eyes Opener web app: build contract
 
 Read this before writing any file. It is short, and it is what keeps the app consistent.
 
@@ -200,7 +200,7 @@ Read `src/data/game-guides/types.ts`, `src/data/game-guides/cue.ts`, the referen
 
 # Addendum: the assistant seam
 
-Some editions of IOpener have an assistant (AI). The public edition has none, and its pages must work, and say nothing about AI, without one.
+Some editions of Eyes Opener have an assistant (AI). The public edition has none, and its pages must work, and say nothing about AI, without one.
 
 - **The seam is `src/lib/assist/`.** `types.ts` holds what an assistant may be asked and the shapes it answers in, with the rules every assistant must keep. `extra.ts` is this edition's assistant: it answers "none" to everything. A fuller build replaces that one file. Never import an assistant from anywhere else.
 - **A page asks first.** Draw nothing about AI unless `assist.available` is true. Offer a member a button only when `assist.ready(job)` is true as well, so nobody presses a button that cannot answer.

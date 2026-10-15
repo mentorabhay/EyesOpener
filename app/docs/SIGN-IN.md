@@ -1,13 +1,13 @@
 # Sign-in
 
-How people sign in to IOpener, what has to be switched on at Firebase, and how to test it.
+How people sign in to Eyes Opener, what has to be switched on at Firebase, and how to test it.
 The code is in `src/lib/signin/`, `src/lib/auth.ts` and `src/app/(auth)/`. The tests beside the code are the detail.
 
 ## In short
 
 - Grown-ups sign in with **Google** or with a **link sent to their email**. There are no passwords and no phone codes.
 - **Children never sign in.** A child is a profile inside a grown-up's account and uses the app in child mode.
-- Firebase Authentication vouches for who a person is. IOpener then keeps **its own session**: one signed cookie.
+- Firebase Authentication vouches for who a person is. Eyes Opener then keeps **its own session**: one signed cookie.
   Nothing of Firebase's is kept in the browser.
 - **Roles are never in a cookie or a token.** Seat, staff role, counsellor and sponsor are read from the database on
   every request. An address listed in `ADMIN_EMAILS` is a super admin.
@@ -30,7 +30,7 @@ link opened ───▶ /login/finish ─▶ server action ──────�
                                                         ▼
                                     which person is this? (people.ts)
                                                         ▼
-                                  IOpener's session cookie (session-rules.ts)
+                                  Eyes Opener's session cookie (session-rules.ts)
 ```
 
 The browser never talks to the Identity Toolkit and never holds a Firebase token. The only things the server accepts
@@ -43,7 +43,7 @@ The web API key is used by the server alone and is not sent to a browser. It is 
 Every check Firebase's page "Verify ID tokens using a third-party JWT library" asks for: the algorithm is RS256; the
 key id is one of Google's keys for `securetoken@system.gserviceaccount.com`; the signature is right; `aud` is the
 project id; `iss` is `https://securetoken.google.com/<project id>`; `sub` is not empty; `exp` is in the future; `iat`
-and `auth_time` are in the past. IOpener adds: the email address is present and `email_verified` is exactly `true`;
+and `auth_time` are in the past. Eyes Opener adds: the email address is present and `email_verified` is exactly `true`;
 the sign-in was by Google or by email link, and not inside a tenant; the person signed in within the last five
 minutes; the token is for the way of signing in, and the address, that was just used.
 
@@ -120,12 +120,12 @@ never says anything about an address, including whether it has an account.
 
 ### A six-digit code by email (`code.ts`, `mail.ts`)
 
-Ved, 10 October 2026: "email with OTP". When IOpener has an address to send from (`MAIL_FROM` and `MAIL_PASSWORD`),
+Ved, 10 October 2026: "email with OTP". When Eyes Opener has an address to send from (`MAIL_FROM` and `MAIL_PASSWORD`),
 the email way in is a six-digit code instead of Firebase's link; without them the link is used as before.
 
 | Choice | What was decided |
 |---|---|
-| Who sends it | IOpener itself, by SMTP over TLS to Gmail (`smtp.gmail.com:465`), signed in as a Google account with its app password. No mail package: `mail.ts` speaks SMTP with Node's own `tls` |
+| Who sends it | Eyes Opener itself, by SMTP over TLS to Gmail (`smtp.gmail.com:465`), signed in as a Google account with its app password. No mail package: `mail.ts` speaks SMTP with Node's own `tls` |
 | The code | Six digits from a secure random source. Kept only as a keyed hash beside a keyed hash of the address (`signin_code`): the table holds neither |
 | How long, how often | Works once, for 10 minutes; the fifth wrong try ends it; asking again ends the code before it. Asking is counted exactly as for links (a few for one address, more for one network); tries are counted for the network as for finishing a link |
 | Who it signs in | The address's Firebase account, found or made as the service the app runs as (`accountFor`: `accounts:lookup`, then `accounts` with the address marked verified). So a person who signs in by code and later with Google is one person |
@@ -154,11 +154,11 @@ no such identity: nothing is removed and the result says so.
 | `ADMIN_EMAILS` | Addresses that are always super admins. Only a verified address counts |
 | `DEMO_LOGIN` | `off` in production |
 | `SIGNIN_STAND_IN` | Development only. Ignored in production |
-| `MAIL_FROM` | The Google account IOpener sends sign-in codes from. With `MAIL_PASSWORD`, codes replace the link |
+| `MAIL_FROM` | The Google account Eyes Opener sends sign-in codes from. With `MAIL_PASSWORD`, codes replace the link |
 | `MAIL_PASSWORD` | That account's app password, from Secret Manager (`mail-app-password`). Never in a file or a log |
 | `MAIL_HOST`, `MAIL_PORT` | `smtp.gmail.com` and `465` unless set |
 
-`FIREBASE_AUTH_DOMAIN` is not needed and is not read: no page of IOpener is served from the Firebase domain, and the
+`FIREBASE_AUTH_DOMAIN` is not needed and is not read: no page of Eyes Opener is served from the Firebase domain, and the
 browser does not run Firebase's own library.
 
 `SIGNIN_PROXY_HOPS`: the limits count by network address, read from the `X-Forwarded-For` list. Anyone can put
@@ -176,13 +176,13 @@ In the Firebase console, for `iopener-staging` first and `iopener-prod` later:
 2. **Sign-in method**
    - Google: enable. Note the "Web client ID": it is `GOOGLE_CLIENT_ID`.
    - Email/Password: enable, and switch on **Email link (passwordless sign-in)**. Firebase needs the first for the
-     second. IOpener never offers a password.
+     second. Eyes Opener never offers a password.
    - Nothing else. No phone, no anonymous.
-3. **Settings, User account linking**: leave "Link accounts that use the same email" on. IOpener relies on it for
+3. **Settings, User account linking**: leave "Link accounts that use the same email" on. Eyes Opener relies on it for
    "Google and email link are one person".
 4. **Settings, Authorised domains**: add the site's own domain (the `run.app` address for staging, the real domain
    for production). The email link is refused for a domain that is not listed. Remove `localhost` from the production project.
-5. **The email itself**: in Project settings, General, set the "Public-facing name" to IOpener: the email calls the
+5. **The email itself**: in Project settings, General, set the "Public-facing name" to Eyes Opener: the email calls the
    app by it. Under Authentication, Templates, set the sender name where the console offers it for the sign-in
    link, and leave the action address as Firebase gives it. Firebase does not let the words of this email be changed.
 6. **Project settings, General**: the "Web API key" is `FIREBASE_API_KEY`.
@@ -205,7 +205,7 @@ the demo can only ever be a seeded person.
 On staging, in a browser, with the site lock on:
 
 1. `/login` shows the Google button and the email form. With `GOOGLE_CLIENT_ID` removed, only the form.
-2. Google, with an address IOpener has never seen: lands on the welcome page. "Start my family space" goes to onboarding.
+2. Google, with an address Eyes Opener has never seen: lands on the welcome page. "Start my family space" goes to onboarding.
 3. Sign out. Sign in with the email link for the same address: the same person, the same household. Then the other way round with a second address.
 4. Ask for a link, open it on the same device: no typing. Open another on a phone: asked for the address; a wrong address is refused; the right one signs in.
 5. Use a link twice: the second time says it was used already.

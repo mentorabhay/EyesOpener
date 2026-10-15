@@ -21,7 +21,7 @@ export const family = texts("copy/family", "family", () => ({
     consentBy: (name: string | null, date: string) => `Consent given by ${name ?? "a guardian"} on ${date}`,
     noConsent: "No consent yet. Programmes and child mode stay closed for this child until a guardian gives it.",
     withdraw: { ask: "Withdraw consent", warn: "Programmes and child mode close for this child until a guardian gives consent again. Nothing is deleted.", yes: "Yes, withdraw" },
-    confirm: "I am this child's parent or guardian, and I agree to this child using IOpener.",
+    confirm: "I am this child's parent or guardian, and I agree to this child using Eyes Opener.",
     give: "Give consent",
   },
 

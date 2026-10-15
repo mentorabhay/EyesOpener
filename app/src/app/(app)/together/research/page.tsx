@@ -38,7 +38,7 @@ function PassageCard({ found: { passage: p, by }, searched }: { found: Found; se
 }
 
 /**
- * The research library. A search returns passages of IOpener's own pages, word for word, each with its source.
+ * The research library. A search returns passages of Eyes Opener's own pages, word for word, each with its source.
  * It never writes an answer. Every edition searches by words; an edition with an assistant also searches by meaning.
  */
 export default async function ResearchPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

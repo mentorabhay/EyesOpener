@@ -25,7 +25,7 @@ export type FormState = { ok: boolean; message: string } | null;
 /** A count of households, or null when it covers too few households to show. */
 const enough = (households: number): number | null => (households >= SPONSOR_MIN_GROUP ? households : null);
 
-/** Groups, glasses and the team open only once the IOpener team has approved the sponsor. */
+/** Groups, glasses and the team open only once the Eyes Opener team has approved the sponsor. */
 export function approvedOnly(s: SponsorSeat) {
   if (s.status !== "approved") notFound();
 }
@@ -171,7 +171,7 @@ export async function listTeam(s: SponsorSeat) {
   return rows.sort((a, b) => Number(b.role === "owner") - Number(a.role === "owner"));
 }
 
-/** Add a person who already signs in to IOpener, found by email. */
+/** Add a person who already signs in to Eyes Opener, found by email. */
 export async function addToTeam(viewer: Viewer, s: SponsorSeat, email: string, role: SponsorRole): Promise<"done" | "not_found" | "already"> {
   approvedOnly(s);
   const [person] = await db.select({ id: schema.appUser.id }).from(schema.appUser).where(eq(sql`lower(${schema.appUser.email})`, email.toLowerCase())).limit(1);

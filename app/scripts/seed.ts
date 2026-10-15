@@ -49,7 +49,7 @@ async function main() {
   /* sponsors: one approved with a group of families, one waiting for ops */
   const [sunrise, hillview] = await db.insert(s.sponsor).values([
     { name: "Sunrise Eye Foundation", kind: "ngo", city: "Mumbai", about: "Free eye checks and glasses for school children.", status: "approved", approvedBy: opsUser.id, approvedAt: new Date() },
-    { name: "Hillview School", kind: "school", city: "Pune", about: "Wants to offer IOpener to its primary classes." },
+    { name: "Hillview School", kind: "school", city: "Pune", about: "Wants to offer Eyes Opener to its primary classes." },
   ]).returning();
   await db.insert(s.sponsorUser).values([{ sponsorId: sunrise.id, userId: sponsorOwner.id, role: "owner" }, { sponsorId: hillview.id, userId: schoolOwner.id, role: "owner" }]);
   const [group] = await db.insert(s.sponsorGroup).values({ sponsorId: sunrise.id, name: "Sunrise families 2026", code: "SUNRISE1" }).returning();
@@ -154,7 +154,7 @@ async function main() {
     { profileId: zoya.id, programme: "lazy-eye", week: 8, body: "Week eight is when the letter test moved for us. Keep going.", signature: "A family in Jaipur, now at week 12", status: "published" },
   ]);
   await db.insert(s.fusionMail).values({ fromProfileId: dadi.id, toProfileId: aarav.id, fromName: "Dadi", body: "WELL DONE\nI AM PROUD\nOF YOU" });
-  const [wall] = await db.insert(s.focusWall).values({ month: key(new Date()).slice(0, 7), title: "Kite over the hills", artist: "IOpener", tiles: 32 }).returning();
+  const [wall] = await db.insert(s.focusWall).values({ month: key(new Date()).slice(0, 7), title: "Kite over the hills", artist: "Eyes Opener", tiles: 32 }).returning();
   await db.insert(s.focusTile).values(Array.from({ length: 32 }, (_, i) => i).filter((i) => (i * 7) % 10 < 7).map((idx) => ({ wallId: wall.id, idx, profileId: idx % 3 === 0 ? aarav.id : null })));
   const [pair] = await db.insert(s.glassesPair).values({ code: "0412", sponsorId: sunrise.id }).returning();
   await db.insert(s.glassesLeg).values([

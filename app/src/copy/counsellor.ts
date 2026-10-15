@@ -126,9 +126,9 @@ export const counsellor = texts("copy/counsellor", "counsellor", () => ({
 
   profile: {
     title: "Your details",
-    sub: "What the IOpener team holds about you as a counsellor.",
-    rows: { name: "Name", email: "Email", verified: "Checked by the IOpener team on" },
+    sub: "What the Eyes Opener team holds about you as a counsellor.",
+    rows: { name: "Name", email: "Email", verified: "Checked by the Eyes Opener team on" },
     about: "Families find you by this email when they ask to link a member.",
-    change: "To change your name or email, write to the IOpener team.",
+    change: "To change your name or email, write to the Eyes Opener team.",
   },
 }));

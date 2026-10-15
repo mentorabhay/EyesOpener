@@ -1,6 +1,6 @@
 # Languages
 
-How IOpener is read in a language other than English: what decides the language of a page, when a translation
+How Eyes Opener is read in a language other than English: what decides the language of a page, when a translation
 is shown and when it is not, how staff switch a language on, how a reviewer works, and what is never translated.
 
 Read this before changing anything under `src/i18n/`, `src/copy/`, `translations/` or `scripts/i18n/`.
@@ -55,7 +55,7 @@ What `check.ts` holds a translation to. It proves a translation wrong; it cannot
   is the language's own word from `src/i18n/units.ts`, after its number. This also holds where the app writes the
   number in: `{n} minutes` cannot come back as `{n}` hours. Where two numbers share one unit ("48 of 60 minutes",
   "10 to 15 minutes") the unit may follow either.
-- `IOpener` stays in English letters. So do the names of games and exercises; that is checked for every file in
+- `Eyes Opener` stays in English letters. So do the names of games and exercises; that is checked for every file in
   the repository by `src/i18n/files.test.ts`.
 - The same links and addresses, the same space at the start and the end, the same line breaks.
 - No hidden mark that changes the order text is drawn in, and no control character. A direction override in front
@@ -258,7 +258,7 @@ matches) and are counted as "of an older wording" until they are drafted and rev
 | What | Why |
 |---|---|
 | The letters of a check-up: the tumbling E, letter pairs, the reading passages of the drills, the word on the Lifesaver card | They are the measurement. Their size and shape are the test; another script is another test, to be designed and checked on its own |
-| The names of games and exercises, and `IOpener` | A name is how a family, a counsellor and the research library find the same thing. It stays in English letters in every language |
+| The names of games and exercises, and `Eyes Opener` | A name is how a family, a counsellor and the research library find the same thing. It stays in English letters in every language |
 | Citations and the titles of papers | They are quoted as published |
 | Names of people and households, and what members write (notes, ideas, messages) | They are the member's own words |
 | Dates, weekday names and numbers | Written with `Intl` for `en-IN`, in the digits 0 to 9 |

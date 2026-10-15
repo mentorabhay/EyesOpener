@@ -1,4 +1,4 @@
-# The IOpener web app as a container.
+# The Eyes Opener web app as a container.
 #   docker build -t iopener-web .                 the web server (the last stage)
 #   docker build -t iopener-ops --target ops .    database jobs: migrations and the demo seed
 # The server listens on $PORT (8080 unless set) and needs DATABASE_URL and SESSION_SECRET at run time.

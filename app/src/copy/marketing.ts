@@ -66,9 +66,9 @@ export const marketing = texts("copy/marketing", "marketing", () => ({
 
   help: {
     title: "Can't sign in?",
-    sub: "IOpener has no passwords, so there is nothing to forget or reset. Here is what to do instead.",
+    sub: "Eyes Opener has no passwords, so there is nothing to forget or reset. Here is what to do instead.",
     sendTitle: "Send me a new sign-in link",
-    sendBody: "Type the email address you use with IOpener. A new link arrives in a minute or two. Open it on this device.",
+    sendBody: "Type the email address you use with Eyes Opener. A new link arrives in a minute or two. Open it on this device.",
     faq: [
       { q: "The link did not arrive", a: "Look in your spam or promotions folder. Wait two minutes, then ask for a new link. Each new link replaces the old one." },
       { q: "The link says it has run out", a: "A link works once and for a short time. Ask for a new one below." },

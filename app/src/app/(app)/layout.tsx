@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandMark } from "@/components/brand";
 import type { CSSProperties, ReactNode } from "react";
 import { InkTuneSet } from "@/components/ink-tune";
 import { NavGroups, TabBar } from "@/components/nav";
@@ -44,7 +45,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     <div className="shell" style={style}>
       <InkTuneSet tune={tune} />
       <aside className="side">
-        <Link href="/today" className="logo"><span className="mark" aria-hidden="true"><i /><i /></span>{common.product}</Link>
+        <Link href="/today" className="logo"><BrandMark />{common.product}</Link>
         <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">
           <b>{m.profile.displayName}</b>
           <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span>

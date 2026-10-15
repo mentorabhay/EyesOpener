@@ -15,7 +15,7 @@ import { LoginView, type DemoGroup } from "./view";
 
 export const generateMetadata = (): Metadata => ({ title: t.title, robots: { index: false, follow: false } });
 
-/** The seeded people of the demo, by the side of IOpener each shows. */
+/** The seeded people of the demo, by the side of Eyes Opener each shows. */
 async function demoGroups(viewer: Viewer | null): Promise<DemoGroup[]> {
   const users = await db.select().from(schema.appUser).orderBy(asc(schema.appUser.createdAt));
   const sponsors = await db.select({ userId: schema.sponsorUser.userId, name: schema.sponsor.name, status: schema.sponsor.status })

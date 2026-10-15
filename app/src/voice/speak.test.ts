@@ -32,7 +32,8 @@ describe("speakable: the app's words made ready for a voice", () => {
     expect(speakable("Tap “Stop” – then rest.")).toBe("Tap Stop, then rest.");
   });
   it("says the product's name and the Escape key", () => {
-    expect(speakable("IOpener never sets this. Press Esc.")).toBe("Eye Opener never sets this. Press Escape.");
+    expect(speakable("Eyes Opener never sets this. Press Esc.")).toBe("Eyes Opener never sets this. Press Escape.");
+    expect(speakable("IOpener never sets this.")).toBe("Eyes Opener never sets this.");
   });
   it("says the common signs", () => {
     expect(speakable("Salt & pepper, 2 + 2 = 4, 3 × 3.")).toBe("Salt and pepper, 2 plus 2 equals 4, 3 times 3.");

@@ -88,7 +88,7 @@ export const guides: Guide[] = textsEach("data/guides/squint", () => [
     what: "A slow drill for keeping the two eyes together while looking far away. Through red-cyan glasses each eye sees its own ring on the TV, and you hold the two as one ring while it slowly gets harder. For intermittent squint, on a counsellor's plan.",
     need: [
       "Red-cyan glasses, worn over your own glasses if you have them.",
-      "A TV that can open IOpener, and a seat about 3 metres from it.",
+      "A TV that can open Eyes Opener, and a seat about 3 metres from it.",
       "A remote or a keyboard within reach.",
       PLAN,
     ],

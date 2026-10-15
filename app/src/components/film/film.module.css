@@ -1,4 +1,4 @@
-/* The two-eye film player: IOpener's own controls around a film that plays from the member's device.
+/* The two-eye film player: Eyes Opener's own controls around a film that plays from the member's device.
    The picture keeps the therapy field (black, white words); the controls follow direction B. */
 
 .shell { display: flex; flex-direction: column; gap: 10px; min-width: 0; }

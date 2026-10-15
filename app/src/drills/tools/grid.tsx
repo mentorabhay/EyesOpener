@@ -62,7 +62,7 @@ export function Grid({ marks, label, width, cursor, onCell, onKey, onFocus, desc
 /**
  * A home check of the centre of vision, one eye at a time. The member looks at the dot and marks the squares
  * where the lines look bent, blurred or missing. The tool keeps the number of squares marked for each eye.
- * It says when to see an eye doctor. It names no disease: IOpener does not diagnose.
+ * It says when to see an eye doctor. It names no disease: Eyes Opener does not diagnose.
  */
 export function GridTool({ slug, dose, labels, ppc }: { slug: string; dose: TrainDose; labels: Labels; ppc: number }) {
   const detail = useRef<Detail | null>(null);

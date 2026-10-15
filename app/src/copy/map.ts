@@ -46,7 +46,7 @@ export const map = texts("copy/map", "map", () => ({
     field: "The first three digits of your PIN code",
     hint: "Three digits only, such as 411. Do not type the whole PIN code.",
     kept: [
-      "IOpener keeps the three digits and nothing else about where you are. They cover a whole district or a large part of a city, never a street.",
+      "Eyes Opener keeps the three digits and nothing else about where you are. They cover a whole district or a large part of a city, never a street.",
       "Your area is shown only when enough families are on it.",
       "You can leave the map at any time. Your three digits are then deleted.",
     ],

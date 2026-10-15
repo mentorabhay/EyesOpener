@@ -69,7 +69,7 @@ export const lightsOn = texts("copy/lights-on", "lightsOn", () => ({
     festival: "World Sight Day festival",
     festivalValue: (day: string, hour: number) => `${day}, ${clockHour(hour)}`,
     festivalNote: "World Sight Day is the second Thursday of October. The hour runs on that day too, at the same time, with a festival sky.",
-    setBy: "The IOpener team sets the hour. It is the same for every household.",
+    setBy: "The Eyes Opener team sets the hour. It is the same for every household.",
   },
 
   own: {

@@ -19,7 +19,7 @@ import { secureCookies } from "@/lib/token";
 export async function GET(req: Request) {
   const url = new URL(req.url), next = safeNext(url.searchParams.get("next"));
   if (req.headers.get("rsc") !== null) {
-    return new Response("<!doctype html><meta charset=\"utf-8\"><title>IOpener</title>", { status: 200, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
+    return new Response("<!doctype html><meta charset=\"utf-8\"><title>Eyes Opener</title>", { status: 200, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
   }
   const m = await getMember();
   const want = m ? householdLang(m.account.locale, await langStatuses(true), !!m.viewer.staff) : SOURCE;

@@ -27,7 +27,7 @@ const hazard: Record<HazardReason, string> = {
   in_or_on_eye: "Putting something in the eye or pressing on it",
   supplement_or_drug: "A medicine, drops or a supplement",
   flashing_light: "Flashing or flickering light",
-  over_dose: "More practice than IOpener's daily limit",
+  over_dose: "More practice than Eyes Opener's daily limit",
   cure_claim: "A promise of a cure or of a sure result",
   other_harm: "Something else that could hurt",
 };
@@ -65,7 +65,7 @@ export const assistCopy = texts("copy/assist", "assistCopy", () => ({
       moves: "Your story does not say which check-up should change. Choose that yourself.",
     } as Record<IdeaGap, string>,
     refused: {
-      stops_care: "Your story is about stopping or changing care an eye doctor set. IOpener does not share ideas like that. Talk to the eye doctor first.",
+      stops_care: "Your story is about stopping or changing care an eye doctor set. Eyes Opener does not share ideas like that. Talk to the eye doctor first.",
       hazard: "Your story mentions something that could hurt someone, so no lines were suggested.",
       treatment_dose: "Your story is about how much of a treatment to use, such as a patch, drops or glasses. Only an eye doctor sets that, so no lines were suggested.",
       not_an_idea: "AI could not find something in your story that another member could try. You can still fill in the lines yourself.",
@@ -109,14 +109,14 @@ export const assistCopy = texts("copy/assist", "assistCopy", () => ({
     working: "Writing",
     label: "Written by AI from the numbers on this page. It is not advice and it is not from an eye doctor. Check it against the table: the table is the record.",
     nothing: "There is no check-up result on this page yet, so there is nothing to put into words.",
-    check: "The paragraph did not pass IOpener's checks, so it is not shown. The table on this page has every number.",
+    check: "The paragraph did not pass Eyes Opener's checks, so it is not shown. The table on this page has every number.",
   },
 
   research: {
     name: "Research library",
     what: "Look up what the trials found, with a link to each source.",
     title: "Research library",
-    sub: "Search what IOpener's own pages say about the research. You get the passages, word for word, each with its source. Nothing here writes an answer for you.",
+    sub: "Search what Eyes Opener's own pages say about the research. You get the passages, word for word, each with its source. Nothing here writes an answer for you.",
     label: "What do you want to look up?",
     hint: "For example: patching hours, pencil push-ups, outdoor time",
     submit: "Search",
@@ -127,7 +127,7 @@ export const assistCopy = texts("copy/assist", "assistCopy", () => ({
     byWords: "Found by its words",
     byMeaningNote: "AI compared the meaning of your question with each passage and chose the closest ones. It did not write or change any of them.",
     byWordsNote: "These passages carry the words of your question.",
-    none: { title: "Nothing found", body: "Try other words, or fewer of them. The library holds only what IOpener's own pages say." },
+    none: { title: "Nothing found", body: "Try other words, or fewer of them. The library holds only what Eyes Opener's own pages say." },
     start: { title: "Type a question above", body: "Or browse the kinds of passage below." },
     sources: "Sources",
     noSource: "This passage names no source of its own. The trials behind it are in the library too.",

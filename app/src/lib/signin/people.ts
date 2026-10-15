@@ -1,5 +1,5 @@
 /**
- * Who a sign-in is, in IOpener's own table of people.
+ * Who a sign-in is, in Eyes Opener's own table of people.
  *
  * Firebase says: this is account `uid`, and it proved it owns `email`. This file decides which `app_user` that is.
  * The rule (`decide`) is pure and unit-tested; `personFor` applies it inside one transaction.

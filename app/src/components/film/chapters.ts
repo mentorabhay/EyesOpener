@@ -1,7 +1,7 @@
 /**
  * Chapters and eye breaks for watching a film in the two-eye cinema. Pure rules, unit-tested.
  *
- * Where the numbers come from (IOpener's own library; none is a trial result):
+ * Where the numbers come from (Eyes Opener's own library; none is a trial result):
  *  - The trials set a daily dose and allow it to be split. The library gives the cinema "60 min a day in chapters"
  *    and gives two-eye screen sessions chapters of 5 or 10 minutes (the catalogue's `dose` and `session` lines).
  *    One chapter of film is 10 minutes of watching, so six chapters make the daily hour.

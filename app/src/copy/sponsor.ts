@@ -8,7 +8,7 @@ export const sponsor = texts("copy/sponsor", "sponsor", () => ({
   area: "Sponsor portal",
   role: { owner: "Owner", editor: "Editor" },
   nav: { title: "Your organisation", overview: "Overview", groups: "Groups", glasses: "Glasses", team: "Team", other: "Your other areas", family: "Family app", admin: "Admin console", counsellor: "Counsellor portal" },
-  status: { pending: "Waiting for the IOpener team", approved: "Approved", suspended: "Paused" },
+  status: { pending: "Waiting for the Eyes Opener team", approved: "Approved", suspended: "Paused" },
 
   /** Shown wherever a count would cover too few households to be safe to show. */
   few: {
@@ -19,8 +19,8 @@ export const sponsor = texts("copy/sponsor", "sponsor", () => ({
   home: {
     sub: "Counts for your groups. You never see a family's name, results or sessions.",
     waiting: {
-      title: "Waiting for the IOpener team",
-      body: "The IOpener team is checking your organisation. When it is approved, your groups and numbers show here. You do not need to do anything.",
+      title: "Waiting for the Eyes Opener team",
+      body: "The Eyes Opener team is checking your organisation. When it is approved, your groups and numbers show here. You do not need to do anything.",
     },
     families: {
       title: "Families in your groups",
@@ -100,11 +100,11 @@ export const sponsor = texts("copy/sponsor", "sponsor", () => ({
     result: { done: "Saved.", last_owner: "A team needs at least one owner.", not_found: "This person is not on the team." },
     add: {
       title: "Add a person",
-      about: "The person must already have signed in to IOpener once.",
+      about: "The person must already have signed in to Eyes Opener once.",
       email: "Their email",
       role: "Role",
       go: "Add to team",
-      result: { done: "Added to the team.", invalid: "Type a full email address.", not_found: "No IOpener person has this email.", already: "This person is already on the team." },
+      result: { done: "Added to the team.", invalid: "Type a full email address.", not_found: "No Eyes Opener person has this email.", already: "This person is already on the team." },
     },
   },
 }));

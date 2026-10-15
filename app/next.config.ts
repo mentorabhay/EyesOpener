@@ -15,13 +15,13 @@ function extraConnect(): string[] {
 /**
  * Sent with every answer. They close ways in from outside, and one of them limits where a page may send data.
  *  - nosniff: a browser never guesses a file's type
- *  - frame rules: no other site can show IOpener inside a frame and trick a click
+ *  - frame rules: no other site can show Eyes Opener inside a frame and trick a click
  *  - base-uri, form-action, object-src: a page cannot be pointed at another site's base, forms or plug-ins
  *  - connect-src: a page's own code can send data only to this site (and to Google's sign-in button, and to any
  *    address listed as below). The camera features therefore cannot send anything elsewhere, whatever a library
  *    inside them tries
  *  - referrer: other sites learn the site's address, never the page a person was on
- *  - permissions: the camera is for IOpener's own pages only (the on-device eye checks); the rest stay off
+ *  - permissions: the camera is for Eyes Opener's own pages only (the on-device eye checks); the rest stay off
  *  - transport security: a browser that has seen the site over https never goes back to http
  */
 const securityHeaders = [

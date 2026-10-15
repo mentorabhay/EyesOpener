@@ -32,7 +32,7 @@ export const duet = texts("copy/duet", "duet", () => ({
     care: (name: string) => `${name}: log one care routine, one break, or some time outdoors.`,
     note: (name: string, partner: string) => `${name}: send ${partner} one note.`,
   },
-  noRecord: (name: string) => `${name} has no profile, so IOpener keeps no eye record for ${name}. A note is the part ${name} can do.`,
+  noRecord: (name: string) => `${name} has no profile, so Eyes Opener keeps no eye record for ${name}. A note is the part ${name} can do.`,
   go: { practice: "Open today's practice", care: "Open the exercises", note: "Send a note" },
 
   strip: {
@@ -84,7 +84,7 @@ export const duet = texts("copy/duet", "duet", () => ({
       already_paired: "One of them is already in a duet. A person keeps one duet at a time.",
       needs_consent: "A child takes part only with a parent's permission. A parent can give it on the Family page.",
       same_generation: "A duet is for two people of different generations, such as a child and a grandparent. These two are about the same age.",
-      cannot_tell: "IOpener cannot tell that these two are of different generations. Pair a child with a grown-up.",
+      cannot_tell: "Eyes Opener cannot tell that these two are of different generations. Pair a child with a grown-up.",
     },
   },
 

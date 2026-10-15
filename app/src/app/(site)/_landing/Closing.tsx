@@ -26,7 +26,7 @@ function strand(startsLeft: boolean): string {
 }
 const END = CROSS[CROSS.length - 1];
 
-/** What IOpener is not. Said once, plainly, at full size. */
+/** What Eyes Opener is not. Said once, plainly, at full size. */
 export function NotThis() {
   const t = landing.not;
   return (

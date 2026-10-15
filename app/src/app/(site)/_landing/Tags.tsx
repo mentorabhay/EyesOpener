@@ -2,7 +2,7 @@ import Link from "next/link";
 import { marketing } from "@/copy/marketing";
 
 /**
- * Right under the hero: what IOpener is, in a row of short tags and six small cards, and two ways in (the demo game
+ * Right under the hero: what Eyes Opener is, in a row of short tags and six small cards, and two ways in (the demo game
  * and a family account). Plain words; the one number comes from the engine.
  */
 export function Tags({ maxMinutes }: { maxMinutes: number }) {

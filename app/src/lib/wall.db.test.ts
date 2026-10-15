@@ -52,7 +52,7 @@ describe.skipIf(!up)("the Focus Wall, in the database", () => {
     await db.delete(s.account).where(inArray(s.account.id, [home, staffHome]));
   });
 
-  it("opens a month's wall once, with that month's picture, drawn by IOpener", async () => {
+  it("opens a month's wall once, with that month's picture, drawn by Eyes Opener", async () => {
     const wall = await ensureWall(MONTH);
     expect(wall).toMatchObject({ month: MONTH, title: words.art.balloons.title, artist: words.artist, pictureUrl: null, tiles: 32 });
     expect((await ensureWall(MONTH)).id).toBe(wall.id);

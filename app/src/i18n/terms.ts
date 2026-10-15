@@ -15,7 +15,7 @@
 import type { Lang } from "./languages";
 
 /** Checked every time a translation is about to be shown (src/i18n/check.ts). */
-export const KEEP: readonly string[] = ["IOpener"];
+export const KEEP: readonly string[] = ["Eyes Opener"];
 
 export interface SameTerm {
   en: string;

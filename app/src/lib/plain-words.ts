@@ -1,5 +1,5 @@
 /**
- * The plain-words check: rules that every sentence a person reads in IOpener must pass.
+ * The plain-words check: rules that every sentence a person reads in Eyes Opener must pass.
  *
  * They come from the project's copy rules: plain words a school student can follow, one idea per sentence, no
  * internal codes on screen, no jargon, no emoji, "weaker eye" and "stronger eye", no cure wording and no
@@ -163,6 +163,9 @@ export function check(text: string, reader: Reader, citation = false): Finding[]
   if (note) hard("note", note[0]);
   const eye = EYE_NAMES.exec(text);
   if (eye) hard("eye-names", eye[0]);
+  /* The product is Eyes Opener (renamed from IOpener, October 2026); the old name is never shown to anyone. */
+  const oldName = /\bIOpener\b/.exec(text);
+  if (oldName) hard("name", "IOpener (say: Eyes Opener)");
   /* "Lazy eye" names the condition. An eye is the weaker eye. */
   const lazy = /\b(?:the|your|their|his|her|its|this|that|each|one|child's) lazy eye\b(?! programme| course| league)/i.exec(text);
   if (lazy && reader !== "staff") hard("eye-names", lazy[0]);

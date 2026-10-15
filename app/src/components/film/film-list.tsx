@@ -29,7 +29,7 @@ export function FilmList({ list, input, playingKey, locked, onPlay, reelLabel, r
   playingKey: string | null; locked: boolean;
   /** Put this film on screen. */
   onPlay: (key: string) => void;
-  /** The button that puts IOpener's own test reel in the list, and the few words before it. */
+  /** The button that puts Eyes Opener's own test reel in the list, and the few words before it. */
   reelLabel: string; reelPrompt: string;
 }) {
   const { films, note } = list, shown = list.current?.key ?? null;

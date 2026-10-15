@@ -40,7 +40,7 @@ export const discovery = texts("copy/discovery", "discovery", () => ({
   how: {
     title: "How the board works",
     points: [
-      "The IOpener team lists questions that the pooled records could answer. Members do not write questions in this version.",
+      "The Eyes Opener team lists questions that the pooled records could answer. Members do not write questions in this version.",
       "Each profile has one vote in a round. You can change it until the round closes.",
       "After a round, the team works out the answer to the question with the most votes, if the records are enough.",
       "A question the records cannot answer stays unanswered. No answer is made up.",

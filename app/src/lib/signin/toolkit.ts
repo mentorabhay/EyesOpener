@@ -1,5 +1,5 @@
 /**
- * The four calls IOpener makes to Firebase's Identity Toolkit, as plain HTTPS requests: no Firebase package.
+ * The four calls Eyes Opener makes to Firebase's Identity Toolkit, as plain HTTPS requests: no Firebase package.
  *
  *   exchangeGoogle   accounts:signInWithIdp        a Google credential from the browser becomes a Firebase ID token
  *   sendLink         accounts:sendOobCode          Firebase emails a sign-in link (request type EMAIL_SIGNIN)

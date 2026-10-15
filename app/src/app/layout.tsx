@@ -5,7 +5,7 @@ import "./globals.css";
 import { LanguageBody, LanguageHead, pageLanguage } from "@/i18n/html";
 
 export const metadata: Metadata = {
-  title: { default: "IOpener", template: "%s · IOpener" },
+  title: { default: "Eyes Opener", template: "%s · Eyes Opener" },
   description: "Eye care you can do at home, built on published research. Free, with an open-source core.",
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };

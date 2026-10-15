@@ -1,5 +1,5 @@
 /**
- * The languages IOpener speaks: Indian English first, then the ten Indian languages of the tech-stack decision.
+ * The languages Eyes Opener speaks: Indian English first, then the ten Indian languages of the tech-stack decision.
  * A code here is the folder of that language's audio and the `lang` of its entries in the manifest.
  */
 export const VOICE_LANGS = ["en-IN", "hi-IN", "bn-IN", "ta-IN", "te-IN", "mr-IN", "gu-IN", "kn-IN", "ml-IN", "ur-IN", "pa-IN"] as const;
@@ -27,7 +27,7 @@ export const isVoiceLang = (v: unknown): v is VoiceLang => typeof v === "string"
 
 /**
  * The voice language for a household's language setting ("en", "hi", "hi-IN", ...). English when the setting is
- * empty or names a language IOpener does not speak.
+ * empty or names a language Eyes Opener does not speak.
  */
 export function voiceLangFor(locale: string | null | undefined): VoiceLang {
   const want = (locale ?? "").trim().toLowerCase().split(/[-_]/)[0];

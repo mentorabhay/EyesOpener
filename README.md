@@ -1,6 +1,6 @@
-# IOpener
+# Eyes Opener
 
-Eye care you can do at home, built on published research: track how you use your eyes, check them, and practise with games. IOpener is not a medical device. It does not diagnose, treat or cure any condition.
+Eye care you can do at home, built on published research: track how you use your eyes, check them, and practise with games. Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.
 
 This repository is the open core of the web app:
 
@@ -11,7 +11,7 @@ This repository is the open core of the web app:
 - the community features, family accounts with child mode, and the staff, counsellor and sponsor areas
 - the public site: landing page, programmes, evidence, library, safety
 
-The live IOpener service adds more games, stories and apps for phone and TV that are not in this repository.
+The live Eyes Opener service adds more games, stories and apps for phone and TV that are not in this repository.
 
 Start in [`app/`](app/README.md). Build rules for contributors are in [`app/docs/CONTRACT.md`](app/docs/CONTRACT.md).
 

@@ -1,5 +1,5 @@
 /**
- * IOpener database models (PostgreSQL, Drizzle).
+ * Eyes Opener database models (PostgreSQL, Drizzle).
  * Column names are written in camelCase here and stored in snake_case (see drizzle.config.ts and src/db/index.ts).
  *
  * Rules this schema enforces:
@@ -278,7 +278,7 @@ export const daySummary = pgTable("day_summary", {
 
 /**
  * What an eye doctor prescribed away from the screen: patch hours, glasses wear, drop days.
- * A guardian types in what the doctor said. IOpener never sets or changes it.
+ * A guardian types in what the doctor said. Eyes Opener never sets or changes it.
  */
 export const carePlan = pgTable("care_plan", {
   id: id(),
@@ -941,7 +941,7 @@ export const signinRemoval = pgTable("signin_removal", {
 
 /**
  * Cinema Club: a public place where a volunteer hosts a weekly film hour. A sponsor or staff lists it; a listing by
- * a sponsor waits for a person at IOpener. Only the place and the time are kept: no host's name, no address of a
+ * a sponsor waits for a person at Eyes Opener. Only the place and the time are kept: no host's name, no address of a
  * home, nobody who came. A club has no members in the app.
  */
 export const cinemaClub = pgTable("cinema_club", {
@@ -983,7 +983,7 @@ export const classMission = pgTable("class_mission", {
 
 /**
  * Wish Jam: what one child wishes a game were about, written by a guardian from a guided form.
- * It is shown outside the household only after a person at IOpener approved it, and only while the guardian's
+ * It is shown outside the household only after a person at Eyes Opener approved it, and only while the guardian's
  * consent for the child stands. It never holds a family name, a school, a city or a picture.
  */
 export const wish = pgTable("wish", {

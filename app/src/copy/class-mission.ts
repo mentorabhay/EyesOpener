@@ -48,7 +48,7 @@ export const classMission = texts("copy/class-mission", "classMission", () => ({
   },
 
   kept: {
-    title: "What IOpener keeps",
+    title: "What Eyes Opener keeps",
     points: [
       "That you gave your child the mission, and the day you say it was run.",
       "Nothing about the class: no school, no teacher, no classmate, no number of children, and no note of how it went.",
@@ -157,8 +157,8 @@ export const classMission = texts("copy/class-mission", "classMission", () => ({
           "With a screen: children sit well back. Nothing in the game flashes.",
         ],
       },
-      kept: "IOpener keeps nothing about your class. The family's app records only that the mission was run, and the day.",
-      foot: "IOpener is not a medical device. This game does not check, treat or change anyone's eyes.",
+      kept: "Eyes Opener keeps nothing about your class. The family's app records only that the mission was run, and the day.",
+      foot: "Eyes Opener is not a medical device. This game does not check, treat or change anyone's eyes.",
     },
 
     plan: {

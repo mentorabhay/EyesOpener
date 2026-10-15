@@ -2,7 +2,7 @@
  * Sends one email: the six-digit sign-in code (code.ts). Server only.
  *
  * It speaks SMTP itself over TLS (Node's own `tls`, no mail package), to Gmail's mail server by default, signed in as
- * the Google account IOpener sends from with that account's app password (owner step M1). Off until both are set:
+ * the Google account Eyes Opener sends from with that account's app password (owner step M1). Off until both are set:
  *
  *   MAIL_FROM       the sending address, for example signin@iopener.example
  *   MAIL_PASSWORD   that account's app password (from Secret Manager, `mail-app-password`; never in a file or a log)
@@ -35,7 +35,7 @@ export function compose(m: Message, from: string, now = new Date(), boundary = `
   if (!ADDRESS.test(m.to)) throw new Error("bad_address");
   const b64 = (s: string) => Buffer.from(s).toString("base64").replace(/.{76}/g, "$&\r\n");
   const lines = [
-    `From: IOpener <${from}>`, `To: <${m.to}>`, `Subject: ${header(m.subject)}`, `Date: ${now.toUTCString()}`,
+    `From: Eyes Opener <${from}>`, `To: <${m.to}>`, `Subject: ${header(m.subject)}`, `Date: ${now.toUTCString()}`,
     `Message-ID: <${now.getTime()}.${Math.random().toString(36).slice(2)}@iopener.signin>`, "MIME-Version: 1.0", "Auto-Submitted: auto-generated",
   ];
   if (!m.html) return [...lines, "Content-Type: text/plain; charset=utf-8", "Content-Transfer-Encoding: base64", "", b64(m.text)].join("\r\n");

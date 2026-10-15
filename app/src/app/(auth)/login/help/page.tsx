@@ -12,7 +12,7 @@ import css from "../login.module.css";
 
 export const generateMetadata = (): Metadata => ({ title: marketing.help.title, robots: { index: false, follow: false } });
 
-/** /login/help: "Can't sign in?" IOpener has no passwords, so this sends a fresh email link and answers the usual snags. */
+/** /login/help: "Can't sign in?" Eyes Opener has no passwords, so this sends a fresh email link and answers the usual snags. */
 export default function SignInHelp() {
   const t = marketing.help;
   const settings = signInSettings();

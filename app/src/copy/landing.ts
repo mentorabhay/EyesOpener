@@ -14,13 +14,13 @@ export const landing = texts("copy/landing", "landing", () => ({
   meta: {
     title: "Two eyes. One picture.",
     description:
-      "IOpener is a free fitness app for your eyes, with an open-source core. Track how you use them, check them at home and practise with games. The web app works today.",
+      "Eyes Opener is a free fitness app for your eyes, with an open-source core. Track how you use them, check them at home and practise with games. The web app works today.",
   },
 
   hero: {
     line1: "Two eyes.",
     line2: "One picture.",
-    lead: "IOpener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
+    lead: "Eyes Opener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
     start: "Start the two-minute check",
     how: "See how it works",
     note: "Free. Open-source core. No ads.",
@@ -144,7 +144,7 @@ export const landing = texts("copy/landing", "landing", () => ({
     cap: { head: (minutes: number) => `Never more than ${minutes} minutes a day`, body: "The daily limit holds for every programme and every person." },
     age: { head: (age: number) => `No screen sessions under age ${age}`, body: "Younger children get off-screen exercises only." },
     stop: { head: "A stop button on every session", body: "Double vision, a headache or strain: one press ends the session at once." },
-    doctor: { head: "Something is wrong? See an eye doctor first.", body: "When an answer points to a warning sign, training stays closed. IOpener never says all clear." },
+    doctor: { head: "Something is wrong? See an eye doctor first.", body: "When an answer points to a warning sign, training stays closed. Eyes Opener never says all clear." },
     session: {
       title: "Today's practice",
       closed: "Closed until the checks pass",
@@ -170,7 +170,7 @@ export const landing = texts("copy/landing", "landing", () => ({
 
   screens: {
     title: "On the screens you already have.",
-    lead: "IOpener is made for the browser, the phone and the TV. Here is what exists today.",
+    lead: "Eyes Opener is made for the browser, the phone and the TV. Here is what exists today.",
     web: { name: "Web app", state: "Works today", body: "Open it in a browser on a laptop, a tablet or a phone." },
     phone: { name: "Phone app", state: "Being built", body: "Until it is ready, the web app opens in the phone's browser." },
     tv: { name: "TV app", state: "Being built", body: "For Android TV, played with the remote." },
@@ -183,7 +183,7 @@ export const landing = texts("copy/landing", "landing", () => ({
   },
 
   not: {
-    title: "What IOpener is not.",
+    title: "What Eyes Opener is not.",
     lines: ["It is not a medical device.", "It does not diagnose, treat or cure any condition.", "It does not replace your eye doctor."],
     is: "It supports the plan your eye doctor sets.",
   },

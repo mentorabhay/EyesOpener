@@ -2,7 +2,7 @@
 import { texts } from "@/i18n/texts";
 
 export const common = texts("copy/common", "common", () => ({
-  product: "IOpener",
+  product: "Eyes Opener",
   tagline: "Eye care you can do at home, built on published research.",
   nav: {
     track: "Track", test: "Test", train: "Train", together: "Together",
@@ -12,7 +12,7 @@ export const common = texts("copy/common", "common", () => ({
     switchPerson: "Sign in as someone else", childMode: "Child mode", leaveChildMode: "Child mode · grown-up? Tap to leave", grownUp: "Grown-up",
     you: "You", otherAreas: "Your other areas",
   },
-  notMedical: "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
+  notMedical: "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.",
   tester: "Staff test household. Every game, exercise and film opens here whatever its status, and the daily limits are off. Nothing here is counted with families.",
   testerLink: "Set the status of each item",
   lens: {

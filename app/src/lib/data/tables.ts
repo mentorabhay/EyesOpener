@@ -544,8 +544,8 @@ export const TABLES = {
   /* ───────────── package: ai (the assistant's side of the database) ───────────── */
   libraryVector: {
     holds: "Where each passage of the research library sits by meaning: the passage's key and a list of numbers.",
-    copy: { leftOut: "Worked out from IOpener's own pages and published stories. Nothing about a household." },
-    erase: { untouched: "Worked out from IOpener's own pages and published stories. Nothing about a household." },
+    copy: { leftOut: "Worked out from Eyes Opener's own pages and published stories. Nothing about a household." },
+    erase: { untouched: "Worked out from Eyes Opener's own pages and published stories. Nothing about a household." },
   },
 } satisfies { [K in TableName]: Rule<K> };
 

@@ -42,7 +42,7 @@ export async function googleSignIn(credential: string, next: string | null): Pro
 }
 
 /**
- * Emails a way in: a six-digit code when IOpener has an address to send from (owner step M1), else Firebase's link.
+ * Emails a way in: a six-digit code when Eyes Opener has an address to send from (owner step M1), else Firebase's link.
  * The answer never says whether the address has an account.
  */
 export async function askForLink(_: SignInAnswer, form: FormData): Promise<SignInAnswer> {

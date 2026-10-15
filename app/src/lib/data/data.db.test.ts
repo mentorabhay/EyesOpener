@@ -359,7 +359,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(file.data.counsellorLinks[0]).toMatchObject({ counsellorName: `${RAO} (counsellor)` });
       expect(file.data.counsellorLinks[0]).not.toHaveProperty("counsellorId");
       expect(file.data.programmes[0]).toMatchObject({ approvedByName: `${RAO} (counsellor)` });
-      expect(file.data.review.find((r) => r.kind === "story")).toMatchObject({ reviewerName: "A person at IOpener" });
+      expect(file.data.review.find((r) => r.kind === "story")).toMatchObject({ reviewerName: "A person at Eyes Opener" });
       const out = file.data.lights.find((l) => l.fromProfileId === P1.id)!, back = file.data.lights.find((l) => l.toProfileId === P1.id)!;
       expect(out).toMatchObject({ toProfileName: ZED, note: `Out ${GIFT}` });
       expect(out).not.toHaveProperty("toProfileId");
@@ -376,7 +376,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(Object.keys(her).sort()).toEqual([...OTHER_PERSON_COLUMNS].sort());
       expect(her).toMatchObject({ displayName: KIRAN, seat: "co_guardian" });
       expect(json).not.toContain(K.email);
-      /* Her message to IOpener as a counsellor is not in his file; his own is. */
+      /* Her message to Eyes Opener as a counsellor is not in his file; his own is. */
       expect(file.data.enquiries.map((e) => e.message)).toEqual([`Message ${GONE}`]);
     });
 

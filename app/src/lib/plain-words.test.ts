@@ -11,7 +11,7 @@ describe("the plain-words rules", () => {
   it("lets ordinary sentences through", () => {
     for (const ok of [
       "Put the glasses on, cyan lens over your left eye, and press Start.",
-      "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
+      "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.",
       "The weaker eye sees the fireflies. The stronger eye sees the jar.",
       "Lazy eye programme, week 6 of 12.",
       "Print this card on A4 paper.",
@@ -22,7 +22,7 @@ describe("the plain-words rules", () => {
   });
   it("refuses pictures typed as letters, and keeps arrows and marks", () => {
     expect(rules("Well done \u{1F389}")).toContain("emoji");
-    expect(rules("Press → to go on. © IOpener ✓")).toEqual([]);
+    expect(rules("Press → to go on. © Eyes Opener ✓")).toEqual([]);
   });
   it("refuses the code's own names, task numbers and notes to self", () => {
     expect(rules("Set by the dgame method")).toContain("code");

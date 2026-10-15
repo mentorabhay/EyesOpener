@@ -37,7 +37,7 @@ const BAD_LINE = [
   [/\b[0-9A-F]{6}-[0-9A-F]{6}-[0-9A-F]{6}\b/, "a billing account number"],
   [/[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail)\.[a-z.]+/i, "a personal email address"],
   [/client_secret["']?\s*[:=]\s*["'][^"']{8,}/i, "a client secret"],
-  [/[A-Za-z]:\\\\?(IOpener|clapjar|VC)\b|\/home\/claude\//, "a path on a private machine"],
+  [/[A-Za-z]:\\\\?(IOpener|EyesOpener|IO|clapjar|VC)\b|\/home\/claude\//, "a path on a private machine"],
 ];
 
 const problems = [];

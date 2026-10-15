@@ -5,6 +5,7 @@
  * button opens. Closed, the menu is `display: none`, so it is out of the tab order. Escape closes it.
  */
 import Link from "next/link";
+import { BrandMark } from "@/components/brand";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site as t } from "@/copy/site";
@@ -13,7 +14,7 @@ import { inEdition } from "@/edition";
 const MENU_ID = "site-menu";
 
 export function Mark() {
-  return <span className="s-mark" aria-hidden="true"><i /><i /></span>;
+  return <BrandMark />;
 }
 
 export function SiteNav({ home }: { home: string | null }) {

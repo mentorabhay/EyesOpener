@@ -15,7 +15,7 @@ import css from "../login/login.module.css";
 export const generateMetadata = (): Metadata => ({ title: marketing.register.title, description: marketing.register.sub });
 
 /**
- * /register: making a family account. It is the same Google or email-link sign-in as Log in (IOpener has no
+ * /register: making a family account. It is the same Google or email-link sign-in as Log in (Eyes Opener has no
  * passwords): a first sign-in makes the person, and the welcome page then starts their household.
  */
 export default async function RegisterPage() {

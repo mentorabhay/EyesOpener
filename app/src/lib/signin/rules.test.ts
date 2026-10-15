@@ -117,7 +117,7 @@ describe("the session", () => {
 describe("the demo sign-in and real people", () => {
   it("may become a seeded person only: someone in the demo family, or with an address no mailbox can have", () => {
     expect(isDemoPerson({ email: "priya@iopener.test", firebaseUid: null }, true)).toBe(true);
-    expect(isDemoPerson({ email: "Admin@IOpener.TEST", firebaseUid: null }, false)).toBe(true);
+    expect(isDemoPerson({ email: "Admin@Eyes Opener.TEST", firebaseUid: null }, false)).toBe(true);
     expect(isDemoPerson({ email: "parent@family.example", firebaseUid: null }, false)).toBe(false);
     expect(isDemoPerson({ email: "staff@iopener.example", firebaseUid: null }, false)).toBe(false);
   });
@@ -187,11 +187,12 @@ describe("the proxy, child mode and the site lock", () => {
     process.env.SITE_LOCK = "a-test-phrase-1234";
     try {
       expect(await run("/_next/static/chunks/abc123.js")).toBe("through");
-      expect(await run("/favicon.ico")).toBe("through");
+      for (const p of ["/favicon.ico", "/icon.png", "/apple-icon.png", "/opengraph-image.png", "/brand/mark.png"]) expect(await run(p)).toBe("through");
       expect(await run("/static/a.js")).toBe("/gate?next=%2Fstatic%2Fa.js");
       expect(await run("/_next/staticx/a.js")).not.toBe("through");
+      expect(await run("/brandx/a.png")).not.toBe("through");
       const { config } = await import("../../proxy");
-      expect(config.matcher).toEqual(["/((?!_next/static|_next/image|favicon.ico).*)"]);
+      expect(config.matcher).toEqual(["/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|opengraph-image.png|brand/).*)"]);
     } finally { delete process.env.SITE_LOCK; }
   });
 

@@ -247,8 +247,8 @@ export const test = texts("copy/test", "test", () => ({
     symptom: { double_vision: "Seeing double", headache: "Headache", eye_pain: "Eye pain", dizzy: "Dizzy", sick: "Feeling sick" } as Record<string, string>,
     stopLine: (what: string, day: string) => `${what}, ${day}`,
     notes: "How to read this page",
-    notMedical: "IOpener is not a medical device. These are home measurements, taken on a home screen without supervision. They do not diagnose anything.",
-    howMeasured: "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is IOpener's own fifteen questions, scored 0 to 60, with no cut-off.",
+    notMedical: "Eyes Opener is not a medical device. These are home measurements, taken on a home screen without supervision. They do not diagnose anything.",
+    howMeasured: "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is Eyes Opener's own fifteen questions, scored 0 to 60, with no cut-off.",
     back: "Back to check-ups",
   },
 }));

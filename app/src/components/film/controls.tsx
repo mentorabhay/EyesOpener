@@ -36,7 +36,7 @@ export function Glasses({ cyan }: { cyan: "L" | "R" | null }) {
 export const lensLine = (cyan: "L" | "R" | null) => (cyan ? c.glasses.short(cyan) : c.glasses.shortUnknown);
 
 /**
- * IOpener's own film controls: play and pause, back and forward, the place in the film, sound and full screen.
+ * Eyes Opener's own film controls: play and pause, back and forward, the place in the film, sound and full screen.
  * Every control is a real button or slider, so touch, a keyboard and a remote's arrows and OK all work.
  *  - `mayPlay`: Play may be pressed now (a film is ready and training is open).
  *  - `locked`: nothing may be played or moved (no film, or an eye break is running).

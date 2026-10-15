@@ -31,7 +31,7 @@ export const monitor = texts("copy/monitor", "monitor", () => ({
       "It does not read stress, mood or tiredness.",
       "It does not test your eyes, and it never says your eyes are fine.",
       "It does not see where you look. It can only tell that you turned your head or left the seat.",
-      "It is not for an employer. A sponsor, a counsellor and IOpener's staff cannot see these numbers.",
+      "It is not for an employer. A sponsor, a counsellor and Eyes Opener's staff cannot see these numbers.",
     ],
   },
   stored: {
@@ -83,7 +83,7 @@ export const monitor = texts("copy/monitor", "monitor", () => ({
   consent: {
     title: "Camera consent",
     ask: (name: string) => `The monitor uses this computer's camera for ${name}. A guardian decides.`,
-    tick: (name: string) => `I agree that IOpener may use the camera on this computer for ${name}'s workday monitor. Pictures stay on the computer. Only the numbers listed here are saved.`,
+    tick: (name: string) => `I agree that Eyes Opener may use the camera on this computer for ${name}'s workday monitor. Pictures stay on the computer. Only the numbers listed here are saved.`,
     give: "Allow the camera",
     given: (who: string | null, when: string) => (who ? `Camera allowed by ${who} on ${when}.` : `Camera allowed on ${when}.`),
     withdraw: "Withdraw consent",
@@ -216,7 +216,7 @@ export const monitor = texts("copy/monitor", "monitor", () => ({
     pipBody: "Keep a small window on top of your work. It shows your reminders, and the monitor keeps its full pace while it is open.",
     pipOpen: "Open the small window",
     pipClose: "Close the small window",
-    pipTitle: "IOpener monitor",
+    pipTitle: "Eyes Opener monitor",
     pipIdle: "The monitor is not running.",
     noPip: "This browser has no small on-top window. Keep this page in a window of its own at the side of your screen, where it stays in view.",
     tested: "Tried in Chrome on a desk computer: the monitor kept watching behind another tab. Other browsers were not tried.",

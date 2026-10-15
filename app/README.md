@@ -1,4 +1,4 @@
-# IOpener web app
+# Eyes Opener web app
 
 Eye care at home: track, test, train, together. This folder is the web app (Next.js 16, TypeScript, PostgreSQL through Drizzle).
 
@@ -76,4 +76,4 @@ A fuller build adds games and features without changing this code. The places it
 - The privacy, children's data and terms pages are drafts. A lawyer must review them before launch.
 - Nothing has been checked through real red-cyan glasses or on a real TV. `setup.bat` and `start.bat` have not been run on Windows.
 
-IOpener is not a medical device. It does not diagnose, treat or cure any condition.
+Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.

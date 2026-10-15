@@ -1,4 +1,4 @@
-/* The public site: navigation, footer and the pages about IOpener.
+/* The public site: navigation, footer and the pages about Eyes Opener.
    Built on the app's tokens (src/app/globals.css, direction B): pale ground, white cards, ink text,
    one purple-to-amber gradient kept for the primary action, hatching for "not built yet".
    Every class starts with "s-", so nothing here touches the app, the landing page or the stories. */
@@ -15,10 +15,6 @@
 .s-nav { position: sticky; top: 0; z-index: 60; height: var(--s-nav-h); display: flex; align-items: center; gap: 6px; padding: 0 clamp(16px, 4vw, 40px); background: color-mix(in srgb, var(--paper) 86%, transparent); -webkit-backdrop-filter: saturate(1.3) blur(14px); backdrop-filter: saturate(1.3) blur(14px); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
 .s-nav[data-scrolled="true"], .s-nav[data-open="true"] { border-bottom-color: var(--line); }
 .s-logo { display: inline-flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; color: var(--ink); padding: 6px 4px; border-radius: var(--r-sm); flex: none; }
-.s-mark { width: 28px; height: 28px; border-radius: 9px; background: #000; position: relative; overflow: hidden; isolation: isolate; flex: none; }
-.s-mark i { position: absolute; width: 13px; height: 13px; border-radius: 50%; mix-blend-mode: screen; top: 7.5px; }
-.s-mark i:first-child { background: #ff0000; left: 5px; }
-.s-mark i:last-child { background: #00ffff; left: 10px; }
 .s-links { display: flex; align-items: center; gap: 2px; margin-left: clamp(8px, 2vw, 24px); }
 .s-links a { position: relative; padding: 8px 12px; border-radius: var(--r-sm); color: var(--ink-2); text-decoration: none; font-size: 14.5px; white-space: nowrap; transition: background 0.18s, color 0.18s; }
 .s-links a:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }

@@ -1,5 +1,5 @@
 /**
- * IOpener's own test reel: a 90-second drawn film kept with the app (see scripts/make-test-reel.mjs).
+ * Eyes Opener's own test reel: a 90-second drawn film kept with the app (see scripts/make-test-reel.mjs).
  * It lets a member, or staff, try the two-eye cinema with no video of their own.
  */
 const MP4 = "/films/test-reel.mp4", WEBM = "/films/test-reel.webm";

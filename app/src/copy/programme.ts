@@ -131,7 +131,7 @@ export const programme = texts("copy/programme", "programme", () => ({
       ],
       depth: [
         "The evidence for depth practice is limited, and no trial sets how long to do it.",
-        "So IOpener keeps this programme short: six weeks of short sets, then an eye test.",
+        "So Eyes Opener keeps this programme short: six weeks of short sets, then an eye test.",
       ],
       squint: [
         "The trial behind this practice was done in a clinic with a therapist present. Nobody has tested it done alone at home.",
@@ -165,8 +165,8 @@ export const programme = texts("copy/programme", "programme", () => ({
     title: { eye_test: (weeks: number) => `The ${weeks} weeks are done`, counsellor: "This block is done" },
     ended: (name: string, date: string) => `The ${name} programme ended on ${date}.`,
     body: {
-      eye_test: (weeks: number) => `This programme has run its ${weeks} weeks. That is as long as the plan behind it goes. IOpener cannot tell you what has changed in your eyes. An eye test can.`,
-      counsellor: (weeks: number) => `This block has run its ${weeks} weeks. Your counsellor reads what was done and decides what comes next. IOpener cannot tell you what has changed in your eyes.`,
+      eye_test: (weeks: number) => `This programme has run its ${weeks} weeks. That is as long as the plan behind it goes. Eyes Opener cannot tell you what has changed in your eyes. An eye test can.`,
+      counsellor: (weeks: number) => `This block has run its ${weeks} weeks. Your counsellor reads what was done and decides what comes next. Eyes Opener cannot tell you what has changed in your eyes.`,
     },
     nextTitle: "What to do next",
     steps: {
@@ -257,7 +257,7 @@ export const programme = texts("copy/programme", "programme", () => ({
     "film-3": { name: "Third sitting", how: "The last sitting of the day." },
     "balanced-play": { name: "Play", how: "A game that needs both eyes. The weaker eye has the key part." },
     glasses: { name: "Glasses", how: "Only if an eye doctor prescribed glasses: note today's wear." },
-    patch: { name: "Patch", how: "Only if an eye doctor prescribed a patch: note today's patch time. IOpener never sets it." },
+    patch: { name: "Patch", how: "Only if an eye doctor prescribed a patch: note today's patch time. Eyes Opener never sets it." },
     string: { name: "String", how: "Look from bead to bead. The string shows where your eyes are aiming." },
     "near-letter": { name: "Near target", how: "Keep a near target as one while your eyes turn in." },
     "smooth-pull": { name: "Slow pull on screen", how: "Keep the two rings as one while they drift apart slowly." },

@@ -14,8 +14,8 @@ export const wall = texts("copy/wall", "wall", () => ({
   /** The card's heading while the picture is not whole: its name is kept for the end. */
   hidden: "This month's picture",
   /** Who made the pictures. Stored with each wall, and shown under it. */
-  artist: "IOpener",
-  credit: "Drawn by IOpener, in code. No photograph is used.",
+  artist: "Eyes Opener",
+  credit: "Drawn by Eyes Opener, in code. No photograph is used.",
   grid: (sharp: number, all: number) => `${sharp} of ${tiles(all)} in focus`,
   blurred: (sharp: number, all: number) => `This month's picture, still partly blurred: ${sharp} of ${tiles(all)} are in focus.`,
   whole: (title: string) => `The whole picture is in focus: ${title}.`,

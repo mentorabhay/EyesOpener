@@ -110,8 +110,8 @@ describe("what a translation must keep", () => {
     }
   });
   it("keeps the product's name in English letters", () => {
-    expect(ok("IOpener is not a medical device.", "IOpener कोई चिकित्सा उपकरण नहीं है।")).toEqual([]);
-    expect(ok("IOpener is not a medical device.", "आईओपनर कोई चिकित्सा उपकरण नहीं है।")).toContain("\"IOpener\" must stay as it is");
+    expect(ok("Eyes Opener is not a medical device.", "Eyes Opener कोई चिकित्सा उपकरण नहीं है।")).toEqual([]);
+    expect(ok("Eyes Opener is not a medical device.", "आईओपनर कोई चिकित्सा उपकरण नहीं है।")).toContain("\"Eyes Opener\" must stay as it is");
   });
   it("keeps links and addresses", () => {
     expect(ok("Write to help@iopener.test or see https://example.org/a.", "help@iopener.test पर लिखें या https://example.org/a देखें।")).toEqual([]);

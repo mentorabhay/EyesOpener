@@ -1,7 +1,7 @@
 "use client";
 /**
  * Answer a survey. The near-work list is the symptom survey check-up's own part. The screen-strain and dry-eye
- * lists are IOpener's own questions, answered on the same five-step scale and added up.
+ * lists are Eyes Opener's own questions, answered on the same five-step scale and added up.
  */
 import { useState } from "react";
 import { SurveyTest } from "@/components/measure/survey";

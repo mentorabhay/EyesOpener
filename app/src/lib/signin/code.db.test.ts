@@ -60,7 +60,7 @@ describe.skipIf(!up)("signing in with a code by email", () => {
     expect(await ask(b, "asha")).toEqual({ ok: true, email: at("asha") });
     const m = sent.at(-1)!;
     expect(m.to).toBe(at("asha"));
-    expect(m.subject).toMatch(/^\d{6} is your IOpener sign-in code$/);
+    expect(m.subject).toMatch(/^\d{6} is your Eyes Opener sign-in code$/);
     expect(m.text).toContain(`${CODE_MINUTES} minutes`);
     const rows = await db.select().from(s.signinCode).where(eq(s.signinCode.emailKey, hashedKey("email", at("asha"))));
     expect(rows).toHaveLength(1);
@@ -115,7 +115,7 @@ describe.skipIf(!up)("signing in with a code by email", () => {
     expect(await codeFlow({ code, email: at("esha"), next: "" }, later.ctx)).toEqual({ ok: false, why: "code_expired" });
   });
 
-  it("says not set up when IOpener sends no email, and gives the address its count back when sending fails", async () => {
+  it("says not set up when Eyes Opener sends no email, and gives the address its count back when sending fails", async () => {
     expect(usesCode({ mail: null })).toBe(false);
     expect(await askCodeFlow({ email: at("farah"), next: "" }, browser({ mail: null }).ctx)).toEqual({ ok: false, why: "not_set_up" });
     emails.push(at("farah"));
