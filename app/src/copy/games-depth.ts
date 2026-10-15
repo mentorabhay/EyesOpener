@@ -3,7 +3,7 @@ import { help as moreHelp, words } from "./games-depth.extra";
 import { joined, texts } from "@/i18n/texts";
 
 export const games = texts("copy/games-depth", "games", () => ({
-  depthDarts: { hits: "Hits", step: "Depth step:", hit: "Hit", nearest: "Nearest" },
+  depthDarts: { hits: "Hits", step: "Depth step:", unit: "seconds of arc", hit: "Hit", nearest: "Nearest" },
   ...words,
 }));
 

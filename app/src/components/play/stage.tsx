@@ -32,6 +32,7 @@ export function Stage({ slug, dose, help, kind = "game", labels, lens = true, jo
   };
   const body = (
     <>
+      <p className="turn-hint small" role="note">{t.turnPhone}</p>
       <div className="scene ratio"><Game running={playing} onScore={onScore} onStats={onStats} joined={joined} {...eye} /></div>
       {help && <p className="small muted">{help}</p>}
       <div className="row">

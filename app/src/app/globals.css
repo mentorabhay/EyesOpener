@@ -213,3 +213,7 @@ table.tb .n { text-align: right; padding-right: 0; }
 .cue { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 8px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--sunken); }
 .cue[data-tone="go"] { border-color: var(--line-2); }
 .cue-b { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; font-size: 13.5px; }
+
+/* A game on a phone held upright is a thin strip; the hint asks for the phone to be turned. Hidden everywhere else. */
+.turn-hint { display: none; }
+@media (orientation: portrait) and (max-width: 600px) { .turn-hint { display: block; padding: 8px 12px; border-radius: var(--r-sm, 10px); background: var(--sunken, #ececf3); } }
