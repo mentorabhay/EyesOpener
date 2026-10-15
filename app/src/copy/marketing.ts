@@ -1,4 +1,3 @@
-// Eyes Opener: Words of the marketing parts of the site: the short tags and benefit cards on the landing page, the demo game.
 /**
  * Words of the marketing parts of the site: the short tags and benefit cards on the landing page, the demo game
  * (/try), and the Register and "Can't sign in?" pages. Plain words a school student can follow; one idea per line.

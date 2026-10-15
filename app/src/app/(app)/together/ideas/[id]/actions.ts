@@ -1,4 +1,3 @@
-// Eyes Opener: Joins the active profile to an idea's open experiment, in the group the member picked: trying the idea, or.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

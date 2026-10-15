@@ -1,4 +1,3 @@
-// Eyes Opener: 4. Tuning the two inks for one pair of glasses on one screen. Pure, apart from the one setting the browser holds.
 /**
  * 4. Tuning the two inks for one pair of glasses on one screen. Pure, apart from the one setting the browser holds
  * for the page it is drawing (`setInkTune`).

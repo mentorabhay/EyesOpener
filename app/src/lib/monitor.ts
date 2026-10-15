@@ -1,4 +1,3 @@
-// Eyes Opener: The workday monitor on the server: who may use it, camera consent, runs, one-minute samples, breaks, and what.
 /**
  * The workday monitor on the server: who may use it, camera consent, runs, one-minute samples, breaks, and what
  * the member sees afterwards. The rules themselves are in monitor-rules.ts and are tested without a database.

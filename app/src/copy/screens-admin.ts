@@ -1,4 +1,3 @@
-// Eyes Opener: Words of the Screens and glasses room (/admin/screens). The counts: src/lib/screens-admin.ts. .
 /** Words of the Screens and glasses room (/admin/screens). The counts: src/lib/screens-admin.ts. */
 import { texts } from "@/i18n/texts";
 

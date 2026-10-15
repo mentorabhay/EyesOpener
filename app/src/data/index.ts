@@ -1,4 +1,3 @@
-// Eyes Opener: The catalogue: games, exercises, clips, mechanisms and community ideas.
 /**
  * The catalogue: games, exercises, clips, mechanisms and community ideas.
  * catalogue.json holds this edition's games; catalogue.extra.json holds the games a fuller build adds (empty here).

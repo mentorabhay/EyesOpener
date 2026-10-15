@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying chapters functionality.
 import { describe, expect, it } from "vitest";
 import { exerciseBySlug, games } from "@/data";
 import { guides } from "@/data/guides";

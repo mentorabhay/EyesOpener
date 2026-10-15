@@ -1,4 +1,3 @@
-// Eyes Opener: The sunset at the end of a session. It asks the server whether the day's minutes are truly done and shows what.
 "use client";
 import { useEffect, useState } from "react";
 import { sunsetNow } from "@/app/(app)/together/sunset/actions";

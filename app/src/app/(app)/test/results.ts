@@ -1,4 +1,3 @@
-// Eyes Opener: Reading check-up results: one place for how a stored value is shown, compared and scheduled.
 /**
  * Reading check-up results: one place for how a stored value is shown, compared and scheduled.
  */

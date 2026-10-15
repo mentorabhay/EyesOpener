@@ -1,4 +1,3 @@
-// Eyes Opener: Words for Wish Jam: a guardian writes down what a child wishes a game were about, builders read the wishes on a.
 /**
  * Words for Wish Jam: a guardian writes down what a child wishes a game were about, builders read the wishes on a
  * public list, and the child names the game that gets built.

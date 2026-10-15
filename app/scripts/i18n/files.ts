@@ -1,4 +1,3 @@
-// Eyes Opener: Translation files: one for each language and each source file, kept in the repository.
 /**
  * Translation files: one for each language and each source file, kept in the repository.
  *

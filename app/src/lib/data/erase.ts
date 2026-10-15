@@ -1,4 +1,3 @@
-// Eyes Opener: Deleting for good: a whole household, or one profile of it.
 /**
  * Deleting for good: a whole household, or one profile of it.
  *

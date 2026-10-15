@@ -1,4 +1,3 @@
-// Eyes Opener: Audits a change that went through and turns the outcome into one sentence. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

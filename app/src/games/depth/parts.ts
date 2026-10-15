@@ -1,4 +1,3 @@
-// Eyes Opener: Parts shared by the games in this package: the depth ladder and words that stay inside the scene.
 /**
  * Parts shared by the games in this package: the depth ladder and words that stay inside the scene.
  * Nothing here draws in one eye's ink: words are always for both eyes.

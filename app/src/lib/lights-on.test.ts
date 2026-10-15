@@ -1,4 +1,3 @@
-// Eyes Opener: A moment given as India wall time. .
 import { describe, expect, it } from "vitest";
 import { SPONSOR_MIN_GROUP } from "./roles";
 import {

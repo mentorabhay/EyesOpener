@@ -1,4 +1,3 @@
-// Eyes Opener: Spends one of the active profile's lights on someone else and records the gift for today. A light is never spent on oneself. .
 "use server";
 import { and, eq, gt, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";

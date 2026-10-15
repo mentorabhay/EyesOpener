@@ -1,4 +1,3 @@
-// Eyes Opener: Answers a request for one audio file: GET or HEAD /voice/<language>/<kind>/<item>/<part>.<hash>.mp3.
 /**
  * Answers a request for one audio file: GET or HEAD /voice/<language>/<kind>/<item>/<part>.<hash>.mp3
  *

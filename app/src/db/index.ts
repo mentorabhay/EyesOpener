@@ -1,4 +1,3 @@
-// Eyes Opener: One pool per server process. Next.js reloads modules in development, so the pool is kept on globalThis. .
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import * as schema from "./schema";

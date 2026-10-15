@@ -1,4 +1,3 @@
-// Eyes Opener: Parts the vergence drills share: where things sit in the scene, the line that says what to do, the.
 /**
  * Parts the vergence drills share: where things sit in the scene, the line that says what to do, the
  * "Seeing two?" row, a progress bar and the rounding of what is reported.

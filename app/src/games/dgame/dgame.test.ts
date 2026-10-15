@@ -1,4 +1,3 @@
-// Eyes Opener: Plays each two-eye game the way a member would, to check what random input cannot: that a member who.
 /**
  * Plays each two-eye game the way a member would, to check what random input cannot: that a member who
  * uses both eyes scores, that a member who acts only on what the stronger eye sees does not, and that

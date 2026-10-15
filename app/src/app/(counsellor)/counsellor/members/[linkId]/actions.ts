@@ -1,4 +1,3 @@
-// Eyes Opener: Save the dose of a level 2 programme. The rules are checked again in `setDose`. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

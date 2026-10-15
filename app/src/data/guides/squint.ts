@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the squint group: two slow drills for intermittent squint (an eye that drifts some of the time).
 /**
  * Guides for the squint group: two slow drills for intermittent squint (an eye that drifts some of the time).
  * Both are counsellor-led: the member does them as the counsellor showed, with no time pressure.

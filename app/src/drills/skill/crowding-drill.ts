@@ -1,4 +1,3 @@
-// Eyes Opener: Crowding Drill. A tumbling E in the middle with four other Es around it: above, below, left and right.
 /**
  * Crowding Drill. A tumbling E in the middle with four other Es around it: above, below, left and right.
  * The member says which way the arms of the middle E point. The neighbours close in as the answers stay right.

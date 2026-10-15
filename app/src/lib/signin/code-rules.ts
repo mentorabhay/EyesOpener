@@ -1,4 +1,3 @@
-// Eyes Opener: The rules of six-digit sign-in codes, apart from the database, so the sign-in form shows the same numbers. Pure. .
 /** The rules of six-digit sign-in codes, apart from the database, so the sign-in form shows the same numbers. Pure. */
 export const CODE_MINUTES = 10;
 export const MAX_TRIES = 5;

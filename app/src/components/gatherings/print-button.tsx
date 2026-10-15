@@ -1,4 +1,3 @@
-// Eyes Opener: Opens the browser's print window. The print styles in paper.module.css leave only the sheets on the paper. .
 "use client";
 
 /** Opens the browser's print window. The print styles in paper.module.css leave only the sheets on the paper. */

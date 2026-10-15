@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying setup-rules functionality.
 import { describe, expect, it } from "vitest";
 import { screenFacts, type ScreenRow } from "./screen-rules";
 import { atLimit, isReady, minutesLeft, missing, nextStep, progress, setupSteps, type SetupInput } from "./setup-rules";

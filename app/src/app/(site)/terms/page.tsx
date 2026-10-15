@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(site)/terms web route.
 import type { Metadata } from "next";
 import { site as t } from "@/copy/site";
 import { MAX_DAILY_MINUTES, MIN_SCREEN_AGE } from "@/engine";

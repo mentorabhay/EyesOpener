@@ -1,4 +1,3 @@
-// Eyes Opener: Games that are not part of this edition. The public edition has none: the lists below are empty.
 /**
  * Games that are not part of this edition. The public edition has none: the lists below are empty.
  * A fuller build replaces this one file and the game shows up everywhere: the library, the play page, the tests.

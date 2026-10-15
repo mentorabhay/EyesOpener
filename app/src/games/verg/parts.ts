@@ -1,4 +1,3 @@
-// Eyes Opener: Parts the vergence games share: what counts as "it is one picture", and where there is room to draw.
 /**
  * Parts the vergence games share: what counts as "it is one picture", and where there is room to draw.
  * The demand itself is never handled here: every game uses the helpers in `../vergence`.

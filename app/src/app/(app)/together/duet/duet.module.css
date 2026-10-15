@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for duet.module. */
 /* The last days of a duet, oldest on the left. Filled: kept. Dashed: rest. Empty: not kept. Ringed: today. */
 .strip { display: grid; grid-template-columns: repeat(14, minmax(0, 1fr)); gap: 4px; max-width: 420px; }
 .strip i { aspect-ratio: 1; border-radius: 6px; border: 1px solid var(--line-2); background: transparent; }

@@ -1,4 +1,3 @@
-// Eyes Opener: Notes for staff: what each game cannot tell, what it does not keep, and open points found when its guide was written.
 /**
  * Notes for staff: what each game cannot tell, what it does not keep, and open points found when its guide was written.
  * Shown only in the staff Manual room. They are here so that nothing about a game is a black box:

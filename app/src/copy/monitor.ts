@@ -1,4 +1,3 @@
-// Eyes Opener: Words of the workday monitor (/today/monitor). Plain words, one idea in a sentence.
 /**
  * Words of the workday monitor (/today/monitor). Plain words, one idea in a sentence.
  * The monitor coaches habits. It does not test eyes, and nothing here says a person's eyes are fine or not fine.

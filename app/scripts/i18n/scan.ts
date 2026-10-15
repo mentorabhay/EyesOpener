@@ -1,4 +1,3 @@
-// Eyes Opener: Finds the two ways code can go wrong once words are looked up in the reader's language.
 /**
  * Finds the two ways code can go wrong once words are looked up in the reader's language.
  *

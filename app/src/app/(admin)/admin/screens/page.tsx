@@ -1,4 +1,3 @@
-// Eyes Opener: admin/screens: how families' screens and glasses are set up, as counts only, and the two setup settings. .
 import type { Metadata } from "next";
 import { Card, Chip, PageHead } from "@/components/ui";
 import { admin, day } from "@/copy/admin";

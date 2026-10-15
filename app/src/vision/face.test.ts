@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying face functionality.
 import { describe, expect, it } from "vitest";
 import { distanceCm, FACE_POINTS, isScale, LEAN_SHARE, median, postureOf, readFace, scaleFrom, type Point } from "./face";
 import { madeUpFace } from "./made-up";

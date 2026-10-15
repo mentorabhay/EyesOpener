@@ -1,4 +1,3 @@
-// Eyes Opener: The counsellor's side of a link.
 /**
  * The counsellor's side of a link.
  * Every helper takes the signed-in counsellor and reads or writes only through a `counsellor_link` row that is theirs.

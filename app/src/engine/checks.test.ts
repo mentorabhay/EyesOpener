@@ -1,4 +1,3 @@
-// Eyes Opener: Plays a staircase with a list of answers; stops when it finishes. .
 import { describe, it, expect } from "vitest";
 import {
   median,

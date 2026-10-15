@@ -1,4 +1,3 @@
-// Eyes Opener: The browser's set: which sentences are sent to a browser, how that is worked out from the source, and what the.
 /**
  * The browser's set: which sentences are sent to a browser, how that is worked out from the source, and what the
  * script that carries them looks like.

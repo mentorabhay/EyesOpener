@@ -1,4 +1,3 @@
-// Eyes Opener: The monitor's engine played with made-up faces and a made-up clock: minutes of work, look-aways, a slowed page,.
 /**
  * The monitor's engine played with made-up faces and a made-up clock: minutes of work, look-aways, a slowed page,
  * a camera with nobody in front of it. Each test builds its pictures with src/vision/made-up.ts, reads them with

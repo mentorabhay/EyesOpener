@@ -1,4 +1,3 @@
-// Eyes Opener: The household: profiles, programmes, triage, the counsellor link, consent, invites,.
 /**
  * The household: profiles, programmes, triage, the counsellor link, consent, invites,
  * the child-mode exit PIN, sponsor groups and the cheer seat's view.

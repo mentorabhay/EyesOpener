@@ -1,4 +1,3 @@
-// Eyes Opener: More games of this family, when the build includes them. This edition has none. .
 import type { GameDef } from "../kit";
 
 /** More games of this family, when the build includes them. This edition has none. */

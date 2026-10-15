@@ -1,4 +1,3 @@
-// Eyes Opener: Focus Wall: the rules. Pure functions, unit-tested; src/lib/wall.ts reads and writes with them.
 /**
  * Focus Wall: the rules. Pure functions, unit-tested; src/lib/wall.ts reads and writes with them.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: The Focus Wall's daily job. The rules are in src/lib/wall-rules.ts; the reading and writing in src/lib/wall.ts.
 /**
  * The Focus Wall's daily job. The rules are in src/lib/wall-rules.ts; the reading and writing in src/lib/wall.ts.
  *

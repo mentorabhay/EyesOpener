@@ -1,4 +1,3 @@
-// Eyes Opener: Opens the browser's print window. The print styles beside this file leave only the card on the paper. .
 "use client";
 
 /** Opens the browser's print window. The print styles beside this file leave only the card on the paper. */

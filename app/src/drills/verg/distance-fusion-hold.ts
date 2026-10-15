@@ -1,4 +1,3 @@
-// Eyes Opener: Distance Fusion Hold. For a TV at about 3 m, on a counsellor's plan: the member holds one ring far away while.
 /**
  * Distance Fusion Hold. For a TV at about 3 m, on a counsellor's plan: the member holds one ring far away while
  * the demand rises a little at a time. It measures the seconds held as one in all, and the most demand that was

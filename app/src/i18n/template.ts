@@ -1,4 +1,3 @@
-// Eyes Opener: Copy functions as templates.
 /**
  * Copy functions as templates.
  *

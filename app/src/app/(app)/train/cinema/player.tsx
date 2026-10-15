@@ -1,4 +1,3 @@
-// Eyes Opener: Video playback, stereo anaglyph rendering, and audiovisual pacing component (player).
 "use client";
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { ARROW_GROUP, directionOf, moveFocus } from "@/components/film/arrows";

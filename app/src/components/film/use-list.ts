@@ -1,4 +1,3 @@
-// Eyes Opener: Where a film in the list stands on this visit.
 "use client";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type RefObject } from "react";
 import { canKeepFiles, dropHandle, keepHandle, keptHandles, openHandle, pickFilms, type FilmHandle } from "./handles";

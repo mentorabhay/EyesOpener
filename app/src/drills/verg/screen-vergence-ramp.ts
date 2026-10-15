@@ -1,4 +1,3 @@
-// Eyes Opener: Screen Vergence Ramp, and the same drill the other way (Screen Diverge Ramp).
 /**
  * Screen Vergence Ramp, and the same drill the other way (Screen Diverge Ramp).
  * It measures how far the eyes can follow before one picture turns into two (the break), and how far the

@@ -1,4 +1,3 @@
-// Eyes Opener: The household's language and the browser's language, kept the same. Server only.
 /**
  * The household's language and the browser's language, kept the same. Server only.
  *

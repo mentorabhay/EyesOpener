@@ -1,4 +1,3 @@
-// Eyes Opener: A 20-second look far away, then three far-off things to tick. Self-reported: nothing is measured.
 "use client";
 /**
  * A 20-second look far away, then three far-off things to tick. Self-reported: nothing is measured.

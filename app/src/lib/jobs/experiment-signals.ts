@@ -1,4 +1,3 @@
-// Eyes Opener: Daily job: the pooled result of every open experiment.
 /**
  * Daily job: the pooled result of every open experiment.
  * For each one it reads the members who finished with a pair of check-ups that can be compared, works out the

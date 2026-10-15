@@ -1,4 +1,3 @@
-// Eyes Opener: Screens for games that are not part of this edition. The public edition has none, so this draws nothing.
 /**
  * Screens for games that are not part of this edition. The public edition has none, so this draws nothing.
  * A fuller build replaces this one file.

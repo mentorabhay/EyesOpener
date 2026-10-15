@@ -1,4 +1,3 @@
-// Eyes Opener: "What supervision adds", in brief: what the trial had, what a therapist does, what the counsellor does in the app. .
 import { train as t } from "@/copy/train";
 import type { Supervision } from "@/data/supervision";
 import css from "./guide.module.css";

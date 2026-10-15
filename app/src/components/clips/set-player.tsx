@@ -1,4 +1,3 @@
-// Eyes Opener: Plays the clips of a set one after another. Each clip saves its own result the moment it is finished, so the set.
 "use client";
 /**
  * Plays the clips of a set one after another. Each clip saves its own result the moment it is finished, so the set

@@ -1,4 +1,3 @@
-// Eyes Opener: The language menu: a list of the languages offered to this person, each in its own name, and one button.
 "use client";
 /**
  * The language menu: a list of the languages offered to this person, each in its own name, and one button.

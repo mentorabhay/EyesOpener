@@ -1,4 +1,3 @@
-// Eyes Opener: Runs the face model on the camera at a modest, steady pace and hands each picture's facts to a feature.
 /**
  * Runs the face model on the camera at a modest, steady pace and hands each picture's facts to a feature.
  * The picture itself never leaves this function: it goes from the video element into the model and is gone.

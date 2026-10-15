@@ -1,4 +1,3 @@
-// Eyes Opener: Wish Jam, the public page: the wishes families have shared, the game kit's rules in short, and the form a.
 import type { Metadata } from "next";
 import { Empty } from "@/components/ui";
 import { wishJam } from "@/copy/wish-jam";

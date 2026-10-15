@@ -1,4 +1,3 @@
-// Eyes Opener: Switch the active family profile. .
 "use server";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { revalidatePath } from "next/cache";

@@ -1,4 +1,3 @@
-// Eyes Opener: Which words the browser's own code can ever read.
 /**
  * Which words the browser's own code can ever read.
  *

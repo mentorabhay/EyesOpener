@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying hero-rules functionality.
 import { describe, expect, it } from "vitest";
 import { heroGamesExtra } from "@/copy/hero-games.extra";
 import { gameBySlug } from "@/data";

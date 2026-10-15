@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for setup.
 import Link from "next/link";
 import { setup as t } from "@/copy/setup";
 import { minutesLeft, missing } from "@/lib/setup-rules";

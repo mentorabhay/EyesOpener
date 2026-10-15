@@ -1,4 +1,3 @@
-// Eyes Opener: The seven days of a programme week, one row each. Server-safe; used by the week screen and the counsellor's page. .
 /** The seven days of a programme week, one row each. Server-safe; used by the week screen and the counsellor's page. */
 import { Chip, type Tone } from "@/components/ui";
 import { dayLabel, programme as t } from "@/copy/programme";

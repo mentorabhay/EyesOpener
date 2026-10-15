@@ -1,4 +1,3 @@
-// Eyes Opener: The server rules of four community ideas, against a real database: Proof of Help, Duet Streak, Discovery Board.
 /**
  * The server rules of four community ideas, against a real database: Proof of Help, Duet Streak, Discovery Board
  * and Light the Map. It makes throwaway households, never touches anyone else's rows, and removes what it made.

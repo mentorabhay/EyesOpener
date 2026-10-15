@@ -1,4 +1,3 @@
-// Eyes Opener: Daily job: closes every Discovery Board round whose last day to vote has passed.
 /**
  * Daily job: closes every Discovery Board round whose last day to vote has passed.
  * A round is already closed for voting from the day after its closing day (`roundState` in src/lib/discovery.ts

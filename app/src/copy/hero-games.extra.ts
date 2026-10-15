@@ -1,4 +1,3 @@
-// Eyes Opener: Games that are not part of this edition and whose character is the member's hero.
 /**
  * Games that are not part of this edition and whose character is the member's hero.
  * The public edition has none: the list is empty. A fuller build replaces this one file, and its games then

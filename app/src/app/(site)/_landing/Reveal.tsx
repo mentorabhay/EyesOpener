@@ -1,4 +1,3 @@
-// Eyes Opener: What each eye sees alone, sliding together into one picture.
 import { EvidenceChip } from "@/components/ui";
 import { landing } from "@/copy/landing";
 import { Glasses, LanternLayer } from "./art";

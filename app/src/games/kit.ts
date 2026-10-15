@@ -1,4 +1,3 @@
-// Eyes Opener: The game kit. A game labels what it draws as weaker-eye, stronger-eye or both-eyes ink and describes.
 /**
  * The game kit. A game labels what it draws as weaker-eye, stronger-eye or both-eyes ink and describes
  * its rules; the kit does the rest: the member's contrast and target size, real-world units, input from

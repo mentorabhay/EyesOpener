@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying decide functionality.
 import { describe, expect, it } from "vitest";
 import { cleanLangStatuses, decide, draftsAllowed, householdLang, offeredLangs, statusOfLang, type Asked } from "./decide";
 import { readChoice, writeChoice } from "./runtime";

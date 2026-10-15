@@ -1,4 +1,3 @@
-<!-- Eyes Opener: Core system module providing logic and utilities for readme. -->
 # IOpener
 
 Eye care you can do at home, built on published research: track how you use your eyes, check them, and practise with games. IOpener is not a medical device. It does not diagnose, treat or cure any condition.

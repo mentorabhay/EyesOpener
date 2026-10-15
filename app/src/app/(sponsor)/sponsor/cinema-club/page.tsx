@@ -1,4 +1,3 @@
-// Eyes Opener: Cinema Club in the sponsor portal: the host kit, and the clubs this sponsor has listed.
 import type { Metadata } from "next";
 import { ClubFields, type ClubChoices } from "@/components/gatherings/club-fields";
 import { KitLinks, Limits } from "@/components/gatherings/club-kit";

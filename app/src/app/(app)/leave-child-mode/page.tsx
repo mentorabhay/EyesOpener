@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(app)/leave-child-mode web route.
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { StateForm } from "@/components/together/StateForm";

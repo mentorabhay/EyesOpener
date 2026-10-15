@@ -1,4 +1,3 @@
-// Eyes Opener: What the sky shows for the active profile now. The end of a session asks this, so that the sunset is decided by.
 "use server";
 import { requireMember } from "@/lib/session";
 import { sunsetFor, type SunsetView } from "@/lib/sunset-data";

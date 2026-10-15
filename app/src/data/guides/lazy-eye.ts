@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the lazy-eye group: the two-eye cinema, the routines that go with a prescribed patch, glasses or.
 /**
  * Guides for the lazy-eye group: the two-eye cinema, the routines that go with a prescribed patch, glasses or
  * atropine drops, and the three one-eye drills.

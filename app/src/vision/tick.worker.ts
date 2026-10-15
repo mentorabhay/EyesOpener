@@ -1,4 +1,3 @@
-// Eyes Opener: A clock in a worker. A browser slows the timers of a page that is not in view to one a second or less; a worker's.
 /**
  * A clock in a worker. A browser slows the timers of a page that is not in view to one a second or less; a worker's
  * timer keeps its pace. The page tells it how often to tick and does the work itself on each tick.

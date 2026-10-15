@@ -1,4 +1,3 @@
-// Eyes Opener: Locked Gallery: the pictures themselves. Each is drawn in whole device pixels, the way the check-ups draw:.
 "use client";
 /**
  * Locked Gallery: the pictures themselves. Each is drawn in whole device pixels, the way the check-ups draw:

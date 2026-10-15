@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying discovery functionality.
 import { describe, expect, it } from "vitest";
 import {
   ANSWER_MIN_MEMBERS, answerProblem, creditedOf, dueToClose, MIN_VOTES_TO_SHOW, promiseWording, ROUND_MAX_DAYS, roundProblem, roundState, tally, voteRefusal,

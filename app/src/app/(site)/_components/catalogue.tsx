@@ -1,4 +1,3 @@
-// Eyes Opener: Catalogue cards for the public pages: a game, an exercise, a programme. Each links into the app. .
 /** Catalogue cards for the public pages: a game, an exercise, a programme. Each links into the app. */
 import Link from "next/link";
 import { Chip, EvidenceChip, SceneThumb } from "@/components/ui";

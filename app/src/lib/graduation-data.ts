@@ -1,4 +1,3 @@
-// Eyes Opener: Keeper Graduation: reading a profile's finished course and its journey, and leaving, asking for and thanking.
 /**
  * Keeper Graduation: reading a profile's finished course and its journey, and leaving, asking for and thanking
  * for a welcome. Server only. The rules are in graduation.ts.

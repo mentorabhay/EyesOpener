@@ -1,4 +1,3 @@
-// Eyes Opener: The rules of sign-in that need no database and no network: the settings, the session, child mode, the limits,.
 /**
  * The rules of sign-in that need no database and no network: the settings, the session, child mode, the limits,
  * who a sign-in is, and where it lands.

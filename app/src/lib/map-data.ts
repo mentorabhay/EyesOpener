@@ -1,4 +1,3 @@
-// Eyes Opener: Reading and writing Light the Map. Server only.
 /**
  * Reading and writing Light the Map. Server only.
  *

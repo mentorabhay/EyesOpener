@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(counsellor)/counsellor web route.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Card, Empty, PageHead, Progress } from "@/components/ui";

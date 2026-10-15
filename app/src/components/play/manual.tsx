@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for manual.
 import type { ReactNode } from "react";
 import { Fold } from "@/components/guide/more";
 import { Card, Chip, Empty, EvidenceChip } from "@/components/ui";

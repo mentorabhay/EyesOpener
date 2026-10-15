@@ -1,4 +1,3 @@
-// Eyes Opener: Writing the eye profile. The browser sends only what it measured; every setting is derived here, on the server.
 /**
  * Writing the eye profile. The browser sends only what it measured; every setting is derived here, on the server.
  */

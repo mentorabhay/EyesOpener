@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying clips functionality.
 import { describe, expect, it } from "vitest";
 import { PATTERNS } from "@/clips/patterns";
 import { stepsOf } from "@/clips/steps";

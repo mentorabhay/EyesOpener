@@ -1,4 +1,3 @@
-// Eyes Opener: The recovery-time clip on the game kit: how many seconds the eyes take to make one picture again after a split.
 /**
  * The recovery-time clip on the game kit: how many seconds the eyes take to make one picture again after a split.
  *

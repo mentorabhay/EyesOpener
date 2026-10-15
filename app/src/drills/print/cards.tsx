@@ -1,4 +1,3 @@
-// Eyes Opener: The printable cards that go with exercises. Each page is one drawing sized in millimetres (one unit is one millimetre),.
 /**
  * The printable cards that go with exercises. Each page is one drawing sized in millimetres (one unit is one millimetre),
  * so it prints at its real size on A4 with 12 mm margins. Black, red and green only. Server-safe: no hooks, no browser.

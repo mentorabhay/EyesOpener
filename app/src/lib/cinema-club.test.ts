@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying cinema-club functionality.
 import { describe, expect, it } from "vitest";
 import { BREAK_SECONDS, CHAPTER_SECONDS } from "@/components/film/chapters";
 import {

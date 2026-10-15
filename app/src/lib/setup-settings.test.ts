@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying setup-settings functionality.
 import { describe, expect, it } from "vitest";
 import { DEFAULT_PRESETS, presetsSchema } from "./setup-settings";
 

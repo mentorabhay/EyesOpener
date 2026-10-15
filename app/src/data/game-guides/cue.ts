@@ -1,4 +1,3 @@
-// Eyes Opener: Small builders for cue pictures, so the same thing looks the same in every guide.
 /**
  * Small builders for cue pictures, so the same thing looks the same in every guide.
  * A picture is 160 wide and 90 tall. Keep important shapes inside x 8 to 152 and y 16 to 82.

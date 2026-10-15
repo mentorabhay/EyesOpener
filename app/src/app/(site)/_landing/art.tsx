@@ -1,4 +1,3 @@
-// Eyes Opener: Drawings for the landing page, in the three inks of a therapy scene.
 /**
  * Drawings for the landing page, in the three inks of a therapy scene.
  * Red reaches the eye behind the red lens (the stronger eye, turned down), cyan reaches the eye behind the cyan lens

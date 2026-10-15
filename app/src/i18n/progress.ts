@@ -1,4 +1,3 @@
-// Eyes Opener: How far each language has come: how many of the app's English sentences have a translation, and how many of.
 /**
  * How far each language has come: how many of the app's English sentences have a translation, and how many of
  * those a person has checked. Server only. The staff's Languages section and `scripts/i18n.ts count` show it.

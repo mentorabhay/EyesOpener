@@ -1,4 +1,3 @@
-// Eyes Opener: The languages IOpener speaks: Indian English first, then the ten Indian languages of the tech-stack decision.
 /**
  * The languages IOpener speaks: Indian English first, then the ten Indian languages of the tech-stack decision.
  * A code here is the folder of that language's audio and the `lang` of its entries in the manifest.

@@ -1,4 +1,3 @@
-// Eyes Opener: The step strip at the top of a page: what to do, in three to six short steps, each with a small moving picture.
 "use client";
 /**
  * The step strip at the top of a page: what to do, in three to six short steps, each with a small moving picture.

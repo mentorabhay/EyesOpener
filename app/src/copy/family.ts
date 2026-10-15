@@ -1,4 +1,3 @@
-// Eyes Opener: Localized strings, user interface copy, and text dictionary for family.
 import type { GroupResult, JoinRefusal } from "@/lib/family";
 import { texts } from "@/i18n/texts";
 

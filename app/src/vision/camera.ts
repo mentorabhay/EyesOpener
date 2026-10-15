@@ -1,4 +1,3 @@
-// Eyes Opener: The camera, opened on the member's own device. The picture stays in the page: nothing here sends it anywhere,.
 /**
  * The camera, opened on the member's own device. The picture stays in the page: nothing here sends it anywhere,
  * stores it or draws it to anything but the preview the member can hide.

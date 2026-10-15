@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for pair-form.
 "use client";
 import { useActionState } from "react";
 import { sponsor as t } from "@/copy/sponsor";

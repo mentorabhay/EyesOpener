@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for lens.module. */
 .option { display: flex; flex-direction: column; gap: 12px; }
 .top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .top h2 { margin: 0; font-size: 20px; flex: 1 1 auto; }

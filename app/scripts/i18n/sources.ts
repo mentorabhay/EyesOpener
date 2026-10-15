@@ -1,4 +1,3 @@
-// Eyes Opener: Which files hold words that are looked up for each request (made with `texts(...)`).
 /**
  * Which files hold words that are looked up for each request (made with `texts(...)`).
  * Paths are relative to `src`, without the extension.

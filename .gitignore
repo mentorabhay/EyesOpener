@@ -1,4 +1,3 @@
-# Eyes Opener: IOpener public repository: an allowlist.
 # IOpener public repository: an allowlist.
 # Everything is ignored unless a line below lets it in. A new top-level file or folder never
 # reaches GitHub by accident: it has to be added here on purpose.

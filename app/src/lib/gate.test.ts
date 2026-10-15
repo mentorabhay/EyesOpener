@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying gate functionality.
 import { describe, expect, it } from "vitest";
 import { gateMark, gatePassed, isOpenPath, lockScope, phraseMatches, safeNext, siteLock } from "./gate";
 import { signToken } from "./token";

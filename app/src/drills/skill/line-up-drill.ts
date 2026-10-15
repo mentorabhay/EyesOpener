@@ -1,4 +1,3 @@
-// Eyes Opener: Line-Up Drill. One short upright line sits above the middle; a second one below it is set off to one side.
 /**
  * Line-Up Drill. One short upright line sits above the middle; a second one below it is set off to one side.
  * The member nudges the lower line until it sits exactly under the upper one and confirms. It measures how far

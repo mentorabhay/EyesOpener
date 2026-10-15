@@ -1,4 +1,3 @@
-// Eyes Opener: The workday monitor's server rules against a real database: who may use it, consent, runs, what is stored for a.
 /**
  * The workday monitor's server rules against a real database: who may use it, consent, runs, what is stored for a
  * minute, how a break moves the Rest ring, who sees the numbers, deleting them, and the daily clean-up.

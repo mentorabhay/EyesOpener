@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the child myopia group (myopia is short sight: far things look blurred).
 /**
  * Guides for the child myopia group (myopia is short sight: far things look blurred).
  * Four of the five are ways of reaching the daily outdoor time, logged in the outdoor log, which fills the Light ring.

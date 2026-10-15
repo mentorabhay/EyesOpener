@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying library functionality.
 import { describe, expect, it } from "vitest";
 import { site } from "@/copy/site";
 import { catalogue, exerciseBySlug, gameBySlug } from "@/data";

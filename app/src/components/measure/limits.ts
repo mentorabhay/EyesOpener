@@ -1,4 +1,3 @@
-// Eyes Opener: The ranges a measurement may fall in. The tests clamp to them and the server refuses anything outside. .
 /** The ranges a measurement may fall in. The tests clamp to them and the server refuses anything outside. */
 export const LIMITS = {
   /** CSS pixels per centimetre. A large TV showing a web page can have fewer than 10. */

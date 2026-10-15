@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying map functionality.
 import { describe, expect, it } from "vitest";
 import {
   GRID, isArea, isWelcomeKey, joinRefusal, lampLighter, litAreas, MAP_MIN_HOUSEHOLDS, parseArea, regionOf, REGIONS, shown, tiles, WELCOME_KEYS, welcomeFor, welcomeRefusal,

@@ -1,4 +1,3 @@
-// Eyes Opener: Class Mission: a guardian gives a child the mission, marks the day it was run, or takes it back.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

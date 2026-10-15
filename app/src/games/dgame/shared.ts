@@ -1,4 +1,3 @@
-// Eyes Opener: Small helpers the two-eye games share. .
 /** Small helpers the two-eye games share. */
 import { H, W, type Ink, type Kit } from "../kit";
 

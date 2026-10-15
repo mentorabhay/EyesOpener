@@ -1,4 +1,3 @@
-// Eyes Opener: The plain-words check: rules that every sentence a person reads in IOpener must pass.
 /**
  * The plain-words check: rules that every sentence a person reads in IOpener must pass.
  *

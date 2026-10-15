@@ -1,4 +1,3 @@
-// Eyes Opener: Words for Cinema Club: the host kit (a guide and a session sheet to print, and the group screen), the honest.
 /**
  * Words for Cinema Club: the host kit (a guide and a session sheet to print, and the group screen), the honest
  * limits of a shared screen, and the list of clubs.

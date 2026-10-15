@@ -1,4 +1,3 @@
-// Eyes Opener: The two settings staff hold for setup (the Screens and glasses room, /admin/screens): whether two-eye items wait until.
 /**
  * The two settings staff hold for setup (the Screens and glasses room, /admin/screens): whether two-eye items wait until
  * a person's setup is done, and the mixer's two starting points besides "As usual". Stored in the `setting` table and

@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for listen.module. */
 /* The Listen button: small, beside a card's heading or above a list of steps. It wraps under the heading on a phone. */
 .listen { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; max-width: 100%; }
 .listen audio { display: none; }

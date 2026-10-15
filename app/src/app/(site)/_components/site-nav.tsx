@@ -1,4 +1,3 @@
-// Eyes Opener: The site navigation: logo, the page links, and sign-in or "Open the app".
 "use client";
 /**
  * The site navigation: logo, the page links, and sign-in or "Open the app".

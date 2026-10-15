@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying duet functionality.
 import { describe, expect, it } from "vitest";
 import {
   didPart, duetDays, generations, GENERATION_GAP_YEARS, maySeeDuet, OPEN_DAYS_A_WEEK, pairProblem, pairState, partnerDays, partnerKey, partOfProfile, PERSON_PART, streakOf,

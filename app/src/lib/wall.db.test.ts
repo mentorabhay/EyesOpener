@@ -1,4 +1,3 @@
-// Eyes Opener: The Focus Wall's rule against a real database: one finished practice day, one tile, however the days are counted.
 /**
  * The Focus Wall's rule against a real database: one finished practice day, one tile, however the days are counted.
  * It makes a throwaway household and a wall for a month long past, touches nobody else's rows and removes what it made.

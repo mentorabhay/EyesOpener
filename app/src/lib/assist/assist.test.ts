@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying assist functionality.
 import { describe, expect, it } from "vitest";
 import type { Member } from "@/lib/session";
 import { assist } from "./extra";

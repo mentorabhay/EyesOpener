@@ -1,4 +1,3 @@
-// Eyes Opener: Which eye to cover while `eye` is tested. Drawn as a mirror: the member's left is on the left. .
 import { measure as t } from "@/copy/test";
 import { lensFilter, type Eye } from "@/engine";
 import css from "./measure.module.css";

@@ -1,4 +1,3 @@
-// Eyes Opener: Adds a rule, switched on. The pattern must compile as a regular expression. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

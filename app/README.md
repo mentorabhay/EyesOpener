@@ -1,4 +1,3 @@
-<!-- Eyes Opener: IOpener web app. -->
 # IOpener web app
 
 Eye care at home: track, test, train, together. This folder is the web app (Next.js 16, TypeScript, PostgreSQL through Drizzle).

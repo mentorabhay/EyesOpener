@@ -1,4 +1,3 @@
-// Eyes Opener: Words of the step strips at the top of a page (src/components/guide/flow.tsx) and of the folded details at the.
 /**
  * Words of the step strips at the top of a page (src/components/guide/flow.tsx) and of the folded details at the
  * bottom (src/components/guide/more.tsx). A strip shows what to do in three to six short steps; the full text of a

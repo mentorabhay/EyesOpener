@@ -1,4 +1,3 @@
-// Eyes Opener: A stand-in for the Google services sign-in talks to. For the tests, and for trying sign-in on a developer's own.
 /**
  * A stand-in for the Google services sign-in talks to. For the tests, and for trying sign-in on a developer's own
  * machine before a Firebase project exists (`npx tsx scripts/signin-stand-in.ts`). It is never part of the app:

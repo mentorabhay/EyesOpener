@@ -1,4 +1,3 @@
-// Eyes Opener: What a clip is, as data.
 /**
  * What a clip is, as data.
  *

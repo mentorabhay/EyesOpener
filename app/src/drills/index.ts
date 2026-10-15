@@ -1,4 +1,3 @@
-// Eyes Opener: The on-screen drills that go with exercises, by exercise slug. Plain definitions on the game kit:.
 /**
  * The on-screen drills that go with exercises, by exercise slug. Plain definitions on the game kit:
  * no screen code, safe on the server and in tests. The exercise page shows a drill inside the same Stage a game uses.

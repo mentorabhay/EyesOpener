@@ -1,4 +1,3 @@
-// Eyes Opener: Puts the files the on-device camera features need into public/vision/, so the browser loads them from this.
 /**
  * Puts the files the on-device camera features need into public/vision/, so the browser loads them from this
  * site and not from another one:

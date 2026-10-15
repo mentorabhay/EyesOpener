@@ -1,4 +1,3 @@
-// Eyes Opener: An invite code as it may arrive in a link: letters and digits only, so nothing else rides along into the sign-in page's address. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";

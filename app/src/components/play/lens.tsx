@@ -1,4 +1,3 @@
-// Eyes Opener: The view switch above a scene, for checking a game without wearing the glasses.
 "use client";
 import { useState, type ReactNode } from "react";
 import { common } from "@/copy/common";

@@ -1,4 +1,3 @@
-// Eyes Opener: Which fields of a game guide are words for the reader (see src/i18n/texts.ts). The rest are values the code.
 /**
  * Which fields of a game guide are words for the reader (see src/i18n/texts.ts). The rest are values the code
  * uses: the slug, a measure's key, a cue's tone and the numbers of its shapes, a source's address.

@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying wall-tiles functionality.
 import { describe, expect, it, vi } from "vitest";
 
 /* The list of jobs is loaded by tests that have no database: a job's file must not read a table while it loads. */

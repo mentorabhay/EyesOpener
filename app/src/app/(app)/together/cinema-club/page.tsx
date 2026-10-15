@@ -1,4 +1,3 @@
-// Eyes Opener: Cinema Club in the member app. Everyone with a seat may read what a club is and where the listed clubs are.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { ClubList, KitLinks, kitNumbers, Limits } from "@/components/gatherings/club-kit";

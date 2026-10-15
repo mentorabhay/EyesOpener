@@ -1,4 +1,3 @@
-// Eyes Opener: The status of each thing in the library: who may use it. Pure rules, unit-tested.
 /**
  * The status of each thing in the library: who may use it. Pure rules, unit-tested.
  * Staff set it in the Catalogue room of the admin console; `src/lib/catalogue.ts` stores it.

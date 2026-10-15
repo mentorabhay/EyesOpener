@@ -1,4 +1,3 @@
-// Eyes Opener: Wish Jam, the family's side: write a wish, take it back, name the built game.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

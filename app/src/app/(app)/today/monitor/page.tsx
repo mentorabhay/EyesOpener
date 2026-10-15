@@ -1,4 +1,3 @@
-// Eyes Opener: "Friday 2 October" from a day key. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";

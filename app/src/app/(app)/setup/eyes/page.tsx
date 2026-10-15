@@ -1,4 +1,3 @@
-// Eyes Opener: setup/eyes: the screen's size, the safety questions and the eye check for the active profile, then the lens choice and the balance. .
 import type { Metadata } from "next";
 import { StepFlow } from "@/components/guide/flow";
 import { Icon } from "@/components/guide/icons";

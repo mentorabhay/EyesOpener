@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying proof functionality.
 import { describe, expect, it } from "vitest";
 import { MIN_FINISHED_PER_GROUP } from "./experiments";
 import { byLadder, proofOf, standingOf, type IdeaFacts } from "./proof";

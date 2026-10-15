@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying serve functionality.
 import { mkdir, mkdtemp, rm, symlink, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";

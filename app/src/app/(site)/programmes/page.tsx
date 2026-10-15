@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(site)/programmes web route.
 import type { Metadata } from "next";
 import { site as t } from "@/copy/site";
 import { programmes } from "@/data";

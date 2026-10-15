@@ -1,4 +1,3 @@
-// Eyes Opener: A game to play right on the landing page, with no sign-in and nothing saved (the same demo as /try). .
 import Link from "next/link";
 import { marketing } from "@/copy/marketing";
 import { DemoGame } from "../_components/demo-game";

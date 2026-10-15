@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying status functionality.
 import { describe, expect, it } from "vitest";
 import { exercises, games } from "@/data";
 import { bestOf, cleanDetail, DETAIL_MAX_KEYS, type PastSession } from "./detail";

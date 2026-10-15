@@ -1,4 +1,3 @@
-// Eyes Opener: Lights On Hour: one fixed hour a week when households practise at the same time. The rules, pure.
 /**
  * Lights On Hour: one fixed hour a week when households practise at the same time. The rules, pure.
  * Tested in lights-on.test.ts; src/lib/lights-on-data.ts reads and writes.

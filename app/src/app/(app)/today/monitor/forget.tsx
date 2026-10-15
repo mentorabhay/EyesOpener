@@ -1,4 +1,3 @@
-// Eyes Opener: Deleting the monitor's numbers: one press to open, one to confirm. .
 "use client";
 /** Deleting the monitor's numbers: one press to open, one to confirm. */
 import { useActionState } from "react";

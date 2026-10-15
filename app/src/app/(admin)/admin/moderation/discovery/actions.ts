@@ -1,4 +1,3 @@
-// Eyes Opener: Staff changes to the Discovery Board. The room is the moderation room: its gate runs in every action here,.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

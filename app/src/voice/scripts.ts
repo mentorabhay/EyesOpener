@@ -1,4 +1,3 @@
-// Eyes Opener: The scripts: what IOpener can say aloud, built from the words the app already shows.
 /**
  * The scripts: what IOpener can say aloud, built from the words the app already shows.
  *

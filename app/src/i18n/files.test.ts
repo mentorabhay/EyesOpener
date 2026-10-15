@@ -1,4 +1,3 @@
-// Eyes Opener: The translation files in the repository, read against the English as it is now.
 /**
  * The translation files in the repository, read against the English as it is now.
  *

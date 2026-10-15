@@ -1,4 +1,3 @@
-// Eyes Opener: How often a sign-in link may be asked for, and how often a sign-in may be tried.
 /**
  * How often a sign-in link may be asked for, and how often a sign-in may be tried.
  *

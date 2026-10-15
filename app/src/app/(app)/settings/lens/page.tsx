@@ -1,4 +1,3 @@
-// Eyes Opener: settings/lens: which ink the active profile's weaker eye sees (engine/profile.ts, `WeakInk`), with the leak check's.
 import type { Metadata } from "next";
 import { StepFlow } from "@/components/guide/flow";
 import { Fold, More } from "@/components/guide/more";

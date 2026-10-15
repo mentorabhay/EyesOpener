@@ -1,4 +1,3 @@
-// Eyes Opener: The show-up league, reading and writing. The rules are in league.ts; this file only applies them.
 /**
  * The show-up league, reading and writing. The rules are in league.ts; this file only applies them.
  * Server only.

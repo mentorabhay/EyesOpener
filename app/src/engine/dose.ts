@@ -1,4 +1,3 @@
-// Eyes Opener: Dose clock, daily caps and the stop rule.
 /**
  * Dose clock, daily caps and the stop rule.
  * These limits are product rules. No screen, setting or AI call can raise them for a family.

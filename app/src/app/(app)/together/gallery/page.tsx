@@ -1,4 +1,3 @@
-// Eyes Opener: Used for the dots until onboarding has measured this profile: the letter a standard eye profile gets. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { GlassesOn } from "@/components/measure/cover";

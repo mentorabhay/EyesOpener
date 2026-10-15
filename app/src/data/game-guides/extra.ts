@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for games that are not part of this edition. The public edition has none: the list is empty.
 /**
  * Guides for games that are not part of this edition. The public edition has none: the list is empty.
  * A fuller build replaces this one file.

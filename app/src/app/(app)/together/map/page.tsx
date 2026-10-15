@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(app)/together/map web route.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";

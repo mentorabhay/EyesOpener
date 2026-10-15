@@ -1,4 +1,3 @@
-// Eyes Opener: One match: two patches side by side, and three answers. Saying which side looks brighter moves one of them a.
 "use client";
 /**
  * One match: two patches side by side, and three answers. Saying which side looks brighter moves one of them a

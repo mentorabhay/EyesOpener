@@ -1,4 +1,3 @@
-// Eyes Opener: The story pictures of the care companions, drawn as SVG in the app's own colours (direction B).
 /**
  * The story pictures of the care companions, drawn as SVG in the app's own colours (direction B).
  * Server-safe: no hooks, no images. Each picture gets its words from the copy file through `label`.

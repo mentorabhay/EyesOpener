@@ -1,4 +1,3 @@
-// Eyes Opener: Reads and writes the status of each language. Server only.
 /**
  * Reads and writes the status of each language. Server only.
  * One row of `setting` (key "languages") holds what staff chose; a language that is not in it is off.

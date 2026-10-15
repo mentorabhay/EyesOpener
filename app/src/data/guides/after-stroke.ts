@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the after-stroke group: two routines for half-field loss (the left or the right half of what each eye.
 /**
  * Guides for the after-stroke group: two routines for half-field loss (the left or the right half of what each eye
  * sees is missing after a stroke). Both are counsellor-led: slow, plain, with no time pressure and no glasses.

@@ -1,4 +1,3 @@
-// Eyes Opener: The card an exercise needs, to print at its real size. Read-only: anyone who may look at the exercise may print its card. .
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Card, PageHead } from "@/components/ui";

@@ -1,4 +1,3 @@
-// Eyes Opener: The measurements a clip may store in `test_result`: a key, a unit and whether it is taken one eye at a time.
 /**
  * The measurements a clip may store in `test_result`: a key, a unit and whether it is taken one eye at a time.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: Mark what looks wrong: the grid check for one eye, drawn by the exercise library's own grid.
 "use client";
 /**
  * Mark what looks wrong: the grid check for one eye, drawn by the exercise library's own grid

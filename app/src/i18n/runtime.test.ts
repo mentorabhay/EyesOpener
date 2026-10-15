@@ -1,4 +1,3 @@
-// Eyes Opener: The strict rule and the wrapper, end to end, against translation files in a folder made for the test.
 /**
  * The strict rule and the wrapper, end to end, against translation files in a folder made for the test.
  * Nothing here needs Next.js: the language is set with `withLang`, as a job or a script would.

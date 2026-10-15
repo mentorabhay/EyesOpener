@@ -1,4 +1,3 @@
-// Eyes Opener: The folded section at the bottom of a page: the full text of the page, closed until someone opens it.
 /**
  * The folded section at the bottom of a page: the full text of the page, closed until someone opens it.
  * `More` is the one outer fold; `Fold` is a smaller fold inside it, one per topic, so a reader opens only the part

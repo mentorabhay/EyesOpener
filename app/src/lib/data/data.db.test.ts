@@ -1,4 +1,3 @@
-// Eyes Opener: The proof, against a real database, that a family's copy is complete and private and that a deletion leaves nothing.
 /**
  * The proof, against a real database, that a family's copy is complete and private and that a deletion leaves nothing.
  *

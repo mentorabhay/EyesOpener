@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying roles functionality.
 import { describe, it, expect } from "vitest";
 import { memberCan, isGuardianSeat, isSealedPath, staffCan, staffAreas, resolveStaffRole, sponsorCan, homeFor, MEMBER_ACTIONS, ADMIN_AREAS, ADMIN_GROUPS } from "./roles";
 

@@ -1,4 +1,3 @@
-// Eyes Opener: Words for Duet Streak: two people of different generations keep one streak.
 /**
  * Words for Duet Streak: two people of different generations keep one streak.
  * A missed day is never blamed on anyone: no line here says who missed, and a day the stop rule ended is

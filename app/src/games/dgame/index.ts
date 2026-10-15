@@ -1,4 +1,3 @@
-// Eyes Opener: Interactive visual exercise and gamified therapy logic for index.
 import type { GameDef } from "../kit";
 import { fireflyCatch } from "./firefly-catch";
 import { lanternRun } from "./lantern-run";

@@ -1,4 +1,3 @@
-// Eyes Opener: The server side of the edition: lists a fuller build adds to. Empty in the public edition.
 /**
  * The server side of the edition: lists a fuller build adds to. Empty in the public edition.
  * A fuller build replaces this one file.

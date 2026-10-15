@@ -1,4 +1,3 @@
-// Eyes Opener: The enquiry form on the public site. Anyone may post it, so it trusts nothing:.
 "use server";
 /**
  * The enquiry form on the public site. Anyone may post it, so it trusts nothing:

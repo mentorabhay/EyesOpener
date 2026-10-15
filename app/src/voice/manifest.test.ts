@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying manifest functionality.
 import { describe, expect, it } from "vitest";
 import { audioFile, emptyManifest, findAudio, indexManifest, isAudioFile, isScriptId, parseRange, readManifest, type VoiceEntry } from "./manifest";
 

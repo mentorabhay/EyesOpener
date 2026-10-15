@@ -1,4 +1,3 @@
-// Eyes Opener: A form sends the key of a line from a fixed list and nothing else. Anything longer is not a key. .
 "use server";
 import { revalidatePath } from "next/cache";
 import type { FormState } from "@/components/together/StateForm";

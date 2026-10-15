@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-// Eyes Opener: The last gate before anything reaches the public repository.
 /**
  * The last gate before anything reaches the public repository.
  * It reads every file git would publish (tracked, staged, or with --candidates also untracked files that

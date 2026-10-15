@@ -1,4 +1,3 @@
-<!-- Eyes Opener: IOpener web app: build contract. -->
 # IOpener web app: build contract
 
 Read this before writing any file. It is short, and it is what keeps the app consistent.

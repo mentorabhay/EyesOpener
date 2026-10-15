@@ -1,4 +1,3 @@
-// Eyes Opener: What lies over the picture in the film player, and when today's minutes count as used. Pure rules, unit-tested.
 /**
  * What lies over the picture in the film player, and when today's minutes count as used. Pure rules, unit-tested.
  * At most one card shows at a time; with none, the film itself shows.

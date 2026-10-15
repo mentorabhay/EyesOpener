@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the monitoring group: the weekly grid check and the routine for prescribed daily eye drops.
 /**
  * Guides for the monitoring group: the weekly grid check and the routine for prescribed daily eye drops.
  * Neither treats anything. The grid check looks for change between eye examinations; the drop routine keeps a record

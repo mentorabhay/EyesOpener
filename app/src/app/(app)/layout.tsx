@@ -1,4 +1,3 @@
-// Eyes Opener: Root layout component defining UI structure, styling, theme providers, and global meta tags.
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { InkTuneSet } from "@/components/ink-tune";

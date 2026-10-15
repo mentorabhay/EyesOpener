@@ -1,4 +1,3 @@
-// Eyes Opener: logMAR for the letter test, logCS for the faint-letter test. .
 "use client";
 import { useState } from "react";
 import { measure as t } from "@/copy/test";

@@ -1,4 +1,3 @@
-// Eyes Opener: The numbers a game keeps, named the way its guide names them. The generic names fill in for anything the guide leaves out. .
 import { Listen } from "@/components/voice/listen";
 import { lens } from "@/copy/lens";
 import { train as t } from "@/copy/train";

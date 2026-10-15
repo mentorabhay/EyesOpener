@@ -1,4 +1,3 @@
-// Eyes Opener: The page a sign-in link in an email returns to. Firebase adds `mode=signIn` and the one-time `oobCode`.
 import type { Metadata } from "next";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect } from "next/navigation";

@@ -1,4 +1,3 @@
-// Eyes Opener: Read and time: a short passage read silently, and the clock gives the words a minute. The passages are the.
 "use client";
 /**
  * Read and time: a short passage read silently, and the clock gives the words a minute. The passages are the

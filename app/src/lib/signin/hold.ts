@@ -1,4 +1,3 @@
-// Eyes Opener: Child mode and sign-in.
 /**
  * Child mode and sign-in.
  *

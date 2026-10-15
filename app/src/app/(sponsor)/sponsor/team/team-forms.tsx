@@ -1,4 +1,3 @@
-// Eyes Opener: The buttons for one person on the team. The server refuses to remove or demote the last owner. .
 "use client";
 import { useActionState } from "react";
 import { sponsor as t } from "@/copy/sponsor";

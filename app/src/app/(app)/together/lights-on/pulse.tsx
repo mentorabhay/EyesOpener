@@ -1,4 +1,3 @@
-// Eyes Opener: Asks the server for the page again at a gentle interval, and once more at the moment the hour starts or ends.
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";

@@ -1,4 +1,3 @@
-// Eyes Opener: Sign-in settings, read from the environment on every use. Pure, unit-tested.
 /**
  * Sign-in settings, read from the environment on every use. Pure, unit-tested.
  *

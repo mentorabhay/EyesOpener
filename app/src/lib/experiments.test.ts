@@ -1,4 +1,3 @@
-// Eyes Opener: Noon in India on a day key, so a test never sits on a day boundary by accident. .
 import { describe, expect, it } from "vitest";
 import {
   BASELINE_MAX_AGE_DAYS, FOLLOWUP_OPEN_DAYS, MIN_FINISHED_PER_GROUP,

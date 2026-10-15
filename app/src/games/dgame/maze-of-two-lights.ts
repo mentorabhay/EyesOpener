@@ -1,4 +1,3 @@
-// Eyes Opener: Maze of Two Lights. A ball of light rolls, cell by cell, through a maze to a second light: the way out.
 /**
  * Maze of Two Lights. A ball of light rolls, cell by cell, through a maze to a second light: the way out.
  *

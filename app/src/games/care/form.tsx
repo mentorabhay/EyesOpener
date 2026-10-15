@@ -1,4 +1,3 @@
-// Eyes Opener: A form around one care action. It shows the action's answer in plain words.
 "use client";
 import { startTransition, useActionState, useEffect, useRef, type ReactNode } from "react";
 import type { CareState } from "./state";

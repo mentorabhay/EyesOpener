@@ -1,4 +1,3 @@
-// Eyes Opener: Plays a scene frame by frame with a script: `press(k, t, state)` may set the input for the frame.
 import { describe, expect, it } from "vitest";
 import { FUSION_REPEATS } from "@/engine";
 import { H, W, makeKit, sizeKit, type GameDef, type Kit } from "@/games/kit";

@@ -1,4 +1,3 @@
-// Eyes Opener: The scale of each camera on this device, set once in one step (see face.ts) and remembered in this browser.
 /**
  * The scale of each camera on this device, set once in one step (see face.ts) and remembered in this browser.
  * It is kept on the device, by camera, because it belongs to the lens: another laptop, or a camera clipped to the

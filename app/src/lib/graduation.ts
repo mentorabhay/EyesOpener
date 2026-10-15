@@ -1,4 +1,3 @@
-// Eyes Opener: Keeper Graduation: the rules, pure. Tested in graduation.test.ts; src/lib/graduation-data.ts reads and writes.
 /**
  * Keeper Graduation: the rules, pure. Tested in graduation.test.ts; src/lib/graduation-data.ts reads and writes.
  *

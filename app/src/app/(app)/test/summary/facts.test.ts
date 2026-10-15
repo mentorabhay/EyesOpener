@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying facts functionality.
 import { describe, expect, it } from "vitest";
 import { tests } from "@/data";
 import type { Member } from "@/lib/session";

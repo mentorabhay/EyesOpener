@@ -1,4 +1,3 @@
-// Eyes Opener: Reading Lights On Hour, and the one write staff make. Server only.
 /**
  * Reading Lights On Hour, and the one write staff make. Server only.
  *

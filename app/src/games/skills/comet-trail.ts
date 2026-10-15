@@ -1,4 +1,3 @@
-// Eyes Opener: Comet Trail. Trains smooth tracking: keeping the eyes on something that moves steadily, without jumping ahead.
 /**
  * Comet Trail. Trains smooth tracking: keeping the eyes on something that moves steadily, without jumping ahead
  * of it or falling behind.

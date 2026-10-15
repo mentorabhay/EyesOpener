@@ -1,4 +1,3 @@
-// Eyes Opener: The row after a change is saved, read back the way the database returns it (JSON keeps no `undefined`). .
 import { describe, it, expect } from "vitest";
 import { USUAL_GAMMA, channel, lightOf } from "@/engine";
 import { memberCan, type MemberAction, type Seat } from "./roles";

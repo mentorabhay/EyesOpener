@@ -1,4 +1,3 @@
-// Eyes Opener: Saving and reading the colour calibration of the household's screen.
 /**
  * Saving and reading the colour calibration of the household's screen.
  * The screen is always the member's own (`member.device`, found from the session): no id comes from the browser.

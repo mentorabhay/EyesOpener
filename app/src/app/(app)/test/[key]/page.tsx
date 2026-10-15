@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(app)/test/[key] web route.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { StepFlow } from "@/components/guide/flow";

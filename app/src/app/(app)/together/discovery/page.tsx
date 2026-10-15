@@ -1,4 +1,3 @@
-// Eyes Opener: An answer, with what it rests on. Sample data says so before anything else. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import form from "@/app/(app)/settings/form.module.css";

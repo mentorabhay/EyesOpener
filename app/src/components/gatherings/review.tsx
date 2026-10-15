@@ -1,4 +1,3 @@
-// Eyes Opener: How the moderation room shows the three kinds of item this package puts in its queue: a Cinema Club listing, a.
 /**
  * How the moderation room shows the three kinds of item this package puts in its queue: a Cinema Club listing, a
  * Wish Jam wish and the name of a Wish Jam game. Server-safe. The room's own page draws the card, the hazard

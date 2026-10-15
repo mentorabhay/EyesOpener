@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for nav.
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";

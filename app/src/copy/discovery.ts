@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the Discovery Board: members vote on the next question the pooled records should answer.
 /**
  * Words for the Discovery Board: members vote on the next question the pooled records should answer.
  * An answer says what the records showed and no more. It is a signal from members, never proof, and nothing here

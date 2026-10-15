@@ -1,4 +1,3 @@
-// Eyes Opener: Sends a note from the signed-in person to any profile in their household, the active child included.
 "use server";
 import { revalidatePath } from "next/cache";
 import { jar as cookieJar } from "@/lib/cookie-jar";

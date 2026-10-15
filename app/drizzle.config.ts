@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for drizzle.config.
 import { defineConfig } from "drizzle-kit";
 
 /* Scripts do not read .env.local on their own; Next.js does. */

@@ -1,4 +1,3 @@
-// Eyes Opener: Pick the odd one of four, on the depth check-up's staircase (two right answers make it harder, one wrong makes it.
 "use client";
 /**
  * Pick the odd one of four, on the depth check-up's staircase (two right answers make it harder, one wrong makes it

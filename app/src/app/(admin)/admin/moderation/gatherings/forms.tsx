@@ -1,4 +1,3 @@
-// Eyes Opener: The staff forms for the gatherings page. Every list of choices is handed down by the server page, so this file,.
 "use client";
 import { startTransition, useActionState } from "react";
 import { ClubFields, type ClubChoices } from "@/components/gatherings/club-fields";

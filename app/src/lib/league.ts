@@ -1,4 +1,3 @@
-// Eyes Opener: The show-up league: its rules, with no database and no clock. Tested in league.test.ts; teams.ts reads and writes.
 /**
  * The show-up league: its rules, with no database and no clock. Tested in league.test.ts; teams.ts reads and writes.
  *

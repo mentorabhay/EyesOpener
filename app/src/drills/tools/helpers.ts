@@ -1,4 +1,3 @@
-// Eyes Opener: The arithmetic of the two screen tools (the reading tool and the grid check). Plain functions:.
 /**
  * The arithmetic of the two screen tools (the reading tool and the grid check). Plain functions:
  * no React, no browser, no clock. Tested in tools.test.ts.

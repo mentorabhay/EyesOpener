@@ -1,4 +1,3 @@
-// Eyes Opener: What the sign-in pages show. Plain components: everything they need arrives as props, so each page file only.
 /**
  * What the sign-in pages show. Plain components: everything they need arrives as props, so each page file only
  * gathers the facts (who is signed in, what is set up, what holds the device) and hands them over.

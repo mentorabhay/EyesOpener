@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the Together space.
 /**
  * Words for the Together space.
  * Ideas from members are untested until a pooled result is published, and nothing here may promise to treat or cure.

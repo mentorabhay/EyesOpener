@@ -1,4 +1,3 @@
-// Eyes Opener: Plays the seeing-skill games the way a member would, to check what random input cannot: that the comet moves.
 /**
  * Plays the seeing-skill games the way a member would, to check what random input cannot: that the comet moves
  * smoothly and pays for staying on it, that a spot waits its half second, that the track staircase moves by the

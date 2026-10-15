@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the show-up league.
 /**
  * Words for the show-up league.
  * A league ranks teams only by showing up. Nothing here may praise a score, a speed or extra minutes,

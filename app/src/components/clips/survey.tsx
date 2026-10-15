@@ -1,4 +1,3 @@
-// Eyes Opener: Answer a survey. The near-work list is the symptom survey check-up's own part. The screen-strain and dry-eye.
 "use client";
 /**
  * Answer a survey. The near-work list is the symptom survey check-up's own part. The screen-strain and dry-eye

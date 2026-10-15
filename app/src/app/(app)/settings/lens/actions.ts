@@ -1,4 +1,3 @@
-// Eyes Opener: Saves which ink the active profile's weaker eye sees, then derives its eye settings again with the choice, so the.
 "use server";
 import { and, desc, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";

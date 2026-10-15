@@ -1,4 +1,3 @@
-// Eyes Opener: Results over time, one line per eye. Better results sit higher, whichever way the numbers run. .
 import { test as c } from "@/copy/test";
 import type { TestDef } from "@/data";
 import { axisText, dayText, reading, shown, type Series } from "../results";

@@ -1,4 +1,3 @@
-// Eyes Opener: Words for what an assistant adds to the pages: a suggestion on the share form, similar ideas, the reviewer's note,.
 /**
  * Words for what an assistant adds to the pages: a suggestion on the share form, similar ideas, the reviewer's note,
  * the plain-words paragraph of the exam summary and the research library.

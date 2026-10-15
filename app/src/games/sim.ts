@@ -1,4 +1,3 @@
-// Eyes Opener: Plays a game with no screen, for tests: scripted random taps and key presses, a drawing surface that.
 /**
  * Plays a game with no screen, for tests: scripted random taps and key presses, a drawing surface that
  * swallows every call. It finds crashes, runaway numbers and games that cannot be scored.

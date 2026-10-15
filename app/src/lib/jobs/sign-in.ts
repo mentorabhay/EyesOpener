@@ -1,4 +1,3 @@
-// Eyes Opener: The daily tidy-up for sign-in. Safe to run twice; answers with counts only.
 /**
  * The daily tidy-up for sign-in. Safe to run twice; answers with counts only.
  *  1. Counts of sign-in links asked for, and emailed sign-in codes, are kept for a day. Older ones are removed here,

@@ -1,4 +1,3 @@
-// Eyes Opener: Sign-in from end to end, against a real database and a stand-in for Firebase that is started inside the test.
 /**
  * Sign-in from end to end, against a real database and a stand-in for Firebase that is started inside the test.
  *

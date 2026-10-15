@@ -1,4 +1,3 @@
-// Eyes Opener: Locked Gallery: the shapes of the pictures. Pure: no browser and no React.
 /**
  * Locked Gallery: the shapes of the pictures. Pure: no browser and no React.
  *

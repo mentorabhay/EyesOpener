@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for profile-form.
 "use client";
 import Link from "next/link";
 import { useActionState, useEffect, useRef, useState } from "react";

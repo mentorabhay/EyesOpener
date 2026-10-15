@@ -1,4 +1,3 @@
-// Eyes Opener: Leaves one note for the programme week the member has just reached. It waits for a person before anyone reads it. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

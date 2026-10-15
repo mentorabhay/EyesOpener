@@ -1,4 +1,3 @@
-// Eyes Opener: Chapters and eye breaks for watching a film in the two-eye cinema. Pure rules, unit-tested.
 /**
  * Chapters and eye breaks for watching a film in the two-eye cinema. Pure rules, unit-tested.
  *

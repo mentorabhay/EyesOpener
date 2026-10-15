@@ -1,4 +1,3 @@
-// Eyes Opener: The words of one language for the browser: a small script the root layout loads before the page comes alive.
 /**
  * The words of one language for the browser: a small script the root layout loads before the page comes alive.
  * Only translations a person has reviewed are in it. Machine drafts are added only when the development switch

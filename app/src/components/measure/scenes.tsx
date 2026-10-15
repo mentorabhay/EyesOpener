@@ -1,4 +1,3 @@
-// Eyes Opener: The drawings of the two-eye check-ups: depth rings, the fusion target and the four dots.
 "use client";
 /**
  * The drawings of the two-eye check-ups: depth rings, the fusion target and the four dots.

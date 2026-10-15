@@ -1,4 +1,3 @@
-// Eyes Opener: The short, printable form of the family's copy. Open to the same people, under the same conditions, as the.
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Card, Chip, PageHead } from "@/components/ui";

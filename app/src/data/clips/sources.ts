@@ -1,4 +1,3 @@
-// Eyes Opener: The published work the clips are modelled on.
 /**
  * The published work the clips are modelled on.
  *

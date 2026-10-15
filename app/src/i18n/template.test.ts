@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying template functionality.
 import { describe, expect, it } from "vitest";
 import { fill, fits, placeholders, templateOf, variantName } from "./template";
 

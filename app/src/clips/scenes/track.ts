@@ -1,4 +1,3 @@
-// Eyes Opener: The tracking clip on the game kit: a ring glides along a smooth looping path and the member keeps a pointer on it.
 /**
  * The tracking clip on the game kit: a ring glides along a smooth looping path and the member keeps a pointer on it.
  * It measures the share of the time the pointer was on the ring. That is the hand and the eyes working together:

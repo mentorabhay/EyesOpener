@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the after-concussion group: three routines that join eye work with movement.
 /**
  * Guides for the after-concussion group: three routines that join eye work with movement.
  * All three are counsellor-led: done as the counsellor showed, slowly, and stopped when symptoms rise by 2 points

@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for admin.module. */
 /* Admin console: the few styles the shared sheet does not have. */
 .confirm summary { list-style: none; }
 .confirm summary::-webkit-details-marker { display: none; }

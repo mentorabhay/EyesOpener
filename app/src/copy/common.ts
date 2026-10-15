@@ -1,4 +1,3 @@
-// Eyes Opener: Words shared by every screen. Each area keeps its own file in this folder. .
 /** Words shared by every screen. Each area keeps its own file in this folder. */
 import { texts } from "@/i18n/texts";
 

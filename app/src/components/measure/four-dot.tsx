@@ -1,4 +1,3 @@
-// Eyes Opener: What the member reported: how many dots, and the colour of the bottom dot when there were four. .
 "use client";
 import { useState } from "react";
 import { measure as t } from "@/copy/test";

@@ -1,4 +1,3 @@
-// Eyes Opener: Focus Wall: the twelve monthly pictures, and the wall that brings one into focus tile by tile.
 /**
  * Focus Wall: the twelve monthly pictures, and the wall that brings one into focus tile by tile.
  * Server-safe: no hooks, no browser APIs.

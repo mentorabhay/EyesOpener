@@ -1,4 +1,3 @@
-// Eyes Opener: Shared building blocks for every screen. Server-safe: no hooks, no browser APIs.
 /**
  * Shared building blocks for every screen. Server-safe: no hooks, no browser APIs.
  * Styles live in src/app/globals.css (direction B).

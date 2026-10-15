@@ -1,4 +1,3 @@
-/* Eyes Opener: User authentication, token verification, and session state management (login.module). */
 /* The sign-in pages: one narrow column, the same on a phone and on a desk. */
 .col { max-width: 480px; width: 100%; }
 /* Blocks one under another with a gap, where an empty one (a place kept for a message) takes no room at all. */

@@ -1,4 +1,3 @@
-// Eyes Opener: Approves one open item: the idea or note it points at becomes visible to members. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";

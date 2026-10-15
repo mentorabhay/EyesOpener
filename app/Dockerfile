@@ -1,4 +1,3 @@
-# Eyes Opener: The IOpener web app as a container.
 # The IOpener web app as a container.
 #   docker build -t iopener-web .                 the web server (the last stage)
 #   docker build -t iopener-ops --target ops .    database jobs: migrations and the demo seed

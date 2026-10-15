@@ -1,4 +1,3 @@
-// Eyes Opener: How long each part of the check takes, in the app's own words. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Chip, SceneThumb, Void } from "@/components/ui";

@@ -1,4 +1,3 @@
-// Eyes Opener: The eye balance test with two animal shapes in place of two letters, for a child who does not yet read.
 "use client";
 /**
  * The eye balance test with two animal shapes in place of two letters, for a child who does not yet read.

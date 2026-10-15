@@ -1,4 +1,3 @@
-// Eyes Opener: The household side of a request: the signed-in person's family, the active profile and its eye settings.
 /**
  * The household side of a request: the signed-in person's family, the active profile and its eye settings.
  * Built on auth.ts. Pages call `requireMember()`; actions also check `m.can(action)`.

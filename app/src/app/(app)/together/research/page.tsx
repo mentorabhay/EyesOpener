@@ -1,4 +1,3 @@
-// Eyes Opener: How many passages a search by meaning shows, and how many more a search by words may add under them. .
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";

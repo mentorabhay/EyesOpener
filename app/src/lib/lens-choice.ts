@@ -1,4 +1,3 @@
-// Eyes Opener: The lens choice: which ink a person's weaker eye sees (engine/profile.ts, `WeakInk`). Pure rules, tested.
 /**
  * The lens choice: which ink a person's weaker eye sees (engine/profile.ts, `WeakInk`). Pure rules, tested.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: The setup a person needs before a two-eye game: this screen and these glasses (once, for the household), then this.
 /**
  * The setup a person needs before a two-eye game: this screen and these glasses (once, for the household), then this
  * person (each profile). Pure rules; the database side is src/lib/setup.ts and the page is /setup.

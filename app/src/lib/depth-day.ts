@@ -1,4 +1,3 @@
-// Eyes Opener: First Depth Day: the rules, pure. Tested in depth-day.test.ts; src/lib/depth-day-data.ts reads and writes.
 /**
  * First Depth Day: the rules, pure. Tested in depth-day.test.ts; src/lib/depth-day-data.ts reads and writes.
  *

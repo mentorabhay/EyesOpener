@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(site)/for-counsellors web route.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listed, site as t } from "@/copy/site";

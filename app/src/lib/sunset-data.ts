@@ -1,4 +1,3 @@
-// Eyes Opener: Sunset Rule: reading the active profile's day. Server only. The rules are in sunset.ts.
 /**
  * Sunset Rule: reading the active profile's day. Server only. The rules are in sunset.ts.
  * It reads the day's rows and writes nothing. Every query is scoped by `m.profile.id`.

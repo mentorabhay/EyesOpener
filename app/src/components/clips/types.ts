@@ -1,4 +1,3 @@
-// Eyes Opener: What every template is given: the clip, what the server knows about this member and screen, and where the measurement goes. .
 import type { OfferedClip } from "@/data/clips";
 import type { ClipCtx } from "@/lib/clips";
 

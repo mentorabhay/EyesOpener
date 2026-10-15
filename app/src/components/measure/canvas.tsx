@@ -1,4 +1,3 @@
-// Eyes Opener: The test drawings. Sizes here are true screen sizes: a stroke is a whole number of device pixels.
 "use client";
 /**
  * The test drawings. Sizes here are true screen sizes: a stroke is a whole number of device pixels.

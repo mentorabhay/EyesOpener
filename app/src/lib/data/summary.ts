@@ -1,4 +1,3 @@
-// Eyes Opener: The short, readable form of a family's file: what the printable summary page shows.
 /**
  * The short, readable form of a family's file: what the printable summary page shows.
  * A pure function of the file, so the page and the file can never disagree.

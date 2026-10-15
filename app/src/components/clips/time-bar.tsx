@@ -1,4 +1,3 @@
-// Eyes Opener: A calm bar that fills over the time the catalogue gives a clip. It never counts down and never ends anything:.
 "use client";
 import { useEffect, useState } from "react";
 import { clips as c } from "@/copy/clips";

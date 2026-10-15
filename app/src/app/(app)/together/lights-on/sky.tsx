@@ -1,4 +1,3 @@
-// Eyes Opener: The sky of Lights On Hour: one lantern for each household practising in the hour. Server-safe, no script.
 import type { CSSProperties } from "react";
 import { lanterns } from "@/lib/lights-on";
 import css from "./lights-on.module.css";

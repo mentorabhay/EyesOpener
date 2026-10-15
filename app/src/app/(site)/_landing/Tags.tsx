@@ -1,4 +1,3 @@
-// Eyes Opener: Right under the hero: what IOpener is, in a row of short tags and six small cards, and two ways in (the demo game.
 import Link from "next/link";
 import { marketing } from "@/copy/marketing";
 

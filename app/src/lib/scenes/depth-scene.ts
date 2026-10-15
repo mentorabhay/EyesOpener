@@ -1,4 +1,3 @@
-// Eyes Opener: First Depth Day: the scene. A plain game-kit scene with nothing to score: it only draws.
 /**
  * First Depth Day: the scene. A plain game-kit scene with nothing to score: it only draws.
  *

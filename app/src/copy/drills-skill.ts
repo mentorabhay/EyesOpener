@@ -1,4 +1,3 @@
-// Eyes Opener: Words drawn inside the skill drills, and one line of help for each. .
 /** Words drawn inside the skill drills, and one line of help for each. */
 import { texts } from "@/i18n/texts";
 

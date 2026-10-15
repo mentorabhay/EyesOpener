@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying job functionality.
 import { describe, expect, it } from "vitest";
 import { data, dataAdmin } from "@/copy/data";
 import { site } from "@/copy/site";

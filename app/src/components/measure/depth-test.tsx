@@ -1,4 +1,3 @@
-// Eyes Opener: What the depth test measured: the offset in device pixels on a screen with `dpr` device pixels to a CSS pixel. .
 "use client";
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
 import { measure as t } from "@/copy/test";

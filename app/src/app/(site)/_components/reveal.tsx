@@ -1,4 +1,3 @@
-// Eyes Opener: A quiet reveal on scroll for every `.s-reveal` element.
 "use client";
 /**
  * A quiet reveal on scroll for every `.s-reveal` element.

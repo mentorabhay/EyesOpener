@@ -1,4 +1,3 @@
-# Eyes Opener: Local PostgreSQL for development. Production uses Cloud SQL for PostgreSQL in Mumbai.
 # Local PostgreSQL for development. Production uses Cloud SQL for PostgreSQL in Mumbai.
 services:
   db:

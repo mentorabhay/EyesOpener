@@ -1,4 +1,3 @@
-// Eyes Opener: Gives or changes the active profile's vote in the open round. The browser names a question and nothing else:.
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

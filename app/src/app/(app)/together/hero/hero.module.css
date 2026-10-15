@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for hero.module. */
 /* Draw Your Hero. Every hero sits on the black field of a .scene, in the weaker eye's ink. */
 .maker { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
 .steps { margin: 0; padding-left: 20px; display: grid; gap: 4px; font-size: 13.5px; }

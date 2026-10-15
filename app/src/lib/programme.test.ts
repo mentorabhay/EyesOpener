@@ -1,4 +1,3 @@
-// Eyes Opener: A stand-in database that records every update. `schema` hands back marked objects so a test can tell which.
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 /**

@@ -1,4 +1,3 @@
-// Eyes Opener: What the moderation room needs to know about the three kinds of item the "gatherings" package puts in its queue:.
 /**
  * What the moderation room needs to know about the three kinds of item the "gatherings" package puts in its queue:
  *   club       a Cinema Club listing a sponsor sent           (refId: cinema_club.id)

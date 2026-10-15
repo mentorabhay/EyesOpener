@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying graduation functionality.
 import { describe, expect, it } from "vitest";
 import type { DayRow } from "./gallery";
 import {

@@ -1,4 +1,3 @@
-// Eyes Opener: What the rewards add to the Today page, for the active profile:.
 /**
  * What the rewards add to the Today page, for the active profile:
  *  - one quiet line when a Depth check-up has just found depth for the first time, and on that day's anniversary;

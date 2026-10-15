@@ -1,4 +1,3 @@
-// Eyes Opener: Reading Under Demand. The member reads short sentences while the screen holds a turning-in demand.
 /**
  * Reading Under Demand. The member reads short sentences while the screen holds a turning-in demand.
  * It measures the lines read, lines a minute, and the most demand at which a line was finished (prism dioptres).

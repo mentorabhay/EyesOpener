@@ -1,4 +1,3 @@
-// Eyes Opener: A test bench for the games in this package: plays a game with no screen, counts what each ink drew in the.
 /**
  * A test bench for the games in this package: plays a game with no screen, counts what each ink drew in the
  * last frame, and notes every depth step asked for and every word written. Used by the tests only.

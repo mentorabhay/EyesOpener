@@ -1,4 +1,3 @@
-// Eyes Opener: A sponsor waiting for approval becomes approved. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";

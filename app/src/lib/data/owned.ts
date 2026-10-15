@@ -1,4 +1,3 @@
-// Eyes Opener: Turns a line of the table list (tables.ts) into the database condition "this row is the household's".
 /**
  * Turns a line of the table list (tables.ts) into the database condition "this row is the household's".
  * The copy and the deletion both ask here, so they always mean the same rows.

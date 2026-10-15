@@ -1,4 +1,3 @@
-// Eyes Opener: The thread: a red line and a cyan line that swing through the giant type in opposite directions, a little less each.
 import Link from "next/link";
 import { landing } from "@/copy/landing";
 

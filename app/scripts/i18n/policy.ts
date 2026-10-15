@@ -1,4 +1,3 @@
-// Eyes Opener: Decisions a machine cannot make by looking at a string. Read by the extractor and by the scan.
 /**
  * Decisions a machine cannot make by looking at a string. Read by the extractor and by the scan.
  *

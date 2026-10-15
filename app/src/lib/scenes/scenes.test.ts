@@ -1,4 +1,3 @@
-// Eyes Opener: Plays one frame and records every depth step the scene asked the kit for. .
 import { describe, expect, it } from "vitest";
 import { simulate, SIM_PROPS } from "@/games/sim";
 import { makeKit, sizeKit, type Ink } from "@/games/kit";

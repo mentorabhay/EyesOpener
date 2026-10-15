@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying speak functionality.
 import { describe, expect, it } from "vitest";
 import { charsOf, hashOf, sentence, speakable, spokenList, spokenParts, spokenSection, spokenSteps, tidy } from "./speak";
 

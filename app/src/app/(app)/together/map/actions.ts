@@ -1,4 +1,3 @@
-// Eyes Opener: A guardian puts the household on the map. Only three digits are sent, and only three are kept. .
 "use server";
 import { revalidatePath } from "next/cache";
 import type { FormState } from "@/components/together/StateForm";

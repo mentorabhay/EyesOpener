@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying overlay functionality.
 import { describe, expect, it } from "vitest";
 import { hasOwnButtons, minutesUsed, overlayFor, type OverlayInput } from "./overlay";
 

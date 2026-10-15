@@ -1,4 +1,3 @@
-// Eyes Opener: The plan of every programme: how many weeks it runs, what a practice day holds, which check-up is due in which.
 /**
  * The plan of every programme: how many weeks it runs, what a practice day holds, which check-up is due in which
  * week, and when it asks for an eye-test visit.

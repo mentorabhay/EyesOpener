@@ -1,4 +1,3 @@
-// Eyes Opener: Interactive visual exercise and gamified therapy logic for index.
 import type { GameDef } from "../kit";
 import { cometTrail } from "./comet-trail";
 import { eSafari } from "./e-safari";

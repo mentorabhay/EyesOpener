@@ -1,4 +1,3 @@
-// Eyes Opener: The order the engine checks before a session, read from the engine itself: each case below trips one more.
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Chip } from "@/components/ui";

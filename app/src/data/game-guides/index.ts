@@ -1,4 +1,3 @@
-// Eyes Opener: Every game guide, by slug. The package files hold the words and pictures; this file only joins them. .
 /** Every game guide, by slug. The package files hold the words and pictures; this file only joins them. */
 import { guides as care } from "./care";
 import { guides as depth } from "./depth";

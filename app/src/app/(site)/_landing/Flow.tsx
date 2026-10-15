@@ -1,4 +1,3 @@
-// Eyes Opener: The flow tree: the check leads to the eye profile, and the profile leads to the programmes.
 import { landing } from "@/copy/landing";
 import { Words } from "./art";
 import type { LandingFacts } from "./types";

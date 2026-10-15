@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying check functionality.
 import { describe, expect, it } from "vitest";
 import { lettersIn, problems, sceneRoom } from "./check";
 import { fontSheet, HELD_AT_REVIEW, isHeld, langOf, LANGS, LANGUAGE, LOAD_WEB_FONTS } from "./languages";

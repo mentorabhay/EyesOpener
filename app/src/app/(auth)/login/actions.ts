@@ -1,4 +1,3 @@
-// Eyes Opener: The server side of the sign-in pages. Each action reads the request, calls the tested step in.
 "use server";
 /**
  * The server side of the sign-in pages. Each action reads the request, calls the tested step in

@@ -1,4 +1,3 @@
-// Eyes Opener: Reading and writing Duet Streak. Server only.
 /**
  * Reading and writing Duet Streak. Server only.
  * Everything is scoped by the member's household: partners are looked up among its own profiles and the grown-ups

@@ -1,4 +1,3 @@
-// Eyes Opener: Draw Your Hero: a hero's shape as a picture. Server-safe: no hooks, no browser APIs.
 /**
  * Draw Your Hero: a hero's shape as a picture. Server-safe: no hooks, no browser APIs.
  * A hero is always shown the way a game draws it: weaker-eye ink on the black field of a `.scene`.

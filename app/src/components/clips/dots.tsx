@@ -1,4 +1,3 @@
-// Eyes Opener: Which way do the dots drift: the balance point found with moving dots. One eye's ink carries dots that all drift.
 "use client";
 /**
  * Which way do the dots drift: the balance point found with moving dots. One eye's ink carries dots that all drift

@@ -1,4 +1,3 @@
-// Eyes Opener: Moving between controls with four arrows, for a TV remote that has arrows and OK and nothing else.
 /**
  * Moving between controls with four arrows, for a TV remote that has arrows and OK and nothing else.
  * `pickInDirection` is the pure rule (boxes in, the best box out) and is unit-tested; `moveFocus` applies it to the page.

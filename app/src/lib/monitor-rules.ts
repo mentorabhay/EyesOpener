@@ -1,4 +1,3 @@
-// Eyes Opener: The rules of the workday monitor, with no camera, no browser and no database in them, so they can be tested.
 /**
  * The rules of the workday monitor, with no camera, no browser and no database in them, so they can be tested.
  * The page's engine (src/lib/monitor-core.ts) and the server (src/lib/monitor.ts) both use this file.

@@ -1,4 +1,3 @@
-// Eyes Opener: Calls a function at a steady pace, in view or not. It uses a worker's clock (tick.worker.ts) and falls back to an.
 /**
  * Calls a function at a steady pace, in view or not. It uses a worker's clock (tick.worker.ts) and falls back to an
  * ordinary timer where a worker cannot be started; the ordinary timer slows down when the page is hidden.

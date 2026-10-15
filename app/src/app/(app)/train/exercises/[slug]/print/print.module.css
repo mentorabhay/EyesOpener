@@ -1,4 +1,3 @@
-/* Eyes Opener: Core system module providing logic and utilities for print.module. */
 /* A printable card. On screen: the notes, then the sheets shown small enough to fit. On paper: only the sheets, at their real size. */
 .sheet { display: flex; flex-direction: column; gap: 18px; }
 .list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }

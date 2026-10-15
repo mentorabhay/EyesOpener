@@ -1,4 +1,3 @@
-// Eyes Opener: Signed cookies for the demo sign-in and for child mode.
 /**
  * Signed cookies for the demo sign-in and for child mode.
  * payload (base64url JSON) + "." + HMAC-SHA256. Pure sign and verify, so they are unit-tested.

@@ -1,4 +1,3 @@
-// Eyes Opener: Turns the app's written instructions into text that reads well aloud. Pure: no clock, no files, no network.
 /**
  * Turns the app's written instructions into text that reads well aloud. Pure: no clock, no files, no network.
  *

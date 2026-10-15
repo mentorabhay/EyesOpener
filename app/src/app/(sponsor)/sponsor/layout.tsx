@@ -1,4 +1,3 @@
-// Eyes Opener: Root layout component defining UI structure, styling, theme providers, and global meta tags.
 import type { ReactNode } from "react";
 import { PortalShell } from "@/components/portal";
 import { cinemaClub } from "@/copy/cinema-club";

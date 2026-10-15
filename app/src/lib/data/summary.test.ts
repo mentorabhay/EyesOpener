@@ -1,4 +1,3 @@
-// Eyes Opener: A file as the download holds it after it was read back from JSON: every time is a string. .
 import { describe, expect, it } from "vitest";
 import { data as copy } from "@/copy/data";
 import type { FamilyFile, Row } from "./export";

@@ -1,4 +1,3 @@
-// Eyes Opener: Keeps a page from staying in one language after the browser's language has changed.
 "use client";
 /**
  * Keeps a page from staying in one language after the browser's language has changed.

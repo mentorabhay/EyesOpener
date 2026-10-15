@@ -1,4 +1,3 @@
-// Eyes Opener: Guides for the Convergence group: routines that train how the two eyes turn in and out together.
 /**
  * Guides for the Convergence group: routines that train how the two eyes turn in and out together.
  * The hands-on routines come first (string, cards, push-ups, jumps), then the on-screen drills, then the homework plan.

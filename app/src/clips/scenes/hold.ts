@@ -1,4 +1,3 @@
-// Eyes Opener: The hold clips on the game kit: one ring is pulled in to a set demand and held as one for a set time.
 /**
  * The hold clips on the game kit: one ring is pulled in to a set demand and held as one for a set time.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: The browser's set: which of a language's sentences the browser is given.
 /**
  * The browser's set: which of a language's sentences the browser is given.
  *

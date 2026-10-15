@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the care companions. A care companion is a log the family keeps about care away from the screen.
 /**
  * Words for the care companions. A care companion is a log the family keeps about care away from the screen.
  * Plain words. No cure claims, no diagnosis words.

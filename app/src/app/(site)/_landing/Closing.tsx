@@ -1,4 +1,3 @@
-// Eyes Opener: The closing thread: the hero's two lines again, this time coming down. They cross, a little less each time,.
 import Link from "next/link";
 import { landing } from "@/copy/landing";
 import { inEdition } from "@/edition";

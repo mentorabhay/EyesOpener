@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(admin)/admin/moderation/gatherings web route.
 import type { Metadata } from "next";
 import type { ClubChoices } from "@/components/gatherings/club-fields";
 import { Btn, Card, Chip, PageHead, type Tone } from "@/components/ui";

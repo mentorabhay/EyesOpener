@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the two screen tools that go with exercises (the reading tool and the grid check).
 /**
  * Words for the two screen tools that go with exercises (the reading tool and the grid check)
  * and for the printable cards. Plain words a school student can follow.

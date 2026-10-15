@@ -1,4 +1,3 @@
-// Eyes Opener: Keeping access to the member's chosen film files between visits, where the browser can do that.
 /**
  * Keeping access to the member's chosen film files between visits, where the browser can do that.
  *

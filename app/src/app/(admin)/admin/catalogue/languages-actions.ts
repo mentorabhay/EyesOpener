@@ -1,4 +1,3 @@
-// Eyes Opener: Sets one language to off, in review or on. A super admin or content staff only; anyone else gets "not found".
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";

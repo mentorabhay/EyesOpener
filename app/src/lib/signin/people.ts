@@ -1,4 +1,3 @@
-// Eyes Opener: Who a sign-in is, in IOpener's own table of people.
 /**
  * Who a sign-in is, in IOpener's own table of people.
  *

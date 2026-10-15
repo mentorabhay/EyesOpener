@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying engine functionality.
 import { describe, it, expect } from "vitest";
 import {
   derive, standardMeasured, blankEye, snellen, acuityText, type Measured,

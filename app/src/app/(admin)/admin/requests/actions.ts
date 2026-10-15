@@ -1,4 +1,3 @@
-// Eyes Opener: Runs the daily data-requests job now, for a member of staff who may open this room.
 "use server";
 import { revalidatePath } from "next/cache";
 import { requireStaff } from "@/lib/auth";

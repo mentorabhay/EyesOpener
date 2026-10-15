@@ -1,4 +1,3 @@
-// Eyes Opener: Today in ten-minute steps: distance, blinks and breaks as three small charts on one time line.
 "use client";
 /**
  * Today in ten-minute steps: distance, blinks and breaks as three small charts on one time line.

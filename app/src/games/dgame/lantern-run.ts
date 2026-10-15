@@ -1,4 +1,3 @@
-// Eyes Opener: Lantern Run. A runner carries a lantern through a night market that scrolls past.
 /**
  * Lantern Run. A runner carries a lantern through a night market that scrolls past.
  *

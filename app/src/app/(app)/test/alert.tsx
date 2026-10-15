@@ -1,4 +1,3 @@
-// Eyes Opener: The change alert of one test: shown when the latest result is worse than the one before it, or than the first one,.
 import Link from "next/link";
 import { test as c } from "@/copy/test";
 import type { TestDef } from "@/data";

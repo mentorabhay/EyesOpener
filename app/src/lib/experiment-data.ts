@@ -1,4 +1,3 @@
-// Eyes Opener: Reading and writing community experiments. Server only.
 /**
  * Reading and writing community experiments. Server only.
  * What a member sees is scoped by the active profile, and an id from the browser is only ever used together with it.

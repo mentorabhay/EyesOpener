@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the one staff page the four gatherings share (Lights On Hour, Cinema Club, Class Mission, Wish Jam).
 /**
  * Words for the one staff page the four gatherings share (Lights On Hour, Cinema Club, Class Mission, Wish Jam).
  * It is kept in the moderation room. Each idea's own words are in its own file.

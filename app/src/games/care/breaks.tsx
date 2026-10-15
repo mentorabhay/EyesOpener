@@ -1,4 +1,3 @@
-// Eyes Opener: Blink Garden and Far Window: short breaks, self-reported. A finished break is one entry in the care log.
 /**
  * Blink Garden and Far Window: short breaks, self-reported. A finished break is one entry in the care log
  * and one step on the Rest ring, up to twelve a day. The camera parts are not built.

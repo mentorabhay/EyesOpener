@@ -1,4 +1,3 @@
-// Eyes Opener: The care companions that are built. .
 /** The care companions that are built. */
 import { extraSlugs } from "./extra-slugs";
 

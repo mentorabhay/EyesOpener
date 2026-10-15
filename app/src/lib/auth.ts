@@ -1,4 +1,3 @@
-// Eyes Opener: Who is signed in, and the gates for each area.
 /**
  * Who is signed in, and the gates for each area.
  * Roles are read from the database on every request, a super admin passes every staff gate,

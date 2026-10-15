@@ -1,4 +1,3 @@
-// Eyes Opener: Everything around a game or an exercise drill: the session, the countdown, the stop rule, the glasses view.
 "use client";
 import { useCallback, useRef, useState } from "react";
 import { train as t } from "@/copy/train";

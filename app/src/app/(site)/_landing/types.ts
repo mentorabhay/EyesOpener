@@ -1,4 +1,3 @@
-// Eyes Opener: Everything the landing page shows as a number or a name. The page computes it on the server from src/data and src/engine. .
 import type { EvidenceKey } from "@/data";
 
 /** Everything the landing page shows as a number or a name. The page computes it on the server from src/data and src/engine. */

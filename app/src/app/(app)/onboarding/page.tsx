@@ -1,4 +1,3 @@
-// Eyes Opener: Onboarding is now Setup (decision D of the setup plan, 9 October 2026): the old address opens it. .
 import { redirect } from "next/navigation";
 
 /** Onboarding is now Setup (decision D of the setup plan, 9 October 2026): the old address opens it. */

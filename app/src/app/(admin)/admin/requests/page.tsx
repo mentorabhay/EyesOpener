@@ -1,4 +1,3 @@
-// Eyes Opener: Where each data request stands. Staff see the household's name and the state of its request, and can run the.
 import type { Metadata } from "next";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as t } from "@/copy/admin";

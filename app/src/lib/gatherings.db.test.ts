@@ -1,4 +1,3 @@
-// Eyes Opener: The server rules of four community ideas, against a real database: Lights On Hour, Cinema Club, Class Mission.
 /**
  * The server rules of four community ideas, against a real database: Lights On Hour, Cinema Club, Class Mission
  * and Wish Jam. It makes throwaway households, a throwaway sponsor and throwaway staff, never touches anyone

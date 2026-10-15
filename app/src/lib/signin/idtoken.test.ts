@@ -1,4 +1,3 @@
-// Eyes Opener: The ID token checks, against keys made here and a stand-in for Google's key list.
 /**
  * The ID token checks, against keys made here and a stand-in for Google's key list.
  * Every way a token can be wrong must be refused; one that is right must be read exactly.

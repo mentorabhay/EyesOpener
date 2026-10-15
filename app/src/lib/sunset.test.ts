@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying sunset functionality.
 import { describe, expect, it } from "vitest";
 import { canStart } from "@/engine";
 import { LIGHT_FROM_HOUR, LIGHT_UNTIL_HOUR, canBeLight, dayMinutes, isDayDone, sunHeight, sunsetOf, type SunsetIn } from "./sunset";

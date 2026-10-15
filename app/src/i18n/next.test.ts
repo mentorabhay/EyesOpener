@@ -1,4 +1,3 @@
-// Eyes Opener: The one place this package reaches inside Next.js, held to what it relies on.
 /**
  * The one place this package reaches inside Next.js, held to what it relies on.
  *

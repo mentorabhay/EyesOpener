@@ -1,4 +1,3 @@
-// Eyes Opener: What an exercise page tells the member: what the routine is, how to set up, what to do step by step,.
 /**
  * What an exercise page tells the member: what the routine is, how to set up, what to do step by step,
  * what to measure and how, when to stop, and where the numbers come from.

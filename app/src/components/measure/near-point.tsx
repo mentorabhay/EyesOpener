@@ -1,4 +1,3 @@
-// Eyes Opener: A typed try as a number of centimetres, or null when it is empty or outside the range. .
 "use client";
 import { useState } from "react";
 import { measure as t } from "@/copy/test";

@@ -1,4 +1,3 @@
-// Eyes Opener: Light the Map: a map of India that lights up as families join. The rules, pure.
 /**
  * Light the Map: a map of India that lights up as families join. The rules, pure.
  * Tested in map.test.ts; src/lib/map-data.ts reads and writes.

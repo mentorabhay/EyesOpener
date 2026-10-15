@@ -1,4 +1,3 @@
-// Eyes Opener: Demo rows for the clip runner: a few finished clips for Aarav on the demo family's laptop, so the clip pages show.
 /**
  * Demo rows for the clip runner: a few finished clips for Aarav on the demo family's laptop, so the clip pages show
  * a history. Run it after the main seed; it is safe to run again.

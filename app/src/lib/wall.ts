@@ -1,4 +1,3 @@
-// Eyes Opener: Focus Wall: reading and writing. Server only. The rules are in wall-rules.ts.
 /**
  * Focus Wall: reading and writing. Server only. The rules are in wall-rules.ts.
  *

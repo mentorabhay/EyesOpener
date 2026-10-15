@@ -1,4 +1,3 @@
-// Eyes Opener: The show-up league's two jobs. The rules are in src/lib/league.ts; the reading and writing in src/lib/teams.ts.
 /**
  * The show-up league's two jobs. The rules are in src/lib/league.ts; the reading and writing in src/lib/teams.ts.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: The columns that make a row the household's, and so decide whether it is removed. .
 import { describe, expect, it } from "vitest";
 import { is } from "drizzle-orm";
 import { PgDialect, PgTable } from "drizzle-orm/pg-core";

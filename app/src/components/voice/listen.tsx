@@ -1,4 +1,3 @@
-// Eyes Opener: A Listen button for one script, drawn on the server. It appears only where audio exists for the script's words.
 /**
  * A Listen button for one script, drawn on the server. It appears only where audio exists for the script's words
  * as they are now; with no audio it draws nothing at all, so a page looks the same as before.

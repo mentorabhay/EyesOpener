@@ -1,4 +1,3 @@
-// Eyes Opener: Makes IOpener's own test reel: a short drawn film that the two-eye cinema can play when a member has no.
 /**
  * Makes IOpener's own test reel: a short drawn film that the two-eye cinema can play when a member has no
  * video of their own at hand. Every frame is drawn by the code below, so the film belongs to the project and

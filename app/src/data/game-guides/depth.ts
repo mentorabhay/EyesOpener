@@ -1,4 +1,3 @@
-// Eyes Opener: Game guides for the depth games: games that train seeing depth with two eyes, played through red-cyan glasses.
 /**
  * Game guides for the depth games: games that train seeing depth with two eyes, played through red-cyan glasses.
  *

@@ -1,4 +1,3 @@
-// Eyes Opener: The workday monitor on the page: the camera, the face model, the clock and the sending.
 "use client";
 /**
  * The workday monitor on the page: the camera, the face model, the clock and the sending.

@@ -1,4 +1,3 @@
-/* Eyes Opener: Unit and regression test suite verifying test.module functionality. */
 /* Two-line chart: left eye and right eye. Both pairs pass the colour-blind checks on the card surface. */
 .plot { --s1: #8b31f0; --s2: #c98708; color: var(--ink-3); display: block; width: 100%; height: auto; max-width: 560px; font-size: 13px; font-variant-numeric: tabular-nums; }
 @media (prefers-color-scheme: dark) {

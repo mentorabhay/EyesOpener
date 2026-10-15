@@ -1,4 +1,3 @@
-// Eyes Opener: Screen Vergence Steps. The demand changes in sudden steps and the member gets one ring back after each.
 /**
  * Screen Vergence Steps. The demand changes in sudden steps and the member gets one ring back after each.
  * It measures how many jumps were cleared, the largest jump cleared (prism dioptres) and the average time from

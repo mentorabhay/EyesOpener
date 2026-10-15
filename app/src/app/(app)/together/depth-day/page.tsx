@@ -1,4 +1,3 @@
-// Eyes Opener: First Depth Day for the active profile: the day a Depth check-up first found depth, the scene, and what the.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import Link from "next/link";

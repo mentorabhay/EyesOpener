@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying class-mission functionality.
 import { describe, expect, it } from "vitest";
 import { gameBySlug, gameLevel } from "@/data";
 import {

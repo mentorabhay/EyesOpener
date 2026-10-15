@@ -1,4 +1,3 @@
-// Eyes Opener: The only client code on the landing page. The sections arrive from the server in their final state; this turns.
 "use client";
 
 /**

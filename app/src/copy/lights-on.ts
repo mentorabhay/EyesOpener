@@ -1,4 +1,3 @@
-// Eyes Opener: Words for Lights On Hour: one fixed hour a week when households practise at the same time.
 /**
  * Words for Lights On Hour: one fixed hour a week when households practise at the same time.
  * The hour is company, not a reward: no line here offers points, extra minutes or a place in a list.

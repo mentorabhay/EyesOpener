@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying league functionality.
 import { describe, expect, it } from "vitest";
 import { TEAM_NAMES } from "@/copy/league";
 import { programmes } from "@/data";

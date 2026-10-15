@@ -1,4 +1,3 @@
-// Eyes Opener: Shared parts for games that train how the eyes turn in and out (vergence).
 /**
  * Shared parts for games that train how the eyes turn in and out (vergence).
  * The demand is in prism dioptres: positive turns the eyes in, negative turns them out.

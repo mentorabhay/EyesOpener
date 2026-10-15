@@ -1,4 +1,3 @@
-// Eyes Opener: Duet Streak: two people of different generations keep one streak. The rules, with no database and no clock.
 /**
  * Duet Streak: two people of different generations keep one streak. The rules, with no database and no clock.
  * Tested in duet.test.ts; src/lib/duet-data.ts reads and writes.

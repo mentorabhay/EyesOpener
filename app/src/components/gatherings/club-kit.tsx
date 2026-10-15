@@ -1,4 +1,3 @@
-// Eyes Opener: The Cinema Club host kit, drawn once and shown in three places: the member app, the sponsor portal and the.
 /**
  * The Cinema Club host kit, drawn once and shown in three places: the member app, the sponsor portal and the
  * counsellor portal. Server-safe. Each page calls its own gate first; nothing here reads who is looking.

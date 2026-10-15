@@ -1,4 +1,3 @@
-// Eyes Opener: Four arrows and a "cannot tell" button. The arrow keys answer too. `null` means cannot tell. .
 "use client";
 import { useEffect, useEffectEvent } from "react";
 import { measure as t } from "@/copy/test";

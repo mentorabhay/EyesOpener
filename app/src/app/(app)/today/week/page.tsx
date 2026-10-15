@@ -1,4 +1,3 @@
-// Eyes Opener: A check-up's own name, in lower case inside a sentence. .
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";

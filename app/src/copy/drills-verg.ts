@@ -1,4 +1,3 @@
-// Eyes Opener: Words drawn inside the vergence drills, and one line of help for each.
 /**
  * Words drawn inside the vergence drills, and one line of help for each.
  * A drill is practice with a measurement: the top line shows the numbers, the line under it says what to do now.

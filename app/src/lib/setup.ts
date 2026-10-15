@@ -1,4 +1,3 @@
-// Eyes Opener: The setup of the active person and the household's screen, read from the database (rules: src/lib/setup-rules.ts).
 /**
  * The setup of the active person and the household's screen, read from the database (rules: src/lib/setup-rules.ts).
  * Two small reads beside what the session already holds: whether the safety questions were answered, and when the latest

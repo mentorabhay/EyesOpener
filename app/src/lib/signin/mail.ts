@@ -1,4 +1,3 @@
-// Eyes Opener: Sends one email: the six-digit sign-in code (code.ts). Server only.
 /**
  * Sends one email: the six-digit sign-in code (code.ts). Server only.
  *

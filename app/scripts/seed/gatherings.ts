@@ -1,4 +1,3 @@
-// Eyes Opener: Demo rows for four community ideas: Lights On Hour, Cinema Club, Class Mission and Wish Jam.
 /**
  * Demo rows for four community ideas: Lights On Hour, Cinema Club, Class Mission and Wish Jam.
  * Run it after the main seed; it is safe to run again.

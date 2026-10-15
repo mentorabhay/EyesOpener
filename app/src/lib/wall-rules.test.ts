@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying wall-rules functionality.
 import { describe, expect, it } from "vitest";
 import { ARTWORKS, WALL_SIZES, artworkFor, earnsTile, focusOf, freeTile, isMonth, monthOf, shiftMonth, tileKey, tilesDue, tilesFor, wallGrid } from "./wall-rules";
 

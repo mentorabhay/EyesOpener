@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the Sunset Rule: what the family reads when the day's practice is done. .
 /** Words for the Sunset Rule: what the family reads when the day's practice is done. */
 import { texts } from "@/i18n/texts";
 

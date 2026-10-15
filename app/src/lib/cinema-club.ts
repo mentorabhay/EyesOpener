@@ -1,4 +1,3 @@
-// Eyes Opener: Cinema Club: volunteers host a weekly film hour at a school or a library, with one screen and a box of glasses.
 /**
  * Cinema Club: volunteers host a weekly film hour at a school or a library, with one screen and a box of glasses.
  * The rules, pure. Tested in cinema-club.test.ts; src/lib/cinema-club-data.ts reads and writes.

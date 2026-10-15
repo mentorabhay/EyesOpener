@@ -1,4 +1,3 @@
-// Eyes Opener: Words for signing in, the email link, the welcome step and signing out. .
 /** Words for signing in, the email link, the welcome step and signing out. */
 import type { Refusal } from "@/lib/signin/flow";
 import { SESSION_DAYS, TRUSTED_HOURS } from "@/lib/signin/lengths";

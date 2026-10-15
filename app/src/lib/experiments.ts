@@ -1,4 +1,3 @@
-// Eyes Opener: The rules of a community experiment: a check-up before, the idea's weeks, the same check-up after, and the.
 /**
  * The rules of a community experiment: a check-up before, the idea's weeks, the same check-up after, and the
  * result of everyone added up. Pure functions only, so every rule and every number here has a test beside it.

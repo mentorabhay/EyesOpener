@@ -1,4 +1,3 @@
-// Eyes Opener: Words for the weekly plan: the week screen, today's practice on the Today page, the end of a programme,.
 /**
  * Words for the weekly plan: the week screen, today's practice on the Today page, the end of a programme,
  * On screen a day's guided set is "today's practice". The word "chapter" is kept for one stretch of play or film

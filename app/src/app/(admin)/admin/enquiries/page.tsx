@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(admin)/admin/enquiries web route.
 import type { Metadata } from "next";
 import { Card, Chip, Empty, PageHead } from "@/components/ui";
 import { admin as a } from "@/copy/admin";

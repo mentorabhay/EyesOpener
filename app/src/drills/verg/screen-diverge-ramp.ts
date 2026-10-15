@@ -1,4 +1,3 @@
-// Eyes Opener: Screen Diverge Ramp. The ramp drill the other way: the two pictures drift so the eyes must relax outward to.
 /**
  * Screen Diverge Ramp. The ramp drill the other way: the two pictures drift so the eyes must relax outward to
  * keep one ring. It measures the break and the recovery turning out, reported as positive prism dioptres.

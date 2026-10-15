@@ -1,4 +1,3 @@
--- Eyes Opener: User authentication, token verification, and session state management (0005_signin_monitor_hero_people).
 CREATE TABLE "discovery_question" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"round_id" uuid NOT NULL,

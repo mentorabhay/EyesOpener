@@ -1,4 +1,3 @@
-// Eyes Opener: One part of the Cinema Club host kit, for a verified counsellor: the guide, the session sheet or the group screen. .
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { STANDARD_PLAN } from "@/components/film/chapters";

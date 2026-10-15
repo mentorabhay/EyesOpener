@@ -1,4 +1,3 @@
-// Eyes Opener: The lens choice against a real database: swapping the inks and deriving the eye settings again keeps the weaker eye.
 /**
  * The lens choice against a real database: swapping the inks and deriving the eye settings again keeps the weaker eye
  * where it is, however many times the settings are derived, including from a balance row too old to say which eye wore

@@ -1,4 +1,3 @@
-// Eyes Opener: Words for community experiments: joining, the check-up before, the weeks, the check-up after, and the result.
 /**
  * Words for community experiments: joining, the check-up before, the weeks, the check-up after, and the result.
  * A result from members is a signal, never proof, and nothing here may promise that an idea helps.

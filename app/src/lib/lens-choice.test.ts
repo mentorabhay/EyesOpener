@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying lens-choice functionality.
 import { describe, expect, it } from "vitest";
 import { derive, standardMeasured, type Measured } from "@/engine";
 import { cyanEyeFor, suggestInk, upsideDown } from "./lens-choice";

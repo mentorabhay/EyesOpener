@@ -1,4 +1,3 @@
-// Eyes Opener: Signing in, step by step. The server actions of the sign-in pages call these; each takes the browser's cookies as.
 /**
  * Signing in, step by step. The server actions of the sign-in pages call these; each takes the browser's cookies as
  * a plain `Jar`, so the whole of it is tested against a stand-in for Firebase with no web server running.

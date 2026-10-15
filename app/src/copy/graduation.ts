@@ -1,4 +1,3 @@
-// Eyes Opener: Words for Keeper Graduation. Finishing means the weeks were kept. It never says what changed in the eyes. .
 /** Words for Keeper Graduation. Finishing means the weeks were kept. It never says what changed in the eyes. */
 import type { KeeperRefusal, ThanksKey, WelcomeKey } from "@/lib/graduation";
 import { texts } from "@/i18n/texts";

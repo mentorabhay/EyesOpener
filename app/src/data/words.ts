@@ -1,4 +1,3 @@
-// Eyes Opener: The catalogue's lines as a reader sees them, in the reader's language.
 /**
  * The catalogue's lines as a reader sees them, in the reader's language.
  *

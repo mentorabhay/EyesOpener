@@ -1,4 +1,3 @@
-// Eyes Opener: Plays one clip: what it needs, how it goes, the template itself with a calm time bar, and the result.
 "use client";
 /**
  * Plays one clip: what it needs, how it goes, the template itself with a calm time bar, and the result.

@@ -1,4 +1,3 @@
-// Eyes Opener: A made-up mail server: answers each line by a script, and keeps what it was told. .
 import { EventEmitter } from "node:events";
 import { describe, expect, it } from "vitest";
 import { tidyCode } from "./code-rules";

@@ -1,4 +1,3 @@
-// Eyes Opener: Page controller component for the app/src/app/(app)/together/wall web route.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, PageHead } from "@/components/ui";

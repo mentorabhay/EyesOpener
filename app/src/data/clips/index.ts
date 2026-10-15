@@ -1,4 +1,3 @@
-// Eyes Opener: Every clip of the catalogue with how it is played. See types.ts.
 /**
  * Every clip of the catalogue with how it is played. See types.ts.
  */

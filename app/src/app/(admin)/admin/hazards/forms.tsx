@@ -1,4 +1,3 @@
-// Eyes Opener: Core system module providing logic and utilities for forms.
 "use client";
 import { startTransition, useActionState } from "react";
 import { admin } from "@/copy/admin";

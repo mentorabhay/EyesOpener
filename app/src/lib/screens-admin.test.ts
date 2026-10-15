@@ -1,4 +1,3 @@
-// Eyes Opener: Unit and regression test suite verifying screens-admin functionality.
 import { describe, expect, it } from "vitest";
 import { SMALL, shown } from "./screens-admin";
 

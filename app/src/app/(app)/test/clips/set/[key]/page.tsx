@@ -1,4 +1,3 @@
-// Eyes Opener: One set: the clips it plays for this profile on this screen, and the player. .
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SetPlayer } from "@/components/clips/set-player";

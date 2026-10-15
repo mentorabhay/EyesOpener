@@ -1,4 +1,3 @@
-// Eyes Opener: Test helpers for the two-eye games: plays a game the way a member would, with a bot that is told what.
 /**
  * Test helpers for the two-eye games: plays a game the way a member would, with a bot that is told what
  * it can see, and measures how far each ink reached. Not part of the app: only the test files import it.

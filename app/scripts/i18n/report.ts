@@ -1,4 +1,3 @@
-// Eyes Opener: `count` and `check`: the numbers and the faults of the translation files, read against the words in the code.
 /**
  * `count` and `check`: the numbers and the faults of the translation files, read against the words in the code.
  *

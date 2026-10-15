@@ -1,4 +1,3 @@
-// Eyes Opener: What a session measured, as the member's own record keeps it. Pure helpers, unit-tested.
 /**
  * What a session measured, as the member's own record keeps it. Pure helpers, unit-tested.
  * The numbers come from the browser, so they are cleaned on the server before they are stored and again when read.

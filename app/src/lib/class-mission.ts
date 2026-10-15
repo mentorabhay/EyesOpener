@@ -1,4 +1,3 @@
-// Eyes Opener: Class Mission: the child who wears a patch leads a five-minute game for the whole class. The rules, pure.
 /**
  * Class Mission: the child who wears a patch leads a five-minute game for the whole class. The rules, pure.
  * Tested in class-mission.test.ts; src/lib/class-mission-data.ts reads and writes.

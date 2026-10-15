@@ -1,4 +1,3 @@
-// Eyes Opener: Where a person lands when they have signed in and belong nowhere yet: no household, no staff, counsellor or.
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { signin as t } from "@/copy/signin";

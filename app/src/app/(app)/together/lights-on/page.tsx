@@ -1,4 +1,3 @@
-// Eyes Opener: Lights On Hour. Everyone with a seat may look, a child included: the page shows a time, a number and lanterns.
 import { More } from "@/components/guide/more";
 import type { Metadata } from "next";
 import { Btn, Card, Chip, PageHead, Void } from "@/components/ui";

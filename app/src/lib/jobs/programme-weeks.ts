@@ -1,4 +1,3 @@
-// Eyes Opener: Daily job: moves every active programme on to the week the calendar says, and closes a course that has run all.
 /**
  * Daily job: moves every active programme on to the week the calendar says, and closes a course that has run all
  * its weeks. The member's own visit to Today does the same for that member; this job covers everyone who has not

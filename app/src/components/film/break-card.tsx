@@ -1,4 +1,3 @@
-// Eyes Opener: The eye break between two chapters, drawn over the paused film: what to do, and a slow countdown.
 "use client";
 import { useEffect, useState } from "react";
 import { cinema as c } from "@/copy/cinema";

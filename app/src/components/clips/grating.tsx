@@ -1,4 +1,3 @@
-// Eyes Opener: Which way do the stripes run: a small round patch of soft-edged stripes on mid grey, fading on the letter.
 "use client";
 /**
  * Which way do the stripes run: a small round patch of soft-edged stripes on mid grey, fading on the letter

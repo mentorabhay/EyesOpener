@@ -1,4 +1,3 @@
-// Eyes Opener: What a game's page tells the member: what the game is for, what they should see, how to play,.
 /**
  * What a game's page tells the member: what the game is for, what they should see, how to play,
  * when to press, what counts as success, what is measured, and when to stop.

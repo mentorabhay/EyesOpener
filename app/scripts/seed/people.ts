@@ -1,4 +1,3 @@
-// Eyes Opener: Demo rows for four community ideas: Duet Streak, Discovery Board and Light the Map (Proof of Help needs none:.
 /**
  * Demo rows for four community ideas: Duet Streak, Discovery Board and Light the Map (Proof of Help needs none:
  * it reads the ideas and experiments the other seeds made). Run it after the main seed; it is safe to run again.

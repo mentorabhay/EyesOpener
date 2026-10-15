@@ -1,4 +1,3 @@
-// Eyes Opener: A plain-language legal page: the draft line at the top, a list of sections, and links to the pages beside it. .
 /** A plain-language legal page: the draft line at the top, a list of sections, and links to the pages beside it. */
 import Link from "next/link";
 import { site as t } from "@/copy/site";

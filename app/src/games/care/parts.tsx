@@ -1,4 +1,3 @@
-// Eyes Opener: Pieces the care companions share: the minutes field, the "not built yet" note, the help line. Server-safe. .
 /** Pieces the care companions share: the minutes field, the "not built yet" note, the help line. Server-safe. */
 import { Card, Empty } from "@/components/ui";
 import { care as t } from "@/copy/games-care";
