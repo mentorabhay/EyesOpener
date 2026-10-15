@@ -24,8 +24,14 @@ const up = await db.execute(sql`select face_seconds from monitor_sample limit 0`
 vi.setConfig({ testTimeout: 60_000, hookTimeout: 60_000 });
 
 const x = crypto.randomBytes(5).toString("hex"), MIN = 60_000;
-/** A clock for the test: forty minutes ago, on the minute. Every call passes its own "now". */
-const T0 = minuteOf(Date.now()) - 40 * MIN;
+/**
+ * A clock for the test: noon India time today, or yesterday when today's noon is not yet forty minutes past, on the
+ * minute. Every call passes its own "now". It used to be "forty minutes ago", which put the test's half hour across
+ * midnight India time when the tests ran just after it, so one day's numbers were split over two days.
+ */
+const DAY = 24 * 60 * MIN, INDIA = 330 * MIN;
+const noon = Math.floor((Date.now() + INDIA) / DAY) * DAY - INDIA + DAY / 2;
+const T0 = minuteOf(noon > Date.now() - 40 * MIN ? noon - DAY : noon);
 
 type Row = { id: string };
 interface Made { account: Row; guardian: Row; cheer: Row; adult: typeof s.profile.$inferSelect; child: typeof s.profile.$inferSelect; teen: typeof s.profile.$inferSelect }
