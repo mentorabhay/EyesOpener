@@ -39,7 +39,7 @@ export const PRIVATE_PATHS = [
 ] as const;
 
 /** Title, description, canonical address and Open Graph for one public page. The root layout adds the site name to the title. */
-export function pageMeta(path: string, m: { title: string; description: string }, name = "IOpener") {
+export function pageMeta(path: string, m: { title: string; description: string }, name = "Eyes Opener") {
   return {
     title: m.title,
     description: m.description,

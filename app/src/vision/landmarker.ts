@@ -49,7 +49,7 @@ const note = (line: unknown) => { runtimeLog.push(String(line).slice(0, 300)); i
  *
  * As shipped, the package posts "metrics about the performance and utilization of the APIs" to Google about once
  * a minute and when a task closes (its README, "Privacy Notice"; in its code: https://odml.pa.googleapis.com/v1/log).
- * It has no switch for this. No picture and no face point is in that post. But IOpener's rule is stricter: the
+ * It has no switch for this. No picture and no face point is in that post. But Eyes Opener's rule is stricter: the
  * camera pipeline talks to no other site at all, and a member was told so.
  * So before the runtime starts, the page's `fetch` gets one extra rule: a request to that log is answered here with
  * "refused" and is never sent. The package's logger stops for good at its first refusal. Every other request

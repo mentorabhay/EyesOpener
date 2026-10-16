@@ -101,7 +101,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
   const finish = (code: string, email = "", next = "") => run(() => finishLink(null, form({ code, email, next })));
   const lastMail = () => standIn.mail[standIn.mail.length - 1];
   const refusal = (o: Outcome<SignInAnswer>) => (o.answer && !o.answer.ok ? o.answer.why : o.to ? `moved to ${o.to}` : "accepted");
-  /** A household with one guardian and one child, made directly: a family that already uses IOpener. */
+  /** A household with one guardian and one child, made directly: a family that already uses Eyes Opener. */
   async function family(name: string, guardianEmail: string, more: Partial<typeof s.account.$inferInsert> = {}) {
     const [account] = await db.insert(s.account).values({ displayName: `zz-signin-${x} ${name}`, ...more }).returning();
     const [guardian] = await db.insert(s.appUser).values({ email: guardianEmail, displayName: `Guardian ${name}`, accountId: account.id, seat: "guardian" }).returning();
@@ -280,7 +280,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
   /* ───────────── Google ───────────── */
 
   describe("with Google", () => {
-    it("makes a new person for an address IOpener does not know, with no household yet, and sends them to the welcome page", async () => {
+    it("makes a new person for an address Eyes Opener does not know, with no household yet, and sends them to the welcome page", async () => {
       const out = await google(at("Maya"), { name: "Maya Rao" });
       expect(out).toMatchObject({ to: "/login/welcome", how: "replace" });
       const me = await person(at("maya"));
@@ -355,7 +355,7 @@ describe.skipIf(!up)("signing in, against the database and a stand-in for Fireba
         [{ auth_time: Math.floor(Date.now() / 1000) - 3600 }, "an old sign-in"],
         [{ sub: "" }, "no subject"],
         [{ firebase: { sign_in_provider: "password" } }, "another way of signing in than the one just used"],
-        [{ firebase: { sign_in_provider: "anonymous" } }, "a way of signing in IOpener does not offer"],
+        [{ firebase: { sign_in_provider: "anonymous" } }, "a way of signing in Eyes Opener does not offer"],
       ];
       for (const [claims, name] of wrong) {
         newBrowser();

@@ -10,7 +10,7 @@
  *
  * The first depth day is the day of the first check-up that found depth, when at least one earlier check-up did
  * not. A profile whose very first Depth check-up already found depth has no first depth day: the depth was there
- * before IOpener measured anything, so nothing was first and nobody is told that anything was gained.
+ * before Eyes Opener measured anything, so nothing was first and nobody is told that anything was gained.
  *
  * What this never says: why. A check-up measures on one day, on one screen, and it can be passed by luck: someone
  * who guesses every answer passes it about once in ninety tries (depth-day.test.ts plays the engine's own

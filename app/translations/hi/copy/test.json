@@ -1595,8 +1595,8 @@
   },
   "test.summary.howMeasured": {
    "source": "a01b275877b4ec",
-   "english": "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is IOpener's own fifteen questions, scored 0 to 60, with no cut-off.",
-   "text": "अक्षर का आकार 6/x के रूप में लिखा जाता है। धुंधले अक्षर सबसे कम कंट्रास्ट वाले पढ़े गए अक्षर हैं। आँख का संतुलन वह कंट्रास्ट है जिस तक कमज़ोर आँख की गई थी। गहराई आर्क सेकंड में है। फ्यूज़न रेंज प्रिस्म डायोप्टर में है, जो केवल अंदर की ओर मुड़ती है। निकट बिंदु नाक की पुल से सेंटीमीटर में है। सप्रेशन जाँच लाल-सियान चश्मे के ज़रिए चार-डॉट जाँच है। लक्षण सर्वेक्षण IOpener के अपने पंद्रह सवाल हैं, जिन्हें 0 से 60 तक अंक दिए जाते हैं, और कोई कट-ऑफ़ नहीं है।",
+   "english": "Letter size is written as 6/x. Faint letters are the lowest contrast read. Eye balance is the contrast the stronger eye was dimmed to. Depth is in arc seconds. Fusion range is in prism dioptres, turning in only. Near point is in centimetres from the bridge of the nose. The suppression check is a four-dot check through red-cyan glasses. The symptom survey is Eyes Opener's own fifteen questions, scored 0 to 60, with no cut-off.",
+   "text": "अक्षर का आकार 6/x के रूप में लिखा जाता है। धुंधले अक्षर सबसे कम कंट्रास्ट वाले पढ़े गए अक्षर हैं। आँख का संतुलन वह कंट्रास्ट है जिस तक कमज़ोर आँख की गई थी। गहराई आर्क सेकंड में है। फ्यूज़न रेंज प्रिस्म डायोप्टर में है, जो केवल अंदर की ओर मुड़ती है। निकट बिंदु नाक की पुल से सेंटीमीटर में है। सप्रेशन जाँच लाल-सियान चश्मे के ज़रिए चार-डॉट जाँच है। लक्षण सर्वेक्षण Eyes Opener के अपने पंद्रह सवाल हैं, जिन्हें 0 से 60 तक अंक दिए जाते हैं, और कोई कट-ऑफ़ नहीं है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -1686,8 +1686,8 @@
   },
   "test.summary.notMedical": {
    "source": "5322d4622c9b26",
-   "english": "IOpener is not a medical device. These are home measurements, taken on a home screen without supervision. They do not diagnose anything.",
-   "text": "IOpener कोई चिकित्सीय उपकरण नहीं है। ये घर की माप हैं, जो बिना देखरेख के घर की स्क्रीन पर ली जाती हैं। इनसे किसी चीज़ का निदान नहीं होता है।",
+   "english": "Eyes Opener is not a medical device. These are home measurements, taken on a home screen without supervision. They do not diagnose anything.",
+   "text": "Eyes Opener कोई चिकित्सीय उपकरण नहीं है। ये घर की माप हैं, जो बिना देखरेख के घर की स्क्रीन पर ली जाती हैं। इनसे किसी चीज़ का निदान नहीं होता है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },

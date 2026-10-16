@@ -4,7 +4,7 @@ import type { Refusal } from "@/lib/signin/flow";
 import { SESSION_DAYS, TRUSTED_HOURS } from "@/lib/signin/lengths";
 import { texts } from "@/i18n/texts";
 
-const askUs = "This email address is already tied to a different sign-in at IOpener, so we did not sign you in. IOpener staff have to check and free it first.";
+const askUs = "This email address is already tied to a different sign-in at Eyes Opener, so we did not sign you in. Eyes Opener staff have to check and free it first.";
 
 export const signin = texts("copy/signin", "signin", () => ({
   title: "Sign in",
@@ -28,7 +28,7 @@ export const signin = texts("copy/signin", "signin", () => ({
   },
   sent: {
     title: "Check your email",
-    look: (email: string) => `Look for an email from IOpener at ${email}. It can take a minute.`,
+    look: (email: string) => `Look for an email from Eyes Opener at ${email}. It can take a minute.`,
     open: "Open the link in it on this device. On another device you will be asked for your email address again.",
     several: "Only a few links go to one address in an hour. If you asked more than once, use the newest email.",
     none: "No email? Look in the spam folder first.",
@@ -49,11 +49,11 @@ export const signin = texts("copy/signin", "signin", () => ({
     other: "Use a different address",
   },
   mail: {
-    subject: (code: string) => `${code} is your IOpener sign-in code`,
-    intro: "Your IOpener sign-in code is",
+    subject: (code: string) => `${code} is your Eyes Opener sign-in code`,
+    intro: "Your Eyes Opener sign-in code is",
     use: (minutes: number) => `Type it on the sign-in page. It works once, for ${minutes} minutes.`,
     ignore: "If you did not ask for it, you can ignore this email. Nobody can sign in without the code.",
-    note: "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
+    note: "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.",
   },
   join: { text: "Has a guardian given you an invite code?", link: "Join their family" },
 
@@ -90,7 +90,7 @@ export const signin = texts("copy/signin", "signin", () => ({
     sub: "You are signed in. One more step.",
     start: {
       title: "Start a family space",
-      body: "A family space holds your own profile and your children's profiles, with their check-ups and practice. You look after it as its guardian. IOpener then measures your screen and your eyes.",
+      body: "A family space holds your own profile and your children's profiles, with their check-ups and practice. You look after it as its guardian. Eyes Opener then measures your screen and your eyes.",
       submit: "Start my family space",
     },
     join: {
@@ -106,16 +106,16 @@ export const signin = texts("copy/signin", "signin", () => ({
     slow_down: "Too many tries from this network. Wait a few minutes and try again.",
     unavailable: "We could not reach the sign-in service just now. Try again in a minute.",
     not_confirmed: "We could not confirm this sign-in. Please try again.",
-    email_unverified: "This account's email address has not been confirmed, so IOpener cannot use it. Sign in with the email link instead.",
+    email_unverified: "This account's email address has not been confirmed, so Eyes Opener cannot use it. Sign in with the email link instead.",
     google_refused: "Google did not accept that sign-in. Please try again.",
-    other_method: "Google could not confirm this address for IOpener. Sign in with the email link instead.",
+    other_method: "Google could not confirm this address for Eyes Opener. Sign in with the email link instead.",
     disabled: "This sign-in has been switched off.",
     bad_link: "This sign-in link is not complete. Ask for a new one.",
     need_address: "Type the email address this link was sent to.",
     link_expired: "This link is too old or was used already. A link works once. Ask for a new one.",
     wrong_address: "That is not the address this link was sent to. Check it and try again.",
     child_mode: "This device is in child mode. Only a grown-up of this child's family can sign in on it. A grown-up leaves child mode with the exit PIN first.",
-    unverified: "This account's email address has not been confirmed, so IOpener cannot use it.",
+    unverified: "This account's email address has not been confirmed, so Eyes Opener cannot use it.",
     other_sign_in: askUs,
     address_in_use: askUs,
     unclear: askUs,

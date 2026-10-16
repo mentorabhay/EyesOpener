@@ -13,7 +13,7 @@ export const generateMetadata = (): Metadata => (pageMeta("/wish-jam", w.meta));
 /**
  * Wish Jam, the public page: the wishes families have shared, the game kit's rules in short, and the form a
  * builder writes in with. No sign-in. Every wish here is what `toPublic` let through: a code, an age band, the
- * choices and the short line a person at IOpener approved. No household, no family name, no school, no city.
+ * choices and the short line a person at Eyes Opener approved. No household, no family name, no school, no city.
  */
 export default async function WishJamSitePage() {
   const wishes = await publicWishes();

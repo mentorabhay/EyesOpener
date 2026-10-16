@@ -1,4 +1,4 @@
-// Eyes Opener: The footer: the page groups, and the lines that IOpener is not a medical device, has an open-source core and has no ads. .
+// Eyes Opener: The footer: the page groups, and the lines that Eyes Opener is not a medical device, has an open-source core and has no ads. .
 import Link from "next/link";
 import { common } from "@/copy/common";
 import { site as t } from "@/copy/site";
@@ -6,7 +6,7 @@ import { inEdition } from "@/edition";
 import { SiteLanguage } from "@/i18n/menu";
 import { Mark } from "./site-nav";
 
-/** The footer: the page groups, and the lines that IOpener is not a medical device, has an open-source core and has no ads. */
+/** The footer: the page groups, and the lines that Eyes Opener is not a medical device, has an open-source core and has no ads. */
 export function SiteFooter() {
   return (
     <footer className="s-foot">

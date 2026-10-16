@@ -1,6 +1,6 @@
-// Eyes Opener: IOpener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
+// Eyes Opener: Eyes Opener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
 /**
- * IOpener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
+ * Eyes Opener's own session, and when it stops counting. Pure rules, unit-tested; auth.ts applies them on every request.
  *
  * After Firebase has vouched for a person, the server gives the browser one signed cookie that names the `app_user`
  * and says when the session began. Nothing of Firebase's is kept in the browser. Roles are never in the cookie:

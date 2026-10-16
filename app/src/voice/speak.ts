@@ -34,7 +34,7 @@ const UNIT = new RegExp(`(\\d+(?:\\.\\d+)?)\\s?(${Object.keys(UNITS).sort((a, b)
 
 /** Words a voice would say wrongly as written. */
 const SAY: readonly [RegExp, string][] = [
-  [/\bIOpener\b/g, "Eye Opener"],
+  [/\bEyes Opener\b/g, "Eye Opener"],
   [/\bEsc\b/g, "Escape"],
 ];
 

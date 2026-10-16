@@ -8,7 +8,7 @@ import { texts } from "@/i18n/texts";
 
 const squares = (n: number) => (n === 0 ? "No squares marked" : n === 1 ? "1 square marked" : `${n} squares marked`);
 
-/** Short passages for the reading tool. Written for IOpener; everyday subjects, no real people, 90 to 130 words each. */
+/** Short passages for the reading tool. Written for Eyes Opener; everyday subjects, no real people, 90 to 130 words each. */
 export const passages: string[] = texts("copy/drills-tools", "passages", () => ([
   "The market opens early. I take a cloth bag and walk down the lane while the air is still cool. The first stall sells tomatoes, onions and green chillies in neat piles. The woman there knows what I like and picks the firm ones for me. Next I stop for a bunch of fresh coriander and two lemons. A boy pushes a cart of bananas past us and calls out the price. I count my coins, pay, and put the change in my pocket. On the way home the bag is heavy, so I swap hands at each corner. By the time I reach the door the sun is warm on my back.",
   "First I fill the small pan with one cup of water and set it on the stove. While it heats, I crush a piece of ginger and two pods of cardamom. When the water starts to bubble I add the ginger, the cardamom and a spoon of tea leaves. The smell fills the kitchen at once. I let it boil for a minute, then pour in half a cup of milk and stir in the sugar. The tea rises to the edge of the pan, so I lower the flame and wait. When the colour turns a deep brown I strain it into two cups. One is for me. The other is for whoever comes to the door first.",

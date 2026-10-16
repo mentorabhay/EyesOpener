@@ -37,9 +37,9 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     title: "How a wish becomes a game",
     steps: [
       { b: "You write the wish.", t: "Choose what your child loves from the lists and add one short line." },
-      { b: "A person at IOpener reads it.", t: "Nobody outside your family sees it before that." },
+      { b: "A person at Eyes Opener reads it.", t: "Nobody outside your family sees it before that." },
       { b: "It goes on the wish list.", t: "Developers and students read the list and pick a wish to build." },
-      { b: "A builder makes the game.", t: "They work with the IOpener team, never with your family. Nobody is given a way to reach you." },
+      { b: "A builder makes the game.", t: "They work with the Eyes Opener team, never with your family. Nobody is given a way to reach you." },
       { b: "Your child tries it and names it.", t: "The team adds the game to the library once it meets the rules. Then your child gives it its name." },
     ],
     noPromise: "A wish may wait a long time, and some are never built. A built game is a game like any other in the library: nobody can promise what it does for anyone's eyes.",
@@ -68,7 +68,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
       never: "It never shows a family name, a school, a city or a picture. This form has no place for them.",
     },
     submit: "Send the wish for review",
-    saved: "The wish is waiting for a person at IOpener. It goes on the list once they have read it.",
+    saved: "The wish is waiting for a person at Eyes Opener. It goes on the list once they have read it.",
     noChild: "Every child of the household already has a wish on its way, or has no consent in place.",
     lookOnly: "Only a parent or guardian can write a wish, take it back or name the game.",
     tester: "A staff test household cannot make a wish, so the list holds members' wishes only.",
@@ -78,7 +78,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
   own: {
     title: (name: string) => `${name}'s wish`,
     status: {
-      in_review: "Waiting for a person at IOpener",
+      in_review: "Waiting for a person at Eyes Opener",
       listed: "On the wish list",
       matched: "A builder is working on it",
       built: "Built",
@@ -97,7 +97,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     child: "A child",
     hidden: "Consent for this child is not in place, so the wish is off the public list until it is.",
     play: (game: string) => `Play ${game}`,
-    checking: "The IOpener team is still checking the game. It appears in the library after that.",
+    checking: "The Eyes Opener team is still checking the game. It appears in the library after that.",
     back: {
       open: "Take the wish back",
       warn: "The wish is deleted and leaves the public list at once. If a builder has started, their work is not undone.",
@@ -114,14 +114,14 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     field: "The game's name",
     hint: (max: number) => `A few words, up to ${max} letters. Not a person's name.`,
     submit: "Send the name for review",
-    saved: "The name is waiting for a person at IOpener.",
+    saved: "The name is waiting for a person at Eyes Opener.",
     status: {
-      in_review: "The name is waiting for a person at IOpener",
+      in_review: "The name is waiting for a person at Eyes Opener",
       approved: "Named",
       blocked: "That name could not be used. Offer another.",
     } satisfies Record<NameStatus, string>,
     named: (name: string) => `The game is called "${name}".`,
-    waiting: (name: string) => `"${name}" is waiting for a person at IOpener.`,
+    waiting: (name: string) => `"${name}" is waiting for a person at Eyes Opener.`,
     blocked: "This name cannot be sent because it could hurt someone. Nothing was saved.",
   },
 
@@ -131,7 +131,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     none: { title: "Nothing here yet", body: "Ask a grown-up at home about this page." },
     lookOnly: "A grown-up at home writes the wish and types the name you choose.",
     next: {
-      in_review: "A person at IOpener is reading your wish.",
+      in_review: "A person at Eyes Opener is reading your wish.",
       listed: "Your wish is on the list. It is waiting for someone to build it.",
       matched: "Someone is building your game. That takes time.",
       built: "Your game is built. Think of a name for it, and tell a grown-up at home.",
@@ -158,7 +158,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     already: "This child already has a wish on its way. One at a time.",
     bad_choice: "Choose each answer from its list.",
     not_built: "The game is not built yet.",
-    waiting: "A name is already waiting for a person at IOpener.",
+    waiting: "A name is already waiting for a person at Eyes Opener.",
     named: "The game already has its name.",
   } satisfies Record<WishRefusal, string>,
 
@@ -168,7 +168,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
     hero: {
       kicker: "Wish Jam",
       title: "Build a game for one child's wish",
-      lead: "Families write down what their child would love a game to be about. Developers and students pick a wish and build it with IOpener's open game kit. The child tries the game and gives it its name.",
+      lead: "Families write down what their child would love a game to be about. Developers and students pick a wish and build it with Eyes Opener's open game kit. The child tries the game and gives it its name.",
       cta: "Write to us about a wish",
       toList: "Read the wishes",
     },
@@ -176,7 +176,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
       kicker: "The wishes",
       title: "Every entry has a first player waiting",
       lead: "In the order they were approved. Nobody ranks them.",
-      none: { title: "No wish is on the list yet", body: "Wishes appear here once a family has written one and a person at IOpener has read it." },
+      none: { title: "No wish is on the list yet", body: "Wishes appear here once a family has written one and a person at Eyes Opener has read it." },
       from: (name: string | null) => (name ? `${name}'s wish` : "A child's wish"),
       loves: "Loves",
       play: "Likes to",
@@ -195,7 +195,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
       items: [
         { title: "Pick a wish", body: "Note its code. One builder or one team for a wish." },
         { title: "Write to us", body: "Use the form below and put the code in your message. The team answers by email." },
-        { title: "Build with the kit", body: "A game is one plain file on IOpener's game kit. The kit handles the glasses, the contrast, the clock and the stop button." },
+        { title: "Build with the kit", body: "A game is one plain file on Eyes Opener's game kit. The kit handles the glasses, the contrast, the clock and the stop button." },
         { title: "The team checks it", body: "Every game is checked against the kit's rules. One that meets them is added to the library by the team." },
         { title: "The child names it", body: "The family tries the game, and the child gives it its name. We tell you what they chose." },
       ],
@@ -214,7 +214,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
         { b: "One plain file.", t: "No pictures, no sound files, no timers and no chance of its own: the kit gives the game its time and its chance." },
         { b: "Plain words, honest claims.", t: "No emoji, and no line that says a game will fix anyone's eyes." },
       ],
-      where: "The full rules are in the file docs/CONTRACT.md of IOpener's open-source core, under \"Addendum: games (the kit)\".",
+      where: "The full rules are in the file docs/CONTRACT.md of Eyes Opener's open-source core, under \"Addendum: games (the kit)\".",
       get: "Write to us below and the team will tell you how to get the code.",
     },
     never: {
@@ -222,7 +222,7 @@ export const wishJam = texts("copy/wish-jam", "wishJam", () => ({
       title: "What a builder is never given",
       items: [
         "A family name, a school, a city or a picture. A wish does not hold them.",
-        "A way to reach the family. Messages go through the IOpener team, in both directions.",
+        "A way to reach the family. Messages go through the Eyes Opener team, in both directions.",
         "Anything about the child's eyes. The wish says what kind of game is wanted, and nothing else.",
       ],
       adults: (age: number) => `The form is for adults. A student under ${age} takes part through a teacher or a parent, who writes in for the team.`,

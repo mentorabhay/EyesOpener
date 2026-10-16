@@ -9,7 +9,7 @@
  *    short line in their own words. Not a cheer seat, not a device in child mode, not a staff test household.
  *    A child profile only, aged 4 or more (no screen sessions under 4), and only while a guardian's consent stands.
  * 2. The short line never carries a name of the family, a school or a class, a phone number, an email address or a
- *    link (`lineProblem`). It then passes the hazard screen, and the whole wish waits for a person at IOpener.
+ *    link (`lineProblem`). It then passes the hazard screen, and the whole wish waits for a person at Eyes Opener.
  *    Nobody outside the household reads any of it before that person approves it.
  * 3. The public list shows a wish by a short code, an age band and the choices. It shows the child's first name
  *    only when the guardian ticked that, and never more than the first word of the profile's name. It never shows

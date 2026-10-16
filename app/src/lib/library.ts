@@ -1,6 +1,6 @@
-// Eyes Opener: The research library: the passages IOpener's own pages already carry about the research, each with the source.
+// Eyes Opener: The research library: the passages Eyes Opener's own pages already carry about the research, each with the source.
 /**
- * The research library: the passages IOpener's own pages already carry about the research, each with the source
+ * The research library: the passages Eyes Opener's own pages already carry about the research, each with the source
  * it rests on. A search here returns passages, word for word, with their sources. It never writes an answer.
  *
  * What is in it:

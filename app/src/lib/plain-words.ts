@@ -1,6 +1,6 @@
-// Eyes Opener: The plain-words check: rules that every sentence a person reads in IOpener must pass.
+// Eyes Opener: The plain-words check: rules that every sentence a person reads in Eyes Opener must pass.
 /**
- * The plain-words check: rules that every sentence a person reads in IOpener must pass.
+ * The plain-words check: rules that every sentence a person reads in Eyes Opener must pass.
  *
  * They come from the project's copy rules: plain words a school student can follow, one idea per sentence, no
  * internal codes on screen, no jargon, no emoji, "weaker eye" and "stronger eye", no cure wording and no

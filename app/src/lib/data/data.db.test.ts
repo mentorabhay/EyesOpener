@@ -44,7 +44,7 @@ const IDEA_GONE = `Idea zz-idea-gone-${x}`, IDEA_STAY = `Idea zz-idea-stay-${x}`
 /** Every word that belongs to the household "gone" alone. */
 const GONE_WORDS = [GONE, `zz-idea-gone-${x}`];
 const TARA = `Tara${x}`, ZED = `Zed${x}`, KIRAN = `Kiran${x}`, RAO = `Dr Test ${x}`;
-const email = (who: string) => `${who}-${x}@iopener.test`;
+const email = (who: string) => `${who}-${x}@eyesopener.test`;
 const DAY = "2026-09-01";
 /* The job's clock in this test. Audit lines it writes carry these exact times, which is how they are found and removed. */
 const runAt = new Date(Math.floor(Date.now() / 1000) * 1000 + 137), runAt2 = new Date(runAt.getTime() + 1), runAt3 = new Date(runAt.getTime() + 2);
@@ -292,10 +292,10 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
 
   async function cleanUp() {
     for (const home of [A, PV, B, C]) if (home) await db.transaction((tx) => eraseHousehold(tx, home.id));
-    await db.delete(s.enquiry).where(like(sql`lower(${s.enquiry.email})`, `%-${x}@iopener.test`));
+    await db.delete(s.enquiry).where(like(sql`lower(${s.enquiry.email})`, `%-${x}@eyesopener.test`));
     if (auditIds.length) await db.delete(s.auditLog).where(inArray(s.auditLog.id, auditIds));
     await db.delete(s.auditLog).where(and(inArray(s.auditLog.action, [DELETED_HOUSEHOLD, DELETED_PROFILE]), inArray(s.auditLog.createdAt, [runAt, runAt2, runAt3])));
-    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@iopener.test`));
+    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@eyesopener.test`));
     if (sponsor) await db.delete(s.sponsor).where(eq(s.sponsor.id, sponsor.id));
     if (league) await db.delete(s.league).where(eq(s.league.id, league.id));
     if (wall) await db.delete(s.focusWall).where(eq(s.focusWall.id, wall.id));
@@ -324,7 +324,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
 
     it("is one file a program can read, with a README that counts each part", () => {
       const back = JSON.parse(json) as FamilyFile;
-      expect(back.format).toBe("iopener-family-data");
+      expect(back.format).toBe("eyesopener-family-data");
       expect(back.madeAt).toBe(runAt.toISOString());
       expect(Object.keys(back.data)).toEqual([...PARTS]);
       for (const part of PARTS) {
@@ -360,7 +360,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(file.data.counsellorLinks[0]).toMatchObject({ counsellorName: `${RAO} (counsellor)` });
       expect(file.data.counsellorLinks[0]).not.toHaveProperty("counsellorId");
       expect(file.data.programmes[0]).toMatchObject({ approvedByName: `${RAO} (counsellor)` });
-      expect(file.data.review.find((r) => r.kind === "story")).toMatchObject({ reviewerName: "A person at IOpener" });
+      expect(file.data.review.find((r) => r.kind === "story")).toMatchObject({ reviewerName: "A person at Eyes Opener" });
       const out = file.data.lights.find((l) => l.fromProfileId === P1.id)!, back = file.data.lights.find((l) => l.toProfileId === P1.id)!;
       expect(out).toMatchObject({ toProfileName: ZED, note: `Out ${GIFT}` });
       expect(out).not.toHaveProperty("toProfileId");
@@ -377,7 +377,7 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
       expect(Object.keys(her).sort()).toEqual([...OTHER_PERSON_COLUMNS].sort());
       expect(her).toMatchObject({ displayName: KIRAN, seat: "co_guardian" });
       expect(json).not.toContain(K.email);
-      /* Her message to IOpener as a counsellor is not in his file; his own is. */
+      /* Her message to Eyes Opener as a counsellor is not in his file; his own is. */
       expect(file.data.enquiries.map((e) => e.message)).toEqual([`Message ${GONE}`]);
     });
 
@@ -679,6 +679,6 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
   it("removes everything it made", async () => {
     await cleanUp();
     expect(await scan([], [x])).toEqual({});
-    expect(await db.select().from(s.appUser).where(or(like(s.appUser.email, `%-${x}@iopener.test`), eq(s.appUser.id, K.id)))).toHaveLength(0);
+    expect(await db.select().from(s.appUser).where(or(like(s.appUser.email, `%-${x}@eyesopener.test`), eq(s.appUser.id, K.id)))).toHaveLength(0);
   });
 });

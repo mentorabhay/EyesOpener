@@ -132,16 +132,16 @@ describe("the strict rule", () => {
     expect(hi(() => JSON.stringify(demo))).not.toContain("गया");
   });
   it("shows English when a number, a unit or a placeholder was changed, even in a reviewed entry", () => {
-    const strict = texts("test/strict", "strict", () => ({ dose: "Play for 20 minutes.", far: "Sit 40 cm away.", who: "Hello {name}", brand: "IOpener is free." }));
+    const strict = texts("test/strict", "strict", () => ({ dose: "Play for 20 minutes.", far: "Sit 40 cm away.", who: "Hello {name}", brand: "Eyes Opener is free." }));
     put("hi", "test/strict", {
       "strict.dose": { source: mark("Play for 20 minutes."), text: "20 घंटे खेलें।", status: "reviewed" },
       "strict.far": { source: mark("Sit 40 cm away."), text: "400 cm दूर बैठें।", status: "reviewed" },
       "strict.who": { source: mark("Hello {name}"), text: "नमस्ते", status: "reviewed" },
-      "strict.brand": { source: mark("IOpener is free."), text: "आईओपनर मुफ़्त है।", status: "reviewed" },
+      "strict.brand": { source: mark("Eyes Opener is free."), text: "आईओपनर मुफ़्त है।", status: "reviewed" },
     });
     const missed: Miss[] = [];
     const out = hi(() => [strict.dose, strict.far, strict.who, strict.brand], { onMiss: (_f, _k, why) => missed.push(why) });
-    expect(out).toEqual(["Play for 20 minutes.", "Sit 40 cm away.", "Hello {name}", "IOpener is free."]);
+    expect(out).toEqual(["Play for 20 minutes.", "Sit 40 cm away.", "Hello {name}", "Eyes Opener is free."]);
     expect(missed).toEqual(["check", "check", "check", "check"]);
   });
   it("leaves out a misshapen entry or a file that says it is another file", () => {
@@ -201,7 +201,7 @@ describe("right to left", () => {
     expect(forDirection("6.9 mm اور 2 m", "ur", true)).toBe(`\u200F${LRI}6.9 mm${PDI} اور ${LRI}2 m${PDI}`);
   });
   it("marks a translated sentence that begins with a Latin name as right-to-left text", () => {
-    expect(forDirection("IOpener کوئی طبی آلہ نہیں ہے۔", "ur", true)).toBe("\u200FIOpener کوئی طبی آلہ نہیں ہے۔");
+    expect(forDirection("Eyes Opener کوئی طبی آلہ نہیں ہے۔", "ur", true)).toBe("\u200FEyes Opener کوئی طبی آلہ نہیں ہے۔");
     expect(forDirection("آج", "ur", true)).toBe("آج");
     /* a sentence that opens with a measure: its first letter is the Latin unit */
     expect(forDirection("40 cm دور", "ur", true)).toBe(`\u200F${LRI}40 cm${PDI} دور`);

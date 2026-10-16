@@ -17,7 +17,7 @@ export function PortalShell({ area, who, role, groups, children }: {
   return (
     <div className="shell">
       <aside className="side">
-        <Link href={all[0]?.href ?? "/"} className="logo"><img src="/Images/logo-mark.png" alt="" className="mark" width={28} height={28} />{common.product}</Link>
+        <Link href={all[0]?.href ?? "/"} className="logo"><img src="/Images/logo-mark-56.png" alt="" className="mark" width={28} height={28} />{common.product}</Link>
         <div className="who"><b>{who}</b><span>{area} · {role}</span></div>
         <NavGroups groups={[...groups, { title: "You", items: [{ href: "/login", label: common.nav.switchPerson }] }]} />
       </aside>

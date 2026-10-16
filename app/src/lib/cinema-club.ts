@@ -17,7 +17,7 @@
  *    (the library's "60 minutes a day in chapters": six chapters of ten minutes).
  * 5. A club may be listed, so that a family can find one. A listing is made by an approved sponsor or by staff,
  *    shows the name of a public place and a time and nothing else, and one made by a sponsor waits for a person at
- *    IOpener. A private home is never listed: the kinds of place have no home among them, and a name that reads
+ *    Eyes Opener. A private home is never listed: the kinds of place have no home among them, and a name that reads
  *    like a home, or carries a phone number or a link, is refused before anyone sees it.
  */
 import { BREAK_SECONDS, CHAPTER_SECONDS, chapterAt, STANDARD_PLAN, type ChapterPlan, type ChapterState } from "@/components/film/chapters";
@@ -122,7 +122,7 @@ export type ListingRefusal = "not_approved" | "too_many" | "kind" | "day" | "tim
 export interface ListingInput {
   /** Who is listing: an approved sponsor's person, or staff. */
   by: "sponsor" | "staff";
-  /** For a sponsor: the IOpener team has approved it. */
+  /** For a sponsor: the Eyes Opener team has approved it. */
   approved: boolean;
   /** For a sponsor: listings it already has waiting or listed. */
   open: number;

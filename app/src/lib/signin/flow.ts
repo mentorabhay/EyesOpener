@@ -7,12 +7,12 @@
  *   askFlow      the person types an address. The server asks Firebase to email a link, within the limits.
  *   linkFlow     the person comes back through the link. The server swaps its code, with the address, for an ID token.
  *   askCodeFlow  the person types an address. The server emails a six-digit code itself (code.ts, mail.ts), within the
- *                same limits. Used in place of the link when IOpener has an address to send from (Ved, 10 October 2026).
+ *                same limits. Used in place of the link when Eyes Opener has an address to send from (Ved, 10 October 2026).
  *   codeFlow     the person types the code. The server checks it, finds or makes the address's Firebase account as
  *                the service it runs as (`accountFor`), and signs the person in.
  *
  * Every ID token is then checked in full (`verifyIdToken`), matched to a person (`personFor`), and only then does
- * the browser get IOpener's session cookie. A refusal at any step signs nobody in and makes nobody.
+ * the browser get Eyes Opener's session cookie. A refusal at any step signs nobody in and makes nobody.
  *
  * The address a link was asked for is remembered on the device that asked, in a signed cookie scripts cannot read.
  * Coming back on that device needs no typing. On any other device the address has to be typed again: a link alone,
@@ -49,7 +49,7 @@ export interface Ctx {
   /** The network address the request came from (`networkAddress` in limit.ts). */
   net: string;
   now?: Date;
-  /** Where sign-in codes are sent from; null when IOpener sends no email itself (the link is used). Read from the settings when left out. */
+  /** Where sign-in codes are sent from; null when Eyes Opener sends no email itself (the link is used). Read from the settings when left out. */
   mail?: MailSettings | null;
   /** How a code email is sent; tests catch it here instead. */
   send?: (m: Message, s: MailSettings) => Promise<Sent>;

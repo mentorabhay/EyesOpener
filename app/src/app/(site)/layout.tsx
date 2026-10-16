@@ -1,4 +1,4 @@
-// Eyes Opener: The public site: the landing page, the stories and the pages about IOpener, inside one navigation and footer.
+// Eyes Opener: The public site: the landing page, the stories and the pages about Eyes Opener, inside one navigation and footer.
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { common } from "@/copy/common";
@@ -16,7 +16,7 @@ export const generateMetadata = (): Metadata => ({
 });
 
 /**
- * The public site: the landing page, the stories and the pages about IOpener, inside one navigation and footer.
+ * The public site: the landing page, the stories and the pages about Eyes Opener, inside one navigation and footer.
  * Nothing here needs a sign-in. The viewer is read only to choose between "Sign in" and "Open the app".
  * Each page brings its own <main>; the wrapper below is where the skip link lands.
  */

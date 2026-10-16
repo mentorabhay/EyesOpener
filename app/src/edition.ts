@@ -1,6 +1,6 @@
-// Eyes Opener: What this build of IOpener includes on top of the core.
+// Eyes Opener: What this build of Eyes Opener includes on top of the core.
 /**
- * What this build of IOpener includes on top of the core.
+ * What this build of Eyes Opener includes on top of the core.
  * The public edition includes none of it: every switch is off. A fuller build replaces this one file.
  * Plain values only: this file is read on the server and in the browser.
  */
@@ -9,6 +9,8 @@ export const edition = {
   stories: false as boolean,
   /** The staff research pages (camera, depth, photo screen) and their room in the staff console. */
   research: false as boolean,
+  /** The Look and feel room in the staff console: colours, gradient, type, motion, pictures (decision of 17 October 2026). */
+  look: false as boolean,
 };
 
 /** True when a link leads somewhere this edition has. Menus, footers and the sitemap pass their links through it. */

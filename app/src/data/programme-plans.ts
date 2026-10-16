@@ -10,7 +10,7 @@
  * (src/data/index.ts) or, for a counsellor-led programme, what the linked counsellor set. A plan only says how a
  * day's minutes are shared out, so no plan can ask for more than the dose.
  *
- * Where the plans come from: IOpener's evidence framework (its table of default protocols, its therapy modules
+ * Where the plans come from: Eyes Opener's evidence framework (its table of default protocols, its therapy modules
  * and its safeguards), the concept document (the weekly eye check, the safeguards of a level 1 programme) and the
  * trials those name. The guides in src/data/guides say which drill came early and which came late in the therapy
  * the trials used; the stages of the convergence plan follow those lines.
@@ -130,7 +130,7 @@ const GUANGZHOU: Source = {
 const sitting = (key: string): PartPlan => ({ key, kind: "train", minutes: 20, picks: [{ film: true }], also: [{ games: "dvid", tag: "lazy" }] });
 
 /**
- * Care an eye doctor prescribed. IOpener never sets or changes it: these parts only lead to the family's own log.
+ * Care an eye doctor prescribed. Eyes Opener never sets or changes it: these parts only lead to the family's own log.
  * The framework's rule "glasses first" is why the glasses log sits in every lazy-eye day.
  */
 const GLASSES: PartPlan = { key: "glasses", kind: "care", minutes: 0, picks: [{ exercise: "glasses-check-in" }] };

@@ -449,8 +449,8 @@
   },
   "settings.newProfile.consent": {
    "source": "7821fd481d32cf",
-   "english": "I am this child's parent or guardian, and I agree to this child using IOpener.",
-   "text": "मैं इस बच्चे का माता-पिता या अभिभावक हूँ, और मैं इस बच्चे द्वारा IOpener के उपयोग से सहमत हूँ।",
+   "english": "I am this child's parent or guardian, and I agree to this child using Eyes Opener.",
+   "text": "मैं इस बच्चे का माता-पिता या अभिभावक हूँ, और मैं इस बच्चे द्वारा Eyes Opener के उपयोग से सहमत हूँ।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },

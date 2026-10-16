@@ -1,3 +1,4 @@
 #!/bin/sh
-# Runs the same gate once more before anything leaves this machine.
+# Runs the same gates once more before anything leaves this machine.
+node tools/no-old-name.mjs || exit 1
 exec node tools/check-public.mjs

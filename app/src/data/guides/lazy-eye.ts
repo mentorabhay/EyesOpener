@@ -66,7 +66,7 @@ const GLASSES_HURT = "The glasses pinch, rub a sore place or sit crooked. Have t
 
 const PATCH_NEED = "The patch the eye doctor prescribed. It goes on the stronger eye.";
 const PATCH_ON = "Put the patch on the stronger eye as the eye doctor showed, with any prescribed glasses on as well.";
-const PATCH_PART = "This is part of the patch time the eye doctor prescribed, not extra time. IOpener never sets or changes the patch hours.";
+const PATCH_PART = "This is part of the patch time the eye doctor prescribed, not extra time. Eyes Opener never sets or changes the patch hours.";
 const WRONG_EYE = "Patching the weaker eye. The patch goes on the stronger eye.";
 const LENS = "Put the red-cyan glasses on with the cyan (blue-green) lens over the weaker eye. Your eye settings say which eye that is.";
 const DRILL_NEED = [
@@ -101,10 +101,10 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
   /* ── the two-eye cinema ── */
   {
     slug: "cinema-session",
-    what: "Watching a film in IOpener's two-eye cinema through red-cyan glasses. Both eyes see the picture, but the stronger eye sees it fainter, so the weaker eye has to join in. This is the main daily practice for lazy eye.",
+    what: "Watching a film in Eyes Opener's two-eye cinema through red-cyan glasses. Both eyes see the picture, but the stronger eye sees it fainter, so the weaker eye has to join in. This is the main daily practice for lazy eye.",
     need: [
       "Red-cyan glasses. Wear them over your own glasses if an eye doctor prescribed any.",
-      "A TV, or the largest screen in the house that can open IOpener.",
+      "A TV, or the largest screen in the house that can open Eyes Opener.",
       "A film or a show saved as a file on that device. The cinema plays files from the device, not streaming sites.",
       "A room where no lamp or window shines on the screen.",
     ],
@@ -145,7 +145,7 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
     what: "A way to fit the daily cinema hour into a school day: three sittings of 20 minutes, after school, before dinner and before bed. Each sitting is done exactly like a Cinema Session.",
     need: [
       "Red-cyan glasses, kept beside the screen.",
-      "A TV, or the largest screen in the house that can open IOpener.",
+      "A TV, or the largest screen in the house that can open Eyes Opener.",
       "A long film or a series saved as files on that device, so there is always a next part to watch.",
       "Three times in the day that the family can keep.",
     ],
@@ -239,7 +239,7 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
       "Stickers the child likes.",
     ],
     setup: [
-      "Write the prescribed hours at the top of the chart. They come from the eye doctor. IOpener never sets or changes them.",
+      "Write the prescribed hours at the top of the chart. They come from the eye doctor. Eyes Opener never sets or changes them.",
       PATCH_ON,
       "Patch time is hours long, so this page has no stopwatch. Go by the clock on the wall and note the times on the chart.",
     ],
@@ -380,7 +380,7 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
       "This page, once a day, in the evening.",
     ],
     setup: [
-      "Ask the eye doctor how many hours a day the glasses are to be worn. For a lazy eye it is usually all waking hours. IOpener never sets or changes this.",
+      "Ask the eye doctor how many hours a day the glasses are to be worn. For a lazy eye it is usually all waking hours. Eyes Opener never sets or changes this.",
       "Note today's date as the start. The log runs for 18 to 30 weeks, until the eye doctor says the gain has levelled off.",
       "Keep the glasses beside the bed so they go on first thing.",
     ],
@@ -422,7 +422,7 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
       "A fixed time for the check, such as breakfast.",
     ],
     setup: [
-      "Find out the prescribed hours from the eye doctor. IOpener never sets or changes them.",
+      "Find out the prescribed hours from the eye doctor. Eyes Opener never sets or changes them.",
       "Pick one time of day for the check and keep to it.",
       "The camera check is not built yet. Do the check by looking, and type the hours by hand.",
     ],
@@ -459,10 +459,10 @@ export const guides: Guide[] = textsEach("data/guides/lazy-eye", () => [
   /* ── with prescribed atropine drops ── */
   {
     slug: "atropine-day-companion",
-    what: "An alarm and a quick record for the days the eye doctor prescribed an atropine drop. The drop blurs close things for the stronger eye, so the weaker eye takes over for close work. IOpener never sets or changes the drop days or the dose.",
+    what: "An alarm and a quick record for the days the eye doctor prescribed an atropine drop. The drop blurs close things for the stronger eye, so the weaker eye takes over for close work. Eyes Opener never sets or changes the drop days or the dose.",
     need: [
       "The atropine drops, and the eye doctor's written plan: which eye, which days, what time.",
-      "A phone alarm for drop time. IOpener does not send reminders yet.",
+      "A phone alarm for drop time. Eyes Opener does not send reminders yet.",
       "Clean hands and a tissue.",
       "Things for close work afterwards: books, drawing, puzzles, beads.",
     ],

@@ -32,8 +32,8 @@
   },
   "train.blocked.failed": {
    "source": "019cfcb5ebaa7b",
-   "english": "IOpener could not be reached. Check the connection and try again.",
-   "text": "IOpener से संपर्क नहीं हो सका। कनेक्शन जाँचें और फिर कोशिश करें।",
+   "english": "Eyes Opener could not be reached. Check the connection and try again.",
+   "text": "Eyes Opener से संपर्क नहीं हो सका। कनेक्शन जाँचें और फिर कोशिश करें।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },
@@ -165,8 +165,8 @@
   },
   "train.cinema.reel": {
    "source": "ec2caa447a8ead",
-   "english": "Play IOpener's test reel (90 seconds)",
-   "text": "IOpener की टेस्ट रील चलाएँ (90 सेकंड)",
+   "english": "Play Eyes Opener's test reel (90 seconds)",
+   "text": "Eyes Opener की टेस्ट रील चलाएँ (90 सेकंड)",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },

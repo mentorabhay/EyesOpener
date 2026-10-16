@@ -39,8 +39,8 @@
   },
   "languages.choose.label": {
    "source": "56ec1cceff3806",
-   "english": "Read IOpener in",
-   "text": "IOpener को इस भाषा में पढ़ें",
+   "english": "Read Eyes Opener in",
+   "text": "Eyes Opener को इस भाषा में पढ़ें",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },
@@ -74,15 +74,15 @@
   },
   "languages.choose.onlyEnglish": {
    "source": "e3cc9504f4c2b3",
-   "english": "IOpener is in English for now. More languages are being checked by people who speak them.",
-   "text": "IOpener अभी अंग्रेज़ी में है। बाकी भाषाओं की जाँच उन भाषाओं को बोलने वाले लोग कर रहे हैं।",
+   "english": "Eyes Opener is in English for now. More languages are being checked by people who speak them.",
+   "text": "Eyes Opener अभी अंग्रेज़ी में है। बाकी भाषाओं की जाँच उन भाषाओं को बोलने वाले लोग कर रहे हैं।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },
   "languages.choose.saved(*)": {
    "source": "43a6f584603a78",
-   "english": "Saved. IOpener is now in {name}.",
-   "text": "सहेज लिया गया। IOpener अब {name} में है।",
+   "english": "Saved. Eyes Opener is now in {name}.",
+   "text": "सहेज लिया गया। Eyes Opener अब {name} में है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash",
    "params": [

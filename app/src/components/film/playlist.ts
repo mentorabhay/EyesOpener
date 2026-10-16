@@ -7,7 +7,7 @@
  * The list is kept per profile in this browser's own storage (see `storageKey`).
  */
 
-/** IOpener's own test reel is always at hand, so it needs no file. */
+/** Eyes Opener's own test reel is always at hand, so it needs no file. */
 export const REEL_KEY = "reel";
 /** A list longer than this would be a library, not a playlist. */
 export const MAX_FILMS = 40;

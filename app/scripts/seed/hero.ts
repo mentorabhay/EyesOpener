@@ -8,7 +8,7 @@
  * - Gives Aarav two heroes, unless he has one already: the ready-made cat, and a drawn figure that is the one in
  *   play. The figure is a drawing made by code (src/lib/hero/test-picture.ts) and read by the app's own tracing,
  *   so the row holds exactly what the tracing produces. It is not a child's drawing.
- * - Sets this month's wall right: the picture is drawn by IOpener, so the wall says so, and it has the size a new
+ * - Sets this month's wall right: the picture is drawn by Eyes Opener, so the wall says so, and it has the size a new
  *   wall would be given from last month's finished practice days.
  * - Opens last month's wall and gives every finished practice day in the demo data its tile, with the same code
  *   the daily job uses. The tiles shown are counted, not typed in.

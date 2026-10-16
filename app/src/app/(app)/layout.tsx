@@ -43,19 +43,21 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   const style = { "--strong": strongInk(trainRed(con, tune), m.device?.gamma ?? 2.2) } as CSSProperties;
   return (
     <div className="shell" style={style}>
+      <a className="skip" href="#page">{n.skip}</a>
       <InkTuneSet tune={tune} />
       <aside className="side">
-        <Link href="/today" className="logo"><span className="mark" aria-hidden="true"><i /><i /></span>{common.product}</Link>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <Link href="/today" className="logo"><img src="/Images/logo-mark-56.png" alt="" className="mark" width={28} height={28} />{common.product}</Link>
         <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">
           <b>{m.profile.displayName}</b>
           <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span>
         </Link>
         {setup.held && <SetupLink s={setup} />}
-        <NavGroups groups={[...groups(), { title: n.you, items: you }, ...(areas.length && !m.childMode ? [{ title: n.otherAreas, items: areas }] : [])]} />
+        <nav aria-label={n.menu}><NavGroups groups={[...groups(), { title: n.you, items: you }, ...(areas.length && !m.childMode ? [{ title: n.otherAreas, items: areas }] : [])]} /></nav>
         <p className="foot">{common.notMedical}</p>
       </aside>
       <div className="main">
-        <main className="page" style={{ zoom }}>
+        <main id="page" className="page" style={{ zoom }} tabIndex={-1}>
           {m.tester && <p className="notice" role="note">{common.tester} <Link href="/admin/catalogue">{common.testerLink}</Link></p>}
           {setup.held && <SetupBar s={setup} />}
           {children}

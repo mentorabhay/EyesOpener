@@ -371,7 +371,7 @@ export function forDirection(text: string, lang: Lang, translated: boolean): str
   if (!RTL.has(lang) || !text) return text;
   if (!translated) return /[A-Za-z]/.test(text) ? `${LRI}${text}${PDI}` : text;
   const held = text.replace(MEASURE, (m) => `${LRI}${m}${PDI}`);
-  /* A translated sentence that begins with a name kept in Latin letters ("IOpener ...") or with a figure would be
+  /* A translated sentence that begins with a name kept in Latin letters ("Eyes Opener ...") or with a figure would be
      taken for left-to-right text by its first letter. The invisible right-to-left mark in front settles it. */
   const first = FIRST_STRONG.exec(text)?.[0];
   return first && /[A-Za-z\u00C0-\u024F]/.test(first) ? `${RLM}${held}` : held;

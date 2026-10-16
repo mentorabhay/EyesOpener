@@ -1,5 +1,5 @@
-# Eyes Opener: IOpener public repository: an allowlist.
-# IOpener public repository: an allowlist.
+# Eyes Opener: Eyes Opener public repository: an allowlist.
+# Eyes Opener public repository: an allowlist.
 # Everything is ignored unless a line below lets it in. A new top-level file or folder never
 # reaches GitHub by accident: it has to be added here on purpose.
 /*
@@ -12,6 +12,7 @@
 !/tools/
 /tools/*
 !/tools/check-public.mjs
+!/tools/no-old-name.mjs
 
 # ── Never, anywhere in the tree ──────────────────────────────────────────────
 

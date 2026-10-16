@@ -32,8 +32,8 @@ describe.skipIf(!up)("Draw Your Hero, in the database", () => {
   beforeAll(async () => {
     [A, B] = await db.insert(s.account).values([{ displayName: `zz-hero-a-${x}` }, { displayName: `zz-hero-b-${x}` }]).returning();
     [gA, gB] = await db.insert(s.appUser).values([
-      { email: `zz-hero-a-${x}@iopener.test`, displayName: `Guardian A ${x}`, accountId: A.id, seat: "guardian" },
-      { email: `zz-hero-b-${x}@iopener.test`, displayName: `Guardian B ${x}`, accountId: B.id, seat: "guardian" },
+      { email: `zz-hero-a-${x}@eyesopener.test`, displayName: `Guardian A ${x}`, accountId: A.id, seat: "guardian" },
+      { email: `zz-hero-b-${x}@eyesopener.test`, displayName: `Guardian B ${x}`, accountId: B.id, seat: "guardian" },
     ]).returning();
     [kid, grown, other] = await db.insert(s.profile).values([
       { accountId: A.id, displayName: `Kid${x}`, kind: "child", birthYear: 2019 }, { accountId: A.id, displayName: `Grown${x}`, kind: "adult" },

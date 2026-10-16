@@ -95,10 +95,10 @@ export const guides: Guide[] = textsEach("data/guides/monitoring", () => [
   },
   {
     slug: "drop-reminder-routine",
-    what: "A fixed routine for eye drops an eye doctor prescribed for every day: an alarm at drop time, the drop, and a quick record. Each week it adds up the doses taken against the doses planned. IOpener never sets or changes the drops.",
+    what: "A fixed routine for eye drops an eye doctor prescribed for every day: an alarm at drop time, the drop, and a quick record. Each week it adds up the doses taken against the doses planned. Eyes Opener never sets or changes the drops.",
     need: [
       "The drops, and the eye doctor's written plan: which eye, how many times a day, what time.",
-      "A phone alarm for each drop time. IOpener does not send reminders yet.",
+      "A phone alarm for each drop time. Eyes Opener does not send reminders yet.",
       "Clean hands and a tissue.",
     ],
     setup: [

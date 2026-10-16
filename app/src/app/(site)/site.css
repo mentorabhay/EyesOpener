@@ -1,5 +1,5 @@
 /* Eyes Opener: Core system module providing logic and utilities for site. */
-/* The public site: navigation, footer and the pages about IOpener.
+/* The public site: navigation, footer and the pages about Eyes Opener.
    Built on the app's tokens (src/app/globals.css, direction B): pale ground, white cards, ink text,
    one purple-to-amber gradient kept for the primary action, hatching for "not built yet".
    Every class starts with "s-", so nothing here touches the app, the landing page or the stories. */
@@ -40,7 +40,7 @@
 }
 
 /* ── page frame and type ── */
-.s-page { font-size: 16px; line-height: 1.6; overflow-x: clip; }
+.s-page { font-size: var(--site-text, 17px); line-height: 1.6; overflow-x: clip; }
 .s-wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
 .s-wrap.narrow { width: min(760px, 100% - 40px); }
 .s-kicker { display: inline-flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px; }

@@ -5,7 +5,7 @@
  * and an area a person may not use answers "not found".
  *
  * A person signs in with Google or with an email link (Firebase Authentication vouches for them; see
- * docs/SIGN-IN.md and src/lib/signin/). The server then gives the browser IOpener's own signed cookie, which names
+ * docs/SIGN-IN.md and src/lib/signin/). The server then gives the browser Eyes Opener's own signed cookie, which names
  * the `app_user` and says when the session began. The demo sign-in (a seeded person picked from a list) gives the
  * same kind of cookie, marked as a demo session, and counts only while DEMO_LOGIN is on.
  * When a session stops counting is in src/lib/signin/session-rules.ts.

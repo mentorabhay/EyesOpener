@@ -3,7 +3,7 @@
 /**
  * Mark what looks wrong: the grid check for one eye, drawn by the exercise library's own grid
  * (src/drills/tools/grid.tsx) with its own arithmetic. The member looks at the dot and marks the squares where the
- * lines look bent, blurred or missing. It names no disease: IOpener does not diagnose.
+ * lines look bent, blurred or missing. It names no disease: Eyes Opener does not diagnose.
  */
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { TrueSize } from "@/components/measure/canvas";

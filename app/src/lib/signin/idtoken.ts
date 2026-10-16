@@ -7,7 +7,7 @@
  *   payload  aud is the project id; iss is https://securetoken.google.com/<project id>; sub is a non-empty string;
  *            exp is in the future; iat and auth_time are in the past
  *   and the signature is right for that key.
- * IOpener adds its own:
+ * Eyes Opener adds its own:
  *   - the token carries an email address and email_verified is exactly true. An address nobody proved they own
  *     never names a person here;
  *   - the sign-in was by Google or by email link, and not inside a Firebase tenant;
@@ -41,7 +41,7 @@ export interface Identity {
 export type Verified = { ok: true; identity: Identity } | { ok: false; why: TokenRefusal };
 
 export const SKEW_S = 60;
-/** The ways of signing in that IOpener offers. A token from any other is refused, even when the project would issue it. */
+/** The ways of signing in that Eyes Opener offers. A token from any other is refused, even when the project would issue it. */
 export const PROVIDERS = ["google.com", "password", "emailLink"] as const;
 const MAX_TOKEN = 8192;
 

@@ -148,7 +148,7 @@ export function useFilmList(
   const edits = useMemo(() => ({
     select: (key: string) => { store.set((s) => selectFilm(s, key)); },
     move: (key: string, by: -1 | 1) => { store.set((s) => moveFilm(s, key, by)); },
-    /** Puts IOpener's own test reel in the list and on screen. */
+    /** Puts Eyes Opener's own test reel in the list and on screen. */
     showReel: () => {
       store.set((s) => selectFilm(addReel(s, reelName, 0), REEL_KEY));
       setNote(null);

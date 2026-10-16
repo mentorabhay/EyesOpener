@@ -13,7 +13,7 @@ export interface Supervision {
   trial: string;
   /** What a therapist or counsellor does that the app cannot. */
   does: string[];
-  /** What the counsellor can do inside IOpener. */
+  /** What the counsellor can do inside Eyes Opener. */
   inApp: string;
   sources: Source[];
 }
@@ -26,7 +26,7 @@ const DOES = [
   "Watches for symptoms, and stops or changes the plan when they come.",
   "Keeps the practice going. A visit every week is a reason to do the home part.",
 ];
-const IN_APP = "In IOpener a verified counsellor links to the member, sets the daily minutes of a counsellor-led programme, reads the member's results and leaves notes. IOpener itself never sets a dose.";
+const IN_APP = "In Eyes Opener a verified counsellor links to the member, sets the daily minutes of a counsellor-led programme, reads the member's results and leaves notes. Eyes Opener itself never sets a dose.";
 
 const CITT: Source = {
   label: "Convergence Insufficiency Treatment Trial Study Group, 2008, Archives of Ophthalmology: four treatments compared in 221 children aged 9 to 17",

@@ -2,6 +2,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { common } from "@/copy/common";
 
 export interface NavItem { href: string; label: string }
 
@@ -18,7 +19,7 @@ export function NavGroups({ groups }: { groups: { title: string; items: NavItem[
     <>
       {groups.map((g) => (
         <div className="navg" key={g.title}>
-          <h2>{g.title}</h2>
+          <p className="navh">{g.title}</p>
           <ul className="navl">
             {g.items.map((it) => (
               <li key={it.href}><Link href={it.href} aria-current={current(path, it.href, all) ? "page" : undefined}>{it.label}</Link></li>
@@ -33,7 +34,7 @@ export function NavGroups({ groups }: { groups: { title: string; items: NavItem[
 export function TabBar({ items }: { items: NavItem[] }) {
   const path = usePathname();
   return (
-    <nav className="tabs" aria-label="Main">
+    <nav className="tabs" aria-label={common.nav.tabs}>
       {items.map((it) => (
         <Link key={it.href} href={it.href} aria-current={current(path, it.href, items) ? "page" : undefined}>{it.label}</Link>
       ))}

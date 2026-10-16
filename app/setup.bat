@@ -1,8 +1,8 @@
 @echo off
 cd /d "%~dp0"
-title IOpener - first-time setup
+title Eyes Opener - first-time setup
 echo.
-echo  IOpener web app: first-time setup
+echo  Eyes Opener web app: first-time setup
 echo  Needs: Node.js 22 or later, and Docker Desktop running (for PostgreSQL).
 echo.
 if not exist .env.local copy .env.example .env.local >nul

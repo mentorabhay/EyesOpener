@@ -1,4 +1,4 @@
-// Eyes Opener: Owners only: add a person who already signs in to IOpener. .
+// Eyes Opener: Owners only: add a person who already signs in to Eyes Opener. .
 "use server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -9,7 +9,7 @@ import { addToTeam, changeTeam, type FormState } from "@/lib/sponsor";
 
 const Add = z.object({ email: z.string().trim().max(200).pipe(z.email()), role: z.enum(["owner", "editor"]) });
 
-/** Owners only: add a person who already signs in to IOpener. */
+/** Owners only: add a person who already signs in to Eyes Opener. */
 export async function add(_: FormState, formData: FormData): Promise<FormState> {
   const { viewer, sponsor } = await requireSponsor("manage_team");
   const input = Add.safeParse(Object.fromEntries(formData));

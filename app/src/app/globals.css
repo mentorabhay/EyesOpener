@@ -1,24 +1,26 @@
 /* Eyes Opener: Core system module providing logic and utilities for globals. */
-/* IOpener design system: direction B (Plan/prototypes/2026-09-20-ui-direction-b.html).
+/* Eyes Opener design system: direction B (Plan/prototypes/2026-09-20-ui-direction-b.html).
    Outfit throughout. The purple-to-amber gradient is rationed: active navigation, the primary action,
    key progress fills and one hero card. Diagonal hatch means "not measured yet".
    Therapy scenes are the exception: black field, three inks, set by the member's eye profile. */
 
 :root {
-  --ink: #111418; --ink-2: #4e545c; --ink-3: #6e747c; --ink-4: #8a9099;
+  --ink: #111418; --ink-2: #4e545c; --ink-3: #61676f; --ink-4: #8a9099;
   --paper: #f4f4f8; --card: #ffffff; --sunken: #f7f7fb; --line: #eaeaf1; --line-2: #dedee8;
   --g1: #8b31f0; --g2: #f4aa2d;
   --grad: linear-gradient(135deg, #8b31f0 0%, #c4569c 52%, #f4aa2d 100%);
+  --grad-text: linear-gradient(135deg, #8b31f0 0%, #b0478a 52%, #b45309 100%);
+  --grad-fill: var(--grad); --grad-button: var(--grad-text); --grad-chip: var(--grad-text);
   --grad-soft: linear-gradient(135deg, #f0e6fe 0%, #f6e9f2 50%, #fdf2df 100%);
-  --ok: #128a65; --ok-bg: #e4f6ef; --warn: #9a6706; --warn-bg: #fdf1dc;
-  --risk: #c2551b; --risk-bg: #fcebe0; --danger: #c5282f; --danger-bg: #fce8e9;
+  --ok: #0f7a59; --ok-bg: #e4f6ef; --warn: #8a5c05; --warn-bg: #fdf1dc;
+  --risk: #a8481a; --risk-bg: #fcebe0; --danger: #c5282f; --danger-bg: #fce8e9;
   --ring-rest: #1296a8; --ring-train: #d8453d; --ring-light: #c98708;
   --r-lg: 22px; --r-md: 14px; --r-sm: 10px; --r-pill: 999px;
   --sh-card: 0 1px 2px rgba(17, 20, 24, 0.04), 0 8px 24px -12px rgba(17, 20, 24, 0.1);
   --font: "Outfit", "Segoe UI", system-ui, -apple-system, sans-serif;
   /* scene inks: --strong is overwritten per member in the app layout */
   --weak: #00ffff; --strong: #ff0000; --shared: #ffffff; --scene: #000000;
-  --app-text: 14px;
+  --app-text: 16px; --site-text: 17px; --parallax: 0.35;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -55,6 +57,16 @@ p { margin: 0; }
 .muted { color: var(--ink-3); }
 .small { font-size: 12.5px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+/* The motion level staff set (src/lib/design): calm keeps feedback (transitions) and drops animations; off drops both. */
+[data-motion="calm"] *, [data-motion="calm"] *::before, [data-motion="calm"] *::after { animation: none !important; }
+[data-motion="off"] *, [data-motion="off"] *::before, [data-motion="off"] *::after { animation: none !important; transition: none !important; }
+/* Decorative 01 / 02 / 03 numbers: shown unless staff turn them off. */
+[data-numbers="off"] .deco-num { display: none !important; }
+
+/* ── skip link ── */
+.skip { position: absolute; left: 12px; top: -80px; z-index: 100; background: var(--ink); color: var(--card); padding: 10px 16px; border-radius: var(--r-sm); font-weight: 500; text-decoration: none; }
+.skip:focus { top: 10px; }
+.page:focus { outline: none; }
 
 /* ── shell ── */
 .shell { display: grid; grid-template-columns: 230px minmax(0, 1fr); min-height: 100vh; }
@@ -66,7 +78,7 @@ p { margin: 0; }
 .who b { font-size: 13.5px; font-weight: 600; }
 .who span { font-size: 11.5px; color: var(--ink-3); }
 .navg { padding: 0 12px; margin-bottom: 14px; }
-.navg h2 { font-size: 11.5px; font-weight: 500; color: var(--ink-3); padding: 0 10px; margin-bottom: 5px; letter-spacing: 0; }
+.navg .navh { font-size: 12px; font-weight: 500; color: var(--ink-3); padding: 0 10px; margin-bottom: 5px; letter-spacing: 0; }
 .navl { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1px; }
 .navl a { display: flex; align-items: center; gap: 11px; padding: 8px 11px; border-radius: var(--r-sm); color: var(--ink-2); text-decoration: none; font-size: 13.5px; }
 .navl a:hover { background: var(--sunken); color: var(--ink); }
@@ -119,13 +131,13 @@ p { margin: 0; }
 .chip[data-b="risk"] { background: var(--risk-bg); color: var(--risk); }
 .chip[data-b="danger"] { background: var(--danger-bg); color: var(--danger); }
 .chip[data-b="none"] { background: transparent; color: var(--ink-3); border: 1px dashed var(--line-2); }
-.chip[data-b="grad"] { background: var(--grad); color: #fff; }
+.chip[data-b="grad"] { background: var(--grad-chip); color: #fff; }
 .chip[data-b="plain"] { background: var(--sunken); color: var(--ink-2); border: 1px solid var(--line); }
 
 /* ── buttons ── */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--line-2); background: var(--card); border-radius: var(--r-pill); padding: 9px 17px; font-size: 13.5px; font-weight: 500; cursor: pointer; white-space: nowrap; text-decoration: none; }
 .btn:hover { border-color: var(--ink-4); }
-.btn-g { background: var(--grad); border-color: transparent; color: #fff; font-weight: 600; }
+.btn-g { background: var(--grad-button); border-color: transparent; color: #fff; font-weight: 600; }
 .btn-g:hover { filter: brightness(1.07); }
 .btn-d { background: var(--ink); border-color: var(--ink); color: var(--card); }
 .btn-gh { background: transparent; border-color: transparent; color: var(--ink-2); }
@@ -141,11 +153,11 @@ p { margin: 0; }
 
 /* ── progress, hatch ── */
 .prog { height: 9px; border-radius: var(--r-pill); background: var(--sunken); overflow: hidden; }
-.prog i { display: block; height: 100%; background: var(--grad); border-radius: var(--r-pill); }
+.prog i { display: block; height: 100%; background: var(--grad-fill); border-radius: var(--r-pill); }
 .prog.hatched { background: repeating-linear-gradient(135deg, var(--line-2) 0 4px, transparent 4px 8px); border: 1px solid var(--line-2); }
 .seg { display: flex; gap: 3px; }
 .seg i { flex: 1; height: 9px; border-radius: 3px; background: var(--line); }
-.seg i.on { background: var(--grad); }
+.seg i.on { background: var(--grad-fill); }
 .void { display: inline-block; min-width: 54px; height: 18px; border-radius: 5px; border: 1px dashed var(--line-2); background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 8px); vertical-align: middle; }
 .empty { border: 1px dashed var(--line-2); border-radius: var(--r-md); padding: 22px; background: repeating-linear-gradient(135deg, var(--line) 0 4px, transparent 4px 10px); display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .empty > :not(.btn, .row) { background: var(--card); padding: 2px 6px; border-radius: 6px; }

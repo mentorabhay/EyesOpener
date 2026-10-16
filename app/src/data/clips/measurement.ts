@@ -158,7 +158,7 @@ export const MEASUREMENT: ClipDef[] = [
   {
     code: "M55", offered: false,
     basis: "Eye position read from where a flash lands on each eye in a photo.",
-    why: "A web page cannot fire a camera's flash, and reading the tiny reflection of light on each eye needs a model that IOpener has not trained or checked. At the size a face has in a home photo, one dot of error is about ten prism dioptres, so only a very large turn would show. The evidence framework keeps this as a research item.",
+    why: "A web page cannot fire a camera's flash, and reading the tiny reflection of light on each eye needs a model that Eyes Opener has not trained or checked. At the size a face has in a home photo, one dot of error is about ten prism dioptres, so only a very large turn would show. The evidence framework keeps this as a research item.",
     sources: [],
   },
 
@@ -172,10 +172,10 @@ export const MEASUREMENT: ClipDef[] = [
     "A white dot appears somewhere on the screen and the member sweeps the eyes across to find it and says which side it is on. The average time to find a dot is kept for each side. It is the exercise library's Blind-Side Sweeps drill, run for two minutes as a starting measure.", [EYE_SEARCH]),
 
   m("M63", { template: "read" }, ["reading_speed"], [],
-    "A short passage of everyday words is read silently at a normal pace, and the clock gives the words a minute. The passages are IOpener's own; they are not the standard clinic texts, so the result is compared only with the member's own earlier ones. The app cannot check that every word was read.", [READING], { screen: false }),
+    "A short passage of everyday words is read silently at a normal pace, and the clock gives the words a minute. The passages are Eyes Opener's own; they are not the standard clinic texts, so the result is compared only with the member's own earlier ones. The app cannot check that every word was read.", [READING], { screen: false }),
   m("M64", { template: "survey", kind: "near_work" }, ["symptoms"], [], "Fifteen questions about reading and close work, each answered from never to always, added up to a score from 0 to 60. This is the symptom survey check-up's own list.", [CISS], { screen: false }),
-  m("M65", { template: "survey", kind: "screen" }, ["screen_strain"], [], "Ten questions about how the eyes feel during and after screen work, each answered from never to always, added up to a score from 0 to 40. The questions are IOpener's own. They cover what the published screen-strain questionnaires ask about, but the score is not one of theirs and has no cut-off.", [SCREEN_SYMPTOMS], { screen: false }),
-  m("M66", { template: "survey", kind: "dry" }, ["dry_eye"], [], "Six questions about dry, gritty, burning or watery eyes, each answered from never to always, added up to a score from 0 to 24. The questions are IOpener's own. They cover what the published dry-eye questionnaires ask about, but the score is not one of theirs and has no cut-off.", [DRY_EYE], { screen: false }),
+  m("M65", { template: "survey", kind: "screen" }, ["screen_strain"], [], "Ten questions about how the eyes feel during and after screen work, each answered from never to always, added up to a score from 0 to 40. The questions are Eyes Opener's own. They cover what the published screen-strain questionnaires ask about, but the score is not one of theirs and has no cut-off.", [SCREEN_SYMPTOMS], { screen: false }),
+  m("M66", { template: "survey", kind: "dry" }, ["dry_eye"], [], "Six questions about dry, gritty, burning or watery eyes, each answered from never to always, added up to a score from 0 to 24. The questions are Eyes Opener's own. They cover what the published dry-eye questionnaires ask about, but the score is not one of theirs and has no cut-off.", [DRY_EYE], { screen: false }),
   m("M67", { template: "camera", kind: "blinks", seconds: 60 }, ["blink_rate"], ["camera"],
     "The camera watches the eyelids for a minute while the member reads the screen as usual, and counts blinks. The share of full blinks is not reported: at a home camera's sharpness, telling a full blink from a half one has not been checked. For a grown-up's profile, with the camera allowed. The picture never leaves the device.",
     [BLINKS, IRIS], { who: "adult", screen: false }),

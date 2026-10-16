@@ -29,7 +29,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
     not: [
       "It is not anyone's practice. A club hour uses none of a child's daily minutes and is not written to any record.",
       "It is not a clinic. Nobody is checked, measured or advised there.",
-      "It keeps no list. IOpener does not know who came to a club.",
+      "It keeps no list. Eyes Opener does not know who came to a club.",
     ],
   },
 
@@ -76,9 +76,9 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
           "The say-so of whoever runs the place.",
           "A second grown-up in the room for the whole evening. A host is never alone with a child.",
           "Every child comes with a parent or guardian, who stays in the building.",
-          "One screen that everyone can see, and a laptop, tablet or phone that can show IOpener on it.",
+          "One screen that everyone can see, and a laptop, tablet or phone that can show Eyes Opener on it.",
           "Red-cyan glasses for everyone who wants a pair, and a few spare. Clean wipes, or soap and water.",
-          "A film you are allowed to show to a group, saved on the device. The film stays on your device: IOpener sends it nowhere.",
+          "A film you are allowed to show to a group, saved on the device. The film stays on your device: Eyes Opener sends it nowhere.",
           "The session sheet, printed.",
         ],
       },
@@ -87,14 +87,14 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
         items: [
           "Show only a film you have the right to show to a group. A film bought for watching at home may not be allowed. Ask the place: many schools and libraries know the rule.",
           "Choose a calm film that suits the youngest child in the room.",
-          "IOpener cannot see what is in your film. Do not choose one with flashing lights or strobing scenes.",
+          "Eyes Opener cannot see what is in your film. Do not choose one with flashing lights or strobing scenes.",
           `The group screen stops after ${n.filmMinutes} minutes of film. Pick a film that length, or a place to stop.`,
         ],
       },
       {
         id: "screen", title: "3. Set up the screen",
         steps: [
-          "Sign in to IOpener on your device. Open Cinema Club, then Group screen.",
+          "Sign in to Eyes Opener on your device. Open Cinema Club, then Group screen.",
           "Press \"Try with the test reel\" to check the picture and the sound. It lasts 90 seconds.",
           "Connect the device to the big screen. Press Full screen. The picture should fill the screen without being stretched.",
           "Put the seats two to three metres from a TV, square in front of it as far as the room allows. Nobody sits right under the screen.",
@@ -115,7 +115,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
       {
         id: "glasses", title: "5. The glasses",
         items: [
-          "A child who uses IOpener at home wears the glasses as at home: the cyan (blue-green) lens over the weaker eye. Their own grown-up knows which eye that is. You do not decide it, and you do not ask why.",
+          "A child who uses Eyes Opener at home wears the glasses as at home: the cyan (blue-green) lens over the weaker eye. Their own grown-up knows which eye that is. You do not decide it, and you do not ask why.",
           "Everyone else can wear them either way round. On the group screen both ways show the whole film.",
           "A child who wears their own glasses keeps them on underneath.",
           "A child who wears a patch keeps it exactly as their eye doctor said. Never ask for it to come off or to be moved.",
@@ -150,7 +150,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
           "Never says what is wrong with a child's eyes, and never says that a child's eyes are fine. A host cannot tell either.",
           "Never changes a patch, glasses or drops plan, and never gives advice about one. That belongs to the child's eye doctor.",
           "Never changes a setting in a family's account, and never starts a child's own practice for them.",
-          "Never types a child's name into IOpener. A club has no list of children in the app, and the session sheet has no place for a name.",
+          "Never types a child's name into Eyes Opener. A club has no list of children in the app, and the session sheet has no place for a name.",
           "Never takes photographs of the children, and never posts who came.",
           "Never is alone with a child.",
           "Never promises that the film will help anyone's eyes.",
@@ -159,7 +159,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
         ],
       },
     ],
-    foot: "IOpener is not a medical device. A club night does not diagnose, treat or cure any condition, and it does not replace an eye exam or anything an eye doctor prescribed.",
+    foot: "Eyes Opener is not a medical device. A club night does not diagnose, treat or cure any condition, and it does not replace an eye exam or anything an eye doctor prescribed.",
   },
 
   /* ───────────── the session sheet ───────────── */
@@ -199,7 +199,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
       children: "Children",
       grownUps: "Grown-ups",
     },
-    never: "A host never says what is wrong with a child's eyes, never changes a patch, glasses or drops plan, and never types a child's name into IOpener.",
+    never: "A host never says what is wrong with a child's eyes, never changes a patch, glasses or drops plan, and never types a child's name into Eyes Opener.",
   },
 
   /* ───────────── the group screen ───────────── */
@@ -212,8 +212,8 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
     choose: "Choose a film from this device",
     chooseAgain: "Choose another film",
     reel: "Try with the test reel",
-    reelName: "IOpener's test reel",
-    onDevice: "The film stays on this device. IOpener does not send it anywhere and does not keep its name.",
+    reelName: "Eyes Opener's test reel",
+    onDevice: "The film stays on this device. Eyes Opener does not send it anywhere and does not keep its name.",
     none: "No film chosen yet.",
     notVideo: "That file is not a video. Choose a video file.",
     cannot: "This browser cannot play this film. Most browsers play films saved as MP4 or WebM.",
@@ -257,11 +257,11 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
   /* ───────────── the list of clubs ───────────── */
   list: {
     title: "Clubs you can go to",
-    none: { title: "No club is listed yet", body: "A club appears here when a sponsor or the IOpener team lists one." },
+    none: { title: "No club is listed yet", body: "A club appears here when a sponsor or the Eyes Opener team lists one." },
     when: (weekday: number, time: string) => `Every ${CLUB_WEEKDAYS[weekday]} at ${time}`,
     kind: { school: "School", library: "Library", community_hall: "Community hall", clinic: "Clinic" } satisfies Record<PlaceKind, string>,
     sample: "Sample: not a real club",
-    rule: "A listing shows a place and a time, and nothing else. It is made by a sponsor or by the IOpener team, and a person at IOpener reads it first. A private home is never listed.",
+    rule: "A listing shows a place and a time, and nothing else. It is made by a sponsor or by the Eyes Opener team, and a person at Eyes Opener reads it first. A private home is never listed.",
     ask: "Ask at the place before you go: a club can miss a week. Every child comes with a parent or guardian.",
   },
 
@@ -269,11 +269,11 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
   sponsor: {
     title: "Cinema Club",
     sub: "Host a weekly film hour at your school, library, hall or clinic, and list it so families can find it.",
-    counts: "IOpener keeps no record of who comes to a club, so there are no numbers of families here. The paper session sheet is yours.",
+    counts: "Eyes Opener keeps no record of who comes to a club, so there are no numbers of families here. The paper session sheet is yours.",
     kitTitle: "The host kit",
     yours: "Your clubs",
     none: "You have not listed a club yet.",
-    status: { in_review: "Waiting for a person at IOpener", listed: "Listed", removed: "Not listed", closed: "Closed" } satisfies Record<ClubStatus, string>,
+    status: { in_review: "Waiting for a person at Eyes Opener", listed: "Listed", removed: "Not listed", closed: "Closed" } satisfies Record<ClubStatus, string>,
     close: "Close this club",
     closeOf: (name: string) => `Close the club at ${name}`,
     closeWarn: "The club leaves the list at once. You can list it again later.",
@@ -286,7 +286,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
       weekday: "Day of the week",
       time: "Starts at (India time)",
       submit: "Send for review",
-      saved: "Your club is waiting for a person at IOpener. It is listed once they have read it.",
+      saved: "Your club is waiting for a person at Eyes Opener. It is listed once they have read it.",
       staffSaved: "The club is listed.",
       viewOnly: "Your sponsor is still waiting for approval, so it cannot list a club yet.",
     },
@@ -308,7 +308,7 @@ export const cinemaClub = texts("copy/cinema-club", "cinemaClub", () => ({
     title: "Cinema Club listings",
     intro: "A listing a sponsor sends waits in the moderation room. A listing you add here is shown at once. Either way it is a public place and a time, never a home.",
     by: "Listed by",
-    team: "The IOpener team",
+    team: "The Eyes Opener team",
     cols: { place: "Place", when: "When", by: "Listed by", status: "Status" },
     none: "No club has been listed yet.",
     remove: "Take off the list",

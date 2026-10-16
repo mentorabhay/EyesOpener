@@ -109,7 +109,7 @@ export const settings = texts("copy/settings", "settings", () => ({
     birthYear: "Year of birth",
     birthYearNote: "Only the year is stored.",
     under4: "Screen sessions stay closed until age 4. You can still add the profile now.",
-    consent: "I am this child's parent or guardian, and I agree to this child using IOpener.",
+    consent: "I am this child's parent or guardian, and I agree to this child using Eyes Opener.",
     save: "Add profile",
     cancel: "Cancel",
     errors: {

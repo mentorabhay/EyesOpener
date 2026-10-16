@@ -57,8 +57,8 @@ describe.skipIf(!up)("four gatherings, against the database", () => {
     const name = `Zzfam${n} ${L} family`;
     const [a] = await db.insert(s.account).values({ displayName: name, ...over }).returning();
     const [guardian, cheerSeat] = await db.insert(s.appUser).values([
-      { email: `g${n}-${x}@iopener.test`, displayName: `Guardian${n} ${TAG}`, accountId: a.id, seat: "guardian" as const },
-      { email: `c${n}-${x}@iopener.test`, displayName: `Cheer${n} ${TAG}`, accountId: a.id, seat: "circle" as const },
+      { email: `g${n}-${x}@eyesopener.test`, displayName: `Guardian${n} ${TAG}`, accountId: a.id, seat: "guardian" as const },
+      { email: `c${n}-${x}@eyesopener.test`, displayName: `Cheer${n} ${TAG}`, accountId: a.id, seat: "circle" as const },
     ]).returning();
     const rows = profiles.length ? await db.insert(s.profile).values(profiles.map((p) => ({ accountId: a.id, displayName: p.name, kind: p.kind, birthYear: p.birthYear ?? null }))).returning() : [];
     const h = { id: a.id, name, guardian, cheer: cheerSeat, profiles: rows };
@@ -76,9 +76,9 @@ describe.skipIf(!up)("four gatherings, against the database", () => {
     await consent(B, B.profiles[0]);
 
     [staff, sponsorPerson, otherSponsorPerson] = await db.insert(s.appUser).values([
-      { email: `staff-${x}@iopener.test`, displayName: `Staff ${TAG}`, staffRole: "ops" as const },
-      { email: `sp1-${x}@iopener.test`, displayName: `Sponsor1 ${TAG}` },
-      { email: `sp2-${x}@iopener.test`, displayName: `Sponsor2 ${TAG}` },
+      { email: `staff-${x}@eyesopener.test`, displayName: `Staff ${TAG}`, staffRole: "ops" as const },
+      { email: `sp1-${x}@eyesopener.test`, displayName: `Sponsor1 ${TAG}` },
+      { email: `sp2-${x}@eyesopener.test`, displayName: `Sponsor2 ${TAG}` },
     ]).returning();
     const made = await db.insert(s.sponsor).values([
       { name: `${TAG} one`, kind: "ngo" as const, status: "approved" as const },
@@ -99,9 +99,9 @@ describe.skipIf(!up)("four gatherings, against the database", () => {
     if (hazards.length) await db.delete(s.hazardRule).where(inArray(s.hazardRule.id, hazards));
     const ids = [...homes.map((h) => h.id), ...extra];
     if (ids.length) await db.delete(s.account).where(inArray(s.account.id, ids));
-    const people = await db.select({ id: s.appUser.id }).from(s.appUser).where(like(s.appUser.email, `%-${x}@iopener.test`));
+    const people = await db.select({ id: s.appUser.id }).from(s.appUser).where(like(s.appUser.email, `%-${x}@eyesopener.test`));
     if (people.length) await db.delete(s.auditLog).where(inArray(s.auditLog.userId, people.map((p) => p.id)));
-    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@iopener.test`));
+    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@eyesopener.test`));
   });
 
   /* ───────────── Lights On Hour ───────────── */

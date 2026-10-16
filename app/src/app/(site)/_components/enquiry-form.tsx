@@ -1,7 +1,7 @@
-// Eyes Opener: The form a counsellor, a sponsor or a school writes to the IOpener team with.
+// Eyes Opener: The form a counsellor, a sponsor or a school writes to the Eyes Opener team with.
 "use client";
 /**
- * The form a counsellor, a sponsor or a school writes to the IOpener team with.
+ * The form a counsellor, a sponsor or a school writes to the Eyes Opener team with.
  * It posts to a Server Action, so it also works with scripts switched off. What was typed is kept when the answer is no.
  */
 import { startTransition, useActionState, useEffect, useRef } from "react";

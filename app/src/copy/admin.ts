@@ -34,6 +34,7 @@ const rooms: Record<AdminArea, { name: string; about: string }> = {
   screens: { name: "Screens and glasses", about: "How families' screens and glasses are set up, as counts only." },
   switchboard: { name: "Switchboard", about: "Saver mode and the monthly limit for AI spend." },
   branding: { name: "Brand & Logos", about: "Manage and upload official logos and brand assets across web, mobile, TV and extensions." },
+  look: { name: "Look and feel", about: "Colours, the gradient, text size, shadows, motion and pictures for the whole site, without a code change." },
 };
 
 /** What each audited action reads as in "Recent activity". The name is the thing it was done to. */
@@ -267,7 +268,7 @@ export const admin = texts("copy/admin", "admin", () => ({
     removeYes: "Yes, remove",
     give: {
       title: "Give a role",
-      about: "The person must have signed in to IOpener at least once.",
+      about: "The person must have signed in to Eyes Opener at least once.",
       email: "Their email",
       role: "Role",
       submit: "Give role",
@@ -326,7 +327,7 @@ export const admin = texts("copy/admin", "admin", () => ({
     sub: "Nothing in the library is a black box. Each page says what the item is, why it is there, what the evidence is, what is measured, and what the item cannot tell.",
     readTitle: "How to read it",
     read: [
-      "Every game and exercise uses one method. The method carries the evidence label: what trials found for that method, not for the game itself. No trial tested any IOpener game.",
+      "Every game and exercise uses one method. The method carries the evidence label: what trials found for that method, not for the game itself. No trial tested any Eyes Opener game.",
       "The guide on each page is what the member reads: what to do, what they should see, when to press, what counts as success, when to stop.",
       "\"For staff\" on each page adds what a member does not need: the method and its label, the access level, the recommended status, and what the item cannot tell.",
       "Most games rely on what the member reports. A number on a record means only what the page says it means.",
@@ -349,7 +350,7 @@ export const admin = texts("copy/admin", "admin", () => ({
     sub: "Two switches for the cost of AI. Only a super admin opens this room.",
     saver: {
       title: "Saver mode",
-      what: "When saver mode is on, IOpener skips the AI jobs that can wait, so the month's spend grows more slowly.",
+      what: "When saver mode is on, Eyes Opener skips the AI jobs that can wait, so the month's spend grows more slowly.",
       on: "Saver mode is on",
       off: "Saver mode is off",
       turnOn: "Turn saver mode on",
@@ -357,7 +358,7 @@ export const admin = texts("copy/admin", "admin", () => ({
     },
     cap: {
       title: "Monthly limit for Gemini",
-      what: "This is the most IOpener may spend on Gemini in one calendar month. When the spend reaches it, AI calls stop until the next month.",
+      what: "This is the most Eyes Opener may spend on Gemini in one calendar month. When the spend reaches it, AI calls stop until the next month.",
       label: "Limit in dollars, from 1 to 40",
       now: (cap: string, spent: string) => `The limit is ${cap}. Spent so far this month: ${spent}.`,
       submit: "Save limit",
@@ -366,7 +367,7 @@ export const admin = texts("copy/admin", "admin", () => ({
     },
     noAssistant: {
       title: "Nothing reads these switches in this edition",
-      body: "This edition of IOpener has no AI features, so it never makes an AI call. Both values are saved for an edition that has them.",
+      body: "This edition of Eyes Opener has no AI features, so it never makes an AI call. Both values are saved for an edition that has them.",
     },
     changed: (on: string) => `Last changed on ${on}`,
   },

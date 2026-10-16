@@ -10,15 +10,15 @@ export const languages = texts("copy/languages", "languages", () => ({
   /** The menu on the public site and the card in Settings. */
   choose: {
     title: "Language",
-    label: "Read IOpener in",
+    label: "Read Eyes Opener in",
     go: "Change language",
     sub: "This sets the language for everyone in your household, on every device.",
     childFollows: "Child mode uses the same language.",
     guardianOnly: "A guardian chooses the language for the household.",
-    onlyEnglish: "IOpener is in English for now. More languages are being checked by people who speak them.",
+    onlyEnglish: "Eyes Opener is in English for now. More languages are being checked by people who speak them.",
     mixed: "Where a sentence has not been checked in your language yet, it is shown in English.",
     notTranslated: "Game scenes, check-up letters and the names of games and exercises stay as they are in every language.",
-    saved: (name: string) => `Saved. IOpener is now in ${name}.`,
+    saved: (name: string) => `Saved. Eyes Opener is now in ${name}.`,
     notOffered: "That language is not switched on yet.",
     notAllowed: "Only a guardian can change the language.",
     inReview: "being checked",

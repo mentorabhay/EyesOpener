@@ -1,6 +1,6 @@
-// Eyes Opener: The scripts: what IOpener can say aloud, built from the words the app already shows.
+// Eyes Opener: The scripts: what Eyes Opener can say aloud, built from the words the app already shows.
 /**
- * The scripts: what IOpener can say aloud, built from the words the app already shows.
+ * The scripts: what Eyes Opener can say aloud, built from the words the app already shows.
  *
  * One script for each item and part, named like a path: "exercise/brock-string/steps", "game/tunnel-glide/cues",
  * "clip/m01/how". A script is read from the same data the page is drawn from, so the two cannot drift apart:

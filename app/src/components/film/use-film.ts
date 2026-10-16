@@ -43,7 +43,7 @@ function keptSound(): { volume: number; muted: boolean } | null {
 }
 
 /**
- * One `<video>` element, driven by IOpener's own controls instead of the browser's.
+ * One `<video>` element, driven by Eyes Opener's own controls instead of the browser's.
  * Make the ref with `useRef<HTMLVideoElement>(null)`, give it to the element and spread `bind` on it.
  * The same element is kept from film to film, so a browser that lets a film start only after a press lets the
  * next film in a list start by itself.
@@ -139,7 +139,7 @@ function watchFullScreen(listener: () => void) {
 }
 
 /**
- * Fills the screen with one element and its children, so IOpener's own controls stay with the film.
+ * Fills the screen with one element and its children, so Eyes Opener's own controls stay with the film.
  * Some phones can fill the screen only with the bare video and the browser's own controls. That is not offered:
  * `can` is false there.
  */

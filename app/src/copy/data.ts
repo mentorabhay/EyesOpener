@@ -26,7 +26,7 @@ export const data = texts("copy/data", "data", () => ({
 
   copy: {
     title: "A copy of your data",
-    what: "One file with everything IOpener stores about this family, and a summary you can read and print.",
+    what: "One file with all that Eyes Opener keeps about this family, and a summary to read and print.",
     ask: "Make a copy",
     again: "Make a new copy",
     ready: (until: string) => `Your copy is ready. You can download it until ${until}.`,
@@ -34,7 +34,7 @@ export const data = texts("copy/data", "data", () => ({
     download: "Download the file",
     summary: "Read the summary",
     asked: (on: string) => `Asked on ${on}. It will be ready within a day.`,
-    note: `The file is made fresh each time you download it. IOpener keeps no copy of it. After ${COPY_DAYS} days, ask again.`,
+    note: `The file is made fresh each time you download it. Eyes Opener keeps no copy of it. After ${COPY_DAYS} days, ask again.`,
     keepSafe: "The file holds your family's eye data. Keep it somewhere safe.",
   },
 
@@ -89,7 +89,7 @@ export const data = texts("copy/data", "data", () => ({
   /* ───────────── the printable summary ───────────── */
   summary: {
     title: "Summary of your data",
-    sub: (family: string, made: string) => `What IOpener stores about ${family}, as it was on ${made}.`,
+    sub: (family: string, made: string) => `What Eyes Opener stores about ${family}, as it was on ${made}.`,
     back: "Settings",
     print: "Print this page",
     download: "Download the file",
@@ -133,26 +133,26 @@ export const data = texts("copy/data", "data", () => ({
 
   /* ───────────── the words written inside the file ───────────── */
   file: {
-    name: (date: string) => `iopener-family-data-${date}.json`,
+    name: (date: string) => `eyesopener-family-data-${date}.json`,
     readme: {
-      what: "This file is a copy of everything IOpener stores about your household, as it was at the moment in madeAt. It is yours to keep, to read, or to show an eye doctor.",
+      what: "This file is a copy of everything Eyes Opener stores about your household, as it was at the moment in madeAt. It is yours to keep, to read, or to show an eye doctor.",
       read: [
         "The file is in JSON, a plain-text format. A text editor can open it, and so can most programs that work with data.",
         "data holds the parts. Each part is a list of rows. README.parts says in plain words what each part is and what its numbers mean.",
         "A time is written in Coordinated Universal Time (UTC), like 2026-10-05T04:30:00.000Z. India time is 5 hours 30 minutes ahead of it. A day written like 2026-10-05 is a calendar day in India.",
-        "Every row keeps the id IOpener uses for it. A profileId points at a row in profiles, a deviceId at a row in screens, and the id of a grown-up at a row in people.",
+        "Every row keeps the id Eyes Opener uses for it. A profileId points at a row in profiles, a deviceId at a row in screens, and the id of a grown-up at a row in people.",
         "A person or a family member outside your household is given by name only, never by id.",
         "names explains the short codes: which game or exercise an itemSlug is, what each number kept by a session means, which programme is which, and what each check-up measures.",
       ],
       leftOut: [
         "PINs. Only a scrambled form is stored, so the file says only whether a PIN is set.",
-        "Camera pictures and photos. IOpener never stores them, so there are none to give.",
+        "Camera pictures and photos. Eyes Opener never stores them, so there are none to give.",
         "What other families shared, and pooled results that mix the numbers of many families.",
         "The staff record of what staff, counsellors and sponsors did in their own areas.",
       ],
       notMedical: "These are home measurements and a family's own records. They are not a diagnosis.",
     },
-    outside: "A person at IOpener",
+    outside: "A person at Eyes Opener",
     counsellor: (name: string) => `${name} (counsellor)`,
     otherFamily: "A member of another family",
     kinds: { game: "Game", exercise: "Exercise", film: "Two-eye cinema", monitor: "Habit coaching by camera" } as Record<string, string>,
@@ -194,7 +194,7 @@ export const data = texts("copy/data", "data", () => ({
         },
       },
       days: { title: "Days", what: "The three rings for each day.", units: { restBreaks: "breaks taken", restGoal: "breaks", trainMinutes: "minutes", trainGoal: "minutes", lightMinutes: "minutes outdoors", lightGoal: "minutes", screenMinutes: "minutes" } },
-      carePlans: { title: "Care plans", what: "What an eye doctor prescribed away from the screen, as a guardian typed it in. IOpener never sets or changes it.", units: { perDay: "hours a day for a patch or glasses; 1 for a day with drops", days: "days of the week, 0 Sunday to 6 Saturday; empty means every day" } },
+      carePlans: { title: "Care plans", what: "What an eye doctor prescribed away from the screen, as a guardian typed it in. Eyes Opener never sets or changes it.", units: { perDay: "hours a day for a patch or glasses; 1 for a day with drops", days: "days of the week, 0 Sunday to 6 Saturday; empty means every day" } },
       careLog: { title: "Care log", what: "The family's own log of patch time, glasses wear, drops, outdoor time and breaks.", units: { minutes: "minutes", count: "times" } },
       monitorSamples: { title: "Workday monitor", what: "One-minute numbers from the workday monitor. No picture is ever stored.", units: { distanceCm: "centimetres from the screen", blinksPerMin: "blinks a minute, full and half blinks together", halfBlinksPerMin: "of those, half blinks a minute (a rough figure)", posture: "share of the minute with the head level and not leaning in, from 0 to 1", minutesSinceBreak: "minutes of screen work since the last break", faceSeconds: "seconds of the minute with a face in view", prompt: "what fell due or was shown in that minute: break, close, blink or tilt", takenAt: "the start of the minute that was measured" } },
       streaks: { title: "Streaks", what: "Days in a row with practice, the longest run, and lights left to give.", units: { current: "days", longest: "days", lights: "lights" } },
@@ -204,7 +204,7 @@ export const data = texts("copy/data", "data", () => ({
       ideas: { title: "Ideas", what: "Ideas a family member wrote down as steps for others to try.", units: { weeks: "weeks" } },
       experiments: { title: "Experiments on your ideas", what: "The experiment that tests each of this family's ideas: whether it is open and when it closes. The pooled result is not here, because it mixes many families' numbers." },
       experimentPlaces: { title: "Places in experiments", what: "Each experiment a profile joined, by the idea's name: the group it was put in (tried or control) and which of its own check-ups were tied to it." },
-      review: { title: "Review of what you shared", what: "Each time something this family shared waited for a person at IOpener to review it, why, and what was decided. refId is the id of the story, idea, note or mail." },
+      review: { title: "Review of what you shared", what: "Each time something this family shared waited for a person at Eyes Opener to review it, why, and what was decided. refId is the id of the story, idea, note or mail." },
       lights: { title: "Lights", what: "Lights given and received, each with its short note. A light from or to another family names that family member only." },
       weekNotes: { title: "Notes for later weeks", what: "Notes a family member left for families who reach a later week of a programme." },
       mail: { title: "Mail", what: "Short notes sent inside the household, from a grown-up or a family member to a profile." },

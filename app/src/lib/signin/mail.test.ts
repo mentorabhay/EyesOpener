@@ -38,7 +38,7 @@ describe("a message", () => {
     const m = compose({ to: "a@b.example", subject: "Hi\r\nBcc: evil@x.example", text: "hello" }, S.from, new Date("2026-10-10T00:00:00Z"));
     expect(m).toContain("Subject: Hi Bcc: evil@x.example");
     expect(m.split("\r\n").filter((l) => l.startsWith("Bcc:"))).toHaveLength(0);
-    expect(m).toContain("From: IOpener <signin@iopener.example>");
+    expect(m).toContain("From: Eyes Opener <signin@iopener.example>");
     expect(m).toContain(Buffer.from("hello").toString("base64"));
   });
   it("refuses an address that could carry a header or a second address", () => {

@@ -19,7 +19,7 @@ export async function setSaver(formData: FormData) {
   revalidatePath("/admin", "layout");
 }
 
-/** Sets the most IOpener may spend on Gemini in one calendar month, in dollars. */
+/** Sets the most Eyes Opener may spend on Gemini in one calendar month, in dollars. */
 export async function setCap(_: Answer, formData: FormData): Promise<Answer> {
   const viewer = await requireStaff("switchboard");
   const cap = z.coerce.number().min(CAP_MIN).max(CAP_MAX).safeParse(formData.get("cap"));

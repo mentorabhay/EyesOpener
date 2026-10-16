@@ -4,12 +4,12 @@ import { texts } from "@/i18n/texts";
 export const auth = texts("copy/auth", "auth", () => ({
   title: "Sign in",
   demoTitle: "Demo sign-in",
-  demoSub: "Pick a person to see their side of IOpener. Each has their own pages and their own limits.",
+  demoSub: "Pick a person to see their side of Eyes Opener. Each has their own pages and their own limits.",
   demoLocked: "Demo people are for those given an access phrase.",
   demoOpen: "Type the phrase",
   groups: {
     household: { title: "A family", sub: "Guardians manage the household. A cheer seat can look and encourage." },
-    staff: { title: "IOpener staff", sub: "The admin console. Each role sees only its rooms." },
+    staff: { title: "Eyes Opener staff", sub: "The admin console. Each role sees only its rooms." },
     counsellor: { title: "Eye counsellors", sub: "Professionals a family links to. Ops checks them first." },
     sponsor: { title: "Sponsors", sub: "Organisations that support families. They see counts, never a member." },
   },

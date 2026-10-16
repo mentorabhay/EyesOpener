@@ -46,7 +46,11 @@ describe("staff rooms", () => {
     expect(staffCan("ops", "moderation")).toBe(true);
     for (const a of ["staff", "switchboard", "stories"] as const) expect(staffCan("ops", a)).toBe(false);
   });
-  it("gives content the overview, the catalogue, the manual, the research room and stories", () => { expect(staffAreas("content")).toEqual(["overview", "catalogue", "manual", "stories", "research"]); });
+  it("gives content the overview, the catalogue, the manual, the research room, stories and brand assets", () => { expect(staffAreas("content")).toEqual(["overview", "catalogue", "manual", "stories", "research", "branding"]); });
+  it("keeps the Look and feel room for super admins only", () => {
+    expect(staffCan("super_admin", "look")).toBe(true);
+    for (const r of ["ops", "content"] as const) expect(staffCan(r, "look")).toBe(false);
+  });
   it("lets every staff role read the manual", () => { for (const r of ["super_admin", "ops", "content"] as const) expect(staffCan(r, "manual")).toBe(true); });
   it("lets ops and content set the status of library items", () => { expect(staffCan("ops", "catalogue")).toBe(true); expect(staffCan("content", "catalogue")).toBe(true); });
   it("gives nothing without a role", () => { expect(staffAreas(null)).toEqual([]); });

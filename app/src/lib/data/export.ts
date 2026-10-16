@@ -39,7 +39,7 @@ export type Row = Record<string, unknown>;
 /** The slug every film session carries (CINEMA in src/lib/sessions.ts, repeated here so this file needs nothing of a signed-in request). */
 const CINEMA = "two-eye-cinema";
 
-export const FORMAT = "iopener-family-data";
+export const FORMAT = "eyesopener-family-data";
 export const FORMAT_VERSION = 1;
 
 export interface FamilyFile {

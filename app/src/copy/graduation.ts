@@ -41,7 +41,7 @@ export const graduation = texts("copy/graduation", "graduation", () => ({
     back: "Back to the graduation",
     head: (name: string) => `${name}'s journey book`,
     course: (programme: string, from: string, to: string) => `The ${programme} programme, ${from} to ${to}.`,
-    made: (date: string) => `Printed from IOpener on ${date}.`,
+    made: (date: string) => `Printed from Eyes Opener on ${date}.`,
     numbers: "The programme in numbers",
     weeks: "Weeks of the programme",
     practised: "Days with practice",
@@ -63,8 +63,8 @@ export const graduation = texts("copy/graduation", "graduation", () => ({
     noCheckups: "No check-up was taken during the programme.",
     honest: "These are home measurements on a home screen. They say what was measured on each day. They do not say why a number moved, and they are not an eye test.",
     hero: "The hero",
-    noHero: "No hero was drawn. This is IOpener's own figure.",
-    whatNext: "IOpener cannot tell you what has changed in the eyes. Take this book, or the check-up summary, to an eye doctor.",
+    noHero: "No hero was drawn. This is Eyes Opener's own figure.",
+    whatNext: "Eyes Opener cannot tell you what has changed in the eyes. Take this book, or the check-up summary, to an eye doctor.",
   },
 
   keeper: {

@@ -31,7 +31,7 @@ const measured = (chapters: number, films: number): Detail => (films > 0 ? { cha
 const KEEP_EVERY = 5;
 
 /**
- * The two-eye cinema: the member's own films, played through the two-eye filter with IOpener's own controls.
+ * The two-eye cinema: the member's own films, played through the two-eye filter with Eyes Opener's own controls.
  *  - A film is read in the browser and never sent anywhere. The list of films lives on this device only.
  *  - The film moves only inside a session the server allowed, and the session clock counts only while it moves.
  *  - Watching is cut into chapters with an eye break between them (see chapters.ts). A break is not watching.

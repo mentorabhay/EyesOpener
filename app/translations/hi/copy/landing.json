@@ -527,8 +527,8 @@
   },
   "landing.hero.lead": {
    "source": "6112f6db88c780",
-   "english": "IOpener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
-   "text": "IOpener आपकी आँखों के लिए एक फ़िटनेस ऐप है। यह ट्रैक करता है कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करता है और गेम के साथ उन्हें प्रशिक्षित करता है।",
+   "english": "Eyes Opener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
+   "text": "Eyes Opener आपकी आँखों के लिए एक फ़िटनेस ऐप है। यह ट्रैक करता है कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करता है और गेम के साथ उन्हें प्रशिक्षित करता है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -562,8 +562,8 @@
   },
   "landing.meta.description": {
    "source": "f661756c03faae",
-   "english": "IOpener is a free fitness app for your eyes, with an open-source core. Track how you use them, check them at home and practise with games. The web app works today.",
-   "text": "IOpener आपकी आँखों के लिए एक मुफ़्त फ़िटनेस ऐप है, जिसका कोर ओपन-सोर्स है। ट्रैक करें कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करें और गेम के साथ अभ्यास करें। वेब ऐप आज ही काम करता है।",
+   "english": "Eyes Opener is a free fitness app for your eyes, with an open-source core. Track how you use them, check them at home and practise with games. The web app works today.",
+   "text": "Eyes Opener आपकी आँखों के लिए एक मुफ़्त फ़िटनेस ऐप है, जिसका कोर ओपन-सोर्स है। ट्रैक करें कि आप उनका कैसे उपयोग करते हैं, घर पर उनकी जाँच करें और गेम के साथ अभ्यास करें। वेब ऐप आज ही काम करता है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -604,8 +604,8 @@
   },
   "landing.not.title": {
    "source": "02a1927255970a",
-   "english": "What IOpener is not.",
-   "text": "IOpener क्या नहीं है।",
+   "english": "What Eyes Opener is not.",
+   "text": "Eyes Opener क्या नहीं है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -753,8 +753,8 @@
   },
   "landing.safety.doctor.body": {
    "source": "8e2f13c0a2d741",
-   "english": "When an answer points to a warning sign, training stays closed. IOpener never says all clear.",
-   "text": "जब कोई उत्तर किसी चेतावनी के संकेत की ओर इशारा करता है, तो अभ्यास बंद रहता है। IOpener कभी नहीं कहता कि सब साफ है।",
+   "english": "When an answer points to a warning sign, training stays closed. Eyes Opener never says all clear.",
+   "text": "जब कोई उत्तर किसी चेतावनी के संकेत की ओर इशारा करता है, तो अभ्यास बंद रहता है। Eyes Opener कभी नहीं कहता कि सब साफ है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -882,8 +882,8 @@
   },
   "landing.screens.lead": {
    "source": "75d23792c92916",
-   "english": "IOpener is made for the browser, the phone and the TV. Here is what exists today.",
-   "text": "IOpener ब्राउज़र, फोन और टीवी के लिए बनाया गया है। यहाँ वह है जो आज मौजूद है।",
+   "english": "Eyes Opener is made for the browser, the phone and the TV. Here is what exists today.",
+   "text": "Eyes Opener ब्राउज़र, फोन और टीवी के लिए बनाया गया है। यहाँ वह है जो आज मौजूद है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },

@@ -4,8 +4,8 @@
  *
  * Rules for every line here:
  * - Plain words a school student can follow. One idea in each line.
- * - Nothing here promises a result. IOpener does not diagnose, treat or cure, and no line may suggest it does.
- * - A number about IOpener is never typed in: the page works it out from `@/data` and `@/engine` and passes it in.
+ * - Nothing here promises a result. Eyes Opener does not diagnose, treat or cure, and no line may suggest it does.
+ * - A number about Eyes Opener is never typed in: the page works it out from `@/data` and `@/engine` and passes it in.
  * - The only typed-in figures are trial results in `evidence.trials`, quoted from the evidence framework, each with its link.
  * - Nothing about money beyond "free" and "open source".
  */
@@ -68,7 +68,7 @@ export const site = texts("copy/site", "site", () => ({
   /* ───────────── shared ───────────── */
   cta: {
     title: "Start with the check.",
-    body: "It measures each eye on its own, then both together. Everything else in IOpener is set from what it finds.",
+    body: "It measures each eye on its own, then both together. Everything else in Eyes Opener is set from what it finds.",
     start: "Start the check",
     programmes: "See the programmes",
     evidence: "Read the evidence",
@@ -96,11 +96,11 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /how-it-works ───────────── */
   how: {
-    meta: { title: "How it works", description: "IOpener measures each eye at home, sets every game from what it measured, and shows what changed. Track, Test, Train, Together." },
+    meta: { title: "How it works", description: "Eyes Opener measures each eye at home, sets every game from what it measured, and shows what changed. Track, Test, Train, Together." },
     hero: {
       kicker: "How it works",
       title: "A fitness app, for your eyes.",
-      lead: "IOpener measures each eye at home, sets every game from what it measured, and shows you what changed. It is free, and it works in a browser today.",
+      lead: "Eyes Opener measures each eye at home, sets every game from what it measured, and shows you what changed. It is free, and it works in a browser today.",
       points: ["Measure first", "Doses from trials", "Evidence on every label"],
     },
     spaces: {
@@ -119,7 +119,7 @@ export const site = texts("copy/site", "site", () => ({
       title: "First it measures. Then it sets everything from that.",
       lead: "The check runs once on each screen you use. Nothing is typed in: you answer by pointing the way a letter faces.",
       steps: [
-        { title: "Set up the screen", body: "Hold a bank card against a bar on the screen. That tells IOpener the true size of the screen, so a letter is the size it should be." },
+        { title: "Set up the screen", body: "Hold a bank card against a bar on the screen. That tells Eyes Opener the true size of the screen, so a letter is the size it should be." },
         { title: "Check each eye on its own", body: (questions: number) => `Cover one eye. Answer ${word(questions)} short questions, then read the smallest letter and the faintest letter this eye can manage. Then the other eye.` },
         { title: "Check both eyes together", body: "Put on the red-cyan glasses. The balance test finds how far the stronger eye must be dimmed for the two eyes to pull equally." },
         { title: "Get your eye profile", body: "Which eye is weaker, how faint the stronger eye's picture should be, and how big letters and targets must be. Every game draws from it." },
@@ -149,7 +149,7 @@ export const site = texts("copy/site", "site", () => ({
       caption: "A game scene, as the screen shows it and as each eye sees it.",
     },
     day: {
-      kicker: "A day with IOpener",
+      kicker: "A day with Eyes Opener",
       title: (n: number) => `${Word(n)} rings to close.`,
       lead: "The Today screen shows the eye day as rings. Closing them is the whole daily habit.",
       rings: [
@@ -175,7 +175,7 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /programmes ───────────── */
   programmes: {
-    meta: { title: "Programmes", description: "The IOpener programmes: who each one is for, where its dose comes from, the games and exercises in it, and what it does not do." },
+    meta: { title: "Programmes", description: "The Eyes Opener programmes: who each one is for, where its dose comes from, the games and exercises in it, and what it does not do." },
     hero: {
       kicker: "Programmes",
       title: (n: number) => `${Word(n)} programmes. Each says where its dose comes from.`,
@@ -247,7 +247,7 @@ export const site = texts("copy/site", "site", () => ({
         not: [
           "It does not replace glasses, a patch or drops an eye doctor prescribed. Glasses come first.",
           "It does not claim to work better than patching. Trials found the two about equal.",
-          "The trials used their own equipment. IOpener's red-cyan version has not been through its own trial yet.",
+          "The trials used their own equipment. Eyes Opener's red-cyan version has not been through its own trial yet.",
           "The evidence is strongest for children. For adults it is smaller.",
         ],
       },
@@ -301,11 +301,11 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /evidence ───────────── */
   evidence: {
-    meta: { title: "Evidence", description: "How IOpener labels the evidence behind every game and exercise, how many carry each label, the trials behind them, and where the evidence is limited or unproven." },
+    meta: { title: "Evidence", description: "How Eyes Opener labels the evidence behind every game and exercise, how many carry each label, the trials behind them, and where the evidence is limited or unproven." },
     hero: {
       kicker: "Evidence",
       title: "Every game says how strong its evidence is.",
-      lead: "IOpener grades the method behind each game and exercise against published research, and prints the grade on it. Some grades are low. We print those too.",
+      lead: "Eyes Opener grades the method behind each game and exercise against published research, and prints the grade on it. Some grades are low. We print those too.",
     },
     stats: { games: "games", exercises: "exercises", methods: "methods behind them", trials: "trials linked on this page" },
     labels: {
@@ -321,7 +321,7 @@ export const site = texts("copy/site", "site", () => ({
       kicker: "Read the labels with care",
       title: "What a label does not say.",
       items: [
-        { b: "A label grades the method, as trials tested it.", t: "It does not grade IOpener's own version. That has not been through its own trial yet." },
+        { b: "A label grades the method, as trials tested it.", t: "It does not grade Eyes Opener's own version. That has not been through its own trial yet." },
         { b: "A label is not a promise.", t: "Trials report averages. They cannot say what will happen for one person." },
         { b: "\"Strong with supervision\" means with a therapist.", t: "Home practice alone is not proven for those methods. The app says so on the label." },
         { b: "Low labels stay in view.", t: (n: number) => `${Word(n)} games and exercises carry the label Limited or Unproven. They stay in the library, and each one says what it is.` },
@@ -341,7 +341,7 @@ export const site = texts("copy/site", "site", () => ({
       limit: "Limit",
       read: "Read the source",
       readOf: (name: string) => `Read the source for ${name}`,
-      /* Quoted from refs/IOpener-evidence-framework.md and refs/IOpener-concept.md. Change a figure only with its source. */
+      /* Quoted from refs/EyesOpener-evidence-framework.md and refs/EyesOpener-concept.md. Change a figure only with its source. */
       groups: [
         {
           title: "Lazy eye",
@@ -378,14 +378,14 @@ export const site = texts("copy/site", "site", () => ({
             { name: "Outdoor time and short sight", who: "1,903 children. Some classes had an extra 40 minutes outdoors each school day.", found: "Over three years, short sight started in 30.4% of them, against 39.5% of the others.", limit: "The evidence is for when short sight starts, not for glasses a child already wears.", href: "https://jamanetwork.com/journals/jama/fullarticle/2441261", source: "JAMA", more: { label: "Trial summary", href: "https://reviewofmm.com/effect-of-time-spent-outdoors-on-the-development-of-myopia/" } },
             { name: "Enforced screen breaks", who: "29 screen users with symptoms used software that made them take look-away breaks.", found: "Strain and dry-eye scores improved within two weeks.", limit: "The gains were gone a week after the reminders stopped. A lab study of 30 adults found that 20-second breaks made no difference over a 40-minute task.", href: "https://www.sciencedirect.com/science/article/pii/S1367048422001990", source: "Trial, 2023", more: { label: "The lab study", href: "https://www.healio.com/news/optometry/20230120/study-provides-little-or-no-support-that-20second-breaks-alleviate-digital-eye-strain" } },
             { name: "Blink training", who: "40 students used a blink-training app.", found: "Symptoms and tear stability improved at 30 days.", limit: "Part of the gain was lost by day 60.", href: "https://www.nature.com/articles/s41746-025-02053-8", source: "npj Digital Medicine" },
-            { name: "Letter test on a phone", who: "233 people took a phone letter test and a clinic chart test.", found: "The two agreed to within one line.", limit: "That was a different app. IOpener's check-ups have not been compared with a clinic yet.", href: "https://peekvision.org/resources/research/validating-our-vision-test/", source: "Peek Vision" },
+            { name: "Letter test on a phone", who: "233 people took a phone letter test and a clinic chart test.", found: "The two agreed to within one line.", limit: "That was a different app. Eyes Opener's check-ups have not been compared with a clinic yet.", href: "https://peekvision.org/resources/research/validating-our-vision-test/", source: "Peek Vision" },
           ],
         },
       ] as { title: string; items: Trial[] }[],
     },
     refuse: {
       kicker: "What the evidence does not support",
-      title: "Claims IOpener will not make.",
+      title: "Claims Eyes Opener will not make.",
       lead: "Each of these is said somewhere about eye training. The trials do not back them.",
       items: [
         { claim: "Home software alone treats convergence insufficiency in children.", why: "In the CITT trial it did no better than placebo therapy. What worked was weekly sessions with a therapist plus home practice.", href: "https://pubmed.ncbi.nlm.nih.gov/18852411/" },
@@ -400,7 +400,7 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /library ───────────── */
   library: {
-    meta: { title: "Library", description: "Every game and exercise in IOpener, each with its evidence label. Filter by programme and by evidence." },
+    meta: { title: "Library", description: "Every game and exercise in Eyes Opener, each with its evidence label. Filter by programme and by evidence." },
     hero: {
       kicker: "Library",
       title: "The whole library, in the open.",
@@ -424,7 +424,7 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /safety ───────────── */
   safety: {
-    meta: { title: "Safety", description: "The rules IOpener enforces. Questions before training, an eye doctor first for warning signs, a daily limit, no screen sessions for the very young, a stop button, and no dose set by AI." },
+    meta: { title: "Safety", description: "The rules Eyes Opener enforces. Questions before training, an eye doctor first for warning signs, a daily limit, no screen sessions for the very young, a stop button, and no dose set by AI." },
     hero: {
       kicker: "Safety",
       title: "The rules the app will not bend.",
@@ -455,7 +455,7 @@ export const site = texts("copy/site", "site", () => ({
     cap: {
       title: (max: number) => `Never more than ${max} minutes a day`,
       body: "Nobody trains for longer than this in one day, whatever the programme says. The Train ring closes when the day's practice is done and cannot be overfilled.",
-      why: "More is not better. The trials set a dose, and nothing in IOpener rewards going past it.",
+      why: "More is not better. The trials set a dose, and nothing in Eyes Opener rewards going past it.",
     },
     age: {
       title: (age: number) => `No screen sessions under ${age}`,
@@ -503,18 +503,18 @@ export const site = texts("copy/site", "site", () => ({
       then: "Only then does the session start, for the minutes that are left.",
     },
     not: {
-      title: "What IOpener is not",
-      body: "IOpener is not a medical device. It does not diagnose, treat or cure any condition, and it does not replace an eye exam, glasses, a patch, drops or surgery.",
+      title: "What Eyes Opener is not",
+      body: "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition, and it does not replace an eye exam, glasses, a patch, drops or surgery.",
     },
   },
 
   /* ───────────── /for-counsellors and /for-sponsors ───────────── */
   counsellors: {
-    meta: { title: "For counsellors", description: "For optometrists, orthoptists and ophthalmologists: what a linked counsellor sees in IOpener, what stays hidden, and how to take part." },
+    meta: { title: "For counsellors", description: "For optometrists, orthoptists and ophthalmologists: what a linked counsellor sees in Eyes Opener, what stays hidden, and how to take part." },
     hero: {
       kicker: "For eye counsellors",
       title: "Home practice you can set and review.",
-      lead: "IOpener is free for families and free for you. A family asks to link one member to you. Once you accept, you see that member's results and set the dose for the programmes only a counsellor can open.",
+      lead: "Eyes Opener is free for families and free for you. A family asks to link one member to you. Once you accept, you see that member's results and set the dose for the programmes only a counsellor can open.",
       who: "For optometrists, orthoptists and ophthalmologists.",
       cta: "Write to us",
     },
@@ -554,21 +554,21 @@ export const site = texts("copy/site", "site", () => ({
       title: "Three steps.",
       items: [
         { title: "Write to us", body: "Use the form below. Tell us where you practise." },
-        { title: "We check your registration", body: "A person on the IOpener team checks your professional registration before any family can link to you." },
+        { title: "We check your registration", body: "A person on the Eyes Opener team checks your professional registration before any family can link to you." },
         { title: "Families link to you", body: "A family types your email to ask for a link. You accept or decline each request." },
       ],
     },
     limits: {
       title: "Said plainly",
       items: [
-        "IOpener is a practice and tracking tool. It is not a medical device and it does not diagnose.",
+        "Eyes Opener is a practice and tracking tool. It is not a medical device and it does not diagnose.",
         "A check-up at home is not a clinic measure. Treat it as a trend, not a reading.",
-        "IOpener's own version of these methods has not been through its own trial yet.",
+        "Eyes Opener's own version of these methods has not been through its own trial yet.",
       ],
     },
   },
   sponsors: {
-    meta: { title: "For sponsors and schools", description: "For schools, clinics and community groups that support families: what a sponsor sees in IOpener (counts only), what it never sees, and how to take part." },
+    meta: { title: "For sponsors and schools", description: "For schools, clinics and community groups that support families: what a sponsor sees in Eyes Opener (counts only), what it never sees, and how to take part." },
     hero: {
       kicker: "For sponsors and schools",
       title: "Support families. See counts, never people.",
@@ -592,7 +592,7 @@ export const site = texts("copy/site", "site", () => ({
           "A family's name, or a child's name.",
           "Any check-up result, eye setting or session.",
           (min: number) => `Any count that covers fewer than ${word(min)} households. It stays hidden, so no family can be picked out.`,
-          "Advertising space. There is none in IOpener.",
+          "Advertising space. There is none in Eyes Opener.",
         ] as (string | ((min: number) => string))[],
       },
       example: {
@@ -606,7 +606,7 @@ export const site = texts("copy/site", "site", () => ({
       title: "Three steps.",
       items: [
         { title: "Write to us", body: "Use the form below. Say who you are and which families you hope to support." },
-        { title: "We check your organisation", body: "A person on the IOpener team approves each sponsor. Until then the portal shows your status and little else." },
+        { title: "We check your organisation", body: "A person on the Eyes Opener team approves each sponsor. Until then the portal shows your status and little else." },
         { title: "Open a group and share its code", body: "A group is a join code you give to families: a class, a camp or a year. A family types the code to join. Joining is their choice." },
       ],
     },
@@ -631,9 +631,9 @@ export const site = texts("copy/site", "site", () => ({
     trap: "Leave this box empty",
     send: "Send",
     sending: "Sending",
-    use: "We use what you write here only to answer you. It is kept with the IOpener team and is never shared or used for advertising.",
+    use: "We use what you write here only to answer you. It is kept with the Eyes Opener team and is never shared or used for advertising.",
     result: {
-      sent: "Thank you. Your message has reached the IOpener team, and a person will answer by email.",
+      sent: "Thank you. Your message has reached the Eyes Opener team, and a person will answer by email.",
       invalid: "Some things need another look:",
       limit: (n: number) => `This email has written ${word(n)} times today, which is the limit for one day. We have those messages. Please write again tomorrow.`,
       failed: "The message could not be sent. Nothing was saved. Please try again.",
@@ -650,19 +650,19 @@ export const site = texts("copy/site", "site", () => ({
 
   /* ───────────── /about ───────────── */
   about: {
-    meta: { title: "About", description: "Why IOpener exists: free, built on published research, open at its core, and private by design." },
+    meta: { title: "About", description: "Why Eyes Opener exists: free, built on published research, open at its core, and private by design." },
     hero: {
       kicker: "About",
       title: "Eye care at home, for every family.",
-      lead: "IOpener is a free app for looking after eyes at home, with an open-source core. It tracks, tests and trains, and it says plainly how strong the evidence is for everything in it.",
+      lead: "Eyes Opener is a free app for looking after eyes at home, with an open-source core. It tracks, tests and trains, and it says plainly how strong the evidence is for everything in it.",
     },
     why: {
       kicker: "Why it exists",
       title: "The method is a way of drawing a picture.",
       body: [
         "The home eye training with the strongest trial evidence works by showing each eye its own part of one picture. That is a way of drawing. It needs a screen and a pair of red-cyan glasses.",
-        "A way of drawing can be shared. So IOpener shares it: with every family, on the screens they already own.",
-        "The hard part is keeping going. In the trials, the children who kept to the plan did better. So IOpener is built like a fitness app: rings to close, many games instead of one, and a family doing it together.",
+        "A way of drawing can be shared. So Eyes Opener shares it: with every family, on the screens they already own.",
+        "The hard part is keeping going. In the trials, the children who kept to the plan did better. So Eyes Opener is built like a fitness app: rings to close, many games instead of one, and a family doing it together.",
       ],
     },
     pillars: {
@@ -678,13 +678,13 @@ export const site = texts("copy/site", "site", () => ({
     who: {
       kicker: "Who it is for",
       title: "Anyone with eyes, and the family around them.",
-      body: (programmes: number, minAge: number) => `IOpener has ${word(programmes)} programmes, from everyday eye fitness to practice for a named condition. Some open only with an eye counsellor. Screen sessions start at age ${minAge}.`,
+      body: (programmes: number, minAge: number) => `Eyes Opener has ${word(programmes)} programmes, from everyday eye fitness to practice for a named condition. Some open only with an eye counsellor. Screen sessions start at age ${minAge}.`,
     },
     not: {
       kicker: "What it is not",
       title: "Not a doctor, and not a medical device.",
       items: [
-        "IOpener does not diagnose, treat or cure any condition.",
+        "Eyes Opener does not diagnose, treat or cure any condition.",
         "It does not replace an eye exam, glasses, a patch, drops or surgery.",
         "A check-up at home never gives an all-clear. Regular visits to an eye doctor still matter.",
         "Its own version of these methods has not been through its own trial yet. The labels grade the methods as others tested them.",
@@ -704,24 +704,24 @@ export const site = texts("copy/site", "site", () => ({
     contents: "On this page",
     related: "Related pages",
     privacy: {
-      meta: { title: "Privacy", description: "A plain-language draft of how IOpener handles your family's information: what is stored, what never leaves your device, and who can see what." },
+      meta: { title: "Privacy", description: "A plain-language draft of how Eyes Opener handles your family's information: what is stored, what never leaves your device, and who can see what." },
       title: "Privacy",
-      lead: "This page says what IOpener stores, what it never takes, and who can see what. It is written to match what the app really does today.",
+      lead: "This page says what Eyes Opener stores, what it never takes, and who can see what. It is written to match what the app really does today.",
       sections: [
         {
           id: "short", title: "The short version",
           list: [
             "Camera pictures and photos never leave your device. Only the numbers worked out from them are stored.",
             "A child is a profile inside a parent's account. A child has no email and no sign-in, and only the year of birth is stored.",
-            "There is no advertising in IOpener, and no advertising data is collected.",
+            "There are no ads in Eyes Opener, and no data for ads is collected.",
             "There are no analytics on child profiles.",
             "Sponsors see counts only. A linked counsellor sees only the member linked to them.",
             `A guardian can download a copy of the family's data, and can delete one profile or everything. A deletion waits ${WAIT_DAYS} days first, so that it can be cancelled.`,
           ],
         },
         {
-          id: "stored", title: "What IOpener stores",
-          body: ["IOpener stores what it needs to run the app for your family, and no more."],
+          id: "stored", title: "What Eyes Opener stores",
+          body: ["Eyes Opener stores what it needs to run the app for your family, and no more."],
           list: [
             "The household: its name, and the name and email of each grown-up who signs in.",
             "Profiles: a name, whether it is an adult or a child, and for a child the year of birth.",
@@ -752,12 +752,12 @@ export const site = texts("copy/site", "site", () => ({
             "A cheer seat, such as a grandparent, can look and encourage. It cannot change anything.",
             "A counsellor sees one member only after your family asks to link and the counsellor accepts, and only while the link is active.",
             "A sponsor sees counts for its groups. It never sees a name, a result or a session, and never a count that covers too few households to be safe.",
-            "The IOpener ops team sees households by counts: the household's name, how many profiles and seats it has, when it was last active and any open request. It does not see check-up results, eye settings or session detail.",
+            "The Eyes Opener ops team sees households by counts: the household's name, how many profiles and seats it has, when it was last active and any open request. It does not see check-up results, eye settings or session detail.",
             "Every change made by staff, a counsellor or a sponsor is recorded with who made it.",
           ],
         },
         {
-          id: "not", title: "What IOpener does not do",
+          id: "not", title: "What Eyes Opener does not do",
           list: [
             "It does not sell or rent your information.",
             "It does not show advertising, and it does not build advertising profiles.",
@@ -768,17 +768,17 @@ export const site = texts("copy/site", "site", () => ({
         {
           id: "ai", title: "AI",
           body: [
-            "IOpener plans to use an AI service to help turn a shared story into clear steps, and to screen shared text for harm. This is being built.",
+            "Eyes Opener plans to use an AI service to help turn a shared story into clear steps, and to screen shared text for harm. This is being built.",
             "It will see only text a grown-up chose to share. It will never see a camera picture. AI never diagnoses and never sets or changes a dose.",
           ],
         },
         {
           id: "rights", title: "A copy of your data, and deleting it",
           body: [
-            "A guardian can get a copy of everything stored for the family in Settings: one file, and a summary to read and print. The file is made at the moment you download it, and IOpener keeps no copy of it. It includes the notes a linked counsellor wrote about a family member.",
+            "A guardian can get a copy of everything stored for the family in Settings: one file, and a summary to read and print. The file is made at the moment you download it, and Eyes Opener keeps no copy of it. It includes the notes a linked counsellor wrote about a family member.",
             `A guardian can delete one profile, or the account and every profile in it. Nothing is deleted for ${WAIT_DAYS} days, and a guardian can cancel in that time. After that it is removed for good, together with what the family shared in Together, and it cannot be brought back.`,
             "What stays after a deletion is a count that a deletion happened, with no name in it. A grown-up who also signs in as a counsellor, for a sponsor or as staff keeps that sign-in and loses only the seat in the family.",
-            "The IOpener team sees that a request was made and where it stands. It does not see what a copy holds.",
+            "The Eyes Opener team sees that a request was made and where it stands. It does not see what a copy holds.",
           ],
         },
         {
@@ -789,7 +789,7 @@ export const site = texts("copy/site", "site", () => ({
           id: "law", title: "The standard we are building toward",
           body: [
             "India's Digital Personal Data Protection Act, 2023, sets rules for handling personal data. For children it asks for verifiable consent from a parent or guardian, and it bars tracking children and advertising aimed at them.",
-            "IOpener is being built toward that standard. We do not claim to meet it yet. This page is a draft, and a lawyer must review it before launch.",
+            "Eyes Opener is being built toward that standard. We do not claim to meet it yet. This page is a draft, and a lawyer must review it before launch.",
           ],
         },
         {
@@ -799,9 +799,9 @@ export const site = texts("copy/site", "site", () => ({
       ],
     },
     children: {
-      meta: { title: "Children's data", description: "A plain-language draft of how IOpener handles a child's information: a profile inside a parent's account, the year of birth only, no advertising and no analytics." },
+      meta: { title: "Children's data", description: "A plain-language draft of how Eyes Opener handles a child's information: a profile inside a parent's account, the year of birth only, no advertising and no analytics." },
       title: "Children's data",
-      lead: "Children are the people IOpener is most careful with. This page says how a child uses the app and what is kept about them.",
+      lead: "Children are the people Eyes Opener is most careful with. This page says how a child uses the app and what is kept about them.",
       sections: [
         {
           id: "profile", title: "A child is a profile, not an account",
@@ -814,7 +814,7 @@ export const site = texts("copy/site", "site", () => ({
         {
           id: "consent", title: "A guardian agrees first",
           body: [
-            "When a child's profile is added, a parent or guardian ticks a box. It says they are the child's parent or guardian and agree to the child using IOpener. The app records who agreed and when.",
+            "When a child's profile is added, a parent or guardian ticks a box. It says they are the child's parent or guardian and agree to the child using Eyes Opener. The app records who agreed and when.",
             "A child cannot train until that is done, and the guardian can take the agreement back.",
             "India's Digital Personal Data Protection Act, 2023, asks for verifiable consent from a parent before a child's data is handled. A stronger, verifiable consent step is being built toward that standard. We do not claim to meet it yet.",
           ],
@@ -859,13 +859,13 @@ export const site = texts("copy/site", "site", () => ({
       ],
     },
     terms: {
-      meta: { title: "Terms", description: "A plain-language draft of the terms for using IOpener: what it is, what it is not, and what we ask of you." },
+      meta: { title: "Terms", description: "A plain-language draft of the terms for using Eyes Opener: what it is, what it is not, and what we ask of you." },
       title: "Terms",
-      lead: "These are the terms for using IOpener, in plain words.",
+      lead: "These are the terms for using Eyes Opener, in plain words.",
       sections: [
         {
-          id: "what", title: "What IOpener is",
-          body: ["IOpener is a free app for tracking, testing and training eyes at home. Its core is open source."],
+          id: "what", title: "What Eyes Opener is",
+          body: ["Eyes Opener is a free app for tracking, testing and training eyes at home. Its core is open source."],
           list: [
             "It is not a medical device.",
             "It does not diagnose, treat or cure any condition.",
@@ -876,7 +876,7 @@ export const site = texts("copy/site", "site", () => ({
           id: "who", title: "Who can use it",
           list: [
             "Adults can make an account and add profiles for their family.",
-            "A child uses IOpener only as a profile inside a parent's or guardian's account, with that guardian's agreement.",
+            "A child uses Eyes Opener only as a profile inside a parent's or guardian's account, with that guardian's agreement.",
             "Some programmes open only when a verified eye counsellor is linked to the member.",
           ],
         },
@@ -885,7 +885,7 @@ export const site = texts("copy/site", "site", () => ({
           list: [
             "Answer the safety questions truthfully, and again when something changes.",
             "See an eye doctor first if there is pain, flashes, a sudden change or new double vision.",
-            "Keep wearing glasses, a patch or drops an eye doctor prescribed. Do not stop any care because of IOpener.",
+            "Keep wearing glasses, a patch or drops an eye doctor prescribed. Do not stop any care because of Eyes Opener.",
             "Stay beside a child who is practising.",
             "Press the stop button if something feels wrong, and rest.",
           ],
@@ -904,7 +904,7 @@ export const site = texts("copy/site", "site", () => ({
           id: "evidence", title: "What the labels mean",
           body: [
             "Every game and exercise carries a label that says how strong the published evidence is for its method. A label is not a promise of a result for any person.",
-            "IOpener's own version of these methods has not been through its own trial yet.",
+            "Eyes Opener's own version of these methods has not been through its own trial yet.",
           ],
         },
         {
@@ -916,7 +916,7 @@ export const site = texts("copy/site", "site", () => ({
         },
         {
           id: "open", title: "Free, with an open-source core",
-          body: ["IOpener is free to use. The code of its core (the engine, the check-ups, the doses and the safety rules) is open source; some games and apps are not. The licence will be named here before launch."],
+          body: ["Eyes Opener is free to use. The code of its core (the engine, the check-ups, the doses and the safety rules) is open source; some games and apps are not. The licence will be named here before launch."],
         },
         {
           id: "changes", title: "Changes to these terms",
