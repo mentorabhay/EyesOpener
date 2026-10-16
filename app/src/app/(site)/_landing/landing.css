@@ -10,7 +10,7 @@
   --lp-k: 1;
   --lp-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --lp-lift: 0 2px 6px rgba(17, 20, 24, 0.06), 0 22px 48px -20px rgba(17, 20, 24, 0.28);
-  font-size: calc(17px * var(--lp-k));
+  font-size: calc(var(--site-text, 17px) * var(--lp-k));
   line-height: 1.55;
   overflow-x: clip;
 }

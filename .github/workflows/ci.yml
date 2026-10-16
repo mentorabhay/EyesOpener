@@ -19,6 +19,8 @@ jobs:
           node-version: 22
       - name: Nothing private in the repository
         run: node tools/check-public.mjs
+      - name: Only the name Eyes Opener
+        run: node tools/no-old-name.mjs
 
   app:
     name: app

@@ -8,6 +8,8 @@ export const edition = {
   stories: false as boolean,
   /** The staff research pages (camera, depth, photo screen) and their room in the staff console. */
   research: false as boolean,
+  /** The Look and feel room in the staff console: colours, gradient, type, motion, pictures (decision of 17 October 2026). */
+  look: false as boolean,
 };
 
 /** True when a link leads somewhere this edition has. Menus, footers and the sitemap pass their links through it. */

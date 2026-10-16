@@ -39,8 +39,8 @@ let A: Made, B: Made;
 
 async function household(name: string): Promise<Made> {
   const [account] = await db.insert(s.account).values({ displayName: `zz-monitor-${name}-${x}` }).returning();
-  const [guardian] = await db.insert(s.appUser).values({ email: `g-${name}-${x}@iopener.test`, displayName: `Guardian ${name}`, accountId: account.id, seat: "guardian" }).returning();
-  const [cheer] = await db.insert(s.appUser).values({ email: `c-${name}-${x}@iopener.test`, displayName: `Cheer ${name}`, accountId: account.id, seat: "circle" }).returning();
+  const [guardian] = await db.insert(s.appUser).values({ email: `g-${name}-${x}@eyesopener.test`, displayName: `Guardian ${name}`, accountId: account.id, seat: "guardian" }).returning();
+  const [cheer] = await db.insert(s.appUser).values({ email: `c-${name}-${x}@eyesopener.test`, displayName: `Cheer ${name}`, accountId: account.id, seat: "circle" }).returning();
   const [adult] = await db.insert(s.profile).values({ accountId: account.id, displayName: `Adult ${name}`, kind: "adult" }).returning();
   const [child] = await db.insert(s.profile).values({ accountId: account.id, displayName: `Child ${name}`, kind: "child", birthYear: new Date().getFullYear() - 7 }).returning();
   const [teen] = await db.insert(s.profile).values({ accountId: account.id, displayName: `Teen ${name}`, kind: "adult", birthYear: new Date().getFullYear() - 16 }).returning();

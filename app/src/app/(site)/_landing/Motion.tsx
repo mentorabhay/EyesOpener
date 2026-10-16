@@ -232,6 +232,9 @@ export function Motion({ children }: { children: ReactNode }) {
   useIsoLayoutEffect(() => {
     const root = ref.current;
     if (!root) return;
+    /* Staff can set the site's motion to calm or off (src/lib/design): the page then stays in its final state, as with reduced motion. */
+    const level = document.documentElement.dataset.motion;
+    if (level === "calm" || level === "off") return;
     if (!registered) { gsap.registerPlugin(ScrollTrigger); registered = true; }
 
     const mm = gsap.matchMedia(root);

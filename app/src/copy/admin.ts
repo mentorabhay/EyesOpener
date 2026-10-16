@@ -32,6 +32,7 @@ const rooms: Record<AdminArea, { name: string; about: string }> = {
   research: { name: "Research", about: "Staff research pages: the camera, depth and photo checks, and pictures kept with consent." },
   screens: { name: "Screens and glasses", about: "How families' screens and glasses are set up, as counts only." },
   switchboard: { name: "Switchboard", about: "Saver mode and the monthly limit for AI spend." },
+  look: { name: "Look and feel", about: "Colours, the gradient, text size, shadows, motion and pictures for the whole site, without a code change." },
 };
 
 /** What each audited action reads as in "Recent activity". The name is the thing it was done to. */

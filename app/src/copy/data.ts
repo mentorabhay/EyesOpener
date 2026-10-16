@@ -132,7 +132,7 @@ export const data = texts("copy/data", "data", () => ({
 
   /* ───────────── the words written inside the file ───────────── */
   file: {
-    name: (date: string) => `iopener-family-data-${date}.json`,
+    name: (date: string) => `eyesopener-family-data-${date}.json`,
     readme: {
       what: "This file is a copy of everything Eyes Opener stores about your household, as it was at the moment in madeAt. It is yours to keep, to read, or to show an eye doctor.",
       read: [

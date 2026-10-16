@@ -9,7 +9,7 @@ import { memberCan, type MemberAction, type Seat } from "@/lib/roles";
 import { GET } from "./route";
 
 const member = (seat: Seat, childMode = false) => ({
-  account: { id: "household-1" }, user: { id: "user-1", email: "guardian@iopener.test" }, childMode,
+  account: { id: "household-1" }, user: { id: "user-1", email: "guardian@eyesopener.test" }, childMode,
   can: (a: MemberAction) => memberCan(seat, a, childMode),
 });
 const ready = { id: "request-1", accountId: "household-1" };
@@ -18,7 +18,7 @@ describe("downloading the family's copy", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     copyToDownload.mockResolvedValue(ready);
-    buildFamilyFile.mockResolvedValue({ format: "iopener-family-data", data: { sessions: [{ id: "s1" }] } });
+    buildFamilyFile.mockResolvedValue({ format: "eyesopener-family-data", data: { sessions: [{ id: "s1" }] } });
   });
 
   const refused = async () => {
@@ -62,9 +62,9 @@ describe("downloading the family's copy", () => {
       const res = await GET();
       expect(res.status).toBe(200);
       expect(copyToDownload).toHaveBeenCalledWith(m, expect.any(Date));
-      expect(buildFamilyFile).toHaveBeenCalledWith("household-1", { id: "user-1", email: "guardian@iopener.test" }, expect.any(Date));
+      expect(buildFamilyFile).toHaveBeenCalledWith("household-1", { id: "user-1", email: "guardian@eyesopener.test" }, expect.any(Date));
       expect(markDownloaded).toHaveBeenCalledWith("request-1", expect.any(Date));
-      expect(JSON.parse(await res.text())).toMatchObject({ format: "iopener-family-data", data: { sessions: [{ id: "s1" }] } });
+      expect(JSON.parse(await res.text())).toMatchObject({ format: "eyesopener-family-data", data: { sessions: [{ id: "s1" }] } });
     }
     /* The handler reads nothing from the request: no address, query or header can name another household. */
     expect(GET.length).toBe(0);
@@ -74,7 +74,7 @@ describe("downloading the family's copy", () => {
     getMember.mockResolvedValue(member("guardian"));
     const res = await GET();
     expect(res.headers.get("content-type")).toBe("application/json; charset=utf-8");
-    expect(res.headers.get("content-disposition")).toBe('attachment; filename="iopener-family-data-2026-10-05.json"');
+    expect(res.headers.get("content-disposition")).toBe('attachment; filename="eyesopener-family-data-2026-10-05.json"');
     expect(res.headers.get("cache-control")).toBe("private, no-store, max-age=0");
     expect(res.headers.get("x-robots-tag")).toContain("noindex");
   });

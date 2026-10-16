@@ -4,6 +4,7 @@
  */
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { common } from "@/copy/common";
 import { catalogue, evidenceOf, type EvidenceKey } from "@/data";
 
 export type Tone = "ok" | "warn" | "risk" | "danger" | "none" | "grad" | "plain";
@@ -16,7 +17,7 @@ export function PageHead({ title, sub, crumb, stats, children }: {
     <header className="phead">
       <div>
         {crumb && (
-          <nav className="crumb" aria-label="Breadcrumb">
+          <nav className="crumb" aria-label={common.spoken.breadcrumb}>
             {crumb.map((c, i) => (<span key={c.href}>{i > 0 && " / "}<Link href={c.href}>{c.label}</Link></span>))}
           </nav>
         )}
@@ -62,22 +63,22 @@ export function Btn({ href, kind = "", small, children }: { href: string; kind?:
 
 /** Progress bar. Pass null for "not measured yet": it is drawn hatched. */
 export function Progress({ value, label }: { value: number | null; label: string }) {
-  if (value === null) return <div className="prog hatched" role="img" aria-label={`${label}: not measured yet`} />;
+  if (value === null) return <div className="prog hatched" role="img" aria-label={common.spoken.notMeasuredOf(label)} />;
   const p = Math.round(Math.max(0, Math.min(1, value)) * 100);
-  return <div className="prog" role="img" aria-label={`${label}: ${p} percent`}><i style={{ width: p + "%" }} /></div>;
+  return <div className="prog" role="img" aria-label={common.spoken.percentOf(label, p)}><i style={{ width: p + "%" }} /></div>;
 }
 
 /** Hatched placeholder for a value that does not exist yet. */
-export const Void = ({ label = "Not measured yet" }: { label?: string }) => <span className="void" role="img" aria-label={label} />;
+export const Void = ({ label }: { label?: string }) => <span className="void" role="img" aria-label={label ?? common.spoken.notMeasured} />;
 
 export function Empty({ title, children }: { title: string; children?: ReactNode }) {
   return <div className="empty"><b>{title}</b>{children}</div>;
 }
 
 /** Link-based filter pills: no client code, the choice lives in the URL. */
-export function Pills({ items, current, param, base }: { items: { key: string; label: string }[]; current: string; param: string; base: string }) {
+export function Pills({ items, current, param, base, label }: { items: { key: string; label: string }[]; current: string; param: string; base: string; label?: string }) {
   return (
-    <nav className="pills" aria-label={param}>
+    <nav className="pills" aria-label={label ?? common.spoken.filter}>
       {items.map((it) => (
         <Link key={it.key} className="pill" aria-current={it.key === current ? "true" : undefined} href={`${base}${base.includes("?") ? "&" : "?"}${param}=${encodeURIComponent(it.key)}`} scroll={false}>{it.label}</Link>
       ))}
@@ -98,7 +99,7 @@ export function Rings({ rest, train, light, size = 168 }: { rest: number; train:
   };
   const pc = (v: number) => Math.round(v * 100);
   return (
-    <svg viewBox="0 0 120 120" width={size} height={size} role="img" aria-label={`Rest ${pc(rest)} percent, train ${pc(train)} percent, light ${pc(light)} percent`}>
+    <svg viewBox="0 0 120 120" width={size} height={size} role="img" aria-label={common.spoken.rings(pc(rest), pc(train), pc(light))}>
       {ring(50, rest, "var(--ring-rest)")}{ring(38, train, "var(--ring-train)")}{ring(26, light, "var(--ring-light)")}
     </svg>
   );

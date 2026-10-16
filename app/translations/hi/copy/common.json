@@ -242,15 +242,15 @@
   },
   "common.notMedical": {
    "source": "4f87d6d8e33778",
-   "english": "IOpener is not a medical device. It does not diagnose, treat or cure any condition.",
-   "text": "IOpener कोई मेडिकल डिवाइस नहीं है। यह किसी भी स्थिति की पहचान, इलाज या उसे ठीक नहीं करता है।",
+   "english": "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.",
+   "text": "Eyes Opener कोई मेडिकल डिवाइस नहीं है। यह किसी भी स्थिति की पहचान, इलाज या उसे ठीक नहीं करता है।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },
   "common.product": {
    "source": "15828515bcee6b",
-   "english": "IOpener",
-   "text": "IOpener",
+   "english": "Eyes Opener",
+   "text": "Eyes Opener",
    "status": "machine",
    "made": "2026-10-05 gemini-3.8-flash"
   },

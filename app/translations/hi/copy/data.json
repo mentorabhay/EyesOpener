@@ -141,8 +141,8 @@
   },
   "data.copy.note": {
    "source": "04cc5d2ace3774",
-   "english": "The file is made fresh each time you download it. IOpener keeps no copy of it. After 7 days, ask again.",
-   "text": "जब भी आप इसे डाउनलोड करते हैं, फ़ाइल को नए सिरे से बनाया जाता है। IOpener इसकी कोई कॉपी नहीं रखता है। 7 दिन बाद, दोबारा अनुरोध करें।",
+   "english": "The file is made fresh each time you download it. Eyes Opener keeps no copy of it. After 7 days, ask again.",
+   "text": "जब भी आप इसे डाउनलोड करते हैं, फ़ाइल को नए सिरे से बनाया जाता है। Eyes Opener इसकी कोई कॉपी नहीं रखता है। 7 दिन बाद, दोबारा अनुरोध करें।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
@@ -172,8 +172,8 @@
   },
   "data.copy.what": {
    "source": "f91dd73b8a4b24",
-   "english": "One file with everything IOpener stores about this family, and a summary you can read and print.",
-   "text": "एक फ़ाइल जिसमें इस परिवार के बारे में IOpener द्वारा स्टोर किया गया सब कुछ है, और एक सारांश जिसे आप पढ़ और प्रिंट सकते हैं।",
+   "english": "One file with everything Eyes Opener stores about this family, and a summary you can read and print.",
+   "text": "एक फ़ाइल जिसमें इस परिवार के बारे में Eyes Opener द्वारा स्टोर किया गया सब कुछ है, और एक सारांश जिसे आप पढ़ और प्रिंट सकते हैं।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },

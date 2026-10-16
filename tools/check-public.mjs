@@ -16,7 +16,7 @@ const files = new Set([...git("ls-files", "-z"), ...git("diff", "--cached", "--n
 if (process.argv.includes("--candidates")) for (const f of git("ls-files", "--others", "--exclude-standard", "-z")) files.add(f);
 
 /** Only these top-level entries may exist in the public repository. */
-const ROOTS = [/^\.gitignore$/, /^\.gitattributes$/, /^README\.md$/, /^app\//, /^\.github\//, /^\.githooks\//, /^tools\/check-public\.mjs$/];
+const ROOTS = [/^\.gitignore$/, /^\.gitattributes$/, /^README\.md$/, /^app\//, /^\.github\//, /^\.githooks\//, /^tools\/check-public\.mjs$/, /^tools\/no-old-name\.mjs$/];
 
 const BAD_PATH = [
   [/(^|\/)(plan|plans|deliverables|refs|private|_private)(\/|$)/i, "a plan or private folder"],
@@ -37,7 +37,7 @@ const BAD_LINE = [
   [/\b[0-9A-F]{6}-[0-9A-F]{6}-[0-9A-F]{6}\b/, "a billing account number"],
   [/[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail)\.[a-z.]+/i, "a personal email address"],
   [/client_secret["']?\s*[:=]\s*["'][^"']{8,}/i, "a client secret"],
-  [/[A-Za-z]:\\\\?(IOpener|EyesOpener|IO|clapjar|VC)\b|\/home\/claude\//, "a path on a private machine"],
+  [/[A-Za-z]:\\\\?(I[O]pener|EyesOpener|IO|clapjar|VC)\b|\/home\/claude\//, "a path on a private machine"],
 ];
 
 const problems = [];

@@ -10,7 +10,7 @@ function fileWith(rows: Partial<Record<PartKey, Row[]>>): FamilyFile {
   const parts = Object.fromEntries(PARTS.map((p) => [p, { ...copy.file.parts[p], rows: data[p].length }])) as FamilyFile["README"]["parts"];
   return {
     README: { what: "", madeAt: "2026-10-05T04:30:00.000Z", read: [], leftOut: ["PINs."], notMedical: "", parts },
-    format: "iopener-family-data", version: 1, madeAt: "2026-10-05T04:30:00.000Z",
+    format: "eyesopener-family-data", version: 1, madeAt: "2026-10-05T04:30:00.000Z",
     names: { items: {}, programmes: { "lazy-eye": "Lazy eye" }, checkUps: { acuity: { name: "Letter size", unit: "logMAR", what: "" } } },
     data,
   };
@@ -18,7 +18,7 @@ function fileWith(rows: Partial<Record<PartKey, Row[]>>): FamilyFile {
 
 const file = fileWith({
   household: [{ id: "h", displayName: "Rao family", locale: "en", createdAt: "2026-01-02T00:00:00.000Z", exitPinSet: true }],
-  people: [{ id: "u1", displayName: "Meena", email: "meena@iopener.test", seat: "guardian", createdAt: "2026-01-02T00:00:00.000Z" }, { id: "u2", displayName: "Nana", seat: "circle", createdAt: "2026-02-02T00:00:00.000Z" }],
+  people: [{ id: "u1", displayName: "Meena", email: "meena@eyesopener.test", seat: "guardian", createdAt: "2026-01-02T00:00:00.000Z" }, { id: "u2", displayName: "Nana", seat: "circle", createdAt: "2026-02-02T00:00:00.000Z" }],
   profiles: [{ id: "p1", displayName: "Isha", kind: "child", birthYear: 2019, archivedAt: null }, { id: "p2", displayName: "Meena", kind: "adult", birthYear: null, archivedAt: "2026-05-01T00:00:00.000Z" }],
   screens: [{ id: "d1" }],
   programmes: [{ profileId: "p1", programme: "lazy-eye", status: "active", week: 3 }, { profileId: "p2", programme: "not-in-this-edition", status: "finished", week: 1 }],
@@ -47,7 +47,7 @@ describe("the summary of a family's file", () => {
   it("gives the household, and each grown-up with an email only where the file has one", () => {
     expect(sum.household).toMatchObject({ name: "Rao family", locale: "en", exitPinSet: true, screens: 1, groups: 0, invites: 0 });
     expect(sum.household.since?.toISOString()).toBe("2026-01-02T00:00:00.000Z");
-    expect(sum.people.map((p) => [p.name, p.email, p.seat])).toEqual([["Meena", "meena@iopener.test", "guardian"], ["Nana", "", "circle"]]);
+    expect(sum.people.map((p) => [p.name, p.email, p.seat])).toEqual([["Meena", "meena@eyesopener.test", "guardian"], ["Nana", "", "circle"]]);
     expect(sum.madeAt.toISOString()).toBe("2026-10-05T04:30:00.000Z");
   });
 

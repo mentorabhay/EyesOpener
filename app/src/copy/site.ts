@@ -340,7 +340,7 @@ export const site = texts("copy/site", "site", () => ({
       limit: "Limit",
       read: "Read the source",
       readOf: (name: string) => `Read the source for ${name}`,
-      /* Quoted from refs/IOpener-evidence-framework.md and refs/IOpener-concept.md. Change a figure only with its source. */
+      /* Quoted from refs/EyesOpener-evidence-framework.md and refs/EyesOpener-concept.md. Change a figure only with its source. */
       groups: [
         {
           title: "Lazy eye",

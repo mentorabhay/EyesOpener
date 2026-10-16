@@ -11,6 +11,7 @@
 !/tools/
 /tools/*
 !/tools/check-public.mjs
+!/tools/no-old-name.mjs
 
 # ── Never, anywhere in the tree ──────────────────────────────────────────────
 

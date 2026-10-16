@@ -165,15 +165,15 @@
   },
   "site.logoLabel": {
    "source": "859f5145f8653e",
-   "english": "IOpener, home",
-   "text": "IOpener, होम",
+   "english": "Eyes Opener, home",
+   "text": "Eyes Opener, होम",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },
   "site.name": {
    "source": "15828515bcee6b",
-   "english": "IOpener",
-   "text": "IOpener",
+   "english": "Eyes Opener",
+   "text": "Eyes Opener",
    "status": "machine",
    "made": "2026-10-05 copied from copy/common:common.product"
   },

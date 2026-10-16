@@ -114,7 +114,7 @@ describe("what a translation must keep", () => {
     expect(ok("Eyes Opener is not a medical device.", "आईओपनर कोई चिकित्सा उपकरण नहीं है।")).toContain("\"Eyes Opener\" must stay as it is");
   });
   it("keeps links and addresses", () => {
-    expect(ok("Write to help@iopener.test or see https://example.org/a.", "help@iopener.test पर लिखें या https://example.org/a देखें।")).toEqual([]);
+    expect(ok("Write to help@eyesopener.test or see https://example.org/a.", "help@eyesopener.test पर लिखें या https://example.org/a देखें।")).toEqual([]);
     expect(ok("See https://example.org/a.", "https://example.com/a देखें।")).toContain("a link or an address differs");
   });
   it("keeps the space around a sentence and its line breaks", () => {

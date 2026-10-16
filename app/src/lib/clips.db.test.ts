@@ -37,8 +37,8 @@ describe.skipIf(!up)("the clips, in the database", () => {
   beforeAll(async () => {
     [A, B] = await db.insert(s.account).values([{ displayName: `zz-clips-a-${x}` }, { displayName: `zz-clips-b-${x}` }]).returning();
     [gA, gB] = await db.insert(s.appUser).values([
-      { email: `zz-clips-a-${x}@iopener.test`, displayName: `Guardian A ${x}`, accountId: A.id, seat: "guardian" },
-      { email: `zz-clips-b-${x}@iopener.test`, displayName: `Guardian B ${x}`, accountId: B.id, seat: "guardian" },
+      { email: `zz-clips-a-${x}@eyesopener.test`, displayName: `Guardian A ${x}`, accountId: A.id, seat: "guardian" },
+      { email: `zz-clips-b-${x}@eyesopener.test`, displayName: `Guardian B ${x}`, accountId: B.id, seat: "guardian" },
     ]).returning();
     [kid, grown, other] = await db.insert(s.profile).values([
       { accountId: A.id, displayName: `Kid${x}`, kind: "child", birthYear: new Date().getFullYear() - 7 }, { accountId: A.id, displayName: `Grown${x}`, kind: "adult" },

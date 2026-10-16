@@ -122,8 +122,8 @@ describe("the demo sign-in and real people", () => {
     expect(isDemoPerson({ email: "staff@iopener.example", firebaseUid: null }, false)).toBe(false);
   });
   it("never becomes a person who has signed in for real", () => {
-    expect(isDemoPerson({ email: "priya@iopener.test", firebaseUid: "uid-1" }, true)).toBe(false);
-    expect(isDemoPerson({ email: "admin@iopener.test", firebaseUid: "uid-1" }, false)).toBe(false);
+    expect(isDemoPerson({ email: "priya@eyesopener.test", firebaseUid: "uid-1" }, true)).toBe(false);
+    expect(isDemoPerson({ email: "admin@eyesopener.test", firebaseUid: "uid-1" }, false)).toBe(false);
   });
 });
 

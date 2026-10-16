@@ -45,7 +45,7 @@ export default function HowItWorksPage() {
           {h.spaces.items.map((s, i) => (
             <article className="s-card s-reveal" key={s.key}>
               <Icon name={s.key} />
-              <p className="s-num">{String(i + 1).padStart(2, "0")}</p>
+              <p className="s-num deco-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</p>
               <h3>{s.name}</h3>
               <p><b>{s.line}</b> {s.body}</p>
               <p className="s-stat-line tnum">{spaceStat[i]}</p>

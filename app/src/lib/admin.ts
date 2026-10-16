@@ -368,4 +368,4 @@ export const roomHref = (area: string) => (area === "overview" ? "/admin" : `/ad
 
 /** The rooms a staff role may open in this edition. The stories studio and the research room exist only where the edition has them. */
 export const roomsFor = (role: StaffRole | null): AdminArea[] =>
-  staffAreas(role).filter((area) => (area !== "stories" || edition.stories) && (area !== "research" || edition.research));
+  staffAreas(role).filter((area) => (area !== "stories" || edition.stories) && (area !== "research" || edition.research) && (area !== "look" || edition.look));

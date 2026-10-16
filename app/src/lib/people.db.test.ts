@@ -50,8 +50,8 @@ describe.skipIf(!up)("four community ideas, against the database", () => {
   async function home(n: number, profiles: { name: string; kind: "adult" | "child"; birthYear?: number }[]): Promise<Home> {
     const [a] = await db.insert(s.account).values({ displayName: `${TAG} home ${n}` }).returning();
     const [guardian, cheer] = await db.insert(s.appUser).values([
-      { email: `g${n}-${x}@iopener.test`, displayName: `Guardian${n} ${TAG}`, accountId: a.id, seat: "guardian" as const },
-      { email: `c${n}-${x}@iopener.test`, displayName: `Cheer${n} ${TAG}`, accountId: a.id, seat: "circle" as const },
+      { email: `g${n}-${x}@eyesopener.test`, displayName: `Guardian${n} ${TAG}`, accountId: a.id, seat: "guardian" as const },
+      { email: `c${n}-${x}@eyesopener.test`, displayName: `Cheer${n} ${TAG}`, accountId: a.id, seat: "circle" as const },
     ]).returning();
     const rows = profiles.length ? await db.insert(s.profile).values(profiles.map((p) => ({ accountId: a.id, displayName: `${p.name}${n}`, kind: p.kind, birthYear: p.birthYear ?? null }))).returning() : [];
     const h = { id: a.id, guardian, cheer, profiles: rows };
@@ -72,7 +72,7 @@ describe.skipIf(!up)("four community ideas, against the database", () => {
     if (rounds.length) await db.delete(s.discoveryRound).where(inArray(s.discoveryRound.id, rounds));
     const ids = [...homes.map((h) => h.id), ...(preview ? [preview.id] : [])];
     if (ids.length) await db.delete(s.account).where(inArray(s.account.id, ids));
-    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@iopener.test`));
+    await db.delete(s.appUser).where(like(s.appUser.email, `%-${x}@eyesopener.test`));
   });
 
   /* ───────────── Light the Map ───────────── */

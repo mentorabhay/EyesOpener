@@ -19,7 +19,7 @@ export function Tags({ maxMinutes }: { maxMinutes: number }) {
         <div className="lp-tag-cards">
           {cards.map((c, i) => (
             <article key={c.head} className="lp-tag-card">
-              <span className="lp-tag-n" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+              <span className="lp-tag-n deco-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
               <h3>{c.head}</h3>
               <p>{c.body}</p>
             </article>

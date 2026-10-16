@@ -33,17 +33,17 @@ async function main() {
   /* people who sign in, one of each kind (demo sign-in lists them) */
   const person = (email: string, displayName: string, more: Partial<typeof s.appUser.$inferInsert> = {}) => ({ email, displayName, ...more });
   const [priya_u, , , opsUser, , , counsellor, , sponsorOwner, schoolOwner] = await db.insert(s.appUser).values([
-    person("priya@iopener.test", "Priya Sharma", { accountId: family.id, seat: "guardian" }),
-    person("raj@iopener.test", "Raj Sharma", { accountId: family.id, seat: "co_guardian" }),
-    person("nani@iopener.test", "Nani", { accountId: family.id, seat: "circle" }),
-    person("ops@iopener.test", "Meera (ops team)", { staffRole: "ops" }),
-    person("admin@iopener.test", "Asha (admin)", { staffRole: "super_admin" }),
-    person("content@iopener.test", "Kabir (content)", { staffRole: "content" }),
-    person("drrao@iopener.test", "Dr Rao (sample counsellor)", { isCounsellor: true, counsellorVerifiedAt: new Date() }),
-    person("drnew@iopener.test", "Dr Iyer (waiting for checks)", { isCounsellor: true }),
-    person("anita@iopener.test", "Anita (Sunrise Eye Foundation)"),
-    person("principal@iopener.test", "Mr Das (Hillview School)"),
-    person("sample@iopener.test", "Community sample", { accountId: others.id, seat: "guardian" }),
+    person("priya@eyesopener.test", "Priya Sharma", { accountId: family.id, seat: "guardian" }),
+    person("raj@eyesopener.test", "Raj Sharma", { accountId: family.id, seat: "co_guardian" }),
+    person("nani@eyesopener.test", "Nani", { accountId: family.id, seat: "circle" }),
+    person("ops@eyesopener.test", "Meera (ops team)", { staffRole: "ops" }),
+    person("admin@eyesopener.test", "Asha (admin)", { staffRole: "super_admin" }),
+    person("content@eyesopener.test", "Kabir (content)", { staffRole: "content" }),
+    person("drrao@eyesopener.test", "Dr Rao (sample counsellor)", { isCounsellor: true, counsellorVerifiedAt: new Date() }),
+    person("drnew@eyesopener.test", "Dr Iyer (waiting for checks)", { isCounsellor: true }),
+    person("anita@eyesopener.test", "Anita (Sunrise Eye Foundation)"),
+    person("principal@eyesopener.test", "Mr Das (Hillview School)"),
+    person("sample@eyesopener.test", "Community sample", { accountId: others.id, seat: "guardian" }),
   ]).returning();
 
   /* sponsors: one approved with a group of families, one waiting for ops */

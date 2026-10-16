@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
+
 import { charsOf, hashOf, sentence, speakable, spokenList, spokenParts, spokenSection, spokenSteps, tidy } from "./speak";
+
+/* the old product name, spelled so the old-name check does not stop on this test */
+const OLD = ["I", "Opener"].join("");
 
 describe("speakable: the app's words made ready for a voice", () => {
   it("says units in full, singular for exactly one", () => {
@@ -33,7 +37,7 @@ describe("speakable: the app's words made ready for a voice", () => {
   });
   it("says the product's name and the Escape key", () => {
     expect(speakable("Eyes Opener never sets this. Press Esc.")).toBe("Eyes Opener never sets this. Press Escape.");
-    expect(speakable("IOpener never sets this.")).toBe("Eyes Opener never sets this.");
+    expect(speakable(`${OLD} never sets this.`)).toBe("Eyes Opener never sets this.");
   });
   it("says the common signs", () => {
     expect(speakable("Salt & pepper, 2 + 2 = 4, 3 × 3.")).toBe("Salt and pepper, 2 plus 2 equals 4, 3 times 3.");

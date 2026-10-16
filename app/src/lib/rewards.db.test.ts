@@ -34,7 +34,7 @@ describe.skipIf(!up)("rewards, in the database", () => {
   /** A household with one grown-up who signs in and one profile. */
   async function home(tag: string, kind: "adult" | "child" = "adult"): Promise<Home> {
     const [account] = await db.insert(s.account).values({ displayName: `zz-rw-${tag}-${x}` }).returning();
-    const [user] = await db.insert(s.appUser).values({ email: `zz-rw-${tag}-${x}@iopener.test`, displayName: `Guardian ${tag} ${x}`, accountId: account.id, seat: "guardian" }).returning();
+    const [user] = await db.insert(s.appUser).values({ email: `zz-rw-${tag}-${x}@eyesopener.test`, displayName: `Guardian ${tag} ${x}`, accountId: account.id, seat: "guardian" }).returning();
     const [profile] = await db.insert(s.profile).values({ accountId: account.id, displayName: `${tag}${x}`, kind, birthYear: kind === "child" ? 2019 : null }).returning();
     const h = { account, user, profile };
     homes.push(h);

@@ -46,8 +46,8 @@
   },
   "supervision.inApp": {
    "source": "150b760d93ef99",
-   "english": "In IOpener a verified counsellor links to the member, sets the daily minutes of a counsellor-led programme, reads the member's results and leaves notes. IOpener itself never sets a dose.",
-   "text": "IOpener में एक सत्यापित काउंसलर सदस्य से जुड़ता है, काउंसलर के नेतृत्व वाले प्रोग्राम के रोज़ के मिनट सेट करता है, सदस्य के परिणाम पढ़ता है और नोट छोड़ता है। IOpener खुद कभी डोज़ सेट नहीं करता।",
+   "english": "In Eyes Opener a verified counsellor links to the member, sets the daily minutes of a counsellor-led programme, reads the member's results and leaves notes. Eyes Opener itself never sets a dose.",
+   "text": "Eyes Opener में एक सत्यापित काउंसलर सदस्य से जुड़ता है, काउंसलर के नेतृत्व वाले प्रोग्राम के रोज़ के मिनट सेट करता है, सदस्य के परिणाम पढ़ता है और नोट छोड़ता है। Eyes Opener खुद कभी डोज़ सेट नहीं करता।",
    "status": "machine",
    "made": "2026-10-05 gemini-3.5-flash-lite"
   },

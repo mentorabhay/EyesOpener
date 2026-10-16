@@ -1,3 +1,4 @@
 #!/bin/sh
-# Stops a commit that would put plans, secrets or private code in the public repository.
+# Stops a commit that would put plans, secrets or private code in the public repository, or bring back the old product name.
+node tools/no-old-name.mjs --staged || exit 1
 exec node tools/check-public.mjs
