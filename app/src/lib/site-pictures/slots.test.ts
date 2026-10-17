@@ -11,7 +11,7 @@ describe("picture slots", () => {
       expect(s.page.startsWith("/")).toBe(true);
       expect(s.aspect).toBeGreaterThan(0.5);
       expect(pictures.slots[s.id].name.length).toBeGreaterThan(3);
-      expect(pictures.slots[s.id].scene.length).toBeGreaterThan(20);
+      expect(pictures.staff.briefs[s.id].goal.length).toBeGreaterThan(20);
     }
     expect(slotOf("nope")).toBeUndefined();
   });
@@ -29,5 +29,23 @@ describe("picture slots", () => {
 
   it("gives each size an address of its own", () => {
     expect(picAddress("a", 640)).toBe("/pic/a/640.webp");
+  });
+});
+
+describe("picture briefs", () => {
+  it("gives every slot a full brief, and a description that names the frame and the house rules", async () => {
+    const { promptOf } = await import("./brief");
+    const { frameOf } = await import("./slots");
+    const st = pictures.staff;
+    for (const s of SLOTS) {
+      const b = st.briefs[s.id];
+      for (const v of Object.values(b)) expect(v.length).toBeGreaterThan(10);
+      const p = promptOf(b, st, frameOf(s).shape, s.place);
+      expect(p.startsWith(`A landscape photo, ${frameOf(s).shape}.`)).toBe(true);
+      expect(p).toContain("Leave out:");
+      if (/red-cyan glasses/.test(b.action)) expect(p).toContain(st.glasses);
+      expect(p.length).toBeLessThan(2000);
+      expect(s.focus.every((n) => n >= 0 && n <= 1)).toBe(true);
+    }
   });
 });

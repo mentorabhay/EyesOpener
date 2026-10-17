@@ -4,6 +4,7 @@ import { common } from "@/copy/common";
 import { site as t } from "@/copy/site";
 import { getViewer } from "@/lib/auth";
 import { SHARE_IMAGE, siteUrl } from "@/lib/site";
+import { DiagramMotion } from "@/components/diagram/motion";
 import { Reveal } from "./_components/reveal";
 import { SiteFooter } from "./_components/site-footer";
 import { SiteNav } from "./_components/site-nav";
@@ -29,6 +30,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       <div id="page" className="s-main" tabIndex={-1}>{children}</div>
       <SiteFooter />
       <Reveal />
+      <DiagramMotion />
     </>
   );
 }

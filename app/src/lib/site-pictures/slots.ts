@@ -18,24 +18,33 @@ export interface Slot {
   aspect: number;
   /** Large pictures drift slightly on scroll when motion is on (the parallax setting sets how far). */
   parallax: boolean;
+  /** At home, or away from it (a lane, a clinic, a classroom): which look the picture is asked for. */
+  place: "home" | "away";
+  /** Where the subject should sit, 0 to 1 from the left and from the top: the starting focal point of a new picture. */
+  focus: [number, number];
 }
 
 export const SLOTS: readonly Slot[] = [
-  { id: "home-hero", page: "/", aspect: 16 / 9, parallax: true },
-  { id: "home-family", page: "/", aspect: 4 / 3, parallax: false },
-  { id: "home-outdoors", page: "/", aspect: 4 / 3, parallax: false },
-  { id: "home-tv", page: "/", aspect: 16 / 9, parallax: true },
-  { id: "home-closing", page: "/", aspect: 16 / 9, parallax: true },
-  { id: "how-setup", page: "/how-it-works", aspect: 4 / 3, parallax: false },
-  { id: "how-practice", page: "/how-it-works", aspect: 4 / 3, parallax: false },
-  { id: "safety-doctor", page: "/safety", aspect: 4 / 3, parallax: false },
-  { id: "programmes-hero", page: "/programmes", aspect: 16 / 9, parallax: true },
-  { id: "about-hero", page: "/about", aspect: 16 / 9, parallax: true },
-  { id: "counsellors-hero", page: "/for-counsellors", aspect: 16 / 9, parallax: true },
-  { id: "sponsors-hero", page: "/for-sponsors", aspect: 16 / 9, parallax: true },
+  { id: "home-hero", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.58, 0.42] },
+  { id: "home-family", page: "/", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
+  { id: "home-outdoors", page: "/", aspect: 4 / 3, parallax: false, place: "away", focus: [0.45, 0.5] },
+  { id: "home-tv", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.4, 0.6] },
+  { id: "home-closing", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.5] },
+  { id: "how-setup", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.55, 0.5] },
+  { id: "how-practice", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
+  { id: "safety-doctor", page: "/safety", aspect: 4 / 3, parallax: false, place: "away", focus: [0.55, 0.45] },
+  { id: "programmes-hero", page: "/programmes", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.4] },
+  { id: "about-hero", page: "/about", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.5] },
+  { id: "counsellors-hero", page: "/for-counsellors", aspect: 16 / 9, parallax: true, place: "away", focus: [0.45, 0.45] },
+  { id: "sponsors-hero", page: "/for-sponsors", aspect: 16 / 9, parallax: true, place: "away", focus: [0.5, 0.5] },
 ];
 
 export const slotOf = (id: string): Slot | undefined => SLOTS.find((s) => s.id === id);
+
+/** How a frame is described to a photographer or an image model, and the least size a photo for it should have. */
+export function frameOf(slot: Slot): { shape: "16:9" | "4:3"; least: [number, number] } {
+  return slot.aspect > 1.55 ? { shape: "16:9", least: [2400, 1350] } : { shape: "4:3", least: [2400, 1800] };
+}
 
 /** The widths made of every picture, smallest first. A picture narrower than one is not made larger. */
 export const WIDTHS = [640, 1280, 1920] as const;

@@ -106,6 +106,8 @@ export const site = texts("copy/site", "site", () => ({
       kicker: "The four spaces",
       title: (n: number) => `${Word(n)} spaces, one loop.`,
       lead: "Track and Test produce numbers. Train and Together try to move them. Then the numbers show what changed.",
+      back: "Then back to Track: the numbers show what changed.",
+      diagram: "The four spaces, one loop. Tap one to read it.",
       items: [
         { key: "track", name: "Track", line: "See how your eyes spend the day.", body: "Screen breaks taken, minutes of practice and time outdoors, drawn as rings on one screen.", stat: (rings: number) => `${Word(rings)} rings a day` },
         { key: "test", name: "Test", line: "Check your eyes at home.", body: "Each check-up is compared with your own earlier results, never with other people. A check-up measures. It never says your eyes are healthy.", stat: (n: number) => many(n, "check-up", "check-ups") },
@@ -125,6 +127,7 @@ export const site = texts("copy/site", "site", () => ({
         { title: "Choose a programme", body: (questions: number) => `Answer ${word(questions)} safety questions first. Then pick a programme. Its minutes come from a published trial or from a counsellor, never from AI.` },
       ],
       durations: "How long each part takes",
+      diagram: "From the check to a programme, in five steps. Tap one to read it.",
       profile: {
         title: "An example eye profile",
         note: "The values here are made up to show the layout. Hatching means not measured yet.",
@@ -310,6 +313,7 @@ export const site = texts("copy/site", "site", () => ({
     labels: {
       kicker: "The labels",
       title: (n: number) => `${Word(n)} labels, and what each one means.`,
+      diagram: "The evidence labels, strongest first. Tap one to read what it means.",
       lead: (g: number, e: number) => `All ${g} games and ${e} exercises carry one. The bars show how many carry each.`,
       games: "Games",
       exercises: "Exercises",
@@ -438,6 +442,7 @@ export const site = texts("copy/site", "site", () => ({
     rules: {
       kicker: "The rules",
       title: "What the app checks, and what it refuses.",
+      diagram: "The rules. Tap one to read it.",
     },
     questions: {
       title: "Questions before training",
@@ -468,6 +473,11 @@ export const site = texts("copy/site", "site", () => ({
       or: " or ",
       rest: "After any of the others:",
       log: "The stop is recorded, and a linked counsellor can see it.",
+      diagram: "What happens after the stop button",
+      toDoctor: "See an eye doctor first",
+      toRest: "Rest for today",
+      kicker: "If it feels wrong",
+      heading: "One button stops everything.",
     },
     flash: {
       title: "No flashing content",
@@ -500,6 +510,8 @@ export const site = texts("copy/site", "site", () => ({
         programme_done: "Is today's practice for the programme already done?",
       },
       then: "Only then does the session start, for the minutes that are left.",
+      no: "If not",
+      diagram: (n: number) => `${n} checks before every session`,
     },
     not: {
       title: "What Eyes Opener is not",

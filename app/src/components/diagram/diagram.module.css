@@ -1,0 +1,176 @@
+/* The diagram kit's look. Boxes are HTML so words wrap; lines are CSS. Below 640 px every wide shape turns to a column. */
+
+.frame { margin: 0; position: relative; font-size: 15.5px; line-height: 1.45; --dg-line: color-mix(in srgb, var(--ink-3) 55%, var(--line-2)); --dg-gap: 30px; }
+
+/* ── a box ── */
+.box { background: var(--card); border: 1px solid var(--line-2); border-radius: var(--r-md); padding: 12px 14px; min-width: 0; position: relative; z-index: 1; }
+.box[data-tap] { cursor: pointer; }
+.box[data-tap]:hover { border-color: var(--ink-3); }
+.box[data-tap][open] { box-shadow: var(--sh-card); }
+.head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "icon label more" "icon tag more"; align-items: center; column-gap: 10px; row-gap: 4px; font-weight: 600; color: var(--ink); list-style: none; min-height: 28px; }
+.head > .icon { grid-area: icon; }
+.head > .label { grid-area: label; }
+.head > .tag { grid-area: tag; justify-self: start; }
+.head > .more { grid-area: more; }
+.head:not(:has(> .tag)) { grid-template-areas: "icon label more"; }
+.head::-webkit-details-marker { display: none; }
+summary.head { cursor: pointer; border-radius: var(--r-sm); }
+summary.head:focus-visible { outline: 2px solid var(--g1); outline-offset: 4px; }
+.label { min-width: 0; overflow-wrap: break-word; hyphens: auto; }
+.icon { flex: none; width: 28px; height: 28px; display: grid; place-items: center; color: var(--ink-2); }
+.icon svg { width: 100%; height: 100%; }
+.tag { flex: none; font-size: 12.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--sunken); border: 1px solid var(--line); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.more { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--line-2); position: relative; }
+.more::before, .more::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.5px; margin: -0.75px 0 0 -5px; background: var(--ink-2); border-radius: 1px; transition: transform 0.2s var(--s-ease, ease); }
+.more::after { transform: rotate(90deg); }
+details[open] > summary .more::after { transform: rotate(0deg); }
+.say { margin-top: 8px; color: var(--ink-2); font-size: 0.95em; font-weight: 400; }
+.say > * + * { margin-top: 6px; }
+
+/* tones: a check that stops, a way forward, a caution, a fact */
+.go { border-color: color-mix(in srgb, var(--ok) 45%, var(--line-2)); background: var(--ok-bg); }
+.go .head { color: var(--ok); }
+.stop { border-color: color-mix(in srgb, var(--danger) 35%, var(--line-2)); background: var(--danger-bg); }
+.stop .head { color: var(--danger); }
+.warn { border-color: color-mix(in srgb, var(--warn) 40%, var(--line-2)); background: var(--warn-bg); }
+.warn .head { color: var(--warn); }
+.info { background: var(--sunken); }
+
+/* a step number */
+.n { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 13.5px; font-weight: 600; background: var(--ink); color: var(--card); font-variant-numeric: tabular-nums; flex: none; position: relative; z-index: 1; }
+
+/* ── flow and loop: a row of steps with arrows between ── */
+.row { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--dg-gap); align-items: start; }
+.cell { position: relative; display: grid; gap: 10px; justify-items: start; }
+.cell > .box { width: 100%; }
+.cell:not([data-last])::after {
+  content: ""; position: absolute; top: 14px; left: calc(100% + 4px); width: calc(var(--dg-gap) - 8px); height: 2px; background: var(--dg-line);
+  transform-origin: left center; transition: transform 0.6s var(--s-ease, ease);
+}
+.cell:not([data-last])::before {
+  content: ""; position: absolute; top: 10px; left: calc(100% + var(--dg-gap) - 10px); border: 5px solid transparent; border-left: 6px solid var(--dg-line); border-right: 0;
+}
+.loop .cell { justify-items: stretch; }
+.loop .cell:not([data-last])::after, .loop .cell:not([data-last])::before { top: 24px; }
+.loop .cell:not([data-last])::before { top: 20px; }
+.back { position: relative; margin: 14px 12.5% 0; padding-top: 22px; text-align: center; font-size: 14px; color: var(--ink-2); font-weight: 500; }
+.backLine { position: absolute; left: 0; right: 0; top: 0; height: 16px; border: 2px dashed var(--dg-line); border-top: 0; border-radius: 0 0 14px 14px; }
+.backLine::after { content: ""; position: absolute; left: -7px; top: -8px; border: 6px solid transparent; border-bottom: 7px solid var(--dg-line); border-top: 0; }
+
+/* a long flow stands as a column, like a list of steps */
+.tall .row, .flow.tall .row { grid-auto-flow: row; grid-auto-columns: auto; gap: 16px; }
+.tall .cell { grid-template-columns: 30px minmax(0, 1fr); align-items: start; column-gap: 14px; }
+.tall .cell:not([data-last])::after { top: 34px; left: 14px; width: 2px; height: calc(100% - 18px); transform-origin: center top; }
+.tall .cell:not([data-last])::before { display: none; }
+
+/* ── gate chain: checks one under another, each "no" leading out to the side ── */
+.chain { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.gate { display: grid; grid-template-columns: 30px minmax(0, 1.15fr) auto minmax(0, 1fr); column-gap: 14px; align-items: start; position: relative; }
+.gate > .n { margin-top: 10px; }
+.gate:not([data-pass])::after { content: ""; position: absolute; left: 14px; top: 40px; width: 2px; height: calc(100% - 26px); background: var(--dg-line); transform-origin: center top; transition: transform 0.6s var(--s-ease, ease); }
+.gate[data-pass] { grid-template-columns: 30px minmax(0, 1fr); }
+.gate[data-pass] .n { background: var(--ok); }
+.fork { font-size: 12.5px; font-weight: 600; color: var(--ink-3); white-space: nowrap; position: relative; padding: 0 18px 0 0; margin-top: 16px; }
+.fork::after { content: ""; position: absolute; right: 0; top: 50%; width: 12px; height: 2px; background: var(--dg-line); }
+.out { font-size: 0.94em; }
+
+/* ── decision tree: one question, answers side by side ── */
+.root { max-width: 560px; margin: 0 auto; }
+.branches { list-style: none; margin: 0; padding: 26px 0 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 18px; position: relative; }
+.branches::before { content: ""; position: absolute; top: 12px; left: calc(50% / var(--n)); right: calc(50% / var(--n)); height: 2px; background: var(--dg-line); transform-origin: center; transition: transform 0.6s var(--s-ease, ease); }
+.branches::after { content: ""; position: absolute; top: -2px; left: 50%; width: 2px; height: 14px; background: var(--dg-line); }
+.branch { display: grid; gap: 8px; justify-items: center; position: relative; }
+.branch::before { content: ""; position: absolute; top: -14px; left: 50%; width: 2px; height: 14px; background: var(--dg-line); }
+.branch > .box { width: 100%; }
+.answer { font-size: 13px; font-weight: 600; padding: 3px 11px; border-radius: 999px; background: var(--card); border: 1px solid var(--line-2); color: var(--ink-2); }
+
+/* ── ladder: grades with counts ── */
+.rungs { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.rung { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto; gap: 16px; align-items: center; }
+.bar { height: 12px; border-radius: 999px; background: var(--sunken); border: 1px solid var(--line); overflow: hidden; }
+.bar i { display: block; height: 100%; border-radius: inherit; background: var(--ink-2); transform-origin: left center; transition: transform 0.8s var(--s-ease, ease); }
+.count { font-size: 14px; font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+a.count { color: var(--ink); text-underline-offset: 3px; }
+
+/* ── lanes: who does what ── */
+.lanes { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 16px; align-items: start; }
+.lane { display: grid; gap: 10px; }
+.who { background: var(--ink); border-color: var(--ink); }
+.who .head { color: var(--card); }
+.who .more { border-color: color-mix(in srgb, var(--card) 40%, transparent); }
+.who .more::before, .who .more::after { background: var(--card); }
+.who .say { color: color-mix(in srgb, var(--card) 82%, transparent); }
+.does { list-style: none; margin: 0; padding: 0 0 0 14px; display: grid; gap: 8px; border-left: 2px solid var(--dg-line); }
+
+/* ── branch map: one source fanning out ── */
+.fan { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 40px; align-items: center; }
+.source { background: var(--ink); border-color: var(--ink); }
+.source .head { color: var(--card); }
+.source .say { color: color-mix(in srgb, var(--card) 82%, transparent); }
+.outcomes { list-style: none; margin: 0; padding: 0 0 0 20px; display: grid; gap: 10px; border-left: 2px solid var(--dg-line); position: relative; }
+.outcomes::before { content: ""; position: absolute; left: -42px; top: 50%; width: 40px; height: 2px; background: var(--dg-line); }
+.outcomes > li { position: relative; }
+.outcomes > li::before { content: ""; position: absolute; left: -20px; top: 22px; width: 18px; height: 2px; background: var(--dg-line); }
+
+/* ── timeline: marks along a line ── */
+.marks { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 16px; position: relative; }
+.marks::before { content: ""; position: absolute; left: 0; right: 0; top: 33px; height: 2px; background: var(--dg-line); transform-origin: left center; transition: transform 0.9s var(--s-ease, ease); }
+.mark { display: grid; gap: 8px; justify-items: start; position: relative; }
+.mark > .box { width: 100%; }
+.at { font-size: 13px; font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; min-height: 20px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--ink); position: relative; z-index: 1; }
+
+/* ── the draw-in: the lines start at nothing and draw once as the diagram enters (motion.tsx sets the marks) ── */
+.frame[data-pre]:not([data-in]) .cell:not([data-last])::after { transform: scaleX(0); }
+.frame.tall[data-pre]:not([data-in]) .cell:not([data-last])::after { transform: scaleY(0); }
+.frame[data-pre]:not([data-in]) .gate::after { transform: scaleY(0); }
+.frame[data-pre]:not([data-in]) .branches::before { transform: scaleX(0); }
+.frame[data-pre]:not([data-in]) .bar i { transform: scaleX(0); }
+.frame[data-pre]:not([data-in]) .marks::before { transform: scaleX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .frame * , .frame *::before, .frame *::after { transition: none !important; }
+}
+
+/* ── phones: every wide shape becomes a column ── */
+@media (max-width: 640px) {
+  .frame { font-size: 15px; }
+  .row { grid-auto-flow: row; grid-auto-columns: auto; gap: 16px; }
+  .cell { grid-template-columns: 30px minmax(0, 1fr); align-items: start; column-gap: 12px; }
+  .loop .cell { grid-template-columns: minmax(0, 1fr); }
+  .cell:not([data-last])::after { top: 34px; left: 14px; width: 2px; height: calc(100% - 18px); transform-origin: center top; }
+  .loop .cell:not([data-last])::after { top: calc(100% + 2px); left: 50%; width: 2px; height: 12px; }
+  .cell:not([data-last])::before { display: none; }
+  .frame[data-pre]:not([data-in]) .cell:not([data-last])::after { transform: scaleY(0); }
+  .back { margin: 12px 0 0; }
+  .backLine { left: auto; right: -2px; top: -100%; height: calc(100% + 22px); width: 0; border: 0; border-right: 2px dashed var(--dg-line); border-radius: 0; display: none; }
+  .gate { grid-template-columns: 30px minmax(0, 1fr); row-gap: 6px; }
+  .gate .fork, .gate .out { grid-column: 2; }
+  .fork { padding: 0; }
+  .fork::after { display: none; }
+  .fork { margin-top: 0; }
+  .branches { grid-template-columns: minmax(0, 1fr); padding: 14px 0 0 18px; border-left: 2px solid var(--dg-line); margin-left: 14px; }
+  .branches::before, .branches::after, .branch::before { display: none; }
+  .branch { justify-items: start; }
+  .rung { grid-template-columns: minmax(0, 1fr) auto; }
+  .rung > .box { grid-column: 1 / -1; }
+  .lanes { grid-template-columns: minmax(0, 1fr); }
+  .fan { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .outcomes::before { display: none; }
+  .marks { grid-auto-flow: row; grid-auto-columns: auto; padding-left: 22px; }
+  .marks::before { left: 5px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; transform-origin: center top; }
+  .frame[data-pre]:not([data-in]) .marks::before { transform: scaleY(0); }
+  .dot { position: absolute; left: -22px; top: 3px; }
+}
+
+/* ── tiles: named facts in a grid, a tap opens each ── */
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 14px; align-items: start; }
+.tile { padding: 16px 18px; border-radius: var(--r-lg); }
+.tile .head { font-size: 16.5px; }
+.tile .icon { width: 34px; height: 34px; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(min(var(--cols), 2), minmax(0, 1fr)); } }
+@media (max-width: 640px) { .tiles { grid-template-columns: minmax(0, 1fr); } }
+
+/* a page's own icon inside a box: no tile of its own, the box is the tile */
+.box .icon > * { width: 100%; height: 100%; margin: 0; border: 0; background: none; border-radius: 0; }
+.box .icon svg { width: 22px; height: 22px; }
+.box.tile .icon svg { width: 26px; height: 26px; }
