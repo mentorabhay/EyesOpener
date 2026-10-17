@@ -28,7 +28,7 @@ export const SLOTS: readonly Slot[] = [
   { id: "home-hero", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.58, 0.42] },
   { id: "home-family", page: "/", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
   { id: "home-outdoors", page: "/", aspect: 4 / 3, parallax: false, place: "away", focus: [0.45, 0.5] },
-  { id: "home-tv", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.4, 0.6] },
+  { id: "home-tv", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.45, 0.55] },
   { id: "home-closing", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.5] },
   { id: "how-setup", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.55, 0.5] },
   { id: "how-practice", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
