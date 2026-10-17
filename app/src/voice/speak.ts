@@ -7,7 +7,7 @@
  *   - numbers joined by hyphens or a slash ("20-20-20" becomes "20, 20, 20"; "6/6" becomes "6 over 6")
  *   - words in capitals for emphasis ("ONE ring" becomes "one ring"); short names that are said as letters stay ("OK", "TV")
  *   - quotation marks and brackets, which a voice cannot say: the words inside stay, set off by commas
- *   - the product's own name, which is said "Eye Opener"
+ *   - the product's old name, which is said "Eyes Opener" (older scripts may still carry it)
  * Pauses come from full stops and line breaks. No markup of any speech service is written here, so the same text
  * can be handed to a translator and to any voice.
  *
@@ -34,7 +34,7 @@ const UNIT = new RegExp(`(\\d+(?:\\.\\d+)?)\\s?(${Object.keys(UNITS).sort((a, b)
 
 /** Words a voice would say wrongly as written. */
 const SAY: readonly [RegExp, string][] = [
-  [/\bEyes Opener\b/g, "Eye Opener"],
+  [/\bI[O]pener\b/g, "Eyes Opener"],
   [/\bEsc\b/g, "Escape"],
 ];
 

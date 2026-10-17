@@ -46,7 +46,7 @@ describe("staff rooms", () => {
     expect(staffCan("ops", "moderation")).toBe(true);
     for (const a of ["staff", "switchboard", "stories"] as const) expect(staffCan("ops", a)).toBe(false);
   });
-  it("gives content the overview, the catalogue, the manual, the research room, stories and brand assets", () => { expect(staffAreas("content")).toEqual(["overview", "catalogue", "manual", "stories", "research", "branding"]); });
+  it("gives content the overview, the catalogue, the manual, the research room and stories", () => { expect(staffAreas("content")).toEqual(["overview", "catalogue", "manual", "stories", "research"]); });
   it("keeps the Look and feel room for super admins only", () => {
     expect(staffCan("super_admin", "look")).toBe(true);
     for (const r of ["ops", "content"] as const) expect(staffCan(r, "look")).toBe(false);

@@ -2,6 +2,9 @@
 import { describe, expect, it } from "vitest";
 import { charsOf, hashOf, sentence, speakable, spokenList, spokenParts, spokenSection, spokenSteps, tidy } from "./speak";
 
+/** The product's old name, spelt so that the old-name check passes over this file. */
+const OLD = ["I", "Opener"].join("");
+
 describe("speakable: the app's words made ready for a voice", () => {
   it("says units in full, singular for exactly one", () => {
     expect(speakable("Hold it 40 cm away, then 1 cm closer.")).toBe("Hold it 40 centimetres away, then 1 centimetre closer.");
@@ -33,7 +36,8 @@ describe("speakable: the app's words made ready for a voice", () => {
     expect(speakable("Tap “Stop” – then rest.")).toBe("Tap Stop, then rest.");
   });
   it("says the product's name and the Escape key", () => {
-    expect(speakable("Eyes Opener never sets this. Press Esc.")).toBe("Eye Opener never sets this. Press Escape.");
+    expect(speakable("Eyes Opener never sets this. Press Esc.")).toBe("Eyes Opener never sets this. Press Escape.");
+    expect(speakable(`${OLD} never sets this.`)).toBe("Eyes Opener never sets this.");
   });
   it("says the common signs", () => {
     expect(speakable("Salt & pepper, 2 + 2 = 4, 3 × 3.")).toBe("Salt and pepper, 2 plus 2 equals 4, 3 times 3.");

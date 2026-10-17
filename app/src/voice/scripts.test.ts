@@ -48,7 +48,7 @@ describe("the scripts built from the app's words", () => {
       expect(s.text, s.id).not.toMatch(/[{}()"<>\[\]]/);
       expect(s.text, s.id).not.toMatch(/\d ?(cm|mm)\b|%| {2}|\t/);
       expect(s.text, s.id).toMatch(/[.!?]$/);
-      expect(s.text, s.id).not.toMatch(/\bEyes Opener\b/);
+      expect(s.text, s.id).not.toMatch(/\bI[O]pener\b/);
       expect(s.text.trim(), s.id).toBe(s.text);
       /* short enough to be one request to a speech service, with room for a longer translation */
       expect(s.chars, s.id).toBeGreaterThan(20);

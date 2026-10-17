@@ -188,11 +188,12 @@ describe("the proxy, child mode and the site lock", () => {
     process.env.SITE_LOCK = "a-test-phrase-1234";
     try {
       expect(await run("/_next/static/chunks/abc123.js")).toBe("through");
-      expect(await run("/favicon.ico")).toBe("through");
+      for (const p of ["/favicon.ico", "/icon.png", "/apple-icon.png", "/opengraph-image.png", "/brand/mark.png"]) expect(await run(p)).toBe("through");
       expect(await run("/static/a.js")).toBe("/gate?next=%2Fstatic%2Fa.js");
       expect(await run("/_next/staticx/a.js")).not.toBe("through");
+      expect(await run("/brandx/a.png")).not.toBe("through");
       const { config } = await import("../../proxy");
-      expect(config.matcher).toEqual(["/((?!_next/static|_next/image|favicon.ico).*)"]);
+      expect(config.matcher).toEqual(["/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|opengraph-image.png|brand/).*)"]);
     } finally { delete process.env.SITE_LOCK; }
   });
 

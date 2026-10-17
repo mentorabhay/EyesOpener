@@ -27,6 +27,8 @@ export const train = texts("copy/train", "train", () => ({
   starting: "Starting",
   saving: "Saving",
   finish: "Finish now",
+  /** Shown above a game on a phone held upright, where the scene is only a thin strip. */
+  turnPhone: "Turn your phone sideways: the game fills the screen and the words fit.",
   ended: {
     done: "Session finished. Well done.",
     daily_cap: "The daily limit of 90 minutes is reached.",

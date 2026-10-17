@@ -1,5 +1,6 @@
 // Eyes Opener: Root layout component defining UI structure, styling, theme providers, and global meta tags.
 import Link from "next/link";
+import { BrandMark } from "@/components/brand";
 import type { CSSProperties, ReactNode } from "react";
 import { InkTuneSet } from "@/components/ink-tune";
 import { NavGroups, TabBar } from "@/components/nav";
@@ -48,8 +49,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       <a className="skip" href="#page">{n.skip}</a>
       <InkTuneSet tune={tune} />
       <aside className="side">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <Link href={m.childMode ? "/kids" : "/today"} className="logo"><img src="/Images/logo-mark-56.png" alt="" className="mark" width={28} height={28} />{common.product}</Link>
+        <Link href={m.childMode ? "/kids" : "/today"} className="logo"><BrandMark />{common.product}</Link>
         <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">
           <b>{m.profile.displayName}</b>
           <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span>

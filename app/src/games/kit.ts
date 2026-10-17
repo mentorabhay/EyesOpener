@@ -169,6 +169,54 @@ const KEYS: Record<string, [number, number, string]> = {
 
 type Ctx = CanvasRenderingContext2D;
 
+/** The inside edge of the white frame: nothing a game draws shows outside it. */
+export const INSIDE = { x0: 6, y0: 6, x1: W - 6, y1: H - 6 } as const;
+/** Text keeps this far from the edge of the scene, inside the frame's line. */
+const TEXT_EDGE = 10;
+
+/**
+ * Fits one line of text inside the frame. The room is what is left between the anchor point and the frame for
+ * this alignment. A line too wide is made smaller, but never under `least` (the member's letter size, or the size
+ * asked for when that is smaller); still too wide, it is broken into two or three lines at spaces (centred on the
+ * anchor line). Only a line that fits in none of these ways goes smaller still. A single long word near an edge is
+ * moved inward instead, so it ends at the frame. A line that already fits is never touched.
+ */
+export function fitText(s: string, x: number, size: number, align: CanvasTextAlign, width: (size: number, text: string) => number, least = size * 0.6) {
+  const lo = TEXT_EDGE, hi = W - TEXT_EDGE;
+  const roomAt = (ax: number) => (align === "center" ? 2 * Math.min(ax - lo, hi - ax) : align === "right" || align === "end" ? ax - lo : hi - ax);
+  const room = roomAt(x);
+  /* No letter of the kit's face is wider than its size, so a short line is known to fit without measuring it. */
+  if (!(room > 0) || s.length * size <= room || width(size, s) <= room) return { size, lines: [s], x };
+  const floor = Math.min(size, Math.max(10, least)), wide = width(size, s), shrunk = Math.max(floor, (size * room) / wide);
+  if (width(shrunk, s) <= room) return { size: shrunk, lines: [s], x };
+  const words = s.split(" ");
+  if (words.length < 2) {
+    /* one word: keep the smaller size and move it inward so it ends at the frame */
+    const w = width(shrunk, s);
+    const nx = align === "center" ? W / 2 : align === "right" || align === "end" ? Math.max(x, lo + w) : Math.min(x, hi - w);
+    return { size: Math.max(10, Math.min(shrunk, (shrunk * (hi - lo)) / w)), lines: [s], x: nx };
+  }
+  const split = (n: number) => {
+    /* n lines of about equal width, cut at spaces */
+    const total = width(size, s), lines: string[] = [];
+    let line = "";
+    for (const word of words) {
+      const next = line ? `${line} ${word}` : word;
+      if (line && lines.length < n - 1 && width(size, next) > total / n) { lines.push(line); line = word; } else line = next;
+    }
+    lines.push(line);
+    return lines;
+  };
+  let best = { size: 10, lines: [s] };
+  for (const n of [2, 3]) {
+    const lines = split(n), longest = Math.max(...lines.map((t) => width(size, t)));
+    const fitSize = Math.min(size, (size * room) / longest);
+    if (fitSize >= floor) return { size: fitSize, lines, x };
+    if (fitSize > best.size) best = { size: fitSize, lines };
+  }
+  return { size: Math.max(10, best.size), lines: best.lines, x };
+}
+
 /** Builds the kit a game talks to. `ctxOf` gives the drawing surface for each ink. */
 export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, rand: () => number = Math.random): Kit {
   /* the inks of this screen's tuning for its glasses (engine/tune.ts): less green in the cyan, a ceiling on the red */
@@ -212,7 +260,18 @@ export function makeKit(p: GameProps, ctxOf: (ink: Ink) => Ctx, slow: number, ra
       g.closePath();
       if (filled) g.fill(); else { g.lineWidth = width; g.lineJoin = "round"; g.stroke(); }
     },
-    text(s, x, y, ink, size = 20, align = "left") { const g = k.ctx(ink); g.font = `700 ${size}px Verdana, sans-serif`; g.textAlign = align; g.textBaseline = "alphabetic"; g.fillText(s, x, y); },
+    text(s, x, y, ink, size = 20, align = "left") {
+      const g = k.ctx(ink), font = (n: number) => `700 ${n}px Verdana, sans-serif`;
+      g.font = font(size); g.textAlign = align; g.textBaseline = "alphabetic";
+      /* A line never runs past the frame: it is made smaller first, then broken in two (fitText). */
+      const fit = fitText(s, x, size, align, (n, t) => { g.font = font(n); return g.measureText(t)?.width ?? 0; }, k.letter);
+      if (fit.size !== size) g.font = font(fit.size);
+      /* Broken lines sit around the line asked for, moved up or down as a block so none leaves the frame. */
+      const gap = fit.size * 1.1, n = fit.lines.length;
+      let first = y - ((n - 1) / 2) * gap;
+      if (n > 1) first = Math.max(INSIDE.y0 + 4 + fit.size, Math.min(first, INSIDE.y1 - 6 - (n - 1) * gap));
+      fit.lines.forEach((t, i) => g.fillText(t, fit.x, first + i * gap));
+    },
     frame() { k.box(8, 8, W - 16, H - 16, "both", false, 3); },
     hasHero: !!own,
     hero(x, y, size, ink, lean = 0) {
@@ -276,8 +335,13 @@ export function mount<S>(cv: HTMLCanvasElement, def: GameDef<S>, p: GameProps): 
   };
   const paint = (state: S) => {
     const sx = cv.width / W, sy = cv.height / H;
-    for (const g of Object.values(ctxs)) { g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.setTransform(sx, 0, 0, sy, 0, 0); }
+    for (const g of Object.values(ctxs)) {
+      g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); g.setTransform(sx, 0, 0, sy, 0, 0);
+      /* Everything a game draws stays inside the white frame: scenery, sparks and words never spill past it. */
+      g.save(); g.beginPath(); g.rect(INSIDE.x0, INSIDE.y0, INSIDE.x1 - INSIDE.x0, INSIDE.y1 - INSIDE.y0); g.clip();
+    }
     def.draw(k, state);
+    for (const g of Object.values(ctxs)) g.restore();
     /* Each ink is drawn on its own layer, so two shapes of one ink never add up past that ink's contrast.
        The layers are then added together: where red and cyan overlap, both eyes see light. */
     main.setTransform(1, 0, 0, 1, 0, 0);

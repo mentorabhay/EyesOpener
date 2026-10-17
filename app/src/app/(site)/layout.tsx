@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { common } from "@/copy/common";
 import { site as t } from "@/copy/site";
 import { getViewer } from "@/lib/auth";
-import { siteUrl } from "@/lib/site";
+import { SHARE_IMAGE, siteUrl } from "@/lib/site";
 import { DiagramMotion } from "@/components/diagram/motion";
 import { Reveal } from "./_components/reveal";
 import { SiteFooter } from "./_components/site-footer";
@@ -13,7 +13,8 @@ import "./site.css";
 
 export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteUrl()),
-  openGraph: { siteName: t.name, type: "website", locale: "en_IN", title: t.name, description: common.tagline },
+  openGraph: { siteName: t.name, type: "website", locale: "en_IN", title: t.name, description: common.tagline, images: [SHARE_IMAGE] },
+  twitter: { card: "summary_large_image", title: t.name, description: common.tagline, images: [SHARE_IMAGE.url] },
 });
 
 /**

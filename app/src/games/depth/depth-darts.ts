@@ -103,6 +103,6 @@ export const depthDarts: GameDef<State> = {
     }
 
     k.hud(`${t.hits} ${k.score}`);
-    label(k, `${t.step} ${Math.round(o.step)}`, 22, H - 22, "left");
+    label(k, `${t.step} ${Math.round(o.step)} ${t.unit}`, 22, H - 22, "left");
   },
 };
