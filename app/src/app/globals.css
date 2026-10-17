@@ -224,3 +224,11 @@ table.tb .n { text-align: right; padding-right: 0; }
 .cue { display: flex; flex-direction: column; gap: 8px; min-width: 0; padding: 8px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--sunken); }
 .cue[data-tone="go"] { border-color: var(--line-2); }
 .cue-b { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; font-size: 13.5px; }
+
+/* a list row the whole of which opens its item: the name's link stretches over the row (Wave 3) */
+.rowlink { position: relative; border-radius: var(--r-sm); transition: background 0.15s; }
+.rowlink:hover { background: var(--sunken); }
+.rowlink .stretch { text-decoration: none; color: inherit; }
+.rowlink .stretch::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.rowlink .stretch:focus-visible { outline: none; }
+.rowlink:has(.stretch:focus-visible) { outline: 2px solid var(--g1); outline-offset: 2px; }

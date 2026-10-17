@@ -1,5 +1,6 @@
 // Eyes Opener: Blocks shared by the pages for counsellors and for sponsors: what a role sees, the steps to take part, the form. .
 /** Blocks shared by the pages for counsellors and for sponsors: what a role sees, the steps to take part, the form. */
+import { Flow } from "@/components/diagram/kit";
 import { site as t } from "@/copy/site";
 import { ENQUIRY_KINDS, ENQUIRY_MAX, ENQUIRY_MIN_AGE, HONEYPOT_FIELD, type EnquiryKind } from "@/lib/site";
 import { EnquiryForm } from "./enquiry-form";
@@ -24,9 +25,7 @@ export function TakePart({ id, kicker, title, items }: { id: string; kicker: str
   return (
     <Section id={id} alt>
       <Head id={id} kicker={kicker} title={title} />
-      <ol className="s-steps across">
-        {items.map((s) => <li key={s.title} className="s-reveal"><h3>{s.title}</h3><p>{s.body}</p></li>)}
-      </ol>
+      <Flow label={title} nodes={items.map((s) => ({ key: s.title, label: s.title, say: <p>{s.body}</p> }))} />
     </Section>
   );
 }

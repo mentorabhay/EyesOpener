@@ -38,6 +38,20 @@ export function ExerciseCard({ e }: { e: Exercise }) {
   );
 }
 
+/** One exercise as a row of a list: the whole row opens it. Who it is for, what to have and the dose sit on one quiet line. */
+export function ExerciseRow({ e }: { e: Exercise }) {
+  return (
+    <li>
+      <Link className="s-exrow" href={`/train/exercises/${e.slug}`}>
+        <span className="s-exname"><b>{e.name}</b><span>{e.purpose}</span></span>
+        <span className="s-exmeta">{forWhom(e)} · {e.gear} · {e.dose}</span>
+        <span className="s-chips"><EvidenceChip level={mechanismOf(e.mechanism).evidence} /></span>
+        <span className="s-exgo" aria-hidden="true" />
+      </Link>
+    </li>
+  );
+}
+
 const d = t.programmes.dose;
 
 /** The dose of a programme in words, worked out from the catalogue. */

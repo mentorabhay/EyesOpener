@@ -2,9 +2,12 @@
 "use client";
 /**
  * The step strip at the top of a page: what to do, in three to six short steps, each with a small moving picture.
- * The steps light up one after another, slowly, like a short film; a press on a step holds it there. It stops on
- * its own after two rounds, while the page is hidden, while a pointer rests on it, and never moves at all for
- * anyone who asked their device to reduce motion. A pause button is always there (WCAG 2.2.2).
+ * The steps light up one after another, slowly, like a short film, once (Ved, 17 October 2026: "auto-play once on
+ * first visit, then still"). How often follows the Look and feel setting (data-steps on <html>): off never plays,
+ * once plays on the first visit to a page in this browser, always plays on every visit. It stops for good on any
+ * tap, scroll or key, waits while the page is hidden or a pointer rests on it, and never moves for reduced motion
+ * or when the site's motion setting is calm or off. Every step stays readable, lit or not. When it has stopped,
+ * "Watch the steps" plays it once more (WCAG 2.2.2).
  * The long text of a page goes under "Read more" at the bottom (more.tsx), not here.
  */
 import Link from "next/link";
@@ -32,7 +35,27 @@ export interface FlowStep {
 /** How long each step stays lit, in milliseconds. */
 const DWELL = 3600;
 /** Rounds before it rests on its own. */
-const ROUNDS = 2;
+const ROUNDS = 1;
+
+/** Whether this browser has seen this page's steps play, kept per page. Storage that fails counts as "not seen". */
+const SEEN = "eo.steps.seen";
+function seenBefore(key: string): boolean {
+  try { return (JSON.parse(localStorage.getItem(SEEN) ?? "[]") as string[]).includes(key); } catch { return false; }
+}
+function markSeen(key: string) {
+  try {
+    const list = (JSON.parse(localStorage.getItem(SEEN) ?? "[]") as string[]).filter((k) => k !== key);
+    localStorage.setItem(SEEN, JSON.stringify([...list, key].slice(-200)));
+  } catch { /* private window: it plays again next time */ }
+}
+/** Off, once or always, and whether the site's motion setting keeps everything still, as "mode calm" (a stable value). */
+function siteSteps(): string {
+  const d = document.documentElement.dataset;
+  const mode = d.steps === "off" || d.steps === "always" ? d.steps : "once";
+  return `${mode} ${d.motion === "calm" || d.motion === "off" ? "calm" : "free"}`;
+}
+/* the settings are written into <html> by the server and do not change while a page is open */
+const noChange = () => () => {};
 
 /* the device's "reduce motion" setting, read in the browser; the server draws the strip still */
 const MOTION = "(prefers-reduced-motion: reduce)";
@@ -55,12 +78,39 @@ export function StepFlow({ steps, label = w.how, start = 0, auto = true, compact
 }) {
   const n = steps.length;
   const [on, setOn] = useState(Math.min(Math.max(0, start), Math.max(0, n - 1)));
-  const still = useSyncExternalStore(onMotion, stillNow, () => true);
-  const [stopped, setStopped] = useState(false);
+  const reduce = useSyncExternalStore(onMotion, stillNow, () => true);
+  /* until the browser has read the setting, the strip stands still: the server draws it still too */
+  const site = useSyncExternalStore(noChange, siteSteps, () => null);
+  const [mode, calm] = site ? site.split(" ") : ["off", "calm"];
+  const still = reduce || calm === "calm";
+  /* it starts stopped; the first effect decides whether this visit plays */
+  const [stopped, setStopped] = useState(true);
   const [hover, setHover] = useState(false);
   const playing = auto && n > 1 && !still && !stopped;
   const shown = useRef(0);
   const track = useRef<HTMLOListElement>(null);
+  const key = useRef("");
+
+  useEffect(() => {
+    if (!site) return;
+    key.current = `${location.pathname}#${label}`;
+    if (!auto || calm === "calm" || mode === "off" || stillNow()) return;
+    if (mode === "once" && seenBefore(key.current)) return;
+    /* started a beat after the first paint, so the page settles before anything moves; it counts as seen once it starts */
+    const id = window.setTimeout(() => { markSeen(key.current); setStopped(false); }, 300);
+    return () => window.clearTimeout(id);
+  }, [auto, label, site, mode, calm]);
+
+  /* any tap, scroll or key stops it for good on this visit; the reader is busy with the page */
+  useEffect(() => {
+    if (!playing) return;
+    const stop = () => { setStopped(true); setOn(start); };
+    const opts = { passive: true, once: true } as const;
+    window.addEventListener("scroll", stop, opts);
+    window.addEventListener("keydown", stop, opts);
+    window.addEventListener("pointerdown", stop, opts);
+    return () => { window.removeEventListener("scroll", stop); window.removeEventListener("keydown", stop); window.removeEventListener("pointerdown", stop); };
+  }, [playing, start]);
 
   useEffect(() => {
     if (!playing || hover) return;
@@ -85,7 +135,7 @@ export function StepFlow({ steps, label = w.how, start = 0, auto = true, compact
 
   return (
     <section
-      className={`${css.flow}${compact ? ` ${css.compact}` : ""}`} aria-label={label}
+      className={`${css.flow}${compact ? ` ${css.compact}` : ""}`} aria-label={label} data-playing={playing || undefined}
       onPointerEnter={() => setHover(true)} onPointerLeave={() => setHover(false)}
       style={{ "--dwell": `${DWELL}ms` } as CSSProperties}
     >
@@ -95,9 +145,20 @@ export function StepFlow({ steps, label = w.how, start = 0, auto = true, compact
           {steps.map((s, i) => <i key={i} data-done={i < on || undefined} data-on={i === on || undefined} />)}
         </span>
         {n > 1 && auto && !still && (
-          <button type="button" className={css.toggle} onClick={() => { if (!playing) shown.current = 0; setStopped(playing); }} aria-label={playing ? w.pause : w.play} aria-pressed={!playing}>
-            <svg viewBox="0 0 16 16" aria-hidden="true">{playing ? <path d="M5 3.5v9M11 3.5v9" /> : <path d="M5 3l8 5-8 5z" />}</svg>
-          </button>
+          playing ? (
+            <button type="button" className={css.toggle} onPointerDown={(e) => e.stopPropagation()} onClick={() => { setStopped(true); setOn(start); }} aria-label={w.pause}>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9M11 3.5v9" /></svg>
+            </button>
+          ) : (
+            <button
+              type="button" className={css.again}
+              /* the press that starts it must not count as the tap that stops it */
+              onPointerDown={(e) => e.stopPropagation()} onKeyDown={(e) => e.stopPropagation()}
+              onClick={() => { shown.current = 0; setOn(0); window.setTimeout(() => setStopped(false), 0); }}
+            >
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3l8 5-8 5z" /></svg>{w.watch}
+            </button>
+          )
         )}
       </div>
       <ol className={css.track} ref={track}>

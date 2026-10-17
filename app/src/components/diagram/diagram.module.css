@@ -41,7 +41,7 @@ details[open] > summary .more::after { transform: rotate(0deg); }
 
 /* ── flow and loop: a row of steps with arrows between ── */
 .row { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--dg-gap); align-items: start; }
-.cell { position: relative; display: grid; gap: 10px; justify-items: start; }
+.cell { position: relative; display: grid; gap: 10px; justify-items: start; align-content: start; }
 .cell > .box { width: 100%; }
 .cell:not([data-last])::after {
   content: ""; position: absolute; top: 14px; left: calc(100% + 4px); width: calc(var(--dg-gap) - 8px); height: 2px; background: var(--dg-line);
@@ -115,7 +115,7 @@ a.count { color: var(--ink); text-underline-offset: 3px; }
 /* ── timeline: marks along a line ── */
 .marks { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 16px; position: relative; }
 .marks::before { content: ""; position: absolute; left: 0; right: 0; top: 33px; height: 2px; background: var(--dg-line); transform-origin: left center; transition: transform 0.9s var(--s-ease, ease); }
-.mark { display: grid; gap: 8px; justify-items: start; position: relative; }
+.mark { display: grid; gap: 8px; justify-items: start; align-content: start; position: relative; }
 .mark > .box { width: 100%; }
 .at { font-size: 13px; font-weight: 600; color: var(--ink-2); font-variant-numeric: tabular-nums; min-height: 20px; }
 .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--card); border: 2px solid var(--ink); position: relative; z-index: 1; }
