@@ -43,10 +43,10 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
         <Card>
           <div>
             {shown.map((e) => (
-              <div className="ins" key={e.slug}>
+              <div className="ins rowlink" key={e.slug}>
                 <div className="tx">
                   <div className="row">
-                    <Link href={`/train/exercises/${e.slug}`}><b>{e.name}</b></Link>
+                    <Link className="stretch" href={`/train/exercises/${e.slug}`}><b>{e.name}</b></Link>
                     <EvidenceChip level={mechanismOf(e.mechanism).evidence} />
                     {guideFor(e.slug) && <Chip>{t.exercise.tool[guideFor(e.slug)!.tool.kind]}</Chip>}
                     {status(e.slug) !== "open" && <Chip tone={status(e.slug) === "counsellor" ? "plain" : "warn"}>{t.exercise.statusFor[status(e.slug)]}</Chip>}

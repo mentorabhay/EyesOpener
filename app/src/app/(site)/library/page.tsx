@@ -6,7 +6,7 @@ import { catalogue, evidenceOf, exercises, games } from "@/data";
 import { readStatuses } from "@/lib/catalogue";
 import { isListed, statusOf } from "@/lib/status";
 import { EVIDENCE_KEYS, filterLibrary, groupForTag, libraryHref, LIBRARY_KINDS, pageMeta, readLibraryFilter, type LibraryFilter } from "@/lib/site";
-import { ExerciseCard, GameCard } from "../_components/catalogue";
+import { ExerciseRow, GameCard } from "../_components/catalogue";
 import { Cta, Hero } from "../_components/parts";
 
 const l = t.library;
@@ -73,7 +73,7 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
                 <p className="tnum" role="status">{l.exercises.shown(found.exercises.length, exercises.length)}</p>
               </div>
               {found.exercises.length
-                ? <div className="s-grid three">{found.exercises.map((e) => <ExerciseCard key={e.slug} e={e} />)}</div>
+                ? <ul className="s-exlist">{found.exercises.map((e) => <ExerciseRow key={e.slug} e={e} />)}</ul>
                 : <Empty title={tagHasNoGroup ? l.exercises.noGroup : l.exercises.none}><Link className="btn btn-sm" href="/library" scroll={false}>{l.filters.clear}</Link></Empty>}
             </>
           )}

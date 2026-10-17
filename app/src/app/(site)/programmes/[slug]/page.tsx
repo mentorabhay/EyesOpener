@@ -4,9 +4,11 @@ import { notFound } from "next/navigation";
 import { Chip, EvidenceChip } from "@/components/ui";
 import { site as t } from "@/copy/site";
 import { programmeBySlug, programmes } from "@/data";
+import { programmePlanFor } from "@/data/programme-plans";
+import { Timeline, type Mark } from "@/components/diagram/kit";
 import { MAX_DAILY_MINUTES } from "@/engine";
 import { evidenceIn, exercisesIn, gamesIn, pageMeta, testsFor } from "@/lib/site";
-import { doseLine, ExerciseCard, GameCard, LevelChip } from "../../_components/catalogue";
+import { doseLine, ExerciseRow, GameCard, LevelChip } from "../../_components/catalogue";
 import { Cta, Head, Hero, Points, Section } from "../../_components/parts";
 
 const p = t.programmes;
@@ -23,11 +25,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMeta(`/programmes/${prog.slug}`, { title: `${prog.name} programme`, description: `${about.what} ${p.dose.basis}: ${prog.doseBasis}` });
 }
 
+/** The weeks a reader should know about: the start, each new kind of day, each eye-test visit, the end. */
+function weekMarks(plan: NonNullable<ReturnType<typeof programmePlanFor>>): Mark[] {
+  const w = d.weeks;
+  type Tone = Mark["what"]["tone"];
+  const at = new Map<number, { labels: string[]; says: string[]; tone?: Tone }>();
+  const put = (week: number, label: string, say: string, tone?: Tone) => {
+    const m = at.get(week) ?? { labels: [], says: [] };
+    m.labels.push(label); m.says.push(say); m.tone ??= tone;
+    at.set(week, m);
+  };
+  put(1, w.start, w.startSay(plan.checks.length), "go");
+  for (const st of plan.stages) if (st.from > 1) put(st.from, w.stage, w.stageSay);
+  for (const v of plan.visits) put(v, w.visit, w.visitSay, "warn");
+  if (plan.weeks) put(plan.weeks, w.end, plan.end === "eye_test" ? w.endEyeTest : plan.end === "counsellor" ? w.endCounsellor : w.endNone, "info");
+  return [...at.entries()].sort(([x], [y]) => x - y).map(([week, m]) => ({
+    key: `week-${week}`, at: w.week(week),
+    what: { key: `week-${week}`, label: m.labels.join(" · "), tone: m.tone, say: <>{m.says.map((t) => <p key={t}>{t}</p>)}</> },
+  }));
+}
+
 export default async function ProgrammePage({ params }: { params: Promise<{ slug: string }> }) {
   const prog = programmeBySlug((await params).slug);
   if (!prog) notFound();
   const about = p.about[prog.slug];
   const g = gamesIn(prog), e = exercisesIn(prog), checks = testsFor(prog);
+  const plan = programmePlanFor(prog.slug);
 
   return (
     <main className="s-page">
@@ -69,6 +92,13 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
         </div>
       </Section>
 
+      {plan && plan.weeks && (
+        <Section id="weeks">
+          <Head id="weeks" kicker={d.weeks.kicker} title={d.weeks.title(plan.weeks)} lead={d.weeks.lead} />
+          <Timeline label={d.weeks.diagram} marks={weekMarks(plan)} />
+        </Section>
+      )}
+
       <Section id="games">
         <Head id="games" kicker={t.count.games(g.length)} title={d.games.title} lead={d.games.lead} />
         <div className="s-chips s-reveal" style={{ marginBottom: 18 }}>
@@ -80,7 +110,7 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
 
       <Section id="exercises" alt>
         <Head id="exercises" kicker={t.count.exercises(e.length)} title={d.exercises.title} lead={prog.group ? d.exercises.lead(prog.group) : d.exercises.none} />
-        {e.length > 0 && <div className="s-grid three">{e.map((x) => <ExerciseCard key={x.slug} e={x} />)}</div>}
+        {e.length > 0 && <ul className="s-exlist">{e.map((x) => <ExerciseRow key={x.slug} e={x} />)}</ul>}
       </Section>
 
       <Section id="tests">

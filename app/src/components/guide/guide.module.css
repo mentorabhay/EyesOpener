@@ -39,10 +39,10 @@
 
 .tile {
   all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; gap: 10px; width: 100%; flex: 1;
-  padding: 8px; border-radius: var(--r-md); border: 1px solid transparent; opacity: 0.6;
+  padding: 8px; border-radius: var(--r-md); border: 1px solid transparent;
   transition: opacity 0.55s ease, background-color 0.55s ease, border-color 0.55s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
 }
-.tile:hover { opacity: 0.85; }
+.tile:hover { border-color: var(--line-2); }
 .tile:focus-visible { outline: 2px solid var(--g1); outline-offset: 2px; }
 .track > li[data-on] .tile { opacity: 1; background: var(--sunken); border-color: var(--line-2); transform: translateY(-2px); box-shadow: 0 10px 24px -16px rgb(17 20 24 / 0.35); }
 
@@ -67,7 +67,7 @@
 .words b { font-size: 14px; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; }
 .words span { font-size: 12.5px; color: var(--ink-3); line-height: 1.4; }
 /* a step that is not lit shows at most three lines of each; the lit one shows all of it */
-.track > li:not([data-on]) .words > * { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
+
 .act { align-self: flex-start; margin-left: 8px; }
 
 .compact { padding: 10px 12px; gap: 8px; }
@@ -155,3 +155,9 @@ details[open] > summary > .chev { transform: rotate(180deg); }
 .facts > div { background: var(--sunken); border: 1px solid var(--line); border-radius: var(--r-md); padding: 8px 12px; min-width: 120px; flex: 1 1 160px; }
 .facts dt { font-size: 11.5px; color: var(--ink-3); }
 .facts dd { margin: 2px 0 0; font-size: 13.5px; font-weight: 600; }
+
+/* still strip: every step readable, nothing on it moves; "Watch the steps" plays it once more */
+.flow:not([data-playing]) .pic :global(*) { animation: none !important; }
+.again { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.again:hover { border-color: var(--ink-4); color: var(--ink); }
+.again svg { width: 11px; height: 11px; fill: currentColor; }
