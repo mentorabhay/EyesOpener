@@ -17,6 +17,10 @@ export const DESIGN_VERSION = 1;
 /** The tiles child mode may show (src/app/(app)/kids/). Stop is always there and is not listed: no setting can take it away. */
 export const KID_TILES = ["play", "break", "outside", "listen"] as const;
 export type KidTile = (typeof KID_TILES)[number];
+/** The big tiles across the top of the TV's home, four at most: worked by the remote from a sofa (the 10-foot rules). */
+export const TV_TILES = ["games", "cinema", "checkups", "week", "more"] as const;
+export type TvTile = (typeof TV_TILES)[number];
+const once = (a: readonly string[]) => new Set(a).size === a.length;
 
 const hex = z.string().regex(/^#[0-9a-fA-F]{6}$/, "a colour like #8b31f0");
 
@@ -68,7 +72,9 @@ export const designSchema = z.object({
     /** A small "Illustration" credit on generated pictures, so no generated face is read as a real member. */
     illustrationCredit: z.boolean(),
     /** Child mode's tiles, in this order. A design saved before this setting existed reads as all of them. */
-    childTiles: z.array(z.enum(KID_TILES)).max(KID_TILES.length).refine((a) => new Set(a).size === a.length, "each tile once").default([...KID_TILES]),
+    childTiles: z.array(z.enum(KID_TILES)).max(KID_TILES.length).refine(once, "each tile once").default([...KID_TILES]),
+    /** The TV home's tiles, in this order, at most four. A design saved before this setting existed reads as the first four. */
+    tvTiles: z.array(z.enum(TV_TILES)).min(1).max(4).refine(once, "each tile once").default(["games", "cinema", "checkups", "week"]),
   }),
 });
 export type Design = z.infer<typeof designSchema>;
@@ -95,7 +101,7 @@ export const DEFAULT_DESIGN: Design = {
   type: { siteBody: 17, appBody: 16 },
   surfaces: { shadow: 1, radiusLg: 22, radiusMd: 14, radiusSm: 10 },
   motion: { level: "full", parallax: 0.35, steps: "once" },
-  content: { decorativeNumbers: true, foldsOpen: false, illustrationCredit: true, childTiles: [...KID_TILES] },
+  content: { decorativeNumbers: true, foldsOpen: false, illustrationCredit: true, childTiles: [...KID_TILES], tvTiles: ["games", "cinema", "checkups", "week"] },
 };
 
 /* ── contrast (WCAG 2.x relative luminance) ── */

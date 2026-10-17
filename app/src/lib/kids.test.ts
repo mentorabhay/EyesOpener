@@ -25,10 +25,14 @@ describe("child mode's tiles", () => {
       expect(p.note).toBe(kind);
     }
   });
-  it("reads a design saved before the setting existed as all the tiles", () => {
+  it("reads a design saved before the settings existed as the usual tiles, and refuses a list that breaks the rules", () => {
     const old = structuredClone(DEFAULT_DESIGN) as unknown as { content: Record<string, unknown> };
-    delete old.content.childTiles;
+    delete old.content.childTiles; delete old.content.tvTiles;
     expect(parseDesign(old).content.childTiles).toEqual([...KID_TILES]);
+    expect(parseDesign(old).content.tvTiles).toEqual(["games", "cinema", "checkups", "week"]);
+    for (const tvTiles of [[], ["games", "games"], ["games", "cinema", "checkups", "week", "more"]]) {
+      expect(parseDesign({ ...DEFAULT_DESIGN, content: { ...DEFAULT_DESIGN.content, tvTiles } }), String(tvTiles)).toBe(DEFAULT_DESIGN);
+    }
     expect(parseDesign({ ...DEFAULT_DESIGN, content: { ...DEFAULT_DESIGN.content, childTiles: ["play", "play"] } })).toBe(DEFAULT_DESIGN);
     expect(parseDesign({ ...DEFAULT_DESIGN, content: { ...DEFAULT_DESIGN.content, childTiles: ["stop"] } })).toBe(DEFAULT_DESIGN);
   });
