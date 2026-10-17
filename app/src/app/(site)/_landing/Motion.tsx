@@ -121,7 +121,8 @@ function flow(find: Find) {
   const el = find('[data-scene="flow"]')[0];
   if (!el) return;
   const t = (name: string) => el.querySelectorAll(`[data-t="${name}"]`);
-  const steps = el.querySelectorAll("[data-step]");
+  /* the number of each step lights as the line reaches it; the words stay at full strength, so they are always readable */
+  const steps = el.querySelectorAll("[data-step] .lp-step-n");
   const grow = { ease: "none" };
   const dim = () => ({ opacity: 0.32 }), lit = () => ({ opacity: 1, duration: 0.08 });
   gsap.timeline({ scrollTrigger: pinned(el, 145) })
