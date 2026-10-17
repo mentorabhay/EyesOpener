@@ -15,7 +15,7 @@ const LEVELS = [0, 1, 2] as const;
 export default function ProgrammesPage() {
   return (
     <main className="s-page">
-      <Hero kicker={p.hero.kicker} title={p.hero.title(programmes.length)} lead={p.hero.lead} />
+      <Hero picture="programmes-hero" kicker={p.hero.kicker} title={p.hero.title(programmes.length)} lead={p.hero.lead} />
 
       {LEVELS.map((level, i) => {
         const list = programmes.filter((x) => x.level === level);

@@ -17,7 +17,7 @@ const PILLAR_ICONS = ["free", "open", "research", "privacy"];
 export default function AboutPage() {
   return (
     <main className="s-page">
-      <Hero kicker={a.hero.kicker} title={a.hero.title} lead={a.hero.lead} visual={<TwoLights />}>
+      <Hero picture="about-hero" kicker={a.hero.kicker} title={a.hero.title} lead={a.hero.lead} visual={<TwoLights />}>
         <div className="s-ctas">
           <Link className="btn btn-d s-btn-lg" href="/how-it-works">{t.nav.links[0].label}</Link>
           <Link className="btn s-btn-lg" href="/evidence">{t.cta.evidence}</Link>

@@ -43,7 +43,7 @@ export default function SafetyPage() {
 
   return (
     <main className="s-page">
-      <Hero kicker={s.hero.kicker} title={s.hero.title} lead={s.hero.lead}>
+      <Hero picture="safety-doctor" kicker={s.hero.kicker} title={s.hero.title} lead={s.hero.lead}>
         <div className="s-stats" style={{ marginTop: 34 }}>
           <div className="s-stat"><b>{MAX_DAILY_MINUTES}</b><span>{s.facts.cap.unit}</span></div>
           <div className="s-stat"><b>{MIN_SCREEN_AGE}</b><span>{s.facts.age.unit}</span></div>
