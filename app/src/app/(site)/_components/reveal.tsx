@@ -5,7 +5,7 @@
  *
  * Nothing is hidden until the reader first scrolls. At that moment the elements still below the screen are
  * hidden, and each one rises in as it arrives. So the page is whole without scripts, in a print, and for anyone
- * who asked for reduced motion (then this does nothing at all).
+ * who asked for reduced motion, or when the Look and feel motion setting is calm or off (then this does nothing at all).
  */
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
@@ -13,7 +13,8 @@ import { useEffect } from "react";
 export function Reveal() {
   const path = usePathname();
   useEffect(() => {
-    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const motion = document.documentElement.dataset.motion;
+    if (motion === "calm" || motion === "off" || !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let io: IntersectionObserver | null = null;
     const arm = () => {
       window.removeEventListener("scroll", arm);

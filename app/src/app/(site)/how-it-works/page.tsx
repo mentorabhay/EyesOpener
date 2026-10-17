@@ -10,7 +10,12 @@ import { percent, STARTING_CONTRAST } from "@/engine";
 import { TRIAGE_KEYS } from "@/lib/family";
 import { pageMeta } from "@/lib/site";
 import { Glasses, Icon, RingsArt, TwoLights } from "../_components/art";
-import { Cta, Head, Hero, NotBuilt, Points, Section } from "../_components/parts";
+import { Cta, Head, Hero, Points, Section } from "../_components/parts";
+import { SiteMore } from "../_components/fold";
+import { Flow, Loop, Tiles } from "@/components/diagram/kit";
+import { Fold } from "@/components/guide/more";
+import { SitePicture } from "@/components/site-picture/site-picture";
+import { livePicture } from "@/lib/site-pictures/read";
 
 const h = t.how;
 export const generateMetadata = (): Metadata => (pageMeta("/how-it-works", h.meta));
@@ -21,7 +26,8 @@ const durationOf = (i: number): string | null => [o.screen[1], `${o.L[1]} + ${o.
 /** How often check-ups come round, from the catalogue. */
 const every = [...new Set(tests.map((x) => x.everyDays))].sort((a, b) => a - b);
 
-export default function HowItWorksPage() {
+export default async function HowItWorksPage() {
+  const practice = await livePicture("how-practice");
   const spaceStat = [
     h.spaces.items[0].stat(h.day.rings.length, 0),
     h.spaces.items[1].stat(tests.length, 0),
@@ -42,43 +48,36 @@ export default function HowItWorksPage() {
 
       <Section id="spaces" alt>
         <Head id="spaces" kicker={h.spaces.kicker} title={h.spaces.title(h.spaces.items.length)} lead={h.spaces.lead} />
-        <div className="s-grid">
-          {h.spaces.items.map((s, i) => (
-            <article className="s-card s-reveal" key={s.key}>
-              <Icon name={s.key} />
-              <p className="s-num deco-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</p>
-              <h3>{s.name}</h3>
-              <p><b>{s.line}</b> {s.body}</p>
-              <p className="s-stat-line tnum">{spaceStat[i]}</p>
-            </article>
-          ))}
-        </div>
+        <Loop
+          label={h.spaces.diagram} back={h.spaces.back}
+          nodes={h.spaces.items.map((sp, i) => ({
+            key: sp.key, icon: <Icon name={sp.key} />, tag: spaceStat[i],
+            label: <><span className="s-dnum deco-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>{sp.name}</>,
+            say: <><p><b>{sp.line}</b></p><p>{sp.body}</p></>,
+          }))}
+        />
       </Section>
 
       <Section id="path">
-        <div className="s-split top">
-          <div>
-            <Head id="path" kicker={h.path.kicker} title={h.path.title} lead={h.path.lead} />
-            <ol className="s-steps">
-              {h.path.steps.map((s, i) => (
-                <li key={s.title} className="s-reveal">
-                  <h3>{s.title}{durationOf(i) && <Chip><span className="tnum" aria-label={`${h.path.durations}: ${durationOf(i)}`}>{durationOf(i)}</span></Chip>}</h3>
-                  <p>{typeof s.body === "string" ? s.body : s.body(i === 1 ? onboarding.questions.length : TRIAGE_KEYS.length)}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div className="s-vis s-reveal">
-            <div className="s-panel">
-              <div className="s-panel-head"><span>{h.path.profile.title}</span><Chip>{t.example}</Chip></div>
-              <dl className="kv">
-                <div><dt>{h.path.profile.rows.weak}</dt><dd>{h.path.profile.weak}</dd></div>
-                <div><dt>{h.path.profile.rows.contrast}</dt><dd className="tnum">{percent(STARTING_CONTRAST)}<small>{h.path.profile.contrastFrom}</small></dd></div>
-                <div><dt>{h.path.profile.rows.letter}</dt><dd><Void /></dd></div>
-                <div><dt>{h.path.profile.rows.target}</dt><dd><Void /></dd></div>
-              </dl>
-              <p className="s-note">{h.path.profile.note}</p>
-            </div>
+        <Head id="path" kicker={h.path.kicker} title={h.path.title} lead={h.path.lead} />
+        <Flow
+          label={h.path.diagram}
+          nodes={h.path.steps.map((st, i) => ({
+            key: st.title, label: st.title, tag: durationOf(i) ?? undefined,
+            say: <p>{typeof st.body === "string" ? st.body : st.body(i === 1 ? onboarding.questions.length : TRIAGE_KEYS.length)}</p>,
+          }))}
+        />
+        <div className={practice ? "s-grid two s-after" : "s-after s-solo"}>
+          {practice && <SitePicture slot="how-practice" sizes="(max-width: 860px) 100vw, 50vw" />}
+          <div className="s-panel s-reveal">
+            <div className="s-panel-head"><span>{h.path.profile.title}</span><Chip>{t.example}</Chip></div>
+            <dl className="kv">
+              <div><dt>{h.path.profile.rows.weak}</dt><dd>{h.path.profile.weak}</dd></div>
+              <div><dt>{h.path.profile.rows.contrast}</dt><dd className="tnum">{percent(STARTING_CONTRAST)}<small>{h.path.profile.contrastFrom}</small></dd></div>
+              <div><dt>{h.path.profile.rows.letter}</dt><dd><Void /></dd></div>
+              <div><dt>{h.path.profile.rows.target}</dt><dd><Void /></dd></div>
+            </dl>
+            <p className="s-note">{h.path.profile.note}</p>
           </div>
         </div>
       </Section>
@@ -131,16 +130,27 @@ export default function HowItWorksPage() {
 
       <Section id="devices" alt>
         <Head id="devices" kicker={h.devices.kicker} title={h.devices.title} lead={h.devices.lead} />
-        <div className="s-grid three">
-          {h.devices.items.map((d) => (
-            <article key={d.key} className={`s-card s-reveal${d.built ? "" : " hatched"}`}>
-              <Icon name={d.key} />
-              <h3>{d.name}</h3>
-              <p>{d.body}</p>
-              <p className="s-foot-row">{d.built ? <Chip tone="ok">{t.worksToday}</Chip> : <NotBuilt />}</p>
-            </article>
-          ))}
-        </div>
+        <Tiles
+          label={h.devices.title} cols={3}
+          nodes={h.devices.items.map((d) => ({ key: d.key, icon: <Icon name={d.key} />, label: d.name, tag: d.built ? t.worksToday : t.notBuilt, say: <p>{d.body}</p> }))}
+        />
+      </Section>
+
+      <Section id="more" narrow>
+        <SiteMore>
+          <Fold title={h.spaces.title(h.spaces.items.length)}>
+            <p>{h.spaces.lead}</p>
+            <ul className="s-points">{h.spaces.items.map((sp, i) => <li key={sp.key}><span><b>{sp.name}.</b> {sp.line} {sp.body} {spaceStat[i]}.</span></li>)}</ul>
+          </Fold>
+          <Fold title={h.path.title}>
+            <p>{h.path.lead}</p>
+            <ol className="s-steps">
+              {h.path.steps.map((st, i) => (
+                <li key={st.title}><h3>{st.title}{durationOf(i) && <Chip><span className="tnum">{durationOf(i)}</span></Chip>}</h3><p>{typeof st.body === "string" ? st.body : st.body(i === 1 ? onboarding.questions.length : TRIAGE_KEYS.length)}</p></li>
+              ))}
+            </ol>
+          </Fold>
+        </SiteMore>
       </Section>
 
       <Cta second={{ href: "/safety", label: t.cta.safety }} />

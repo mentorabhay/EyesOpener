@@ -13,6 +13,9 @@ import { pageMeta } from "@/lib/site";
 import { Icon } from "../_components/art";
 import { LevelChip } from "../_components/catalogue";
 import { Cta, Head, Hero, Section } from "../_components/parts";
+import { SiteMore } from "../_components/fold";
+import { Gates, Tiles, Tree, type Node } from "@/components/diagram/kit";
+import { Fold } from "@/components/guide/more";
 
 const s = t.safety;
 export const generateMetadata = (): Metadata => (pageMeta("/safety", s.meta));
@@ -40,6 +43,21 @@ export default function SafetyPage() {
   const level2 = programmes.filter((p) => p.level === 2);
   const order = engineOrder();
   const symptom = train.stop.symptoms;
+  const doctorSymptoms = DOCTOR_SYMPTOMS.map((k) => symptom[k].toLowerCase()).join(s.stop.or);
+  const restSymptoms = STOP_SYMPTOMS.filter((k) => !DOCTOR_SYMPTOMS.includes(k));
+
+  /* Layer 1 keeps every rule's name in view (the safety rules are never folded away); a tap opens its sentence. */
+  const rules: Node[] = [
+    { key: "questions", icon: <Icon name="questions" />, label: s.questions.title, say: <><p>{s.questions.body(TRIAGE_KEYS.length)}</p><p>{s.questions.yes}</p></> },
+    { key: "doctor", icon: <Icon name="doctor" />, label: s.doctor.title, say: <><p>{s.doctor.body}</p><p className="notice" data-b="warn">{s.doctor.urgent}</p></> },
+    { key: "cap", icon: <Icon name="cap" />, label: s.cap.title(MAX_DAILY_MINUTES), say: <p>{s.cap.body}</p> },
+    { key: "age", icon: <Icon name="age" />, label: s.age.title(MIN_SCREEN_AGE), say: <p>{s.age.body}</p> },
+    { key: "consent", icon: <Icon name="consent" />, label: s.consent.title, say: <p>{s.consent.body}</p> },
+    { key: "counsellor", icon: <Icon name="counsellor" />, label: s.counsellor.title, say: <p>{s.counsellor.body(listed(level2.map((p) => p.name)))}</p> },
+    { key: "ai", icon: <Icon name="ai" />, label: s.ai.title, say: <p>{s.ai.body}</p> },
+    { key: "flash", icon: <Icon name="flash" />, label: s.flash.title, say: <p>{s.flash.body}</p> },
+    { key: "not", icon: <Icon name="research" />, label: s.not.title, say: <p>{s.not.body}</p> },
+  ];
 
   return (
     <main className="s-page">
@@ -52,101 +70,69 @@ export default function SafetyPage() {
         </div>
       </Hero>
 
-      <Section id="rules" alt>
+      <Section id="order" alt>
+        <Head id="order" kicker={s.order.kicker} title={s.order.title} lead={s.order.lead} />
+        <Gates
+          label={s.order.diagram(order.length)} failWord={s.order.no}
+          gates={order.map((k) => ({ key: k, ask: { key: `${k}-ask`, label: s.order.steps[k] }, fail: { key: `${k}-no`, label: train.blocked[k] } }))}
+          pass={{ key: "start", label: s.order.then }}
+        />
+      </Section>
+
+      <Section id="rules">
         <Head id="rules" kicker={s.rules.kicker} title={s.rules.title} />
-        <div className="s-grid two">
-          <article className="s-card s-reveal">
-            <Icon name="questions" />
-            <h3>{s.questions.title}</h3>
+        <Tiles label={s.rules.diagram} nodes={rules} cols={3} />
+      </Section>
+
+      <Section id="stop" alt>
+        <Head id="stop" kicker={s.stop.kicker} title={s.stop.heading} />
+        <Tree
+          label={s.stop.diagram}
+          question={{ key: "stop", icon: <Icon name="stop" />, label: train.stop.button, say: <><p>{s.stop.body}</p><p>{s.stop.asks}</p></> }}
+          branches={[
+            { key: "doctor", answer: s.stop.doctor(doctorSymptoms), to: { key: "to-doctor", tone: "stop", label: s.stop.toDoctor, say: <p>{train.stop.doctor}</p> } },
+            { key: "rest", answer: s.stop.rest, to: { key: "to-rest", tone: "warn", label: s.stop.toRest, say: <><p>{train.stop.rest}</p><div className="s-chips">{restSymptoms.map((k) => <Chip key={k}>{symptom[k]}</Chip>)}</div></> } },
+          ]}
+        />
+        <p className="s-note" style={{ marginTop: 18 }}>{s.stop.log}</p>
+      </Section>
+
+      <Section id="more" narrow>
+        <SiteMore>
+          <Fold title={s.questions.title}>
             <p>{s.questions.body(TRIAGE_KEYS.length)}</p>
             <ul className="s-points" aria-label={s.questions.list}>
               {TRIAGE_KEYS.map((k) => <li key={k}><span>{settings.triage.questions[k]}</span></li>)}
             </ul>
             <p>{s.questions.yes}</p>
             <p className="s-note">{s.questions.never}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="stop" />
-            <h3>{s.stop.title}</h3>
+          </Fold>
+          <Fold title={s.stop.title} warn>
             <p>{s.stop.body}</p>
-            <p><span className="btn btn-d">{train.stop.button}</span></p>
             <p>{s.stop.asks}</p>
             <div className="s-chips">{STOP_SYMPTOMS.map((k) => <Chip key={k}>{symptom[k]}</Chip>)}</div>
-            <p><b>{s.stop.doctor(DOCTOR_SYMPTOMS.map((k) => symptom[k].toLowerCase()).join(s.stop.or))}</b> {train.stop.doctor}</p>
+            <p><b>{s.stop.doctor(doctorSymptoms)}</b> {train.stop.doctor}</p>
             <p><b>{s.stop.rest}</b> {train.stop.rest}</p>
             <p className="s-note">{s.stop.log}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="doctor" />
-            <h3>{s.doctor.title}</h3>
-            <p>{s.doctor.body}</p>
-            <p className="notice" data-b="warn">{s.doctor.urgent}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="cap" />
-            <h3>{s.cap.title(MAX_DAILY_MINUTES)}</h3>
-            <p>{s.cap.body}</p>
-            <p>{s.cap.why}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="age" />
-            <h3>{s.age.title(MIN_SCREEN_AGE)}</h3>
-            <p>{s.age.body}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="consent" />
-            <h3>{s.consent.title}</h3>
-            <p>{s.consent.body}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="counsellor" />
-            <h3>{s.counsellor.title}</h3>
+          </Fold>
+          <Fold title={s.cap.title(MAX_DAILY_MINUTES)}><p>{s.cap.body}</p><p>{s.cap.why}</p></Fold>
+          <Fold title={s.counsellor.title}>
             <p>{s.counsellor.body(listed(level2.map((p) => p.name)))}</p>
             <p>{s.counsellor.why}</p>
             <div className="s-chips s-foot-row">
               <LevelChip level={2} />
               {level2.map((p) => <Link key={p.slug} className="s-link" href={`/programmes/${p.slug}`}>{p.name}</Link>)}
             </div>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="ai" />
-            <h3>{s.ai.title}</h3>
-            <p>{s.ai.body}</p>
-            <ul className="s-points no">{s.ai.never.map((line) => <li key={line}><span>{line}</span></li>)}</ul>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="flash" />
-            <h3>{s.flash.title}</h3>
-            <p>{s.flash.body}</p>
-          </article>
-
-          <article className="s-card s-reveal">
-            <Icon name="research" />
-            <h3>{s.not.title}</h3>
-            <p>{s.not.body}</p>
-          </article>
-        </div>
-      </Section>
-
-      <Section id="order" narrow>
-        <Head id="order" kicker={s.order.kicker} title={s.order.title} lead={s.order.lead} />
-        <ol className="s-steps">
-          {order.map((k) => (
-            <li key={k} className="s-reveal">
-              <h3>{s.order.steps[k]}</h3>
-              <p>{train.blocked[k]}</p>
-            </li>
-          ))}
-          <li className="s-reveal"><h3>{s.order.then}</h3></li>
-        </ol>
+          </Fold>
+          <Fold title={s.ai.title}><p>{s.ai.body}</p><ul className="s-points no">{s.ai.never.map((line) => <li key={line}><span>{line}</span></li>)}</ul></Fold>
+          <Fold title={s.order.title}>
+            <p>{s.order.lead}</p>
+            <ol className="s-steps">
+              {order.map((k) => <li key={k}><h3>{s.order.steps[k]}</h3><p>{train.blocked[k]}</p></li>)}
+              <li><h3>{s.order.then}</h3></li>
+            </ol>
+          </Fold>
+        </SiteMore>
         <p className="s-note" style={{ marginTop: 28 }}>{common.notMedical}</p>
       </Section>
 

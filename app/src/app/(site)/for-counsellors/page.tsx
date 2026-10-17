@@ -1,4 +1,5 @@
 // Eyes Opener: Page controller component for the app/src/app/(site)/for-counsellors web route.
+import { LineArt } from "@/components/lineart/lineart";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { listed, site as t } from "@/copy/site";
@@ -17,7 +18,7 @@ export default function ForCounsellorsPage() {
   const names = listed(level2.map((p) => p.name));
   return (
     <main className="s-page">
-      <Hero picture="counsellors-hero" kicker={c.hero.kicker} title={c.hero.title} lead={c.hero.lead}>
+      <Hero picture="counsellors-hero" visual={<div className="s-art"><LineArt name="doctor" size={200} /></div>} kicker={c.hero.kicker} title={c.hero.title} lead={c.hero.lead}>
         <p className="s-body" style={{ marginTop: 14 }}>{c.hero.who}</p>
         <div className="s-ctas">
           <a className="btn btn-d s-btn-lg" href="#write">{c.hero.cta}</a>

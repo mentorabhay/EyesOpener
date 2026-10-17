@@ -96,7 +96,7 @@ function spaces(find: Find) {
     const scale = Math.max(1, Math.min((deck.offsetWidth * 0.68) / b.w, 1080 / b.w, deck.offsetHeight / b.h));
     return { x: deck.offsetWidth / 2 - (b.x + b.w / 2), y: deck.offsetHeight / 2 - (b.y + b.h / 2), scale };
   };
-  const tl = gsap.timeline({ scrollTrigger: pinned(el, 270) });
+  const tl = gsap.timeline({ scrollTrigger: pinned(el, 200) });
   shots.forEach((shot, i) => {
     const at = i;
     const tilt = i % 2 ? 4 : -4;

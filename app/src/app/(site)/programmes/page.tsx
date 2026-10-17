@@ -1,4 +1,5 @@
 // Eyes Opener: Page controller component for the app/src/app/(site)/programmes web route.
+import { LineArt } from "@/components/lineart/lineart";
 import type { Metadata } from "next";
 import { site as t } from "@/copy/site";
 import { programmes } from "@/data";
@@ -15,7 +16,7 @@ const LEVELS = [0, 1, 2] as const;
 export default function ProgrammesPage() {
   return (
     <main className="s-page">
-      <Hero picture="programmes-hero" kicker={p.hero.kicker} title={p.hero.title(programmes.length)} lead={p.hero.lead} />
+      <Hero picture="programmes-hero" visual={<div className="s-art"><LineArt name="clock" size={200} /></div>} kicker={p.hero.kicker} title={p.hero.title(programmes.length)} lead={p.hero.lead} />
 
       {LEVELS.map((level, i) => {
         const list = programmes.filter((x) => x.level === level);

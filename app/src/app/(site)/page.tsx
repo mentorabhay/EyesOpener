@@ -1,4 +1,5 @@
 // Eyes Opener: The game drawn in the two-eye scene. If the catalogue ever drops it, the strongest two-eye game stands in. .
+import { Band } from "./_landing/Band";
 import type { Metadata } from "next";
 import { evidenceOf, exercises, gameBySlug, games, mechanismOf, programmes, tests, type EvidenceKey } from "@/data";
 import { MAX_DAILY_MINUTES, MIN_SCREEN_AGE } from "@/engine";
@@ -68,16 +69,21 @@ export default function Landing() {
   return (
     <Motion>
       <Hero />
+      <Band slot="home-hero" />
       <Tags maxMinutes={f.maxMinutes} />
       <Play />
+      <Band slot="home-family" />
       <Reveal facts={f} />
       <Spaces facts={f} />
+      <Band slot="home-outdoors" />
       <Flow facts={f} />
       <Evidence facts={f} />
       <Safety facts={f} />
       <Family />
+      <Band slot="home-tv" />
       <Screens />
       <NotThis />
+      <Band slot="home-closing" />
       <Closing />
     </Motion>
   );

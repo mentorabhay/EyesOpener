@@ -474,3 +474,4 @@
 .lp-play-note { text-align: left; }
 .lp-play-game { background: var(--card); border: 1px solid var(--line); border-radius: 26px; box-shadow: var(--lp-lift); padding: 14px; }
 @media (max-width: 900px) { .lp-play-grid { grid-template-columns: 1fr; } }
+.lp-band { width: min(1120px, 100% - 40px); margin: clamp(28px, 5vw, 64px) auto; }
