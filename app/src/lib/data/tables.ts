@@ -381,6 +381,17 @@ export const TABLES = {
     copy: { leftOut: "Staff settings. Nothing about a household." },
     erase: { untouched: "Staff settings. Nothing about a household." },
   },
+  sitePicture: {
+    holds: "Pictures on the public site's pages, with their words and credit.",
+    copy: { leftOut: "Site content chosen by staff. Nothing about a household." },
+    erase: { untouched: "Site content chosen by staff. Nothing about a household." },
+    links: { createdBy: { fate: "cleared", why: staffOnly }, approvedBy: { fate: "cleared", why: staffOnly } },
+  },
+  sitePictureFile: {
+    holds: "The sizes of each site picture.",
+    copy: { leftOut: "Site content chosen by staff. Nothing about a household." },
+    erase: { untouched: "Site content chosen by staff. Nothing about a household." },
+  },
   pushToken: {
     holds: "The address a phone gave so the app can send it a message.",
     owner: { account: ["accountId"] },

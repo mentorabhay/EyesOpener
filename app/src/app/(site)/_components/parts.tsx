@@ -2,11 +2,16 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { site as t } from "@/copy/site";
+import { SitePicture } from "@/components/site-picture/site-picture";
+import { livePicture } from "@/lib/site-pictures/read";
+import type { SlotId } from "@/lib/site-pictures/slots";
 import { LightsBare } from "./art";
 
-export function Hero({ kicker, title, lead, crumb, visual, children }: {
-  kicker: string; title: string; lead?: ReactNode; crumb?: { href: string; label: string }; visual?: ReactNode; children?: ReactNode;
+/** The top of a public page. With `picture`, the slot's approved picture takes the place of `visual`; with none approved, `visual` stays. */
+export async function Hero({ kicker, title, lead, crumb, visual, picture, children }: {
+  kicker: string; title: string; lead?: ReactNode; crumb?: { href: string; label: string }; visual?: ReactNode; picture?: SlotId; children?: ReactNode;
 }) {
+  if (picture && await livePicture(picture)) visual = <SitePicture slot={picture} sizes="(max-width: 860px) 100vw, 45vw" />;
   return (
     <header className="s-hero">
       <div className={`s-wrap s-hero-grid${visual ? "" : " solo"}`}>

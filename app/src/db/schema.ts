@@ -9,8 +9,12 @@
  * - The games, exercises and clips catalogue lives in code (src/data); rows here point at it by slug.
  */
 import {
-  pgTable, pgEnum, text, integer, real, boolean, timestamp, date, jsonb, uuid, index, uniqueIndex, primaryKey, vector,
+  pgTable, pgEnum, text, integer, real, boolean, timestamp, date, jsonb, uuid, index, uniqueIndex, primaryKey, vector, customType,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+
+/** Raw bytes (Postgres bytea), read and written as a Buffer. */
+const bytes = customType<{ data: Buffer; driverData: Buffer }>({ dataType: () => "bytea" });
 
 const id = () => uuid().primaryKey().defaultRandom();
 const now = () => timestamp({ withTimezone: true }).notNull().defaultNow();
@@ -1133,3 +1137,43 @@ export const libraryVector = pgTable("library_vector", {
   embedding: vector({ dimensions: 768 }).notNull(),
   updatedAt: now(),
 });
+
+/**
+ * Pictures on the public site's slots (17 October 2026): a photograph, an archival picture, a drawing, or one made by
+ * Google's image model. Staff upload, replace, approve and retire them in the Look and feel room; nothing shows until a
+ * person approves it. At most one picture per slot is "live"; the one before it stays "retired", so going back is one
+ * press. Not about any household.
+ */
+export const sitePicture = pgTable("site_picture", {
+  id: id(),
+  slot: text().notNull(),
+  /** draft (waiting for approval), live (shown), retired (shown before; can be restored). */
+  status: text().notNull().default("draft"),
+  /** photo, archival, drawn or generated. A generated picture carries the word "Illustration" when the setting asks. */
+  kind: text().notNull(),
+  alt: text().notNull(),
+  credit: text().notNull().default(""),
+  /** Where the picture's subject is, 0 to 1 from the left and from the top, so a crop keeps it in view. */
+  focalX: real().notNull().default(0.5),
+  focalY: real().notNull().default(0.5),
+  width: integer().notNull(),
+  height: integer().notNull(),
+  /** The words a generated picture was made from, kept so staff can see and repeat them. */
+  prompt: text(),
+  createdBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  createdAt: now(),
+  approvedBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  approvedAt: timestamp({ withTimezone: true }),
+}, (t) => [
+  index("site_picture_slot").on(t.slot, t.status),
+  /* one live picture per slot, kept by the database itself */
+  uniqueIndex("site_picture_one_live").on(t.slot).where(sql`status = 'live'`),
+]);
+
+/** The sizes of each site picture, made once on upload (WebP), served by /pic/. */
+export const sitePictureFile = pgTable("site_picture_file", {
+  pictureId: uuid().notNull().references(() => sitePicture.id, { onDelete: "cascade" }),
+  width: integer().notNull(),
+  mime: text().notNull(),
+  data: bytes().notNull(),
+}, (t) => [primaryKey({ columns: [t.pictureId, t.width] })]);

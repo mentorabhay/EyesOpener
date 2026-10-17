@@ -16,7 +16,7 @@ export default function ForCounsellorsPage() {
   const names = listed(level2.map((p) => p.name));
   return (
     <main className="s-page">
-      <Hero kicker={c.hero.kicker} title={c.hero.title} lead={c.hero.lead}>
+      <Hero picture="counsellors-hero" kicker={c.hero.kicker} title={c.hero.title} lead={c.hero.lead}>
         <p className="s-body" style={{ marginTop: 14 }}>{c.hero.who}</p>
         <div className="s-ctas">
           <a className="btn btn-d s-btn-lg" href="#write">{c.hero.cta}</a>

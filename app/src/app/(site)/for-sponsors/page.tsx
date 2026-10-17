@@ -14,7 +14,7 @@ export default function ForSponsorsPage() {
   const cannot = { title: s.sees.cannot.title, items: s.sees.cannot.items.map((line) => (typeof line === "string" ? line : line(SPONSOR_MIN_GROUP))) };
   return (
     <main className="s-page">
-      <Hero
+      <Hero picture="sponsors-hero"
         kicker={s.hero.kicker} title={s.hero.title} lead={s.hero.lead}
         visual={(
           <div className="s-panel">
