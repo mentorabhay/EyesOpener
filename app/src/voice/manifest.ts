@@ -45,7 +45,7 @@ export interface VoiceManifest { version: typeof MANIFEST_VERSION; made: string;
 
 const HASH = /^[0-9a-f]{16}$/;
 const NAME = "[a-z0-9]+(?:-[a-z0-9]+)*";
-const SCRIPT_ID = new RegExp(`^(?:exercise|game|clip)/${NAME}/${NAME}$`);
+const SCRIPT_ID = new RegExp(`^(?:exercise|game|clip|kids)/${NAME}/${NAME}$`);
 /** True for the name of a script: "exercise/brock-string/steps". Lower case letters, digits, hyphens and two slashes. */
 export const isScriptId = (id: string): boolean => id.length <= 120 && SCRIPT_ID.test(id);
 /** "en-IN/exercise/brock-string/steps.3fa9c2d17b0e4a55.mp3": a language, folders, a name, a hash. Nothing else gets through. */

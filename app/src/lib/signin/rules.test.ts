@@ -200,24 +200,27 @@ describe("the proxy, child mode and the site lock", () => {
     const { proxy } = await import("../../proxy");
     const sealed = { cookie: `io_child=${childCookie()}` };
     const direct = await proxy(new NextRequest("http://localhost:3000/settings", { headers: sealed }));
-    expect(direct.headers.get("location")).toBe("http://localhost:3000/today");
+    expect(direct.headers.get("location")).toBe("http://localhost:3000/kids");
     const hosted = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { ...sealed, "x-forwarded-host": "iopener-staging.web.app", "x-forwarded-proto": "https" } }));
-    expect(hosted.headers.get("location")).toBe("https://iopener-staging.web.app/today");
+    expect(hosted.headers.get("location")).toBe("https://iopener-staging.web.app/kids");
     expect(hosted.headers.get("cache-control")).toBe("no-store");
     /* the same seal when child mode is an entry of __session, as every browser holds it after the change */
     const bundled = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { cookie: `__session=${encodeBundle({ io_child: [childCookie()] })}` } }));
-    expect(new URL(bundled.headers.get("location")!).pathname).toBe("/today");
+    expect(new URL(bundled.headers.get("location")!).pathname).toBe("/kids");
     const odd = await proxy(new NextRequest("http://localhost:3000/settings", { headers: { ...sealed, "x-forwarded-host": "evil.example/path" } }));
     expect(new URL(odd.headers.get("location")!).host).toBe("localhost:3000");
   });
 
-  it("lets a device in child mode reach the sign-in pages, with nobody signed in: no loop between Today and sign-in", async () => {
+  it("lets a device in child mode reach the sign-in pages, with nobody signed in: no loop between the child's home and sign-in", async () => {
     delete process.env.SITE_LOCK;
-    for (const path of ["/login", "/login/finish?mode=signIn&oobCode=abcdefgh12345678", "/login/welcome", "/today"]) expect(await run(path, { io_child: childCookie() }), path).toBe("through");
+    for (const path of ["/login", "/login/finish?mode=signIn&oobCode=abcdefgh12345678", "/login/welcome", "/kids", "/kids/break", "/today/week"]) expect(await run(path, { io_child: childCookie() }), path).toBe("through");
+    /* Today itself is the child's tiles in child mode */
+    expect(await run("/today", { io_child: childCookie() })).toBe("/kids");
+    expect(await run("/today")).toBe("through");
   });
   it("still seals the grown-up screens in child mode", async () => {
     delete process.env.SITE_LOCK;
-    for (const path of ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share"]) expect(await run(path, { io_child: childCookie() }), path).toBe("/today");
+    for (const path of ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share"]) expect(await run(path, { io_child: childCookie() }), path).toBe("/kids");
   });
   it("with the site lock on, asks for the phrase first and comes back to the sign-in link with its code whole", async () => {
     process.env.SITE_LOCK = "open sesame 42";

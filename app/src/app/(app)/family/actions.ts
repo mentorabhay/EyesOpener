@@ -8,6 +8,7 @@ import type { FormState } from "@/components/together/StateForm";
 import { family as t } from "@/copy/family";
 import { CHILD_COOKIE } from "@/lib/auth";
 import { childToHandTo, createInvite, giveConsent, INVITE_SEATS, joinGroup, leaveGroup, revokeInvite, setExitPin, withdrawConsent } from "@/lib/family";
+import { KIDS_HOME } from "@/lib/kids";
 import { requireMember } from "@/lib/session";
 import { secureCookies, signToken } from "@/lib/token";
 
@@ -66,7 +67,7 @@ export async function handOver(formData: FormData) {
   (await cookieJar()).set(CHILD_COOKIE, signToken({ profileId: child.id, accountId: m.account.id, exp: Date.now() + CHILD_MODE_MS }),
     { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: CHILD_MODE_MS / 1000 });
   revalidatePath("/", "layout");
-  redirect("/today");
+  redirect(KIDS_HOME);
 }
 
 export async function groupJoin(_: FormState, formData: FormData): Promise<FormState> {

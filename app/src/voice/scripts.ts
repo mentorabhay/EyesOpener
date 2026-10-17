@@ -8,6 +8,7 @@
  *              common mistakes) · stop
  *   game       what · see (what you should see) · play (the steps) · cues (when to press) · stop
  *   clip       how (what the clip is, which eye to cover, then its steps)
+ *   kids       play · break · outside · stop (child mode's tiles, read aloud on its Listen page)
  * Each part is what one card of the page shows, so a Listen button on a card reads that card.
  *
  * Every script carries the mark (hash) of its text. Stored audio is offered only while its mark still matches, so
@@ -20,6 +21,7 @@
  */
 import { stepsOf } from "@/clips/steps";
 import { clips as clipWords } from "@/copy/clips";
+import { kids } from "@/copy/kids";
 import { measure } from "@/copy/test";
 import { train } from "@/copy/train";
 import { CLIP_DEFS, LOOKS, type OfferedClip } from "@/data/clips";
@@ -32,10 +34,12 @@ export const SCRIPT_PARTS = {
   exercise: ["what", "setup", "steps", "right", "stop"],
   game: ["what", "see", "play", "cues", "stop"],
   clip: ["how"],
+  kids: ["play", "break", "outside", "stop"],
 } as const;
 export type ScriptKind = keyof typeof SCRIPT_PARTS;
 export type ExercisePart = (typeof SCRIPT_PARTS.exercise)[number];
 export type GamePart = (typeof SCRIPT_PARTS.game)[number];
+export type KidsPart = (typeof SCRIPT_PARTS.kids)[number];
 
 /** Which eye the cyan lens sits over, for the few clips whose words name that eye. */
 export const CYAN_SIDES = ["left", "right"] as const;
@@ -58,6 +62,7 @@ export interface Script {
 
 export const exerciseScriptId = (slug: string, part: ExercisePart) => `exercise/${slug}/${part}`;
 export const gameScriptId = (slug: string, part: GamePart) => `game/${slug}/${part}`;
+export const kidsScriptId = (part: KidsPart) => `kids/tiles/${part}`;
 
 const make = (kind: ScriptKind, item: string, part: string, text: string): Script[] =>
   text ? [{ id: `${kind}/${item}/${part}`, kind, item, part, text, hash: hashOf(text), chars: charsOf(text) }] : [];
@@ -86,6 +91,11 @@ export function gameScripts(g: GameGuide): Script[] {
     stop: spokenParts(spokenSection(x.stop, spokenList(g.stop)), sentence(x.stopNote)),
   };
   return SCRIPT_PARTS.game.flatMap((part) => make("game", g.slug, part, text[part]));
+}
+
+/** Child mode's tiles, each read as its name and then what to do. */
+export function kidsScripts(): Script[] {
+  return SCRIPT_PARTS.kids.flatMap((part) => make("kids", "tiles", part, spokenParts(sentence(kids.tiles[part].name), sentence(kids.tiles[part].say))));
 }
 
 /** The steps a clip shows before it starts: its own for a "look and answer" clip, the template's otherwise. */
@@ -121,12 +131,13 @@ function build() {
     ...guides.flatMap(exerciseScripts),
     ...gameGuides.flatMap(gameScripts),
     ...CLIP_DEFS.flatMap((d) => (d.offered ? clipScripts(d) : [])),
+    ...kidsScripts(),
   ]);
   built = { list, byId: new Map(list.map((s) => [s.id, s])) };
   return built;
 }
 
-/** Every script of this edition: exercises, then games, then clips, each in the order of its own list. */
+/** Every script of this edition: exercises, then games, then clips, then child mode's tiles, each in the order of its own list. */
 export const allScripts = (): readonly Script[] => build().list;
 export const scriptById = (id: string): Script | undefined => build().byId.get(id);
 

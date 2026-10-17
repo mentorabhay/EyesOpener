@@ -1,0 +1,52 @@
+/* Eyes Opener: child mode's own screens: big tiles, big words, one drawing each. Direction B, with the gradient only on Play. */
+.head { margin: 4px 0 22px; }
+.head h1 { font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.1; margin: 0 0 6px; letter-spacing: -0.02em; }
+.head p { font-size: 1.25rem; color: var(--ink-2); margin: 0; }
+
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 16px; }
+@media (max-width: 640px) {
+  .tiles { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { min-height: 170px; padding: 16px; }
+  .tile b { font-size: 1.35rem; }
+  .tile span { font-size: 1rem; }
+}
+.tile {
+  display: grid; grid-template-rows: auto auto 1fr; gap: 6px; min-height: 210px; padding: 22px; border-radius: var(--r-lg);
+  background: var(--card); color: var(--ink); text-decoration: none; box-shadow: var(--sh-card); border: 2px solid transparent;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+a.tile:hover { border-color: var(--line-2); transform: translateY(-2px); }
+a.tile:focus-visible { outline: 3px solid var(--g1); outline-offset: 3px; }
+.tile b { font-size: 1.7rem; line-height: 1.15; }
+.tile span { font-size: 1.15rem; color: var(--ink-2); }
+.tile .art { color: var(--ink-2); margin: 0 0 6px -14px; max-width: 100%; }
+.tile[data-tone="go"] { background: var(--grad-button); color: #fff; }
+.tile[data-tone="go"] span, .tile[data-tone="go"] .art { color: #fff; }
+.tile[data-tone="stop"] { background: var(--danger-bg); color: var(--danger); border-color: color-mix(in srgb, var(--danger) 35%, transparent); }
+.tile[data-tone="stop"] span, .tile[data-tone="stop"] .art { color: var(--danger); }
+.tile[data-note] { background: var(--sunken); box-shadow: none; }
+
+.page { max-width: 760px; }
+.lead { font-size: 1.25rem; color: var(--ink-2); margin: 18px 0; }
+.panel { background: var(--card); border-radius: var(--r-lg); box-shadow: var(--sh-card); padding: 26px; margin: 18px 0; }
+.big { font-size: 1.35rem; line-height: 1.4; }
+.signs { font-size: 1.2rem; line-height: 1.6; margin: 8px 0 0; padding-left: 1.2em; }
+.back { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--sunken); color: var(--ink); font-weight: 600; font-size: 1.1rem; text-decoration: none; margin-top: 8px; }
+.back:focus-visible { outline: 3px solid var(--g1); outline-offset: 3px; }
+
+/* the eye break's count */
+.count { display: grid; justify-items: center; gap: 16px; text-align: center; }
+.ring { position: relative; width: min(64vw, 240px); aspect-ratio: 1; }
+.ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring circle { fill: none; stroke-width: 10; }
+.ring .track { stroke: var(--line); }
+.ring .left { stroke: var(--g1); stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+.ring output { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(3.4rem, 14vw, 5rem); font-weight: 700; font-variant-numeric: tabular-nums; }
+.say { font-size: 1.35rem; min-height: 1.6em; margin: 0; }
+.go { min-height: 56px; padding: 0 30px; border: 0; border-radius: 999px; background: var(--grad-button); color: #fff; font: inherit; font-size: 1.2rem; font-weight: 700; cursor: pointer; }
+.go:focus-visible { outline: 3px solid var(--g1); outline-offset: 3px; }
+:global(html[data-motion="off"]) .ring .left, :global(html[data-motion="calm"]) .ring .left { transition: none; }
+@media (prefers-reduced-motion: reduce) { .ring .left, .tile { transition: none; } a.tile:hover { transform: none; } }
+
+.listen { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.listen li { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; background: var(--card); border-radius: var(--r-md); box-shadow: var(--sh-card); padding: 16px 20px; font-size: 1.3rem; font-weight: 600; }

@@ -6,7 +6,7 @@
  *
  * 1. The site lock. When SITE_LOCK holds an access phrase, a browser without the gate cookie is sent to /gate.
  * 2. Child mode containment. While a device is in child mode, the grown-up screens are sealed and the child is
- *    sent back to Today. A grown-up leaves child mode from the Family screen with the exit PIN.
+ *    sent to child mode's own home, /kids, as is a child who opens Today. A grown-up leaves child mode from the Family screen with the exit PIN.
  * 3. The language. Every request that goes on to be drawn carries the language it is drawn in, decided here once
  *    (src/i18n/decide.ts). A request for English reads nothing; a request for another language reads which
  *    languages staff have switched on, kept in memory for half a minute.
@@ -16,7 +16,7 @@ import type { NextRequest } from "next/server";
 import { choiceOf, passOn } from "@/i18n/request";
 import { requestJar } from "@/lib/cookie-jar";
 import { GATE_COOKIE, gatePassed, isOpenPath, lockScope, siteLock } from "@/lib/gate";
-import { isSealedPath } from "@/lib/roles";
+import { childMove } from "@/lib/roles";
 import { verifyToken } from "@/lib/token";
 
 export async function proxy(req: NextRequest) {
@@ -32,8 +32,9 @@ export async function proxy(req: NextRequest) {
     return moveTo(req, path === "/" ? "/gate" : `/gate?next=${encodeURIComponent(path + req.nextUrl.search)}`);
   }
 
-  if (!isSealedPath(path) || !verifyToken(jar.get("io_child")?.value)) return passOn(req, await choiceOf(req));
-  return moveTo(req, "/today");
+  const instead = childMove(path);
+  if (!instead || !verifyToken(jar.get("io_child")?.value)) return passOn(req, await choiceOf(req));
+  return moveTo(req, instead);
 }
 
 /**
