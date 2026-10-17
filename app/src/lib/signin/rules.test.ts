@@ -116,7 +116,7 @@ describe("the session", () => {
 
 describe("the demo sign-in and real people", () => {
   it("may become a seeded person only: someone in the demo family, or with an address no mailbox can have", () => {
-    expect(isDemoPerson({ email: "priya@iopener.test", firebaseUid: null }, true)).toBe(true);
+    expect(isDemoPerson({ email: "priya@eyesopener.test", firebaseUid: null }, true)).toBe(true);
     expect(isDemoPerson({ email: "Admin@Eyes Opener.TEST", firebaseUid: null }, false)).toBe(true);
     expect(isDemoPerson({ email: "parent@family.example", firebaseUid: null }, false)).toBe(false);
     expect(isDemoPerson({ email: "staff@iopener.example", firebaseUid: null }, false)).toBe(false);
