@@ -44,7 +44,8 @@ export const isGuardianSeat = (seat: Seat | null) => seat === "guardian" || seat
 /* ───────────── child mode containment ───────────── */
 
 /**
- * Screens sealed while the device is in child mode. Everything under these prefixes redirects to /today.
+ * Screens sealed while the device is in child mode. Everything under these prefixes redirects to child mode's own
+ * home, /kids (src/lib/kids.ts), and so does Today itself.
  * The sign-in pages are not in this list, and are sealed all the same: the page itself sends a child to /today
  * whenever the app can open for whoever is signed in (`loginGate` in src/lib/signin/hold.ts). Sealing them here,
  * where only a cookie can be read, made a loop: with nobody signed in, /today sent the browser to /login and this
@@ -53,6 +54,9 @@ export const isGuardianSeat = (seat: Seat | null) => seat === "guardian" || seat
 export const SEALED_IN_CHILD_MODE = ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share", "/together/lights"] as const;
 
 export const isSealedPath = (pathname: string) => SEALED_IN_CHILD_MODE.some((p) => pathname === p || pathname.startsWith(p + "/"));
+
+/** Where a child is sent instead, in child mode: a sealed screen and Today itself lead to the child's own tiles. */
+export const childMove = (pathname: string): string | null => (pathname === "/today" || isSealedPath(pathname) ? "/kids" : null);
 
 /* ───────────── staff rooms ───────────── */
 

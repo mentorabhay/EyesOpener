@@ -7,7 +7,7 @@
  */
 import css from "./lineart.module.css";
 
-export const LINE_ART = ["glasses", "eye", "family", "screen", "sun", "clock", "card", "doctor"] as const;
+export const LINE_ART = ["glasses", "eye", "family", "screen", "sun", "clock", "card", "doctor", "speaker", "hand"] as const;
 export type LineArtName = (typeof LINE_ART)[number];
 
 const P = ({ d }: { d: string }) => <path d={d} pathLength={1} />;
@@ -85,6 +85,21 @@ function Drawing({ name }: { name: LineArtName }) {
           <circle cx="88" cy="40" r="11" pathLength={1} />
           <P d="M77 40h-8M99 40h9" />
           <circle className={css.fill} cx="88" cy="40" r="3.5" pathLength={1} />
+        </>
+      );
+    case "speaker":
+      return (
+        <>
+          <P d="M30 30h14l20-16v52L44 50H30z" />
+          <P d="M76 30c5 6 5 14 0 20" />
+          <P d="M86 22c10 10 10 26 0 36" />
+        </>
+      );
+    case "hand":
+      return (
+        <>
+          <P d="M44 70V30a5 5 0 0 1 10 0v-14a5 5 0 0 1 10 0v12a5 5 0 0 1 10 0v6a5 5 0 0 1 10 0v20c0 9-6 16-16 16H56c-6 0-9-3-12-6l-12-14a5 5 0 0 1 8-6l4 4" />
+          <P d="M54 30v14M64 28v16M74 34v10" />
         </>
       );
   }
