@@ -1,5 +1,7 @@
 /* A picture slot's frame. The frame keeps its shape before the picture loads, so nothing jumps. */
 .frame { position: relative; margin: 0; overflow: hidden; border-radius: var(--r-lg, 22px); background: var(--sunken, #eceef2); box-shadow: var(--sh-card, none); width: 100%; }
-.drift { position: absolute; inset: 0; will-change: transform; }
+/* The fixed-picture parallax (parallax.tsx): the frame is a clipped window; the picture inside is held to the screen. */
+.window { position: absolute; inset: 0; clip-path: inset(0 round var(--r-lg, 22px)); }
+.pinned { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100lvh; pointer-events: none; }
 .img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .credit { position: absolute; right: 10px; bottom: 10px; font-size: 12px; line-height: 1; padding: 5px 9px; border-radius: 999px; background: rgba(17, 20, 24, 0.72); color: #fff; letter-spacing: 0.01em; }

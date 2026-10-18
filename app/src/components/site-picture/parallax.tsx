@@ -1,38 +1,54 @@
-// Lets a large picture drift a little as the page scrolls, within the Look and feel setting.
+// The fixed-picture parallax of the site's large pictures, within the Look and feel setting.
 "use client";
-import { type ReactNode, useEffect, useRef } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import css from "./site-picture.module.css";
 
 /**
- * The picture moves by at most `--parallax` times 30% of its frame's height, against the scroll, and is enlarged just
- * enough that its edges never show (at the usual 0.35: about 10% each way, 21% larger). The first version moved 12% at
- * most, about 4% at the usual setting, which nobody could see (Ved, 18 October 2026). Nothing moves when
- * the person's device asks for less motion, when the site's motion setting is calm or off, or before the frame is near
- * the screen. Only transform changes, so nothing else on the page shifts.
+ * Once its frame reaches the screen, the picture stays still, as if pinned behind the page, and the page slides over
+ * it: the frame is a window onto a picture held to the screen (Ved, 18 October 2026: "it stays stuck on screen and the
+ * next part passes over the static image"). The picture is pinned with position: fixed inside a clipped window, the way
+ * that also works on an iPhone, and keeps the frame's width so its subject stays where the frame is.
+ * Nothing is pinned when the person's device asks for less motion, when the site's motion setting is calm or off, or
+ * when the parallax strength is 0: the picture then sits in its frame as an ordinary picture. Before the page's script
+ * runs the picture is ordinary too, so it is never missing.
  */
 export function Parallax({ children }: { children: ReactNode }) {
-  const box = useRef<HTMLDivElement>(null);
+  const win = useRef<HTMLDivElement>(null);
+  const pin = useRef<HTMLDivElement>(null);
+  const [pinned, setPinned] = useState(false);
+
   useEffect(() => {
-    const el = box.current, root = document.documentElement;
-    if (!el) return;
+    const root = document.documentElement;
     const strength = Number.parseFloat(getComputedStyle(root).getPropertyValue("--parallax")) || 0;
-    const still = root.dataset.motion === "calm" || root.dataset.motion === "off" || strength <= 0
-      || window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (still) return;
-    let frame = 0, seen = false;
-    const draw = () => {
-      frame = 0;
-      const r = el.getBoundingClientRect(), view = window.innerHeight;
-      /* -1 when the frame's middle is at the bottom of the screen, 1 at the top */
-      const at = Math.max(-1, Math.min(1, ((view / 2) - (r.top + r.height / 2)) / (view / 2 + r.height / 2)));
-      el.style.transform = `translate3d(0, ${(at * strength * 30).toFixed(2)}%, 0) scale(${(1 + strength * 0.6).toFixed(3)})`;
-    };
-    const ask = () => { if (seen && !frame) frame = requestAnimationFrame(draw); };
-    const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; ask(); }, { rootMargin: "20% 0px" });
-    io.observe(el);
-    window.addEventListener("scroll", ask, { passive: true });
-    window.addEventListener("resize", ask);
-    return () => { io.disconnect(); window.removeEventListener("scroll", ask); window.removeEventListener("resize", ask); if (frame) cancelAnimationFrame(frame); };
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const still = () => root.dataset.motion === "calm" || root.dataset.motion === "off" || strength <= 0 || motion.matches;
+    const decide = () => setPinned(!still());
+    decide();
+    motion.addEventListener("change", decide);
+    return () => motion.removeEventListener("change", decide);
   }, []);
-  return <div ref={box} className={css.drift}>{children}</div>;
+
+  /* the pinned picture keeps the frame's left edge and width; only its height is the screen's */
+  useEffect(() => {
+    if (!pinned) return;
+    const place = () => {
+      const w = win.current, p = pin.current;
+      if (!w || !p) return;
+      const r = w.getBoundingClientRect();
+      p.style.left = `${r.left}px`;
+      p.style.width = `${r.width}px`;
+    };
+    place();
+    const ro = new ResizeObserver(place);
+    if (win.current) ro.observe(win.current);
+    window.addEventListener("resize", place);
+    return () => { ro.disconnect(); window.removeEventListener("resize", place); };
+  }, [pinned]);
+
+  if (!pinned) return <>{children}</>;
+  return (
+    <div ref={win} className={css.window}>
+      <div ref={pin} className={css.pinned}>{children}</div>
+    </div>
+  );
 }

@@ -16,7 +16,7 @@ export interface Slot {
   page: string;
   /** Width over height of the shown frame. The picture is cut to it around its focal point. */
   aspect: number;
-  /** The picture drifts slightly on scroll when motion is on (the parallax setting sets how far). Every slot does (Ved, 18 October 2026). */
+  /** The picture stays still on the screen while the page slides over it (components/site-picture/parallax.tsx), when motion is on. Every slot does (Ved, 18 October 2026). */
   parallax: boolean;
   /** At home, or away from it (a lane, a clinic, a classroom): which look the picture is asked for. */
   place: "home" | "away";
