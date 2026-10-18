@@ -16,6 +16,14 @@ export const common = texts("copy/common", "common", () => ({
   /** The frame around every signed-in page (src/components/shell): the top bar, the folding menu, search, the tabs and the footer. */
   shell: {
     collapse: "Fold the menu", expand: "Open the menu", home: "Back to Today",
+    menu: {
+      open: "Your account and profiles",
+      using: "Using the app as",
+      switchTo: (name: string) => `Switch to ${name}`,
+      account: "Your account", family: "Family", settings: "Settings", signOut: "Sign out",
+      child: (age: number | null) => (age === null ? "Child" : `Child, ${age}`),
+      adult: "Grown-up",
+    },
     theme: {
       label: "Light or dark",
       switchTo: { light: "Switch to light", dark: "Switch to dark" },

@@ -5,6 +5,7 @@ import { InkTuneSet } from "@/components/ink-tune";
 import { NavGroups, TabBar } from "@/components/nav";
 import { common } from "@/copy/common";
 import { pageZoom, strongInk, trainRed, tuneOf } from "@/engine";
+import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 import { setupOf } from "@/lib/setup";
 import { SetupBar, SetupLink } from "@/components/setup/setup";
@@ -41,7 +42,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       <Dock chat={assist.available && !m.childMode} place="app" />
       <aside className="side">
         <Link href={m.childMode ? "/kids" : "/today"} className="logo" title={common.product}><BrandMark /><span className="side-text">{common.product}</span></Link>
-        <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who" title={m.profile.displayName}>
+        <Link href={m.childMode ? "/leave-child-mode" : "/account"} className="who" title={m.profile.displayName}>
           <i className="who-initial" aria-hidden="true">{initialOf(m.profile.displayName)}</i>
           <span className="side-text"><b>{m.profile.displayName}</b>
             <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span></span>
@@ -50,7 +51,10 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         <nav aria-label={n.menu}><NavGroups groups={groups} /></nav>
       </aside>
       <div className="main">
-        <TopBar home={m.childMode ? "/kids" : "/today"} person={m.childMode ? undefined : { initial: initialOf(m.user.displayName), href: "/account", label: common.nav.account }}>
+        <TopBar home={m.childMode ? "/kids" : "/today"} person={m.childMode ? undefined : { menu: {
+          initial: initialOf(m.user.displayName), name: m.user.displayName, email: m.user.email, current: m.profile.id, guardian: isGuardianSeat(m.seat),
+          profiles: m.profiles.map((p) => ({ id: p.id, name: p.displayName, initial: initialOf(p.displayName), sub: p.kind === "child" ? common.shell.menu.child(p.birthYear ? new Date().getFullYear() - p.birthYear : null) : common.shell.menu.adult })),
+        } }}>
           {!m.childMode && <NotifyBell start={unread} />}
         </TopBar>
         <main id="page" className="page" style={zoomStyle(zoom)} tabIndex={-1}>

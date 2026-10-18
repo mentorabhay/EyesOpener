@@ -10,13 +10,14 @@ import { common } from "@/copy/common";
 import { RailToggle } from "./rail";
 import { AppSearch } from "./search";
 import { ThemeToggle } from "./theme";
+import { AccountMenu, type MenuProfile } from "./account-menu";
 
 export function TopBar({ home, search = true, person, children }: {
   /** The area's home: Today for a family, the members list for a counsellor. */
   home: string;
   search?: boolean;
-  /** The person's initial and where it leads (their settings). */
-  person?: { initial: string; href: string; label: string };
+  /** The person's initial and where it leads (their settings), or their menu with the household's profiles. */
+  person?: { initial: string; href: string; label: string } | { menu: { initial: string; name: string; email: string; profiles: MenuProfile[]; current: string; guardian: boolean } };
   children?: ReactNode;
 }) {
   return (
@@ -27,7 +28,9 @@ export function TopBar({ home, search = true, person, children }: {
       <div className="tb-end">
         <ThemeToggle />
         {children}
-        {person && <Link href={person.href} className="tb-person" aria-label={person.label} title={person.label}>{person.initial}</Link>}
+        {person && ("menu" in person
+          ? <AccountMenu {...person.menu} />
+          : <Link href={person.href} className="tb-person" aria-label={person.label} title={person.label}>{person.initial}</Link>)}
       </div>
     </header>
   );

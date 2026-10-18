@@ -31,7 +31,7 @@ const Sun = () => <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM12 3v2M12 19v2M3 1
 const Moon = () => <path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />;
 
 /** One press between light and dark. Shows what a press gives: the moon while light, the sun while dark. */
-export function ThemeToggle({ className = "tb-btn" }: { className?: string }) {
+export function ThemeToggle({ className = "tb-btn tb-theme" }: { className?: string }) {
   const now = useSyncExternalStore(subscribe, shown, () => "light" as const);
   const w = common.shell.theme, next = now === "dark" ? "light" : "dark";
   return (

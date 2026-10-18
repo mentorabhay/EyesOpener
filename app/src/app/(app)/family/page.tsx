@@ -9,6 +9,8 @@ import { programmeBySlug } from "@/data";
 import { ageFrom, ringShare } from "@/engine";
 import { childrenOverview, household, INVITE_SEATS, sponsorGroups } from "@/lib/family";
 import { isGuardianSeat } from "@/lib/roles";
+import { switchProfile } from "@/lib/actions";
+import { common } from "@/copy/common";
 import { requireMember } from "@/lib/session";
 import { Confirm } from "../settings/confirm";
 import css from "../settings/form.module.css";
@@ -32,7 +34,12 @@ export default async function FamilyPage() {
         {kids.map(({ profile, day: today, streak, enrolment, lastCheck, consent }) => {
           const d = { restBreaks: 0, restGoal: 6, trainMinutes: 0, trainGoal: enrolment?.dailyMinutes ?? 0, lightMinutes: 0, lightGoal: 90, ...today };
           return (
-            <Card key={profile.id} title={profile.displayName} span={6} right={<Chip>{c.age(ageFrom(profile.birthYear))}</Chip>}>
+            <Card key={profile.id} title={profile.displayName} span={6} right={<div className="row" style={{ gap: 8 }}>
+              <Chip>{c.age(ageFrom(profile.birthYear))}</Chip>
+              {profile.id !== m.profile.id && (
+                <form action={switchProfile}><input type="hidden" name="profileId" value={profile.id} /><button className="btn btn-sm btn-d">{common.shell.menu.switchTo(profile.displayName)}</button></form>
+              )}
+            </div>}>
               <div className="row">
                 <Rings rest={ringShare(d.restBreaks, d.restGoal)} train={ringShare(d.trainMinutes, d.trainGoal)} light={ringShare(d.lightMinutes, d.lightGoal)} size={96} />
                 <p className="sp small muted">{c.rings(d.restBreaks, d.restGoal, Math.round(d.trainMinutes), d.trainGoal, Math.round(d.lightMinutes), d.lightGoal)}</p>

@@ -13,6 +13,7 @@ import { requireMember } from "@/lib/session";
 import { signOutEverywhere, signOutHere } from "@/app/(auth)/login/actions";
 import { ThemeChoice } from "@/components/shell/theme";
 import { renameMe } from "./actions";
+import { switchProfile } from "@/lib/actions";
 import css from "./account.module.css";
 
 export const generateMetadata = (): Metadata => ({ title: t.title });
@@ -48,6 +49,20 @@ export default async function AccountPage() {
     <>
       <PageHead title={t.title} sub={t.sub} />
       <div className="bento">
+        {m.profiles.length > 1 && (
+          <Card span={12} title={common.shell.menu.using}>
+            <div className={css.profiles}>
+              {m.profiles.map((p) => p.id === m.profile.id ? (
+                <div key={p.id} className={css.profile} data-on><i aria-hidden="true">{initialOf(p.displayName)}</i><b>{p.displayName}</b><span className={css.tick} aria-hidden="true">✓</span></div>
+              ) : (
+                <form key={p.id} action={switchProfile}>
+                  <input type="hidden" name="profileId" value={p.id} />
+                  <button type="submit" className={css.profile} aria-label={common.shell.menu.switchTo(p.displayName)}><i aria-hidden="true">{initialOf(p.displayName)}</i><b>{p.displayName}</b></button>
+                </form>
+              ))}
+            </div>
+          </Card>
+        )}
         <Card span={7} title={t.you}>
           <div className={css.who}>
             <span className={css.avatar} aria-hidden="true">{initialOf(u.displayName)}</span>
