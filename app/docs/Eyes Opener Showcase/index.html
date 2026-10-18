@@ -1,0 +1,577 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Eyes Opener Showcase</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: a single column of screens; each screen with its notes beside it (stacked on a phone). Dark book: the app in dark, with its clips. */
+:root { --bg: #0B0C10; --card: #14161C; --ink: #F2F3F6; --ink2: #B6BBC6; --ink3: #8C929E; --line: #262A33; --chip: #1E222A; --shot: #000000;
+  --grad: linear-gradient(120deg, #8B31F0, #C4569C 55%, #F4AA2D); --font: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, Menlo, monospace; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { background: var(--bg); }
+body { margin: 0; color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 48px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 56px; }
+.cover { display: flex; flex-direction: column; gap: 18px; }
+.cover h1 { margin: 0; font-size: clamp(40px, 7vw, 78px); line-height: 1; letter-spacing: -0.03em; text-wrap: balance; }
+.cover h1 span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cover .lede { font-size: 20px; max-width: 62ch; }
+.kicker { margin: 0; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); display: flex; align-items: center; gap: 10px; }
+.kicker::before { content: ""; width: 22px; height: 3px; border-radius: 3px; background: var(--grad); }
+.lede { margin: 0; color: var(--ink2); max-width: 70ch; }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; }
+.toc a { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink2); text-decoration: none; font-size: 14px; }
+.toc a:hover { color: var(--ink); border-color: var(--ink3); }
+.cast { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; }
+.cast div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 4px; }
+.cast b { font-size: 16px; } .cast span { color: var(--ink2); font-size: 14.5px; }
+.note { color: var(--ink3); font-size: 14px; margin: 0; }
+.chapter { display: flex; flex-direction: column; gap: 28px; }
+.ch-head { display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+.ch-head h2 { margin: 0; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.02em; text-wrap: balance; }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; align-items: start; scroll-margin-top: 24px; }
+.row.phone { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); }
+.shot { display: block; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--shot); box-shadow: 0 20px 50px -24px rgb(0 0 0 / 0.8); }
+.shot img { display: block; width: 100%; height: auto; max-width: 100%; }
+.shot:focus-visible { outline: 2px solid #8B31F0; outline-offset: 3px; }
+.info { display: flex; flex-direction: column; gap: 10px; position: sticky; top: 24px; }
+.info .num { margin: 0; font-family: var(--mono); font-size: 13px; color: var(--ink3); }
+.info h3 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
+.info p { margin: 0; color: var(--ink2); }
+.info ul { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; color: var(--ink); font-size: 15px; }
+.where { font-size: 13px; color: var(--ink3) !important; }
+.where code { font-family: var(--mono); font-size: 12px; background: var(--chip); padding: 1px 6px; border-radius: 6px; }
+.watch { align-self: flex-start; padding: 9px 16px; border-radius: 999px; background: var(--grad); color: #fff; font-weight: 600; text-decoration: none; font-size: 14.5px; }
+.watch:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px, 100%), 1fr)); gap: 20px; }
+.clip { margin: 0; display: flex; flex-direction: column; gap: 8px; scroll-margin-top: 24px; }
+.clip video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; border: 1px solid var(--line); background: #000; }
+.clip figcaption { display: flex; justify-content: space-between; gap: 10px; font-size: 14.5px; }
+.clip figcaption span { color: var(--ink3); font-variant-numeric: tabular-nums; }
+.foot { color: var(--ink3); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+.foot a { color: var(--ink2); }
+@media (max-width: 860px) { .row, .row.phone { grid-template-columns: minmax(0, 1fr); gap: 14px; } .info { position: static; } .row.phone .shot { max-width: 360px; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+<div class="wrap">
+  <header class="cover">
+    <p class="kicker">Eyes Opener · showcase · dark pages</p>
+    <h1>Two eyes. <span>One picture.</span></h1>
+    <p class="lede">Eyes Opener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games, for children and grown-ups, on a computer, a phone or a TV. This book walks through it screen by screen.</p>
+    <nav class="toc" aria-label="Chapters"><a href="#ch1">1. Meet Eyes Opener</a><a href="#ch2">2. A day of practice</a><a href="#ch3">3. Check-ups at home</a><a href="#ch4">4. For grown-ups' eyes</a><a href="#ch5">5. Together</a><a href="#ch6">6. For counsellors</a><a href="#ch7">7. Running Eyes Opener</a><a href="#ch8">8. On a phone</a><a href="#clips">Clips</a></nav>
+    <p class="note">Also in <a href="light.html" style="color:inherit">light pages</a>.</p>
+  </header>
+  <section aria-labelledby="cast-h" style="display:flex;flex-direction:column;gap:12px">
+    <h2 id="cast-h" style="margin:0;font-size:22px">The people in this book</h2>
+    <div class="cast">
+      <div><b>Gyan, 10</b><span>A lazy eye. Practises with games, films and reading on a plan set by his counsellor, Dr Arti.</span></div>
+      <div><b>Ved</b><span>Gyan's father and the household's guardian. He also runs the console behind Eyes Opener.</span></div>
+      <div><b>Rakshita</b><span>Works at a screen all day. Looks after her father Ashok, 50, who has strong glasses and dry eyes and sees Dr Varshini.</span></div>
+      <div><b>Vinit</b><span>Uses Eyes Opener on his own, for eye fitness.</span></div>
+    </div>
+    <p class="note">These are example people with two weeks of example use; their names and numbers are not real. Eyes Opener is not a medical device: it does not diagnose, treat or cure any condition, and it says when to see an eye doctor.</p>
+  </section>
+
+  <section class="chapter" id="clips" aria-labelledby="clips-h">
+    <header class="ch-head"><p class="kicker">Watch</p><h2 id="clips-h">Ten short clips</h2><p class="lede">Recorded from the app as it runs, in dark: 2:56 in all. Each plays with no sound.</p></header>
+    <div class="clips">
+      <figure class="clip" id="clip-landing"><video controls preload="none" playsinline muted poster="clips/landing.jpg" src="clips/landing.mp4"></video><figcaption><b>The landing page, top to bottom</b><span>38 s</span></figcaption></figure>
+      <figure class="clip" id="clip-checkup-letters"><video controls preload="none" playsinline muted poster="clips/checkup-letters.jpg" src="clips/checkup-letters.mp4"></video><figcaption><b>Check-up: letter size</b><span>15 s</span></figcaption></figure>
+      <figure class="clip" id="clip-checkup-faint"><video controls preload="none" playsinline muted poster="clips/checkup-faint.jpg" src="clips/checkup-faint.mp4"></video><figcaption><b>Check-up: faint letters</b><span>12 s</span></figcaption></figure>
+      <figure class="clip" id="clip-map-quest"><video controls preload="none" playsinline muted poster="clips/map-quest.jpg" src="clips/map-quest.mp4"></video><figcaption><b>Map Quest</b><span>20 s</span></figcaption></figure>
+      <figure class="clip" id="clip-lantern-run"><video controls preload="none" playsinline muted poster="clips/lantern-run.jpg" src="clips/lantern-run.mp4"></video><figcaption><b>Lantern Run</b><span>15 s</span></figcaption></figure>
+      <figure class="clip" id="clip-firefly-catch"><video controls preload="none" playsinline muted poster="clips/firefly-catch.jpg" src="clips/firefly-catch.mp4"></video><figcaption><b>Firefly Catch</b><span>12 s</span></figcaption></figure>
+      <figure class="clip" id="clip-visionary"><video controls preload="none" playsinline muted poster="clips/visionary.jpg" src="clips/visionary.mp4"></video><figcaption><b>Who Wants to Be a Visionary</b><span>20 s</span></figcaption></figure>
+      <figure class="clip" id="clip-reader"><video controls preload="none" playsinline muted poster="clips/reader.jpg" src="clips/reader.mp4"></video><figcaption><b>Two-Eye Reader: Typewriter, Shrinking and Fading on, a news article</b><span>20 s</span></figcaption></figure>
+      <figure class="clip" id="clip-exercise-contrast"><video controls preload="none" playsinline muted poster="clips/exercise-contrast.jpg" src="clips/exercise-contrast.mp4"></video><figcaption><b>Exercise: contrast ladder</b><span>12 s</span></figcaption></figure>
+      <figure class="clip" id="clip-exercise-vergence"><video controls preload="none" playsinline muted poster="clips/exercise-vergence.jpg" src="clips/exercise-vergence.mp4"></video><figcaption><b>Exercise: on-screen eye teaming</b><span>12 s</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch1" aria-labelledby="ch1-h">
+    <header class="ch-head"><p class="kicker">Chapter 1</p><h2 id="ch1-h">Meet Eyes Opener</h2><p class="lede">What it is, how it works and why it can be trusted, before anyone signs in.</p></header>
+    <article class="row" id="home">
+      <a class="shot" href="img/dark/home.jpg" target="_blank" rel="noopener"><img src="img/dark/home.jpg" alt="Eye care that feels like a fitness app: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">01</p>
+        <h3>Eye care that feels like a fitness app</h3>
+        <p>The home page says what Eyes Opener is in a few lines: check-ups, games, exercises and a community, for children and grown-ups, at home.</p>
+        <ul><li>For families, counsellors and schools</li><li>Every game and exercise rests on published research</li><li>Not a medical device: it says when to see an eye doctor</li></ul>
+        <p class="where">Computer · <code>/</code></p>
+        <a class="watch" href="#clip-landing">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="how">
+      <a class="shot" href="img/dark/how.jpg" target="_blank" rel="noopener"><img src="img/dark/how.jpg" alt="How it works, in four steps: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">02</p>
+        <h3>How it works, in four steps</h3>
+        <p>Track, Test, Train and Together. Each step opens to say what happens and how long it takes.</p>
+        <ul><li>Set up once: the screen's size and the glasses' colours</li><li>A short check-up gives a starting point</li><li>Practice is measured, so the numbers show what changed</li></ul>
+        <p class="where">Computer · <code>/how-it-works</code></p>
+        
+      </div>
+    </article>
+    <article class="row" id="library">
+      <a class="shot" href="img/dark/library.jpg" target="_blank" rel="noopener"><img src="img/dark/library.jpg" alt="The whole library, before you sign in: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">03</p>
+        <h3>The whole library, before you sign in</h3>
+        <p>Anyone can browse every game, exercise and check-up, with what each one is for and how strong the evidence is.</p>
+        <ul><li>Search and filter by condition</li><li>Each item names its evidence level</li><li>Nothing is hidden behind a sign-up</li></ul>
+        <p class="where">Computer · <code>/library</code></p>
+        
+      </div>
+    </article>
+    <article class="row" id="evidence">
+      <a class="shot" href="img/dark/evidence.jpg" target="_blank" rel="noopener"><img src="img/dark/evidence.jpg" alt="Evidence first: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">04</p>
+        <h3>Evidence first</h3>
+        <p>Every method is graded from strong to unproven, with the trials behind it. Items with weak evidence say so.</p>
+        <ul><li>Strong: two-eye video, outdoor light, patching support</li><li>Moderate and limited methods are marked as such</li><li>Sources are linked on every item</li></ul>
+        <p class="where">Computer · <code>/evidence</code></p>
+        
+      </div>
+    </article>
+    <article class="row" id="login">
+      <a class="shot" href="img/dark/login.jpg" target="_blank" rel="noopener"><img src="img/dark/login.jpg" alt="No passwords: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">05</p>
+        <h3>No passwords</h3>
+        <p>Sign in with Google, or with a link sent to your email. There is no password to remember, and none to leak.</p>
+        <ul><li>A family stays signed in for 30 days</li><li>Staff and counsellors sign in again every 12 hours</li><li>Sign out everywhere ends every device at once</li></ul>
+        <p class="where">Computer · <code>/login</code></p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch2" aria-labelledby="ch2-h">
+    <header class="ch-head"><p class="kicker">Chapter 2</p><h2 id="ch2-h">A day of practice</h2><p class="lede">Gyan is 10 and has a lazy eye. His counsellor set a plan; this is his day, from Today to the games, the reader and his progress.</p></header>
+    <article class="row" id="gyan-today">
+      <a class="shot" href="img/dark/gyan-today.jpg" target="_blank" rel="noopener"><img src="img/dark/gyan-today.jpg" alt="Today: the plan comes first: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">06</p>
+        <h3>Today: the plan comes first</h3>
+        <p>Gyan is 10 and has a lazy eye. His counsellor, Dr Arti, set a plan; Today shows it at the top with a Play button for each item and a tick when it is done.</p>
+        <ul><li>The day's three rings: rest breaks, practice, time outside</li><li>The week at a glance, with days missed shown hatched</li><li>The counsellor's latest message beside the plan</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="menu">
+      <a class="shot" href="img/dark/menu.jpg" target="_blank" rel="noopener"><img src="img/dark/menu.jpg" alt="One press to switch who is using it: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">07</p>
+        <h3>One press to switch who is using it</h3>
+        <p>The menu at the top right lists everyone in the household. A parent switches to a child, or hands the device over in child mode, in one press.</p>
+        <ul><li>Profiles for children and grown-ups in one household</li><li>Child mode keeps a child on their own games until a grown-up's PIN</li><li>Light or dark, and sign out, in the same place</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Ved</p>
+        
+      </div>
+    </article>
+    <article class="row" id="games">
+      <a class="shot" href="img/dark/games.jpg" target="_blank" rel="noopener"><img src="img/dark/games.jpg" alt="Games: what to play first: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">08</p>
+        <h3>Games: what to play first</h3>
+        <p>&quot;For Gyan&quot; puts his counsellor's games and this week's plan first. The rest of the library is folded by kind, with a find box.</p>
+        <ul><li>Each game shows its evidence level</li><li>Games are drawn in three inks for red-cyan glasses</li><li>Learn &amp; read, Story Road and the collection book one tap away</li></ul>
+        <p class="where">Computer · <code>/train</code> · as Gyan</p>
+        <a class="watch" href="#clip-firefly-catch">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="mapquest">
+      <a class="shot" href="img/dark/mapquest.jpg" target="_blank" rel="noopener"><img src="img/dark/mapquest.jpg" alt="Every game explains itself: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">09</p>
+        <h3>Every game explains itself</h3>
+        <p>The picture strip shows the moments to act. Below it, the steps as a flow: each opens to its full sentence, and the step of the level reached is marked.</p>
+        <ul><li>How to answer by touch, or by keys and a TV remote</li><li>The member's own results beside the game</li><li>The full manual, evidence and sources in one fold</li></ul>
+        <p class="where">Computer · <code>/train/games/map-quest</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="mapquest-play">
+      <a class="shot" href="img/dark/mapquest-play.jpg" target="_blank" rel="noopener"><img src="img/dark/mapquest-play.jpg" alt="Map Quest, full screen: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">10</p>
+        <h3>Map Quest, full screen</h3>
+        <p>A geography quiz for two eyes: a country lights up on the map and four names wait beside it, split between the eyes. Full screen keeps the level, the minutes and Stop on top.</p>
+        <ul><li>Esc pauses with Finish ready, so a stray key never ends a session</li><li>A note on each new level</li><li>The clock counts only while the game is in view</li></ul>
+        <p class="where">Computer · <code>/train/games/map-quest/play</code> · as Gyan</p>
+        <a class="watch" href="#clip-map-quest">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="lantern">
+      <a class="shot" href="img/dark/lantern.jpg" target="_blank" rel="noopener"><img src="img/dark/lantern.jpg" alt="Lantern Run: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">11</p>
+        <h3>Lantern Run</h3>
+        <p>Run and jump through a night market. The runner and the coins show to the weaker eye, so it leads while both eyes work together.</p>
+        <ul><li>Two-eye balanced play, moderate evidence</li><li>Plays on a TV with a remote, or a tablet</li><li>10-minute chapters with a rest suggestion</li></ul>
+        <p class="where">Computer · <code>/train/games/lantern-run/play</code> · as Gyan</p>
+        <a class="watch" href="#clip-lantern-run">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="visionary">
+      <a class="shot" href="img/dark/visionary.jpg" target="_blank" rel="noopener"><img src="img/dark/visionary.jpg" alt="Who Wants to Be a Visionary: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">12</p>
+        <h3>Who Wants to Be a Visionary</h3>
+        <p>A quiz show for two eyes: the question for one eye, the answers for the other. Fifteen rungs, with helps earned by eye tasks.</p>
+        <ul><li>Questions read by our team before anyone sees them</li><li>Answers split by word, then by letter, as the rungs rise</li><li>A wrong-looking question can be reported in one tap</li></ul>
+        <p class="where">Computer · <code>/train/games/visionary/play</code> · as Gyan</p>
+        <a class="watch" href="#clip-visionary">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="learn">
+      <a class="shot" href="img/dark/learn.jpg" target="_blank" rel="noopener"><img src="img/dark/learn.jpg" alt="Learn &amp; read: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">13</p>
+        <h3>Learn &amp; read</h3>
+        <p>Quiz games and the Two-Eye Reader: short news and stories read through the glasses, line by line, with Typewriter, Shrinking and Fading.</p>
+        <ul><li>Reading counts as practice time</li><li>Paste your own text; it stays on the device</li><li>Letters never smaller than the member's measured size</li></ul>
+        <p class="where">Computer · <code>/train/learn</code> · as Gyan</p>
+        <a class="watch" href="#clip-reader">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="exercises">
+      <a class="shot" href="img/dark/exercises.jpg" target="_blank" rel="noopener"><img src="img/dark/exercises.jpg" alt="Exercises with a tool for each: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">14</p>
+        <h3>Exercises with a tool for each</h3>
+        <p>47 routines, each with a guide and its own tool: an on-screen drill, a timer, a counter, a checklist or a printable card drawn to real size.</p>
+        <ul><li>What to have ready, the steps, and signs it is done right</li><li>What to measure and exactly how</li><li>When to stop, on every routine</li></ul>
+        <p class="where">Computer · <code>/train/exercises</code> · as Gyan</p>
+        <a class="watch" href="#clip-exercise-contrast">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="brock">
+      <a class="shot" href="img/dark/brock.jpg" target="_blank" rel="noopener"><img src="img/dark/brock.jpg" alt="A routine, step by step: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">15</p>
+        <h3>A routine, step by step</h3>
+        <p>Brock String, the classic eye-teaming exercise: the picture strip, the tool to keep the numbers, and the full guide folded below.</p>
+        <ul><li>Results kept with each session</li><li>A published figure to compare with, where one exists</li><li>Supervision noted where a therapist adds most</li></ul>
+        <p class="where">Computer · <code>/train/exercises/brock-string</code> · as Gyan</p>
+        <a class="watch" href="#clip-exercise-vergence">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="cinema">
+      <a class="shot" href="img/dark/cinema.jpg" target="_blank" rel="noopener"><img src="img/dark/cinema.jpg" alt="Two-eye cinema: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">16</p>
+        <h3>Two-eye cinema</h3>
+        <p>Any film, played so each eye gets its own part. Chapters of 10 minutes with a 20-second look far away between them.</p>
+        <ul><li>The strongest evidence for lazy eye at home</li><li>Films with a task on top for variety</li><li>Films play from the device; nothing is streamed</li></ul>
+        <p class="where">Computer · <code>/train/cinema</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="progress">
+      <a class="shot" href="img/dark/progress.jpg" target="_blank" rel="noopener"><img src="img/dark/progress.jpg" alt="Progress over weeks: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">17</p>
+        <h3>Progress over weeks</h3>
+        <p>The practice calendar, this month against last, and every check-up over time with its usual range, so a real change stands out from a wobble.</p>
+        <ul><li>Notices when days are missed or nothing changes</li><li>A copy to share with the eye doctor</li><li>The same page for the counsellor</li></ul>
+        <p class="where">Computer · <code>/today/progress</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="messages">
+      <a class="shot" href="img/dark/messages.jpg" target="_blank" rel="noopener"><img src="img/dark/messages.jpg" alt="Messages with the counsellor: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">18</p>
+        <h3>Messages with the counsellor</h3>
+        <p>Parents and the counsellor write to each other inside the app. A worrying word brings up the emergency line at once.</p>
+        <ul><li>Ready-made nudges from the counsellor</li><li>Kept with the child's record</li><li>Seen only by the family and the counsellor</li></ul>
+        <p class="where">Computer · <code>/today/messages</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="kids">
+      <a class="shot" href="img/dark/kids.jpg" target="_blank" rel="noopener"><img src="img/dark/kids.jpg" alt="Child mode: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">19</p>
+        <h3>Child mode</h3>
+        <p>Handed over, the device shows only the child's own tiles: today's games, check-ups and stickers. Grown-up pages stay closed until a grown-up's PIN.</p>
+        <ul><li>Big tiles, few words</li><li>Ends by itself after 12 hours if the PIN is forgotten</li><li>Started from the menu in one press</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Ved</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch3" aria-labelledby="ch3-h">
+    <header class="ch-head"><p class="kicker">Chapter 3</p><h2 id="ch3-h">Check-ups at home</h2><p class="lede">Short checks drawn to true size on a measured screen, and a clear next step.</p></header>
+    <article class="row" id="checkups">
+      <a class="shot" href="img/dark/checkups.jpg" target="_blank" rel="noopener"><img src="img/dark/checkups.jpg" alt="Check-ups at home: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">20</p>
+        <h3>Check-ups at home</h3>
+        <p>Nine check-ups, each with when it is due, the latest reading and the change since the first. Each one is a few minutes.</p>
+        <ul><li>Sharpness, contrast, balance, depth, eye teaming and more</li><li>Sizes drawn in true millimetres on the measured screen</li><li>Results kept per eye</li></ul>
+        <p class="where">Computer · <code>/test</code> · as Gyan</p>
+        <a class="watch" href="#clip-checkup-faint">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="acuity">
+      <a class="shot" href="img/dark/acuity.jpg" target="_blank" rel="noopener"><img src="img/dark/acuity.jpg" alt="A check-up in progress: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">21</p>
+        <h3>A check-up in progress</h3>
+        <p>The sharpness check: a letter E points one way; you press that way. The letters get smaller until the eye cannot tell.</p>
+        <ul><li>Works with arrows, a touch or a TV remote</li><li>Each eye on its own</li><li>The result is saved with the day</li></ul>
+        <p class="where">Computer · <code>/test/acuity/run</code> · as Gyan</p>
+        <a class="watch" href="#clip-checkup-letters">▶ Watch the clip</a>
+      </div>
+    </article>
+    <article class="row" id="screening">
+      <a class="shot" href="img/dark/screening.jpg" target="_blank" rel="noopener"><img src="img/dark/screening.jpg" alt="What to do next: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">22</p>
+        <h3>What to do next</h3>
+        <p>From the check-up results and published limits, the app says whether to see an eye doctor. It never says what a condition is.</p>
+        <ul><li>Limits from paediatric screening guides and WHO</li><li>A clear next step, not a diagnosis</li><li>Clinic readings can be added by a parent or counsellor</li></ul>
+        <p class="where">Computer · <code>/test/screening</code> · as Gyan</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch4" aria-labelledby="ch4-h">
+    <header class="ch-head"><p class="kicker">Chapter 4</p><h2 id="ch4-h">For grown-ups' eyes</h2><p class="lede">Screen strain at work, a parent with dry eyes, and eye fitness on your own.</p></header>
+    <article class="row" id="rakshita">
+      <a class="shot" href="img/dark/rakshita.jpg" target="_blank" rel="noopener"><img src="img/dark/rakshita.jpg" alt="For screen strain at work: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">23</p>
+        <h3>For screen strain at work</h3>
+        <p>Rakshita works at a screen all day. Her Today counts rest breaks and outdoor time; the workday monitor reminds her to look away.</p>
+        <ul><li>Break and blink habits through the day</li><li>No employer view, no stress reading</li><li>Eye fitness programmes with no training dose</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Rakshita</p>
+        
+      </div>
+    </article>
+    <article class="row" id="monitor">
+      <a class="shot" href="img/dark/monitor.jpg" target="_blank" rel="noopener"><img src="img/dark/monitor.jpg" alt="The workday monitor: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">24</p>
+        <h3>The workday monitor</h3>
+        <p>With the camera, the monitor times screen work, distance and blinks, and reminds about breaks. No picture and no face point ever leaves the computer.</p>
+        <ul><li>A few numbers saved once a minute</li><li>Removed after 35 days; day totals stay</li><li>For grown-ups at a computer only</li></ul>
+        <p class="where">Computer · <code>/today/monitor</code> · as Rakshita</p>
+        
+      </div>
+    </article>
+    <article class="row" id="ashok">
+      <a class="shot" href="img/dark/ashok.jpg" target="_blank" rel="noopener"><img src="img/dark/ashok.jpg" alt="Caring for a parent: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">25</p>
+        <h3>Caring for a parent</h3>
+        <p>Rakshita's father Ashok is 50, with strong glasses and dry eyes. His drops and glasses are a log the app keeps, as his eye doctor prescribed.</p>
+        <ul><li>Reminders for drops, set by his counsellor too</li><li>Care routines never use up practice minutes</li><li>One household, several generations</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Ashok</p>
+        
+      </div>
+    </article>
+    <article class="row" id="vinit">
+      <a class="shot" href="img/dark/vinit.jpg" target="_blank" rel="noopener"><img src="img/dark/vinit.jpg" alt="Eye fitness on your own: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">26</p>
+        <h3>Eye fitness on your own</h3>
+        <p>Vinit uses Eyes Opener alone, for eye fitness: rings, breaks, check-ups, and a story he shared with the community.</p>
+        <ul><li>No programme needed to start</li><li>Breaks and outdoor time on the rings</li><li>Check-ups whenever they are due</li></ul>
+        <p class="where">Computer · <code>/today</code> · as Vinit</p>
+        
+      </div>
+    </article>
+    <article class="row" id="reminders">
+      <a class="shot" href="img/dark/reminders.jpg" target="_blank" rel="noopener"><img src="img/dark/reminders.jpg" alt="Reminders that fit the day: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">27</p>
+        <h3>Reminders that fit the day</h3>
+        <p>Reminders for practice, breaks, drops and check-ups, on the phone and in the browser. A counsellor can suggest one; the family decides.</p>
+        <ul><li>A suggested time from when practice usually happens</li><li>Shown on the phone and in the browser</li><li>Each one can be turned off</li></ul>
+        <p class="where">Computer · <code>/settings/reminders</code> · as Rakshita</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch5" aria-labelledby="ch5-h">
+    <header class="ch-head"><p class="kicker">Chapter 5</p><h2 id="ch5-h">Together</h2><p class="lede">Cheer, share and join in, with no feed and nothing to compare but showing up.</p></header>
+    <article class="row" id="together">
+      <a class="shot" href="img/dark/together.jpg" target="_blank" rel="noopener"><img src="img/dark/together.jpg" alt="Together, without a feed: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">28</p>
+        <h3>Together, without a feed</h3>
+        <p>Cheer someone who is practising with a light, a letter only both eyes can read, or a shared streak. No followers, no likes, no scrolling.</p>
+        <ul><li>Cheer, Share, Join in and Learn</li><li>Grandparents can cheer from their own seat</li><li>Kind by design: nothing to compare but showing up</li></ul>
+        <p class="where">Computer · <code>/together</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="share">
+      <a class="shot" href="img/dark/share.jpg" target="_blank" rel="noopener"><img src="img/dark/share.jpg" alt="Ideas that are tested before they are trusted: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">29</p>
+        <h3>Ideas that are tested before they are trusted</h3>
+        <p>Members share what helped them as an idea others can try. Each climbs a ladder of six steps, from a story to a checked result.</p>
+        <ul><li>Untested ideas are marked untested</li><li>A pooled result needs 30 members in each group</li><li>A hazard list blocks unsafe ideas</li></ul>
+        <p class="where">Computer · <code>/together</code> · as Ved</p>
+        
+      </div>
+    </article>
+    <article class="row" id="league">
+      <a class="shot" href="img/dark/league.jpg" target="_blank" rel="noopener"><img src="img/dark/league.jpg" alt="A league that ranks showing up: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">30</p>
+        <h3>A league that ranks showing up</h3>
+        <p>Teams are ranked by the days they finished their practice. Nothing else counts, so no one is pushed past a safe dose.</p>
+        <ul><li>Small teams by age band</li><li>A new week every Monday</li><li>Never a score or a speed</li></ul>
+        <p class="where">Computer · <code>/together/league</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row" id="family">
+      <a class="shot" href="img/dark/family.jpg" target="_blank" rel="noopener"><img src="img/dark/family.jpg" alt="The family page: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">31</p>
+        <h3>The family page</h3>
+        <p>Each child's day, consent and child mode in one place, with a switch to each child and invitations for a second parent or a grandparent.</p>
+        <ul><li>Seats for guardians and cheerers</li><li>Consent is a guardian's choice per child</li><li>A copy of the family's data any time</li></ul>
+        <p class="where">Computer · <code>/family</code> · as Ved</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch6" aria-labelledby="ch6-h">
+    <header class="ch-head"><p class="kicker">Chapter 6</p><h2 id="ch6-h">For counsellors</h2><p class="lede">A desk for the people a counsellor helps, and a space to try every game first.</p></header>
+    <article class="row" id="arti">
+      <a class="shot" href="img/dark/arti.jpg" target="_blank" rel="noopener"><img src="img/dark/arti.jpg" alt="The counsellor's desk: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">32</p>
+        <h3>The counsellor's desk</h3>
+        <p>Dr Arti sees only the members families linked to her. Each row has their programme, days practised, and one press to the plan, messages, reminders and progress.</p>
+        <ul><li>Verified by our team before any family can link</li><li>Families find a counsellor by email or a QR code</li><li>Every change to a plan is recorded</li></ul>
+        <p class="where">Computer · <code>/counsellor</code> · as Dr Arti</p>
+        
+      </div>
+    </article>
+    <article class="row" id="arti-member">
+      <a class="shot" href="img/dark/arti-member.jpg" target="_blank" rel="noopener"><img src="img/dark/arti-member.jpg" alt="One member, everything in view: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">33</p>
+        <h3>One member, everything in view</h3>
+        <p>Gyan's page: his programme and dose, check-ups over time, notes, and the plan Dr Arti set.</p>
+        <ul><li>Counsellor-led programmes for squint, after concussion or stroke</li><li>Doses within published limits, never above 90 minutes a day</li><li>Notes stay private to the counsellor</li></ul>
+        <p class="where">Computer · <code>/counsellor</code> · as Dr Arti</p>
+        
+      </div>
+    </article>
+    <article class="row" id="arti-list">
+      <a class="shot" href="img/dark/arti-list.jpg" target="_blank" rel="noopener"><img src="img/dark/arti-list.jpg" alt="Setting the plan: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">34</p>
+        <h3>Setting the plan</h3>
+        <p>Up to eight games and exercises with minutes for each. The family sees it at the top of Today the next time they open the app.</p>
+        <ul><li>Never more than 90 minutes in all</li><li>Limits for the fine-detail tasks</li><li>A course of sessions when needed</li></ul>
+        <p class="where">Computer · <code>/counsellor</code> · as Dr Arti</p>
+        
+      </div>
+    </article>
+    <article class="row" id="arti-tryout">
+      <a class="shot" href="img/dark/arti-tryout.jpg" target="_blank" rel="noopener"><img src="img/dark/arti-tryout.jpg" alt="Try every game first: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">35</p>
+        <h3>Try every game first</h3>
+        <p>A counsellor has a try-out space: every game opens as a member sees it, with no daily limits, and nothing in it counts anywhere.</p>
+        <ul><li>Counsellor-led items open too</li><li>Or start a household for her own eyes</li><li>Back to her desk in one press</li></ul>
+        <p class="where">Computer · <code>/tryout</code> · as Dr Arti</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch7" aria-labelledby="ch7-h">
+    <header class="ch-head"><p class="kicker">Chapter 7</p><h2 id="ch7-h">Running Eyes Opener</h2><p class="lede">The console behind it: who may use what, and every item explained.</p></header>
+    <article class="row" id="admin">
+      <a class="shot" href="img/dark/admin.jpg" target="_blank" rel="noopener"><img src="img/dark/admin.jpg" alt="The console: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">36</p>
+        <h3>The console</h3>
+        <p>Ved runs Eyes Opener from the console: households, counsellors, sponsors and the library, each room open only to the roles that need it.</p>
+        <ul><li>Counts only: fewer than 5 is never shown</li><li>Every staff action in the audit log</li><li>Rooms grouped: People, Library, Content, System</li></ul>
+        <p class="where">Computer · <code>/admin</code> · as Ved</p>
+        
+      </div>
+    </article>
+    <article class="row" id="catalogue">
+      <a class="shot" href="img/dark/catalogue.jpg" target="_blank" rel="noopener"><img src="img/dark/catalogue.jpg" alt="Deciding what is open: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">37</p>
+        <h3>Deciding what is open</h3>
+        <p>Each game, exercise and film can be open, counsellor-led, staff only or switched off, with the evidence framework's advice beside it.</p>
+        <ul><li>Applied in one step for the recommended level</li><li>Changes are audited</li><li>Staff try anything in their own test space</li></ul>
+        <p class="where">Computer · <code>/admin/catalogue</code> · as Ved</p>
+        
+      </div>
+    </article>
+    <article class="row" id="manual">
+      <a class="shot" href="img/dark/manual.jpg" target="_blank" rel="noopener"><img src="img/dark/manual.jpg" alt="Nothing is a black box: screen of Eyes Opener" loading="lazy" width="1440" height="900"></a>
+      <div class="info">
+        <p class="num">38</p>
+        <h3>Nothing is a black box</h3>
+        <p>The manual room has every game and exercise: what it is, why it is in the library, how it helps, what is measured, and what it cannot tell.</p>
+        <ul><li>Written from each item's guide</li><li>Sources for every claim</li><li>The same text a family can read</li></ul>
+        <p class="where">Computer · <code>/admin/manual</code> · as Ved</p>
+        
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" id="ch8" aria-labelledby="ch8-h">
+    <header class="ch-head"><p class="kicker">Chapter 8</p><h2 id="ch8-h">On a phone</h2><p class="lede">The same app at phone width, with tabs and search.</p></header>
+    <article class="row phone" id="phone-today">
+      <a class="shot" href="img/dark/phone-today.jpg" target="_blank" rel="noopener"><img src="img/dark/phone-today.jpg" alt="Today on a phone: screen of Eyes Opener" loading="lazy" width="780" height="1688"></a>
+      <div class="info">
+        <p class="num">39</p>
+        <h3>Today on a phone</h3>
+        <p>The same plan on a phone, with five tabs at the bottom: Today, Check-ups, Train, Together and You.</p>
+        <ul><li>Search at the top</li><li>Full-width buttons, a finger's height</li><li>Light or dark</li></ul>
+        <p class="where">Phone · <code>/today</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row phone" id="phone-games">
+      <a class="shot" href="img/dark/phone-games.jpg" target="_blank" rel="noopener"><img src="img/dark/phone-games.jpg" alt="Games on a phone: screen of Eyes Opener" loading="lazy" width="780" height="1688"></a>
+      <div class="info">
+        <p class="num">40</p>
+        <h3>Games on a phone</h3>
+        <p>Compact cards and folds keep the whole library within a few screens.</p>
+        <ul><li>Turn the phone sideways to play</li><li>Tiles for the pages around the games</li><li>The find box filters as you type</li></ul>
+        <p class="where">Phone · <code>/train</code> · as Gyan</p>
+        
+      </div>
+    </article>
+    <article class="row phone" id="phone-search">
+      <a class="shot" href="img/dark/phone-search.jpg" target="_blank" rel="noopener"><img src="img/dark/phone-search.jpg" alt="Find anything: screen of Eyes Opener" loading="lazy" width="780" height="1688"></a>
+      <div class="info">
+        <p class="num">41</p>
+        <h3>Find anything</h3>
+        <p>Search finds games, exercises, check-ups, pages and people of the household. Type a child's name to switch to them.</p>
+        <ul><li>Opens with &quot;/&quot; on a keyboard</li><li>Fills the screen on a phone</li><li>Results grouped by kind</li></ul>
+        <p class="where">Phone · <code>/today</code> · as Ved</p>
+        
+      </div>
+    </article>
+  </section>
+  <footer class="foot">
+    <p style="margin:0">Pictures taken on 18 October 2026 from the app as released to staging (revision 00048), at 1440 by 900 on a computer and 390 by 844 on a phone. Click a screen to open it at full size.</p>
+  </footer>
+</div>
+
+</body></html>
