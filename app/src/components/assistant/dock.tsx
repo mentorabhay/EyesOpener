@@ -1,8 +1,9 @@
 "use client";
 /**
  * The floating corner at the bottom right: the back-to-top button (once the page is scrolled down) and the eye
- * helper (when this edition has one). It sits above the tab bar on a phone, and it steps out of the way while a
- * two-eye scene (a game, a drill, a check-up, a film) is on the screen, so nothing is drawn over the black field.
+ * helper (when this edition has one). It sits above the tab bar on a phone. In the member app it steps out of the way
+ * while a two-eye scene (a game, a drill, a check-up, a film) is on the screen, so nothing is drawn over the black
+ * field; on the public site it stays, since the scenes there are short demonstrations (the home page opens with one).
  */
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,7 +37,7 @@ export function Dock({ chat, place }: { chat: boolean; place: "site" | "app" }) 
   }, [path]);
 
   return (
-    <div className={css.dock} data-place={place} data-hidden={sceneInView || undefined}>
+    <div className={css.dock} data-place={place} data-hidden={(place === "app" && sceneInView) || undefined}>
       <ToTop />
       {chat && <EyeChat />}
     </div>
