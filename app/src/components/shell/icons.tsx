@@ -63,6 +63,7 @@ const BY_PATH: [string, keyof typeof P][] = [
   ["/today/digest", "doc"], ["/today/likes", "spark"], ["/today/monitor", "screen"], ["/train/journey/book", "book"], ["/train/journey/story", "map"],
   ["/train/read", "text"], ["/settings/profiles", "profile"], ["/settings/lens", "glasses"], ["/settings/triage", "warning"],
   ["/counsellor/members", "family"], ["/counsellor/invite", "mail"],
+  ["/tryout/leave", "family"], ["/tryout", "spark"], ["/login/own", "person"],
   ["/today/notifications", "bell"], ["/settings/reminders", "clock"], ["/settings/screen", "screen"], ["/settings/data", "download"], ["/account", "person"],
   ["/today", "today"], ["/kids", "kids"], ["/leave-child-mode", "leave"],
   ["/test/screening", "screening"], ["/test/clips", "clips"], ["/test", "test"], ["/setup", "setup"],

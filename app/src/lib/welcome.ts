@@ -12,7 +12,7 @@ import { setupOf } from "@/lib/setup";
 export interface Welcome { people: boolean; setup: boolean; check: boolean }
 
 export async function welcomeOf(m: Member): Promise<Welcome | null> {
-  if (m.childMode || m.tester || !m.can("manage_family")) return null;
+  if (m.childMode || m.tester || m.tryout || !m.can("manage_family")) return null;
   const [[played], [checked], setup] = await Promise.all([
     db.select({ id: schema.session.id }).from(schema.session).where(eq(schema.session.profileId, m.profile.id)).limit(1),
     db.select({ id: schema.testResult.id }).from(schema.testResult).where(eq(schema.testResult.profileId, m.profile.id)).limit(1),

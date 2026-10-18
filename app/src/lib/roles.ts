@@ -51,7 +51,7 @@ export const isGuardianSeat = (seat: Seat | null) => seat === "guardian" || seat
  * where only a cookie can be read, made a loop: with nobody signed in, /today sent the browser to /login and this
  * list sent it straight back. A grown-up must be able to reach sign-in on a device whose session has ended.
  */
-export const SEALED_IN_CHILD_MODE = ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share", "/together/lights"] as const;
+export const SEALED_IN_CHILD_MODE = ["/settings", "/family", "/admin", "/counsellor", "/sponsor", "/together/share", "/together/lights", "/tryout", "/login/own"] as const;
 
 export const isSealedPath = (pathname: string) => SEALED_IN_CHILD_MODE.some((p) => pathname === p || pathname.startsWith(p + "/"));
 

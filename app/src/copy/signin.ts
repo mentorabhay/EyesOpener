@@ -84,6 +84,20 @@ export const signin = texts("copy/signin", "signin", () => ({
     everywhere: "You are signed out on every device.",
   } as Record<string, string>,
 
+  /** /login/own: a counsellor, sponsor or staff member starts a household for their own eyes. */
+  own: {
+    title: "Use Eyes Opener for your own eyes",
+    sub: "Your own household, like any family has. It holds your profile, setup, check-ups and practice. The usual daily limits apply.",
+    points: [
+      "It is kept apart from the members you help. They never see it, and your work area does not change.",
+      "You can add your children or a parent later, from Family.",
+      "To try a game the way a member sees it, without limits and without it counting anywhere, use Try the games instead.",
+    ],
+    submit: "Start my household",
+    has: "You already have a household of your own.",
+    open: "Open it",
+    back: "Back",
+  },
   welcome: {
     title: (name: string) => `Welcome, ${name}`,
     sub: "You are signed in. One more step.",

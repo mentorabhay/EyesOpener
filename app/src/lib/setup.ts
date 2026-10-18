@@ -25,7 +25,7 @@ export interface Setup {
   gate: boolean;
 }
 
-type Who = Pick<Member, "profile" | "device" | "eye" | "tester">;
+type Who = Pick<Member, "profile" | "device" | "eye" | "tester"> & { tryout?: boolean };
 
 export async function setupOf(m: Who): Promise<Setup> {
   const t = schema.testResult;
@@ -42,7 +42,7 @@ export async function setupOf(m: Who): Promise<Setup> {
     balanceAt: bal?.at ?? null,
   });
   const ready = isReady(steps), { done, of } = progress(steps);
-  return { steps, ready, screenReady: isReady(steps, "screen"), done, of, next: nextStep(steps), held: gate && !ready && !m.tester, gate };
+  return { steps, ready, screenReady: isReady(steps, "screen"), done, of, next: nextStep(steps), held: gate && !ready && !m.tester && !m.tryout, gate };
 }
 
 /** The person part only, for the phone and TV apps, which measure their own screens. */

@@ -13,11 +13,14 @@ import { signOutHere } from "@/app/(auth)/login/actions";
 import { handOverQuick } from "@/app/(app)/family/actions";
 import { NavIcon } from "./icons";
 import { ThemeChoice } from "./theme";
+import { isAction } from "@/lib/from-here";
 
 export interface MenuProfile { id: string; name: string; initial: string; sub: string }
 
-export function AccountMenu({ initial, name, email, profiles, current, guardian, hand = [], hasPin = false, canPin = false }: {
+export function AccountMenu({ initial, name, email, profiles, current, guardian, hand = [], hasPin = false, canPin = false, links: own }: {
   initial: string; name: string; email: string; profiles: MenuProfile[]; current: string; guardian: boolean;
+  /** The links of the menu, when the area has its own (a portal): else Your account, Family and Settings. */
+  links?: { href: string; label: string }[];
   /** The children this grown-up may hand the device to. */
   hand?: { id: string; name: string }[];
   /** The household has an exit PIN; without one, a guardian who may set it types it here. */
@@ -40,7 +43,7 @@ export function AccountMenu({ initial, name, email, profiles, current, guardian,
   }, [open]);
   const toggle = () => { setOpen(!open); setPinFor(null); };
 
-  const links = [
+  const links = own ?? [
     { href: "/account", label: w.account },
     ...(guardian ? [{ href: "/family", label: w.family }] : []),
     { href: "/settings", label: w.settings },
@@ -92,7 +95,9 @@ export function AccountMenu({ initial, name, email, profiles, current, guardian,
             </div>
           )}
           <div className="acct-group">
-            {links.map((l) => (
+            {links.map((l) => isAction(l.href) ? (
+              <a key={l.href} href={l.href} className="acct-link" role="menuitem"><NavIcon href={l.href} />{l.label}</a>
+            ) : (
               <Link key={l.href} href={l.href} className="acct-link" role="menuitem" onClick={() => setOpen(false)}><NavIcon href={l.href} />{l.label}</Link>
             ))}
           </div>

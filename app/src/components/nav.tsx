@@ -3,6 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { common } from "@/copy/common";
 import { NavIcon } from "./shell/icons";
+import { isAction } from "@/lib/from-here";
 
 export interface NavItem { href: string; label: string }
 
@@ -41,9 +42,14 @@ export function NavGroups({ groups }: { groups: { title: string; items: NavItem[
               <ul className="navl">
                 {g.items.map((it) => (
                   <li key={it.href}>
-                    <Link href={it.href} aria-current={current(path, it.href, all) ? "page" : undefined}>
-                      <NavIcon href={it.href} /><span className="nav-label">{it.label}</span>
-                    </Link>
+                    {isAction(it.href) ? (
+                      /* an address that does something opens by a full load, never ahead of time */
+                      <a href={it.href}><NavIcon href={it.href} /><span className="nav-label">{it.label}</span></a>
+                    ) : (
+                      <Link href={it.href} aria-current={current(path, it.href, all) ? "page" : undefined}>
+                        <NavIcon href={it.href} /><span className="nav-label">{it.label}</span>
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

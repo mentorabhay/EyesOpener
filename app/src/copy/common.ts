@@ -11,6 +11,7 @@ export const common = texts("copy/common", "common", () => ({
     family: "Family", circle: "Cheer seat", admin: "Admin console", counsellor: "Counsellor portal", sponsor: "Sponsor portal",
     switchPerson: "Sign in as someone else", childMode: "Child mode", leaveChildMode: "Child mode · grown-up? Tap to leave", grownUp: "Grown-up",
     you: "You", otherAreas: "Your other areas", account: "Your account", week: "This week's plan",
+    tryout: "Try the games", leaveTryout: "Back to your household", ownEyes: "Use Eyes Opener for my own eyes", household: "Your household",
     menu: "Main menu", tabs: "Main", skip: "Skip to the page",
   },
   /** The frame around every signed-in page (src/components/shell): the top bar, the folding menu, search, the tabs and the footer. */
@@ -68,6 +69,8 @@ export const common = texts("copy/common", "common", () => ({
   notMedical: "Eyes Opener is not a medical device. It does not diagnose, treat or cure any condition.",
   tester: "Staff test household. Every game, exercise and film opens here whatever its status, and the daily limits are off. Nothing here is counted with families.",
   testerLink: "Set the status of each item",
+  tryoutNote: "Your try-out space. Games, exercises and films open as a member would see them, counsellor-led ones too, and the daily limits are off. Nothing here is counted, and no member ever sees it.",
+  tryoutBack: "Back to your household",
   lens: {
     label: "Check the scene without glasses",
     none: "As on screen", weak: "Weaker eye sees", strong: "Stronger eye sees", joined: "Eyes joined",

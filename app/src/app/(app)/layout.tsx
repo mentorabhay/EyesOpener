@@ -63,7 +63,13 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
         </TopBar>
         <main id="page" className="page" style={zoomStyle(zoom)} tabIndex={-1}>
           <Trail names={trailNames(menuPages(m))} />
-          {m.tester && <p className="notice" role="note">{common.tester} <Link href="/admin/catalogue">{common.testerLink}</Link></p>}
+          {m.tryout && (
+            <p className="notice" role="note">
+              {m.tester ? common.tester : common.tryoutNote}{" "}
+              {m.tester && <Link href="/admin/catalogue">{common.testerLink}</Link>}
+              {m.ownHousehold && <>{m.tester && " · "}<a href="/tryout/leave">{common.tryoutBack}</a></>}
+            </p>
+          )}
           {setup.held && !m.childMode && <SetupBar s={setup} />}
           {children}
         </main>

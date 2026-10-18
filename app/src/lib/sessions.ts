@@ -77,7 +77,8 @@ export async function doseFor(m: Member, kind: TrainKind, slug?: string): Promis
   if (slug && !m.tester) {
     const status = await statusFor(kind, slug);
     if (!isListed(status, false)) return { ok: false, minutes: 0, reason: "not_offered" };
-    if (status === "counsellor" && !onCounsellorPlan(m, kind, slug)) return { ok: false, minutes: 0, reason: "counsellor_plan" };
+    /* a counsellor or a sponsor trying the library in their try-out space opens counsellor-led items too */
+    if (status === "counsellor" && !m.tryout && !onCounsellorPlan(m, kind, slug)) return { ok: false, minutes: 0, reason: "counsellor_plan" };
   }
   return decide(m, kind, await trainedToday(m.profile.id), slug);
 }

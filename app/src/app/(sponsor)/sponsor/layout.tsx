@@ -16,13 +16,12 @@ export default async function SponsorLayout({ children }: { children: ReactNode 
     ...(sponsorCan(sponsor.role, "manage_team") ? [{ href: "/sponsor/team", label: n.team }] : []),
   ];
   const other = [
-    ...(viewer.seat ? [{ href: viewer.seat === "circle" ? "/circle" : "/today", label: n.family }] : []),
     ...(viewer.staff ? [{ href: "/admin", label: n.admin }] : []),
     ...(viewer.counsellor ? [{ href: "/counsellor", label: n.counsellor }] : []),
   ];
   return (
     <PortalShell
-      area={t.area} who={viewer.user.displayName} role={t.role[sponsor.role]}
+      area={t.area} viewer={viewer} role={t.role[sponsor.role]}
       groups={[
         { title: n.title, items: [{ href: "/sponsor", label: n.overview }, ...rooms] },
         ...(other.length ? [{ title: n.other, items: other }] : []),

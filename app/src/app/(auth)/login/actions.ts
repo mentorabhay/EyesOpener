@@ -10,7 +10,8 @@ import { headers } from "next/headers";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { redirect, RedirectType } from "next/navigation";
 import { signin as t } from "@/copy/signin";
-import { CHILD_COOKIE, endSessionsEverywhere, getViewer, signOut } from "@/lib/auth";
+import { CHILD_COOKIE, demoHere, endSessionsEverywhere, getViewer, signOut } from "@/lib/auth";
+import { mayTryOut, TRYOUT_COOKIE } from "@/lib/session";
 import { askCodeFlow, askFlow, codeFlow, googleFlow, homeOf, landing, linkFlow, usesCode, type Ctx, type Entered, type Refusal } from "@/lib/signin/flow";
 import { holdOf } from "@/lib/signin/hold";
 import { networkAddress } from "@/lib/signin/limit";
@@ -86,6 +87,20 @@ export async function signOutEverywhere() {
   await signOut();
   revalidatePath("/", "layout");
   redirect(viewer?.real ? "/login?done=everywhere" : "/login?done=out");
+}
+
+/**
+ * "Use Eyes Opener for my own eyes" (Ved, 18 October 2026): a counsellor, a sponsor's person or a staff member with
+ * no household starts one of their own, as any family does, then setup. Kept apart from the members they help. On
+ * staging, a demo person may do it once the access phrase was typed; nobody else who is not signed in for real.
+ */
+export async function startOwnSpace() {
+  const viewer = await getViewer();
+  if (!viewer || !mayTryOut(viewer) || (!viewer.real && !(await demoHere()))) redirect("/login");
+  const out = await startFamily(viewer.user.id, t.welcome.household);
+  (await cookieJar()).delete(TRYOUT_COOKIE);
+  revalidatePath("/", "layout");
+  redirect(out === "started" ? "/setup" : out === "has_household" ? "/today" : viewer.home);
 }
 
 /** The welcome page's first choice: a new household with this person as its guardian, then onboarding. */

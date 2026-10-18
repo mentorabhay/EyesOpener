@@ -22,12 +22,17 @@ export function menuGroups(m: Member): MenuGroup[] {
     ...x.you,
     { href: "/settings", label: n.settings },
   ];
-  /* Each person sees only the areas their roles open. Child mode hides the grown-up links. */
+  /* Each person sees only the areas their roles open. Child mode hides the grown-up links. The try-out space and a
+     household of one's own (Ved, 18 October 2026) for staff, counsellors and sponsors; "Sign in as someone else" only
+     where the demo sign-in is on, which is for trying the app with the demo people. */
   const areas = child ? [] : [
     ...(m.viewer.staff ? [{ href: "/admin", label: n.admin }] : []),
     ...(m.viewer.counsellor ? [{ href: "/counsellor", label: n.counsellor }] : []),
     ...(m.viewer.sponsors.length ? [{ href: "/sponsor", label: n.sponsor }] : []),
-    { href: "/login", label: n.switchPerson },
+    ...(m.canTry && !m.tryout ? [{ href: "/tryout", label: n.tryout }] : []),
+    ...(m.tryout && m.ownHousehold ? [{ href: "/tryout/leave", label: n.leaveTryout }] : []),
+    ...(m.tryout && !m.ownHousehold ? [{ href: "/login/own", label: n.ownEyes }] : []),
+    ...(m.demo ? [{ href: "/login", label: n.switchPerson }] : []),
   ];
   return [
     { title: n.track, items: child ? [{ href: "/kids", label: kids.home }] : [

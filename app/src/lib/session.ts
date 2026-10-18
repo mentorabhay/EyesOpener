@@ -10,11 +10,21 @@ import { db, schema } from "@/db";
 import { programmeBySlug } from "@/data";
 import { ageFrom } from "@/engine";
 import { keepHouseholdLanguage } from "@/i18n/household";
-import { CHILD_COOKIE, getViewer } from "./auth";
+import { CHILD_COOKIE, demoHere, getViewer, type Viewer } from "./auth";
 import { memberCan, type MemberAction } from "./roles";
 import { verifyToken } from "./token";
 
 export const PROFILE_COOKIE = "io_profile";
+/** Set by /tryout: this browser uses the person's try-out space even when they have a household of their own. */
+export const TRYOUT_COOKIE = "io_tryout";
+
+/**
+ * Who may have a try-out space (Ved, 18 October 2026): staff, verified counsellors and the people of a sponsor that is
+ * not suspended. In it the library opens and the daily limits are off, it is left out of every household count, and
+ * no family member can reach it. Staff also see items set to staff only or switched off; counsellors and sponsors see
+ * what members see, counsellor-led items included.
+ */
+export const mayTryOut = (v: Pick<Viewer, "staff" | "counsellor" | "sponsors">) => !!v.staff || v.counsellor || v.sponsors.some((s) => s.status !== "suspended");
 /**
  * Which of the household's screens this browser is: a device id, written when the screen is first measured here. A
  * household with a laptop and a TV keeps each one's size and colours apart. With none, the screen of `SCREEN_KIND_COOKIE`
@@ -30,8 +40,8 @@ export const screenKindOf = (v: string | undefined): ScreenKind => ((SCREEN_KIND
 export type Member = NonNullable<Awaited<ReturnType<typeof getMember>>>;
 
 /**
- * A staff member with no household of their own gets a test household the first time they open the member app:
- * one adult profile, no family data. Everything in the library opens in it and the daily limits do not apply.
+ * A person who may try out (mayTryOut) gets a try-out household the first time they open it: one adult profile, no
+ * family data. Everything in the library opens in it and the daily limits do not apply.
  */
 async function testHousehold(user: { id: string; displayName: string }) {
   const found = await db.select().from(schema.account).where(eq(schema.account.previewFor, user.id)).limit(1);
@@ -48,10 +58,15 @@ export const getMember = cache(async () => {
   const viewer = await getViewer();
   if (!viewer) return null;
   const own = viewer.seat && viewer.user.accountId ? viewer.user.accountId : null;
-  /* Staff with no household of their own try the app in a test household. */
-  const tester = !own && !!viewer.staff;
-  if (!own && !tester) return null;
-  const [account] = own ? await db.select().from(schema.account).where(eq(schema.account.id, own)).limit(1) : [await testHousehold(viewer.user)];
+  /* Staff, counsellors and sponsors with no household of their own try the app in a try-out household; with one,
+     they reach it through /tryout, which marks this browser. */
+  const canTry = mayTryOut(viewer);
+  const jarFirst = await cookieJar();
+  const tryout = canTry && (!own || jarFirst.get(TRYOUT_COOKIE)?.value === "1");
+  /* staff in their try-out space: every status opens, staff only and switched off included */
+  const tester = tryout && !!viewer.staff;
+  if (!own && !tryout) return null;
+  const [account] = !tryout && own ? await db.select().from(schema.account).where(eq(schema.account.id, own)).limit(1) : [await testHousehold(viewer.user)];
   if (!account) return null;
   const profiles = await db.select().from(schema.profile)
     .where(and(eq(schema.profile.accountId, account.id), isNull(schema.profile.archivedAt)))
@@ -97,13 +112,19 @@ export const getMember = cache(async () => {
     age: ageFrom(profile.birthYear), dailyMinutes: enrolment?.dailyMinutes ?? 0, stopFlag,
     consentMissing: profile.kind === "child" && !consent,
     awaitingCounsellor: level2 && (!link || enrolment.dailyMinutes <= 0),
-    tester,
+    tester: tryout,
   };
   const seat = viewer.seat ?? ("guardian" as const);
   return {
     viewer, user: viewer.user, seat, childMode,
-    /** True in a staff member's own test household: every library item opens and the daily limits are off. */
+    /** True in a staff member's try-out household: every library item opens, whatever its status. */
     tester,
+    /** True in anyone's try-out household (staff, counsellor, sponsor): the daily limits are off, nothing counts. */
+    tryout,
+    /** May this person use a try-out space at all, and do they have a household of their own beside it. */
+    canTry, ownHousehold: !!own,
+    /** The demo sign-in is on in this browser (staging, after the access phrase): "Sign in as someone else" shows. */
+    demo: await demoHere(),
     /** True when a counsellor is linked to the active profile. */
     linked: !!link,
     account, profiles, profile, age: ageFrom(profile.birthYear),

@@ -8,13 +8,12 @@ export default async function CounsellorLayout({ children }: { children: ReactNo
   const viewer = await requireCounsellor();
   /* A person can hold other roles too. Each sees only the areas their roles open. */
   const other = [
-    ...(viewer.seat ? [{ href: viewer.seat === "circle" ? "/circle" : "/today", label: t.nav.family }] : []),
     ...(viewer.staff ? [{ href: "/admin", label: t.nav.admin }] : []),
     ...(viewer.sponsors.some((s) => s.status !== "suspended") ? [{ href: "/sponsor", label: t.nav.sponsor }] : []),
   ];
   return (
     <PortalShell
-      area={t.area} who={viewer.user.displayName} role={t.role}
+      area={t.area} viewer={viewer} role={t.role}
       groups={[
         { title: t.nav.title, items: [{ href: "/counsellor", label: t.nav.members }, { href: "/counsellor/profile", label: t.nav.profile }, { href: "/counsellor/cinema-club", label: cinemaClub.nav }] },
         ...(other.length ? [{ title: t.nav.other, items: other }] : []),

@@ -25,7 +25,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
     })),
   ].filter((g) => g.items.length);
   return (
-    <PortalShell area={t.area} who={viewer.user.displayName} role={t.roles[viewer.staff]} groups={groups}>
+    <PortalShell area={t.area} viewer={viewer} role={t.roles[viewer.staff]} groups={groups}>
       {children}
     </PortalShell>
   );
