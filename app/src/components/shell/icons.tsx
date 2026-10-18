@@ -46,15 +46,27 @@ const P: Record<string, string> = {
   palette: "M12 4a8 8 0 0 0 0 16c1.2 0 1.8-.8 1.8-1.7 0-1.3-1-1.6-1-2.5 0-.8.6-1.3 1.4-1.3H16a4 4 0 0 0 4-4c0-3.6-3.6-6.5-8-6.5ZM8 11h.01M10.5 7.5h.01M15 7.5h.01",
   glasses: "M3 10h18M5 10a3 3 0 1 0 6 0M13 10a3 3 0 1 0 6 0M11 10.5c.6-.4 1.4-.4 2 0",
   team: "M10 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM4.5 19c.6-3 2.8-5 5.5-5 1.6 0 3 .7 4 1.8M18 13v6M15 16h6",
+  chart: "M5 19V5M5 19h14M9 15v-4M13 15V8M17 15v-6",
+  calendar: "M5 6h14v13H5zM5 10h14M9 4v4M15 4v4M8.5 14h2M13.5 14h2",
+  chat: "M5 6h14v9H10l-4 3.5V15H5z",
+  doc: "M7 4h7l4 4v12H7zM14 4v4h4M10 12h5M10 15.5h5",
+  spark: "M12 4l1.8 5.2L19 11l-5.2 1.8L12 18l-1.8-5.2L5 11l5.2-1.8Z",
+  phone: "M8 3.5h8v17H8zM11 17.5h2",
+  text: "M5 6h14M5 10h14M5 14h9M5 18h6",
+  map: "M4 6.5 9 5l6 2 5-1.5V18l-5 1.5-6-2-5 1.5ZM9 5v12.5M15 7v12.5",
   dot: "M12 10.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z",
 };
 
 /** The picture for a link, by its address. The longest known start of the address wins. */
 const BY_PATH: [string, keyof typeof P][] = [
+  ["/today/progress", "chart"], ["/today/week", "calendar"], ["/today/messages", "chat"], ["/today/list", "list"],
+  ["/today/digest", "doc"], ["/today/likes", "spark"], ["/today/monitor", "screen"], ["/train/journey/book", "book"], ["/train/journey/story", "map"],
+  ["/train/read", "text"], ["/settings/profiles", "profile"], ["/settings/lens", "glasses"], ["/settings/triage", "warning"],
+  ["/counsellor/members", "family"], ["/counsellor/invite", "mail"],
   ["/today/notifications", "bell"], ["/settings/reminders", "clock"], ["/settings/screen", "screen"], ["/settings/data", "download"], ["/account", "person"],
   ["/today", "today"], ["/kids", "kids"], ["/leave-child-mode", "leave"],
   ["/test/screening", "screening"], ["/test/clips", "clips"], ["/test", "test"], ["/setup", "setup"],
-  ["/train/exercises", "exercises"], ["/train/cinema", "cinema"], ["/train/learn", "learn"], ["/train/read", "learn"],
+  ["/train/exercises", "exercises"], ["/train/cinema", "cinema"], ["/train/learn", "learn"],
   ["/train/fine", "fine"], ["/train/journey", "journey"], ["/train", "games"],
   ["/together/league", "league"], ["/together", "together"],
   ["/family", "family"], ["/circle", "circle"], ["/settings", "settings"],

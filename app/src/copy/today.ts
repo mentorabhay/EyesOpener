@@ -33,4 +33,14 @@ export const today = texts("copy/today", "today", () => ({
   league: "See the league",
   screen: "Screen time today",
   notEnrolled: "Not on a programme. Rings track breaks and outdoor time.",
+  /** A new household's first steps (lib/welcome.ts), shown until setup and a first check-up are done. */
+  welcome: {
+    title: "Welcome to Eyes Opener",
+    sub: "Three steps to start. This card goes away when setup and a first check-up are done.",
+    people: { title: "Add who will use it", text: "A child, a parent or anyone else. Skip this if it is just you.", go: "Add a person" },
+    setup: { title: "Set up the screen and glasses", text: "About five minutes, with a bank card and the red-cyan glasses.", go: "Start setup" },
+    check: { title: "Do a first check-up", text: "A short check gives a starting point to compare with later.", go: "Choose a check-up" },
+    done: "Done",
+  },
+  more: "More for today",
 }));

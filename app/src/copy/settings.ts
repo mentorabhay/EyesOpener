@@ -10,6 +10,14 @@ export const settings = texts("copy/settings", "settings", () => ({
   guardianOnly: "You can look at these settings. A guardian makes the changes.",
 
   /** The groups of the page, and the menu that leads to them. */
+  /** The four most used settings, as tiles at the top (Ved, 18 October 2026). */
+  quick: {
+    label: "Most used settings",
+    screen: "This screen's colours", screenSub: "Size, brightness and the glasses' colours.",
+    reminders: "Reminders", remindersSub: "When the app reminds you to practise.",
+    person: "Add a person", personSub: "A child, a parent or anyone else.",
+    data: "Your family's data", dataSub: "Download a copy, or delete it.",
+  },
   groups: {
     menu: "Parts of settings",
     before: {

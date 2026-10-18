@@ -11,7 +11,9 @@ import { setupOf } from "@/lib/setup";
 import { SetupBar, SetupLink } from "@/components/setup/setup";
 import { NotifyBell } from "@/components/notify/bell";
 import { AppFooter } from "@/components/shell/footer";
-import { menuGroups, menuTabs } from "@/components/shell/menu";
+import { menuGroups, menuPages, menuTabs } from "@/components/shell/menu";
+import { Trail } from "@/components/shell/trail";
+import { trailNames } from "@/lib/trail-names";
 import { RAIL_BOOT } from "@/components/shell/rail";
 import { TopBar, initialOf, zoomStyle } from "@/components/shell/topbar";
 import { Dock } from "@/components/assistant/dock";
@@ -53,11 +55,14 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       <div className="main">
         <TopBar home={m.childMode ? "/kids" : "/today"} person={m.childMode ? undefined : { menu: {
           initial: initialOf(m.user.displayName), name: m.user.displayName, email: m.user.email, current: m.profile.id, guardian: isGuardianSeat(m.seat),
+          hand: m.can("manage_family") ? m.profiles.filter((p) => p.kind === "child").map((p) => ({ id: p.id, name: p.displayName })) : [],
+          hasPin: !!m.account.exitPinHash, canPin: m.can("seats"),
           profiles: m.profiles.map((p) => ({ id: p.id, name: p.displayName, initial: initialOf(p.displayName), sub: p.kind === "child" ? common.shell.menu.child(p.birthYear ? new Date().getFullYear() - p.birthYear : null) : common.shell.menu.adult })),
         } }}>
           {!m.childMode && <NotifyBell start={unread} />}
         </TopBar>
         <main id="page" className="page" style={zoomStyle(zoom)} tabIndex={-1}>
+          <Trail names={trailNames(menuPages(m))} />
           {m.tester && <p className="notice" role="note">{common.tester} <Link href="/admin/catalogue">{common.testerLink}</Link></p>}
           {setup.held && !m.childMode && <SetupBar s={setup} />}
           {children}

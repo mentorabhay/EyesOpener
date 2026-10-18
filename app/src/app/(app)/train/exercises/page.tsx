@@ -3,16 +3,17 @@ import Link from "next/link";
 import { StepFlow } from "@/components/guide/flow";
 import { listSteps } from "@/components/guide/steps";
 import { guide as gw } from "@/copy/guide";
-import { Card, Chip, EvidenceChip, PageHead, Pills } from "@/components/ui";
+import { PageHead, Pills } from "@/components/ui";
 import { DoseLine } from "@/components/play/session-ui";
 import { train as t } from "@/copy/train";
-import { exerciseGroups, exercises, isStrong, mechanismOf } from "@/data";
+import { exerciseGroups, exercises, isStrong, programmeBySlug } from "@/data";
 import { guideFor } from "@/data/guides";
 import { readStatuses } from "@/lib/catalogue";
 import { requireMember } from "@/lib/session";
 import { doseFor } from "@/lib/sessions";
 import { isListed, statusOf } from "@/lib/status";
-import { exerciseWords } from "@/data/words";
+import { ExerciseLibrary } from "@/components/library/lists";
+import { forYou } from "@/lib/for-you";
 
 export const generateMetadata = (): Metadata => ({ title: t.exercises.title });
 
@@ -22,10 +23,11 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
   const evidence = sp.evidence === "strong" ? "strong" : "all";
   const group = exerciseGroups.find((g) => g === sp.group) ?? "any";
   const m = await requireMember();
-  const [dose, statuses] = await Promise.all([doseFor(m, "exercise"), readStatuses()]);
+  const [dose, statuses, top] = await Promise.all([doseFor(m, "exercise"), readStatuses(), forYou(m, "exercise")]);
   const status = (slug: string) => statusOf(statuses, "exercise", slug);
   const shown = exercises.filter((e) => isListed(status(e.slug), m.tester) && (evidence === "all" || isStrong(e.mechanism)) && (group === "any" || e.group === group));
-  const l = t.exercises.labels;
+  const tool = (slug: string) => { const g = guideFor(slug); return g ? t.exercise.tool[g.tool.kind] : undefined; };
+  const mine = m.enrolment ? programmeBySlug(m.enrolment.programme)?.group ?? null : null;
 
   return (
     <>
@@ -35,31 +37,21 @@ export default async function ExercisesPage({ searchParams }: { searchParams: Pr
       />
       <StepFlow steps={listSteps(gw.exercises, ["list", "timer", "chart"])} compact />
       <DoseLine dose={dose} enrolled={!!m.enrolment} tester={m.tester} />
-      <div className="row">
-        <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train/exercises?group=${encodeURIComponent(group)}`} />
-        <Pills items={[{ key: "any", label: t.exercises.allGroups }, ...exerciseGroups.map((g) => ({ key: g, label: g }))]} current={group} param="group" base={`/train/exercises?evidence=${evidence}`} />
-      </div>
       {shown.length ? (
-        <Card>
-          <div>
-            {shown.map((e) => (
-              <div className="ins rowlink" key={e.slug}>
-                <div className="tx">
-                  <div className="row">
-                    <Link className="stretch" href={`/train/exercises/${e.slug}`}><b>{e.name}</b></Link>
-                    <EvidenceChip level={mechanismOf(e.mechanism).evidence} />
-                    {guideFor(e.slug) && <Chip>{t.exercise.tool[guideFor(e.slug)!.tool.kind]}</Chip>}
-                    {status(e.slug) !== "open" && <Chip tone={status(e.slug) === "counsellor" ? "plain" : "warn"}>{t.exercise.statusFor[status(e.slug)]}</Chip>}
-                  </div>
-                  <div>{exerciseWords(e).how}</div>
-                  <div className="sub">{l.for}: {exerciseWords(e).who} · {l.gear}: {exerciseWords(e).gear} · {l.dose}: {exerciseWords(e).dose}</div>
-                </div>
-              </div>
-            ))}
+        <ExerciseLibrary list={shown} top={top} status={status} tool={tool} flat={evidence !== "all" || group !== "any"} name={m.profile.displayName} mine={mine} between={<>
+          <div className="row">
+            <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train/exercises?group=${encodeURIComponent(group)}`} />
+            <Pills items={[{ key: "any", label: t.exercises.allGroups }, ...exerciseGroups.map((g) => ({ key: g, label: g }))]} current={group} param="group" base={`/train/exercises?evidence=${evidence}`} />
           </div>
-        </Card>
+        </>} />
       ) : (
-        <p className="notice">{t.exercises.none} {evidence === "strong" && <Link href={`/train/exercises?group=${encodeURIComponent(group)}&evidence=all`}>{t.games.showAll}</Link>}</p>
+        <>
+          <div className="row">
+            <Pills items={t.games.evidence} current={evidence} param="evidence" base={`/train/exercises?group=${encodeURIComponent(group)}`} />
+            <Pills items={[{ key: "any", label: t.exercises.allGroups }, ...exerciseGroups.map((g) => ({ key: g, label: g }))]} current={group} param="group" base={`/train/exercises?evidence=${evidence}`} />
+          </div>
+          <p className="notice">{t.exercises.none} {evidence === "strong" && <Link href={`/train/exercises?group=${encodeURIComponent(group)}&evidence=all`}>{t.games.showAll}</Link>}</p>
+        </>
       )}
     </>
   );

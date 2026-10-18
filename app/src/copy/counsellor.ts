@@ -35,6 +35,9 @@ export const counsellor = texts("copy/counsellor", "counsellor", () => ({
       practisedLabel: "Days practised in the last 7 days",
       open: "Open",
       openOf: (name: string) => `Open ${name}`,
+      /** One press from the list to the member's most used pages (Ved, 18 October 2026). */
+      go: { plan: "Plan", message: "Message", reminders: "Reminders", progress: "Progress" },
+      goOf: (what: string, name: string) => `${what}: ${name}`,
     },
   },
 

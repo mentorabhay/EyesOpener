@@ -24,7 +24,7 @@ export function TodayChapter({ view, dose }: { view: ProgrammeView; dose: DoseDe
       : blocked;
   }
 
-  const plan = <Link href={PLAN} className="small">{p.card.plan}</Link>;
+  const plan = <Btn href={PLAN} small>{p.card.plan}</Btn>;
   const { chapter, done, day } = view;
   if (day.state === "rest") return <p className="notice" data-b="ok">{p.card.rest} {plan}</p>;
   if (done.finished) return <p className="notice" data-b="ok">{view.habit ? p.card.habits : p.card.finished} {plan}</p>;

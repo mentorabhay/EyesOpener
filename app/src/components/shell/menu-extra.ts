@@ -3,5 +3,8 @@
  * adds none; a fuller build replaces this one file.
  */
 import type { NavItem } from "@/components/nav";
+import type { Member } from "@/lib/session";
 
-export const menuExtra = (): { test: NavItem[]; train: NavItem[] } => ({ test: [], train: [] });
+export interface MenuExtra { track: NavItem[]; test: NavItem[]; train: NavItem[]; you: NavItem[] }
+
+export const menuExtra = (_m: Member): MenuExtra => ({ track: [], test: [], train: [], you: [] });

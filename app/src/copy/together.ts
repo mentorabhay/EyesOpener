@@ -41,6 +41,17 @@ export const together = texts("copy/together", "together", () => ({
     ].filter(Boolean).join(", "),
   },
 
+  /** The page's four parts (Ved, 18 October 2026: the whole page was 5,000 px on a phone). */
+  tabs: {
+    label: "Parts of Together",
+    names: { cheer: "Cheer", share: "Share", join: "Join in", learn: "Learn" },
+    subs: {
+      cheer: "Send a light, a letter or a shared streak to someone who is practising.",
+      share: "What helped you, as an idea others can try, a note or a drawing.",
+      join: "Things many people do at once: the league, the map, a class mission, a film night.",
+      learn: "What the community has found out, and the research behind the app.",
+    },
+  },
   features: {
     title: "Things to do together",
     league: { name: "Show-up league", what: "Teams are ranked by the days they finished their practice. Nothing else counts." },

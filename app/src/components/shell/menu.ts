@@ -15,10 +15,11 @@ const n = common.nav, s = common.shell;
 export interface MenuGroup { title: string; items: NavItem[]; icon?: string }
 
 export function menuGroups(m: Member): MenuGroup[] {
-  const child = m.childMode, x = menuExtra();
+  const child = m.childMode, x = menuExtra(m);
   const you = child ? [] : [
     { href: "/account", label: n.account },
     ...(isGuardianSeat(m.seat) ? [{ href: "/family", label: n.family }] : [{ href: "/circle", label: n.circle }]),
+    ...x.you,
     { href: "/settings", label: n.settings },
   ];
   /* Each person sees only the areas their roles open. Child mode hides the grown-up links. */
@@ -29,7 +30,11 @@ export function menuGroups(m: Member): MenuGroup[] {
     { href: "/login", label: n.switchPerson },
   ];
   return [
-    { title: n.track, items: [child ? { href: "/kids", label: kids.home } : { href: "/today", label: n.today }] },
+    { title: n.track, items: child ? [{ href: "/kids", label: kids.home }] : [
+      { href: "/today", label: n.today },
+      ...(m.enrolment ? [{ href: "/today/week", label: n.week }] : []),
+      ...x.track,
+    ] },
     { title: n.test, items: [{ href: "/test", label: n.checkups }, ...x.test, ...(child ? [] : [{ href: "/setup", label: n.onboarding }])] },
     { title: n.train, items: [{ href: "/train", label: n.games }, { href: "/train/exercises", label: n.exercises }, { href: "/train/cinema", label: n.cinema }, ...x.train] },
     { title: n.together, items: [{ href: "/together", label: n.community }, { href: "/together/league", label: n.league }] },

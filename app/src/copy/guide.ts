@@ -15,6 +15,7 @@ export const guide = texts("copy/guide", "guide", () => ({
   pause: "Pause the steps",
   play: "Play the steps",
   watch: "Watch the steps",
+  stepsCount: (n: number) => `${n} steps`,
   more: "Read more",
   moreAbout: (what: string) => `Read more about ${what}`,
   moreHint: "Everything else about this page",

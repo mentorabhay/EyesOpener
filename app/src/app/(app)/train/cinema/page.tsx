@@ -6,11 +6,12 @@ import { planFor, STANDARD_PLAN } from "@/components/film/chapters";
 import { StepFlow } from "@/components/guide/flow";
 import { Icon } from "@/components/guide/icons";
 import { Fold, More } from "@/components/guide/more";
-import { Card, EvidenceChip, PageHead, SceneThumb } from "@/components/ui";
+import { Card, PageHead } from "@/components/ui";
+import { GameMini } from "@/components/library/cards";
 import { guide as gw } from "@/copy/guide";
 import { cinema as c } from "@/copy/cinema";
 import { train as t } from "@/copy/train";
-import { games, mechanismOf } from "@/data";
+import { games } from "@/data";
 import { percent } from "@/engine";
 import { kindOf } from "@/games/built";
 import { readStatuses } from "@/lib/catalogue";
@@ -18,7 +19,7 @@ import { requireMember } from "@/lib/session";
 import { setupOf } from "@/lib/setup";
 import { SetupGate } from "@/components/setup/setup";
 import { CINEMA, doseFor, pastSessions, statusFor } from "@/lib/sessions";
-import { forWhom, isListed, statusOf } from "@/lib/status";
+import { isListed, statusOf } from "@/lib/status";
 import css from "./cinema.module.css";
 import { Player } from "./player";
 
@@ -64,18 +65,8 @@ export default async function CinemaPage({ searchParams }: { searchParams: Promi
       {activities.length > 0 && (
         <>
           <h2>{t.cinema.activities.title}</h2>
-          <div className="grid-cards">
-            {activities.map((g) => (
-              <Link key={g.slug} href={`/train/games/${g.slug}`} className="gcard">
-                <SceneThumb thumb={g.thumb} label={g.name} />
-                <div className="b">
-                  <h3>{g.name}</h3>
-                  <div className="row"><EvidenceChip level={mechanismOf(g.mechanism).evidence} /></div>
-                  <p>{g.purpose}</p>
-                  <p className="small">{forWhom(g.for)}</p>
-                </div>
-              </Link>
-            ))}
+          <div className="mini-grid">
+            {activities.map((g) => <GameMini key={g.slug} g={g} status={statusOf(statuses, "game", g.slug)} />)}
           </div>
         </>
       )}

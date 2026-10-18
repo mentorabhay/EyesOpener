@@ -11,6 +11,8 @@ import { lastDays, requireMember } from "@/lib/session";
 import { TodayRewards } from "@/components/together/today-rewards";
 import { TodayChapter } from "./chapter";
 import { programmeWords } from "@/data/words";
+import { WelcomeCard } from "@/components/welcome";
+import { welcomeOf } from "@/lib/welcome";
 
 export const generateMetadata = (): Metadata => ({ title: t.title });
 
@@ -26,7 +28,7 @@ export default async function TodayPage() {
   const [streak] = await db.select().from(schema.streak).where(eq(schema.streak.profileId, m.profile.id));
   const programme = m.enrolment ? programmeBySlug(m.enrolment.programme) : null;
   /* The week of the programme and today's chapter. Reading it also moves the stored week on with the calendar. */
-  const view = await programmeView(m);
+  const [view, welcome] = await Promise.all([programmeView(m), welcomeOf(m)]);
   const dose = canStart({ kind: "game", minutesToday: d.trainMinutes, ...m.dose });
 
   const week = span.map(({ key, label }) => {
@@ -42,6 +44,7 @@ export default async function TodayPage() {
         sub={programme && view.state === "active" ? `${plan.card.weekOf(programmeWords(programme).name, view.week, view.weeks)} ${programmeWords(programme).doseBasis}` : t.notEnrolled}
         stats={[{ value: streak?.current ?? 0, label: t.streakDays }, { value: `${Math.round(d.screenMinutes / 6) / 10} h`, label: t.screen }]}
       />
+      {welcome && <WelcomeCard w={welcome} />}
       {/* Rewards: the sunset once the day's minutes are done, and a quiet line on a first depth day. */}
       <TodayRewards m={m} />
       <div className="bento">

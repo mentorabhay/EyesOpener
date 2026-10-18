@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { BrowserNotices } from "@/components/notify/browser";
 import { Btn, Card, Chip, PageHead } from "@/components/ui";
 import { common } from "@/copy/common";
@@ -29,7 +28,7 @@ export default async function NotificationsPage() {
             {rows.map((n) => (
               <li key={n.id} className="rowlink">
                 <div style={{ display: "flex", flexDirection: "column", gap: 4, minWidth: 0 }}>
-                  <b>{n.href ? <Link className="stretch" href={n.href}>{n.title}</Link> : n.title} {!n.readAt && <Chip tone="ok">{l.unread}</Chip>}</b>
+                  <b>{n.href ? <a className="stretch" href={`/today/notifications/${n.id}`}>{n.title}</a> : n.title} {!n.readAt && <Chip tone="ok">{l.unread}</Chip>}</b>
                   <span className="muted small">{n.body}</span>
                   <span className="muted small">{fmt.format(n.createdAt)}</span>
                 </div>

@@ -1,8 +1,9 @@
-.sub { display: flex; gap: 6px; flex-wrap: wrap; position: sticky; top: 0; z-index: 5; padding: 8px 0; background: var(--paper); }
+.sub { display: flex; gap: 6px; flex-wrap: wrap; position: sticky; top: 60px; z-index: 5; padding: 8px 0; background: var(--paper); }
 .sub a { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; border-radius: var(--r-pill); border: 1px solid var(--line); background: var(--card); color: var(--ink-2); text-decoration: none; font-size: 13.5px; white-space: nowrap; }
 .sub a:hover { color: var(--ink); border-color: var(--ink-3); }
 .count { min-width: 19px; height: 19px; padding: 0 5px; border-radius: 10px; background: var(--grad); color: #fff; font-size: 11.5px; font-weight: 600; display: inline-grid; place-items: center; }
-.group { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: 64px; }
+.group { scroll-margin-top: 64px; }
+section.group { display: flex; flex-direction: column; gap: 12px; }
 .ghead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
 .ghead h2 { font-size: 21px; }
 .ghead p { margin: 0; }
@@ -17,7 +18,7 @@ li[data-state="done"] .tstate { color: var(--ok); }
 li[data-state="again"] .tstate, li[data-state="todo"] .tstate { color: var(--warn); }
 .tiles li[data-state="again"], .tiles li[data-state="todo"] { border-color: var(--warn-bg); }
 @media (max-width: 980px) {
-  .sub { flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 8px 16px; scrollbar-width: none; }
+  .sub { top: 56px; flex-wrap: nowrap; overflow-x: auto; margin: 0 -16px; padding: 8px 16px; scrollbar-width: none; }
   .status { margin-left: 0; width: 100%; }
 }
 .top { align-items: start; }

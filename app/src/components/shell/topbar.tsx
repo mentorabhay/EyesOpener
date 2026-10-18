@@ -4,20 +4,20 @@
  * search and the bell. Translucent, and it stays at the top while the page scrolls.
  */
 import Link from "next/link";
-import type { ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { BrandMark } from "@/components/brand";
 import { common } from "@/copy/common";
 import { RailToggle } from "./rail";
 import { AppSearch } from "./search";
 import { ThemeToggle } from "./theme";
-import { AccountMenu, type MenuProfile } from "./account-menu";
+import { AccountMenu } from "./account-menu";
 
 export function TopBar({ home, search = true, person, children }: {
   /** The area's home: Today for a family, the members list for a counsellor. */
   home: string;
   search?: boolean;
   /** The person's initial and where it leads (their settings), or their menu with the household's profiles. */
-  person?: { initial: string; href: string; label: string } | { menu: { initial: string; name: string; email: string; profiles: MenuProfile[]; current: string; guardian: boolean } };
+  person?: { initial: string; href: string; label: string } | { menu: ComponentProps<typeof AccountMenu> };
   children?: ReactNode;
 }) {
   return (

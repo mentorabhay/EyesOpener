@@ -5,6 +5,7 @@
  * reminders, src/app/api/notifications/route.ts). Nothing pops up over the page. When the person has switched on the
  * browser's notifications on this computer (Notifications page), a new one is also shown by the browser.
  */
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { notify } from "@/copy/notify";
 import css from "./notify.module.css";
@@ -42,7 +43,7 @@ export function NotifyBell({ start }: { start: number }) {
       if (b.fresh.length && browserWanted() && "Notification" in window && Notification.permission === "granted") {
         for (const f of b.fresh) {
           const n = new Notification(f.title, { body: f.body, tag: f.id, icon: "/icon.png", silent: true });
-          n.onclick = () => { window.focus(); if (f.href) location.href = f.href; };
+          n.onclick = () => { window.focus(); location.href = `/today/notifications/${f.id}`; };
         }
       }
     };
@@ -88,12 +89,12 @@ export function NotifyBell({ start }: { start: number }) {
             <ul className={css.items}>
               {items.map((x) => (
                 <li key={x.id} data-read={x.read || undefined}>
-                  <a href={x.href ?? "/today/notifications"} onClick={() => void read(x.id)}><b>{x.title}</b><span>{x.body}</span></a>
+                  <a href={`/today/notifications/${x.id}`}><b>{x.title}</b><span>{x.body}</span></a>
                 </li>
               ))}
             </ul>
           )}
-          <a className={css.all} href="/today/notifications">{words.all}</a>
+          <Link className={css.all} href="/today/notifications" onClick={() => setOpen(false)}>{words.all}</Link>
         </div>
       )}
     </div>

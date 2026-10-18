@@ -51,7 +51,10 @@ export default async function CounsellorHome() {
                     <Progress value={m.daysPractised / 7} label={l.practisedLabel} />
                     <span className="small muted tnum">{l.practised(m.daysPractised)}</span>
                   </div>
-                  <Link href={`/counsellor/members/${m.linkId}`} className="btn btn-sm" aria-label={l.openOf(m.name)}>{l.open}</Link>
+                  <div className="row" style={{ gap: 6 }}>
+                    <Link href={`/counsellor/members/${m.linkId}`} className="btn btn-sm btn-d" aria-label={l.openOf(m.name)}>{l.open}</Link>
+                    <Link href={`/counsellor/members/${m.linkId}/reminders`} className="btn btn-sm" aria-label={l.goOf(l.go.reminders, m.name)}>{l.go.reminders}</Link>
+                  </div>
                 </div>
               ))}
             </div>

@@ -136,6 +136,17 @@ export async function markRead(appUserId: string, id?: string) {
     .where(and(eq(schema.notification.appUserId, appUserId), isNull(schema.notification.readAt), ...(id ? [eq(schema.notification.id, id)] : [])));
 }
 
+/**
+ * Opening a notice marks it read and answers the page it leads to (Ved, 18 October 2026: a notice stayed "new" after
+ * it was opened). Only a plain path of the app is followed; anything else, and a notice of someone else, opens the list.
+ */
+export async function openNotice(appUserId: string, id: string): Promise<string> {
+  const [row] = await db.update(schema.notification).set({ readAt: sql`coalesce(${schema.notification.readAt}, now())` })
+    .where(and(eq(schema.notification.appUserId, appUserId), eq(schema.notification.id, id))).returning({ href: schema.notification.href });
+  const href = row?.href ?? "";
+  return /^\/(?![/\\])[\w\-./?=&%#]*$/.test(href) ? href : "/today/notifications";
+}
+
 export async function remindersOf(accountId: string, profileId?: string) {
   return db.select().from(schema.reminder)
     .where(and(eq(schema.reminder.accountId, accountId), ...(profileId ? [eq(schema.reminder.profileId, profileId)] : [])))

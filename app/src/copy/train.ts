@@ -93,6 +93,16 @@ export const train = texts("copy/train", "train", () => ({
     films: (n: number) => `${n} film ${n === 1 ? "activity is" : "activities are"} in the Two-eye cinema.`,
     toCinema: "Open the cinema",
     showAll: "Show all evidence levels",
+    find: "Find a game",
+    count: (n: number) => (n === 1 ? "1 game" : `${n} games`),
+    library: "Every game, by kind",
+    librarySub: "Open a kind to see its games. The strongest evidence comes first.",
+  },
+  /** The top of the Games and Exercises lists: what this person is asked to do, then what they did lately (lib/for-you.ts). */
+  forYou: {
+    title: (name: string) => `For ${name}`,
+    why: { counsellor: (by: string) => `From ${by}`, week: "This week's plan", recent: "Played lately" },
+    recentExercise: "Done lately",
   },
   game: {
     crumb: "Games",
@@ -154,6 +164,9 @@ export const train = texts("copy/train", "train", () => ({
     allGroups: "All",
     labels: { for: "For", gear: "Gear", dose: "Dose" },
     none: "No exercises match these filters.",
+    find: "Find an exercise",
+    count: (n: number) => (n === 1 ? "1 exercise" : `${n} exercises`),
+    library: "Every exercise, by what it is for",
   },
   exercise: {
     crumb: "Exercises",

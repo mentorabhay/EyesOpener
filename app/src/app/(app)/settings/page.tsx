@@ -21,6 +21,8 @@ import { setup as su } from "@/copy/setup";
 import { Ring } from "@/components/setup/setup";
 import { mayCalibrate } from "@/lib/screen-rules";
 import css from "./settings.module.css";
+import { Tiles } from "@/components/shell/tiles";
+import { OpenOnHash } from "@/components/shell/open-on-hash";
 import { askCounsellor, leave, start } from "./actions";
 import { Confirm } from "./confirm";
 import { DataCard } from "./data/card";
@@ -47,18 +49,26 @@ export default async function SettingsPage() {
   const tiles = setup.steps.filter((st) => st.required && st.key !== "safety" && st.key !== "eyes" && st.state !== "skip");
   const left = setup.steps.filter((st) => st.required && (st.state === "todo" || st.state === "again")).length;
   const may = (key: string) => (key === "balance" ? m.can("test") : mayCalibrate(m));
-  /* a group's heading alone says what it holds: its longer line is no longer shown */
-  const group = (id: string, title: string, _sub: string, children: ReactNode, top = false) => (
-    <section id={id} className={css.group} aria-labelledby={`${id}-h`}>
-      <div className={css.ghead}><h2 id={`${id}-h`}>{title}</h2></div>
-      <div className={top ? `bento ${css.top}` : "bento"}>{children}</div>
-    </section>
+  /* Each group folds under its heading (Ved, 18 October 2026: the page was 3,400 px on a phone); the person's own
+     settings start open. A link to #group opens its fold (components/shell/open-on-hash.tsx). */
+  const group = (id: string, title: string, sub: string, children: ReactNode, top = false, open = false) => (
+    <details id={id} className={`fam ${css.group}`} open={open}>
+      <summary><span className="stack" style={{ gap: 2 }}><b>{title}</b><span className="muted small">{sub}</span></span></summary>
+      <div className={`fam-body ${top ? `bento ${css.top}` : "bento"}`}>{children}</div>
+    </details>
   );
 
   return (
     <>
       <PageHead title={t.title} />
+      <OpenOnHash />
       {!canManage && <p className="notice">{t.guardianOnly}</p>}
+      <Tiles label={t.quick.label} items={[
+        { href: "/settings/screen", label: t.quick.screen, sub: t.quick.screenSub },
+        { href: "/settings/reminders", label: t.quick.reminders, sub: t.quick.remindersSub },
+        ...(canManage ? [{ href: "/settings/profiles/new", label: t.quick.person, sub: t.quick.personSub, icon: "/settings/profiles" }] : []),
+        { href: "/settings/data", label: t.quick.data, sub: t.quick.dataSub },
+      ]} />
       <nav className={css.sub} aria-label={gr.menu}>
         {(["before", "profile", "family", "screens", "language"] as const).map((k) => (
           <a key={k} href={`#${k}`}>{gr[k].title}{k === "before" && left > 0 && <span className={css.count}>{left}</span>}</a>
@@ -149,7 +159,7 @@ export default async function SettingsPage() {
             </>
           )}
         </Card>
-      </>)}
+      </>, false, true)}
 
       {group("family", gr.family.title, gr.family.sub, <>
         <Card title={f.title} span={7} right={canManage && <Btn href="/settings/profiles/new" small>{f.add}</Btn>}>

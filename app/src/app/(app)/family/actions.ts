@@ -69,6 +69,31 @@ export async function handOver(formData: FormData) {
   redirect(KIDS_HOME);
 }
 
+/**
+ * Child mode in one step from the person's menu in the top bar (Ved, 18 October 2026: it was buried on the Family
+ * page). With no exit PIN yet, a guardian types one in the same step and it is saved first. Anything that stops the
+ * hand-over (no consent yet, no PIN and no right to set one) opens the Family page, which says what is missing.
+ */
+export async function handOverQuick(formData: FormData) {
+  const m = await requireMember();
+  const profileId = id(formData, "profileId");
+  if (!m.can("manage_family") || !profileId.success) redirect("/family");
+  let hasPin = !!m.account.exitPinHash;
+  if (!hasPin) {
+    const pin = z.string().regex(/^\d{4,6}$/).safeParse(formData.get("pin"));
+    if (!m.can("seats") || !pin.success) redirect("/family");
+    await setExitPin(m, pin.data);
+    hasPin = true;
+  }
+  /* the member was read before the PIN was saved: hand over with the PIN as it is now */
+  const child = await childToHandTo({ ...m, account: { ...m.account, exitPinHash: hasPin ? (m.account.exitPinHash ?? "set") : null } }, profileId.data);
+  if (!child) redirect("/family");
+  (await cookieJar()).set(CHILD_COOKIE, signToken({ profileId: child.id, accountId: m.account.id, exp: Date.now() + CHILD_MODE_MS }),
+    { path: "/", httpOnly: true, sameSite: "lax", secure: secureCookies(), maxAge: CHILD_MODE_MS / 1000 });
+  revalidatePath("/", "layout");
+  redirect(KIDS_HOME);
+}
+
 export async function groupJoin(_: FormState, formData: FormData): Promise<FormState> {
   const m = await requireMember();
   if (!m.can("manage_family")) return { ok: false, message: t.notAllowed };

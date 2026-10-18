@@ -9,9 +9,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { common } from "@/copy/common";
 import type { SearchItem } from "@/lib/search-index";
 import { NavIcon } from "./icons";
+import { switchProfile } from "@/lib/actions";
 
 const s = common.shell.search;
-const ORDER = ["page", "checkup", "game", "exercise"] as const;
+const ORDER = ["person", "page", "checkup", "game", "exercise"] as const;
 const words = (q: string) => q.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").split(/[^\p{L}\p{N}]+/u).filter(Boolean);
 
 /** Items whose name has every typed word at the start of one of its words; then those whose description has them. */
@@ -44,7 +45,15 @@ export function AppSearch() {
   const grouped = useMemo(() => ORDER.map((k) => ({ k, list: found.filter((f) => f.kind === k) })).filter((g) => g.list.length), [found]);
   const flat = grouped.flatMap((g) => g.list);
 
-  const go = useCallback((i: SearchItem | undefined) => { if (!i) return; hide(); router.push(i.href); }, [hide, router]);
+  const go = useCallback((i: SearchItem | undefined) => {
+    if (!i) return;
+    hide();
+    if (!i.switchTo) { router.push(i.href); return; }
+    /* a person of the household: switch to them, then open their Today */
+    const f = new FormData();
+    f.set("profileId", i.switchTo);
+    void switchProfile(f).then(() => { router.push(i.href); router.refresh(); });
+  }, [hide, router]);
 
   /* "/" or Ctrl+K opens the search; a click outside closes it */
   useEffect(() => {
@@ -94,9 +103,9 @@ export function AppSearch() {
                 {g.list.map((i) => {
                   const n = flat.indexOf(i);
                   return (
-                    <a key={i.href} id={`tb-s-${n}`} role="option" aria-selected={n === at} href={i.href} className="tb-item"
+                    <a key={i.switchTo ?? i.href} id={`tb-s-${n}`} role="option" aria-selected={n === at} href={i.href} className="tb-item"
                       onMouseEnter={() => setAt(n)} onClick={(e) => { e.preventDefault(); go(i); }}>
-                      <span className="tb-item-icon"><NavIcon href={i.href} /></span>
+                      <span className="tb-item-icon">{i.switchTo ? <b aria-hidden="true">{i.label.slice(0, 1).toUpperCase()}</b> : <NavIcon href={i.href} />}</span>
                       <span className="tb-item-text"><b>{i.label}</b>{i.hint && <small>{i.hint}</small>}</span>
                     </a>
                   );

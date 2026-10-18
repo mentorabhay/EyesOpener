@@ -12,6 +12,18 @@
   content: ""; position: absolute; z-index: -1; inset: -60% -20% auto 40%; height: 160%;
   background: radial-gradient(closest-side, rgb(139 49 240 / 0.09), transparent 70%); pointer-events: none;
 }
+/* a strip shown before on this browser: one line that opens it */
+.unfold { display: none; }
+.flow[data-folded] { padding: 0; background: none; border: 0; box-shadow: none; animation: none; align-items: flex-start; overflow: visible; }
+.flow[data-folded]::before { display: none; }
+.flow[data-folded] > :not(.unfold) { display: none; }
+.flow[data-folded] .unfold {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px; border-radius: 999px;
+  border: 1px solid var(--line-2); background: var(--card); color: var(--ink-2); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+}
+.flow[data-folded] .unfold:hover { border-color: var(--ink-4); color: var(--ink); }
+.unfold svg { width: 11px; height: 11px; fill: currentColor; }
+.unfold span { color: var(--ink-3); font-weight: 500; }
 .top { display: flex; align-items: center; gap: 12px; min-height: 26px; }
 .kicker { font-size: 12px; font-weight: 600; color: var(--ink-3); white-space: nowrap; }
 .bars { display: flex; gap: 4px; flex: 1; min-width: 40px; }
