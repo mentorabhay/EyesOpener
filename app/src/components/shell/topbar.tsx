@@ -9,6 +9,7 @@ import { BrandMark } from "@/components/brand";
 import { common } from "@/copy/common";
 import { RailToggle } from "./rail";
 import { AppSearch } from "./search";
+import { ThemeToggle } from "./theme";
 
 export function TopBar({ home, search = true, person, children }: {
   /** The area's home: Today for a family, the members list for a counsellor. */
@@ -24,6 +25,7 @@ export function TopBar({ home, search = true, person, children }: {
       <Link href={home} className="tb-home" aria-label={common.shell.home}><BrandMark /><span>{common.product}</span></Link>
       {search && <AppSearch />}
       <div className="tb-end">
+        <ThemeToggle />
         {children}
         {person && <Link href={person.href} className="tb-person" aria-label={person.label} title={person.label}>{person.initial}</Link>}
       </div>

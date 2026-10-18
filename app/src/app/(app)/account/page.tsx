@@ -11,6 +11,7 @@ import { common } from "@/copy/common";
 import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 import { signOutEverywhere, signOutHere } from "@/app/(auth)/login/actions";
+import { ThemeChoice } from "@/components/shell/theme";
 import { renameMe } from "./actions";
 import css from "./account.module.css";
 
@@ -87,7 +88,11 @@ export default async function AccountPage() {
             ))}
           </ul>
         </Card>
-        <Card span={5} title={t.signingOut}>
+        <Card span={5} title={common.shell.theme.label}>
+          <ThemeChoice />
+          <p className="muted small" style={{ marginTop: 10 }}>{common.shell.theme.hint}</p>
+        </Card>
+        <Card span={12} title={t.signingOut}>
           <form action={signOutHere}><button className="btn btn-d">{t.signOut}</button></form>
           {v.real && (
             <form action={signOutEverywhere} className="stack" style={{ marginTop: 14 }}>

@@ -20,9 +20,12 @@
 .s-links a:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
 .s-links a[aria-current="page"] { color: var(--ink); font-weight: 600; }
 .s-links a[aria-current="page"]::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; border-radius: 2px; background: var(--grad); }
-.s-links .s-phone-only, .s-menu-search, .s-menu-actions, .s-link-icon, .s-link-text { display: none; }
+.s-links .s-phone-only, .s-menu-search, .s-menu-actions, .s-menu-theme, .s-link-icon, .s-link-text { display: none; }
 .s-link-words { display: contents; }
 .s-navr { order: 2; margin-left: auto; display: flex; align-items: center; gap: 8px; flex: none; }
+.s-theme { flex: none; width: 40px; height: 40px; border-radius: var(--r-sm); border: 0; background: transparent; color: var(--ink-2); display: inline-grid; place-items: center; cursor: pointer; padding: 0; }
+.s-theme:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); color: var(--ink); }
+.s-theme:focus-visible { outline: 2px solid var(--g1); outline-offset: 2px; }
 .s-burger { order: 3; display: none; width: 40px; height: 40px; border-radius: var(--r-sm); border: 1px solid var(--line-2); background: var(--card); cursor: pointer; align-items: center; justify-content: center; padding: 0; }
 .s-burger svg { width: 18px; height: 18px; display: block; }
 @media (max-width: 940px) {
@@ -46,6 +49,8 @@
   .s-link-label { font-size: 16.5px; font-weight: 600; color: var(--ink); }
   .s-link-text { display: block; font-size: 13.5px; color: var(--ink-3); }
   .s-links a[aria-current="page"]::after { display: none; }
+  .s-navr .s-theme { display: none; }
+  .s-menu-theme { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; padding: 12px 8px 0; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
   .s-menu-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; padding-top: 18px; }
   .s-links .s-menu-actions .btn { justify-content: center; min-height: 48px; padding: 12px 18px; font-size: 16px; border-radius: var(--r-pill); }
   .s-links .s-menu-actions .btn-d { background: var(--ink); border-color: var(--ink); color: var(--card); }

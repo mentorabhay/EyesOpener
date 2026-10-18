@@ -16,6 +16,12 @@ export const common = texts("copy/common", "common", () => ({
   /** The frame around every signed-in page (src/components/shell): the top bar, the folding menu, search, the tabs and the footer. */
   shell: {
     collapse: "Fold the menu", expand: "Open the menu", home: "Back to Today",
+    theme: {
+      label: "Light or dark",
+      switchTo: { light: "Switch to light", dark: "Switch to dark" },
+      names: { light: "Light", dark: "Dark", auto: "As this device" },
+      hint: "Kept on this device. \"As this device\" follows the light or dark setting of your phone or computer.",
+    },
     you: "Your settings",
     tabs: { today: "Today", checkups: "Check-ups", train: "Train", together: "Together", you: "You", kids: "Home", grownUp: "Grown-up" },
     search: {

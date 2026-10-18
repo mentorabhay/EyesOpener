@@ -10,6 +10,8 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site as t } from "@/copy/site";
 import { inEdition } from "@/edition";
+import { ThemeChoice, ThemeToggle } from "@/components/shell/theme";
+import { common } from "@/copy/common";
 
 const MENU_ID = "site-menu";
 
@@ -90,6 +92,7 @@ export function SiteNav({ home }: { home: string | null }) {
             <span className="s-link-words"><span className="s-link-label">{l.label}</span><span className="s-link-text">{l.text}</span></span>
           </Link>
         ))}
+        <div className="s-menu-theme"><span>{common.shell.theme.label}</span><ThemeChoice /></div>
         <div className="s-menu-actions">
           {home
             ? <Link className="btn btn-d" href={home} onClick={close}>{t.nav.openApp}</Link>
@@ -100,6 +103,7 @@ export function SiteNav({ home }: { home: string | null }) {
         </div>
       </nav>
       <div className="s-navr">
+        <ThemeToggle className="s-theme" />
         {home
           ? <Link className="btn btn-d btn-sm" href={home}>{t.nav.openApp}</Link>
           : <>

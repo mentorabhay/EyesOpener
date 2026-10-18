@@ -10,12 +10,14 @@ import "./globals.css";
 import { LanguageBody, LanguageHead, pageLanguage } from "@/i18n/html";
 import { designAttrs, designCss } from "@/lib/design/config";
 import { readDesign } from "@/lib/design/read";
+import { common } from "@/copy/common";
+import { THEME_BOOT } from "@/components/shell/theme";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { brand } = await readDesign();
   return {
     title: { default: brand.name, template: `%s · ${brand.name}` },
-    description: "Eye care you can do at home, built on published research. Free, with an open-source core.",
+    description: common.tagline,
   };
 }
 export const viewport: Viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
@@ -26,8 +28,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   /* The look and feel from the admin room (src/lib/design): validated colours and numbers only, defaults if none. */
   const design = await readDesign();
   return (
-    <html lang={l.tag} dir={l.dir} data-script={l.script} {...designAttrs(design)}>
+    <html lang={l.tag} dir={l.dir} data-script={l.script} {...designAttrs(design)} suppressHydrationWarning>
       <head>
+        {/* light or dark as chosen on this device, before anything is drawn (components/shell/theme.tsx) */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <style id="eo-design" dangerouslySetInnerHTML={{ __html: designCss(design) }} />
         <LanguageHead l={l} />
         {/* The page's own words in its language, loaded before the page comes alive so the browser draws what the server sent. */}
