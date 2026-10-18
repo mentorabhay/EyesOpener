@@ -15,6 +15,7 @@ import type { NextRequest } from "next/server";
 import { choiceOf, passOn } from "@/i18n/request";
 import { requestJar } from "@/lib/cookie-jar";
 import { GATE_COOKIE, gatePassed, isOpenPath, lockScope, siteLock } from "@/lib/gate";
+import { NONCE_HEADER, newNonce, scriptRule, scriptRuleHeader, scriptRuleMode } from "@/lib/csp-scripts";
 import { childMove } from "@/lib/roles";
 import { verifyToken } from "@/lib/token";
 
@@ -32,8 +33,20 @@ export async function proxy(req: NextRequest) {
   }
 
   const instead = childMove(path);
-  if (!instead || !verifyToken(jar.get("io_child")?.value)) return passOn(req, await choiceOf(req));
+  if (!instead || !verifyToken(jar.get("io_child")?.value)) return withScriptRule(req, await choiceOf(req));
   return moveTo(req, instead);
+}
+
+/** Passes the request on with this page's script nonce and rule (lib/csp-scripts.ts): on the request, where Next.js
+ *  and our start-up scripts read it, and on the answer, where the browser keeps to it. */
+async function withScriptRule(req: NextRequest, choice: Awaited<ReturnType<typeof choiceOf>>): Promise<NextResponse> {
+  const mode = scriptRuleMode();
+  /* a nonce sent by the browser itself is never believed */
+  if (mode === "off") return passOn(req, choice, { [NONCE_HEADER]: "" });
+  const nonce = newNonce(), rule = scriptRule(nonce), header = scriptRuleHeader(mode);
+  const res = passOn(req, choice, { [NONCE_HEADER]: nonce, [header]: rule });
+  res.headers.set(header, rule);
+  return res;
 }
 
 /**

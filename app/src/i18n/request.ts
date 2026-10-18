@@ -31,8 +31,9 @@ export async function choiceOf(req: NextRequest): Promise<Choice> {
  * browser is never believed. When the browser's cookie names a language it may not have (staff switched it off),
  * the cookie is put back to English, and the page notices and loads afresh (src/i18n/watch.tsx).
  */
-export function passOn(req: NextRequest, choice: Choice): NextResponse {
+export function passOn(req: NextRequest, choice: Choice, extra: Record<string, string> = {}): NextResponse {
   const headers = new Headers(req.headers);
+  for (const [k, v] of Object.entries(extra)) headers.set(k, v);
   headers.set(LANG_HEADER, writeChoice(choice));
   headers.set(PATH_HEADER, req.nextUrl.pathname + req.nextUrl.search);
   const res = NextResponse.next({ request: { headers } });

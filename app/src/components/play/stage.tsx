@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type KeyboardEvent as KeyEvent } from "react";
 import { train as t } from "@/copy/train";
 import { drillable } from "@/drills/registry";
 import type { GameProps, Stats } from "@/games/kit";
@@ -17,10 +17,14 @@ const s_ = t.stage;
 /** Where the member has got to, read from the game's live record while it runs: level, best level, right answers. */
 interface Reached { level: number; top: number; right: number; up: number | null }
 
-/** The level, the best level of this session, the right answers and the chapter's minutes, in one line. */
+/**
+ * The level, the best level of this session, the right answers and the chapter's minutes, in one line. A plain group,
+ * not a live region: the clock in it changes every second, and a screen reader would read the whole line each time.
+ * The level alone is spoken when it changes (`LevelSpoken`).
+ */
 function StageLine({ r, s }: { r: Reached | null; s: TrainSession }) {
   return (
-    <span className="stage-line" role="status" aria-label={s_.line}>
+    <span className="stage-line" role="group" aria-label={s_.line}>
       {r && r.level > 0 && <b className="chip tnum" data-b="grad">{s_.level(r.level)}</b>}
       {r && r.top > r.level && <span className="chip tnum" data-b="plain">{s_.best(r.top)}</span>}
       {r && r.right > 0 && <span className="chip tnum" data-b="plain">{s_.right(r.right)}</span>}
@@ -29,6 +33,9 @@ function StageLine({ r, s }: { r: Reached | null; s: TrainSession }) {
     </span>
   );
 }
+
+/** Says the level to a screen reader when it changes, and nothing else. One per stage, outside the line (drawn twice in full screen). */
+const LevelSpoken = ({ level }: { level: number }) => <span className="sr-only" aria-live="polite" aria-atomic="true">{level > 0 ? s_.level(level) : ""}</span>;
 
 /**
  * Everything around a game or an exercise drill: the session, the countdown, the stop rule, the glasses view
@@ -118,6 +125,14 @@ export function Stage({ slug, dose, help, kind = "game", labels, lens = true, jo
     return () => window.clearTimeout(id);
   }, [reached?.up]);
 
+  /* Tab and Shift+Tab go round the pause card's three buttons and never into the page behind it (audit A8) */
+  const holdFocus = (e: KeyEvent<HTMLDivElement>) => {
+    if (e.key !== "Tab") return;
+    const all = Array.from(e.currentTarget.querySelectorAll<HTMLButtonElement>("button:not([disabled])"));
+    if (!all.length) return;
+    const first = all[0], last = all[all.length - 1];
+    if (e.shiftKey ? document.activeElement === first : document.activeElement === last) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+  };
   const start = (inFull = false) => {
     score.current = 0;
     detail.current = null;
@@ -142,9 +157,10 @@ export function Stage({ slug, dose, help, kind = "game", labels, lens = true, jo
         </div>
       )}
       <div className="scene ratio"><Game running={playing} paused={paused} onScore={onScore} onStats={onStats} joined={joined} {...eye} /></div>
-      {reached?.up && playing && <p className="level-up" role="status">{s_.up(reached.up)}</p>}
+      {reached?.up && playing && <p className="level-up" aria-hidden="true">{s_.up(reached.up)}</p>}
+      <LevelSpoken level={playing ? reached?.level ?? 0 : 0} />
       {paused && playing && (
-        <div className="pausecard" role="dialog" aria-label={s_.paused}>
+        <div className="pausecard" role="dialog" aria-modal="true" aria-label={s_.paused} onKeyDown={holdFocus}>
           <b>{s_.paused}</b>
           <span className="small">{s_.pausedSub}</span>
           <div className="row">

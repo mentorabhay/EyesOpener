@@ -71,6 +71,15 @@ export const common = texts("copy/common", "common", () => ({
   testerLink: "Set the status of each item",
   tryoutNote: "Your try-out space. Games, exercises and films open as a member would see them, counsellor-led ones too, and the daily limits are off. Nothing here is counted, and no member ever sees it.",
   tryoutBack: "Back to your household",
+  /* the screens shown while a page is on its way, and when a page fails (audit U2, U3) */
+  loading: "Opening the page",
+  trouble: {
+    title: "This page did not open",
+    sub: "Something went wrong on our side. Nothing you saved is lost.",
+    again: "Try again",
+    home: "Back to the start",
+    ref: (code: string) => `If it keeps happening, tell us this code: ${code}`,
+  },
   lens: {
     label: "Check the scene without glasses",
     none: "As on screen", weak: "Weaker eye sees", strong: "Stronger eye sees", joined: "Eyes joined",

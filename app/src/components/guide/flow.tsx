@@ -5,15 +5,17 @@
 import { guide as w } from "@/copy/guide";
 import { FOLD_BOOT } from "./flow-boot";
 import { StepFlowClient, type FlowStep } from "./flow-client";
+import { scriptNonce } from "@/lib/nonce";
 
 export type { FlowStep };
 
-export function StepFlow(props: { steps: FlowStep[]; label?: string; start?: number; auto?: boolean; compact?: boolean }) {
+export async function StepFlow(props: { steps: FlowStep[]; label?: string; start?: number; auto?: boolean; compact?: boolean }) {
   const label = props.label ?? w.how, auto = props.auto ?? true;
+  const nonce = auto && props.steps.length > 0 ? await scriptNonce() : undefined;
   return (
     <>
       <StepFlowClient {...props} />
-      {auto && props.steps.length > 0 && <script dangerouslySetInnerHTML={{ __html: FOLD_BOOT(label) }} />}
+      {auto && props.steps.length > 0 && <script nonce={nonce} dangerouslySetInnerHTML={{ __html: FOLD_BOOT(label) }} />}
     </>
   );
 }

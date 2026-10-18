@@ -19,11 +19,24 @@ import { homeFor, resolveStaffRole, sponsorCan, staffCan, type AdminArea, type S
 import { HOLD_COOKIE, holdOf, mayResume } from "./signin/hold";
 import { endedEverywhere, PROFILE_COOKIE, readSession, sessionCookie, tooOldForRole, USER_COOKIE, type Session } from "./signin/session-rules";
 
+import { demoProjectOk } from "./demo-project";
+
 export { USER_COOKIE };
 export const CHILD_COOKIE = HOLD_COOKIE;
 
-/** The demo sign-in is for development and the public demo. Production sets DEMO_LOGIN=off. */
-export const demoLoginOn = () => process.env.DEMO_LOGIN !== "off";
+/**
+ * The demo sign-in is for development and the staging copy. Production sets DEMO_LOGIN=off, and even if that setting
+ * were copied to it by mistake, a server whose sign-in project is a live one refuses the demo (audit S2): the demo
+ * works only with no sign-in project (a computer of a developer) or with one named for staging, development or
+ * tests, or an emulator's "demo-" project.
+ */
+let refusedSaid = false;
+export const demoLoginOn = () => {
+  if (process.env.DEMO_LOGIN === "off") return false;
+  if (demoProjectOk(process.env.FIREBASE_PROJECT_ID)) return true;
+  if (!refusedSaid) { refusedSaid = true; console.error("demo sign-in refused: DEMO_LOGIN is on, but the sign-in project is a live one"); }
+  return false;
+};
 
 /**
  * Whether the demo is on for this browser: switched on, and, when the site lock covers only the demo people

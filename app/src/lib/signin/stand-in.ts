@@ -76,7 +76,7 @@ const pair = () => crypto.generateKeyPairSync("rsa", { modulusLength: 2048 });
 const pem = (k: crypto.KeyObject) => k.export({ type: "spki", format: "pem" }).toString();
 
 export async function startStandIn(o: { port?: number; projectId?: string } = {}): Promise<StandIn> {
-  const projectId = o.projectId ?? "iopener-stand-in";
+  const projectId = o.projectId ?? "iopener-stand-in-test"; // a test name: the demo sign-in is refused on a live project (lib/demo-project.ts)
   const apiKey = `stand-in-key-${crypto.randomBytes(9).toString("hex")}`;
   const clientId = "000000000000-standin.apps.googleusercontent.com";
   const serviceToken = `stand-in-service-${crypto.randomBytes(12).toString("hex")}`;

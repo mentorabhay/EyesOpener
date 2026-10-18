@@ -39,10 +39,11 @@ export async function pageLanguage(): Promise<PageLanguage> {
   return { lang, drafts, tag: LANGUAGE[lang].tag, dir: LANGUAGE[lang].dir, script: LANGUAGE[lang].script, words };
 }
 
-/** Goes inside `<head>`: the typeface of the language's script. Nothing at all for English. */
+/** The typeface of the language's script, lifted into the head by React. Nothing at all for English. */
 export function LanguageHead({ l }: { l: PageLanguage }) {
   const sheet = fontSheet(l.lang);
-  return sheet ? <link rel="stylesheet" href={sheet} /> : null;
+  /* precedence: React lifts the sheet into the head (the layout has no <head> of its own) */
+  return sheet ? <link rel="stylesheet" href={sheet} precedence="default" /> : null;
 }
 
 /** Goes inside `<body>`: reloads the page when the browser's language has changed under it. */

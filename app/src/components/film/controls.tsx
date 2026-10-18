@@ -63,7 +63,7 @@ export function FilmControls({ film, full, mayPlay, locked, onToggle, children }
           aria-valuetext={p.placeText(clock(now), clock(all))} disabled={locked || !known}
           onChange={(e) => film.seek(Number(e.target.value))} onKeyDown={seekKeys}
         />
-        <span className="tnum muted" aria-label={p.filmLeftLabel}>{known ? p.filmLeft(clock(all - now)) : ""}</span>
+        <span className="tnum muted" role="timer" aria-label={p.filmLeftLabel}>{known ? p.filmLeft(clock(all - now)) : ""}</span>
       </div>
       <div className={css.buttons}>
         <button type="button" className={`btn ${!playing && mayPlay && !locked ? "btn-g " : ""}${css.lead}`} onClick={onToggle} disabled={locked || (!playing && !mayPlay)} data-film-play>

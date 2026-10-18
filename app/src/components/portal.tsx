@@ -17,6 +17,7 @@ import { mayTryOut } from "@/lib/session";
 import { AppFooter } from "@/components/shell/footer";
 import { RAIL_BOOT } from "@/components/shell/rail";
 import { TopBar, initialOf } from "@/components/shell/topbar";
+import { scriptNonce } from "@/lib/nonce";
 
 const n = common.nav;
 
@@ -39,9 +40,10 @@ export async function PortalShell({ area, viewer, role, groups, children }: {
   const all = groups.flatMap((g) => g.items);
   const who = viewer.user.displayName;
   const own = await ownPlaces(viewer);
+  const nonce = await scriptNonce();
   return (
     <div className="shell">
-      <script dangerouslySetInnerHTML={{ __html: RAIL_BOOT }} />
+      <script nonce={nonce} dangerouslySetInnerHTML={{ __html: RAIL_BOOT }} />
       <aside className="side">
         <Link href={all[0]?.href ?? "/"} className="logo" title={common.product}><BrandMark /><span className="side-text">{common.product}</span></Link>
         <div className="who" title={who}>

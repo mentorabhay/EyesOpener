@@ -15,6 +15,7 @@ import { menuGroups, menuPages, menuTabs } from "@/components/shell/menu";
 import { Trail } from "@/components/shell/trail";
 import { trailNames } from "@/lib/trail-names";
 import { RAIL_BOOT } from "@/components/shell/rail";
+import { scriptNonce } from "@/lib/nonce";
 import { TopBar, initialOf, zoomStyle } from "@/components/shell/topbar";
 import { Dock } from "@/components/assistant/dock";
 import { assist } from "@/lib/assist/extra";
@@ -38,7 +39,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   const groups = menuGroups(m);
   return (
     <div className="shell" style={style}>
-      <script dangerouslySetInnerHTML={{ __html: RAIL_BOOT }} />
+      <script nonce={await scriptNonce()} dangerouslySetInnerHTML={{ __html: RAIL_BOOT }} />
       <a className="skip" href="#page">{n.skip}</a>
       <InkTuneSet tune={tune} />
       <Dock chat={assist.available && !m.childMode} place="app" />

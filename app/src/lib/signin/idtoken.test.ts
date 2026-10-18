@@ -7,7 +7,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { googleKeys, keepSeconds, publicKeyFrom, SKEW_S, verifyIdToken, type KeySource, type TokenRefusal } from "./idtoken";
 import { startStandIn, type StandIn } from "./stand-in";
 
-const PROJECT = "iopener-stand-in";
+const PROJECT = "iopener-stand-in-test";
 const person = { uid: "uid-abc123", email: "Asha@Family.Example", emailVerified: true, name: "Asha" };
 const b64 = (v: unknown) => Buffer.from(JSON.stringify(v)).toString("base64url");
 

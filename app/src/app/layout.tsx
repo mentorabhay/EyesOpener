@@ -12,6 +12,7 @@ import { designAttrs, designCss } from "@/lib/design/config";
 import { readDesign } from "@/lib/design/read";
 import { common } from "@/copy/common";
 import { THEME_BOOT } from "@/components/shell/theme";
+import { scriptNonce } from "@/lib/nonce";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { brand } = await readDesign();
@@ -27,17 +28,24 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const l = await pageLanguage();
   /* The look and feel from the admin room (src/lib/design): validated colours and numbers only, defaults if none. */
   const design = await readDesign();
+  const nonce = await scriptNonce();
   return (
     <html lang={l.tag} dir={l.dir} data-script={l.script} {...designAttrs(design)} suppressHydrationWarning>
-      <head>
+      {/* No <head> of our own (audit U1, 18 October 2026). React wakes a <head> wrongly when one of its parts is still
+          on its way in the page data (a long text is sent as its own piece): it starts the head twice, loses its place,
+          and then redraws the whole page in the browser. Next.js writes the head itself; what was ours sits at the top
+          of <body>, which React wakes safely: the colour script still runs before anything is drawn, the look and feel
+          comes after the style sheets as before, the font sheet is lifted into the head by React (precedence), and
+          next/script puts a beforeInteractive script in the head wherever it is written. */}
+      <body>
         {/* light or dark as chosen on this device, before anything is drawn (components/shell/theme.tsx) */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: THEME_BOOT }} />
         <style id="eo-design" dangerouslySetInnerHTML={{ __html: designCss(design) }} />
         <LanguageHead l={l} />
         {/* The page's own words in its language, loaded before the page comes alive so the browser draws what the server sent. */}
         {l.words && <Script id="io-lang-words" strategy="beforeInteractive" src={l.words} />}
-      </head>
-      <body><LanguageBody l={l} />{children}</body>
+        <LanguageBody l={l} />{children}
+      </body>
     </html>
   );
 }

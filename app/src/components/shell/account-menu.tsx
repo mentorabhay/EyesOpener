@@ -50,21 +50,22 @@ export function AccountMenu({ initial, name, email, profiles, current, guardian,
   ];
   return (
     <div className="acct" ref={box}>
-      <button ref={button} type="button" className="tb-person" aria-haspopup="menu" aria-expanded={open} aria-label={w.open} title={w.open} onClick={toggle}>{initial}</button>
+      <button ref={button} type="button" className="tb-person" aria-expanded={open} aria-label={w.open} title={w.open} onClick={toggle}>{initial}</button>
+      {/* when open: a plain group of links and buttons that Tab moves through, not a "menu" (that role promises arrow keys; audit A8) */}
       {open && (
-        <div className="acct-panel" role="menu" aria-label={w.open}>
+        <div className="acct-panel" role="group" aria-label={w.open}>
           <div className="acct-me"><b>{name}</b><span>{email}</span></div>
           {profiles.length > 0 && (
             <div className="acct-group">
               <p className="acct-title">{w.using}</p>
               {profiles.map((p) => p.id === current ? (
-                <div key={p.id} className="acct-profile" data-on role="menuitemradio" aria-checked="true">
+                <div key={p.id} className="acct-profile" data-on aria-current="true">
                   <i aria-hidden="true">{p.initial}</i><span><b>{p.name}</b><small>{p.sub}</small></span><span className="acct-tick" aria-hidden="true">✓</span>
                 </div>
               ) : (
                 <form key={p.id} action={switchProfile} onSubmit={() => setOpen(false)}>
                   <input type="hidden" name="profileId" value={p.id} />
-                  <button type="submit" className="acct-profile" role="menuitemradio" aria-checked="false" aria-label={w.switchTo(p.name)}>
+                  <button type="submit" className="acct-profile" aria-label={w.switchTo(p.name)}>
                     <i aria-hidden="true">{p.initial}</i><span><b>{p.name}</b><small>{p.sub}</small></span>
                   </button>
                 </form>
@@ -85,24 +86,24 @@ export function AccountMenu({ initial, name, email, profiles, current, guardian,
               ) : hand.map((c) => hasPin ? (
                 <form key={c.id} action={handOverQuick}>
                   <input type="hidden" name="profileId" value={c.id} />
-                  <button type="submit" className="acct-link" role="menuitem"><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></button>
+                  <button type="submit" className="acct-link"><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></button>
                 </form>
               ) : canPin ? (
-                <button key={c.id} type="button" className="acct-link" role="menuitem" onClick={() => setPinFor(c)}><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></button>
+                <button key={c.id} type="button" className="acct-link" onClick={() => setPinFor(c)}><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></button>
               ) : (
-                <Link key={c.id} href="/family" className="acct-link" role="menuitem" onClick={() => setOpen(false)}><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></Link>
+                <Link key={c.id} href="/family" className="acct-link" onClick={() => setOpen(false)}><NavIcon href="/kids" /><span>{w.hand(c.name)}<small>{w.handSub}</small></span></Link>
               ))}
             </div>
           )}
           <div className="acct-group">
             {links.map((l) => isAction(l.href) ? (
-              <a key={l.href} href={l.href} className="acct-link" role="menuitem"><NavIcon href={l.href} />{l.label}</a>
+              <a key={l.href} href={l.href} className="acct-link"><NavIcon href={l.href} />{l.label}</a>
             ) : (
-              <Link key={l.href} href={l.href} className="acct-link" role="menuitem" onClick={() => setOpen(false)}><NavIcon href={l.href} />{l.label}</Link>
+              <Link key={l.href} href={l.href} className="acct-link" onClick={() => setOpen(false)}><NavIcon href={l.href} />{l.label}</Link>
             ))}
           </div>
           <div className="acct-group acct-theme"><span>{common.shell.theme.label}</span><ThemeChoice /></div>
-          <form action={signOutHere} className="acct-group"><button type="submit" className="acct-link acct-out" role="menuitem"><NavIcon href="/login" />{w.signOut}</button></form>
+          <form action={signOutHere} className="acct-group"><button type="submit" className="acct-link acct-out"><NavIcon href="/login" />{w.signOut}</button></form>
         </div>
       )}
     </div>
