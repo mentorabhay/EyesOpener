@@ -15,6 +15,7 @@ export const assist: Assist = {
   noteOpenItems: async () => ({ written: 0, left: 0, closed: "none" }),
   ideasChanged: async () => undefined,
   examParagraph: async () => ({ ok: false, why: "none" }),
+  chat: async () => ({ ok: false, why: "none" }),
   extraPassages: async () => [],
   searchLibrary: async () => null,
 };

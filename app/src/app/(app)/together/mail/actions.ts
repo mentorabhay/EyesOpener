@@ -7,6 +7,8 @@ import { together } from "@/copy/together";
 import { db, schema } from "@/db";
 import { fieldProblems, screenHazards } from "@/lib/community";
 import { PROFILE_COOKIE, requireMember } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 const t = together.mail;
 const Note = z.object({
@@ -32,11 +34,14 @@ export async function sendMail(_: FormState, form: FormData): Promise<FormState>
   /* The note is from the person. A profile is recorded beside them only when they picked it themselves, hold a guardian seat
      and are not writing to it: a cheer seat has no profile, and the profile a household opens on is nobody's choice. */
   const picked = (await cookieJar()).get(PROFILE_COOKIE)?.value === m.profile.id;
-  await db.insert(schema.fusionMail).values({
+  const [sent] = await db.insert(schema.fusionMail).values({
     fromUserId: m.user.id, fromName: m.user.displayName.trim().split(/\s+/)[0],
     fromProfileId: picked && m.seat !== "circle" && m.profile.id !== to.id ? m.profile.id : null,
     toProfileId: to.id, body: parsed.data.body,
-  });
+  }).returning({ id: schema.fusionMail.id });
+  /* the household's other grown-ups hear of it, quietly (src/lib/notify) */
+  const c = nw.community.mail;
+  if (sent) await notifyHousehold(m.account.id, { kind: "community.mail", title: c.title(m.user.displayName.trim().split(/\s+/)[0], to.displayName), body: c.body, href: c.href, key: `mail:${sent.id}`, profileId: to.id }, m.user.id);
   revalidatePath("/together/mail");
   return { ok: true, message: t.sent(to.displayName) };
 }

@@ -5,7 +5,7 @@ import { inEdition } from "@/edition";
 import { SiteLanguage } from "@/i18n/menu";
 import { Mark } from "./site-nav";
 
-/** The footer: the page groups, and the lines that Eyes Opener is not a medical device, has an open-source core and has no ads. */
+/** The footer: the page groups, the line that Eyes Opener is not a medical device, the language menu and the copyright line. */
 export function SiteFooter() {
   return (
     <footer className="s-foot">
@@ -26,9 +26,7 @@ export function SiteFooter() {
           <p>{common.notMedical}</p>
           {/* the language menu: only languages that are switched on (src/i18n/menu.tsx) */}
           <SiteLanguage />
-          <p className="s-chips">
-            {t.footer.promises.map((p) => <span key={p} className="chip" data-b="plain">{p}</span>)}
-          </p>
+          <p className="s-copy">{t.footer.copyright(new Date().getFullYear())}</p>
         </div>
       </div>
     </footer>

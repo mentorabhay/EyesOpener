@@ -118,14 +118,17 @@ export const looseGroups = (): string[] => [...new Set(exercises.map((e) => e.gr
 export const LIBRARY_KINDS = ["all", "games", "exercises"] as const;
 export type LibraryKind = (typeof LIBRARY_KINDS)[number];
 
-export interface LibraryFilter { tag: string; evidence: EvidenceKey | "all"; kind: LibraryKind }
+/** `q` is words to search the names by, when there are any (at most 60 letters). */
+export interface LibraryFilter { tag: string; evidence: EvidenceKey | "all"; kind: LibraryKind; q?: string }
 
 const one = (v: string | string[] | undefined) => (Array.isArray(v) ? v[0] : v);
 
 /** Reads the filter from the address. Anything unknown falls back to "show everything". */
 export function readLibraryFilter(sp: Record<string, string | string[] | undefined>): LibraryFilter {
   const tag = one(sp.tag), evidence = one(sp.evidence), kind = one(sp.kind);
+  const q = (one(sp.q) ?? "").replace(/\s+/g, " ").trim().slice(0, 60);
   return {
+    q: q || undefined,
     tag: catalogue.gameTags.some((t) => t.key === tag) ? tag! : "any",
     evidence: isEvidenceKey(evidence) ? evidence : "all",
     kind: (LIBRARY_KINDS as readonly string[]).includes(kind ?? "") ? (kind as LibraryKind) : "all",
@@ -138,6 +141,7 @@ export function libraryHref(f: LibraryFilter): string {
   if (f.tag !== "any") q.set("tag", f.tag);
   if (f.evidence !== "all") q.set("evidence", f.evidence);
   if (f.kind !== "all") q.set("kind", f.kind);
+  if (f.q) q.set("q", f.q);
   const s = q.toString();
   return s ? `/library?${s}` : "/library";
 }
@@ -148,9 +152,12 @@ export const groupForTag = (tag: string): string | null => programmes.find((p) =
 export function filterLibrary(f: LibraryFilter): { games: Game[]; exercises: Exercise[] } {
   const byEvidence = (x: { mechanism: string }) => f.evidence === "all" || evidenceOfItem(x) === f.evidence;
   const group = groupForTag(f.tag);
+  /* every word typed must be in the name, in any order and any case */
+  const words = (f.q ?? "").toLowerCase().split(" ").filter(Boolean);
+  const named = (x: { name: string }) => words.every((w) => x.name.toLowerCase().includes(w));
   return {
-    games: f.kind === "exercises" ? [] : games.filter((g) => (f.tag === "any" || g.tags.includes(f.tag)) && byEvidence(g)),
-    exercises: f.kind === "games" ? [] : exercises.filter((e) => (f.tag === "any" || e.group === group) && byEvidence(e)),
+    games: f.kind === "exercises" ? [] : games.filter((g) => (f.tag === "any" || g.tags.includes(f.tag)) && byEvidence(g) && named(g)),
+    exercises: f.kind === "games" ? [] : exercises.filter((e) => (f.tag === "any" || e.group === group) && byEvidence(e) && named(e)),
   };
 }
 

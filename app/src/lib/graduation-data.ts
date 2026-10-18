@@ -23,6 +23,8 @@ import {
 import { dayOf, startOfDay } from "@/lib/league";
 import { ranItsCourse, weekOn } from "@/lib/programme-rules";
 import type { Member } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 const E = s.enrolment, W = s.keeperWelcome, A = s.keeperAsk;
 type Enrolment = typeof E.$inferSelect;
@@ -129,12 +131,16 @@ async function meet(tx: Tx, programme: string, mine: { accountId: string; welcom
     .where(and(eq(W.programme, programme), isNull(W.givenAt), mine.welcomeId ? eq(W.id, mine.welcomeId) : ne(W.accountId, mine.accountId)))
     .orderBy(asc(W.createdAt), asc(W.id)).limit(1).for("update", { skipLocked: true });
   if (!welcome || !isWelcomeKey(welcome.line)) return false;
-  const [ask] = await tx.select({ id: A.id }).from(A)
+  const [ask] = await tx.select({ id: A.id, accountId: A.accountId }).from(A)
     .where(and(eq(A.programme, programme), isNull(A.receivedAt), inArray(A.enrolmentId, running), mine.askId ? eq(A.id, mine.askId) : ne(A.accountId, welcome.accountId)))
     .orderBy(asc(A.createdAt), asc(A.id)).limit(1).for("update", { skipLocked: true });
   if (!ask) return false;
   await tx.update(A).set({ welcomeId: welcome.id, line: welcome.line, receivedAt: now }).where(eq(A.id, ask.id));
   await tx.update(W).set({ givenAt: now }).where(eq(W.id, welcome.id));
+  /* both families hear of it, quietly (src/lib/notify); a notice must never hold up or undo the match */
+  const c = nw.community;
+  void notifyHousehold(welcome.accountId, { kind: "community.welcome", title: c.welcomeGiven.title(), body: c.welcomeGiven.body, href: c.welcomeGiven.href, key: `welcome-given:${welcome.id}` });
+  void notifyHousehold(ask.accountId, { kind: "community.welcome", title: c.welcomeGot.title(), body: c.welcomeGot.body, href: c.welcomeGot.href, key: `welcome-got:${ask.id}` });
   return true;
 }
 
@@ -211,7 +217,11 @@ export async function sendThanks(m: Member, line: unknown, now = new Date()): Pr
     const why = thanksRefusal({ canShare: m.can("share"), received: !!ask?.receivedAt, thanked: !!ask?.thanks, line });
     if (why || !ask || !isThanksKey(line)) return { ok: false as const, why: why ?? "bad_line" };
     await tx.update(A).set({ thanks: line, thanksAt: now }).where(eq(A.id, ask.id));
-    if (ask.welcomeId) await tx.update(W).set({ thanks: line, thanksAt: now }).where(and(eq(W.id, ask.welcomeId), isNull(W.thanks)));
+    if (ask.welcomeId) {
+      const [keeper] = await tx.update(W).set({ thanks: line, thanksAt: now }).where(and(eq(W.id, ask.welcomeId), isNull(W.thanks))).returning({ accountId: W.accountId });
+      const c = nw.community.thanks;
+      if (keeper) void notifyHousehold(keeper.accountId, { kind: "community.thanks", title: c.title(), body: c.body, href: c.href, key: `thanks:${ask.welcomeId}` });
+    }
     return { ok: true as const };
   });
 }

@@ -10,6 +10,10 @@ import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 import { setupOf } from "@/lib/setup";
 import { SetupBar, SetupLink } from "@/components/setup/setup";
+import { NotifyBell } from "@/components/notify/bell";
+import { Dock } from "@/components/assistant/dock";
+import { assist } from "@/lib/assist/extra";
+import { unreadCount } from "@/lib/notify/service";
 
 const n = common.nav;
 /* Functions, not lists made once: the labels are read for each request, in that reader's language (docs/LANGUAGES.md). */
@@ -26,6 +30,8 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   /* Setup sits at the top of the sidebar, with its ring, until every required step is done (src/lib/setup-rules.ts).
      Not in child mode: setup is a grown-up's job, and the child's tiles say to ask one. */
   const setup = await setupOf(m);
+  /* new notifications for this grown-up (src/lib/notify): a quiet count on the bell at the top of the page */
+  const unread = m.childMode ? 0 : await unreadCount(m.user.id);
   /* The member's eye profile reaches every screen here: the red ink, and the size of the app's own text. */
   const con = m.eye?.strongContrast ?? 1;
   const zoom = pageZoom(m.eye?.appTextPx);
@@ -47,6 +53,8 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
     <div className="shell" style={style}>
       <a className="skip" href="#page">{n.skip}</a>
       <InkTuneSet tune={tune} />
+      {!m.childMode && <NotifyBell start={unread} />}
+      <Dock chat={assist.available && !m.childMode} place="app" />
       <aside className="side">
         <Link href={m.childMode ? "/kids" : "/today"} className="logo"><BrandMark />{common.product}</Link>
         <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">

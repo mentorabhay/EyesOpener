@@ -221,6 +221,9 @@ describe.skipIf(!up)("a family's copy and a family's deletion, against the datab
     note("moderationItem", await db.insert(s.moderationItem).values({ kind: "wish", refId: wishA.id, reason: `Review ${GONE}` }).returning());
     /* package "clips": a clip that was finished on the household's screen */
     note("clipRun", await db.insert(s.clipRun).values({ accountId: A.id, profileId: P1.id, deviceId: dA.id, code: "C06", outcome: "fail", detail: { scene: "edges", answers: [1], tag: GONE }, setKey: "screen" }).returning());
+    /* package "notify": a reminder a guardian set for the child, and the notification it made when it came due */
+    const [reminderA] = note("reminder", await db.insert(s.reminder).values({ accountId: A.id, profileId: P1.id, setBy: gA.id, setByRole: "guardian", kind: "custom", note: `Remind ${GONE}`, at: "17:00" }).returning());
+    note("notification", await db.insert(s.notification).values({ appUserId: gA.id, accountId: A.id, profileId: P1.id, reminderId: reminderA.id, kind: "reminder.custom", title: `Remind ${GONE}`, body: `Body ${GONE}`, dedupe: `rem:${reminderA.id}:${DAY}:${gA.id}` }).returning());
     /* package "rewards": the day a Depth check-up first found depth; a welcome this family left, which the other family
        received and thanked for; and the welcome this family received from the other one. The two families' rows point
        at each other only through `keeper_ask.welcome_id`. */

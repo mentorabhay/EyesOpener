@@ -8,6 +8,7 @@ import { isListed, statusOf } from "@/lib/status";
 import { EVIDENCE_KEYS, filterLibrary, groupForTag, libraryHref, LIBRARY_KINDS, pageMeta, readLibraryFilter, type LibraryFilter } from "@/lib/site";
 import { ExerciseRow, GameCard } from "../_components/catalogue";
 import { Cta, Hero } from "../_components/parts";
+import { LibraryBar } from "./bar";
 
 const l = t.library;
 export const generateMetadata = (): Metadata => (pageMeta("/library", l.meta));
@@ -33,7 +34,9 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
     exercises: all.exercises.filter((e) => isListed(statusOf(statuses, "exercise", e.slug), false)),
   };
   const to = (patch: Partial<LibraryFilter>) => libraryHref({ ...f, ...patch });
-  const filtered = f.tag !== "any" || f.evidence !== "all" || f.kind !== "all";
+  const filtered = f.tag !== "any" || f.evidence !== "all" || f.kind !== "all" || !!f.q;
+  const tagChoices = catalogue.gameTags.map((g) => ({ key: g.key, label: g.label }));
+  const evidenceChoices = [{ key: "all", label: l.filters.allEvidence }, ...EVIDENCE_KEYS.map((k) => ({ key: k, label: evidenceOf(k).label }))];
   /* Exercises sit in groups, and only some tags have a group. */
   const tagHasNoGroup = f.tag !== "any" && !groupForTag(f.tag);
 
@@ -43,8 +46,18 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
 
       <section className="s-section tight" aria-labelledby="filters-h">
         <div className="s-wrap">
-          <div className="s-filters">
+          <div className="s-filters" id="library-filters">
             <h2 id="filters-h" className="s-meta">{l.filters.title}</h2>
+            <form action="/library" method="get" className="s-filter" role="search">
+              <label htmlFor="library-q">{l.filters.search}</label>
+              <div className="s-search">
+                {f.tag !== "any" && <input type="hidden" name="tag" value={f.tag} />}
+                {f.evidence !== "all" && <input type="hidden" name="evidence" value={f.evidence} />}
+                {f.kind !== "all" && <input type="hidden" name="kind" value={f.kind} />}
+                <input id="library-q" className="input" type="search" name="q" defaultValue={f.q ?? ""} placeholder={l.filters.searchPlaceholder} maxLength={60} enterKeyHint="search" />
+                <button className="btn btn-sm" type="submit">{l.filters.searchGo}</button>
+              </div>
+            </form>
             <FilterRow label={l.filters.tag} items={catalogue.gameTags.map((g) => ({ key: g.key, label: g.label, href: to({ tag: g.key }), on: f.tag === g.key }))} />
             <FilterRow label={l.filters.evidence} items={[
               { key: "all", label: l.filters.allEvidence, href: to({ evidence: "all" }), on: f.evidence === "all" },
@@ -53,6 +66,10 @@ export default async function LibraryPage({ searchParams }: { searchParams: Prom
             <FilterRow label={l.filters.kind} items={LIBRARY_KINDS.map((k) => ({ key: k, label: l.filters.kinds[k], href: to({ kind: k }), on: f.kind === k }))} />
             <p className="s-meta">{l.opensApp} {filtered && <Link className="s-link" href="/library" scroll={false}>{l.filters.clear}</Link>}</p>
           </div>
+          <LibraryBar watch="library-filters" q={f.q ?? ""} tag={f.tag} evidence={f.evidence} kind={f.kind}
+            tags={tagChoices} evidences={evidenceChoices}
+            kinds={LIBRARY_KINDS.map((k) => ({ key: k, label: l.filters.kinds[k] }))}
+            words={{ search: l.filters.search, placeholder: l.filters.searchPlaceholder, go: l.filters.searchGo, tag: l.filters.tag, evidence: l.filters.evidence, kind: l.filters.kind, shown: l.filters.shown(found.games.length + found.exercises.length), more: l.filters.more }} />
 
           {f.kind !== "exercises" && (
             <>

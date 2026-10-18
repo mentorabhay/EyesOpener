@@ -14,6 +14,8 @@ import {
   type Arm, type NotCounted, type PickedAfter, type PickedBefore, type Reading, type Screen, type Setup, type Stage, type TestRule,
 } from "@/lib/experiments";
 import type { Member } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 type Run = Tx | typeof db;
@@ -216,7 +218,15 @@ export async function recomputeSignal(experimentId: string, now = new Date()): P
       if (old[0]) {
         await tx.update(sig).set({ ...pooled, computedAt: now }).where(eq(sig.id, old[0].id));
         if (old.length > 1) await tx.delete(sig).where(and(eq(sig.experimentId, experimentId), ne(sig.id, old[0].id)));
-      } else await tx.insert(sig).values({ experimentId, ...pooled, computedAt: now });
+      } else {
+        await tx.insert(sig).values({ experimentId, ...pooled, computedAt: now });
+        /* a pooled result shown for the first time: every household in the experiment hears of it (src/lib/notify) */
+        const enrolled = await tx.selectDistinct({ accountId: s.profile.accountId }).from(s.experimentEnrolment)
+          .innerJoin(s.profile, eq(s.profile.id, s.experimentEnrolment.profileId))
+          .where(and(eq(s.experimentEnrolment.experimentId, experimentId), isNull(s.experimentEnrolment.leftAt)));
+        const c = nw.community.result;
+        for (const e of enrolled) void notifyHousehold(e.accountId, { kind: "community.result", title: c.title(), body: c.body, href: c.href, key: `result:${experimentId}` });
+      }
     } else if (old.length) await tx.delete(sig).where(eq(sig.experimentId, experimentId));
 
     const earned = earnedStep(!!pooled, rows.filter((r) => r.stage !== "left").length);

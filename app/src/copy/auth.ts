@@ -17,5 +17,16 @@ export const auth = texts("copy/auth", "auth", () => ({
   counsellor: { verified: "Verified counsellor", waiting: "Waiting for checks" },
   sponsor: { approved: "Sponsor, approved", pending: "Sponsor, waiting for approval", suspended: "Sponsor, suspended" },
   current: "Signed in",
+  tester: {
+    label: "Your name",
+    hint: "Each person trying the demo gets their own copy of this family, so their readings never mix with anyone else's. Type the same name next time to come back to your copy.",
+    placeholder: "For example: Ved",
+    need: "Type your name first, so you get your own copy of the family.",
+    bad: "Use letters, numbers and spaces, up to 40.",
+    failed: "Your copy of the family could not be made. Please try again.",
+    copies: (names: string) => `Copies so far: ${names}.`,
+    household: (family: string, tester: string) => `${family} (${tester}'s copy)`,
+    using: (tester: string) => `Demo copy for ${tester}`,
+  },
   signIn: "Sign in",
 }));

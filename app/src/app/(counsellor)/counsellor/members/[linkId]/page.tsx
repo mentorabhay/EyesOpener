@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { z } from "zod";
-import { Card, Chip, Empty, PageHead, Void } from "@/components/ui";
+import { Btn, Card, Chip, Empty, PageHead, Void } from "@/components/ui";
 import { counsellor as t, day, shortDay } from "@/copy/counsellor";
+import { notify } from "@/copy/notify";
 import { setup as setupWords } from "@/copy/setup";
 import { missing } from "@/lib/setup-rules";
 import { lens } from "@/copy/lens";
@@ -33,7 +34,9 @@ export default async function MemberPage({ params }: { params: Promise<{ linkId:
 
   return (
     <>
-      <PageHead title={m.name} sub={t.member.sub} crumb={[{ href: "/counsellor", label: t.member.crumb }]} />
+      <PageHead title={m.name} sub={t.member.sub} crumb={[{ href: "/counsellor", label: t.member.crumb }]}>
+        <Btn href={`/counsellor/members/${linkId.data}/reminders`} small>{notify.page.title}</Btn>
+      </PageHead>
       <div className="bento">
         <Card title={a.title} span={5}>
           <dl className="kv">

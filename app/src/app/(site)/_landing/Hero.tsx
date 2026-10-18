@@ -84,7 +84,6 @@ export function Hero() {
             <Link className="btn btn-g lp-btn" href="/setup">{t.start}</Link>
             <a className="btn lp-btn lp-btn-line" href="#how" data-scrollto>{t.how}</a>
           </div>
-          <p className="lp-hero-note">{t.note}</p>
         </div>
       </div>
     </section>

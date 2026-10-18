@@ -113,6 +113,24 @@ export type ExamParagraph =
 /** A passage of the library with how close it is to the question, from 0 to 1. */
 export interface MeaningHit { key: string; closeness: number }
 
+/* ───────────── the eye-care chat ───────────── */
+
+/** "eyes": questions about eyes in general. "app": questions about Eyes Opener itself, answered from its own pages. */
+export const CHAT_TOPICS = ["eyes", "app"] as const;
+export type ChatTopic = (typeof CHAT_TOPICS)[number];
+/** One earlier turn of the conversation, kept in the browser only and sent back with the next question. */
+export interface ChatTurn { from: "you" | "assistant"; text: string }
+/** A page of this app the answer points to, from the app's own passages. */
+export interface ChatLink { label: string; href: string }
+
+/** Who is asking. A visitor has no member; the network stands in for them in the day's share. Never sent to a model. */
+export interface ChatAsker { member: Member | null; network: string }
+
+export type ChatAnswer =
+  | { ok: true; text: string; links: ChatLink[]; /** The answer says to see an eye doctor. */ seeDoctor: boolean; standIn?: boolean }
+  /** "check": an answer was written, failed its check and is not shown. */
+  | { ok: false; why: Closed | "check" };
+
 /* ───────────── the seam ───────────── */
 
 export interface Assist {
@@ -123,7 +141,7 @@ export interface Assist {
    * month's limit is reached. A member's page offers a button only when this is true, so nobody presses one that
    * cannot answer. No model is called to find out.
    */
-  ready(job: "idea" | "exam"): Promise<boolean>;
+  ready(job: "idea" | "exam" | "chat"): Promise<boolean>;
 
   /** Reads a member's story and suggests the fields of the idea. The member edits and confirms; nothing is saved here. */
   suggestIdea(m: Member, story: string): Promise<IdeaSuggestion>;
@@ -144,6 +162,13 @@ export interface Assist {
 
   /** A plain-words paragraph from the numbers of the summary page. */
   examParagraph(m: Member, facts: ExamFacts): Promise<ExamParagraph>;
+
+  /**
+   * Answers one question of the eye-care chat. The fixed rules of src/lib/assist/chat-rules.ts run first on the
+   * page's server, and a question they answer (an emergency sign) never reaches this. It never diagnoses, never
+   * gives a dose and never says a treatment can stop. Nothing of the conversation is kept.
+   */
+  chat(who: ChatAsker, topic: ChatTopic, question: string, history: readonly ChatTurn[]): Promise<ChatAnswer>;
 
   /** Passages an edition adds to the research library. */
   extraPassages(): Promise<Passage[]>;

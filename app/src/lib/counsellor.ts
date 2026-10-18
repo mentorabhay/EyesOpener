@@ -70,6 +70,12 @@ async function activeLink(viewer: Viewer, linkId: string) {
   return row ?? null;
 }
 
+/** The profile behind one of this counsellor's active links, or null: for the counsellor's reminders page. */
+export async function linkedProfile(viewer: Viewer, linkId: string) {
+  const own = await activeLink(viewer, linkId);
+  return own ? own.profile : null;
+}
+
 type Result = typeof schema.testResult.$inferSelect;
 export interface Reading { text: string; at: Date }
 export interface ResultLine { test: TestDef; eye: "left" | "right" | null; first: Reading | null; last: Reading | null; change: "better" | "worse" | "same" | null }

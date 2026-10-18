@@ -5,6 +5,8 @@ import type { FormState } from "@/components/together/StateForm";
 import { duet as t } from "@/copy/duet";
 import { endDuet, startDuet } from "@/lib/duet-data";
 import { requireMember } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 const Key = z.string().regex(/^(profile|person):[0-9a-f-]{36}$/i);
 
@@ -16,6 +18,8 @@ export async function startDuetAction(_: FormState, form: FormData): Promise<For
   if (!a.success || !b.success) return { ok: false, message: t.start.refused.unknown };
   const done = await startDuet(m, a.data, b.data);
   if (!done.ok) return { ok: false, message: t.start.refused[done.why] };
+  const c = nw.community.duet;
+  await notifyHousehold(m.account.id, { kind: "community.duet", title: c.title(done.a, done.b), body: c.body, href: c.href, key: `duet:${a.data}:${b.data}:${new Date().toISOString().slice(0, 10)}` }, m.user.id);
   revalidatePath("/together/duet");
   return { ok: true, message: t.start.started(done.a, done.b) };
 }

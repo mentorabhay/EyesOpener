@@ -14,11 +14,24 @@ export async function switchProfile(formData: FormData) {
   revalidatePath("/", "layout");
 }
 
-/** Demo sign-in: become one of the seeded people and go to their area. */
+/**
+ * Demo sign-in: become one of the seeded people and go to their area. A person of the seeded family is never signed
+ * in as such: the tester's name picks (or makes) their own copy of the family, and they become that person there
+ * (src/lib/demo/copy.ts), so testers' readings never mix.
+ */
 export async function demoSignIn(formData: FormData) {
-  const { signInAs, getViewer, CHILD_COOKIE } = await import("./auth");
+  const { signInAs, getViewer, demoHere, CHILD_COOKIE } = await import("./auth");
+  const { seededFamilyOf, standInFor, testerName } = await import("./demo/copy");
   const { redirect } = await import("next/navigation");
-  if (!(await signInAs(String(formData.get("userId") ?? "")))) {
+  let userId = String(formData.get("userId") ?? "");
+  if ((await demoHere()) && (await seededFamilyOf(userId))) {
+    const typed = formData.get("tester"), name = testerName(typed);
+    if (!name) return redirect(`/login?why=${typeof typed === "string" && typed.trim() ? "demo_bad" : "demo_name"}`);
+    const copy = await standInFor(userId, name);
+    if (!("userId" in copy)) return redirect("/login?why=demo_failed");
+    userId = copy.userId;
+  }
+  if (!(await signInAs(userId))) {
     /* On a device in child mode only a person of that child's family may sign in: say so rather than do nothing. */
     const { holdOf } = await import("./signin/hold");
     if ((await holdOf((await cookieJar()).get(CHILD_COOKIE)?.value)).state === "live") redirect("/login?why=child_mode");

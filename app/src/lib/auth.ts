@@ -13,7 +13,7 @@ import { cache } from "react";
 import { jar as cookieJar } from "@/lib/cookie-jar";
 import { GATE_COOKIE, gatePassed, lockScope } from "./gate";
 import { notFound, redirect } from "next/navigation";
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, isNull } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { homeFor, resolveStaffRole, sponsorCan, staffCan, type AdminArea, type Seat, type SponsorAction, type SponsorRole, type StaffRole } from "./roles";
 import { HOLD_COOKIE, holdOf, mayResume } from "./signin/hold";
@@ -81,7 +81,7 @@ export const getViewer = cache(async (): Promise<Viewer | null> => {
     /* First visit to the demo: the demo household's guardian. */
     const [row] = await db.select({ user: schema.appUser }).from(schema.appUser)
       .innerJoin(schema.account, eq(schema.account.id, schema.appUser.accountId))
-      .where(and(eq(schema.account.isDemo, true), eq(schema.appUser.seat, "guardian")))
+      .where(and(eq(schema.account.isDemo, true), isNull(schema.account.demoCopyOf), eq(schema.appUser.seat, "guardian")))
       .orderBy(asc(schema.appUser.createdAt)).limit(1);
     if (row) viewer = await viewerOf(row.user, false);
   }

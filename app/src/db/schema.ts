@@ -56,8 +56,16 @@ export const account = pgTable("account", {
    * It lets staff open and try every game, exercise and film; it is left out of every household count.
    */
   previewFor: uuid().unique(),
+  /**
+   * Set on a tester's own copy of a demo household (src/lib/demo/copy.ts): the id of the seeded household it was
+   * copied from, the tester's name as typed, and that name as the key that finds the copy again. Each person trying
+   * the demo works in their own copy, so readings never mix (Ved, 18 October 2026).
+   */
+  demoCopyOf: uuid(),
+  demoTester: text(),
+  demoTesterKey: text(),
   createdAt: now(),
-});
+}, (t) => [uniqueIndex("account_demo_copy").on(t.demoCopyOf, t.demoTesterKey)]);
 
 /**
  * A person who signs in. Roles are separate and can combine:
@@ -110,6 +118,9 @@ export const profile = pgTable("profile", {
   weakInk: text().notNull().default("cyan"),
   /** When the choice was last changed; null while it has never been changed from the usual way. */
   weakInkAt: when(),
+  /** Ticked by a guardian for a grown-up who needs help, an older person for instance: reminders for them are set by
+      a guardian or a counsellor and kept inside the quiet hours, as for a child (src/lib/notify/rules.ts). */
+  needsHelp: boolean().notNull().default(false),
 }, (t) => [index().on(t.accountId)]);
 
 export const consent = pgTable("consent", {
@@ -1177,3 +1188,59 @@ export const sitePictureFile = pgTable("site_picture_file", {
   mime: text().notNull(),
   data: bytes().notNull(),
 }, (t) => [primaryKey({ columns: [t.pictureId, t.width] })]);
+
+/**
+ * A reminder for one profile of a household: what it is for, the time of day in the household's time zone, which days,
+ * and how it reaches the household's grown-ups (in the app, by email). Who may set or change it
+ * (src/lib/notify/rules.ts, `maySetReminder`): a guardian or co-guardian of the household, or a counsellor linked to
+ * the profile. The reminder service (src/lib/notify) turns a due reminder into one notification a day, never two.
+ */
+export const reminder = pgTable("reminder", {
+  id: id(),
+  accountId: uuid().notNull().references(() => account.id, { onDelete: "cascade" }),
+  /** The profile it is for. */
+  profileId: uuid().notNull().references(() => profile.id, { onDelete: "cascade" }),
+  /** Who set or last changed it, and as what: guardian, co_guardian or counsellor. */
+  setBy: uuid().references(() => appUser.id, { onDelete: "set null" }),
+  setByRole: text().notNull(),
+  /** practice, break, outside, checkup, glasses, drops, custom (src/lib/notify/rules.ts). */
+  kind: text().notNull(),
+  /** Own words for a custom reminder, at most 80 characters. */
+  note: text(),
+  /** Time of day as HH:MM, 24-hour, in `timeZone`. */
+  at: text().notNull(),
+  /** Days of the week as bits: Monday 1, Tuesday 2 … Sunday 64. 127 is every day. */
+  days: integer().notNull().default(127),
+  timeZone: text().notNull().default("Asia/Kolkata"),
+  inApp: boolean().notNull().default(true),
+  email: boolean().notNull().default(false),
+  active: boolean().notNull().default(true),
+  /** The local date it last fired, so it fires at most once a day. */
+  lastSentOn: date(),
+  createdAt: now(),
+  updatedAt: now(),
+}, (t) => [index().on(t.accountId), index().on(t.profileId)]);
+
+/**
+ * One notification for one person: a reminder that came due, or something in the community that person takes part
+ * in (a note or a light for their family, a duet, a welcome, an answer to a question they voted for, a pooled
+ * result of an experiment they are in). Shown quietly: a count on the bell at the top of the page and a short list.
+ * `dedupe` makes the same notice impossible to write twice.
+ */
+export const notification = pgTable("notification", {
+  id: id(),
+  appUserId: uuid().notNull().references(() => appUser.id, { onDelete: "cascade" }),
+  accountId: uuid().references(() => account.id, { onDelete: "cascade" }),
+  profileId: uuid().references(() => profile.id, { onDelete: "cascade" }),
+  reminderId: uuid().references(() => reminder.id, { onDelete: "set null" }),
+  kind: text().notNull(),
+  title: text().notNull(),
+  body: text().notNull(),
+  /** A page of the app to open, a plain path such as /train. */
+  href: text(),
+  dedupe: text().notNull().unique(),
+  createdAt: now(),
+  readAt: when(),
+  /** When the email went, or null when none was asked for or mail is not set up. */
+  emailedAt: when(),
+}, (t) => [index().on(t.appUserId, t.createdAt)]);

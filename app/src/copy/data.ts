@@ -226,6 +226,8 @@ export const data = texts("copy/data", "data", () => ({
       keeperWelcomes: { title: "Welcomes you left", what: "The welcome a guardian left for a new family when a profile finished a course: the programme, the key of the line chosen from a fixed list, whether it has been given, and the key of the thank-you line that came back. Nothing says which family received it." },
       keeperAsks: { title: "Welcomes you asked for", what: "Each time a guardian asked for a welcome from a family that finished the same programme: the key of the line that was received and the key of the thank-you line sent back. Nothing says which family left it." },
       clipRuns: { title: "Clips finished", what: "Each clip a profile finished: the clip's code in the catalogue, how it came out, the first number it stored and what it recorded on the way. Codes C01 to C30 check the screen and the glasses; M01 to M70 measure the eyes. A measurement a clip took is also in the check-up results, under its own key. No picture was ever stored.", units: { value: "in the unit the row names", outcome: "saved means a result or a screen value was stored; pass, note and fail say how a check of the screen came out; na means it did not apply to this screen", setKey: "the set it was played in: screen, weekly or visit; empty when it was run on its own" } },
+      reminders: { title: "Reminders", what: "Each reminder a grown-up set: what it is for, the time and days, and whether it comes in the app or by email." },
+      notifications: { title: "Notifications", what: "Each notification shown in the app: its words, when it came, when it was read and when its email went." },
     } satisfies Record<PartKey, { title: string; what: string; units?: Record<string, string> }>,
   },
 }));

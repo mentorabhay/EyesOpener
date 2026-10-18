@@ -23,7 +23,6 @@ export const landing = texts("copy/landing", "landing", () => ({
     lead: "Eyes Opener is a fitness app for your eyes. It tracks how you use them, checks them at home and trains them with games.",
     start: "Start the two-minute check",
     how: "See how it works",
-    note: "Free. Open-source core. No ads.",
     chips: {
       strong: "The stronger eye sees red",
       weak: "The weaker eye sees cyan",
@@ -192,7 +191,6 @@ export const landing = texts("copy/landing", "landing", () => ({
     title: "Start with the two-minute check.",
     lead: "Two minutes for each eye. Then one minute with the glasses on.",
     start: "Start the two-minute check",
-    note: "Free. Open-source core. No ads.",
     more: "Or read more first",
     links: [
       { href: "/stories", label: "Stories" },

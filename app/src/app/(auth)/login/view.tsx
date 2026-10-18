@@ -16,7 +16,11 @@ import css from "./login.module.css";
 import { marketing } from "@/copy/marketing";
 import { Brand } from "../brand";
 
-export interface DemoGroup { title: string; sub: string; people: { id: string; name: string; email: string; role: string; current: boolean }[] }
+export interface DemoGroup {
+  title: string; sub: string; people: { id: string; name: string; email: string; role: string; current: boolean }[];
+  /** For the seeded family: testers who have a copy, and the name of the copy signed in here. */
+  tester?: { testers: string[]; mine: string | null };
+}
 export interface Me { name: string; email: string; /** Their own area, or the welcome page when they have none yet. */ go: string }
 
 const Frame = ({ wide, children }: { wide?: 560 | 860 | 1040; children: ReactNode }) => (
@@ -33,15 +37,37 @@ function DemoPeople({ groups }: { groups: DemoGroup[] }) {
       {groups.map((g) => (
         <Card key={g.title} title={g.title} span={6}>
           <p className="muted small">{g.sub}</p>
-          <div>
-            {g.people.map((p) => (
-              <form className="ins" key={p.id + p.role} action={demoSignIn}>
-                <input type="hidden" name="userId" value={p.id} />
-                <div className="tx"><b>{p.name}</b><div className="sub">{p.role} · {p.email}</div></div>
-                {p.current ? <Chip tone="ok">{demo.current}</Chip> : <button className="btn btn-sm" type="submit">{demo.signIn}</button>}
-              </form>
-            ))}
-          </div>
+          {g.tester ? (
+            /* The family: one form, the tester's name, and a button for each person (src/lib/demo/copy.ts). */
+            <form action={demoSignIn} className="stack">
+              <div className="field">
+                <label htmlFor="demo-tester">{demo.tester.label}</label>
+                <input id="demo-tester" name="tester" required maxLength={40} autoComplete="nickname" placeholder={demo.tester.placeholder} defaultValue={g.tester.mine ?? ""} />
+                <p className="muted small">{demo.tester.hint}</p>
+                {g.tester.testers.length > 0 && <p className="muted small">{demo.tester.copies(g.tester.testers.join(", "))}</p>}
+              </div>
+              <div>
+                {g.people.map((p) => (
+                  <div className="ins" key={p.id + p.role}>
+                    <div className="tx"><b>{p.name}</b><div className="sub">{p.role} · {p.email}</div></div>
+                    {p.current && g.tester?.mine
+                      ? <Chip tone="ok">{demo.tester.using(g.tester.mine)}</Chip>
+                      : <button className="btn btn-sm" type="submit" name="userId" value={p.id}>{demo.signIn}</button>}
+                  </div>
+                ))}
+              </div>
+            </form>
+          ) : (
+            <div>
+              {g.people.map((p) => (
+                <form className="ins" key={p.id + p.role} action={demoSignIn}>
+                  <input type="hidden" name="userId" value={p.id} />
+                  <div className="tx"><b>{p.name}</b><div className="sub">{p.role} · {p.email}</div></div>
+                  {p.current ? <Chip tone="ok">{demo.current}</Chip> : <button className="btn btn-sm" type="submit">{demo.signIn}</button>}
+                </form>
+              ))}
+            </div>
+          )}
         </Card>
       ))}
     </div>

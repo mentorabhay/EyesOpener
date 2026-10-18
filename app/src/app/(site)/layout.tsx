@@ -5,6 +5,8 @@ import { site as t } from "@/copy/site";
 import { getViewer } from "@/lib/auth";
 import { SHARE_IMAGE, siteUrl } from "@/lib/site";
 import { DiagramMotion } from "@/components/diagram/motion";
+import { Dock } from "@/components/assistant/dock";
+import { assist } from "@/lib/assist/extra";
 import { Reveal } from "./_components/reveal";
 import { SiteFooter } from "./_components/site-footer";
 import { SiteNav } from "./_components/site-nav";
@@ -31,6 +33,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       <SiteFooter />
       <Reveal />
       <DiagramMotion />
+      <Dock chat={assist.available} place="site" />
     </>
   );
 }

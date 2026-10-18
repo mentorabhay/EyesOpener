@@ -14,6 +14,8 @@ import {
   type AnswerProblem, type RoundProblem, type RoundState, type Tally, type VoteRefusal,
 } from "@/lib/discovery";
 import { todayKey, type Member } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 const R = s.discoveryRound, Q = s.discoveryQuestion, V = s.discoveryVote;
 /**
@@ -224,6 +226,11 @@ export async function answerQuestion(staffId: string, questionId: string, a: { a
     const problem = answerProblem({ state: roundState(found.round, todayKey(now)), question: found.question, members: a.members, text: `${a.answer}\n${a.basis}` });
     if (problem) return problem;
     const [saved] = await tx.update(Q).set({ answer: a.answer, answerBasis: a.basis, answerMembers: a.members, answeredAt: now, answeredBy: staffId, isSample: false }).where(eq(Q.id, questionId)).returning();
+    /* every household that voted for the question hears that it has an answer (src/lib/notify) */
+    const voters = await tx.selectDistinct({ accountId: s.profile.accountId }).from(s.discoveryVote)
+      .innerJoin(s.profile, eq(s.profile.id, s.discoveryVote.profileId)).where(eq(s.discoveryVote.questionId, questionId));
+    const c = nw.community.answer;
+    for (const v of voters) void notifyHousehold(v.accountId, { kind: "community.answer", title: c.title(), body: c.body, href: c.href, key: `answer:${questionId}:${now.getTime()}` });
     return saved;
   });
 }

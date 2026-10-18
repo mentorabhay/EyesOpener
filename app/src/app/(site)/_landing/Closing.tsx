@@ -66,7 +66,6 @@ export function Closing() {
           <div className="lp-ctas" data-enter>
             <Link className="btn btn-g lp-btn" href="/setup">{t.start}</Link>
           </div>
-          <p className="lp-hero-note" data-enter>{t.note}</p>
           <nav className="lp-more" aria-label={t.more} data-enter>
             <span>{t.more}</span>
             <ul>

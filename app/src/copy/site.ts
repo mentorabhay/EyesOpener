@@ -60,8 +60,8 @@ export const site = texts("copy/site", "site", () => ({
       { title: "Take part", links: [{ href: "/for-counsellors", label: "For counsellors" }, { href: "/for-sponsors", label: "For sponsors and schools" }, { href: "/wish-jam", label: "Wish Jam for developers" }] },
       { title: "The small print", links: [{ href: "/privacy", label: "Privacy" }, { href: "/childrens-data", label: "Children's data" }, { href: "/terms", label: "Terms" }] },
     ],
-    promises: ["Free", "Open-source core", "No ads"],
-    free: "Free, with an open-source core. No ads, and nothing to buy.",
+    /** The usual copyright line at the foot of every public page. */
+    copyright: (year: number) => `© ${year} Eyes Opener. All rights reserved.`,
   },
 
   /* ───────────── shared ───────────── */
@@ -435,6 +435,11 @@ export const site = texts("copy/site", "site", () => ({
       allEvidence: "All labels",
       kinds: { all: "Games and exercises", games: "Games", exercises: "Exercises" },
       clear: "Clear the filters",
+      search: "Search by name",
+      searchPlaceholder: "Search games and exercises",
+      searchGo: "Search",
+      shown: (n: number) => `${n} shown`,
+      more: "All filters",
     },
     games: { title: "Games", shown: (n: number, all: number) => `${n} of ${all} shown`, none: "No games match these filters." },
     exercises: { title: "Exercises", shown: (n: number, all: number) => `${n} of ${all} shown`, none: "No exercises match these filters.", noGroup: "This filter is for games. No exercise group carries it." },

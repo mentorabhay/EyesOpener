@@ -7,6 +7,8 @@ import { together } from "@/copy/together";
 import { db, schema } from "@/db";
 import { fieldProblems, lightCandidates, screenHazards } from "@/lib/community";
 import { requireMember, todayKey } from "@/lib/session";
+import { notifyHousehold } from "@/lib/notify/service";
+import { notify as nw } from "@/copy/notify";
 
 const t = together.lights;
 const Gift = z.object({ to: z.guid(), note: z.string().trim().max(80) });
@@ -35,6 +37,10 @@ export async function giveLight(_: FormState, form: FormData): Promise<FormState
     return null;
   });
   if (outcome) return { ok: false, message: outcome };
+  /* the household of the one who got the light hears of it, without the giver's name (src/lib/notify) */
+  const [home] = await db.select({ accountId: schema.profile.accountId }).from(schema.profile).where(eq(schema.profile.id, to.id)).limit(1);
+  const c = nw.community.light;
+  if (home) await notifyHousehold(home.accountId, { kind: "community.light", title: c.title(to.name), body: c.body, href: c.href, key: `light:${gift.fromProfileId}:${to.id}:${gift.forDay}`, profileId: to.id }, m.user.id);
   revalidatePath("/together/lights");
   return { ok: true, message: t.given(to.name) };
 }

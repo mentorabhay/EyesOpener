@@ -16,7 +16,7 @@ export interface Slot {
   page: string;
   /** Width over height of the shown frame. The picture is cut to it around its focal point. */
   aspect: number;
-  /** Large pictures drift slightly on scroll when motion is on (the parallax setting sets how far). */
+  /** The picture drifts slightly on scroll when motion is on (the parallax setting sets how far). Every slot does (Ved, 18 October 2026). */
   parallax: boolean;
   /** At home, or away from it (a lane, a clinic, a classroom): which look the picture is asked for. */
   place: "home" | "away";
@@ -26,13 +26,13 @@ export interface Slot {
 
 export const SLOTS: readonly Slot[] = [
   { id: "home-hero", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.58, 0.42] },
-  { id: "home-family", page: "/", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
-  { id: "home-outdoors", page: "/", aspect: 4 / 3, parallax: false, place: "away", focus: [0.45, 0.5] },
+  { id: "home-family", page: "/", aspect: 4 / 3, parallax: true, place: "home", focus: [0.5, 0.45] },
+  { id: "home-outdoors", page: "/", aspect: 4 / 3, parallax: true, place: "away", focus: [0.45, 0.5] },
   { id: "home-tv", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.45, 0.55] },
   { id: "home-closing", page: "/", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.5] },
-  { id: "how-setup", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.55, 0.5] },
-  { id: "how-practice", page: "/how-it-works", aspect: 4 / 3, parallax: false, place: "home", focus: [0.5, 0.45] },
-  { id: "safety-doctor", page: "/safety", aspect: 4 / 3, parallax: false, place: "away", focus: [0.55, 0.45] },
+  { id: "how-setup", page: "/how-it-works", aspect: 4 / 3, parallax: true, place: "home", focus: [0.55, 0.5] },
+  { id: "how-practice", page: "/how-it-works", aspect: 4 / 3, parallax: true, place: "home", focus: [0.5, 0.45] },
+  { id: "safety-doctor", page: "/safety", aspect: 4 / 3, parallax: true, place: "away", focus: [0.55, 0.45] },
   { id: "programmes-hero", page: "/programmes", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.4] },
   { id: "about-hero", page: "/about", aspect: 16 / 9, parallax: true, place: "home", focus: [0.5, 0.5] },
   { id: "counsellors-hero", page: "/for-counsellors", aspect: 16 / 9, parallax: true, place: "away", focus: [0.45, 0.45] },

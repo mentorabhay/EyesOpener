@@ -1,0 +1,13 @@
+.bellWrap { position: fixed; z-index: 55; top: calc(env(safe-area-inset-top, 0px) + 14px); right: calc(env(safe-area-inset-right, 0px) + 16px); }
+.bell { position: relative; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--line); background: var(--card, #fff); color: var(--ink); box-shadow: var(--sh-card, 0 2px 8px rgba(17, 20, 24, 0.08)); cursor: pointer; }
+.bell:focus-visible { outline: 2px solid var(--g1, #8b31f0); outline-offset: 2px; }
+.badge { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; background: var(--g1, #8b31f0); color: #fff; font-size: 11px; font-weight: 600; display: grid; place-items: center; }
+.panel { position: absolute; right: 0; top: 50px; width: min(360px, calc(100vw - 32px)); background: var(--card, #fff); color: var(--ink); border: 1px solid var(--line); border-radius: var(--r-md, 14px); box-shadow: 0 10px 32px rgba(17, 20, 24, 0.16); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+.panelHead { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; max-height: 50vh; overflow: auto; }
+.items a { display: flex; flex-direction: column; gap: 2px; padding: 8px; border-radius: var(--r-sm, 10px); color: inherit; text-decoration: none; font-size: 14px; }
+.items a span { color: var(--ink-2); font-size: 13px; }
+.items a:hover, .items a:focus-visible { background: var(--sunken); outline: none; }
+.items li[data-read] a { opacity: 0.65; }
+.all { font-size: 13.5px; align-self: flex-end; }
+@media (max-width: 860px) { .bellWrap { top: calc(env(safe-area-inset-top, 0px) + 10px); right: calc(env(safe-area-inset-right, 0px) + 10px); } }

@@ -32,6 +32,7 @@ export const PARTS = [
   "classMissions", "wishes",
   "depthDays", "keeperWelcomes", "keeperAsks",
   "clipRuns",
+  "reminders", "notifications",
 ] as const;
 export type PartKey = (typeof PARTS)[number];
 
@@ -552,6 +553,22 @@ export const TABLES = {
     erase: { untouched: "A deletion makes this row. It goes as soon as the sign-in service confirms that the account is removed." },
   },
 
+  /* ───────────── reminders and notifications (src/lib/notify) ───────────── */
+  reminder: {
+    holds: "A reminder for one profile: what it is for, the time of day, the days, how it reaches the household's grown-ups, and who set it.",
+    owner: { account: ["accountId"], profile: ["profileId"] },
+    copy: { part: "reminders" },
+    erase: "rows",
+    links: { setBy: { fate: "cleared", why: "Points at the grown-up or the counsellor who set it. The reminder goes with its profile; a counsellor is never deleted with a household." } },
+  },
+  notification: {
+    holds: "A notification shown to one grown-up: a reminder that came due or a message from the app, and when it was read.",
+    owner: { account: ["accountId"], profile: ["profileId"], person: ["appUserId"] },
+    copy: { part: "notifications" },
+    erase: "rows",
+    links: { reminderId: { fate: "cleared", why: "A reminder is the household's, so its notifications go with the same household; a reminder removed on its own leaves its past notifications with no reminder." } },
+  },
+
   /* ───────────── package: ai (the assistant's side of the database) ───────────── */
   libraryVector: {
     holds: "Where each passage of the research library sits by meaning: the passage's key and a list of numbers.",
@@ -579,6 +596,7 @@ export const ERASE_ORDER: readonly TableName[] = [
   "clipRun",
   "monitorSample", "careLog", "carePlan", "daySummary", "session", "enrolment", "streak",
   "testResult", "eyeProfile", "onboardingRun", "triage", "consent",
+  "notification", "reminder",
   "enquiry", "pushToken", "invite", "sponsorGroupMember", "dataRequest", "device",
   "profile", "account",
 ];
