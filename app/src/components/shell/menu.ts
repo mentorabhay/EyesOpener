@@ -1,0 +1,50 @@
+/**
+ * The member app's menu: its groups of links, the phone's tabs, and every page the search may find
+ * (src/components/shell). One list, so the sidebar, the rail, the tabs and the search never disagree.
+ * Functions, not lists made once: the labels are read for each request, in that reader's language (docs/LANGUAGES.md).
+ */
+import type { NavItem } from "@/components/nav";
+import { common } from "@/copy/common";
+import { kids } from "@/copy/kids";
+import { isGuardianSeat } from "@/lib/roles";
+import type { Member } from "@/lib/session";
+import { menuExtra } from "./menu-extra";
+
+const n = common.nav, s = common.shell;
+export interface MenuGroup { title: string; items: NavItem[] }
+
+export function menuGroups(m: Member): MenuGroup[] {
+  const child = m.childMode, x = menuExtra();
+  const you = child ? [] : [
+    { href: "/account", label: n.account },
+    ...(isGuardianSeat(m.seat) ? [{ href: "/family", label: n.family }] : [{ href: "/circle", label: n.circle }]),
+    { href: "/settings", label: n.settings },
+  ];
+  /* Each person sees only the areas their roles open. Child mode hides the grown-up links. */
+  const areas = child ? [] : [
+    ...(m.viewer.staff ? [{ href: "/admin", label: n.admin }] : []),
+    ...(m.viewer.counsellor ? [{ href: "/counsellor", label: n.counsellor }] : []),
+    ...(m.viewer.sponsors.length ? [{ href: "/sponsor", label: n.sponsor }] : []),
+    { href: "/login", label: n.switchPerson },
+  ];
+  return [
+    { title: n.track, items: [child ? { href: "/kids", label: kids.home } : { href: "/today", label: n.today }] },
+    { title: n.test, items: [{ href: "/test", label: n.checkups }, ...x.test, ...(child ? [] : [{ href: "/setup", label: n.onboarding }])] },
+    { title: n.train, items: [{ href: "/train", label: n.games }, { href: "/train/exercises", label: n.exercises }, { href: "/train/cinema", label: n.cinema }, ...x.train] },
+    { title: n.together, items: [{ href: "/together", label: n.community }, { href: "/together/league", label: n.league }] },
+    ...(you.length ? [{ title: n.you, items: you }] : []),
+    ...(areas.length ? [{ title: n.otherAreas, items: areas }] : []),
+  ];
+}
+
+/** The phone's five tabs: a picture and a word each. In child mode the last is the way back to a grown-up. */
+export const menuTabs = (m: Member): NavItem[] => [
+  m.childMode ? { href: "/kids", label: s.tabs.kids } : { href: "/today", label: s.tabs.today },
+  { href: "/test", label: s.tabs.checkups },
+  { href: "/train", label: s.tabs.train },
+  { href: "/together", label: s.tabs.together },
+  m.childMode ? { href: "/leave-child-mode", label: s.tabs.grownUp } : { href: "/account", label: s.tabs.you },
+];
+
+/** Every page of the menu, once, for the search. */
+export const menuPages = (m: Member): NavItem[] => menuGroups(m).flatMap((g) => g.items).filter((i) => i.href !== "/login");

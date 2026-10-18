@@ -20,7 +20,7 @@ export function SetupLink({ s }: { s: Setup }) {
   return (
     <Link href="/setup" className={css.side}>
       <Ring done={s.done} of={s.of} />
-      <span><b>{t.nav.label}</b><small>{t.count(s.done, s.of)}</small></span>
+      <span className="side-text"><b>{t.nav.label}</b><small>{t.count(s.done, s.of)}</small></span>
     </Link>
   );
 }

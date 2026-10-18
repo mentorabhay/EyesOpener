@@ -11,7 +11,7 @@
 .wrap { position: relative; display: flex; flex-direction: column; align-items: flex-end; }
 
 /* ── the bubble ── */
-.bubble { width: 58px; height: 58px; padding: 9px; border-radius: 999px 999px 999px 18px; border: 0; cursor: pointer; background: #111418; box-shadow: 0 6px 18px rgba(17, 20, 24, 0.28), 0 1px 3px rgba(17, 20, 24, 0.2); transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s; animation: float 5s ease-in-out infinite; }
+.bubble { width: 58px; height: 58px; padding: 9px; border-radius: 999px 999px 999px 18px; border: 0; cursor: pointer; background: #111418; box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 6px 18px rgba(17, 20, 24, 0.28), 0 1px 3px rgba(17, 20, 24, 0.2); transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.2s; animation: float 5s ease-in-out infinite; }
 .bubble:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 10px 26px rgba(17, 20, 24, 0.32); }
 .bubble:focus-visible { outline: 3px solid #8b31f0; outline-offset: 3px; }
 .bubble[aria-expanded="true"] { animation: none; }

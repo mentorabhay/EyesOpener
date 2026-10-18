@@ -1,0 +1,13 @@
+.who { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.avatar { flex: none; width: 64px; height: 64px; border-radius: 999px; display: grid; place-items: center; font-size: 26px; font-weight: 600; color: #fff; background: var(--grad); }
+.whoText { display: flex; flex-direction: column; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.whoText b { font-size: 18px; }
+.sub { font-size: 14px; font-weight: 600; margin: 18px 0 8px; }
+.links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.links li + li { border-top: 1px solid var(--line); }
+.links a { display: flex; align-items: center; gap: 14px; padding: 12px 4px; text-decoration: none; color: inherit; }
+.links a:hover b { text-decoration: underline; }
+.links a span:nth-child(2) { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+.links small { color: var(--ink-3); font-size: 13px; }
+.icon { flex: none; width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--sunken); color: var(--ink); }
+.chev { color: var(--ink-3); font-size: 20px; }

@@ -10,8 +10,27 @@ export const common = texts("copy/common", "common", () => ({
     community: "Community", league: "League", settings: "Settings", onboarding: "Setup",
     family: "Family", circle: "Cheer seat", admin: "Admin console", counsellor: "Counsellor portal", sponsor: "Sponsor portal",
     switchPerson: "Sign in as someone else", childMode: "Child mode", leaveChildMode: "Child mode · grown-up? Tap to leave", grownUp: "Grown-up",
-    you: "You", otherAreas: "Your other areas",
+    you: "You", otherAreas: "Your other areas", account: "Your account",
     menu: "Main menu", tabs: "Main", skip: "Skip to the page",
+  },
+  /** The frame around every signed-in page (src/components/shell): the top bar, the folding menu, search, the tabs and the footer. */
+  shell: {
+    collapse: "Fold the menu", expand: "Open the menu", home: "Back to Today",
+    you: "Your settings",
+    tabs: { today: "Today", checkups: "Check-ups", train: "Train", together: "Together", you: "You", kids: "Home", grownUp: "Grown-up" },
+    search: {
+      label: "Search", open: "Search", close: "Close search",
+      placeholder: "Search games, exercises, check-ups and pages",
+      short: "Search",
+      none: (q: string) => `Nothing found for "${q}". Try fewer or other words.`,
+      hint: "Type a few letters of a game, an exercise, a check-up or a page.",
+      groups: { page: "Pages", game: "Games", exercise: "Exercises", checkup: "Check-ups" } as Record<string, string>,
+    },
+    footer: {
+      copyright: (year: number) => `© ${year} Eyes Opener. All rights reserved.`,
+      label: "About Eyes Opener",
+      links: { privacy: "Privacy", terms: "Terms", children: "Children's data", safety: "Safety", evidence: "Evidence" },
+    },
   },
   /** Words a screen reader says for shapes on the page. */
   spoken: {

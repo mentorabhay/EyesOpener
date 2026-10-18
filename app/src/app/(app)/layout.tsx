@@ -4,26 +4,20 @@ import type { CSSProperties, ReactNode } from "react";
 import { InkTuneSet } from "@/components/ink-tune";
 import { NavGroups, TabBar } from "@/components/nav";
 import { common } from "@/copy/common";
-import { kids } from "@/copy/kids";
 import { pageZoom, strongInk, trainRed, tuneOf } from "@/engine";
-import { isGuardianSeat } from "@/lib/roles";
 import { requireMember } from "@/lib/session";
 import { setupOf } from "@/lib/setup";
 import { SetupBar, SetupLink } from "@/components/setup/setup";
 import { NotifyBell } from "@/components/notify/bell";
+import { AppFooter } from "@/components/shell/footer";
+import { menuGroups, menuTabs } from "@/components/shell/menu";
+import { RAIL_BOOT } from "@/components/shell/rail";
+import { TopBar, initialOf, zoomStyle } from "@/components/shell/topbar";
 import { Dock } from "@/components/assistant/dock";
 import { assist } from "@/lib/assist/extra";
 import { unreadCount } from "@/lib/notify/service";
 
 const n = common.nav;
-/* Functions, not lists made once: the labels are read for each request, in that reader's language (docs/LANGUAGES.md). */
-const groups = (child: boolean) => [
-  { title: n.track, items: [child ? { href: "/kids", label: kids.home } : { href: "/today", label: n.today }] },
-  { title: n.test, items: [{ href: "/test", label: n.checkups }, ...(child ? [] : [{ href: "/setup", label: n.onboarding }])] },
-  { title: n.train, items: [{ href: "/train", label: n.games }, { href: "/train/exercises", label: n.exercises }, { href: "/train/cinema", label: n.cinema }] },
-  { title: n.together, items: [{ href: "/together", label: n.community }, { href: "/together/league", label: n.league }] },
-];
-const tabs = (child = false) => [child ? { href: "/kids", label: kids.home } : { href: "/today", label: n.track }, { href: "/test", label: n.test }, { href: "/train", label: n.train }, { href: "/together", label: n.together }, { href: "/settings", label: n.settings }];
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const m = await requireMember();
@@ -35,44 +29,38 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   /* The member's eye profile reaches every screen here: the red ink, and the size of the app's own text. */
   const con = m.eye?.strongContrast ?? 1;
   const zoom = pageZoom(m.eye?.appTextPx);
-  /* Each person sees only the areas their roles open. Child mode hides the grown-up links. */
-  const you = m.childMode ? [] : [
-    ...(isGuardianSeat(m.seat) ? [{ href: "/family", label: n.family }] : [{ href: "/circle", label: n.circle }]),
-    { href: "/settings", label: n.settings },
-  ];
-  const areas = [
-    ...(m.viewer.staff ? [{ href: "/admin", label: n.admin }] : []),
-    ...(m.viewer.counsellor ? [{ href: "/counsellor", label: n.counsellor }] : []),
-    ...(m.viewer.sponsors.length ? [{ href: "/sponsor", label: n.sponsor }] : []),
-    { href: "/login", label: n.switchPerson },
-  ];
   /* the inks of this screen as tuned for its glasses (engine/tune.ts): set for the browser's scenes, and for the red ink here */
   const tune = tuneOf(m.device);
   const style = { "--strong": strongInk(trainRed(con, tune), m.device?.gamma ?? 2.2) } as CSSProperties;
+  const groups = menuGroups(m);
   return (
     <div className="shell" style={style}>
+      <script dangerouslySetInnerHTML={{ __html: RAIL_BOOT }} />
       <a className="skip" href="#page">{n.skip}</a>
       <InkTuneSet tune={tune} />
-      {!m.childMode && <NotifyBell start={unread} />}
       <Dock chat={assist.available && !m.childMode} place="app" />
       <aside className="side">
-        <Link href={m.childMode ? "/kids" : "/today"} className="logo"><BrandMark />{common.product}</Link>
-        <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who">
-          <b>{m.profile.displayName}</b>
-          <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span>
+        <Link href={m.childMode ? "/kids" : "/today"} className="logo" title={common.product}><BrandMark /><span className="side-text">{common.product}</span></Link>
+        <Link href={m.childMode ? "/leave-child-mode" : "/settings"} className="who" title={m.profile.displayName}>
+          <i className="who-initial" aria-hidden="true">{initialOf(m.profile.displayName)}</i>
+          <span className="side-text"><b>{m.profile.displayName}</b>
+            <span>{m.childMode ? n.leaveChildMode : `${m.user.displayName} · ${m.account.displayName}`}</span></span>
         </Link>
         {setup.held && !m.childMode && <SetupLink s={setup} />}
-        <nav aria-label={n.menu}><NavGroups groups={[...groups(m.childMode), { title: n.you, items: you }, ...(areas.length && !m.childMode ? [{ title: n.otherAreas, items: areas }] : [])]} /></nav>
-        <p className="foot">{common.notMedical}</p>
+        <nav aria-label={n.menu}><NavGroups groups={groups} /></nav>
       </aside>
       <div className="main">
-        <main id="page" className="page" style={{ zoom }} tabIndex={-1}>
+        <TopBar home={m.childMode ? "/kids" : "/today"} person={m.childMode ? undefined : { initial: initialOf(m.user.displayName), href: "/account", label: common.nav.account }}>
+          {!m.childMode && <NotifyBell start={unread} />}
+        </TopBar>
+        <main id="page" className="page" style={zoomStyle(zoom)} tabIndex={-1}>
           {m.tester && <p className="notice" role="note">{common.tester} <Link href="/admin/catalogue">{common.testerLink}</Link></p>}
           {setup.held && !m.childMode && <SetupBar s={setup} />}
           {children}
         </main>
+        <AppFooter />
       </div>
-      <TabBar items={m.childMode ? [...tabs(true).slice(0, 4), { href: "/leave-child-mode", label: n.grownUp }] : tabs()} />
+      <TabBar items={menuTabs(m)} />
     </div>
   );
 }
