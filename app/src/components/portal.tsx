@@ -14,7 +14,7 @@ import { TopBar, initialOf } from "@/components/shell/topbar";
 export function PortalShell({ area, who, role, groups, children }: {
   /** Name of the area, shown beside the logo. */
   area: string; who: string; role: string;
-  groups: { title: string; items: NavItem[] }[]; children: ReactNode;
+  groups: { title: string; items: NavItem[]; icon?: string }[]; children: ReactNode;
 }) {
   const all = groups.flatMap((g) => g.items);
   return (
@@ -26,7 +26,7 @@ export function PortalShell({ area, who, role, groups, children }: {
           <i className="who-initial" aria-hidden="true">{initialOf(who)}</i>
           <span className="side-text"><b>{who}</b><span>{area} · {role}</span></span>
         </div>
-        <NavGroups groups={[...groups, { title: common.nav.you, items: [{ href: "/login", label: common.nav.switchPerson }] }]} />
+        <NavGroups groups={[...groups, { title: common.nav.you, items: [{ href: "/login", label: common.nav.switchPerson }], icon: "/account" }]} />
       </aside>
       <div className="main">
         <TopBar home={all[0]?.href ?? "/"} search={false} />

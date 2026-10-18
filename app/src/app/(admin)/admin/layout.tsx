@@ -6,6 +6,9 @@ import { roomHref, roomsFor } from "@/lib/admin";
 import { requireStaff } from "@/lib/auth";
 import { ADMIN_GROUPS, type AdminArea } from "@/lib/roles";
 
+/** The picture that stands for each group on the folded menu: an address whose picture it borrows (components/shell/icons.tsx). */
+const GROUP_ICON: Record<keyof typeof ADMIN_GROUPS, string> = { people: "/together", library: "/admin/catalogue", content: "/admin/stories", system: "/admin/switchboard" };
+
 export const generateMetadata = (): Metadata => ({ title: { default: t.area, template: `%s · ${t.area}` }, robots: { index: false } });
 
 /** The frame of the admin console. The gate runs here and again in every page and every action. */
@@ -18,7 +21,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   const groups = [
     { title: t.navTitle, items: open.filter((a) => a === "overview").map(item) },
     ...(Object.keys(ADMIN_GROUPS) as (keyof typeof ADMIN_GROUPS)[]).map((g) => ({
-      title: t.groups[g], items: (ADMIN_GROUPS[g] as readonly AdminArea[]).filter((a) => open.includes(a)).map(item),
+      title: t.groups[g], icon: GROUP_ICON[g], items: (ADMIN_GROUPS[g] as readonly AdminArea[]).filter((a) => open.includes(a)).map(item),
     })),
   ].filter((g) => g.items.length);
   return (

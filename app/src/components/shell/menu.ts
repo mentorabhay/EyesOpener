@@ -11,7 +11,8 @@ import type { Member } from "@/lib/session";
 import { menuExtra } from "./menu-extra";
 
 const n = common.nav, s = common.shell;
-export interface MenuGroup { title: string; items: NavItem[] }
+/** `icon`: the address whose picture stands for the whole group on the rail. */
+export interface MenuGroup { title: string; items: NavItem[]; icon?: string }
 
 export function menuGroups(m: Member): MenuGroup[] {
   const child = m.childMode, x = menuExtra();
@@ -32,8 +33,8 @@ export function menuGroups(m: Member): MenuGroup[] {
     { title: n.test, items: [{ href: "/test", label: n.checkups }, ...x.test, ...(child ? [] : [{ href: "/setup", label: n.onboarding }])] },
     { title: n.train, items: [{ href: "/train", label: n.games }, { href: "/train/exercises", label: n.exercises }, { href: "/train/cinema", label: n.cinema }, ...x.train] },
     { title: n.together, items: [{ href: "/together", label: n.community }, { href: "/together/league", label: n.league }] },
-    ...(you.length ? [{ title: n.you, items: you }] : []),
-    ...(areas.length ? [{ title: n.otherAreas, items: areas }] : []),
+    ...(you.length ? [{ title: n.you, items: you, icon: "/account" }] : []),
+    ...(areas.length ? [{ title: n.otherAreas, items: areas, icon: "/login" }] : []),
   ];
 }
 
