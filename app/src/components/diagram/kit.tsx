@@ -13,7 +13,7 @@
  *    and nothing moves for reduced motion or when the Look and feel motion setting is calm or off.
  * Server-safe: no hooks, no browser APIs.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import css from "./diagram.module.css";
 
 export type Tone = "go" | "stop" | "warn" | "info";
@@ -56,13 +56,22 @@ function Frame({ label, kind, children, className }: { label: string; kind: stri
   );
 }
 
-/** A straight run of steps, in order. Getting started, a day. */
-export function Flow({ label, nodes }: { label: string; nodes: Node[] }) {
+/**
+ * A straight run of steps, in order. Getting started, a day. A long run stands as a column; with `per`, it stays a
+ * row of boxes with arrows, as on the How it works page, broken into rows of at most `per` (a game's steps).
+ */
+export function Flow({ label, nodes, per }: { label: string; nodes: Node[]; per?: number }) {
+  const rows = per ? Array.from({ length: Math.ceil(nodes.length / per) }, (_, r) => nodes.slice(r * per, r * per + per)) : [nodes];
   return (
-    <Frame label={label} kind="flow" className={nodes.length > 5 ? css.tall : undefined}>
-      <ol className={css.row}>
-        {nodes.map((n, i) => <li key={n.key} className={css.cell} data-last={i === nodes.length - 1 || undefined}><span className={css.n} aria-hidden="true">{i + 1}</span><Box n={n} /></li>)}
-      </ol>
+    <Frame label={label} kind="flow" className={!per && nodes.length > 5 ? css.tall : per ? css.rows : undefined}>
+      {rows.map((row, r) => (
+        <ol key={r} className={css.row} start={r * (per ?? 0) + 1} style={per ? ({ "--per": per } as CSSProperties) : undefined}>
+          {row.map((n, i) => {
+            const at = r * (per ?? 0) + i;
+            return <li key={n.key} className={css.cell} data-last={i === row.length - 1 || undefined}><span className={css.n} aria-hidden="true">{at + 1}</span><Box n={n} /></li>;
+          })}
+        </ol>
+      ))}
     </Frame>
   );
 }

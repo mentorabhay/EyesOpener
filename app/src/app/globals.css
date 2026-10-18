@@ -442,3 +442,23 @@ table.tb .n { text-align: right; padding-right: 0; }
 }
 /* the eye helper sits bottom right: the footer keeps clear of it */
 .appfoot { padding-right: max(96px, env(safe-area-inset-right, 0px)); }
+
+/* ── a running game (components/play/stage.tsx): the level line, full screen, the pause ── */
+.stage-line { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.stagebox { position: relative; }
+.stagebox[data-full] { display: flex; flex-direction: column; gap: 8px; padding: 8px 14px 12px; background: #000; color: #fff; }
+.stagebox[data-full="page"] { position: fixed; inset: 0; z-index: 200; padding-top: calc(env(safe-area-inset-top, 0px) + 8px); }
+.stagebox:fullscreen { background: #000; }
+.stagebox[data-full] .scene.ratio { width: min(100%, calc((100dvh - 76px) * 16 / 9)); margin: 0 auto; flex: none; }
+.fsbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-height: 44px; }
+.fsbar .chip[data-b="plain"] { background: rgb(255 255 255 / 0.12); color: #fff; }
+.fsbar .btn { background: #1d2026; color: #fff; border-color: #3a3f48; }
+.fsbar .btn-d { background: #fff; color: #111418; border-color: #fff; }
+.fs-hint { color: rgb(255 255 255 / 0.6); }
+.level-up { position: absolute; left: 50%; top: 18%; transform: translateX(-50%); margin: 0; padding: 10px 18px; border-radius: 999px; background: var(--grad); color: #fff; font-weight: 700; font-size: 18px; box-shadow: 0 8px 30px rgb(0 0 0 / 0.35); pointer-events: none; animation: appearSoft 0.5s ease both; }
+@keyframes appearSoft { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translateX(-50%); } }
+.pausecard { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px; text-align: center; background: rgb(0 0 0 / 0.82); color: #fff; border-radius: inherit; z-index: 2; }
+.pausecard b { font-size: 22px; }
+.pausecard .btn:not(.btn-g):not(.btn-d) { background: #1d2026; color: #fff; border-color: #3a3f48; }
+.pausecard .btn-d { background: #fff; color: #111418; border-color: #fff; }
+@media (prefers-reduced-motion: reduce) { .level-up { animation: none; } }

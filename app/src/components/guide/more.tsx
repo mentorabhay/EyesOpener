@@ -1,8 +1,8 @@
 /**
  * The folded section at the bottom of a page: the full text of the page, closed until someone opens it.
- * `More` is the one outer fold; `Fold` is a smaller fold inside it, one per topic, so a reader opens only the part
- * they want. Plain <details>: it works with no script, by keyboard, and in every browser, and it opens smoothly
- * where the browser can animate it.
+ * `More` is the one fold; `Fold` is one topic inside it, drawn as a part of an article with its own heading
+ * (Ved, 18 October 2026: "10 hidden layers do not solve the purpose of literature"). Opening `More` shows the whole
+ * text, to be read top to bottom. Plain <details>: it works with no script, by keyboard, and in every browser.
  * Server-safe: no hooks, no browser APIs.
  */
 import type { ReactNode } from "react";
@@ -23,19 +23,21 @@ export function More({ title = w.more, hint = w.moreHint, open = false, id, chil
   );
 }
 
-/** One topic inside `More`. `right` sits beside the title (a Listen button, a chip). `warn` marks the stop rules. */
-export function Fold({ title, right, open = false, warn = false, children }: {
+/**
+ * One topic inside `More`: a heading and its text, part of one article, never a fold of its own. `right` sits beside
+ * the heading (a Listen button, a chip). `warn` marks the stop rules. `open` is kept for older callers and does nothing.
+ */
+export function Fold({ title, right, warn = false, children }: {
   title: ReactNode; right?: ReactNode; open?: boolean; warn?: boolean; children: ReactNode;
 }) {
   return (
-    <details className={css.fold} open={open} data-warn={warn || undefined}>
-      <summary>
-        <b>{title}</b>
+    <section className={css.part} data-warn={warn || undefined}>
+      <div className={css.parthead}>
+        <h3>{title}</h3>
         {right && <span className={css.fr}>{right}</span>}
-        <span className={css.chev} aria-hidden="true" />
-      </summary>
-      <div className={css.fbody}>{children}</div>
-    </details>
+      </div>
+      <div className={css.partbody}>{children}</div>
+    </section>
   );
 }
 

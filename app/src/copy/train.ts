@@ -28,6 +28,22 @@ export const train = texts("copy/train", "train", () => ({
   finish: "Finish now",
   /** Shown above a game on a phone held upright, where the scene is only a thin strip. */
   turnPhone: "Turn your phone sideways: the game fills the screen and the words fit.",
+  /** Around a running game (components/play/stage.tsx): the level, full screen and the pause (Ved, 18 October 2026). */
+  stage: {
+    level: (n: number) => `Level ${n}`,
+    best: (n: number) => `best ${n}`,
+    right: (n: number) => `${n} right`,
+    minutes: (done: number, of: number) => `${done} of ${of} min`,
+    up: (n: number) => `Level ${n}! Well done.`,
+    line: "How far you are",
+    full: "Full screen",
+    startFull: "Start in full screen",
+    leaveFull: "Leave full screen",
+    escHint: "Esc pauses the game",
+    paused: "Paused",
+    pausedSub: "The clock has stopped. Finish now saves what you did.",
+    keep: "Keep playing",
+  },
   ended: {
     done: "Session finished. Well done.",
     daily_cap: "The daily limit of 90 minutes is reached.",
@@ -47,6 +63,11 @@ export const train = texts("copy/train", "train", () => ({
   noEye: { body: "No eye settings yet, so this uses standard sizes and full contrast for both eyes.", cta: "Start setup" },
 
   manual: {
+    /** The step flow on top of a manual (components/play/step-map.tsx, Ved 18 October 2026). */
+    flow: (name: string) => `The steps of ${name}`,
+    level: (n: number) => `Level ${n}`,
+    here: (n: number) => `You reached level ${n}`,
+    answer: "How to answer",
     title: (name: string) => `Manual: ${name}`,
     sub: "Everything about this one: what it is for, what you should see, how to play, what is measured and where it comes from.",
     link: "Read the manual",

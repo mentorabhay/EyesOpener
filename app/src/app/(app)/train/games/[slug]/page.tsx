@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StepFlow } from "@/components/guide/flow";
+import { bestLevelOf, StepMap } from "@/components/play/step-map";
 import { Facts, Fold, More } from "@/components/guide/more";
 import { gameSteps } from "@/components/guide/steps";
 import { GlassesNote, labelsFor } from "@/components/play/how-to";
@@ -39,7 +40,7 @@ export default async function GamePage({ params }: Props) {
   const kind = kindOf(slug);
   const status = await statusFor("game", slug);
   if (!isListed(status, m.tester)) notFound();
-  const [dose, past] = await Promise.all([doseFor(m, "game", slug), pastSessions(m, "game", slug)]);
+  const [dose, past, all] = await Promise.all([doseFor(m, "game", slug), pastSessions(m, "game", slug), pastSessions(m, "game", slug, 50)]);
   const mech = mechanismOf(g.mechanism);
   /* the catalogue's lines in the reader's language (src/data/words.ts) */
   const w = gameWords(g);
@@ -80,6 +81,8 @@ export default async function GamePage({ params }: Props) {
           <Card title={x.what} span={5}><p>{guide?.what ?? w.play}</p></Card>
         )}
       </div>
+      {/* the steps as a flow, as on the How it works page, then how to answer (Ved, 18 October 2026) */}
+      {guide && kind !== "care" && <StepMap guide={guide} name={g.name} best={bestLevelOf(all)} />}
       <More title={gw.moreAbout(g.name)}>
         <Facts items={[{ label: k.for, value: w.who }, { label: k.gear, value: w.gear }, { label: k.session, value: w.session }]} />
         <Fold title={x.what}><p>{guide?.what ?? w.play}</p><p className="muted">{w.purpose}</p></Fold>

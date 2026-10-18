@@ -39,7 +39,12 @@ export interface GameProps {
    * `joined` is the page's switch; `view` is the same switch as an object the running game can read each frame.
    */
   joined?: boolean;
-  view?: { joined: boolean };
+  /**
+   * Paused by the Stage (Esc in full screen, Ved 18 October 2026): the game stands still, keeps its place and its
+   * record, and takes no input until it is let go. Read each frame from `view`, so pausing never starts the game over.
+   */
+  paused?: boolean;
+  view?: { joined: boolean; paused?: boolean };
   /**
    * Called once when a running game starts, with the live record of what the session measures (see `Kit.stats`).
    * The Stage keeps it and saves a copy when the session ends.
@@ -389,6 +394,15 @@ export function mount<S>(cv: HTMLCanvasElement, def: GameDef<S>, p: GameProps): 
   /* Keys held when the focus leaves would otherwise stay "down" for ever. */
   const blur = () => { held.clear(); axes(); input.held = false; };
   const loop = (now: number) => {
+    /* paused: nothing moves and nothing is read; the clock of the game waits too */
+    if (p.view?.paused) {
+      last = now;
+      input.tapped = input.action = false;
+      input.taps.length = 0;
+      input.pressed.clear();
+      raf = requestAnimationFrame(loop);
+      return;
+    }
     k.dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     k.t += k.dt;

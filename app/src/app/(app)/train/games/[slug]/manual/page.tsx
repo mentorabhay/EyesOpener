@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { StepFlow } from "@/components/guide/flow";
+import { bestLevelOf, StepMap } from "@/components/play/step-map";
 import { Fold, More } from "@/components/guide/more";
 import { gameSteps } from "@/components/guide/steps";
 import { GlassesNote } from "@/components/play/how-to";
@@ -12,7 +13,7 @@ import { gameBySlug } from "@/data";
 import { gameGuideFor } from "@/data/game-guides";
 import { kindOf } from "@/games/built";
 import { requireMember } from "@/lib/session";
-import { statusFor } from "@/lib/sessions";
+import { pastSessions, statusFor } from "@/lib/sessions";
 import { isListed } from "@/lib/status";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -23,8 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /**
- * The manual of one game, on a page of its own: everything a member or a helper may want to know before or after playing.
- * The steps come first as moving pictures; every topic of the manual is its own fold below, closed until opened.
+ * The manual of one game, on a page of its own (Ved, 18 October 2026): the step strip with its pictures on top; then
+ * the steps as a flow diagram, a press on a step opening its sentence and the step of the level reached marked; then
+ * the two ways to answer; then everything else as one article in a single fold at the bottom.
  */
 export default async function GameManualPage({ params }: Props) {
   const { slug } = await params;
@@ -35,15 +37,19 @@ export default async function GameManualPage({ params }: Props) {
   const film = kindOf(slug) === "cinema";
   const guide = gameGuideFor(slug);
   const cyan = m.eye?.cyanEye === "right" ? "R" as const : "L" as const;
+  const past = guide ? await pastSessions(m, "game", slug, 50) : [];
+  const best = bestLevelOf(past);
   return (
     <>
       <PageHead
         title={t.manual.title(g.name)}
         crumb={[film ? { href: "/train/cinema", label: t.cinema.title } : { href: "/train", label: t.game.crumb }, { href: `/train/games/${slug}`, label: g.name }]}
       />
+      {/* the step strip with its pictures stays on top; the step flow and how to answer follow (Ved, 18 October 2026) */}
       <StepFlow steps={gameSteps({ guide, gear: g.gear, cyan, care: kindOf(slug) === "care" })} />
+      {guide && <StepMap guide={guide} name={g.name} best={best} />}
       <div className="row"><Btn href={`/train/games/${slug}/play`} kind="g">{kindOf(slug) === "care" ? t.game.open : t.game.play}</Btn><Btn href={`/train/games/${slug}`}>{t.manual.back}</Btn></div>
-      <More title={t.manual.crumb} hint={t.manual.sub} open>
+      <More title={t.manual.crumb} hint={t.manual.sub}>
         {/red-cyan/i.test(g.gear) && <Fold title={gw.game.glassesMore}><GlassesNote gear={g.gear} cyanEye={cyan} joined={!!guide?.joined} swapped={m.eye?.weakInk === "red"} /></Fold>}
         <GameManual slug={slug} locale={m.account.locale} folds />
       </More>

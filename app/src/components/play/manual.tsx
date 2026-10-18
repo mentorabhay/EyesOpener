@@ -87,11 +87,12 @@ export function GameManual({ slug, staff = false, status, locale, folds = false 
         <>
           <Box title={x.ready} span={5}><p className="small muted">{x.need}</p><Lines items={guide.need} /></Box>
           <Box title={x.see} span={7} right={say("see")}><Lines items={guide.see} /></Box>
-          <Box title={x.play} span={7} right={say("play")}>
+          {/* the member's manual page shows the steps and how to answer on top (step-map.tsx): not again in its article */}
+          {!folds && <Box title={x.play} span={7} right={say("play")}>
             <Lines items={guide.play} numbered />
             <p className="small muted">{x.controls}</p>
             <ul className={css.list}><li><b>{x.touch}.</b> {guide.controls.touch}</li><li><b>{x.keys}.</b> {guide.controls.keys}</li></ul>
-          </Box>
+          </Box>}
           <Box title={x.success} span={5}>
             <Lines items={guide.success} />
             <p className="small muted">{x.mistakes}</p>

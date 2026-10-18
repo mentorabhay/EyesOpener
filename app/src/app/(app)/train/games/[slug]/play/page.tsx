@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { planFor } from "@/components/film/chapters";
 import { PageHead } from "@/components/ui";
 import { StepFlow } from "@/components/guide/flow";
+import { bestLevelOf, StepMap } from "@/components/play/step-map";
 import { Fold, More } from "@/components/guide/more";
 import { gameSteps } from "@/components/guide/steps";
 import { GlassesNote, HowToPlayBody, labelsFor } from "@/components/play/how-to";
@@ -42,7 +43,8 @@ export default async function PlayPage({ params, searchParams }: Props) {
   const guide = gameGuideFor(slug);
   const cyanEye = m.eye?.cyanEye === "right" ? "R" as const : "L" as const;
   /* On top, the steps as moving pictures; the full guide is folded at the bottom. It opens on a first visit and stays folded once the member has finished a session of this game. */
-  const known = guide ? (await pastSessions(m, "game", slug, 1)).length > 0 : false;
+  const past = guide ? await pastSessions(m, "game", slug, 50) : [];
+  const known = past.length > 0;
   const flow = <StepFlow steps={gameSteps({ guide, gear: g.gear, cyan: cyanEye, care: kind === "care" })} compact />;
   const more = (
     <More title={gw.moreAbout(g.name)} hint={gameWords(g).play}>
@@ -86,6 +88,8 @@ export default async function PlayPage({ params, searchParams }: Props) {
       {kind === "cinema"
         ? <CinemaStage slug={slug} dose={dose} labels={labelsFor(guide, results.game)} plan={plan} profileId={m.profile.id} tester={m.tester} {...eye} />
         : <Stage slug={slug} dose={dose} help={helpFor(slug)} labels={labelsFor(guide, results.game)} joinable={!!guide?.joined} lens={/red-cyan/i.test(g.gear)} {...eye} />}
+      {/* under the game: the steps as a flow, as on the How it works page, then how to answer (Ved, 18 October 2026) */}
+      {guide && <StepMap guide={guide} name={g.name} best={bestLevelOf(past)} />}
       {more}
     </>
   );

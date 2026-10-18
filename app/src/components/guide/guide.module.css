@@ -173,3 +173,12 @@ details[open] > summary > .chev { transform: rotate(180deg); }
 .again { display: inline-flex; align-items: center; gap: 6px; flex: none; min-height: 32px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-2); background: var(--card); color: var(--ink-2); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
 .again:hover { border-color: var(--ink-4); color: var(--ink); }
 .again svg { width: 11px; height: 11px; fill: currentColor; }
+
+/* a topic inside "Read more": a part of one article (more.tsx) */
+.part { display: flex; flex-direction: column; gap: 8px; padding: 16px 2px; border-top: 1px solid var(--line); }
+.part:first-child { border-top: 0; padding-top: 4px; }
+.parthead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.parthead h3 { font-size: 17px; font-weight: 600; margin: 0; }
+.parthead .fr { margin-left: auto; }
+.partbody { display: flex; flex-direction: column; gap: 8px; max-width: 78ch; line-height: 1.6; }
+.part[data-warn] { border-left: 3px solid var(--warn, #b26a00); padding-left: 14px; border-top-color: var(--line); }
