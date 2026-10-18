@@ -4,7 +4,9 @@ import { type ReactNode, useEffect, useRef } from "react";
 import css from "./site-picture.module.css";
 
 /**
- * The picture moves by at most `--parallax` times 12% of its frame's height, against the scroll. Nothing moves when
+ * The picture moves by at most `--parallax` times 30% of its frame's height, against the scroll, and is enlarged just
+ * enough that its edges never show (at the usual 0.35: about 10% each way, 21% larger). The first version moved 12% at
+ * most, about 4% at the usual setting, which nobody could see (Ved, 18 October 2026). Nothing moves when
  * the person's device asks for less motion, when the site's motion setting is calm or off, or before the frame is near
  * the screen. Only transform changes, so nothing else on the page shifts.
  */
@@ -23,7 +25,7 @@ export function Parallax({ children }: { children: ReactNode }) {
       const r = el.getBoundingClientRect(), view = window.innerHeight;
       /* -1 when the frame's middle is at the bottom of the screen, 1 at the top */
       const at = Math.max(-1, Math.min(1, ((view / 2) - (r.top + r.height / 2)) / (view / 2 + r.height / 2)));
-      el.style.transform = `translate3d(0, ${(at * strength * 12).toFixed(2)}%, 0) scale(${(1 + strength * 0.24).toFixed(3)})`;
+      el.style.transform = `translate3d(0, ${(at * strength * 30).toFixed(2)}%, 0) scale(${(1 + strength * 0.6).toFixed(3)})`;
     };
     const ask = () => { if (seen && !frame) frame = requestAnimationFrame(draw); };
     const io = new IntersectionObserver(([e]) => { seen = e.isIntersecting; ask(); }, { rootMargin: "20% 0px" });
