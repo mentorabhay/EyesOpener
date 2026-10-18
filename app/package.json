@@ -2,6 +2,7 @@
   "name": "iopener-web",
   "version": "0.1.0",
   "private": true,
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "vision": "node scripts/vision-files.mjs",
     "predev": "node scripts/vision-files.mjs",

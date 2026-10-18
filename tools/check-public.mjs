@@ -16,7 +16,7 @@ const files = new Set([...git("ls-files", "-z"), ...git("diff", "--cached", "--n
 if (process.argv.includes("--candidates")) for (const f of git("ls-files", "--others", "--exclude-standard", "-z")) files.add(f);
 
 /** Only these top-level entries may exist in the public repository. */
-const ROOTS = [/^\.gitignore$/, /^\.gitattributes$/, /^README\.md$/, /^app\//, /^\.github\//, /^\.githooks\//, /^tools\/check-public\.mjs$/, /^tools\/no-old-name\.mjs$/];
+const ROOTS = [/^\.gitignore$/, /^\.gitattributes$/, /^README\.md$/, /^LICENSE$/, /^NOTICE$/, /^app\//, /^\.github\//, /^\.githooks\//, /^tools\/check-public\.mjs$/, /^tools\/no-old-name\.mjs$/];
 
 const BAD_PATH = [
   [/(^|\/)(plan|plans|deliverables|refs|private|_private)(\/|$)/i, "a plan or private folder"],

@@ -1,0 +1,53 @@
+Eyes Opener
+Copyright (C) 2026 Eyes Opener
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program (the file LICENSE).  If not, see
+<https://www.gnu.org/licenses/>.
+
+
+What the licence means in practice
+----------------------------------
+
+- You may use, study, change and share this code, including inside an
+  organisation.
+- If you share a changed version, or let people use a changed version over
+  a network (for example as a website or an app's server), you must offer
+  them the complete source code of your version under this same licence.
+- You may not turn this code into a closed product that other people use.
+
+This summary is for convenience. The licence text in LICENSE is what counts.
+
+
+The name and logo are not covered by the licence
+------------------------------------------------
+
+"Eyes Opener", the Eyes Opener logo and the eyesopener.com domain are the
+project's own marks. The AGPL gives you rights to the code, not to the name.
+
+- You may say that your project is based on Eyes Opener.
+- You may not call your version "Eyes Opener", use the logo, or present your
+  version in any way that suggests it is the official Eyes Opener service or
+  is endorsed by it.
+- A changed version that is shared or run for others must use its own name
+  and remove the Eyes Opener logo.
+
+To ask about using the name, write to focus@eyesopener.com.
+
+
+Not a medical device
+--------------------
+
+Eyes Opener does not diagnose, treat or cure any condition. Anyone who runs a
+version of this code is responsible for how they describe it and for the
+claims they make about it.

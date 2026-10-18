@@ -5,6 +5,8 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/LICENSE
+!/NOTICE
 !/app/
 !/.github/
 !/.githooks/

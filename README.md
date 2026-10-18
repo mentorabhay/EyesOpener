@@ -69,3 +69,9 @@ Next.js 16, React 19 and TypeScript; PostgreSQL through Drizzle; a Canvas 2D gam
 Start in [`app/`](app/README.md): one script sets it up on Windows, and the commands for macOS and Linux are there too. Build rules for contributors are in [`app/docs/CONTRACT.md`](app/docs/CONTRACT.md).
 
 Before every commit and push, `tools/check-public.mjs` checks that no secret, key or personal detail is about to be published. Turn the hooks on once after cloning: `git config core.hooksPath .githooks`.
+
+## Licence
+
+Eyes Opener is free software under the [GNU Affero General Public License v3.0 or later](LICENSE) (AGPL-3.0-or-later). You may use, change and share it. If you share a changed version, or run one for other people over a network, you must publish its complete source code under the same licence, so nobody can turn it into a closed product.
+
+The licence covers the code, not the name: "Eyes Opener" and its logo stay the project's own, and a changed version must use its own name. See [NOTICE](NOTICE) for the copyright line, the rules for the name and logo, and the reminder that this is not a medical device.
